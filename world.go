@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -47,27 +46,27 @@ func (w *World) AddRoom(r *Room) *Room {
 
 func (w *World) SendAll(pid *Player, format string, a ...any) {
 	for _, p := range w.players {
-		p.Send(format, a)
+		p.Send(format, a...)
 	}
 }
 
 func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 	for pid2, p := range w.players {
 		if pid != pid2 {
-			p.Send(format, a)
+			p.Send(format, a...)
 		}
 	}
 }
 
 func (w *World) OnPlayerJoined(p *Player) {
 	w.AddPlayer(p)
-	w.SendAllExcept(p.id, fmt.Sprintf("%s Joins", p.name))
+	w.SendAllExcept(p.id, "%s Joins", p.name)
 	DoLook(p, w)
 }
 
 func (w *World) OnPlayerLeft(p *Player) {
 	w.RemovePlayer(p.id)
-	w.SendAllExcept(p.id, fmt.Sprintf("%s Leaves", p.name))
+	w.SendAllExcept(p.id, "%s Leaves", p.name)
 }
 
 func (w *World) OnPlayerInput(p *Player, input string) {
@@ -84,5 +83,7 @@ func (w *World) OnPlayerInput(p *Player, input string) {
 		DoSay(p, w, input[len(cmd)+1:])
 	case "yell":
 		DoYell(p, w, input[len(cmd)+1:])
+	default:
+		p.Send("Huh??")
 	}
 }

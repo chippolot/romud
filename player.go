@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 type PlayerId int
 
@@ -21,10 +24,11 @@ func NewPlayer(session *Session, roomId RoomId) *Player {
 
 func (p *Player) Send(format string, a ...any) {
 	var msg string
+	log.Print(len(a), a)
 	if len(a) == 0 {
 		msg = format
 	} else {
-		msg = fmt.Sprint(format, a)
+		msg = fmt.Sprintf(format, a...)
 	}
 	msg = msg + NewLine
 	p.session.conn.Write([]byte(msg))

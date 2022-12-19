@@ -6,7 +6,9 @@ type SessionEvent struct {
 }
 
 type SessionStartedEvent struct{}
+
 type SessionEndedEvent struct{}
+
 type ClientInputEvent struct {
 	input string
 }

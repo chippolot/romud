@@ -2,13 +2,9 @@ package main
 
 import (
 	"net"
-	"sync"
 )
 
-var (
-	sessionIdLock    sync.Mutex
-	sessionIdCounter int
-)
+var idCounter ConcurrentIdCounter
 
 type Session struct {
 	id   int
@@ -20,10 +16,5 @@ func (s *Session) SessionId() int {
 }
 
 func makeSessionId() int {
-	sessionIdLock.Lock()
-	defer sessionIdLock.Unlock()
-
-	sid := sessionIdCounter
-	sessionIdCounter++
-	return sid
+	return idCounter.Next()
 }

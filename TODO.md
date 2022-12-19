@@ -1,6 +1,6 @@
 ## Short Term
-[] Users can see each others' messages
-[] Users get joined/left notifications for other users
+[x] Users can see each others' messages
+[x] Users get joined/left notifications for other users
 [] Users join basic room with description
 [] Room exits
 [] Users can move between rooms

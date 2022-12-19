@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-func handleConnection(conn net.Conn, sessionChannel chan<- SessionEvent) error {
+func handleConnection(conn net.Conn, eventChannel chan<- SessionEvent) error {
 	defer conn.Close()
 
-	session := &Session{makeSessionId(), conn}
+	session := NewSession(conn)
 
-	sessionChannel <- SessionEvent{session, &SessionStartedEvent{}}
+	eventChannel <- SessionEvent{session, &SessionStartedEvent{}}
 
 	buf := make([]byte, 1024)
 
 	for {
 		n, err := conn.Read(buf)
 		if err != nil {
-			sessionChannel <- SessionEvent{session, &SessionEndedEvent{}}
+			eventChannel <- SessionEvent{session, &SessionEndedEvent{}}
 			if err.Error() == "EOF" {
 				break
 			}
@@ -27,12 +27,12 @@ func handleConnection(conn net.Conn, sessionChannel chan<- SessionEvent) error {
 		}
 		msg := string(buf[:n])
 		msg = strings.TrimRight(msg, "\n\r")
-		sessionChannel <- SessionEvent{session, &ClientInputEvent{msg}}
+		eventChannel <- SessionEvent{session, &ClientInputEvent{msg}}
 	}
 	return nil
 }
 
-func startServer(port int, sessionChannel chan<- SessionEvent) error {
+func startServer(port int, eventChannel chan<- SessionEvent) error {
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 	if err != nil {
 		return err
@@ -49,7 +49,7 @@ func startServer(port int, sessionChannel chan<- SessionEvent) error {
 		}
 
 		go func() {
-			err := handleConnection(conn, sessionChannel)
+			err := handleConnection(conn, eventChannel)
 			if err != nil {
 				log.Println("Error handling connection", err)
 				return

@@ -12,11 +12,3 @@ type SessionEndedEvent struct{}
 type ClientInputEvent struct {
 	input string
 }
-
-type Player struct {
-	session *Session
-}
-
-type World struct {
-	players map[int]*Player
-}

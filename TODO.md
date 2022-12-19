@@ -10,6 +10,7 @@
 [] User can login w/ character name
 [] Characters persisted
 [] Persist character's location
+[] Verify thread safety
 
 ## Long Term
 [] Look into MUD protocols

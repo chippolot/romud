@@ -35,7 +35,7 @@ func handleConnection(conn net.Conn, eventChannel chan<- SessionEvent) error {
 }
 
 func startServer(port int, eventChannel chan<- SessionEvent) error {
-	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
+	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", port))
 	if err != nil {
 		return err
 	}

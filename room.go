@@ -29,14 +29,14 @@ func (r *Room) ConnectsTo(room *Room, verb RoomExitVerb) *Room {
 
 func (r *Room) SendAll(pid *Player, format string, a ...any) {
 	for _, p := range r.players {
-		p.Send(format, a)
+		p.Send(format, a...)
 	}
 }
 
 func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 	for pid2, p := range r.players {
 		if pid != pid2 {
-			p.Send(format, a)
+			p.Send(format, a...)
 		}
 	}
 }

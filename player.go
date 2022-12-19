@@ -19,7 +19,13 @@ func NewPlayer(session *Session, roomId RoomId) *Player {
 	return &Player{pid, name, roomId, session}
 }
 
-func (p *Player) Send(msg string) {
-	msg += "\n\r"
+func (p *Player) Send(format string, a ...any) {
+	var msg string
+	if len(a) == 0 {
+		msg = format
+	} else {
+		msg = fmt.Sprint(format, a)
+	}
+	msg = msg + NewLine
 	p.session.conn.Write([]byte(msg))
 }

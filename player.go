@@ -17,7 +17,7 @@ type Player struct {
 
 func NewPlayer(session *Session, roomId RoomId) *Player {
 	pid := playerIdCounter.Next()
-	name := fmt.Sprintf("Player %d", pid)
+	name := fmt.Sprintf("Player%d", pid)
 	return &Player{pid, name, roomId, session}
 }
 

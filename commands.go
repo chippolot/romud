@@ -22,6 +22,7 @@ func GetCommands() *CommandMap {
 			"yell":     {DoYell, "Yell something to the whole world!", "yell hello everyone!"},
 			"whisper":  {DoWhisper, "Whisper something to a specific player", "whisper redbeard Hi buddy!"},
 			"look":     {DoLook, "Describes the current room", "look"},
+			"who":      {DoWho, "Lists all online players", "who"},
 			"commands": {DoCommands, "Lists available commands", "commands"},
 		}
 	}
@@ -29,6 +30,28 @@ func GetCommands() *CommandMap {
 }
 
 type ActionFunc func(player *Player, world *World, tokens []string)
+
+func DoSay(p *Player, w *World, tokens []string) {
+	if len(tokens) == 0 {
+		p.Send("What do you want to say?")
+	}
+	msg := strings.Join(tokens, " ")
+
+	p.Send("Ok.")
+
+	r := w.rooms[p.roomId]
+	r.SendAllExcept(p.id, "%s says, '%s'", p.name, msg)
+}
+
+func DoYell(p *Player, w *World, tokens []string) {
+	if len(tokens) == 0 {
+		p.Send("What do you want to yell?")
+	}
+	msg := strings.Join(tokens, " ")
+
+	p.Send("Ok.")
+	w.SendAllExcept(p.id, "%s yells, '%s'", p.name, msg)
+}
 
 func DoWhisper(p *Player, w *World, tokens []string) {
 	switch len(tokens) {
@@ -38,35 +61,35 @@ func DoWhisper(p *Player, w *World, tokens []string) {
 		p.Send("What do you want to whisper to %s?", tokens[0])
 	default:
 		toName := tokens[0]
-		msg := strings.Join(tokens[2:], " ")
-		if tp, found := w.GetPlayerByName(toName); found {
-			p.Send("You whispered to %s '%s'", toName, msg)
-			tp.Send("%s whispered to you '%s'", p.name, msg)
+		msg := strings.Join(tokens[1:], " ")
+		if toName == p.name {
+			p.Send("You try whispering to yourself")
+			return
+		} else if tp, found := w.GetPlayerByName(toName); found {
+			p.Send("Ok.")
+			tp.Send("%s whispers to you, %s", p.name, msg)
 		} else {
 			p.Send("No player named %s is online", toName)
 		}
 	}
 }
 
-func DoSay(p *Player, w *World, tokens []string) {
-	msg := strings.Join(tokens, " ")
-
-	p.Send("You say '%s'", msg)
-
-	r := w.rooms[p.roomId]
-	r.SendAllExcept(p.id, "%s said '%s'", p.name, msg)
-}
-
-func DoYell(p *Player, w *World, tokens []string) {
-	msg := strings.Join(tokens, " ")
-
-	p.Send("You yell '%s'", msg)
-	w.SendAllExcept(p.id, "%s yelled '%s'", p.name, msg)
-}
-
 func DoLook(p *Player, w *World, tokens []string) {
 	r := w.rooms[p.roomId]
 	p.Send(r.Describe())
+}
+
+func DoWho(p *Player, w *World, tokens []string) {
+	lines := make([]string, 0)
+	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
+	lines = append(lines, HorizontalDivider())
+	lines = append(lines, fmt.Sprintf("(you)\t%s", p.name))
+	for _, player := range w.players {
+		if player != p {
+			lines = append(lines, fmt.Sprintf("\t%s", player.name))
+		}
+	}
+	p.Send(strings.Join(lines, NewLine))
 }
 
 func DoCommands(p *Player, w *World, tokens []string) {

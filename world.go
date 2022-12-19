@@ -61,7 +61,7 @@ func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 func (w *World) OnPlayerJoined(p *Player) {
 	w.AddPlayer(p)
 	w.SendAllExcept(p.id, "%s Joins", p.name)
-	DoLook(p, w)
+	DoLook(p, w, nil)
 }
 
 func (w *World) OnPlayerLeft(p *Player) {
@@ -76,14 +76,10 @@ func (w *World) OnPlayerInput(p *Player, input string) {
 	}
 
 	cmd := strings.ToLower(tokens[0])
-	switch cmd {
-	case "whisper":
-		DoWhisper(p, w, tokens[1:])
-	case "say":
-		DoSay(p, w, input[len(cmd)+1:])
-	case "yell":
-		DoYell(p, w, input[len(cmd)+1:])
-	default:
-		p.Send("Huh??")
+	if cmddesc, ok := (*GetCommands())[cmd]; ok {
+		cmddesc.fn(p, w, tokens[1:])
+		return
 	}
+
+	p.Send("Huh??")
 }

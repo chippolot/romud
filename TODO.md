@@ -5,7 +5,7 @@
 [x] Scope communication to rooms
 [x] Different communication options (whisper, say, yell)
 [x] Room exits
-[] Input prompt
+[x] Input prompt
 [] Users can move between rooms
 [] Users get notifications when moving between rooms
 [] User can login w/ character name

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 type PlayerId int
@@ -22,12 +23,17 @@ func NewPlayer(session *Session, roomId RoomId) *Player {
 }
 
 func (p *Player) Send(format string, a ...any) {
-	var msg string
+	var sb strings.Builder
 	if len(a) == 0 {
-		msg = format
+		sb.WriteString(format)
 	} else {
-		msg = fmt.Sprintf(format, a...)
+		sb.WriteString(fmt.Sprintf(format, a...))
 	}
-	msg = msg + NewLine
-	p.session.conn.Write([]byte(msg))
+	sb.WriteString(NewLine)
+	sb.WriteString(makePrompt(p))
+	p.session.conn.Write([]byte(sb.String()))
+}
+
+func makePrompt(p *Player) string {
+	return "> "
 }

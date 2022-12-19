@@ -2,16 +2,22 @@ package main
 
 import "sync"
 
-type ConcurrentIdCounter struct {
+const NewLine string = "\n\r"
+
+type ConcurrentIdCounter[T ~int] struct {
 	mutex   sync.Mutex
-	counter int
+	counter T
 }
 
-func (s *ConcurrentIdCounter) Next() int {
+func (s *ConcurrentIdCounter[T]) Next() (next T) {
 	s.mutex.Lock()
 	defer s.mutex.Unlock()
 
-	next := s.counter
 	s.counter++
-	return next
+	next = s.counter
+	return
+}
+
+func HorizontalDivider() string {
+	return "---------------------------------"
 }

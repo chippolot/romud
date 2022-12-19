@@ -27,7 +27,9 @@ func handleConnection(conn net.Conn, eventChannel chan<- SessionEvent) error {
 		}
 		msg := string(buf[:n])
 		msg = strings.TrimRight(msg, "\n\r")
-		eventChannel <- SessionEvent{session, &ClientInputEvent{msg}}
+		if msg != "" {
+			eventChannel <- SessionEvent{session, &ClientInputEvent{msg}}
+		}
 	}
 	return nil
 }

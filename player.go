@@ -2,26 +2,21 @@ package main
 
 import "fmt"
 
-var playerIdCounter ConcurrentIdCounter
+type PlayerId int
+
+var playerIdCounter ConcurrentIdCounter[PlayerId]
 
 type Player struct {
-	id      int
+	id      PlayerId
 	name    string
+	roomId  RoomId
 	session *Session
 }
 
-func NewPlayer(session *Session) *Player {
+func NewPlayer(session *Session, roomId RoomId) *Player {
 	pid := playerIdCounter.Next()
 	name := fmt.Sprintf("Player %d", pid)
-	return &Player{pid, name, session}
-}
-
-func (p *Player) Id() int {
-	return p.id
-}
-
-func (p *Player) Name() string {
-	return p.name
+	return &Player{pid, name, roomId, session}
 }
 
 func (p *Player) Send(msg string) {

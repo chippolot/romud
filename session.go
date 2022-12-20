@@ -35,7 +35,7 @@ func (s *SessionHandler) Run() {
 		switch evt := sessionEvent.event.(type) {
 
 		case *SessionStartedEvent:
-			player := NewPlayer(sessionEvent.session, s.world.entryRoomId)
+			player := NewPlayer(sessionEvent.session)
 			s.players[sid] = player
 			s.world.OnPlayerJoined(player)
 			log.Printf("%s Joined", player.name)

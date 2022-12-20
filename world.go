@@ -14,8 +14,10 @@ func NewWorld() *World {
 	return &World{make(map[PlayerId]*Player), make(map[RoomId]*Room), 0}
 }
 
-func (w *World) AddPlayer(p *Player) {
+func (w *World) AddPlayer(p *Player, roomId RoomId) {
 	w.players[p.id] = p
+	r := w.rooms[roomId]
+	r.AddPlayer(p)
 }
 
 func (w *World) GetPlayer(pid PlayerId) (p *Player, ok bool) {
@@ -33,7 +35,11 @@ func (w *World) GetPlayerByName(name string) (p *Player, ok bool) {
 }
 
 func (w *World) RemovePlayer(pid PlayerId) {
-	delete(w.players, pid)
+	if p, ok := w.players[pid]; ok {
+		r := w.rooms[p.roomId]
+		r.RemovePlayer(p)
+		delete(w.players, pid)
+	}
 }
 
 func (w *World) AddRoom(r *Room) *Room {
@@ -59,7 +65,7 @@ func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 }
 
 func (w *World) OnPlayerJoined(p *Player) {
-	w.AddPlayer(p)
+	w.AddPlayer(p, w.entryRoomId)
 	w.SendAllExcept(p.id, "%s Joins", p.name)
 	DoLook(p, w, nil)
 }
@@ -76,8 +82,9 @@ func (w *World) OnPlayerInput(p *Player, input string) {
 	}
 
 	cmd := strings.ToLower(tokens[0])
-	if cmddesc, ok := (*GetCommands())[cmd]; ok {
-		cmddesc.fn(p, w, tokens[1:])
+	tokens[0] = cmd
+	if cmddesc, ok := (*GetCommandLookup())[cmd]; ok {
+		cmddesc.fn(p, w, tokens[:])
 		return
 	}
 

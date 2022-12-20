@@ -11,20 +11,34 @@ var roomIdCounter ConcurrentIdCounter[RoomId]
 type Room struct {
 	id      RoomId
 	desc    string
-	exits   []*RoomExit
+	exits   map[RoomExitVerb]*RoomExit
 	players map[PlayerId]*Player
 }
 
 func NewRoom(desc string) *Room {
-	return &Room{roomIdCounter.Next(), desc, make([]*RoomExit, 0), make(map[PlayerId]*Player)}
+	return &Room{roomIdCounter.Next(), desc, make(map[RoomExitVerb]*RoomExit), make(map[PlayerId]*Player)}
 }
 
 func (r *Room) ConnectsTo(room *Room, verb RoomExitVerb) *Room {
-	r.exits = append(r.exits, &RoomExit{verb, room.id})
+	r.exits[verb] = &RoomExit{verb, room.id}
 	if returningVerb := verb.Reverse(); returningVerb != Undefined {
-		room.exits = append(room.exits, &RoomExit{returningVerb, r.id})
+		room.exits[returningVerb] = &RoomExit{returningVerb, r.id}
 	}
 	return r
+}
+
+func (r *Room) AddPlayer(p *Player) {
+	oldRoomId := p.roomId
+	p.roomId = r.id
+	r.players[p.id] = p
+	if oldRoomId != 0 {
+		r.SendAllExcept(p.id, "%s entered the room", p.name)
+	}
+}
+
+func (r *Room) RemovePlayer(p *Player) {
+	r.SendAllExcept(p.id, "%s left the room", p.name)
+	delete(r.players, p.id)
 }
 
 func (r *Room) SendAll(pid *Player, format string, a ...any) {
@@ -52,8 +66,10 @@ func (r *Room) Describe() string {
 
 func describeExits(r *Room) string {
 	exits := make([]string, len(r.exits))
-	for i, exit := range r.exits {
+	i := 0
+	for _, exit := range r.exits {
 		exits[i] = exit.verb.String()
+		i++
 	}
 	return strings.Join(exits, ", ")
 }
@@ -66,24 +82,43 @@ const (
 	West
 	North
 	South
+	Up
+	Down
 )
 
-func (rev RoomExitVerb) Matches(cmd string) bool {
-	cmd = strings.ToLower(cmd)
-	revStr := rev.String()
-	return revStr == cmd || revStr[0] == cmd[0]
+func NewRoomExitVerb(verb string) RoomExitVerb {
+	switch verb {
+	case "e", "east":
+		return East
+	case "w", "west":
+		return West
+	case "n", "north":
+		return North
+	case "s", "south":
+		return South
+	case "u", "up":
+		return Up
+	case "d", "down":
+		return Down
+	default:
+		return Undefined
+	}
 }
 
 func (rev RoomExitVerb) String() string {
 	switch rev {
 	case East:
-		return "west"
-	case West:
 		return "east"
+	case West:
+		return "west"
 	case North:
-		return "south"
-	case South:
 		return "north"
+	case South:
+		return "south"
+	case Up:
+		return "up"
+	case Down:
+		return "down"
 	}
 	return "unknown"
 }
@@ -98,6 +133,10 @@ func (rev RoomExitVerb) Reverse() RoomExitVerb {
 		return South
 	case South:
 		return North
+	case Up:
+		return Down
+	case Down:
+		return Up
 	}
 	return Undefined
 }

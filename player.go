@@ -16,10 +16,10 @@ type Player struct {
 	session *Session
 }
 
-func NewPlayer(session *Session, roomId RoomId) *Player {
+func NewPlayer(session *Session) *Player {
 	pid := playerIdCounter.Next()
 	name := fmt.Sprintf("Player%d", pid)
-	return &Player{pid, name, roomId, session}
+	return &Player{pid, name, 0, session}
 }
 
 func (p *Player) Send(format string, a ...any) {

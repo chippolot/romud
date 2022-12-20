@@ -7,6 +7,7 @@
 [x] Room exits
 [x] Input prompt
 [] Users can move between rooms
+[] List commands of known exits
 [] Users get notifications when moving between rooms
 [] User can login w/ character name
 [] Characters persisted

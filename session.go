@@ -18,6 +18,15 @@ func NewSession(conn net.Conn) *Session {
 	return &Session{idCounter.Next(), conn}
 }
 
+func (s *Session) Close() {
+	if tcpconn, ok := s.conn.(*net.TCPConn); ok {
+		tcpconn.CloseWrite()
+		tcpconn.SetLinger(0)
+	} else {
+		s.conn.Close()
+	}
+}
+
 type SessionHandler struct {
 	world        *World
 	eventChannel <-chan SessionEvent

@@ -28,6 +28,7 @@ func GetCommands() *CommandList {
 			{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north"},
 			{DoWho, []string{"who"}, "Lists all online players", "who"},
 			{DoCommands, []string{"commands"}, "Lists available commands", "commands"},
+			{DoQuit, []string{"quit"}, "Quits the game", "quit"},
 		}
 	}
 	return &Commands
@@ -144,4 +145,8 @@ func DoCommands(p *Player, w *World, tokens []string) {
 	}
 
 	p.Send(strings.Join(commands, NewLine))
+}
+
+func DoQuit(p *Player, w *World, tokens []string) {
+	p.session.Close()
 }

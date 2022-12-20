@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"strings"
@@ -20,7 +21,7 @@ func handleConnection(conn net.Conn, eventChannel chan<- SessionEvent) error {
 		n, err := conn.Read(buf)
 		if err != nil {
 			eventChannel <- SessionEvent{session, &SessionEndedEvent{}}
-			if err.Error() == "EOF" {
+			if err == io.EOF {
 				break
 			}
 			return err

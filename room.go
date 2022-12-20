@@ -57,12 +57,18 @@ func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 }
 
 func (r *Room) Describe(forPlayer *Player) string {
-	return strings.Join([]string{
-		r.desc,
-		HorizontalDivider(),
-		describeExits(r),
-		describePlayers(r, forPlayer),
-	}, NewLine)
+	var sb strings.Builder
+	sb.WriteString(r.desc)
+	sb.WriteString(NewLine)
+	sb.WriteString(HorizontalDivider())
+	sb.WriteString(NewLine)
+	sb.WriteString(describeExits(r))
+	playersStr := describePlayers(r, forPlayer)
+	if playersStr != "" {
+		sb.WriteString(NewLine)
+		sb.WriteString(playersStr)
+	}
+	return sb.String()
 }
 
 func describeExits(r *Room) string {
@@ -80,6 +86,9 @@ func describePlayers(r *Room, forPlayer *Player) string {
 			continue
 		}
 		players = append(players, fmt.Sprintf("%s is here", p.name))
+	}
+	if len(players) == 0 {
+		return ""
 	}
 	return strings.Join(players, NewLine)
 }

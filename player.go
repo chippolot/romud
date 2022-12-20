@@ -24,11 +24,13 @@ func NewPlayer(session *Session) *Player {
 
 func (p *Player) Send(format string, a ...any) {
 	var sb strings.Builder
+	sb.WriteString(NewLine)
 	if len(a) == 0 {
 		sb.WriteString(format)
 	} else {
 		sb.WriteString(fmt.Sprintf(format, a...))
 	}
+	sb.WriteString(NewLine)
 	sb.WriteString(NewLine)
 	sb.WriteString(makePrompt(p))
 	p.session.conn.Write([]byte(sb.String()))

@@ -10,12 +10,12 @@
 [x] List commands of known exits
 [x] Users get notifications when moving between rooms
 [x] List players in room
-[] Verify thread safety
-[]      Rooms,Player,Session Maps
-[]      Join/Leave Notifs
+[] Preamble
 [] User can login w/ character name
-[] Characters persisted
-[] Persist character's location
+[] Persistence
+[] Stats
+[] Stats in prompt
+[] Combat
 [] Colorful output
 
 ## Long Term

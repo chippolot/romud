@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"strings"
 )
 
@@ -116,8 +115,6 @@ func DoMove(p *Player, w *World, tokens []string) {
 	cmd := tokens[0]
 	verb := NewRoomExitVerb(cmd)
 	roomcur := w.rooms[p.roomId]
-
-	log.Printf("TRYING TO MOVE? %s %s", cmd, verb)
 
 	exit, ok := roomcur.exits[verb]
 	if !ok {

@@ -12,6 +12,7 @@
 [x] List players in room
 [x] Auto-restart server + client
 [x] Preamble
+[x] Colorful output 
 [] Send w/ and w/o prompt
 [] User can login w/ character name
 [] Persistence
@@ -22,7 +23,6 @@
 [] Stats in prompt
 [] Combat
 [] Generify connections -- support ssh
-[] Colorful output 
 
 ## Long Term
 [] Look into MUD protocols

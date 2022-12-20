@@ -33,7 +33,8 @@ func (p *Player) Send(format string, a ...any) {
 	sb.WriteString(NewLine)
 	sb.WriteString(NewLine)
 	sb.WriteString(makePrompt(p))
-	p.session.conn.Write([]byte(sb.String()))
+	s := processANSIColorCodes(sb.String())
+	p.session.conn.Write([]byte(s))
 }
 
 func makePrompt(p *Player) string {

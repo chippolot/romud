@@ -11,14 +11,15 @@ var roomIdCounter RoomId
 
 type Room struct {
 	id      RoomId
+	name    string
 	desc    string
 	exits   map[RoomExitVerb]*RoomExit
 	players map[PlayerId]*Player
 }
 
-func NewRoom(desc string) *Room {
+func NewRoom(name string, desc string) *Room {
 	roomIdCounter++
-	return &Room{roomIdCounter, desc, make(map[RoomExitVerb]*RoomExit), make(map[PlayerId]*Player)}
+	return &Room{roomIdCounter, name, desc, make(map[RoomExitVerb]*RoomExit), make(map[PlayerId]*Player)}
 }
 
 func (r *Room) ConnectsTo(room *Room, verb RoomExitVerb) *Room {
@@ -60,6 +61,10 @@ func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 func (r *Room) Describe(forPlayer *Player) string {
 	var sb strings.Builder
 	sb.WriteString(NewLine)
+	sb.WriteString("<c bright yellow>")
+	sb.WriteString(r.name)
+	sb.WriteString("</c>")
+	sb.WriteString(NewLine)
 	sb.WriteString(r.desc)
 	sb.WriteString(NewLine)
 	sb.WriteString(HorizontalDivider())
@@ -78,7 +83,7 @@ func describeExits(r *Room) string {
 	for _, exit := range r.exits {
 		exits = append(exits, exit.verb.String())
 	}
-	return "Obvious Exits: " + strings.Join(exits, ", ")
+	return "<c dim yellow>Obvious Exits: " + strings.Join(exits, ", ") + "</c>"
 }
 
 func describePlayers(r *Room, forPlayer *Player) string {
@@ -92,7 +97,7 @@ func describePlayers(r *Room, forPlayer *Player) string {
 	if len(players) == 0 {
 		return ""
 	}
-	return strings.Join(players, NewLine)
+	return "<c cyan>" + strings.Join(players, NewLine) + "</c>"
 }
 
 type RoomExitVerb int

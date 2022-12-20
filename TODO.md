@@ -14,8 +14,8 @@
 [x] Preamble
 [x] Colorful output 
 [x] User can login w/ character name
+[x] Send w/ and w/o prompt
 [] User can login w/ character name and password
-[] Send w/ and w/o prompt
 [] Persistence
 [] Mobs
 [] Wandering Mobs

@@ -11,7 +11,7 @@ import (
 func handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionEvent) error {
 	defer conn.Close()
 
-	session := &Session{sid, conn}
+	session := NewSession(sid, conn)
 	eventChannel <- SessionEvent{session, &SessionStartedEvent{}}
 
 	buf := make([]byte, 1024)

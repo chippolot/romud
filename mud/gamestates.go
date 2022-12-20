@@ -29,7 +29,7 @@ func (s *LoginState) OnEnter() {
 }
 func (s *LoginState) ProcessInput(input string) StateId {
 	s.player.name = input
-	s.player.Send("Ah, %s, a fine name indeed!", input)
+	s.player.Enqueue("Ah, %s, a fine name indeed!", input)
 	return PlayingStateId
 }
 func (s *LoginState) OnExit() {
@@ -45,7 +45,7 @@ func (s *PlayingState) StateId() StateId {
 	return PlayingStateId
 }
 func (s *PlayingState) OnEnter() {
-	s.player.Send("Welcome to GoMUD!")
+	s.player.Enqueue("Welcome to GoMUD!")
 	s.world.OnPlayerJoined(s.player)
 }
 func (s *PlayingState) ProcessInput(input string) StateId {

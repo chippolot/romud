@@ -67,8 +67,7 @@ func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 func (w *World) OnPlayerJoined(p *Player) {
 	w.AddPlayer(p, w.entryRoomId)
 	w.SendAllExcept(p.id, "%s Joins", p.name)
-	p.Send(Preamble)
-	p.Send("Welcome!")
+	p.Enqueue(Preamble)
 	DoLook(p, w, nil)
 }
 

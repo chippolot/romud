@@ -23,22 +23,31 @@ type ClientInputEvent struct {
 type SessionId int
 
 type Session struct {
-	id   SessionId
-	conn net.Conn
+	id        SessionId
+	conn      net.Conn
+	sendQueue *strings.Builder
+}
+
+func NewSession(id SessionId, conn net.Conn) *Session {
+	return &Session{id, conn, &strings.Builder{}}
+}
+
+func (s *Session) Enqueue(format string, a ...any) {
+	s.sendQueue.WriteString(NewLine)
+	if len(a) == 0 {
+		s.sendQueue.WriteString(format)
+	} else {
+		s.sendQueue.WriteString(fmt.Sprintf(format, a...))
+	}
+	s.sendQueue.WriteString(NewLine)
 }
 
 func (s *Session) Send(format string, a ...any) {
-	var sb strings.Builder
-	sb.WriteString(NewLine)
-	if len(a) == 0 {
-		sb.WriteString(format)
-	} else {
-		sb.WriteString(fmt.Sprintf(format, a...))
-	}
-	sb.WriteString(NewLine)
-	sb.WriteString(NewLine)
-	sb.WriteString(makePrompt())
-	str := processANSIColorCodes(sb.String())
+	s.Enqueue(format, a...)
+	s.sendQueue.WriteString(NewLine)
+	s.sendQueue.WriteString(makePrompt())
+	str := processANSIColorCodes(s.sendQueue.String())
+	s.sendQueue.Reset()
 	s.conn.Write([]byte(str))
 }
 

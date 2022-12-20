@@ -8,11 +8,10 @@ import (
 	"strings"
 )
 
-func handleConnection(conn net.Conn, eventChannel chan<- SessionEvent) error {
+func handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionEvent) error {
 	defer conn.Close()
 
-	session := NewSession(conn)
-
+	session := &Session{sid, conn}
 	eventChannel <- SessionEvent{session, &SessionStartedEvent{}}
 
 	buf := make([]byte, 1024)
@@ -36,6 +35,8 @@ func handleConnection(conn net.Conn, eventChannel chan<- SessionEvent) error {
 }
 
 func startServer(port int, eventChannel chan<- SessionEvent) error {
+	var sessionCounter SessionId
+
 	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", port))
 	if err != nil {
 		return err
@@ -51,13 +52,14 @@ func startServer(port int, eventChannel chan<- SessionEvent) error {
 			break
 		}
 
-		go func() {
-			err := handleConnection(conn, eventChannel)
+		sessionCounter++
+		go func(sid SessionId) {
+			err := handleConnection(conn, sid, eventChannel)
 			if err != nil {
 				log.Println("Error handling connection", err)
 				return
 			}
-		}()
+		}(sessionCounter)
 	}
 	return nil
 }

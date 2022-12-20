@@ -7,15 +7,9 @@ import (
 
 type SessionId int
 
-var idCounter ConcurrentIdCounter[SessionId]
-
 type Session struct {
 	id   SessionId
 	conn net.Conn
-}
-
-func NewSession(conn net.Conn) *Session {
-	return &Session{idCounter.Next(), conn}
 }
 
 func (s *Session) Close() {

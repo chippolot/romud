@@ -7,7 +7,7 @@ import (
 
 type PlayerId int
 
-var playerIdCounter ConcurrentIdCounter[PlayerId]
+var playerIdCounter PlayerId
 
 type Player struct {
 	id      PlayerId
@@ -17,9 +17,9 @@ type Player struct {
 }
 
 func NewPlayer(session *Session) *Player {
-	pid := playerIdCounter.Next()
-	name := fmt.Sprintf("Player%d", pid)
-	return &Player{pid, name, 0, session}
+	playerIdCounter++
+	name := fmt.Sprintf("Player%d", playerIdCounter)
+	return &Player{playerIdCounter, name, 0, session}
 }
 
 func (p *Player) Send(format string, a ...any) {

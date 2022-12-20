@@ -7,7 +7,7 @@ import (
 
 type RoomId int
 
-var roomIdCounter ConcurrentIdCounter[RoomId]
+var roomIdCounter RoomId
 
 type Room struct {
 	id      RoomId
@@ -17,7 +17,8 @@ type Room struct {
 }
 
 func NewRoom(desc string) *Room {
-	return &Room{roomIdCounter.Next(), desc, make(map[RoomExitVerb]*RoomExit), make(map[PlayerId]*Player)}
+	roomIdCounter++
+	return &Room{roomIdCounter, desc, make(map[RoomExitVerb]*RoomExit), make(map[PlayerId]*Player)}
 }
 
 func (r *Room) ConnectsTo(room *Room, verb RoomExitVerb) *Room {

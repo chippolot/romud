@@ -1,0 +1,2 @@
+#!/bin/bash
+nodemon -x "sleep 1.5;telnet localhost 8080" --signal SIGTERM -e go

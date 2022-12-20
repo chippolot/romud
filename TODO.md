@@ -10,13 +10,18 @@
 [x] List commands of known exits
 [x] Users get notifications when moving between rooms
 [x] List players in room
+[] Receive messages without breaking input prompt
+[] Auto-restart server + client
 [] Preamble
 [] User can login w/ character name
 [] Persistence
+[] Mobs
+[] Wandering Mobs
+[] Loading from data files
 [] Stats
 [] Stats in prompt
 [] Combat
-[] Colorful output
+[] Colorful output 
 
 ## Long Term
 [] Look into MUD protocols

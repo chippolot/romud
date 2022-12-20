@@ -1,0 +1,2 @@
+#!/bin/bash
+nodemon -x "go run ." --signal SIGTERM -e go

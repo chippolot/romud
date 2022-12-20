@@ -77,18 +77,25 @@ func (w *World) OnPlayerLeft(p *Player) {
 	w.SendAllExcept(p.id, "%s Leaves", p.name)
 }
 
-func (w *World) OnPlayerInput(p *Player, input string) {
+func (w *World) OnPlayerInput(p *Player, input string) StateId {
 	tokens := strings.Split(input, " ")
 	if len(tokens) == 0 {
-		return
+		return 0
 	}
 
 	cmd := strings.ToLower(tokens[0])
+	if cmd == "quit" {
+		return LoggedOutStateId
+	}
+
 	tokens[0] = cmd
 	if cmddesc, ok := CommandsLookup[cmd]; ok {
-		cmddesc.fn(p, w, tokens[:])
-		return
+		if cmddesc.fn != nil {
+			cmddesc.fn(p, w, tokens[:])
+			return 0
+		}
 	}
 
 	p.Send("Huh??")
+	return 0
 }

@@ -16,6 +16,8 @@ func handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionE
 
 	buf := make([]byte, 1024)
 
+	var sb strings.Builder
+
 	for {
 		n, err := conn.Read(buf)
 		if err != nil {
@@ -26,9 +28,13 @@ func handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionE
 			return err
 		}
 		msg := string(buf[:n])
-		msg = strings.TrimRight(msg, "\n\r")
-		if msg != "" {
-			eventChannel <- SessionEvent{session, &ClientInputEvent{msg}}
+		sb.WriteString(msg)
+		if strings.HasSuffix(msg, "\r\n") {
+			msg = strings.TrimRight(sb.String(), "\r\n")
+			sb.Reset()
+			if msg != "" {
+				eventChannel <- SessionEvent{session, &ClientInputEvent{msg}}
+			}
 		}
 	}
 	return nil

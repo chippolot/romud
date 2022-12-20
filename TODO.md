@@ -13,8 +13,9 @@
 [x] Auto-restart server + client
 [x] Preamble
 [x] Colorful output 
+[x] User can login w/ character name
+[] User can login w/ character name and password
 [] Send w/ and w/o prompt
-[] User can login w/ character name
 [] Persistence
 [] Mobs
 [] Wandering Mobs

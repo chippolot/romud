@@ -96,7 +96,7 @@ func DoWhisper(p *Player, w *World, tokens []string) {
 
 func DoLook(p *Player, w *World, tokens []string) {
 	r := w.rooms[p.roomId]
-	p.Send(r.Describe())
+	p.Send(r.Describe(p))
 }
 
 func DoWho(p *Player, w *World, tokens []string) {

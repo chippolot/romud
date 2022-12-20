@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -55,23 +56,32 @@ func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 	}
 }
 
-func (r *Room) Describe() string {
+func (r *Room) Describe(forPlayer *Player) string {
 	return strings.Join([]string{
 		r.desc,
 		HorizontalDivider(),
-		"Exits:",
 		describeExits(r),
+		describePlayers(r, forPlayer),
 	}, NewLine)
 }
 
 func describeExits(r *Room) string {
-	exits := make([]string, len(r.exits))
-	i := 0
+	exits := make([]string, 0, len(r.exits))
 	for _, exit := range r.exits {
-		exits[i] = exit.verb.String()
-		i++
+		exits = append(exits, exit.verb.String())
 	}
-	return strings.Join(exits, ", ")
+	return "Obvious Exits: " + strings.Join(exits, ", ")
+}
+
+func describePlayers(r *Room, forPlayer *Player) string {
+	players := make([]string, 0, len(r.players))
+	for _, p := range r.players {
+		if forPlayer == p {
+			continue
+		}
+		players = append(players, fmt.Sprintf("%s is here", p.name))
+	}
+	return strings.Join(players, NewLine)
 }
 
 type RoomExitVerb int

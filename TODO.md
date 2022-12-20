@@ -6,9 +6,11 @@
 [x] Different communication options (whisper, say, yell)
 [x] Room exits
 [x] Input prompt
-[] Users can move between rooms
-[] List commands of known exits
-[] Users get notifications when moving between rooms
+[x] Users can move between rooms
+[x] List commands of known exits
+[x] Users get notifications when moving between rooms
+[x] List players in room
+[] Colorful output
 [] User can login w/ character name
 [] Characters persisted
 [] Persist character's location

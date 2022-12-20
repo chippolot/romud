@@ -59,6 +59,7 @@ func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 
 func (r *Room) Describe(forPlayer *Player) string {
 	var sb strings.Builder
+	sb.WriteString(NewLine)
 	sb.WriteString(r.desc)
 	sb.WriteString(NewLine)
 	sb.WriteString(HorizontalDivider())

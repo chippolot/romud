@@ -18,35 +18,27 @@ type CommandList []*CommandDesc
 var CommandsLookup CommandMap
 var Commands CommandList
 
-func GetCommands() *CommandList {
-	if Commands == nil {
-		Commands = []*CommandDesc{
-			{DoSay, []string{"say"}, "Say something in the current room", "say hi"},
-			{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!"},
-			{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper redbeard Hi buddy!"},
-			{DoLook, []string{"look", "l"}, "Describes the current room", "look"},
-			{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north"},
-			{DoWho, []string{"who"}, "Lists all online players", "who"},
-			{DoCommands, []string{"commands"}, "Lists available commands", "commands"},
-			{DoQuit, []string{"quit"}, "Quits the game", "quit"},
-		}
+func init() {
+	Commands = []*CommandDesc{
+		{DoSay, []string{"say"}, "Say something in the current room", "say hi"},
+		{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!"},
+		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper redbeard Hi buddy!"},
+		{DoLook, []string{"look", "l"}, "Describes the current room", "look"},
+		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north"},
+		{DoWho, []string{"who"}, "Lists all online players", "who"},
+		{DoCommands, []string{"commands"}, "Lists available commands", "commands"},
+		{DoQuit, []string{"quit"}, "Quits the game", "quit"},
 	}
-	return &Commands
-}
 
-func GetCommandLookup() *CommandMap {
-	if CommandsLookup == nil {
-		CommandsLookup = make(CommandMap)
-		for _, cmd := range *GetCommands() {
-			for _, alias := range cmd.aliases {
-				if _, ok := CommandsLookup[alias]; ok {
-					panic(fmt.Sprintf("Multiple commands registered with alias: %s", alias))
-				}
-				CommandsLookup[alias] = cmd
+	CommandsLookup = make(CommandMap)
+	for _, cmd := range Commands {
+		for _, alias := range cmd.aliases {
+			if _, ok := CommandsLookup[alias]; ok {
+				panic(fmt.Sprintf("Multiple commands registered with alias: %s", alias))
 			}
+			CommandsLookup[alias] = cmd
 		}
 	}
-	return &CommandsLookup
 }
 
 type ActionFunc func(player *Player, world *World, tokens []string)

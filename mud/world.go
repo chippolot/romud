@@ -67,6 +67,8 @@ func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 func (w *World) OnPlayerJoined(p *Player) {
 	w.AddPlayer(p, w.entryRoomId)
 	w.SendAllExcept(p.id, "%s Joins", p.name)
+	p.Send(Preamble)
+	p.Send("Welcome!")
 	DoLook(p, w, nil)
 }
 
@@ -83,7 +85,7 @@ func (w *World) OnPlayerInput(p *Player, input string) {
 
 	cmd := strings.ToLower(tokens[0])
 	tokens[0] = cmd
-	if cmddesc, ok := (*GetCommandLookup())[cmd]; ok {
+	if cmddesc, ok := CommandsLookup[cmd]; ok {
 		cmddesc.fn(p, w, tokens[:])
 		return
 	}

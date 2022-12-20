@@ -10,9 +10,9 @@
 [x] List commands of known exits
 [x] Users get notifications when moving between rooms
 [x] List players in room
-[] Receive messages without breaking input prompt
-[] Auto-restart server + client
-[] Preamble
+[x] Auto-restart server + client
+[x] Preamble
+[] Send w/ and w/o prompt
 [] User can login w/ character name
 [] Persistence
 [] Mobs
@@ -21,6 +21,7 @@
 [] Stats
 [] Stats in prompt
 [] Combat
+[] Generify connections -- support ssh
 [] Colorful output 
 
 ## Long Term

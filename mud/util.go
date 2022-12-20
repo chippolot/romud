@@ -1,4 +1,4 @@
-package main
+package mud
 
 const NewLine string = "\n\r"
 

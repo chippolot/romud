@@ -1,4 +1,4 @@
-package main
+package mud
 
 type SessionEvent struct {
 	session *Session

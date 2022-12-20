@@ -1,4 +1,4 @@
-package main
+package mud
 
 import (
 	"fmt"
@@ -34,7 +34,7 @@ func handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionE
 	return nil
 }
 
-func startServer(port int, eventChannel chan<- SessionEvent) error {
+func StartServer(port int, eventChannel chan<- SessionEvent) error {
 	var sessionCounter SessionId
 
 	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", port))

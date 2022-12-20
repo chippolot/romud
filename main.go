@@ -2,21 +2,23 @@ package main
 
 import (
 	"log"
+
+	"github.com/chippolot/go-mud/mud"
 )
 
 func main() {
-	eventChannel := make(chan SessionEvent)
+	eventChannel := make(chan mud.SessionEvent)
 
 	// Build world
-	world := NewWorld()
-	room1 := world.AddRoom(NewRoom("A Simple Room."))
-	room2 := world.AddRoom(NewRoom("Another Room!"))
-	room1.ConnectsTo(room2, East)
+	world := mud.NewWorld()
+	room1 := world.AddRoom(mud.NewRoom("A Simple Room."))
+	room2 := world.AddRoom(mud.NewRoom("Another Room!"))
+	room1.ConnectsTo(room2, mud.East)
 
-	sh := NewSessionHandler(world, eventChannel)
+	sh := mud.NewSessionHandler(world, eventChannel)
 	go sh.Run()
 
-	err := startServer(8080, eventChannel)
+	err := mud.StartServer(8080, eventChannel)
 	if err != nil {
 		log.Fatalln(err)
 	}

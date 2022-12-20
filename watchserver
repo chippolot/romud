@@ -1,2 +1,2 @@
 #!/bin/bash
-nodemon -x "go run ." --signal SIGTERM -e go
+nodemon -x "go run . || exit 1" --signal SIGTERM -e go

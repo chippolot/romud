@@ -50,7 +50,7 @@ func (w *World) AddRoom(r *Room) *Room {
 	return r
 }
 
-func (w *World) SendAll(pid *Player, format string, a ...any) {
+func (w *World) SendAll(format string, a ...any) {
 	for _, p := range w.players {
 		p.Send(format, a...)
 	}

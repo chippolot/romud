@@ -42,7 +42,7 @@ func (r *Room) RemovePlayer(p *Player) {
 	delete(r.players, p.id)
 }
 
-func (r *Room) SendAll(pid *Player, format string, a ...any) {
+func (r *Room) SendAll(format string, a ...any) {
 	for _, p := range r.players {
 		p.Send(format, a...)
 	}

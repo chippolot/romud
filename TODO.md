@@ -10,11 +10,13 @@
 [x] List commands of known exits
 [x] Users get notifications when moving between rooms
 [x] List players in room
-[] Colorful output
+[] Verify thread safety
+[]      Rooms,Player,Session Maps
+[]      Join/Leave Notifs
 [] User can login w/ character name
 [] Characters persisted
 [] Persist character's location
-[] Verify thread safety
+[] Colorful output
 
 ## Long Term
 [] Look into MUD protocols

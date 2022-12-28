@@ -86,12 +86,12 @@ func DoWhisper(p *Player, w *World, tokens []string) {
 	}
 }
 
-func DoLook(p *Player, w *World, tokens []string) {
+func DoLook(p *Player, w *World, _ []string) {
 	r := w.rooms[p.roomId]
 	p.Send(r.Describe(p))
 }
 
-func DoWho(p *Player, w *World, tokens []string) {
+func DoWho(p *Player, w *World, _ []string) {
 	lines := make([]string, 0)
 	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
 	lines = append(lines, HorizontalDivider())
@@ -107,21 +107,21 @@ func DoWho(p *Player, w *World, tokens []string) {
 func DoMove(p *Player, w *World, tokens []string) {
 	cmd := tokens[0]
 	verb := NewRoomExitVerb(cmd)
-	roomcur := w.rooms[p.roomId]
+	roomCur := w.rooms[p.roomId]
 
-	exit, ok := roomcur.exits[verb]
+	exit, ok := roomCur.exits[verb]
 	if !ok {
 		p.Send("Can't go that way!")
 		return
 	}
 
-	roomnext := w.rooms[exit.roomId]
-	roomcur.RemovePlayer(p)
-	roomnext.AddPlayer(p)
+	roomNext := w.rooms[exit.roomId]
+	roomCur.RemovePlayer(p)
+	roomNext.AddPlayer(p)
 	DoLook(p, w, nil)
 }
 
-func DoCommands(p *Player, w *World, tokens []string) {
+func DoCommands(p *Player, _ *World, _ []string) {
 	commands := make([]string, 0)
 
 	commands = append(commands, "Available Commands:")

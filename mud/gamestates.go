@@ -66,7 +66,7 @@ func (s *LoggedOutState) StateId() StateId {
 func (s *LoggedOutState) OnEnter() {
 	s.session.Close()
 }
-func (s *LoggedOutState) ProcessInput(input string) StateId {
+func (s *LoggedOutState) ProcessInput(_ string) StateId {
 	return 0
 }
 func (s *LoggedOutState) OnExit() {

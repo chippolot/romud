@@ -88,9 +88,9 @@ func (w *World) OnPlayerInput(p *Player, input string) StateId {
 	}
 
 	tokens[0] = cmd
-	if cmddesc, ok := CommandsLookup[cmd]; ok {
-		if cmddesc.fn != nil {
-			cmddesc.fn(p, w, tokens[:])
+	if cmdDesc, ok := CommandsLookup[cmd]; ok {
+		if cmdDesc.fn != nil {
+			cmdDesc.fn(p, w, tokens[:])
 			return 0
 		}
 	}

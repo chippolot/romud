@@ -48,20 +48,30 @@ func (s *Session) Send(format string, a ...any) {
 	s.sendQueue.WriteString(makePrompt())
 	str := processANSIColorCodes(s.sendQueue.String())
 	s.sendQueue.Reset()
-	s.conn.Write([]byte(str))
+	_, _ = s.conn.Write([]byte(str))
 }
 
 func makePrompt() string {
 	return "> "
 }
 
-func (s *Session) Close() {
-	if tcpconn, ok := s.conn.(*net.TCPConn); ok {
-		tcpconn.CloseWrite()
-		tcpconn.SetLinger(0)
+func (s *Session) Close() error {
+	if tcpConn, ok := s.conn.(*net.TCPConn); ok {
+		err := tcpConn.CloseWrite()
+		if err != nil {
+			return err
+		}
+		err = tcpConn.SetLinger(0)
+		if err != nil {
+			return err
+		}
 	} else {
-		s.conn.Close()
+		err := s.conn.Close()
+		if err != nil {
+			return err
+		}
 	}
+	return nil
 }
 
 type SessionHandler struct {

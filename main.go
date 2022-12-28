@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/chippolot/go-mud/mud"
+	"github.com/chippolot/go-mud/src/mud"
 )
 
 func main() {

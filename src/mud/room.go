@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"errors"
 	"fmt"
 	"strings"
 )
@@ -10,18 +9,28 @@ type RoomId int
 
 var roomIdCounter RoomId
 
-type RoomDataList []RoomData
-
-type RoomData struct {
-	Id    RoomId
-	Name  string
-	Desc  string
-	Exits []RoomExitData
-}
-
 type RoomExitData struct {
 	RoomId RoomId
 	Verb   string
+}
+
+// TODO TODOBEN THIS
+type SenseType int
+
+type RoomExtraData struct {
+	Sense    SenseType
+	Keywords []string
+	Desc     string
+}
+
+type RoomDataList []RoomData
+
+type RoomData struct {
+	Id     RoomId
+	Name   string
+	Desc   string
+	Exits  []RoomExitData
+	Extras []RoomExtraData
 }
 
 type Room struct {
@@ -43,7 +52,7 @@ func NewRoomFromData(data *RoomData) (*Room, error) {
 	for _, e := range data.Exits {
 		v := NewRoomExitVerb(e.Verb)
 		if v == Undefined {
-			return nil, errors.New(fmt.Sprintf("Failed to parse room exit verb %s", e.Verb))
+			return nil, fmt.Errorf("failed to parse room exit verb %s", e.Verb)
 		}
 		r.exits[v] = e.RoomId
 	}

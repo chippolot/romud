@@ -76,16 +76,16 @@ func (r *Room) ConnectsTo(room *Room, verb Direction) *Room {
 }
 
 func (r *Room) AddPlayer(p *Player) {
-	oldRoomId := p.roomId
-	p.roomId = r.id
+	oldRoomId := p.data.Character.RoomId
+	p.data.Character.RoomId = r.id
 	r.players[p.id] = p
 	if oldRoomId != 0 {
-		r.SendAllExcept(p.id, "%s entered the room", p.name)
+		r.SendAllExcept(p.id, "%s entered the room", p.data.Character.Name)
 	}
 }
 
 func (r *Room) RemovePlayer(p *Player) {
-	r.SendAllExcept(p.id, "%s left the room", p.name)
+	r.SendAllExcept(p.id, "%s left the room", p.data.Character.Name)
 	delete(r.players, p.id)
 }
 
@@ -146,7 +146,7 @@ func describePlayers(r *Room, forPlayer *Player) string {
 		if forPlayer == p {
 			continue
 		}
-		players = append(players, fmt.Sprintf("%s is here", p.name))
+		players = append(players, fmt.Sprintf("%s is here", p.data.Character.Name))
 	}
 	if len(players) == 0 {
 		return ""

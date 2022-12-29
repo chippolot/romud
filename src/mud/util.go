@@ -6,6 +6,9 @@ import (
 	"strings"
 )
 
+const InvalidId = 0
+const InvalidName = ""
+
 const NewLine string = "\n\r"
 
 func HorizontalDivider() string {

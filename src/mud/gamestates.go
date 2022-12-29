@@ -28,7 +28,8 @@ func (s *LoginState) OnEnter() {
 	s.player.Send("What is your name?")
 }
 func (s *LoginState) ProcessInput(input string) StateId {
-	s.player.name = input
+	TODO handle login here
+	s.player.data.Name = input
 	s.player.Enqueue("Ah, %s, a fine name indeed!", input)
 	return PlayingStateId
 }
@@ -45,6 +46,7 @@ func (s *PlayingState) StateId() StateId {
 	return PlayingStateId
 }
 func (s *PlayingState) OnEnter() {
+	s.player.data.Character = SpawnPlayerCharacter(s.player.data.Name)
 	s.player.Enqueue("Welcome to GoMUD!")
 	s.world.OnPlayerJoined(s.player)
 }

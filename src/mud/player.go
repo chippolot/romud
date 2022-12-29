@@ -1,24 +1,26 @@
 package mud
 
-import (
-	"fmt"
-)
-
 type PlayerId int
 
 var playerIdCounter PlayerId
 
+type PlayerData struct {
+	Name      string
+	Password  string
+	Character *EntityData
+}
+
 type Player struct {
 	id      PlayerId
-	name    string
-	roomId  RoomId
 	session *Session
+	data    *PlayerData
+	char    *Entity
 }
 
 func NewPlayer(session *Session) *Player {
+	p := &Player{id: playerIdCounter, session: session}
 	playerIdCounter++
-	name := fmt.Sprintf("Player%d", playerIdCounter)
-	return &Player{playerIdCounter, name, 0, session}
+	return p
 }
 
 func (p *Player) Enqueue(format string, a ...any) {

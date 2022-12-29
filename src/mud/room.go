@@ -1,7 +1,9 @@
 package mud
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
 	"strings"
 )
 
@@ -11,11 +13,8 @@ var roomIdCounter RoomId
 
 type RoomExitData struct {
 	RoomId RoomId
-	Verb   string
+	Verb   Direction
 }
-
-// TODO TODOBEN THIS
-type SenseType int
 
 type RoomExtraData struct {
 	Sense    SenseType
@@ -37,32 +36,30 @@ type Room struct {
 	id      RoomId
 	name    string
 	desc    string
-	exits   map[RoomExitVerb]RoomId
+	exits   map[Direction]RoomId
 	players map[PlayerId]*Player
 }
 
 func NewRoom(name string, desc string) *Room {
 	roomIdCounter++
-	return &Room{roomIdCounter, name, desc, make(map[RoomExitVerb]RoomId), make(map[PlayerId]*Player)}
+	return &Room{roomIdCounter, name, desc, make(map[Direction]RoomId), make(map[PlayerId]*Player)}
 }
 
 func NewRoomFromData(data *RoomData) (*Room, error) {
 	r := NewRoom(data.Name, data.Desc)
 	r.id = data.Id
 	for _, e := range data.Exits {
-		v := NewRoomExitVerb(e.Verb)
-		if v == Undefined {
-			return nil, fmt.Errorf("failed to parse room exit verb %s", e.Verb)
-		}
-		r.exits[v] = e.RoomId
+		r.exits[e.Verb] = e.RoomId
 	}
 	return r, nil
 }
 
-func (r *Room) ConnectsTo(room *Room, verb RoomExitVerb) *Room {
+func (r *Room) ConnectsTo(room *Room, verb Direction) *Room {
 	r.exits[verb] = room.id
-	if returningVerb := verb.Reverse(); returningVerb != Undefined {
+	if returningVerb, err := verb.Reverse(); err != nil {
 		room.exits[returningVerb] = r.id
+	} else {
+		log.Println("Failed to connect rooms:", err)
 	}
 	return r
 }
@@ -137,69 +134,80 @@ func describePlayers(r *Room, forPlayer *Player) string {
 	return "<c cyan>" + strings.Join(players, NewLine) + "</c>"
 }
 
-type RoomExitVerb int
+type Direction int
 
 const (
-	Undefined RoomExitVerb = iota
-	East
-	West
-	North
-	South
-	Up
-	Down
+	DirectionEast Direction = iota
+	DirectionWest
+	DirectionNorth
+	DirectionSouth
+	DirectionUp
+	DirectionDown
 )
 
-func NewRoomExitVerb(verb string) RoomExitVerb {
-	switch verb {
+func ParseDirection(s string) (Direction, error) {
+	s = strings.TrimSpace(strings.ToLower(s))
+	switch s {
 	case "e", "east":
-		return East
+		return DirectionEast, nil
 	case "w", "west":
-		return West
+		return DirectionWest, nil
 	case "n", "north":
-		return North
+		return DirectionNorth, nil
 	case "s", "south":
-		return South
+		return DirectionSouth, nil
 	case "u", "up":
-		return Up
+		return DirectionUp, nil
 	case "d", "down":
-		return Down
+		return DirectionDown, nil
 	default:
-		return Undefined
+		return 0, fmt.Errorf("failed to parse Direction: %s", s)
 	}
 }
 
-func (rev RoomExitVerb) String() string {
-	switch rev {
-	case East:
+func (d *Direction) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *d, err = ParseDirection(str); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d Direction) String() string {
+	switch d {
+	case DirectionEast:
 		return "east"
-	case West:
+	case DirectionWest:
 		return "west"
-	case North:
+	case DirectionNorth:
 		return "north"
-	case South:
+	case DirectionSouth:
 		return "south"
-	case Up:
+	case DirectionUp:
 		return "up"
-	case Down:
+	case DirectionDown:
 		return "down"
 	}
 	return "unknown"
 }
 
-func (rev RoomExitVerb) Reverse() RoomExitVerb {
-	switch rev {
-	case East:
-		return West
-	case West:
-		return East
-	case North:
-		return South
-	case South:
-		return North
-	case Up:
-		return Down
-	case Down:
-		return Up
+func (d Direction) Reverse() (Direction, error) {
+	switch d {
+	case DirectionEast:
+		return DirectionWest, nil
+	case DirectionWest:
+		return DirectionEast, nil
+	case DirectionNorth:
+		return DirectionSouth, nil
+	case DirectionSouth:
+		return DirectionNorth, nil
+	case DirectionUp:
+		return DirectionDown, nil
+	case DirectionDown:
+		return DirectionUp, nil
 	}
-	return Undefined
+	return 0, fmt.Errorf("failed to reverse direction: %s", d)
 }

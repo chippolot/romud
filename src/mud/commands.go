@@ -106,10 +106,13 @@ func DoWho(p *Player, w *World, _ []string) {
 
 func DoMove(p *Player, w *World, tokens []string) {
 	cmd := tokens[0]
-	verb := NewRoomExitVerb(cmd)
+	dir, err := ParseDirection(cmd)
+	if err != nil {
+		p.Send("%s isn't a direction!", cmd)
+	}
 	curRoom := w.rooms[p.roomId]
 
-	nextRoomId, ok := curRoom.exits[verb]
+	nextRoomId, ok := curRoom.exits[dir]
 	if !ok {
 		p.Send("Can't go that way!")
 		return

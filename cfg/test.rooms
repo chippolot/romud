@@ -1,9 +1,19 @@
 [{
-    "Id": 1,
-    "Name": "A simple room",
-    "Desc": "You are standing in a simple room. Seems quite nice!",
-    "Exits": [{
-        "RoomId": 2,
-        "Verb": "e"
-    }]
-}]
+        "Id": 1,
+        "Name": "A simple room",
+        "Desc": "You are standing in a simple room. Seems quite nice!",
+        "Exits": [{
+            "RoomId": 2,
+            "Verb": "e"
+        }]
+    },
+    {
+        "Id": 2,
+        "Name": "Another room",
+        "Desc": "You are standing in another room. It's different from the first room?",
+        "Exits": [{
+            "RoomId": 1,
+            "Verb": "w"
+        }]
+    }
+]

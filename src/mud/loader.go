@@ -27,6 +27,8 @@ func LoadRooms(w *World, path string) error {
 		w.AddRoom(r)
 	}
 
+	log.Printf("Loaded %d rooms from %s", len(roomDatas), path)
+
 	return nil
 }
 

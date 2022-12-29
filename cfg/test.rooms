@@ -1,15 +1,15 @@
 [{
         "Id": 1,
         "Name": "A simple room",
-        "Desc": "You are standing in a simple room. Seems quite nice!\\nThere is a small sign here.",
+        "Desc": "You are standing in a simple room. Seems quite nice!\r\nThere is a small sign here.",
         "Exits": [{
             "RoomId": 2,
             "Verb": "e"
         }],
         "Extras": [{
-            "Sense": "Look",
+            "Sense": "look",
             "Keywords": ["sign"],
-            "Desc": "The sign says:\\n    Have a nice day!"
+            "Desc": "The sign says:\r\n    Have a nice day!"
         }]
     },
     {

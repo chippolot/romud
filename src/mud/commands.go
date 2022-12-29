@@ -23,7 +23,11 @@ func init() {
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi"},
 		{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!"},
 		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper redbeard Hi buddy!"},
-		{DoLook, []string{"look", "l"}, "Describes the current room", "look"},
+		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat"},
+		{DoListen, []string{"listen"}, "Describes the sound of an object", "hear cat"},
+		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo"},
+		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo"},
+		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo"},
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north"},
 		{DoWho, []string{"who"}, "Lists all online players", "who"},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands"},
@@ -86,9 +90,74 @@ func DoWhisper(p *Player, w *World, tokens []string) {
 	}
 }
 
-func DoLook(p *Player, w *World, _ []string) {
+func DoLook(p *Player, w *World, tokens []string) {
 	r := w.rooms[p.roomId]
-	p.Send(r.Describe(p))
+	switch len(tokens) {
+	case 0, 1:
+		p.Send(r.Describe(p))
+	default:
+		if desc, ok := trySense(SenseLook, r, tokens[1]); ok {
+			p.Send(desc)
+		} else {
+			p.Send("You don't see that here.")
+		}
+	}
+}
+
+func DoListen(p *Player, w *World, tokens []string) {
+	r := w.rooms[p.roomId]
+	switch len(tokens) {
+	case 0, 1:
+		p.Send("What do you want to listen to?")
+	default:
+		if desc, ok := trySense(SenseListen, r, tokens[1]); ok {
+			p.Send(desc)
+		} else {
+			p.Send("You don't hear that here.")
+		}
+	}
+}
+
+func DoTaste(p *Player, w *World, tokens []string) {
+	r := w.rooms[p.roomId]
+	switch len(tokens) {
+	case 0, 1:
+		p.Send("What do you want to taste?")
+	default:
+		if desc, ok := trySense(SenseTaste, r, tokens[1]); ok {
+			p.Send(desc)
+		} else {
+			p.Send("You don't want to taste that!")
+		}
+	}
+}
+
+func DoTouch(p *Player, w *World, tokens []string) {
+	r := w.rooms[p.roomId]
+	switch len(tokens) {
+	case 0, 1:
+		p.Send("What do you want to touch?")
+	default:
+		if desc, ok := trySense(SenseTouch, r, tokens[1]); ok {
+			p.Send(desc)
+		} else {
+			p.Send("You don't want to touch that!")
+		}
+	}
+}
+
+func DoSmell(p *Player, w *World, tokens []string) {
+	r := w.rooms[p.roomId]
+	switch len(tokens) {
+	case 0, 1:
+		p.Send("What do you want to smell?")
+	default:
+		if desc, ok := trySense(SenseSmell, r, tokens[1]); ok {
+			p.Send(desc)
+		} else {
+			p.Send("You don't want to smell that!")
+		}
+	}
 }
 
 func DoWho(p *Player, w *World, _ []string) {
@@ -140,4 +209,12 @@ func DoCommands(p *Player, _ *World, _ []string) {
 	}
 
 	p.Send(strings.Join(commands, NewLine))
+}
+
+func trySense(sense SenseType, r *Room, target string) (string, bool) {
+	target = strings.ToLower(target)
+	if desc, ok := r.TryDescribeExtra(sense, target); ok {
+		return desc, true
+	}
+	return "", false
 }

@@ -10,7 +10,7 @@ const (
 	SenseLook SenseType = iota
 	SenseTouch
 	SenseSmell
-	SenseHear
+	SenseListen
 	SenseTaste
 )
 
@@ -25,8 +25,8 @@ func ParseSenseType(s string) (SenseType, error) {
 		return SenseTouch, nil
 	case "smell":
 		return SenseSmell, nil
-	case "hear":
-		return SenseHear, nil
+	case "listen":
+		return SenseListen, nil
 	case "taste":
 		return SenseTaste, nil
 	default:

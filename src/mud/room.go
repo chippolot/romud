@@ -37,19 +37,30 @@ type Room struct {
 	name    string
 	desc    string
 	exits   map[Direction]RoomId
+	extras  map[SenseType]map[string]string
 	players map[PlayerId]*Player
 }
 
 func NewRoom(name string, desc string) *Room {
 	roomIdCounter++
-	return &Room{roomIdCounter, name, desc, make(map[Direction]RoomId), make(map[PlayerId]*Player)}
+	return &Room{roomIdCounter, name, desc, make(map[Direction]RoomId), make(map[SenseType]map[string]string), make(map[PlayerId]*Player)}
 }
 
-func NewRoomFromData(data *RoomData) (*Room, error) {
+func ParseRoom(data *RoomData) (*Room, error) {
 	r := NewRoom(data.Name, data.Desc)
 	r.id = data.Id
 	for _, e := range data.Exits {
 		r.exits[e.Verb] = e.RoomId
+	}
+	for _, e := range data.Extras {
+		extras, ok := r.extras[e.Sense]
+		if !ok {
+			extras = make(map[string]string)
+			r.extras[e.Sense] = extras
+		}
+		for _, keyword := range e.Keywords {
+			extras[strings.ToLower(keyword)] = e.Desc
+		}
 	}
 	return r, nil
 }
@@ -110,6 +121,15 @@ func (r *Room) Describe(forPlayer *Player) string {
 		sb.WriteString(playersStr)
 	}
 	return sb.String()
+}
+
+func (r *Room) TryDescribeExtra(sense SenseType, target string) (string, bool) {
+	extras, ok := r.extras[sense]
+	if !ok {
+		return "", false
+	}
+	desc, ok := extras[target]
+	return desc, ok
 }
 
 func describeExits(r *Room) string {

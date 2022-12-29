@@ -49,12 +49,12 @@ func StartServer(port int, eventChannel chan<- SessionEvent) error {
 	}
 	defer listener.Close()
 
-	log.Printf("Now listening on port %d", port)
+	log.Printf("now listening on port %d", port)
 
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
-			log.Println("Error accepting connection", err)
+			log.Println("error accepting connection", err)
 			break
 		}
 
@@ -62,7 +62,7 @@ func StartServer(port int, eventChannel chan<- SessionEvent) error {
 		go func(sid SessionId) {
 			err := handleConnection(conn, sid, eventChannel)
 			if err != nil {
-				log.Println("Error handling connection", err)
+				log.Println("error handling connection", err)
 				return
 			}
 		}(sessionCounter)

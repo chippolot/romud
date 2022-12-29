@@ -94,12 +94,12 @@ func (s *SessionHandler) Run() {
 		case *SessionStartedEvent:
 			player := NewPlayer(sessionEvent.session)
 			s.players[sid] = player
-			log.Printf("Session %d connected", sid)
+			log.Printf("session %d connected", sid)
 			s.ChangeGameState(sid, LoginStateId)
 
 		case *SessionEndedEvent:
 			delete(s.players, sid)
-			log.Printf("Session %d disconnected", sid)
+			log.Printf("session %d disconnected", sid)
 
 		case *ClientInputEvent:
 			if state, ok := s.states[sid]; ok {
@@ -109,7 +109,7 @@ func (s *SessionHandler) Run() {
 			}
 
 		default:
-			log.Printf("Unexpected event type: %T", sessionEvent.event)
+			log.Printf("unexpected event type: %T", sessionEvent.event)
 		}
 	}
 }
@@ -127,7 +127,7 @@ func (s *SessionHandler) ChangeGameState(sid SessionId, id StateId) {
 	case LoggedOutStateId:
 		newstate = &LoggedOutState{s.players[sid].session}
 	default:
-		log.Printf("Unknown state id: %d", id)
+		log.Printf("unknown state id: %d", id)
 	}
 	s.states[sid] = newstate
 	if newstate != nil {

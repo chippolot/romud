@@ -14,8 +14,11 @@ func main() {
 	_, b, _, _ := runtime.Caller(0)
 	projectRoot := path.Join(path.Dir(b))
 
+	// Prep DB
+	db := mud.NewFileSystemDatabase(path.Join(projectRoot, "db"))
+
 	// Build world
-	world := mud.NewWorld()
+	world := mud.NewWorld(db)
 	mud.LoadRooms(world, path.Join(projectRoot, "cfg/test.rooms"))
 
 	sh := mud.NewSessionHandler(world, eventChannel)

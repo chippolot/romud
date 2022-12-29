@@ -14,6 +14,6 @@ type EntityData struct {
 	Stats  *StatsData
 }
 
-type Entity struct {
-	Data *EntityData
+func NewEntityData(name string) *EntityData {
+	return &EntityData{Name: name}
 }

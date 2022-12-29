@@ -53,7 +53,7 @@ func processANSIColorCodes(s string) string {
 			if code, ok := ANSIColorCodeLookup[tok]; ok {
 				sb.WriteString(code)
 			} else {
-				log.Printf("Unknown ANSI color code: %s", code)
+				log.Printf("unknown ANSI color code: %s", code)
 			}
 		}
 		sb.WriteString(m[i+1 : len(m)-4])

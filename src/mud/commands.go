@@ -31,6 +31,7 @@ func init() {
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north"},
 		{DoWho, []string{"who"}, "Lists all online players", "who"},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands"},
+		{DoSave, []string{"save"}, "Saves the game", "save"},
 		{nil, []string{"quit"}, "Quits the game", "quit"},
 	}
 
@@ -55,8 +56,8 @@ func DoSay(p *Player, w *World, tokens []string) {
 
 	p.Send("Ok.")
 
-	r := w.rooms[p.roomId]
-	r.SendAllExcept(p.id, "%s says, '%s'", p.name, msg)
+	r := w.rooms[p.data.Character.RoomId]
+	r.SendAllExcept(p.id, "%s says, '%s'", p.data.Character.Name, msg)
 }
 
 func DoYell(p *Player, w *World, tokens []string) {
@@ -66,7 +67,7 @@ func DoYell(p *Player, w *World, tokens []string) {
 	msg := strings.Join(tokens[1:], " ")
 
 	p.Send("Ok.")
-	w.SendAllExcept(p.id, "%s yells, '%s'", p.name, msg)
+	w.SendAllExcept(p.id, "%s yells, '%s'", p.data.Character.Name, msg)
 }
 
 func DoWhisper(p *Player, w *World, tokens []string) {
@@ -78,12 +79,12 @@ func DoWhisper(p *Player, w *World, tokens []string) {
 	default:
 		toName := tokens[1]
 		msg := strings.Join(tokens[2:], " ")
-		if toName == p.name {
+		if toName == p.data.Character.Name {
 			p.Send("You try whispering to yourself")
 			return
 		} else if tp, found := w.GetPlayerByName(toName); found {
 			p.Send("Ok.")
-			tp.Send("%s whispers to you, %s", p.name, msg)
+			tp.Send("%s whispers to you, %s", p.data.Character.Name, msg)
 		} else {
 			p.Send("No player named %s is online", toName)
 		}
@@ -91,7 +92,7 @@ func DoWhisper(p *Player, w *World, tokens []string) {
 }
 
 func DoLook(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.roomId]
+	r := w.rooms[p.data.Character.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		p.Send(r.Describe(p))
@@ -105,7 +106,7 @@ func DoLook(p *Player, w *World, tokens []string) {
 }
 
 func DoListen(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.roomId]
+	r := w.rooms[p.data.Character.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		p.Send("What do you want to listen to?")
@@ -119,7 +120,7 @@ func DoListen(p *Player, w *World, tokens []string) {
 }
 
 func DoTaste(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.roomId]
+	r := w.rooms[p.data.Character.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		p.Send("What do you want to taste?")
@@ -133,7 +134,7 @@ func DoTaste(p *Player, w *World, tokens []string) {
 }
 
 func DoTouch(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.roomId]
+	r := w.rooms[p.data.Character.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		p.Send("What do you want to touch?")
@@ -147,7 +148,7 @@ func DoTouch(p *Player, w *World, tokens []string) {
 }
 
 func DoSmell(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.roomId]
+	r := w.rooms[p.data.Character.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		p.Send("What do you want to smell?")
@@ -164,10 +165,10 @@ func DoWho(p *Player, w *World, _ []string) {
 	lines := make([]string, 0)
 	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
 	lines = append(lines, HorizontalDivider())
-	lines = append(lines, fmt.Sprintf("(you)\t%s", p.name))
+	lines = append(lines, fmt.Sprintf("(you)\t%s", p.data.Character.Name))
 	for _, player := range w.players {
 		if player != p {
-			lines = append(lines, fmt.Sprintf("\t%s", player.name))
+			lines = append(lines, fmt.Sprintf("\t%s", player.data.Character.Name))
 		}
 	}
 	p.Send(strings.Join(lines, NewLine))
@@ -179,7 +180,7 @@ func DoMove(p *Player, w *World, tokens []string) {
 	if err != nil {
 		p.Send("%s isn't a direction!", cmd)
 	}
-	curRoom := w.rooms[p.roomId]
+	curRoom := w.rooms[p.data.Character.RoomId]
 
 	nextRoomId, ok := curRoom.exits[dir]
 	if !ok {
@@ -209,6 +210,11 @@ func DoCommands(p *Player, _ *World, _ []string) {
 	}
 
 	p.Send(strings.Join(commands, NewLine))
+}
+
+func DoSave(p *Player, w *World, _ []string) {
+	p.Save(w.db)
+	p.Send("Saved game.")
 }
 
 func trySense(sense SenseType, r *Room, target string) (string, bool) {

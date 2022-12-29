@@ -23,3 +23,4 @@ go.work
 _examples
 .idea
 .vscode
+*.player

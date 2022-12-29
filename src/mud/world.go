@@ -5,13 +5,14 @@ import (
 )
 
 type World struct {
+	db          Database
 	players     map[PlayerId]*Player
 	rooms       map[RoomId]*Room
 	entryRoomId RoomId
 }
 
-func NewWorld() *World {
-	return &World{make(map[PlayerId]*Player), make(map[RoomId]*Room), 0}
+func NewWorld(db Database) *World {
+	return &World{db, make(map[PlayerId]*Player), make(map[RoomId]*Room), 0}
 }
 
 func (w *World) AddPlayer(p *Player, roomId RoomId) {
@@ -27,7 +28,7 @@ func (w *World) GetPlayer(pid PlayerId) (p *Player, ok bool) {
 
 func (w *World) GetPlayerByName(name string) (p *Player, ok bool) {
 	for _, p := range w.players {
-		if p.name == name {
+		if p.data.Name == name {
 			return p, true
 		}
 	}
@@ -36,7 +37,7 @@ func (w *World) GetPlayerByName(name string) (p *Player, ok bool) {
 
 func (w *World) RemovePlayer(pid PlayerId) {
 	if p, ok := w.players[pid]; ok {
-		r := w.rooms[p.roomId]
+		r := w.rooms[p.data.Character.RoomId]
 		r.RemovePlayer(p)
 		delete(w.players, pid)
 	}
@@ -66,14 +67,14 @@ func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 
 func (w *World) OnPlayerJoined(p *Player) {
 	w.AddPlayer(p, w.entryRoomId)
-	w.SendAllExcept(p.id, "%s Joins", p.name)
+	w.SendAllExcept(p.id, "%s Joins", p.data.Name)
 	p.Enqueue(Preamble)
 	DoLook(p, w, nil)
 }
 
 func (w *World) OnPlayerLeft(p *Player) {
 	w.RemovePlayer(p.id)
-	w.SendAllExcept(p.id, "%s Leaves", p.name)
+	w.SendAllExcept(p.id, "%s Leaves", p.data.Name)
 }
 
 func (w *World) OnPlayerInput(p *Player, input string) StateId {

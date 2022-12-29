@@ -70,7 +70,7 @@ func (r *Room) ConnectsTo(room *Room, verb Direction) *Room {
 	if returningVerb, err := verb.Reverse(); err != nil {
 		room.exits[returningVerb] = r.id
 	} else {
-		log.Println("Failed to connect rooms:", err)
+		log.Panicln("failed to connect rooms:", err)
 	}
 	return r
 }

@@ -107,17 +107,17 @@ func DoWho(p *Player, w *World, _ []string) {
 func DoMove(p *Player, w *World, tokens []string) {
 	cmd := tokens[0]
 	verb := NewRoomExitVerb(cmd)
-	roomCur := w.rooms[p.roomId]
+	curRoom := w.rooms[p.roomId]
 
-	exit, ok := roomCur.exits[verb]
+	nextRoomId, ok := curRoom.exits[verb]
 	if !ok {
 		p.Send("Can't go that way!")
 		return
 	}
 
-	roomNext := w.rooms[exit.roomId]
-	roomCur.RemovePlayer(p)
-	roomNext.AddPlayer(p)
+	nextRoom := w.rooms[nextRoomId]
+	curRoom.RemovePlayer(p)
+	nextRoom.AddPlayer(p)
 	DoLook(p, w, nil)
 }
 

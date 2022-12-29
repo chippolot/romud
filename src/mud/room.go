@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 )
@@ -9,23 +10,50 @@ type RoomId int
 
 var roomIdCounter RoomId
 
+type RoomDataList []RoomData
+
+type RoomData struct {
+	Id    RoomId
+	Name  string
+	Desc  string
+	Exits []RoomExitData
+}
+
+type RoomExitData struct {
+	RoomId RoomId
+	Verb   string
+}
+
 type Room struct {
 	id      RoomId
 	name    string
 	desc    string
-	exits   map[RoomExitVerb]*RoomExit
+	exits   map[RoomExitVerb]RoomId
 	players map[PlayerId]*Player
 }
 
 func NewRoom(name string, desc string) *Room {
 	roomIdCounter++
-	return &Room{roomIdCounter, name, desc, make(map[RoomExitVerb]*RoomExit), make(map[PlayerId]*Player)}
+	return &Room{roomIdCounter, name, desc, make(map[RoomExitVerb]RoomId), make(map[PlayerId]*Player)}
+}
+
+func NewRoomFromData(data *RoomData) (*Room, error) {
+	r := NewRoom(data.Name, data.Desc)
+	r.id = data.Id
+	for _, e := range data.Exits {
+		v := NewRoomExitVerb(e.Verb)
+		if v == Undefined {
+			return nil, errors.New(fmt.Sprintf("Failed to parse room exit verb %s", e.Verb))
+		}
+		r.exits[v] = e.RoomId
+	}
+	return r, nil
 }
 
 func (r *Room) ConnectsTo(room *Room, verb RoomExitVerb) *Room {
-	r.exits[verb] = &RoomExit{verb, room.id}
+	r.exits[verb] = room.id
 	if returningVerb := verb.Reverse(); returningVerb != Undefined {
-		room.exits[returningVerb] = &RoomExit{returningVerb, r.id}
+		room.exits[returningVerb] = r.id
 	}
 	return r
 }
@@ -80,8 +108,8 @@ func (r *Room) Describe(forPlayer *Player) string {
 
 func describeExits(r *Room) string {
 	exits := make([]string, 0, len(r.exits))
-	for _, exit := range r.exits {
-		exits = append(exits, exit.verb.String())
+	for verb := range r.exits {
+		exits = append(exits, verb.String())
 	}
 	return "<c dim yellow>Obvious Exits: " + strings.Join(exits, ", ") + "</c>"
 }
@@ -165,9 +193,4 @@ func (rev RoomExitVerb) Reverse() RoomExitVerb {
 		return Up
 	}
 	return Undefined
-}
-
-type RoomExit struct {
-	verb   RoomExitVerb
-	roomId RoomId
 }

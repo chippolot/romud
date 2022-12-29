@@ -15,10 +15,11 @@
 [x] Colorful output 
 [x] User can login w/ character name
 [x] Send w/ and w/o prompt
-[] User can login w/ character name and password
 [] Persistence
+[] Items
 [] Mobs
 [] Wandering Mobs
+[] User can login w/ character name and password
 [] Loading from data files
 [] Stats
 [] Stats in prompt

@@ -33,6 +33,7 @@ func (s *LoginState) StateId() StateId {
 	return LoginStateId
 }
 func (s *LoginState) OnEnter() {
+	s.player.session.SetPromptProvider(&server.DefaultPromptProvider{})
 	s.player.Send("What is your name?")
 }
 func (s *LoginState) ProcessInput(input string) StateId {
@@ -68,6 +69,7 @@ func (s *PlayingState) StateId() StateId {
 	return PlayingStateId
 }
 func (s *PlayingState) OnEnter() {
+	s.playerCharacter.player.session.SetPromptProvider(&EntityPromptProvider{s.playerCharacter})
 	s.playerCharacter.player.Enqueue("Welcome to GoMUD!")
 
 	roomId := s.world.entryRoomId

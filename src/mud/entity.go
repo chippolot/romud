@@ -1,6 +1,10 @@
 package mud
 
-import "github.com/chippolot/go-mud/src/mud/bits"
+import (
+	"fmt"
+
+	"github.com/chippolot/go-mud/src/mud/bits"
+)
 
 const PlayerEntityKey = "_player"
 
@@ -39,4 +43,12 @@ func NewEntity(cfg *EntityConfig) *Entity {
 
 func newEntityData(cfg *EntityConfig) *EntityData {
 	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats)}
+}
+
+type EntityPromptProvider struct {
+	character *Entity
+}
+
+func (pp *EntityPromptProvider) Prompt() string {
+	return fmt.Sprintf("<<c green>%dh(%dH):%dv(%dMV)</c>> ", pp.character.data.Stats.HP, pp.character.data.Stats.MaxHP, pp.character.data.Stats.Mov, pp.character.data.Stats.MaxMov)
 }

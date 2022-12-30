@@ -7,6 +7,17 @@ import (
 	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
+type PromptProvider interface {
+	Prompt() string
+}
+
+type DefaultPromptProvider struct {
+}
+
+func (pp *DefaultPromptProvider) Prompt() string {
+	return "> "
+}
+
 type SessionEvent struct {
 	Session *Session
 	Event   interface{}
@@ -23,13 +34,18 @@ type ClientInputEvent struct {
 type SessionId uint32
 
 type Session struct {
-	Id        SessionId
-	Conn      net.Conn
-	sendQueue utils.StringBuilder
+	Id             SessionId
+	Conn           net.Conn
+	promptProvider PromptProvider
+	sendQueue      utils.StringBuilder
 }
 
 func NewSession(id SessionId, conn net.Conn) *Session {
-	return &Session{id, conn, utils.StringBuilder{}}
+	return &Session{id, conn, &DefaultPromptProvider{}, utils.StringBuilder{}}
+}
+
+func (s *Session) SetPromptProvider(pp PromptProvider) {
+	s.promptProvider = pp
 }
 
 func (s *Session) Enqueue(format string, a ...any) {
@@ -44,14 +60,10 @@ func (s *Session) Enqueue(format string, a ...any) {
 func (s *Session) Send(format string, a ...any) {
 	s.Enqueue(format, a...)
 	s.sendQueue.WriteNewLine()
-	s.sendQueue.WriteString(makePrompt())
+	s.sendQueue.WriteString(s.promptProvider.Prompt())
 	str := processANSIColorCodes(s.sendQueue.String())
 	s.sendQueue.Reset()
 	_, _ = s.Conn.Write([]byte(str))
-}
-
-func makePrompt() string {
-	return "> "
 }
 
 func (s *Session) Close() error {

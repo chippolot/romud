@@ -180,6 +180,11 @@ func DoWho(e *Entity, w *World, _ []string) {
 }
 
 func DoMove(e *Entity, w *World, tokens []string) {
+	if e.data.Stats.Mov <= 0 {
+		e.player.Send("You're way too tired...")
+		return
+	}
+
 	cmd := tokens[0]
 	dir, err := ParseDirection(cmd)
 	if err != nil {
@@ -196,6 +201,9 @@ func DoMove(e *Entity, w *World, tokens []string) {
 	nextRoom := w.rooms[nextRoomId]
 	curRoom.RemoveEntity(e)
 	nextRoom.AddEntity(e)
+
+	e.data.Stats.Mov--
+
 	DoLook(e, w, nil)
 }
 

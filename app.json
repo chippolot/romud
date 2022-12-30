@@ -1,0 +1,6 @@
+{
+    "Servers": [{
+        "Type": "telnet",
+        "Port": 8080
+    }]
+}

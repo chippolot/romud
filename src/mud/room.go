@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"strings"
+
+	"github.com/chippolot/go-mud/src/mud/server"
 )
 
 type RoomId int
@@ -105,19 +107,19 @@ func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 
 func (r *Room) Describe(forPlayer *Player) string {
 	var sb strings.Builder
-	sb.WriteString(NewLine)
+	sb.WriteString(server.NewLine)
 	sb.WriteString("<c bright yellow>")
 	sb.WriteString(r.name)
 	sb.WriteString("</c>")
-	sb.WriteString(NewLine)
+	sb.WriteString(server.NewLine)
 	sb.WriteString(r.desc)
-	sb.WriteString(NewLine)
-	sb.WriteString(HorizontalDivider())
-	sb.WriteString(NewLine)
+	sb.WriteString(server.NewLine)
+	sb.WriteString(server.HorizontalDivider())
+	sb.WriteString(server.NewLine)
 	sb.WriteString(describeExits(r))
 	playersStr := describePlayers(r, forPlayer)
 	if playersStr != "" {
-		sb.WriteString(NewLine)
+		sb.WriteString(server.NewLine)
 		sb.WriteString(playersStr)
 	}
 	return sb.String()
@@ -151,7 +153,7 @@ func describePlayers(r *Room, forPlayer *Player) string {
 	if len(players) == 0 {
 		return ""
 	}
-	return "<c cyan>" + strings.Join(players, NewLine) + "</c>"
+	return "<c cyan>" + strings.Join(players, server.NewLine) + "</c>"
 }
 
 type Direction int

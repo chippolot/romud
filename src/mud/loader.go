@@ -2,13 +2,11 @@ package mud
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
-	"os"
 )
 
 func LoadRooms(w *World, path string) error {
-	bytes, err := loadFileBytes(path)
+	bytes, err := LoadFileBytes(path)
 	if err != nil {
 		return err
 	}
@@ -30,18 +28,4 @@ func LoadRooms(w *World, path string) error {
 	log.Printf("loaded %d rooms from %s", len(roomDatas), path)
 
 	return nil
-}
-
-func loadFileBytes(path string) ([]byte, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	bytes, err := ioutil.ReadAll(file)
-	if err != nil {
-		return nil, err
-	}
-	return bytes, nil
 }

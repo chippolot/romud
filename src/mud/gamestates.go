@@ -1,5 +1,7 @@
 package mud
 
+import "github.com/chippolot/go-mud/src/mud/server"
+
 type StateId int
 
 const (
@@ -53,12 +55,13 @@ func (s *PlayingState) ProcessInput(input string) StateId {
 	return s.world.OnPlayerInput(s.player, input)
 }
 func (s *PlayingState) OnExit() {
+	s.player.Save(s.world.db)
 	s.player.Send("Goodbye!")
 	s.world.OnPlayerLeft(s.player)
 }
 
 type LoggedOutState struct {
-	session *Session
+	session *server.Session
 }
 
 func (s *LoggedOutState) StateId() StateId {

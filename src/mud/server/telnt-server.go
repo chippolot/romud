@@ -1,4 +1,4 @@
-package mud
+package server
 
 import (
 	"fmt"
@@ -8,7 +8,9 @@ import (
 	"strings"
 )
 
-func handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionEvent) error {
+type TelnetServer struct{}
+
+func (s *TelnetServer) handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionEvent) error {
 	defer conn.Close()
 
 	session := NewSession(sid, conn)
@@ -40,7 +42,7 @@ func handleConnection(conn net.Conn, sid SessionId, eventChannel chan<- SessionE
 	return nil
 }
 
-func StartServer(port int, eventChannel chan<- SessionEvent) error {
+func (s *TelnetServer) Start(port int, events chan<- SessionEvent) error {
 	var sessionCounter SessionId
 
 	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", port))
@@ -60,7 +62,7 @@ func StartServer(port int, eventChannel chan<- SessionEvent) error {
 
 		sessionCounter++
 		go func(sid SessionId) {
-			err := handleConnection(conn, sid, eventChannel)
+			err := s.handleConnection(conn, sid, events)
 			if err != nil {
 				log.Println("error handling connection", err)
 				return

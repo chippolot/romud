@@ -1,6 +1,10 @@
 package mud
 
-import "log"
+import (
+	"log"
+
+	"github.com/chippolot/go-mud/src/mud/server"
+)
 
 type PlayerId int
 
@@ -14,11 +18,11 @@ type PlayerData struct {
 
 type Player struct {
 	id      PlayerId
-	session *Session
+	session *server.Session
 	data    *PlayerData
 }
 
-func NewPlayer(session *Session) *Player {
+func NewPlayer(session *server.Session) *Player {
 	p := &Player{id: playerIdCounter, session: session, data: &PlayerData{}}
 	playerIdCounter++
 	return p

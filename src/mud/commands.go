@@ -217,7 +217,7 @@ func DoCommands(e *Entity, _ *World, _ []string) {
 }
 
 func DoSave(e *Entity, w *World, _ []string) {
-	e.player.Save(w.db)
+	w.SavePlayerCharacter(e.player.id)
 	e.player.Send("Saved game.")
 }
 

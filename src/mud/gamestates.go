@@ -24,8 +24,9 @@ type GameState interface {
 }
 
 type LoginState struct {
-	player *Player
-	world  *World
+	player          *Player
+	world           *World
+	playerCharacter **Entity
 }
 
 func (s *LoginState) StateId() StateId {
@@ -35,20 +36,23 @@ func (s *LoginState) OnEnter() {
 	s.player.Send("What is your name?")
 }
 func (s *LoginState) ProcessInput(input string) StateId {
-	if s.world.db.DoesPlayerExist(input) {
-		data, err := s.world.db.LoadPlayer(input)
+	name := input
+	if s.world.db.DoesPlayerExist(name) {
+		log.Printf("loading player: %s", name)
+		var err error
+		*s.playerCharacter, err = s.world.TryLoadPlayerCharacter(name, s.player)
 		if err != nil {
-			s.player.Send("Couldn't load data for player %s, please try another name.", input)
+			log.Printf("error encountered while loading player: %s -- %v", name, err)
+			s.player.Send("Couldn't load data for player %s, please try another name.", name)
 			return 0
 		}
-		log.Printf("loading player: %s", input)
-		s.player.Enqueue("Welcome back, %s!", input)
-		s.player.Load(data)
+		s.player.Enqueue("Welcome back, %s!", name)
 	} else {
-		log.Printf("creating new player: %s", input)
-		s.player.Enqueue("Ah, %s, a fine name indeed!", input)
-		s.player.NewCharacter(input)
+		log.Printf("creating new player: %s", name)
+		*s.playerCharacter = s.world.CreatePlayerCharacter(name, s.player)
+		s.player.Enqueue("Ah, %s, a fine name indeed!", name)
 	}
+
 	return PlayingStateId
 }
 func (s *LoginState) OnExit() {
@@ -56,24 +60,29 @@ func (s *LoginState) OnExit() {
 }
 
 type PlayingState struct {
-	player *Player
-	world  *World
+	playerCharacter *Entity
+	world           *World
 }
 
 func (s *PlayingState) StateId() StateId {
 	return PlayingStateId
 }
 func (s *PlayingState) OnEnter() {
-	s.player.Enqueue("Welcome to GoMUD!")
-	s.world.OnPlayerJoined(s.player)
+	s.playerCharacter.player.Enqueue("Welcome to GoMUD!")
+
+	roomId := s.world.entryRoomId
+	if s.playerCharacter.data.RoomId != InvalidId {
+		roomId = s.playerCharacter.data.RoomId
+	}
+	s.world.AddEntity(s.playerCharacter, roomId)
 }
 func (s *PlayingState) ProcessInput(input string) StateId {
-	return s.world.OnPlayerInput(s.player, input)
+	return s.world.OnPlayerInput(s.playerCharacter.player, input)
 }
 func (s *PlayingState) OnExit() {
-	s.player.Save(s.world.db)
-	s.player.Send("Goodbye!")
-	s.world.OnPlayerLeft(s.player)
+	s.world.SavePlayerCharacter(s.playerCharacter.player.id)
+	s.playerCharacter.player.Send("Goodbye!")
+	s.world.RemoveEntity(s.playerCharacter.id)
 }
 
 type LoggedOutState struct {

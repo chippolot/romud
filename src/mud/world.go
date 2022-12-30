@@ -17,13 +17,65 @@ func NewWorld(db Database) *World {
 	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[RoomId]*Room), 0}
 }
 
+func (w *World) CreatePlayerCharacter(name string, player *Player) *Entity {
+	e := NewEntity(name)
+	e.player = player
+	e.player.data = &PlayerData{Name: name}
+	return e
+}
+
+func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, error) {
+	data, err := w.db.LoadPlayer(name)
+	if err != nil {
+		return nil, err
+	}
+	e := w.CreatePlayerCharacter(name, player)
+	e.data = data.Character
+	e.player.data = data.Player
+	return e, nil
+}
+
+func (w *World) SavePlayerCharacter(pid PlayerId) {
+	e, ok := w.players[pid]
+	if !ok {
+		log.Printf("failed to resolve player entity for player %v", pid)
+		return
+	}
+
+	data := &PlayerCharacterData{e.player.data, e.data}
+	go func() {
+		err := w.db.SavePlayer(e.player.data.Name, data)
+		if err != nil {
+			log.Printf("error saving player %v -- %v", e.player.data.Name, err)
+		} else {
+
+			log.Printf("saved player %v", e.player.data.Name)
+		}
+	}()
+}
+
 func (w *World) AddEntity(e *Entity, roomId RoomId) {
 	w.entities[e.id] = e
 	if e.player != nil {
 		w.players[e.player.id] = e
 	}
-	r := w.rooms[roomId]
-	r.AddEntity(e)
+
+	if e.player != nil {
+		w.SendAllExcept(e.player.id, "%s Joins", e.player.data.Name)
+		e.player.Enqueue(Preamble)
+
+		r := w.rooms[roomId]
+		r.AddEntity(e)
+
+		DoLook(e, w, nil)
+	}
+}
+
+func (w *World) TryGetEntityByPlayerId(id PlayerId) (*Entity, bool) {
+	if e, ok := w.players[id]; ok {
+		return e, false
+	}
+	return nil, true
 }
 
 func (w *World) TryGetEntityByName(name string) (*Entity, bool) {
@@ -36,13 +88,20 @@ func (w *World) TryGetEntityByName(name string) (*Entity, bool) {
 }
 
 func (w *World) RemoveEntity(eid EntityId) {
-	if e, ok := w.entities[eid]; ok {
-		r := w.rooms[e.data.RoomId]
-		r.RemoveEntity(e)
-		delete(w.entities, eid)
-		if e.player != nil {
-			delete(w.players, e.player.id)
-		}
+	e, ok := w.entities[eid]
+	if !ok {
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+	r.RemoveEntity(e)
+	delete(w.entities, eid)
+	if e.player != nil {
+		delete(w.players, e.player.id)
+	}
+
+	if e.player != nil {
+		w.SendAllExcept(e.player.id, "%s Leaves", e.player.data.Name)
 	}
 }
 
@@ -66,23 +125,6 @@ func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 			e.player.Send(format, a...)
 		}
 	}
-}
-
-func (w *World) OnPlayerJoined(e *Entity) {
-	p := e.player
-	roomId := w.entryRoomId
-	if e.data.RoomId != InvalidId {
-		roomId = e.data.RoomId
-	}
-	w.AddEntity(e, roomId)
-	w.SendAllExcept(p.id, "%s Joins", p.data.Name)
-	p.Enqueue(Preamble)
-	DoLook(e, w, nil)
-}
-
-func (w *World) OnPlayerLeft(e *Entity) {
-	w.RemoveEntity(e.id)
-	w.SendAllExcept(e.player.id, "%s Leaves", e.player.data.Name)
 }
 
 func (w *World) OnPlayerInput(p *Player, input string) StateId {

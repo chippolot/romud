@@ -60,7 +60,6 @@ func (s *TelnetServer) Start(port int, events chan<- SessionEvent) error {
 			break
 		}
 
-		sessionCounter++
 		go func(sid SessionId) {
 			err := s.handleConnection(conn, sid, events)
 			if err != nil {
@@ -68,6 +67,7 @@ func (s *TelnetServer) Start(port int, events chan<- SessionEvent) error {
 				return
 			}
 		}(sessionCounter)
+		sessionCounter++
 	}
 	return nil
 }

@@ -43,12 +43,11 @@ func (s *LoginState) ProcessInput(input string) StateId {
 		}
 		log.Printf("loading player: %s", input)
 		s.player.Enqueue("Welcome back, %s!", input)
-		s.player.data = data
+		s.player.Load(data)
 	} else {
 		log.Printf("creating new player: %s", input)
 		s.player.Enqueue("Ah, %s, a fine name indeed!", input)
-		s.player.data.Character = NewEntityData(s.player.data.Name)
-		s.player.data.Name = input
+		s.player.NewCharacter(input)
 	}
 	return PlayingStateId
 }

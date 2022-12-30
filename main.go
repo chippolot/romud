@@ -25,7 +25,9 @@ func main() {
 
 	// Create world
 	world := mud.NewWorld(db)
-	mud.LoadRooms(world, path.Join(projectRoot, "cfg/test.rooms"))
+	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
+
+	// Add temp mobs
 
 	// Create session handler
 	events := make(chan server.SessionEvent)

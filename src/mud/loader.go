@@ -3,6 +3,8 @@ package mud
 import (
 	"encoding/json"
 	"log"
+
+	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
 func LoadRooms(w *World, path string) error {
@@ -28,4 +30,11 @@ func LoadRooms(w *World, path string) error {
 	log.Printf("loaded %d rooms from %s", len(roomDatas), path)
 
 	return nil
+}
+
+func LoadAssets(w *World, root string) {
+	// Load rooms
+	for _, path := range utils.FindFilePathsWithExtension(root, ".rooms") {
+		LoadRooms(w, path)
+	}
 }

@@ -9,7 +9,7 @@ import (
 	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
-type RoomId int
+type RoomId uint32
 
 var roomIdCounter RoomId
 
@@ -35,17 +35,17 @@ type RoomData struct {
 }
 
 type Room struct {
-	id      RoomId
-	name    string
-	desc    string
-	exits   map[Direction]RoomId
-	extras  map[SenseType]map[string]string
-	players map[PlayerId]*Player
+	id       RoomId
+	name     string
+	desc     string
+	exits    map[Direction]RoomId
+	extras   map[SenseType]map[string]string
+	entities map[EntityId]*Entity
 }
 
 func NewRoom(name string, desc string) *Room {
 	roomIdCounter++
-	return &Room{roomIdCounter, name, desc, make(map[Direction]RoomId), make(map[SenseType]map[string]string), make(map[PlayerId]*Player)}
+	return &Room{roomIdCounter, name, desc, make(map[Direction]RoomId), make(map[SenseType]map[string]string), make(map[EntityId]*Entity)}
 }
 
 func ParseRoom(data *RoomData) (*Room, error) {
@@ -77,35 +77,39 @@ func (r *Room) ConnectsTo(room *Room, verb Direction) *Room {
 	return r
 }
 
-func (r *Room) AddPlayer(p *Player) {
-	oldRoomId := p.data.Character.RoomId
-	p.data.Character.RoomId = r.id
-	r.players[p.id] = p
-	if oldRoomId != 0 {
-		r.SendAllExcept(p.id, "%s entered the room", p.data.Character.Name)
+func (r *Room) AddEntity(e *Entity) {
+	oldRoomId := e.data.RoomId
+	e.data.RoomId = r.id
+	r.entities[e.id] = e
+	if oldRoomId != 0 && e.player != nil {
+		r.SendAllExcept(e.player.id, "%s entered the room", e.data.Name)
 	}
 }
 
-func (r *Room) RemovePlayer(p *Player) {
-	r.SendAllExcept(p.id, "%s left the room", p.data.Character.Name)
-	delete(r.players, p.id)
+func (r *Room) RemoveEntity(e *Entity) {
+	if e.player != nil {
+		r.SendAllExcept(e.player.id, "%s left the room", e.data.Name)
+	}
+	delete(r.entities, e.id)
 }
 
 func (r *Room) SendAll(format string, a ...any) {
-	for _, p := range r.players {
-		p.Send(format, a...)
-	}
-}
-
-func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
-	for pid2, p := range r.players {
-		if pid != pid2 {
-			p.Send(format, a...)
+	for _, e := range r.entities {
+		if e.player != nil {
+			e.player.Send(format, a...)
 		}
 	}
 }
 
-func (r *Room) Describe(forPlayer *Player) string {
+func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
+	for _, e := range r.entities {
+		if e.player != nil && pid != e.player.id {
+			e.player.Send(format, a...)
+		}
+	}
+}
+
+func (r *Room) Describe(subject *Entity) string {
 	var sb utils.StringBuilder
 	sb.WriteNewLine().
 		WriteString("<c bright yellow>").
@@ -114,7 +118,7 @@ func (r *Room) Describe(forPlayer *Player) string {
 		WriteLine(r.desc).
 		WriteeHorizontalDivider().
 		WriteString(describeExits(r))
-	playersStr := describePlayers(r, forPlayer)
+	playersStr := describePlayers(r, subject)
 	if playersStr != "" {
 		sb.WriteNewLine()
 		sb.WriteString(playersStr)
@@ -139,13 +143,16 @@ func describeExits(r *Room) string {
 	return "<c dim yellow>Obvious Exits: " + strings.Join(exits, ", ") + "</c>"
 }
 
-func describePlayers(r *Room, forPlayer *Player) string {
-	players := make([]string, 0, len(r.players))
-	for _, e := range r.players {
-		if forPlayer == e {
+func describePlayers(r *Room, subject *Entity) string {
+	players := make([]string, 0)
+	for _, e := range r.entities {
+		if e.player == nil {
 			continue
 		}
-		players = append(players, fmt.Sprintf("%s is here", e.data.Name))
+		if subject == e {
+			continue
+		}
+		players = append(players, fmt.Sprintf("%s is here", e.player.data.Name))
 	}
 	if len(players) == 0 {
 		return ""

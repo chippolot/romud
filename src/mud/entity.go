@@ -2,9 +2,11 @@ package mud
 
 import "github.com/chippolot/go-mud/src/mud/bits"
 
-const (
-	EFlag_Player bits.Bits = 1 << iota
-)
+const ()
+
+var entityIdCounter EntityId
+
+type EntityId uint32
 
 type StatsData struct {
 	HitP    int
@@ -14,6 +16,7 @@ type StatsData struct {
 }
 
 type EntityData struct {
+	Key    string
 	Name   string
 	Desc   string
 	RoomId RoomId
@@ -21,10 +24,13 @@ type EntityData struct {
 	Flags  bits.Bits
 }
 
-func NewEntityData(name string) *EntityData {
-	return &EntityData{Name: name}
+type Entity struct {
+	id     EntityId
+	data   *EntityData
+	player *Player
 }
 
-func (e *EntityData) IsPlayer() bool {
-	return bits.Has(e.Flags, EFlag_Player)
+func NewEntity(name string) *Entity {
+	entityIdCounter++
+	return &Entity{entityIdCounter, &EntityData{Name: name}, nil}
 }

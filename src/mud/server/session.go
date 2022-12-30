@@ -20,7 +20,7 @@ type ClientInputEvent struct {
 	Input string
 }
 
-type SessionId int
+type SessionId uint32
 
 type Session struct {
 	Id        SessionId

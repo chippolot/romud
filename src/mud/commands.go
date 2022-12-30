@@ -7,6 +7,8 @@ import (
 	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
+type ActionFunc func(e *Entity, world *World, tokens []string)
+
 type CommandDesc struct {
 	fn      ActionFunc
 	aliases []string
@@ -48,155 +50,155 @@ func init() {
 	}
 }
 
-type ActionFunc func(player *Player, world *World, tokens []string)
-
-func DoSay(p *Player, w *World, tokens []string) {
+func DoSay(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
-		p.Send("What do you want to say?")
+		e.player.Send("What do you want to say?")
 	}
 	msg := strings.Join(tokens[1:], " ")
 
-	p.Send("Ok.")
+	e.player.Send("Ok.")
 
-	r := w.rooms[p.data.Character.RoomId]
-	r.SendAllExcept(p.id, "%s says, '%s'", p.data.Character.Name, msg)
+	r := w.rooms[e.data.RoomId]
+	r.SendAllExcept(e.player.id, "%s says, '%s'", e.player.data.Name, msg)
 }
 
-func DoYell(p *Player, w *World, tokens []string) {
+func DoYell(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
-		p.Send("What do you want to yell?")
+		e.player.Send("What do you want to yell?")
 	}
 	msg := strings.Join(tokens[1:], " ")
 
-	p.Send("Ok.")
-	w.SendAllExcept(p.id, "%s yells, '%s'", p.data.Character.Name, msg)
+	e.player.Send("Ok.")
+	w.SendAllExcept(e.player.id, "%s yells, '%s'", e.player.data.Name, msg)
 }
 
-func DoWhisper(p *Player, w *World, tokens []string) {
+func DoWhisper(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 1:
-		p.Send("What do you want to whisper to who?")
+		e.player.Send("What do you want to whisper to who?")
 	case 2:
-		p.Send("What do you want to whisper to %s?", tokens[1])
+		e.player.Send("What do you want to whisper to %s?", tokens[1])
 	default:
 		toName := tokens[1]
 		msg := strings.Join(tokens[2:], " ")
-		if toName == p.data.Character.Name {
-			p.Send("You try whispering to yourself")
+		if toName == e.player.data.Name {
+			e.player.Send("You try whispering to yourself")
 			return
-		} else if tp, found := w.GetPlayerByName(toName); found {
-			p.Send("Ok.")
-			tp.Send("%s whispers to you, %s", p.data.Character.Name, msg)
+		} else if te, ok := w.TryGetEntityByName(toName); ok {
+			e.player.Send("Ok.")
+			if te.player != nil {
+				te.player.Send("%s whispers to you, %s", e.player.data.Name, msg)
+			}
 		} else {
-			p.Send("No player named %s is online", toName)
+			e.player.Send("No player named %s is online", toName)
 		}
 	}
 }
 
-func DoLook(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.data.Character.RoomId]
+func DoLook(e *Entity, w *World, tokens []string) {
+	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
-		p.Send(r.Describe(p))
+		e.player.Send(r.Describe(e))
 	default:
 		if desc, ok := trySense(SenseLook, r, tokens[1]); ok {
-			p.Send(desc)
+			e.player.Send(desc)
 		} else {
-			p.Send("You don't see that here.")
+			e.player.Send("You don't see that here.")
 		}
 	}
 }
 
-func DoListen(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.data.Character.RoomId]
+func DoListen(e *Entity, w *World, tokens []string) {
+	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
-		p.Send("What do you want to listen to?")
+		e.player.Send("What do you want to listen to?")
 	default:
 		if desc, ok := trySense(SenseListen, r, tokens[1]); ok {
-			p.Send(desc)
+			e.player.Send(desc)
 		} else {
-			p.Send("You don't hear that here.")
+			e.player.Send("You don't hear that here.")
 		}
 	}
 }
 
-func DoTaste(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.data.Character.RoomId]
+func DoTaste(e *Entity, w *World, tokens []string) {
+	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
-		p.Send("What do you want to taste?")
+		e.player.Send("What do you want to taste?")
 	default:
 		if desc, ok := trySense(SenseTaste, r, tokens[1]); ok {
-			p.Send(desc)
+			e.player.Send(desc)
 		} else {
-			p.Send("You don't want to taste that!")
+			e.player.Send("You don't want to taste that!")
 		}
 	}
 }
 
-func DoTouch(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.data.Character.RoomId]
+func DoTouch(e *Entity, w *World, tokens []string) {
+	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
-		p.Send("What do you want to touch?")
+		e.player.Send("What do you want to touch?")
 	default:
 		if desc, ok := trySense(SenseTouch, r, tokens[1]); ok {
-			p.Send(desc)
+			e.player.Send(desc)
 		} else {
-			p.Send("You don't want to touch that!")
+			e.player.Send("You don't want to touch that!")
 		}
 	}
 }
 
-func DoSmell(p *Player, w *World, tokens []string) {
-	r := w.rooms[p.data.Character.RoomId]
+func DoSmell(e *Entity, w *World, tokens []string) {
+	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
-		p.Send("What do you want to smell?")
+		e.player.Send("What do you want to smell?")
 	default:
 		if desc, ok := trySense(SenseSmell, r, tokens[1]); ok {
-			p.Send(desc)
+			e.player.Send(desc)
 		} else {
-			p.Send("You don't want to smell that!")
+			e.player.Send("You don't want to smell that!")
 		}
 	}
 }
 
-func DoWho(p *Player, w *World, _ []string) {
+func DoWho(e *Entity, w *World, _ []string) {
 	lines := make([]string, 0)
 	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
 	lines = append(lines, utils.HorizontalDivider())
-	lines = append(lines, fmt.Sprintf("(you)\t%s", p.data.Character.Name))
-	for _, player := range w.players {
-		if player != p {
-			lines = append(lines, fmt.Sprintf("\t%s", player.data.Character.Name))
+	lines = append(lines, fmt.Sprintf("(you)\t%s", e.player.data.Name))
+	for _, e2 := range w.players {
+		if e2 != e {
+			lines = append(lines, fmt.Sprintf("\t%s", e2.player.data.Name))
 		}
 	}
-	p.Send(strings.Join(lines, utils.NewLine))
+	e.player.Send(strings.Join(lines, utils.NewLine))
 }
 
-func DoMove(p *Player, w *World, tokens []string) {
+func DoMove(e *Entity, w *World, tokens []string) {
 	cmd := tokens[0]
 	dir, err := ParseDirection(cmd)
 	if err != nil {
-		p.Send("%s isn't a direction!", cmd)
+		e.player.Send("%s isn't a direction!", cmd)
 	}
-	curRoom := w.rooms[p.data.Character.RoomId]
+	curRoom := w.rooms[e.data.RoomId]
 
 	nextRoomId, ok := curRoom.exits[dir]
 	if !ok {
-		p.Send("Can't go that way!")
+		e.player.Send("Can't go that way!")
 		return
 	}
 
 	nextRoom := w.rooms[nextRoomId]
-	curRoom.RemovePlayer(p)
-	nextRoom.AddPlayer(p)
-	DoLook(p, w, nil)
+	curRoom.RemoveEntity(e)
+	nextRoom.AddEntity(e)
+	DoLook(e, w, nil)
 }
 
-func DoCommands(p *Player, _ *World, _ []string) {
+func DoCommands(e *Entity, _ *World, _ []string) {
 	commands := make([]string, 0)
 
 	commands = append(commands, "Available Commands:")
@@ -211,12 +213,12 @@ func DoCommands(p *Player, _ *World, _ []string) {
 		commands = append(commands, fmt.Sprintf("\tUsage: %s", cmd.usage))
 	}
 
-	p.Send(strings.Join(commands, utils.NewLine))
+	e.player.Send(strings.Join(commands, utils.NewLine))
 }
 
-func DoSave(p *Player, w *World, _ []string) {
-	p.Save(w.db)
-	p.Send("Saved game.")
+func DoSave(e *Entity, w *World, _ []string) {
+	e.player.Save(w.db)
+	e.player.Send("Saved game.")
 }
 
 func trySense(sense SenseType, r *Room, target string) (string, bool) {

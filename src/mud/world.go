@@ -1,45 +1,48 @@
 package mud
 
 import (
+	"log"
 	"strings"
 )
 
 type World struct {
 	db          Database
-	players     map[PlayerId]*Player
+	players     map[PlayerId]*Entity
+	entities    map[EntityId]*Entity
 	rooms       map[RoomId]*Room
 	entryRoomId RoomId
 }
 
 func NewWorld(db Database) *World {
-	return &World{db, make(map[PlayerId]*Player), make(map[RoomId]*Room), 0}
+	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[RoomId]*Room), 0}
 }
 
-func (w *World) AddPlayer(p *Player, roomId RoomId) {
-	w.players[p.id] = p
+func (w *World) AddEntity(e *Entity, roomId RoomId) {
+	w.entities[e.id] = e
+	if e.player != nil {
+		w.players[e.player.id] = e
+	}
 	r := w.rooms[roomId]
-	r.AddPlayer(p)
+	r.AddEntity(e)
 }
 
-func (w *World) GetPlayer(pid PlayerId) (p *Player, ok bool) {
-	p, ok = w.players[pid]
-	return
-}
-
-func (w *World) GetPlayerByName(name string) (p *Player, ok bool) {
-	for _, p := range w.players {
-		if p.data.Name == name {
-			return p, true
+func (w *World) TryGetEntityByName(name string) (*Entity, bool) {
+	for _, e := range w.entities {
+		if strings.EqualFold(e.data.Name, name) {
+			return e, true
 		}
 	}
 	return nil, false
 }
 
-func (w *World) RemovePlayer(pid PlayerId) {
-	if p, ok := w.players[pid]; ok {
-		r := w.rooms[p.data.Character.RoomId]
-		r.RemovePlayer(p)
-		delete(w.players, pid)
+func (w *World) RemoveEntity(eid EntityId) {
+	if e, ok := w.entities[eid]; ok {
+		r := w.rooms[e.data.RoomId]
+		r.RemoveEntity(e)
+		delete(w.entities, eid)
+		if e.player != nil {
+			delete(w.players, e.player.id)
+		}
 	}
 }
 
@@ -52,36 +55,43 @@ func (w *World) AddRoom(r *Room) *Room {
 }
 
 func (w *World) SendAll(format string, a ...any) {
-	for _, p := range w.players {
-		p.Send(format, a...)
+	for _, e := range w.players {
+		e.player.Send(format, a...)
 	}
 }
 
 func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
-	for pid2, p := range w.players {
+	for pid2, e := range w.players {
 		if pid != pid2 {
-			p.Send(format, a...)
+			e.player.Send(format, a...)
 		}
 	}
 }
 
-func (w *World) OnPlayerJoined(p *Player) {
+func (w *World) OnPlayerJoined(e *Entity) {
+	p := e.player
 	roomId := w.entryRoomId
-	if p.data.Character.RoomId != InvalidId {
-		roomId = p.data.Character.RoomId
+	if e.data.RoomId != InvalidId {
+		roomId = e.data.RoomId
 	}
-	w.AddPlayer(p, roomId)
+	w.AddEntity(e, roomId)
 	w.SendAllExcept(p.id, "%s Joins", p.data.Name)
 	p.Enqueue(Preamble)
-	DoLook(p, w, nil)
+	DoLook(e, w, nil)
 }
 
-func (w *World) OnPlayerLeft(p *Player) {
-	w.RemovePlayer(p.id)
-	w.SendAllExcept(p.id, "%s Leaves", p.data.Name)
+func (w *World) OnPlayerLeft(e *Entity) {
+	w.RemoveEntity(e.id)
+	w.SendAllExcept(e.player.id, "%s Leaves", e.player.data.Name)
 }
 
 func (w *World) OnPlayerInput(p *Player, input string) StateId {
+	e, ok := w.players[p.id]
+	if !ok {
+		log.Printf("failed to resolve entity for player %v", p.id)
+		return 0
+	}
+
 	tokens := strings.Split(input, " ")
 	if len(tokens) == 0 {
 		return 0
@@ -95,7 +105,7 @@ func (w *World) OnPlayerInput(p *Player, input string) StateId {
 	tokens[0] = cmd
 	if cmdDesc, ok := CommandsLookup[cmd]; ok {
 		if cmdDesc.fn != nil {
-			cmdDesc.fn(p, w, tokens[:])
+			cmdDesc.fn(e, w, tokens[:])
 			return 0
 		}
 	}

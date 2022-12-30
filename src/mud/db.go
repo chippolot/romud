@@ -12,8 +12,8 @@ const PlayersDirectory = "players"
 
 type Database interface {
 	DoesPlayerExist(id string) bool
-	SavePlayer(id string, data *PlayerData) error
-	LoadPlayer(id string) (*PlayerData, error)
+	SavePlayer(id string, data *PlayerCharacterData) error
+	LoadPlayer(id string) (*PlayerCharacterData, error)
 }
 
 type FileSystemDatabase struct {
@@ -32,7 +32,7 @@ func (db *FileSystemDatabase) DoesPlayerExist(id string) bool {
 	return !os.IsNotExist(err)
 }
 
-func (db *FileSystemDatabase) SavePlayer(id string, data *PlayerData) error {
+func (db *FileSystemDatabase) SavePlayer(id string, data *PlayerCharacterData) error {
 	id = strings.ToLower(id)
 
 	jsonData, err := json.MarshalIndent(data, "", " ")
@@ -48,7 +48,7 @@ func (db *FileSystemDatabase) SavePlayer(id string, data *PlayerData) error {
 	return nil
 }
 
-func (db *FileSystemDatabase) LoadPlayer(id string) (*PlayerData, error) {
+func (db *FileSystemDatabase) LoadPlayer(id string) (*PlayerCharacterData, error) {
 	id = strings.ToLower(id)
 
 	filePath := db.getPlayerFilePath(id)
@@ -60,7 +60,7 @@ func (db *FileSystemDatabase) LoadPlayer(id string) (*PlayerData, error) {
 		return nil, err
 	}
 
-	data := &PlayerData{}
+	data := &PlayerCharacterData{}
 	err = json.Unmarshal(bytes, data)
 	if err != nil {
 		return nil, err

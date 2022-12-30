@@ -6,7 +6,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/mud/server"
+	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
 type RoomId int
@@ -106,20 +106,17 @@ func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 }
 
 func (r *Room) Describe(forPlayer *Player) string {
-	var sb strings.Builder
-	sb.WriteString(server.NewLine)
-	sb.WriteString("<c bright yellow>")
-	sb.WriteString(r.name)
-	sb.WriteString("</c>")
-	sb.WriteString(server.NewLine)
-	sb.WriteString(r.desc)
-	sb.WriteString(server.NewLine)
-	sb.WriteString(server.HorizontalDivider())
-	sb.WriteString(server.NewLine)
-	sb.WriteString(describeExits(r))
+	var sb utils.StringBuilder
+	sb.WriteNewLine().
+		WriteString("<c bright yellow>").
+		WriteString(r.name).
+		WriteLine("</c>").
+		WriteLine(r.desc).
+		WriteeHorizontalDivider().
+		WriteString(describeExits(r))
 	playersStr := describePlayers(r, forPlayer)
 	if playersStr != "" {
-		sb.WriteString(server.NewLine)
+		sb.WriteNewLine()
 		sb.WriteString(playersStr)
 	}
 	return sb.String()
@@ -144,16 +141,16 @@ func describeExits(r *Room) string {
 
 func describePlayers(r *Room, forPlayer *Player) string {
 	players := make([]string, 0, len(r.players))
-	for _, p := range r.players {
-		if forPlayer == p {
+	for _, e := range r.players {
+		if forPlayer == e {
 			continue
 		}
-		players = append(players, fmt.Sprintf("%s is here", p.data.Character.Name))
+		players = append(players, fmt.Sprintf("%s is here", e.data.Name))
 	}
 	if len(players) == 0 {
 		return ""
 	}
-	return "<c cyan>" + strings.Join(players, server.NewLine) + "</c>"
+	return "<c cyan>" + strings.Join(players, utils.NewLine) + "</c>"
 }
 
 type Direction int

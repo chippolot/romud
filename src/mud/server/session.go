@@ -3,7 +3,8 @@ package server
 import (
 	"fmt"
 	"net"
-	"strings"
+
+	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
 type SessionEvent struct {
@@ -24,26 +25,25 @@ type SessionId int
 type Session struct {
 	Id        SessionId
 	Conn      net.Conn
-	sendQueue *strings.Builder
+	sendQueue utils.StringBuilder
 }
 
 func NewSession(id SessionId, conn net.Conn) *Session {
-	return &Session{id, conn, &strings.Builder{}}
+	return &Session{id, conn, utils.StringBuilder{}}
 }
 
 func (s *Session) Enqueue(format string, a ...any) {
-	s.sendQueue.WriteString(NewLine)
+	s.sendQueue.WriteNewLine()
 	if len(a) == 0 {
-		s.sendQueue.WriteString(format)
+		s.sendQueue.WriteLine(format)
 	} else {
-		s.sendQueue.WriteString(fmt.Sprintf(format, a...))
+		s.sendQueue.WriteLine(fmt.Sprintf(format, a...))
 	}
-	s.sendQueue.WriteString(NewLine)
 }
 
 func (s *Session) Send(format string, a ...any) {
 	s.Enqueue(format, a...)
-	s.sendQueue.WriteString(NewLine)
+	s.sendQueue.WriteNewLine()
 	s.sendQueue.WriteString(makePrompt())
 	str := processANSIColorCodes(s.sendQueue.String())
 	s.sendQueue.Reset()

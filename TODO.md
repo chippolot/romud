@@ -15,8 +15,12 @@
 [x] Colorful output 
 [x] User can login w/ character name
 [x] Send w/ and w/o prompt
-[] Persistence
+[x] Persistence
 [] Items
+[] Servers
+    [] TLS
+    [] SSH
+    [] MUD Protocols
 [] Mobs
 [] Wandering Mobs
 [] User can login w/ character name and password

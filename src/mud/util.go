@@ -1,7 +1,7 @@
 package mud
 
 import (
-	"io/ioutil"
+	"io"
 	"os"
 )
 
@@ -15,7 +15,7 @@ func LoadFileBytes(path string) ([]byte, error) {
 	}
 	defer file.Close()
 
-	bytes, err := ioutil.ReadAll(file)
+	bytes, err := io.ReadAll(file)
 	if err != nil {
 		return nil, err
 	}

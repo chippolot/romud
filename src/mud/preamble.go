@@ -3,7 +3,7 @@ package mud
 import (
 	"strings"
 
-	"github.com/chippolot/go-mud/src/mud/server"
+	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
 var Preamble = strings.ReplaceAll(`
@@ -14,4 +14,4 @@ var Preamble = strings.ReplaceAll(`
   \ \  \|\  \\ \  \\\  \\ \  \    \ \  \\ \  \\\  \\ \  \_\\ \
    \ \_______\\ \_______\\ \__\    \ \__\\ \_______\\ \_______\
     \|_______| \|_______| \|__|     \|__| \|_______| \|_______|
-`, "\n", server.NewLine)
+`, "\n", utils.NewLine)

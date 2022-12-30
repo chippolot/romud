@@ -6,12 +6,6 @@ import (
 	"strings"
 )
 
-const NewLine string = "\n\r"
-
-func HorizontalDivider() string {
-	return "---------------------------------"
-}
-
 var ANSIColorCodeLookup = map[string]string{
 	"reset":      "\x1b[0m",
 	"bright":     "\x1b[1m",

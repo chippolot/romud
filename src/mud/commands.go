@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/mud/server"
+	"github.com/chippolot/go-mud/src/mud/utils"
 )
 
 type CommandDesc struct {
@@ -166,14 +166,14 @@ func DoSmell(p *Player, w *World, tokens []string) {
 func DoWho(p *Player, w *World, _ []string) {
 	lines := make([]string, 0)
 	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
-	lines = append(lines, server.HorizontalDivider())
+	lines = append(lines, utils.HorizontalDivider())
 	lines = append(lines, fmt.Sprintf("(you)\t%s", p.data.Character.Name))
 	for _, player := range w.players {
 		if player != p {
 			lines = append(lines, fmt.Sprintf("\t%s", player.data.Character.Name))
 		}
 	}
-	p.Send(strings.Join(lines, server.NewLine))
+	p.Send(strings.Join(lines, utils.NewLine))
 }
 
 func DoMove(p *Player, w *World, tokens []string) {
@@ -200,7 +200,7 @@ func DoCommands(p *Player, _ *World, _ []string) {
 	commands := make([]string, 0)
 
 	commands = append(commands, "Available Commands:")
-	commands = append(commands, server.HorizontalDivider())
+	commands = append(commands, utils.HorizontalDivider())
 	for _, cmd := range Commands {
 		if len(cmd.aliases) == 1 {
 			commands = append(commands, fmt.Sprintf("%s:", cmd.aliases[0]))
@@ -211,7 +211,7 @@ func DoCommands(p *Player, _ *World, _ []string) {
 		commands = append(commands, fmt.Sprintf("\tUsage: %s", cmd.usage))
 	}
 
-	p.Send(strings.Join(commands, server.NewLine))
+	p.Send(strings.Join(commands, utils.NewLine))
 }
 
 func DoSave(p *Player, w *World, _ []string) {

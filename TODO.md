@@ -18,6 +18,7 @@
 [x] Persistence
     [x] Saving
     [x] Loading
+[] Passwords
 [] Mobs
     [] Viewing in Room
     [] Looking At

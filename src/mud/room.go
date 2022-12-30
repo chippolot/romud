@@ -13,25 +13,25 @@ type RoomId uint32
 
 var roomIdCounter RoomId
 
-type RoomExitData struct {
+type RoomExitConfig struct {
 	RoomId RoomId
 	Verb   Direction
 }
 
-type RoomExtraData struct {
+type RoomExtraConfig struct {
 	Sense    SenseType
 	Keywords []string
 	Desc     string
 }
 
-type RoomDataList []RoomData
+type RoomConfigList []RoomConfig
 
-type RoomData struct {
+type RoomConfig struct {
 	Id     RoomId
 	Name   string
 	Desc   string
-	Exits  []RoomExitData
-	Extras []RoomExtraData
+	Exits  []RoomExitConfig
+	Extras []RoomExtraConfig
 }
 
 type Room struct {
@@ -48,13 +48,13 @@ func NewRoom(name string, desc string) *Room {
 	return &Room{roomIdCounter, name, desc, make(map[Direction]RoomId), make(map[SenseType]map[string]string), make(map[EntityId]*Entity)}
 }
 
-func ParseRoom(data *RoomData) (*Room, error) {
-	r := NewRoom(data.Name, data.Desc)
-	r.id = data.Id
-	for _, e := range data.Exits {
+func ParseRoom(cfg *RoomConfig) (*Room, error) {
+	r := NewRoom(cfg.Name, cfg.Desc)
+	r.id = cfg.Id
+	for _, e := range cfg.Exits {
 		r.exits[e.Verb] = e.RoomId
 	}
-	for _, e := range data.Extras {
+	for _, e := range cfg.Extras {
 		extras, ok := r.extras[e.Sense]
 		if !ok {
 			extras = make(map[string]string)
@@ -72,7 +72,7 @@ func (r *Room) ConnectsTo(room *Room, verb Direction) *Room {
 	if returningVerb, err := verb.Reverse(); err != nil {
 		room.exits[returningVerb] = r.id
 	} else {
-		log.Panicln("failed to connect rooms:", err)
+		log.Panicf("failed to connect rooms:", err)
 	}
 	return r
 }
@@ -82,13 +82,13 @@ func (r *Room) AddEntity(e *Entity) {
 	e.data.RoomId = r.id
 	r.entities[e.id] = e
 	if oldRoomId != 0 && e.player != nil {
-		r.SendAllExcept(e.player.id, "%s entered the room", e.data.Name)
+		r.SendAllExcept(e.player.id, "%s entered the room", e.cfg.Name)
 	}
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
 	if e.player != nil {
-		r.SendAllExcept(e.player.id, "%s left the room", e.data.Name)
+		r.SendAllExcept(e.player.id, "%s left the room", e.cfg.Name)
 	}
 	delete(r.entities, e.id)
 }

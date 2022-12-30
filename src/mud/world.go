@@ -6,19 +6,24 @@ import (
 )
 
 type World struct {
-	db          Database
-	players     map[PlayerId]*Entity
-	entities    map[EntityId]*Entity
-	rooms       map[RoomId]*Room
-	entryRoomId RoomId
+	db            Database
+	players       map[PlayerId]*Entity
+	entities      map[EntityId]*Entity
+	entityConfigs map[string]*EntityConfig
+	rooms         map[RoomId]*Room
+	entryRoomId   RoomId
 }
 
 func NewWorld(db Database) *World {
-	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[RoomId]*Room), 0}
+	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0}
 }
 
 func (w *World) CreatePlayerCharacter(name string, player *Player) *Entity {
-	e := NewEntity(name)
+	playerEntityCfg, ok := w.entityConfigs[PlayerEntityKey]
+	if !ok {
+		log.Fatalf("cannot create player. expected entity config with key %s", PlayerEntityKey)
+	}
+	e := NewEntity(playerEntityCfg)
 	e.player = player
 	e.player.data = &PlayerData{Name: name}
 	return e
@@ -54,6 +59,13 @@ func (w *World) SavePlayerCharacter(pid PlayerId) {
 	}()
 }
 
+func (w *World) AddEntityConfig(cfg *EntityConfig) {
+	if _, found := w.entityConfigs[cfg.Key]; found {
+		log.Fatalf("Registered multiple entity configs with key: %v", cfg.Key)
+	}
+	w.entityConfigs[cfg.Key] = cfg
+}
+
 func (w *World) AddEntity(e *Entity, roomId RoomId) {
 	w.entities[e.id] = e
 	if e.player != nil {
@@ -80,7 +92,7 @@ func (w *World) TryGetEntityByPlayerId(id PlayerId) (*Entity, bool) {
 
 func (w *World) TryGetEntityByName(name string) (*Entity, bool) {
 	for _, e := range w.entities {
-		if strings.EqualFold(e.data.Name, name) {
+		if strings.EqualFold(e.cfg.Name, name) {
 			return e, true
 		}
 	}

@@ -2,35 +2,41 @@ package mud
 
 import "github.com/chippolot/go-mud/src/mud/bits"
 
-const ()
+const PlayerEntityKey = "_player"
 
 var entityIdCounter EntityId
 
 type EntityId uint32
 
-type StatsData struct {
-	HitP    int
-	MaxHitP int
-	Mov     int
-	MaxMov  int
+type EntityConfigList []EntityConfig
+
+type EntityConfig struct {
+	Key   string
+	Name  string
+	Desc  string
+	Stats *StatsConfig
+	Flags bits.Bits
 }
 
 type EntityData struct {
 	Key    string
-	Name   string
-	Desc   string
 	RoomId RoomId
 	Stats  *StatsData
-	Flags  bits.Bits
 }
 
 type Entity struct {
 	id     EntityId
+	cfg    *EntityConfig
 	data   *EntityData
 	player *Player
 }
 
-func NewEntity(name string) *Entity {
+func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
-	return &Entity{entityIdCounter, &EntityData{Name: name}, nil}
+	eid := entityIdCounter
+	return &Entity{eid, cfg, newEntityData(cfg), nil}
+}
+
+func newEntityData(cfg *EntityConfig) *EntityData {
+	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats)}
 }

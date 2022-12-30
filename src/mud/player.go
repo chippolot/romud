@@ -14,8 +14,7 @@ type PlayerCharacterData struct {
 }
 
 type PlayerData struct {
-	Name     string
-	Password string
+	Name string
 }
 
 type Player struct {

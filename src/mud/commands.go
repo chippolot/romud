@@ -2,6 +2,7 @@ package mud
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/mud/utils"
@@ -43,7 +44,7 @@ func init() {
 	for _, cmd := range Commands {
 		for _, alias := range cmd.aliases {
 			if _, ok := CommandsLookup[alias]; ok {
-				panic(fmt.Sprintf("Multiple commands registered with alias: %s", alias))
+				log.Fatalf("multiple commands registered with alias: %s", alias)
 			}
 			CommandsLookup[alias] = cmd
 		}

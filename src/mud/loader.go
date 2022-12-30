@@ -13,21 +13,42 @@ func LoadRooms(w *World, path string) error {
 		return err
 	}
 
-	roomDatas := RoomDataList{}
-	err = json.Unmarshal(bytes, &roomDatas)
+	cfgList := RoomConfigList{}
+	err = json.Unmarshal(bytes, &cfgList)
 	if err != nil {
 		return err
 	}
 
-	for _, rData := range roomDatas {
-		r, err := ParseRoom(&rData)
+	for _, cfg := range cfgList {
+		r, err := ParseRoom(&cfg)
 		if err != nil {
-			log.Panicf("Failed to parse room with error: %v", err)
+			log.Fatalf("Failed to parse room with error: %v", err)
 		}
 		w.AddRoom(r)
 	}
 
-	log.Printf("loaded %d rooms from %s", len(roomDatas), path)
+	log.Printf("loaded %d rooms from %s", len(cfgList), path)
+
+	return nil
+}
+
+func LoadEntities(w *World, path string) error {
+	bytes, err := LoadFileBytes(path)
+	if err != nil {
+		return err
+	}
+
+	cfgList := EntityConfigList{}
+	err = json.Unmarshal(bytes, &cfgList)
+	if err != nil {
+		return err
+	}
+
+	for _, cfg := range cfgList {
+		w.AddEntityConfig(&cfg)
+	}
+
+	log.Printf("loaded %d entities from %s", len(cfgList), path)
 
 	return nil
 }
@@ -35,6 +56,13 @@ func LoadRooms(w *World, path string) error {
 func LoadAssets(w *World, root string) {
 	// Load rooms
 	for _, path := range utils.FindFilePathsWithExtension(root, ".rooms") {
-		LoadRooms(w, path)
+		if err := LoadRooms(w, path); err != nil {
+			log.Fatalf("Failed to load room file %s -- %v", path, err)
+		}
+	}
+	for _, path := range utils.FindFilePathsWithExtension(root, ".ents") {
+		if err := LoadEntities(w, path); err != nil {
+			log.Fatalf("Failed to load entities file %s -- %v", path, err)
+		}
 	}
 }

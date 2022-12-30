@@ -66,7 +66,11 @@ func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
 }
 
 func (w *World) OnPlayerJoined(p *Player) {
-	w.AddPlayer(p, w.entryRoomId)
+	roomId := w.entryRoomId
+	if p.data.Character.RoomId != InvalidId {
+		roomId = p.data.Character.RoomId
+	}
+	w.AddPlayer(p, roomId)
 	w.SendAllExcept(p.id, "%s Joins", p.data.Name)
 	p.Enqueue(Preamble)
 	DoLook(p, w, nil)

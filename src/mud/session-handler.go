@@ -53,7 +53,7 @@ func (s *SessionHandler) ChangeGameState(sid server.SessionId, id StateId) {
 	var newstate GameState
 	switch id {
 	case LoginStateId:
-		newstate = &LoginState{s.players[sid]}
+		newstate = &LoginState{s.players[sid], s.world}
 	case PlayingStateId:
 		newstate = &PlayingState{s.players[sid], s.world}
 	case LoggedOutStateId:

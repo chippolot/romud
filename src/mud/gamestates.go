@@ -1,6 +1,10 @@
 package mud
 
-import "github.com/chippolot/go-mud/src/mud/server"
+import (
+	"log"
+
+	"github.com/chippolot/go-mud/src/mud/server"
+)
 
 type StateId int
 
@@ -21,6 +25,7 @@ type GameState interface {
 
 type LoginState struct {
 	player *Player
+	world  *World
 }
 
 func (s *LoginState) StateId() StateId {
@@ -30,8 +35,21 @@ func (s *LoginState) OnEnter() {
 	s.player.Send("What is your name?")
 }
 func (s *LoginState) ProcessInput(input string) StateId {
-	s.player.data.Name = input
-	s.player.Enqueue("Ah, %s, a fine name indeed!", input)
+	if s.world.db.DoesPlayerExist(input) {
+		data, err := s.world.db.LoadPlayer(input)
+		if err != nil {
+			s.player.Send("Couldn't load data for player %s, please try another name.", input)
+			return 0
+		}
+		log.Printf("loading player: %s", input)
+		s.player.Enqueue("Welcome back, %s!", input)
+		s.player.data = data
+	} else {
+		log.Printf("creating new player: %s", input)
+		s.player.Enqueue("Ah, %s, a fine name indeed!", input)
+		s.player.data.Character = NewEntityData(s.player.data.Name)
+		s.player.data.Name = input
+	}
 	return PlayingStateId
 }
 func (s *LoginState) OnExit() {
@@ -47,7 +65,6 @@ func (s *PlayingState) StateId() StateId {
 	return PlayingStateId
 }
 func (s *PlayingState) OnEnter() {
-	s.player.data.Character = NewEntityData(s.player.data.Name)
 	s.player.Enqueue("Welcome to GoMUD!")
 	s.world.OnPlayerJoined(s.player)
 }

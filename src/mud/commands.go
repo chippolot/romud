@@ -169,7 +169,7 @@ func DoSmell(e *Entity, w *World, tokens []string) {
 func DoWho(e *Entity, w *World, _ []string) {
 	lines := make([]string, 0)
 	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
-	lines = append(lines, utils.HorizontalDivider())
+	lines = append(lines, utils.HorizontalDivider)
 	lines = append(lines, fmt.Sprintf("(you)\t%s", e.player.data.Name))
 	for _, e2 := range w.players {
 		if e2 != e {
@@ -211,7 +211,7 @@ func DoCommands(e *Entity, _ *World, _ []string) {
 	commands := make([]string, 0)
 
 	commands = append(commands, "Available Commands:")
-	commands = append(commands, utils.HorizontalDivider())
+	commands = append(commands, utils.HorizontalDivider)
 	for _, cmd := range Commands {
 		if len(cmd.aliases) == 1 {
 			commands = append(commands, fmt.Sprintf("%s:", cmd.aliases[0]))

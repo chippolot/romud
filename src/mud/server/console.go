@@ -34,7 +34,7 @@ var ANSIColorCodeLookup = map[string]string{
 	"bg_white":   "\x1b[47m",
 }
 
-var ANSIColorCodePattern = regexp.MustCompile(`<c.*?>.*?</c>`)
+var ANSIColorCodePattern = regexp.MustCompile(`(?s)<c.*?>.*?</c>`)
 
 func processANSIColorCodes(s string) string {
 	return ANSIColorCodePattern.ReplaceAllStringFunc(s, func(m string) string {

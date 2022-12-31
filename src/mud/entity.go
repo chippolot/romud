@@ -15,11 +15,12 @@ type EntityId uint32
 type EntityConfigList []EntityConfig
 
 type EntityConfig struct {
-	Key   string
-	Name  string
-	Desc  string
-	Stats *StatsConfig
-	Flags bits.Bits
+	Key      string
+	Name     string
+	RoomDesc string
+	FullDesc string
+	Stats    *StatsConfig
+	Flags    bits.Bits
 }
 
 type EntityData struct {

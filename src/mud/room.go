@@ -72,7 +72,7 @@ func (r *Room) ConnectsTo(room *Room, verb Direction) *Room {
 	if returningVerb, err := verb.Reverse(); err != nil {
 		room.exits[returningVerb] = r.id
 	} else {
-		log.Panicf("failed to connect rooms:", err)
+		log.Panicln("failed to connect rooms:", err)
 	}
 	return r
 }
@@ -82,13 +82,13 @@ func (r *Room) AddEntity(e *Entity) {
 	e.data.RoomId = r.id
 	r.entities[e.id] = e
 	if oldRoomId != 0 && e.player != nil {
-		r.SendAllExcept(e.player.id, "%s entered the room", e.cfg.Name)
+		r.SendAllExcept(e.player.id, "%s entered the room", e.player.data.Name)
 	}
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
 	if e.player != nil {
-		r.SendAllExcept(e.player.id, "%s left the room", e.cfg.Name)
+		r.SendAllExcept(e.player.id, "%s left the room", e.player.data.Name)
 	}
 	delete(r.entities, e.id)
 }
@@ -116,13 +116,10 @@ func (r *Room) Describe(subject *Entity) string {
 		WriteString(r.name).
 		WriteLine("</c>").
 		WriteLine(r.desc).
-		WriteeHorizontalDivider().
-		WriteString(describeExits(r))
-	playersStr := describePlayers(r, subject)
-	if playersStr != "" {
-		sb.WriteNewLine()
-		sb.WriteString(playersStr)
-	}
+		WriteString(utils.HorizontalDivider)
+	describeExits(r, &sb)
+	describePlayers(r, &sb, subject)
+	describeNonPlayerEntities(r, &sb)
 	return sb.String()
 }
 
@@ -135,16 +132,28 @@ func (r *Room) TryDescribeExtra(sense SenseType, target string) (string, bool) {
 	return desc, ok
 }
 
-func describeExits(r *Room) string {
-	exits := make([]string, 0, len(r.exits))
-	for verb := range r.exits {
-		exits = append(exits, verb.String())
+func describeExits(r *Room, sb *utils.StringBuilder) {
+	if len(r.exits) == 0 {
+		return
 	}
-	return "<c dim yellow>Obvious Exits: " + strings.Join(exits, ", ") + "</c>"
+	sb.WriteNewLine()
+	sb.WriteString("<c dim yellow>Obvious Exits: ")
+	i := 0
+	for verb := range r.exits {
+		if i > 0 && i < len(r.exits)-1 {
+			sb.WriteString(", ")
+		}
+		sb.WriteString(verb.String())
+		i++
+	}
+	sb.WriteString("</c>")
 }
 
-func describePlayers(r *Room, subject *Entity) string {
-	players := make([]string, 0)
+func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
+	if len(r.entities) == 0 {
+		return
+	}
+	var descs = make([]string, 0)
 	for _, e := range r.entities {
 		if e.player == nil {
 			continue
@@ -152,12 +161,35 @@ func describePlayers(r *Room, subject *Entity) string {
 		if subject == e {
 			continue
 		}
-		players = append(players, fmt.Sprintf("%s is here", e.player.data.Name))
+		descs = append(descs, fmt.Sprintf("%s is here", e.player.data.Name))
 	}
-	if len(players) == 0 {
-		return ""
+	if len(descs) == 0 {
+		return
 	}
-	return "<c cyan>" + strings.Join(players, utils.NewLine) + "</c>"
+	sb.WriteNewLine()
+	sb.WriteStringf("<c cyan>%s</c>", strings.Join(descs, utils.NewLine))
+}
+
+func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
+	if len(r.entities) == 0 {
+		return
+	}
+	var descs = make([]string, 0)
+	for _, e := range r.entities {
+		if e.player != nil {
+			continue
+		}
+		desc := e.cfg.FullDesc
+		if desc == "" {
+			desc = fmt.Sprintf("A %s is here", e.cfg.Name)
+		}
+		descs = append(descs, desc)
+	}
+	if len(descs) == 0 {
+		return
+	}
+	sb.WriteNewLine()
+	sb.WriteStringf("<c blue>%s</c>", strings.Join(descs, utils.NewLine))
 }
 
 type Direction int

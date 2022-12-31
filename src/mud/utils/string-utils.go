@@ -1,7 +1,4 @@
 package utils
 
-const NewLine string = "\n\r"
-
-func HorizontalDivider() string {
-	return "---------------------------------"
-}
+const NewLine = "\n\r"
+const HorizontalDivider = "---------------------------------"

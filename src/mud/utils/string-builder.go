@@ -1,6 +1,9 @@
 package utils
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type StringBuilder struct {
 	builder strings.Builder
@@ -9,6 +12,14 @@ type StringBuilder struct {
 func (sb *StringBuilder) WriteString(s string) *StringBuilder {
 	sb.builder.WriteString(s)
 	return sb
+}
+
+func (sb *StringBuilder) WriteStringf(format string, a ...any) *StringBuilder {
+	return sb.WriteString(fmt.Sprintf(format, a...))
+}
+
+func (sb *StringBuilder) WriteLinef(format string, a ...any) *StringBuilder {
+	return sb.WriteLine(fmt.Sprintf(format, a...))
 }
 
 func (sb *StringBuilder) WriteLine(s string) *StringBuilder {
@@ -21,8 +32,8 @@ func (sb *StringBuilder) WriteNewLine() *StringBuilder {
 	return sb
 }
 
-func (sb *StringBuilder) WriteeHorizontalDivider() *StringBuilder {
-	sb.builder.WriteString(HorizontalDivider())
+func (sb *StringBuilder) WriteHorizontalDivider() *StringBuilder {
+	sb.builder.WriteString(HorizontalDivider)
 	return sb.WriteNewLine()
 }
 

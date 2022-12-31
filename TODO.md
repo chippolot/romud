@@ -18,6 +18,9 @@
 [x] Persistence
     [x] Saving
     [x] Loading
+[x] Stats
+[x] Stats in prompt
+[x] Loading from data files
 [] Passwords
 [] Mobs
     [] Viewing in Room
@@ -32,9 +35,6 @@
     [] MUD Protocols
 [] Wandering Mobs
 [] User can login w/ character name and password
-[] Loading from data files
-[] Stats
-[] Stats in prompt
 [] Combat
 [] Generify connections -- support ssh
 

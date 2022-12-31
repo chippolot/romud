@@ -2,35 +2,35 @@ package mud
 
 type StatsConfig struct {
 	HP    Dice
-	AC    uint8
-	Speed uint16
-	Str   uint8
-	Dex   uint8
-	Con   uint8
-	Int   uint8
-	Wis   uint8
-	Cha   uint8
+	AC    int
+	Speed int
+	Str   int
+	Dex   int
+	Con   int
+	Int   int
+	Wis   int
+	Cha   int
 }
 
 type StatsData struct {
-	HP     uint16
-	MaxHP  uint16
-	AC     uint8
-	Mov    uint16
-	MaxMov uint16
-	Str    uint8
-	Dex    uint8
-	Con    uint8
-	Int    uint8
-	Wis    uint8
-	Cha    uint8
+	HP     int
+	MaxHP  int
+	AC     int
+	Mov    int
+	MaxMov int
+	Str    int
+	Dex    int
+	Con    int
+	Int    int
+	Wis    int
+	Cha    int
 }
 
 func newStatsData(cfg *StatsConfig) *StatsData {
 	maxHP := cfg.HP.Roll()
 	return &StatsData{
-		HP:     uint16(maxHP),
-		MaxHP:  uint16(maxHP),
+		HP:     maxHP,
+		MaxHP:  maxHP,
 		AC:     cfg.AC,
 		Mov:    cfg.Speed,
 		MaxMov: cfg.Speed,

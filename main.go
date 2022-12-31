@@ -27,12 +27,13 @@ func main() {
 	world := mud.NewWorld(db)
 	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
 
-	// Add temp mobs
-
 	// Create session handler
-	events := make(chan server.SessionEvent)
-	sh := mud.NewSessionHandler(world, events)
-	go sh.Run()
+	events := make(chan server.SessionEvent, 32)
+	sessionHandler := mud.NewSessionHandler(world, events)
+	go sessionHandler.Run()
+
+	// Start game loop
+	go mud.GameLoop(world)
 
 	// Start servers
 	for _, s := range cfg.Servers {

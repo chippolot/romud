@@ -27,6 +27,14 @@ func main() {
 	world := mud.NewWorld(db)
 	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
 
+	// Create test entity
+	if mobCfg, ok := world.TryGetEntityConfig("mob"); ok {
+		mob := mud.NewEntity(mobCfg)
+		world.AddEntity(mob, world.EntryRoomId())
+	} else {
+		log.Fatalln("Failed to load MOB")
+	}
+
 	// Create session handler
 	events := make(chan server.SessionEvent, 32)
 	sessionHandler := mud.NewSessionHandler(world, events)

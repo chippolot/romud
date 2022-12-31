@@ -1,0 +1,16 @@
+[{
+    "Key": "mob",
+    "Name": "Mr. Mob",
+    "RoomDesc": "Mr. Mob is squatting here.",
+    "Stats": {
+        "HP": "2d5+20",
+        "AC": 16,
+        "Speed": 30,
+        "Str": 15,
+        "Dex": 13,
+        "Con": 12,
+        "Int": 12,
+        "Wis": 13,
+        "Cha": 11
+    }
+}]

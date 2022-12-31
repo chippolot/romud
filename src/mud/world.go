@@ -18,6 +18,10 @@ func NewWorld(db Database) *World {
 	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0}
 }
 
+func (w *World) EntryRoomId() RoomId {
+	return w.entryRoomId
+}
+
 func (w *World) CreatePlayerCharacter(name string, player *Player) *Entity {
 	playerEntityCfg, ok := w.entityConfigs[PlayerEntityKey]
 	if !ok {
@@ -66,18 +70,23 @@ func (w *World) AddEntityConfig(cfg *EntityConfig) {
 	w.entityConfigs[cfg.Key] = cfg
 }
 
+func (w *World) TryGetEntityConfig(key string) (*EntityConfig, bool) {
+	if cfg, ok := w.entityConfigs[key]; ok {
+		return cfg, true
+	}
+	return nil, false
+}
+
 func (w *World) AddEntity(e *Entity, roomId RoomId) {
 	w.entities[e.id] = e
+
+	r := w.rooms[roomId]
+	r.AddEntity(e)
+
 	if e.player != nil {
 		w.players[e.player.id] = e
-	}
-
-	if e.player != nil {
 		w.SendAllExcept(e.player.id, "%s Joins", e.player.data.Name)
 		e.player.Enqueue(Preamble)
-
-		r := w.rooms[roomId]
-		r.AddEntity(e)
 
 		DoLook(e, w, nil)
 	}
@@ -85,9 +94,9 @@ func (w *World) AddEntity(e *Entity, roomId RoomId) {
 
 func (w *World) TryGetEntityByPlayerId(id PlayerId) (*Entity, bool) {
 	if e, ok := w.players[id]; ok {
-		return e, false
+		return e, true
 	}
-	return nil, true
+	return nil, false
 }
 
 func (w *World) TryGetEntityByName(name string) (*Entity, bool) {
@@ -108,11 +117,9 @@ func (w *World) RemoveEntity(eid EntityId) {
 	r := w.rooms[e.data.RoomId]
 	r.RemoveEntity(e)
 	delete(w.entities, eid)
-	if e.player != nil {
-		delete(w.players, e.player.id)
-	}
 
 	if e.player != nil {
+		delete(w.players, e.player.id)
 		w.SendAllExcept(e.player.id, "%s Leaves", e.player.data.Name)
 	}
 }

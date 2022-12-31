@@ -81,14 +81,20 @@ func (r *Room) AddEntity(e *Entity) {
 	oldRoomId := e.data.RoomId
 	e.data.RoomId = r.id
 	r.entities[e.id] = e
-	if oldRoomId != 0 && e.player != nil {
-		r.SendAllExcept(e.player.id, "%s entered the room", e.player.data.Name)
+	if oldRoomId != 0 {
+		if e.player != nil {
+			r.SendAllExcept(e.player.id, "%s entered the room", e.player.data.Name)
+		} else {
+			r.SendAll("%s entered the room", e.cfg.Name)
+		}
 	}
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
 	if e.player != nil {
 		r.SendAllExcept(e.player.id, "%s left the room", e.player.data.Name)
+	} else {
+		r.SendAll("%s left the room", e.cfg.Name)
 	}
 	delete(r.entities, e.id)
 }
@@ -115,7 +121,7 @@ func (r *Room) Describe(subject *Entity) string {
 		WriteString("<c bright yellow>").
 		WriteString(r.name).
 		WriteLine("</c>").
-		WriteLine(r.desc).
+		WriteLinef("   %s", r.desc).
 		WriteString(utils.HorizontalDivider)
 	describeExits(r, &sb)
 	describePlayers(r, &sb, subject)
@@ -179,7 +185,7 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 		if e.player != nil {
 			continue
 		}
-		desc := e.cfg.FullDesc
+		desc := e.cfg.RoomDesc
 		if desc == "" {
 			desc = fmt.Sprintf("A %s is here", e.cfg.Name)
 		}

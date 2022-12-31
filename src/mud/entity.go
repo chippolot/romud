@@ -29,7 +29,7 @@ type EntityConfig struct {
 func (cfg *EntityConfig) Init() {
 	cfg.lookup = make(map[string]bool)
 	for _, s := range cfg.Keywords {
-		cfg.lookup[s] = true
+		cfg.lookup[strings.ToLower(s)] = true
 	}
 }
 
@@ -56,7 +56,17 @@ func newEntityData(cfg *EntityConfig) *EntityData {
 	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats)}
 }
 
+func (e *Entity) Name() string {
+	if e.player != nil {
+		return e.player.data.Name
+	}
+	return e.cfg.Name
+}
+
 func (e *Entity) Matches(s string) bool {
+	if strings.EqualFold(e.Name(), s) {
+		return true
+	}
 	_, ok := e.cfg.lookup[s]
 	return ok
 }
@@ -81,7 +91,11 @@ func TryGetEntityByKeywords(words []string, ents map[EntityId]*Entity, self *Ent
 		}
 	}
 
+	var joined = strings.Join(words, " ")
 	for _, e := range ents {
+		if e.Matches(joined) {
+			return e, true
+		}
 		for _, w := range words {
 			if e.Matches(w) {
 				return e, true

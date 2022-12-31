@@ -14,7 +14,8 @@ type PlayerCharacterData struct {
 }
 
 type PlayerData struct {
-	Name string
+	Name   string
+	Gender Gender
 }
 
 type Player struct {
@@ -25,7 +26,8 @@ type Player struct {
 
 func NewPlayer(session *server.Session) *Player {
 	playerIdCounter++
-	p := &Player{id: playerIdCounter, data: &PlayerData{}, session: session}
+	// TODO Set gender from prompt
+	p := &Player{id: playerIdCounter, data: &PlayerData{Gender: Male}, session: session}
 	return p
 }
 

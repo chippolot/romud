@@ -53,12 +53,12 @@ func (w *World) SavePlayerCharacter(pid PlayerId) {
 
 	data := &PlayerCharacterData{e.player.data, e.data}
 	go func() {
-		err := w.db.SavePlayer(e.player.data.Name, data)
+		err := w.db.SavePlayer(e.Name(), data)
 		if err != nil {
-			log.Printf("error saving player %v -- %v", e.player.data.Name, err)
+			log.Printf("error saving player %v -- %v", e.Name(), err)
 		} else {
 
-			log.Printf("saved player %v", e.player.data.Name)
+			log.Printf("saved player %v", e.Name())
 		}
 	}()
 }
@@ -85,7 +85,7 @@ func (w *World) AddEntity(e *Entity, roomId RoomId) {
 
 	if e.player != nil {
 		w.players[e.player.id] = e
-		w.SendAllExcept(e.player.id, "%s Joins", e.player.data.Name)
+		w.SendAllExcept(e.player.id, "%s Joins", e.Name())
 		e.player.Enqueue(Preamble)
 
 		DoLook(e, w, nil)
@@ -111,7 +111,7 @@ func (w *World) RemoveEntity(eid EntityId) {
 
 	if e.player != nil {
 		delete(w.players, e.player.id)
-		w.SendAllExcept(e.player.id, "%s Leaves", e.player.data.Name)
+		w.SendAllExcept(e.player.id, "%s Leaves", e.Name())
 	}
 }
 

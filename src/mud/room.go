@@ -83,18 +83,18 @@ func (r *Room) AddEntity(e *Entity) {
 	r.entities[e.id] = e
 	if oldRoomId != 0 {
 		if e.player != nil {
-			r.SendAllExcept(e.player.id, "%s entered the room", e.player.data.Name)
+			r.SendAllExcept(e.player.id, "%s entered the room", e.Name())
 		} else {
-			r.SendAll("%s entered the room", e.cfg.Name)
+			r.SendAll("%s entered the room", e.Name())
 		}
 	}
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
 	if e.player != nil {
-		r.SendAllExcept(e.player.id, "%s left the room", e.player.data.Name)
+		r.SendAllExcept(e.player.id, "%s left the room", e.Name())
 	} else {
-		r.SendAll("%s left the room", e.cfg.Name)
+		r.SendAll("%s left the room", e.Name())
 	}
 	delete(r.entities, e.id)
 }
@@ -167,7 +167,7 @@ func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
 		if subject == e {
 			continue
 		}
-		descs = append(descs, fmt.Sprintf("%s is here", e.player.data.Name))
+		descs = append(descs, fmt.Sprintf("%s is here", e.Name()))
 	}
 	if len(descs) == 0 {
 		return
@@ -187,7 +187,7 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 		}
 		desc := e.cfg.RoomDesc
 		if desc == "" {
-			desc = fmt.Sprintf("A %s is here", e.cfg.Name)
+			desc = fmt.Sprintf("A %s is here", e.Name())
 		}
 		descs = append(descs, desc)
 	}

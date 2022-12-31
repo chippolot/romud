@@ -65,10 +65,11 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 		}
 		if tgt == e {
 			e.player.Send("Stop hitting yourself!")
-			r.SendAllExcept(e.player.id, "%s hits %sself??", e.player.data.Name, e.player.data.Gender)
+			r.SendAllExcept(e.player.id, "%s hits %sself??", e.Name(), e.player.data.Gender.GetObjectPronoun())
 			return
 		}
-		STOPPED HERE
+		// TODO MORE COMBAT
+		e.player.Send("You hit %s!", tgt.Name())
 	}
 }
 
@@ -81,7 +82,7 @@ func DoSay(e *Entity, w *World, tokens []string) {
 	e.player.Send("Ok.")
 
 	r := w.rooms[e.data.RoomId]
-	r.SendAllExcept(e.player.id, "%s says, '%s'", e.player.data.Name, msg)
+	r.SendAllExcept(e.player.id, "%s says, '%s'", e.Name(), msg)
 }
 
 func DoYell(e *Entity, w *World, tokens []string) {
@@ -91,7 +92,7 @@ func DoYell(e *Entity, w *World, tokens []string) {
 	msg := strings.Join(tokens[1:], " ")
 
 	e.player.Send("Ok.")
-	w.SendAllExcept(e.player.id, "%s yells, '%s'", e.player.data.Name, msg)
+	w.SendAllExcept(e.player.id, "%s yells, '%s'", e.Name(), msg)
 }
 
 func DoWhisper(e *Entity, w *World, tokens []string) {
@@ -103,13 +104,13 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 	default:
 		name := tokens[1]
 		msg := strings.Join(tokens[2:], " ")
-		if name == e.player.data.Name {
+		if name == e.Name() {
 			e.player.Send("You try whispering to yourself")
 			return
 		} else if te, ok := TryGetEntityByName(name, w.entities, e); ok {
 			e.player.Send("Ok.")
 			if te.player != nil {
-				te.player.Send("%s whispers to you, %s", e.player.data.Name, msg)
+				te.player.Send("%s whispers to you, %s", e.Name(), msg)
 			}
 		} else {
 			e.player.Send("No player named %s is online", name)
@@ -123,6 +124,7 @@ func DoLook(e *Entity, w *World, tokens []string) {
 	case 0, 1:
 		e.player.Send(r.Describe(e))
 	default:
+		// TODO Make this generic
 		if desc, ok := trySense(SenseLook, r, tokens[1]); ok {
 			e.player.Send(desc)
 		} else {
@@ -191,7 +193,7 @@ func DoWho(e *Entity, w *World, _ []string) {
 	lines := make([]string, 0)
 	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
 	lines = append(lines, utils.HorizontalDivider)
-	lines = append(lines, fmt.Sprintf("(you)\t%s", e.player.data.Name))
+	lines = append(lines, fmt.Sprintf("(you)\t%s", e.Name()))
 	for _, e2 := range w.players {
 		if e2 != e {
 			lines = append(lines, fmt.Sprintf("\t%s", e2.player.data.Name))

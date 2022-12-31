@@ -25,6 +25,7 @@ var Commands CommandList
 
 func init() {
 	Commands = []*CommandDesc{
+		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat"},
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi"},
 		{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!"},
 		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper redbeard Hi buddy!"},
@@ -48,6 +49,26 @@ func init() {
 			}
 			CommandsLookup[alias] = cmd
 		}
+	}
+}
+
+func DoAttack(e *Entity, w *World, tokens []string) {
+	switch len(tokens) {
+	case 1:
+		e.player.Send("What do you want to attack?")
+	default:
+		r := w.rooms[e.data.RoomId]
+		tgt, ok := TryGetEntityByKeywords(lowerTokens(tokens[1:]), r.entities, e)
+		if !ok {
+			e.player.Send("They don't seem to be here...")
+			return
+		}
+		if tgt == e {
+			e.player.Send("Stop hitting yourself!")
+			r.SendAllExcept(e.player.id, "%s hits %sself??", e.player.data.Name, e.player.data.Gender)
+			return
+		}
+		STOPPED HERE
 	}
 }
 
@@ -80,18 +101,18 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 	case 2:
 		e.player.Send("What do you want to whisper to %s?", tokens[1])
 	default:
-		toName := tokens[1]
+		name := tokens[1]
 		msg := strings.Join(tokens[2:], " ")
-		if toName == e.player.data.Name {
+		if name == e.player.data.Name {
 			e.player.Send("You try whispering to yourself")
 			return
-		} else if te, ok := w.TryGetEntityByName(toName); ok {
+		} else if te, ok := TryGetEntityByName(name, w.entities, e); ok {
 			e.player.Send("Ok.")
 			if te.player != nil {
 				te.player.Send("%s whispers to you, %s", e.player.data.Name, msg)
 			}
 		} else {
-			e.player.Send("No player named %s is online", toName)
+			e.player.Send("No player named %s is online", name)
 		}
 	}
 }
@@ -236,4 +257,11 @@ func trySense(sense SenseType, r *Room, target string) (string, bool) {
 		return desc, true
 	}
 	return "", false
+}
+
+func lowerTokens(tokens []string) []string {
+	for i, s := range tokens {
+		tokens[i] = strings.ToLower(s)
+	}
+	return tokens
 }

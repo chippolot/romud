@@ -99,15 +99,6 @@ func (w *World) TryGetEntityByPlayerId(id PlayerId) (*Entity, bool) {
 	return nil, false
 }
 
-func (w *World) TryGetEntityByName(name string) (*Entity, bool) {
-	for _, e := range w.entities {
-		if strings.EqualFold(e.cfg.Name, name) {
-			return e, true
-		}
-	}
-	return nil, false
-}
-
 func (w *World) RemoveEntity(eid EntityId) {
 	e, ok := w.entities[eid]
 	if !ok {

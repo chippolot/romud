@@ -45,6 +45,7 @@ func LoadEntities(w *World, path string) error {
 	}
 
 	for _, cfg := range cfgList {
+		cfg.Init()
 		w.AddEntityConfig(&cfg)
 	}
 

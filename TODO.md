@@ -21,11 +21,14 @@
 [x] Stats
 [x] Stats in prompt
 [x] Loading from data files
-[] Passwords
 [] Mobs
     [] Viewing in Room
     [] Looking At
+[] Wandering Mobs
+[] Combat
 [] Looking at players
+[] Positions
+[] Figure out thread safety
 [] Items
     [] Viewing in Room
     [] Looking At
@@ -33,9 +36,8 @@
     [] TLS
     [] SSH
     [] MUD Protocols
-[] Wandering Mobs
+[] Passwords
 [] User can login w/ character name and password
-[] Combat
 [] Generify connections -- support ssh
 
 ## Long Term

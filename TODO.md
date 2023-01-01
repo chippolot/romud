@@ -1,3 +1,6 @@
+## Resources
+* https://github.com/mudcoders/awesome-mud
+
 ## Short Term
 [x] Users can see each others' messages
 [x] Users get joined/left notifications for other users

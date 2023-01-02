@@ -24,9 +24,9 @@
 [x] Stats
 [x] Stats in prompt
 [x] Loading from data files
-[] Mobs
+[x] Mobs
     [x] Viewing in Room
-    [] Looking At
+    [x] Looking At
 [] Wandering Mobs
 [] Combat
 [] Looking at players

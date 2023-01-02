@@ -73,7 +73,14 @@ func (e *Entity) Matches(s string) bool {
 }
 
 func (e *Entity) TryPerceive(sense SenseType, words []string) (string, bool) {
-	return e.cfg.Perceptibles.TryPerceive(sense, words)
+	desc, ok := e.cfg.Perceptibles.TryPerceive(sense, words)
+	if ok {
+		return desc, ok
+	}
+	if sense == SenseLook && e.cfg.FullDesc != "" {
+		return e.cfg.FullDesc, true
+	}
+	return "", false
 }
 
 func TryGetEntityByName(name string, ents map[EntityId]*Entity, self *Entity) (*Entity, bool) {
@@ -91,6 +98,7 @@ func TryGetEntityByKeywords(words []string, ents map[EntityId]*Entity, self *Ent
 		return nil, false
 	case 1:
 		word := words[0]
+		// TODO Generify this
 		if word == "self" || word == "me" || word == "myself" {
 			return self, true
 		}

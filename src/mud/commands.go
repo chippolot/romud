@@ -253,7 +253,6 @@ func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) 
 	r := w.rooms[perceiver.data.RoomId]
 	tgt, ok := TryGetEntityByKeywords(tokens, r.entities, perceiver)
 	if ok {
-		THIS ISN'T WORKING
 		if desc, ok := tgt.TryPerceive(sense, tokens); ok {
 			return desc, true
 		}

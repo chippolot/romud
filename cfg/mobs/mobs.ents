@@ -3,6 +3,7 @@
     "Name": "Mr. Mob",
     "Keywords": ["mr", "mob"],
     "RoomDesc": "Mr. Mob is squatting here.",
+    "FullDesc": "Mr. Mob is a silly little clown that is doing a little jig.",
     "Perceptibles": [{
         "Sense": "look",
         "Keywords": ["nose"],

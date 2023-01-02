@@ -27,10 +27,11 @@
 [x] Mobs
     [x] Viewing in Room
     [x] Looking At
-[] Wandering Mobs
+[x] Wandering Mobs
 [] Combat
 [] Looking at players
 [] Positions
+[] Doors
 [] Figure out thread safety
 [] Items
     [] Viewing in Room

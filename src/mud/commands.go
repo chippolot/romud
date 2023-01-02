@@ -225,24 +225,24 @@ func PerformMove(e *Entity, w *World, dir Direction) bool {
 	curRoom.RemoveEntity(e)
 	nextRoom.AddEntity(e)
 
-	toDirStr := ""
-	toDir, err := dir.Reverse()
+	fromDirStr := ""
+	fromDir, err := dir.Reverse()
 	if err != nil {
-		toDirStr = "somewhere"
+		fromDirStr = "somewhere"
 	} else {
-		toDirStr = toDir.String()
+		fromDirStr = fromDir.String()
 	}
 
 	if e.player != nil {
-		curRoom.SendAllExcept(e.player.id, "%s leaves %s", e.Name(), toDirStr)
+		curRoom.SendAllExcept(e.player.id, "%s leaves %s", e.Name(), dir.String())
 	} else {
-		curRoom.SendAll("%s wanders %s", e.Name(), toDirStr)
+		curRoom.SendAll("%s wanders %s", e.Name(), dir.String())
 	}
 
 	if e.player != nil {
-		nextRoom.SendAllExcept(e.player.id, "%s enters from the %s", e.Name(), toDirStr)
+		nextRoom.SendAllExcept(e.player.id, "%s enters from the %s", e.Name(), fromDirStr)
 	} else {
-		nextRoom.SendAll("%s wanders in from the %s", e.Name(), toDirStr)
+		nextRoom.SendAll("%s wanders in from the %s", e.Name(), fromDirStr)
 	}
 
 	e.data.Stats.Mov--

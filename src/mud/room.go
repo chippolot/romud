@@ -72,6 +72,11 @@ func (r *Room) RemoveEntity(e *Entity) {
 	delete(r.entities, e.id)
 }
 
+func (r *Room) IsExitOpen(dir Direction) bool {
+	_, ok := (*r.cfg.Exits)[dir]
+	return ok
+}
+
 func (r *Room) SendAll(format string, a ...any) {
 	for _, e := range r.entities {
 		if e.player != nil {
@@ -169,7 +174,8 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 type Direction int
 
 const (
-	DirectionEast Direction = iota
+	DirectionInvalid Direction = iota
+	DirectionEast
 	DirectionWest
 	DirectionNorth
 	DirectionSouth

@@ -55,31 +55,31 @@ func init() {
 func DoAttack(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 1:
-		e.player.Send("What do you want to attack?")
+		sendIfPlayer(e, "What do you want to attack?")
 	default:
 		r := w.rooms[e.data.RoomId]
 		tgt, ok := TryGetEntityByKeywords(lowerTokens(tokens[1:]), r.entities, e)
 		if !ok {
-			e.player.Send("They don't seem to be here...")
+			sendIfPlayer(e, "They don't seem to be here...")
 			return
 		}
 		if tgt == e {
-			e.player.Send("Stop hitting yourself!")
+			sendIfPlayer(e, "Stop hitting yourself!")
 			r.SendAllExcept(e.player.id, "%s hits %sself??", e.Name(), e.player.data.Gender.GetObjectPronoun())
 			return
 		}
 		// TODO MORE COMBAT
-		e.player.Send("You hit %s!", tgt.Name())
+		sendIfPlayer(e, "You hit %s!", tgt.Name())
 	}
 }
 
 func DoSay(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
-		e.player.Send("What do you want to say?")
+		sendIfPlayer(e, "What do you want to say?")
 	}
 	msg := strings.Join(tokens[1:], " ")
 
-	e.player.Send("Ok.")
+	sendIfPlayer(e, "Ok.")
 
 	r := w.rooms[e.data.RoomId]
 	r.SendAllExcept(e.player.id, "%s says, '%s'", e.Name(), msg)
@@ -87,33 +87,33 @@ func DoSay(e *Entity, w *World, tokens []string) {
 
 func DoYell(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
-		e.player.Send("What do you want to yell?")
+		sendIfPlayer(e, "What do you want to yell?")
 	}
 	msg := strings.Join(tokens[1:], " ")
 
-	e.player.Send("Ok.")
+	sendIfPlayer(e, "Ok.")
 	w.SendAllExcept(e.player.id, "%s yells, '%s'", e.Name(), msg)
 }
 
 func DoWhisper(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 1:
-		e.player.Send("What do you want to whisper to who?")
+		sendIfPlayer(e, "What do you want to whisper to who?")
 	case 2:
-		e.player.Send("What do you want to whisper to %s?", tokens[1])
+		sendIfPlayer(e, "What do you want to whisper to %s?", tokens[1])
 	default:
 		name := tokens[1]
 		msg := strings.Join(tokens[2:], " ")
 		if name == e.Name() {
-			e.player.Send("You try whispering to yourself")
+			sendIfPlayer(e, "You try whispering to yourself")
 			return
 		} else if te, ok := TryGetEntityByName(name, w.entities); ok {
-			e.player.Send("Ok.")
+			sendIfPlayer(e, "Ok.")
 			if te.player != nil {
-				te.player.Send("%s whispers to you, %s", e.Name(), msg)
+				sendIfPlayer(te, "%s whispers to you, %s", e.Name(), msg)
 			}
 		} else {
-			e.player.Send("No player named %s is online", name)
+			sendIfPlayer(e, "No player named %s is online", name)
 		}
 	}
 }
@@ -122,12 +122,12 @@ func DoLook(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
-		e.player.Send(r.Describe(e))
+		sendIfPlayer(e, r.Describe(e))
 	default:
 		if desc, ok := tryPerceive(SenseLook, lowerTokens(tokens[1:]), e, w); ok {
-			e.player.Send(desc)
+			sendIfPlayer(e, desc)
 		} else {
-			e.player.Send("You don't see that here.")
+			sendIfPlayer(e, "You don't see that here.")
 		}
 	}
 }
@@ -135,12 +135,12 @@ func DoLook(e *Entity, w *World, tokens []string) {
 func DoListen(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		e.player.Send("What do you want to listen to?")
+		sendIfPlayer(e, "What do you want to listen to?")
 	default:
 		if desc, ok := tryPerceive(SenseListen, lowerTokens(tokens[1:]), e, w); ok {
-			e.player.Send(desc)
+			sendIfPlayer(e, desc)
 		} else {
-			e.player.Send("You don't hear that here.")
+			sendIfPlayer(e, "You don't hear that here.")
 		}
 	}
 }
@@ -148,12 +148,12 @@ func DoListen(e *Entity, w *World, tokens []string) {
 func DoTaste(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		e.player.Send("What do you want to taste?")
+		sendIfPlayer(e, "What do you want to taste?")
 	default:
 		if desc, ok := tryPerceive(SenseTaste, lowerTokens(tokens[1:]), e, w); ok {
-			e.player.Send(desc)
+			sendIfPlayer(e, desc)
 		} else {
-			e.player.Send("You don't want to taste that!")
+			sendIfPlayer(e, "You don't want to taste that!")
 		}
 	}
 }
@@ -161,12 +161,12 @@ func DoTaste(e *Entity, w *World, tokens []string) {
 func DoTouch(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		e.player.Send("What do you want to touch?")
+		sendIfPlayer(e, "What do you want to touch?")
 	default:
 		if desc, ok := tryPerceive(SenseTouch, lowerTokens(tokens[1:]), e, w); ok {
-			e.player.Send(desc)
+			sendIfPlayer(e, desc)
 		} else {
-			e.player.Send("You don't want to touch that!")
+			sendIfPlayer(e, "You don't want to touch that!")
 		}
 	}
 }
@@ -174,12 +174,12 @@ func DoTouch(e *Entity, w *World, tokens []string) {
 func DoSmell(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		e.player.Send("What do you want to smell?")
+		sendIfPlayer(e, "What do you want to smell?")
 	default:
 		if desc, ok := tryPerceive(SenseSmell, lowerTokens(tokens[1:]), e, w); ok {
-			e.player.Send(desc)
+			sendIfPlayer(e, desc)
 		} else {
-			e.player.Send("You don't want to smell that!")
+			sendIfPlayer(e, "You don't want to smell that!")
 		}
 	}
 }
@@ -194,26 +194,31 @@ func DoWho(e *Entity, w *World, _ []string) {
 			lines = append(lines, fmt.Sprintf("\t%s", e2.player.data.Name))
 		}
 	}
-	e.player.Send(strings.Join(lines, utils.NewLine))
+	sendIfPlayer(e, strings.Join(lines, utils.NewLine))
 }
 
 func DoMove(e *Entity, w *World, tokens []string) {
-	if e.data.Stats.Mov <= 0 {
-		e.player.Send("You're way too tired...")
-		return
-	}
-
 	cmd := tokens[0]
 	dir, err := ParseDirection(cmd)
 	if err != nil {
-		e.player.Send("%s isn't a direction!", cmd)
+		sendIfPlayer(e, "%s isn't a direction!", cmd)
 	}
+
+	_ = PerformMove(e, w, dir)
+}
+
+func PerformMove(e *Entity, w *World, dir Direction) bool {
+	if e.data.Stats.Mov <= 0 {
+		sendIfPlayer(e, "You're way too tired...")
+		return false
+	}
+
 	curRoom := w.rooms[e.data.RoomId]
 
 	nextRoomId, ok := (*curRoom.cfg.Exits)[dir]
 	if !ok {
-		e.player.Send("Can't go that way!")
-		return
+		sendIfPlayer(e, "Can't go that way!")
+		return false
 	}
 
 	nextRoom := w.rooms[nextRoomId]
@@ -222,7 +227,10 @@ func DoMove(e *Entity, w *World, tokens []string) {
 
 	e.data.Stats.Mov--
 
-	DoLook(e, w, nil)
+	if e.player != nil {
+		DoLook(e, w, nil)
+	}
+	return true
 }
 
 func DoCommands(e *Entity, _ *World, _ []string) {
@@ -240,12 +248,12 @@ func DoCommands(e *Entity, _ *World, _ []string) {
 		commands = append(commands, fmt.Sprintf("\tUsage: %s", cmd.usage))
 	}
 
-	e.player.Send(strings.Join(commands, utils.NewLine))
+	sendIfPlayer(e, strings.Join(commands, utils.NewLine))
 }
 
 func DoSave(e *Entity, w *World, _ []string) {
 	w.SavePlayerCharacter(e.player.id)
-	e.player.Send("Saved game.")
+	sendIfPlayer(e, "Saved game.")
 }
 
 func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) (string, bool) {
@@ -272,4 +280,11 @@ func lowerTokens(tokens []string) []string {
 		tokens[i] = strings.ToLower(s)
 	}
 	return tokens
+}
+
+func sendIfPlayer(e *Entity, format string, a ...any) {
+	if e.player == nil {
+		return
+	}
+	e.player.Send(format, a...)
 }

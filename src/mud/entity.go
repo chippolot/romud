@@ -9,6 +9,10 @@ import (
 
 const PlayerEntityKey = "_player"
 
+const (
+	EFlag_Stationary bits.Bits = iota << 1
+)
+
 var entityIdCounter EntityId
 
 type EntityId uint32

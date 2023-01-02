@@ -1,7 +1,10 @@
 package mud
 
 import (
+	"math/rand"
 	"time"
+
+	"github.com/chippolot/go-mud/src/bits"
 )
 
 type UpdateSystem struct {
@@ -23,6 +26,7 @@ func (s *UpdateSystem) Update(w *World) {
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
 		{restoreStats, time.Second * 10, time.Now()},
+		{npcWander, time.Second * 3, time.Now()},
 	}
 
 	for {
@@ -49,5 +53,26 @@ func restoreStats(w *World) {
 				e.player.Send("")
 			}
 		}
+	}
+}
+
+func npcWander(w *World) {
+	for _, e := range w.entities {
+		if e.player != nil {
+			continue
+		}
+
+		if bits.Has(e.cfg.Flags, EFlag_Stationary) {
+			continue
+		}
+
+		// TODO Stay in zone
+		r := w.rooms[e.data.RoomId]
+		dir := Direction(rand.Intn(10))
+		if !r.IsExitOpen(dir) {
+			continue
+		}
+
+		PerformMove(e, w, dir)
 	}
 }

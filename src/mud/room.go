@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/mud/utils"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type RoomId uint32

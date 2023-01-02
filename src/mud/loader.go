@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/chippolot/go-mud/src/mud/utils"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 func LoadRooms(w *World, path string) error {

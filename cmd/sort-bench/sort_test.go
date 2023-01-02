@@ -6,7 +6,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/chippolot/go-mud/src/mud/utils"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type Value struct {

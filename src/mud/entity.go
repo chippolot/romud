@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/mud/bits"
+	"github.com/chippolot/go-mud/src/bits"
 )
 
 const PlayerEntityKey = "_player"

@@ -5,7 +5,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/mud/utils"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type ActionFunc func(e *Entity, world *World, tokens []string)

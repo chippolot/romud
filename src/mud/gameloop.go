@@ -68,7 +68,7 @@ func npcWander(w *World) {
 
 		// TODO Stay in zone
 		r := w.rooms[e.data.RoomId]
-		dir := Direction(rand.Intn(10))
+		dir := Direction(rand.Intn(15))
 		if !r.IsExitOpen(dir) {
 			continue
 		}

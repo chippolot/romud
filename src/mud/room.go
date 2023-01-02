@@ -51,24 +51,11 @@ func ParseRoom(cfg *RoomConfig) (*Room, error) {
 }
 
 func (r *Room) AddEntity(e *Entity) {
-	oldRoomId := e.data.RoomId
 	e.data.RoomId = r.cfg.Id
 	r.entities[e.id] = e
-	if oldRoomId != 0 {
-		if e.player != nil {
-			r.SendAllExcept(e.player.id, "%s entered the room", e.Name())
-		} else {
-			r.SendAll("%s entered the room", e.Name())
-		}
-	}
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
-	if e.player != nil {
-		r.SendAllExcept(e.player.id, "%s left the room", e.Name())
-	} else {
-		r.SendAll("%s left the room", e.Name())
-	}
 	delete(r.entities, e.id)
 }
 

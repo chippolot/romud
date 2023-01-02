@@ -3,7 +3,6 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/mud/utils"
@@ -11,75 +10,49 @@ import (
 
 type RoomId uint32
 
-var roomIdCounter RoomId
+type RoomExitsConfig map[Direction]RoomId
+
+func (cfg *RoomExitsConfig) UnmarshalJSON(data []byte) (err error) {
+	var arr []RoomExitConfig
+	if err := json.Unmarshal(data, &arr); err != nil {
+		return err
+	}
+	roomExits := make(RoomExitsConfig)
+	for _, re := range arr {
+		roomExits[re.Verb] = re.RoomId
+	}
+	*cfg = roomExits
+	return nil
+}
 
 type RoomExitConfig struct {
 	RoomId RoomId
 	Verb   Direction
 }
 
-type RoomExtraConfig struct {
-	Sense    SenseType
-	Keywords []string
-	Desc     string
-}
-
-type RoomConfigList []RoomConfig
+type RoomConfigList []*RoomConfig
 
 type RoomConfig struct {
-	Id     RoomId
-	Name   string
-	Desc   string
-	Exits  []RoomExitConfig
-	Extras []RoomExtraConfig
+	Id           RoomId
+	Name         string
+	Desc         string
+	Exits        *RoomExitsConfig
+	Perceptibles *PerceptiblesConfig
 }
 
 type Room struct {
-	id       RoomId
-	name     string
-	desc     string
-	exits    map[Direction]RoomId
-	extras   map[SenseType]map[string]string
+	cfg      *RoomConfig
 	entities map[EntityId]*Entity
 }
 
-func NewRoom(name string, desc string) *Room {
-	roomIdCounter++
-	return &Room{roomIdCounter, name, desc, make(map[Direction]RoomId), make(map[SenseType]map[string]string), make(map[EntityId]*Entity)}
-}
-
 func ParseRoom(cfg *RoomConfig) (*Room, error) {
-	r := NewRoom(cfg.Name, cfg.Desc)
-	r.id = cfg.Id
-	for _, e := range cfg.Exits {
-		r.exits[e.Verb] = e.RoomId
-	}
-	for _, e := range cfg.Extras {
-		extras, ok := r.extras[e.Sense]
-		if !ok {
-			extras = make(map[string]string)
-			r.extras[e.Sense] = extras
-		}
-		for _, keyword := range e.Keywords {
-			extras[strings.ToLower(keyword)] = e.Desc
-		}
-	}
+	r := &Room{cfg, make(map[EntityId]*Entity)}
 	return r, nil
-}
-
-func (r *Room) ConnectsTo(room *Room, verb Direction) *Room {
-	r.exits[verb] = room.id
-	if returningVerb, err := verb.Reverse(); err != nil {
-		room.exits[returningVerb] = r.id
-	} else {
-		log.Panicln("failed to connect rooms:", err)
-	}
-	return r
 }
 
 func (r *Room) AddEntity(e *Entity) {
 	oldRoomId := e.data.RoomId
-	e.data.RoomId = r.id
+	e.data.RoomId = r.cfg.Id
 	r.entities[e.id] = e
 	if oldRoomId != 0 {
 		if e.player != nil {
@@ -115,13 +88,17 @@ func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
 	}
 }
 
+func (r *Room) TryPerceive(sense SenseType, words []string) (string, bool) {
+	return r.cfg.Perceptibles.TryPerceive(sense, words)
+}
+
 func (r *Room) Describe(subject *Entity) string {
 	var sb utils.StringBuilder
 	sb.WriteNewLine().
 		WriteString("<c bright yellow>").
-		WriteString(r.name).
+		WriteString(r.cfg.Name).
 		WriteLine("</c>").
-		WriteLinef("   %s", r.desc).
+		WriteLinef("   %s", r.cfg.Desc).
 		WriteString(utils.HorizontalDivider)
 	describeExits(r, &sb)
 	describePlayers(r, &sb, subject)
@@ -129,24 +106,15 @@ func (r *Room) Describe(subject *Entity) string {
 	return sb.String()
 }
 
-func (r *Room) TryDescribeExtra(sense SenseType, target string) (string, bool) {
-	extras, ok := r.extras[sense]
-	if !ok {
-		return "", false
-	}
-	desc, ok := extras[target]
-	return desc, ok
-}
-
 func describeExits(r *Room, sb *utils.StringBuilder) {
-	if len(r.exits) == 0 {
+	if len(*r.cfg.Exits) == 0 {
 		return
 	}
 	sb.WriteNewLine()
 	sb.WriteString("<c dim yellow>Obvious Exits: ")
 	i := 0
-	for verb := range r.exits {
-		if i > 0 && i < len(r.exits)-1 {
+	for verb := range *r.cfg.Exits {
+		if i > 0 && i < len(*r.cfg.Exits)-1 {
 			sb.WriteString(", ")
 		}
 		sb.WriteString(verb.String())

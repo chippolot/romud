@@ -116,9 +116,9 @@ func (w *World) RemoveEntity(eid EntityId) {
 }
 
 func (w *World) AddRoom(r *Room) *Room {
-	w.rooms[r.id] = r
+	w.rooms[r.cfg.Id] = r
 	if w.entryRoomId == 0 {
-		w.entryRoomId = r.id
+		w.entryRoomId = r.cfg.Id
 	}
 	return r
 }

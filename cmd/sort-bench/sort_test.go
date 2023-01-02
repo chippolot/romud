@@ -94,7 +94,7 @@ func BenchmarkSortedSliceInsert(b *testing.B) {
 	rand.Seed(0)
 	for _, l := range lens {
 		b.Run(fmt.Sprintf("BenchmarkSortedSliceInsert-%d", l), func(b *testing.B) {
-			slice := utils.NewSortedSlice[*Value](func(a *Value, b *Value) bool {
+			slice := utils.NewSortedSlice(func(a *Value, b *Value) bool {
 				return a.Speed >= b.Speed
 			})
 			for j := 0; j < l; j++ {
@@ -116,7 +116,7 @@ func BenchmarkSortedSliceRemove(b *testing.B) {
 	rand.Seed(0)
 	for _, l := range lens {
 		b.Run(fmt.Sprintf("BenchmarkSortedSliceRemove-%d", l), func(b *testing.B) {
-			slice := utils.NewSortedSlice[*Value](func(a *Value, b *Value) bool {
+			slice := utils.NewSortedSlice(func(a *Value, b *Value) bool {
 				return a.Speed >= b.Speed
 			})
 			for j := 0; j < l; j++ {
@@ -138,7 +138,7 @@ func BenchmarkSortedSliceRange(b *testing.B) {
 	rand.Seed(0)
 	for _, l := range lens {
 		b.Run(fmt.Sprintf("BenchmarkSortedSliceRange-%d", l), func(b *testing.B) {
-			slice := utils.NewSortedSlice[*Value](func(a *Value, b *Value) bool {
+			slice := utils.NewSortedSlice(func(a *Value, b *Value) bool {
 				return a.Speed >= b.Speed
 			})
 			for j := 0; j < l; j++ {

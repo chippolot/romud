@@ -25,6 +25,9 @@ func (s *SortedSlice[T]) Remove(val T) {
 	i := sort.Search(len(s.arr), func(i int) bool {
 		return s.cmp(s.arr[i], val)
 	})
+	if i >= len(s.arr) {
+		return
+	}
 	for ; i < len(s.arr) && s.arr[i] != val; i++ {
 	}
 	if i >= len(s.arr) {

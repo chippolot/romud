@@ -24,3 +24,4 @@ _examples
 .idea
 .vscode
 *.player
+.DS_STORE

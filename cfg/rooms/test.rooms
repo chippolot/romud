@@ -6,7 +6,7 @@
             "RoomId": 2,
             "Verb": "e"
         }],
-        "Extras": [{
+        "Perceptibles": [{
             "Sense": "look",
             "Keywords": ["sign"],
             "Desc": "The sign says:\r\n    Have a nice day!"

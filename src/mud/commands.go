@@ -124,8 +124,7 @@ func DoLook(e *Entity, w *World, tokens []string) {
 	case 0, 1:
 		e.player.Send(r.Describe(e))
 	default:
-		// TODO Make this generic
-		if desc, ok := trySense(SenseLook, r, tokens[1]); ok {
+		if desc, ok := tryPerceive(SenseLook, lowerTokens(tokens[1:]), e, w); ok {
 			e.player.Send(desc)
 		} else {
 			e.player.Send("You don't see that here.")
@@ -134,12 +133,11 @@ func DoLook(e *Entity, w *World, tokens []string) {
 }
 
 func DoListen(e *Entity, w *World, tokens []string) {
-	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		e.player.Send("What do you want to listen to?")
 	default:
-		if desc, ok := trySense(SenseListen, r, tokens[1]); ok {
+		if desc, ok := tryPerceive(SenseListen, lowerTokens(tokens[1:]), e, w); ok {
 			e.player.Send(desc)
 		} else {
 			e.player.Send("You don't hear that here.")
@@ -148,12 +146,11 @@ func DoListen(e *Entity, w *World, tokens []string) {
 }
 
 func DoTaste(e *Entity, w *World, tokens []string) {
-	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		e.player.Send("What do you want to taste?")
 	default:
-		if desc, ok := trySense(SenseTaste, r, tokens[1]); ok {
+		if desc, ok := tryPerceive(SenseTaste, lowerTokens(tokens[1:]), e, w); ok {
 			e.player.Send(desc)
 		} else {
 			e.player.Send("You don't want to taste that!")
@@ -162,12 +159,11 @@ func DoTaste(e *Entity, w *World, tokens []string) {
 }
 
 func DoTouch(e *Entity, w *World, tokens []string) {
-	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		e.player.Send("What do you want to touch?")
 	default:
-		if desc, ok := trySense(SenseTouch, r, tokens[1]); ok {
+		if desc, ok := tryPerceive(SenseTouch, lowerTokens(tokens[1:]), e, w); ok {
 			e.player.Send(desc)
 		} else {
 			e.player.Send("You don't want to touch that!")
@@ -176,12 +172,11 @@ func DoTouch(e *Entity, w *World, tokens []string) {
 }
 
 func DoSmell(e *Entity, w *World, tokens []string) {
-	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
 		e.player.Send("What do you want to smell?")
 	default:
-		if desc, ok := trySense(SenseSmell, r, tokens[1]); ok {
+		if desc, ok := tryPerceive(SenseSmell, lowerTokens(tokens[1:]), e, w); ok {
 			e.player.Send(desc)
 		} else {
 			e.player.Send("You don't want to smell that!")
@@ -215,7 +210,7 @@ func DoMove(e *Entity, w *World, tokens []string) {
 	}
 	curRoom := w.rooms[e.data.RoomId]
 
-	nextRoomId, ok := curRoom.exits[dir]
+	nextRoomId, ok := (*curRoom.cfg.Exits)[dir]
 	if !ok {
 		e.player.Send("Can't go that way!")
 		return
@@ -253,11 +248,23 @@ func DoSave(e *Entity, w *World, _ []string) {
 	e.player.Send("Saved game.")
 }
 
-func trySense(sense SenseType, r *Room, target string) (string, bool) {
-	target = strings.ToLower(target)
-	if desc, ok := r.TryDescribeExtra(sense, target); ok {
+func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) (string, bool) {
+	// First try and resolve entity in room
+	r := w.rooms[perceiver.data.RoomId]
+	tgt, ok := TryGetEntityByKeywords(tokens, r.entities, perceiver)
+	if ok {
+		THIS ISN'T WORKING
+		if desc, ok := tgt.TryPerceive(sense, tokens); ok {
+			return desc, true
+		}
+	}
+
+	// Then try and resolve room element
+	if desc, ok := r.TryPerceive(sense, tokens); ok {
 		return desc, true
 	}
+
+	// Nothing found...
 	return "", false
 }
 

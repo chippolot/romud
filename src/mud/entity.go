@@ -16,14 +16,15 @@ type EntityId uint32
 type EntityConfigList []EntityConfig
 
 type EntityConfig struct {
-	Key      string
-	Name     string
-	Keywords []string
-	RoomDesc string
-	FullDesc string
-	Stats    *StatsConfig
-	Flags    bits.Bits
-	lookup   map[string]bool
+	Key          string
+	Name         string
+	Keywords     []string
+	RoomDesc     string
+	FullDesc     string
+	Perceptibles *PerceptiblesConfig
+	Stats        *StatsConfig
+	Flags        bits.Bits
+	lookup       map[string]bool
 }
 
 func (cfg *EntityConfig) Init() {
@@ -69,6 +70,10 @@ func (e *Entity) Matches(s string) bool {
 	}
 	_, ok := e.cfg.lookup[s]
 	return ok
+}
+
+func (e *Entity) TryPerceive(sense SenseType, words []string) (string, bool) {
+	return e.cfg.Perceptibles.TryPerceive(sense, words)
 }
 
 func TryGetEntityByName(name string, ents map[EntityId]*Entity, self *Entity) (*Entity, bool) {

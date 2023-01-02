@@ -3,6 +3,11 @@
     "Name": "Mr. Mob",
     "Keywords": ["mr", "mob"],
     "RoomDesc": "Mr. Mob is squatting here.",
+    "Perceptibles": [{
+        "Sense": "look",
+        "Keywords": ["nose"],
+        "Desc": "Wow! What a fun nose!"
+    }],
     "Stats": {
         "HP": "2d5+20",
         "AC": 16,

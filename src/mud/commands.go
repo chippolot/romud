@@ -28,7 +28,7 @@ func init() {
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat"},
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi"},
 		{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!"},
-		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper redbeard Hi buddy!"},
+		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!"},
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat"},
 		{DoListen, []string{"listen"}, "Describes the sound of an object", "hear cat"},
 		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo"},
@@ -107,7 +107,7 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 		if name == e.Name() {
 			e.player.Send("You try whispering to yourself")
 			return
-		} else if te, ok := TryGetEntityByName(name, w.entities, e); ok {
+		} else if te, ok := TryGetEntityByName(name, w.entities); ok {
 			e.player.Send("Ok.")
 			if te.player != nil {
 				te.player.Send("%s whispers to you, %s", e.Name(), msg)

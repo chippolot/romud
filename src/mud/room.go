@@ -208,8 +208,8 @@ func (d *Direction) UnmarshalJSON(data []byte) (err error) {
 	return nil
 }
 
-func (d Direction) String() string {
-	switch d {
+func (d *Direction) String() string {
+	switch *d {
 	case DirectionEast:
 		return "east"
 	case DirectionWest:
@@ -226,8 +226,8 @@ func (d Direction) String() string {
 	return "unknown"
 }
 
-func (d Direction) Reverse() (Direction, error) {
-	switch d {
+func (d *Direction) Reverse() (Direction, error) {
+	switch *d {
 	case DirectionEast:
 		return DirectionWest, nil
 	case DirectionWest:

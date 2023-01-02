@@ -33,7 +33,7 @@ func (d *Dice) Roll() int {
 	for i := 0; i < int(d.Num); i++ {
 		sum += rand.Intn(int(d.Sides)) + 1
 	}
-	return sum + int(d.Plus)
+	return sum + d.Plus
 }
 
 func (d *Dice) UnmarshalJSON(data []byte) (err error) {

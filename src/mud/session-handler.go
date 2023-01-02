@@ -52,22 +52,22 @@ func (s *SessionHandler) Run() {
 }
 
 func (s *SessionHandler) ChangeGameState(sid server.SessionId, id StateId) {
-	if oldstate, ok := s.states[sid]; ok {
-		oldstate.OnExit()
+	if oldState, ok := s.states[sid]; ok {
+		oldState.OnExit()
 	}
-	var newstate GameState
+	var newState GameState
 	switch id {
 	case LoginStateId:
-		newstate = &LoginState{s.players[sid].player, s.world, &s.players[sid].playerCharacter}
+		newState = &LoginState{s.players[sid].player, s.world, &s.players[sid].playerCharacter}
 	case PlayingStateId:
-		newstate = &PlayingState{s.players[sid].playerCharacter, s.world}
+		newState = &PlayingState{s.players[sid].playerCharacter, s.world}
 	case LoggedOutStateId:
-		newstate = &LoggedOutState{s.players[sid].player.session}
+		newState = &LoggedOutState{s.players[sid].player.session}
 	default:
 		log.Printf("unknown state id: %d", id)
 	}
-	s.states[sid] = newstate
-	if newstate != nil {
-		newstate.OnEnter()
+	s.states[sid] = newState
+	if newState != nil {
+		newState.OnEnter()
 	}
 }

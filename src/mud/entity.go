@@ -83,7 +83,7 @@ func (e *Entity) TryPerceive(sense SenseType, words []string) (string, bool) {
 	return "", false
 }
 
-func TryGetEntityByName(name string, ents map[EntityId]*Entity, self *Entity) (*Entity, bool) {
+func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) {
 	for _, e := range ents {
 		if strings.EqualFold(e.cfg.Name, name) {
 			return e, true

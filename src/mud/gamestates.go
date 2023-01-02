@@ -95,7 +95,7 @@ func (s *LoggedOutState) StateId() StateId {
 	return LoggedOutStateId
 }
 func (s *LoggedOutState) OnEnter() {
-	s.session.Close()
+	_ = s.session.Close()
 }
 func (s *LoggedOutState) ProcessInput(_ string) StateId {
 	return 0

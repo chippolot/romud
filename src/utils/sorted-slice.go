@@ -15,8 +15,8 @@ func (s *SortedSlice[T]) Insert(val T) {
 	i := sort.Search(len(s.arr), func(i int) bool {
 		return s.cmp(s.arr[i], val)
 	})
-	var empt T
-	s.arr = append(s.arr, empt)
+	var empty T
+	s.arr = append(s.arr, empty)
 	copy(s.arr[i+1:], s.arr[i:])
 	s.arr[i] = val
 }

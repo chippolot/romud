@@ -3,14 +3,18 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"math/rand"
 	"path"
 	"runtime"
+	"time"
 
 	"github.com/chippolot/go-mud/src/mud"
 	"github.com/chippolot/go-mud/src/mud/server"
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+
 	_, b, _, _ := runtime.Caller(0)
 	projectRoot := path.Join(path.Dir(b))
 

@@ -29,10 +29,11 @@
     [x] Looking At
 [x] Wandering Mobs
 [] Combat
-    [] Why isn't player dealing damage
-    [] Better ranging and ending combat
-    [] KOed and Death
+    [x] Why isn't player dealing damage
     [] Roll for damage / hits
+    [] Hit and damage bonuses
+    [] KOed and Death
+    [] Better ranging and ending combat
     [] Damage depedent messages
 [] Looking at players
 [] Positions

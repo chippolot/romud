@@ -7,6 +7,10 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
+func GetAbilityModifier(score int) int {
+	return (score - 10) / 2
+}
+
 type CombatData struct {
 	target     *Entity
 	nextAttack time.Time
@@ -61,7 +65,18 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 	}
 
 	w.inCombat.StartCombat(e, tgt)
-	dam := applyDamage(tgt, w, e, e.data.Stats.Attack.Roll())
+
+	var dam int
+
+	// Roll to hit
+	hit := D20.Roll() + GetAbilityModifier(e.data.Stats.Str)
+	if hit <= tgt.cfg.Stats.AC {
+		dam = 0
+	} else {
+		// Roll for damage
+		dam = e.data.Stats.attack.Roll()
+		dam = applyDamage(tgt, w, e, dam)
+	}
 
 	r := w.rooms[e.data.RoomId]
 	if dam > 0 {

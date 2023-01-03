@@ -8,6 +8,14 @@ import (
 	"strings"
 )
 
+var D4 = &Dice{1, 4, 0}
+var D6 = &Dice{1, 6, 0}
+var D8 = &Dice{1, 8, 0}
+var D10 = &Dice{1, 10, 0}
+var D12 = &Dice{1, 12, 0}
+var D20 = &Dice{1, 20, 0}
+var D100 = &Dice{1, 100, 0}
+
 type Dice struct {
 	Num   uint
 	Sides uint

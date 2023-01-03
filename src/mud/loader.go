@@ -46,7 +46,7 @@ func LoadEntities(w *World, path string) error {
 
 	for _, cfg := range cfgList {
 		cfg.Init()
-		w.AddEntityConfig(&cfg)
+		w.AddEntityConfig(cfg)
 	}
 
 	log.Printf("loaded %d entities from %s", len(cfgList), path)

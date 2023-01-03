@@ -55,65 +55,64 @@ func init() {
 func DoAttack(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 1:
-		sendIfPlayer(e, "What do you want to attack?")
+		SendToPlayer(e, "What do you want to attack?")
 	default:
 		r := w.rooms[e.data.RoomId]
 		tgt, ok := TryGetEntityByKeywords(lowerTokens(tokens[1:]), r.entities, e)
 		if !ok {
-			sendIfPlayer(e, "They don't seem to be here...")
+			SendToPlayer(e, "They don't seem to be here...")
 			return
 		}
 		if tgt == e {
-			sendIfPlayer(e, "Stop hitting yourself!")
-			r.SendAllExcept(e.player.id, "%s hits %sself??", e.Name(), e.player.data.Gender.GetObjectPronoun())
+			SendToPlayer(e, "Stop hitting yourself!")
+			BroadcastToRoomExcept(r, e, "%s hits %sself??", e.Name(), e.player.data.Gender.GetObjectPronoun())
 			return
 		}
-		// TODO MORE COMBAT
-		sendIfPlayer(e, "You hit %s!", tgt.Name())
+		performAttack(e, w, tgt)
 	}
 }
 
 func DoSay(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
-		sendIfPlayer(e, "What do you want to say?")
+		SendToPlayer(e, "What do you want to say?")
 	}
 	msg := strings.Join(tokens[1:], " ")
 
-	sendIfPlayer(e, "Ok.")
+	SendToPlayer(e, "Ok.")
 
 	r := w.rooms[e.data.RoomId]
-	r.SendAllExcept(e.player.id, "%s says, '%s'", e.Name(), msg)
+	BroadcastToRoomExcept(r, e, "%s says, '%s'", e.Name(), msg)
 }
 
 func DoYell(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
-		sendIfPlayer(e, "What do you want to yell?")
+		SendToPlayer(e, "What do you want to yell?")
 	}
 	msg := strings.Join(tokens[1:], " ")
 
-	sendIfPlayer(e, "Ok.")
-	w.SendAllExcept(e.player.id, "%s yells, '%s'", e.Name(), msg)
+	SendToPlayer(e, "Ok.")
+	BroadcastToWorldExcept(w, e, "%s yells, '%s'", e.Name(), msg)
 }
 
 func DoWhisper(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 1:
-		sendIfPlayer(e, "What do you want to whisper to who?")
+		SendToPlayer(e, "What do you want to whisper to who?")
 	case 2:
-		sendIfPlayer(e, "What do you want to whisper to %s?", tokens[1])
+		SendToPlayer(e, "What do you want to whisper to %s?", tokens[1])
 	default:
 		name := tokens[1]
 		msg := strings.Join(tokens[2:], " ")
 		if name == e.Name() {
-			sendIfPlayer(e, "You try whispering to yourself")
+			SendToPlayer(e, "You try whispering to yourself")
 			return
 		} else if te, ok := TryGetEntityByName(name, w.entities); ok {
-			sendIfPlayer(e, "Ok.")
+			SendToPlayer(e, "Ok.")
 			if te.player != nil {
-				sendIfPlayer(te, "%s whispers to you, %s", e.Name(), msg)
+				SendToPlayer(te, "%s whispers to you, %s", e.Name(), msg)
 			}
 		} else {
-			sendIfPlayer(e, "No player named %s is online", name)
+			SendToPlayer(e, "No player named %s is online", name)
 		}
 	}
 }
@@ -122,12 +121,12 @@ func DoLook(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 	switch len(tokens) {
 	case 0, 1:
-		sendIfPlayer(e, r.Describe(e))
+		SendToPlayer(e, r.Describe(e))
 	default:
 		if desc, ok := tryPerceive(SenseLook, lowerTokens(tokens[1:]), e, w); ok {
-			sendIfPlayer(e, desc)
+			SendToPlayer(e, desc)
 		} else {
-			sendIfPlayer(e, "You don't see that here.")
+			SendToPlayer(e, "You don't see that here.")
 		}
 	}
 }
@@ -135,12 +134,12 @@ func DoLook(e *Entity, w *World, tokens []string) {
 func DoListen(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		sendIfPlayer(e, "What do you want to listen to?")
+		SendToPlayer(e, "What do you want to listen to?")
 	default:
 		if desc, ok := tryPerceive(SenseListen, lowerTokens(tokens[1:]), e, w); ok {
-			sendIfPlayer(e, desc)
+			SendToPlayer(e, desc)
 		} else {
-			sendIfPlayer(e, "You don't hear that here.")
+			SendToPlayer(e, "You don't hear that here.")
 		}
 	}
 }
@@ -148,12 +147,12 @@ func DoListen(e *Entity, w *World, tokens []string) {
 func DoTaste(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		sendIfPlayer(e, "What do you want to taste?")
+		SendToPlayer(e, "What do you want to taste?")
 	default:
 		if desc, ok := tryPerceive(SenseTaste, lowerTokens(tokens[1:]), e, w); ok {
-			sendIfPlayer(e, desc)
+			SendToPlayer(e, desc)
 		} else {
-			sendIfPlayer(e, "You don't want to taste that!")
+			SendToPlayer(e, "You don't want to taste that!")
 		}
 	}
 }
@@ -161,12 +160,12 @@ func DoTaste(e *Entity, w *World, tokens []string) {
 func DoTouch(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		sendIfPlayer(e, "What do you want to touch?")
+		SendToPlayer(e, "What do you want to touch?")
 	default:
 		if desc, ok := tryPerceive(SenseTouch, lowerTokens(tokens[1:]), e, w); ok {
-			sendIfPlayer(e, desc)
+			SendToPlayer(e, desc)
 		} else {
-			sendIfPlayer(e, "You don't want to touch that!")
+			SendToPlayer(e, "You don't want to touch that!")
 		}
 	}
 }
@@ -174,12 +173,12 @@ func DoTouch(e *Entity, w *World, tokens []string) {
 func DoSmell(e *Entity, w *World, tokens []string) {
 	switch len(tokens) {
 	case 0, 1:
-		sendIfPlayer(e, "What do you want to smell?")
+		SendToPlayer(e, "What do you want to smell?")
 	default:
 		if desc, ok := tryPerceive(SenseSmell, lowerTokens(tokens[1:]), e, w); ok {
-			sendIfPlayer(e, desc)
+			SendToPlayer(e, desc)
 		} else {
-			sendIfPlayer(e, "You don't want to smell that!")
+			SendToPlayer(e, "You don't want to smell that!")
 		}
 	}
 }
@@ -194,63 +193,17 @@ func DoWho(e *Entity, w *World, _ []string) {
 			lines = append(lines, fmt.Sprintf("\t%s", e2.player.data.Name))
 		}
 	}
-	sendIfPlayer(e, strings.Join(lines, utils.NewLine))
+	SendToPlayer(e, strings.Join(lines, utils.NewLine))
 }
 
 func DoMove(e *Entity, w *World, tokens []string) {
 	cmd := tokens[0]
 	dir, err := ParseDirection(cmd)
 	if err != nil {
-		sendIfPlayer(e, "%s isn't a direction!", cmd)
+		SendToPlayer(e, "%s isn't a direction!", cmd)
 	}
 
-	_ = PerformMove(e, w, dir)
-}
-
-func PerformMove(e *Entity, w *World, dir Direction) bool {
-	if e.data.Stats.Mov <= 0 {
-		sendIfPlayer(e, "You're way too tired...")
-		return false
-	}
-
-	curRoom := w.rooms[e.data.RoomId]
-
-	nextRoomId, ok := (*curRoom.cfg.Exits)[dir]
-	if !ok {
-		sendIfPlayer(e, "Can't go that way!")
-		return false
-	}
-
-	nextRoom := w.rooms[nextRoomId]
-	curRoom.RemoveEntity(e)
-	nextRoom.AddEntity(e)
-
-	fromDirStr := ""
-	fromDir, err := dir.Reverse()
-	if err != nil {
-		fromDirStr = "somewhere"
-	} else {
-		fromDirStr = fromDir.String()
-	}
-
-	if e.player != nil {
-		curRoom.SendAllExcept(e.player.id, "%s leaves %s", e.Name(), dir.String())
-	} else {
-		curRoom.SendAll("%s wanders %s", e.Name(), dir.String())
-	}
-
-	if e.player != nil {
-		nextRoom.SendAllExcept(e.player.id, "%s enters from the %s", e.Name(), fromDirStr)
-	} else {
-		nextRoom.SendAll("%s wanders in from the %s", e.Name(), fromDirStr)
-	}
-
-	e.data.Stats.Mov--
-
-	if e.player != nil {
-		DoLook(e, w, nil)
-	}
-	return true
+	_ = performMove(e, w, dir)
 }
 
 func DoCommands(e *Entity, _ *World, _ []string) {
@@ -268,12 +221,12 @@ func DoCommands(e *Entity, _ *World, _ []string) {
 		commands = append(commands, fmt.Sprintf("\tUsage: %s", cmd.usage))
 	}
 
-	sendIfPlayer(e, strings.Join(commands, utils.NewLine))
+	SendToPlayer(e, strings.Join(commands, utils.NewLine))
 }
 
 func DoSave(e *Entity, w *World, _ []string) {
 	w.SavePlayerCharacter(e.player.id)
-	sendIfPlayer(e, "Saved game.")
+	SendToPlayer(e, "Saved game.")
 }
 
 func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) (string, bool) {
@@ -302,9 +255,52 @@ func lowerTokens(tokens []string) []string {
 	return tokens
 }
 
-func sendIfPlayer(e *Entity, format string, a ...any) {
-	if e.player == nil {
-		return
+func performMove(e *Entity, w *World, dir Direction) bool {
+	if e.data.Stats.Mov <= 0 {
+		SendToPlayer(e, "You're way too tired...")
+		return false
 	}
-	e.player.Send(format, a...)
+	if e.combat != nil {
+		SendToPlayer(e, "You can't do that while you're fighting!")
+		return false
+	}
+
+	curRoom := w.rooms[e.data.RoomId]
+
+	nextRoomId, ok := (*curRoom.cfg.Exits)[dir]
+	if !ok {
+		SendToPlayer(e, "Can't go that way!")
+		return false
+	}
+
+	nextRoom := w.rooms[nextRoomId]
+	curRoom.RemoveEntity(e)
+	nextRoom.AddEntity(e)
+
+	fromDirStr := ""
+	fromDir, err := dir.Reverse()
+	if err != nil {
+		fromDirStr = "somewhere"
+	} else {
+		fromDirStr = fromDir.String()
+	}
+
+	if e.player != nil {
+		BroadcastToRoomExcept(curRoom, e, "%s leaves %s", e.Name(), dir.String())
+	} else {
+		BroadcastToRoom(curRoom, "%s wanders %s", e.Name(), dir.String())
+	}
+
+	if e.player != nil {
+		BroadcastToRoomExcept(nextRoom, e, "%s enters from the %s", e.Name(), fromDirStr)
+	} else {
+		BroadcastToRoom(nextRoom, "%s wanders in from the %s", e.Name(), fromDirStr)
+	}
+
+	e.data.Stats.Mov--
+
+	if e.player != nil {
+		DoLook(e, w, nil)
+	}
+	return true
 }

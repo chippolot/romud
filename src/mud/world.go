@@ -12,10 +12,11 @@ type World struct {
 	entityConfigs map[string]*EntityConfig
 	rooms         map[RoomId]*Room
 	entryRoomId   RoomId
+	inCombat      CombatList
 }
 
 func NewWorld(db Database) *World {
-	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0}
+	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, make(CombatList, 0)}
 }
 
 func (w *World) EntryRoomId() RoomId {
@@ -85,7 +86,7 @@ func (w *World) AddEntity(e *Entity, roomId RoomId) {
 
 	if e.player != nil {
 		w.players[e.player.id] = e
-		w.SendAllExcept(e.player.id, "%s Joins", e.Name())
+		BroadcastToWorldExcept(w, e, "%s Joins", e.Name())
 		e.player.Enqueue(Preamble)
 
 		DoLook(e, w, nil)
@@ -111,7 +112,7 @@ func (w *World) RemoveEntity(eid EntityId) {
 
 	if e.player != nil {
 		delete(w.players, e.player.id)
-		w.SendAllExcept(e.player.id, "%s Leaves", e.Name())
+		BroadcastToWorldExcept(w, e, "%s Leaves", e.Name())
 	}
 }
 
@@ -121,20 +122,6 @@ func (w *World) AddRoom(r *Room) *Room {
 		w.entryRoomId = r.cfg.Id
 	}
 	return r
-}
-
-func (w *World) SendAll(format string, a ...any) {
-	for _, e := range w.players {
-		e.player.Send(format, a...)
-	}
-}
-
-func (w *World) SendAllExcept(pid PlayerId, format string, a ...any) {
-	for pid2, e := range w.players {
-		if pid != pid2 {
-			e.player.Send(format, a...)
-		}
-	}
 }
 
 func (w *World) OnPlayerInput(p *Player, input string) StateId {
@@ -162,6 +149,6 @@ func (w *World) OnPlayerInput(p *Player, input string) StateId {
 		}
 	}
 
-	p.Send("Huh??")
+	SendToPlayer(e, "Huh??")
 	return 0
 }

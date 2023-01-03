@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type UpdateSystem struct {
@@ -26,7 +27,8 @@ func (s *UpdateSystem) Update(w *World) {
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
 		{restoreStats, time.Second * 10, time.Now()},
-		{npcWander, time.Second * 3, time.Now()},
+		{wanderNpcs, time.Second * 3, time.Now()},
+		{runCombat, time.Second, time.Now()},
 	}
 
 	for {
@@ -41,22 +43,18 @@ func restoreStats(w *World) {
 	for _, e := range w.entities {
 		if e.data.Stats.HP < e.data.Stats.MaxHP {
 			hpGain := 3 // TODO Improve this
-			e.data.Stats.HP = minInts(e.data.Stats.HP+hpGain, e.data.Stats.MaxHP)
-			if e.player != nil {
-				e.player.Send("")
-			}
+			e.data.Stats.HP = utils.MinInts(e.data.Stats.HP+hpGain, e.data.Stats.MaxHP)
+			SendToPlayer(e, "")
 		}
 		if e.data.Stats.Mov < e.data.Stats.MaxMov {
 			MovGain := 3 // TODO Improve this
-			e.data.Stats.Mov = minInts(e.data.Stats.Mov+MovGain, e.data.Stats.MaxMov)
-			if e.player != nil {
-				e.player.Send("")
-			}
+			e.data.Stats.Mov = utils.MinInts(e.data.Stats.Mov+MovGain, e.data.Stats.MaxMov)
+			SendToPlayer(e, "")
 		}
 	}
 }
 
-func npcWander(w *World) {
+func wanderNpcs(w *World) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -73,6 +71,33 @@ func npcWander(w *World) {
 			continue
 		}
 
-		PerformMove(e, w, dir)
+		performMove(e, w, dir)
 	}
+}
+
+func runCombat(w *World) {
+	now := time.Now()
+	i := 0
+	for _, e := range w.inCombat {
+		if !e.combat.Valid(e) {
+			e.combat = nil
+			continue
+		}
+
+		// Copy valid entries to front of list
+		w.inCombat[i] = e
+		i++
+
+		nextAttack := e.combat.nextAttack
+		if now.After(nextAttack) {
+			performAttack(e, w, e.combat.target)
+			e.combat.nextAttack = e.combat.nextAttack.Add(e.combat.AttackCooldown())
+		}
+	}
+
+	// Cull invalid entries
+	for j := i; j < len(w.inCombat); j++ {
+		w.inCombat[j] = nil
+	}
+	w.inCombat = w.inCombat[:i]
 }

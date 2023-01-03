@@ -21,10 +21,3 @@ func LoadFileBytes(path string) ([]byte, error) {
 	}
 	return bytes, nil
 }
-
-func minInts(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}

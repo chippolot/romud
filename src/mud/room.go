@@ -64,22 +64,6 @@ func (r *Room) IsExitOpen(dir Direction) bool {
 	return ok
 }
 
-func (r *Room) SendAll(format string, a ...any) {
-	for _, e := range r.entities {
-		if e.player != nil {
-			e.player.Send(format, a...)
-		}
-	}
-}
-
-func (r *Room) SendAllExcept(pid PlayerId, format string, a ...any) {
-	for _, e := range r.entities {
-		if e.player != nil && pid != e.player.id {
-			e.player.Send(format, a...)
-		}
-	}
-}
-
 func (r *Room) TryPerceive(sense SenseType, words []string) (string, bool) {
 	return r.cfg.Perceptibles.TryPerceive(sense, words)
 }

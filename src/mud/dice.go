@@ -29,6 +29,9 @@ func ParseDice(s string) (Dice, error) {
 }
 
 func (d *Dice) Roll() int {
+	if d == nil {
+		return 0
+	}
 	sum := 0
 	for i := 0; i < int(d.Num); i++ {
 		sum += rand.Intn(int(d.Sides)) + 1

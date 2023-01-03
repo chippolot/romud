@@ -17,7 +17,7 @@ var entityIdCounter EntityId
 
 type EntityId uint32
 
-type EntityConfigList []EntityConfig
+type EntityConfigList []*EntityConfig
 
 type EntityConfig struct {
 	Key          string
@@ -44,17 +44,20 @@ type EntityData struct {
 	Stats  *StatsData
 }
 
+type EntityList []*Entity
+
 type Entity struct {
 	id     EntityId
 	cfg    *EntityConfig
 	data   *EntityData
 	player *Player
+	combat *CombatData
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
-	return &Entity{eid, cfg, newEntityData(cfg), nil}
+	return &Entity{eid, cfg, newEntityData(cfg), nil, nil}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
@@ -66,6 +69,9 @@ func (e *Entity) Name() string {
 		return e.player.data.Name
 	}
 	return e.cfg.Name
+}
+func (e *Entity) Dead() bool {
+	return e.data.Stats.HP <= 0
 }
 
 func (e *Entity) Matches(s string) bool {

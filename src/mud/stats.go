@@ -1,20 +1,22 @@
 package mud
 
 type StatsConfig struct {
-	HP    Dice
-	AC    int
-	Speed int
-	Str   int
-	Dex   int
-	Con   int
-	Int   int
-	Wis   int
-	Cha   int
+	HP     Dice
+	AC     int
+	Attack Dice
+	Speed  int
+	Str    int
+	Dex    int
+	Con    int
+	Int    int
+	Wis    int
+	Cha    int
 }
 
 type StatsData struct {
 	HP     int
 	MaxHP  int
+	Attack Dice
 	AC     int
 	Mov    int
 	MaxMov int
@@ -31,6 +33,7 @@ func newStatsData(cfg *StatsConfig) *StatsData {
 	return &StatsData{
 		HP:     maxHP,
 		MaxHP:  maxHP,
+		Attack: cfg.Attack,
 		AC:     cfg.AC,
 		Mov:    cfg.Speed,
 		MaxMov: cfg.Speed,

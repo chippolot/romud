@@ -12,11 +12,11 @@ type World struct {
 	entityConfigs map[string]*EntityConfig
 	rooms         map[RoomId]*Room
 	entryRoomId   RoomId
-	inCombat      CombatList
+	inCombat      *CombatList
 }
 
 func NewWorld(db Database) *World {
-	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, make(CombatList, 0)}
+	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, &CombatList{}}
 }
 
 func (w *World) EntryRoomId() RoomId {

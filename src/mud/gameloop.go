@@ -77,16 +77,14 @@ func wanderNpcs(w *World) {
 
 func runCombat(w *World) {
 	now := time.Now()
-	i := 0
-	for _, e := range w.inCombat {
+	for i := w.inCombat.Head; i != nil; i = i.Next {
+		e := i.Value
+
 		if !e.combat.Valid(e) {
 			e.combat = nil
+			w.inCombat.Remove(e)
 			continue
 		}
-
-		// Copy valid entries to front of list
-		w.inCombat[i] = e
-		i++
 
 		nextAttack := e.combat.nextAttack
 		if now.After(nextAttack) {
@@ -94,10 +92,4 @@ func runCombat(w *World) {
 			e.combat.nextAttack = e.combat.nextAttack.Add(e.combat.AttackCooldown())
 		}
 	}
-
-	// Cull invalid entries
-	for j := i; j < len(w.inCombat); j++ {
-		w.inCombat[j] = nil
-	}
-	w.inCombat = w.inCombat[:i]
 }

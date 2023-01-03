@@ -28,7 +28,9 @@ func (c *CombatData) AttackCooldown() time.Duration {
 	return time.Second * 2
 }
 
-type CombatList EntityList
+type CombatList struct {
+	utils.List[*Entity]
+}
 
 func (c *CombatList) StartCombat(e *Entity, tgt *Entity) {
 	// Already fighting!
@@ -39,9 +41,9 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) {
 
 	if e.combat != nil {
 		e.combat.target = tgt
-	} else {
+	} else if !c.Contains(e) {
 		e.combat = &CombatData{tgt, time.Now()}
-		*c = utils.AddUnique(*c, e)
+		c.Add(e)
 	}
 }
 
@@ -50,11 +52,7 @@ func (c *CombatList) EndCombat(e *Entity) {
 		return
 	}
 	log.Printf("%s ending combat", e.Name())
-	idx := utils.FindIndex(*c, e)
-	if idx == -1 {
-		return
-	}
-	*c = utils.SwapDelete(*c, idx)
+	c.Remove(e)
 	e.combat = nil
 }
 

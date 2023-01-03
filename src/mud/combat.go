@@ -37,6 +37,10 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) {
 	if e.combat != nil && e.combat.target == tgt {
 		return
 	}
+	// Can't fight when you're dead!
+	if e.Dead() || tgt.Dead() {
+		return
+	}
 	log.Printf("%s starting combat with %s", e.Name(), tgt.Name())
 
 	if e.combat != nil {

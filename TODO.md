@@ -29,19 +29,20 @@
     [x] Looking At
 [x] Wandering Mobs
 [x] Remove Disconnected entities!
+[x] Log Flags
 [] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
     [x] Combat prompt
     [x] Roll for damage / hits
     [x] Critical hits
+    [x] End combat if stunned
     [] End of battle message
+    [] KOed and Death
     [] XP gain
     [] Corpses
     [] Hit and damage bonuses
-    [] KOed and Death
     [] Damage dependent messages
-[x] Log Flags
 [] Looking at players
 [] Positions
 [] Doors

@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/chippolot/go-mud/src/bits"
-	"github.com/chippolot/go-mud/src/utils"
 )
 
 type UpdateSystem struct {
@@ -48,19 +47,34 @@ func restoreStats(w *World) {
 		}
 
 		// Dead entities don't heal
-		if e.Dead() {
+		if e.data.Stats.Condition() == Cnd_Dead {
 			continue
 		}
 
-		if e.data.Stats.HP < e.data.Stats.MaxHP {
-			hpGain := 3 // TODO Improve this
-			e.data.Stats.HP = utils.MinInts(e.data.Stats.HP+hpGain, e.data.Stats.MaxHP)
-			SendToPlayer(e, "")
+		oldHP := e.data.Stats.HP
+		oldMov := e.data.Stats.Mov
+
+		var hpGain, movGain int
+		var message string
+
+		switch e.data.Stats.Condition() {
+		case Cnd_Healthy, Cnd_Stunned:
+			hpGain = 3  // TODO Improve this
+			movGain = 3 // TODO Improve this
+		case Cnd_Incapacitated:
+			hpGain = -1
+			message = "<c red>You are bleeding...</c>"
+		case Cnd_MortallyWounded:
+			hpGain = -2
+			message = "<c red>You are bleeding badly and will die soon!</c>"
 		}
-		if e.data.Stats.Mov < e.data.Stats.MaxMov {
-			MovGain := 3 // TODO Improve this
-			e.data.Stats.Mov = utils.MinInts(e.data.Stats.Mov+MovGain, e.data.Stats.MaxMov)
-			SendToPlayer(e, "")
+
+		e.data.Stats.AddHP(hpGain)
+		e.data.Stats.AddMov(movGain)
+
+		// Force a new prompt if something changed
+		if oldHP != e.data.Stats.HP || oldMov != e.data.Stats.Mov {
+			SendToPlayer(e, message)
 		}
 	}
 }

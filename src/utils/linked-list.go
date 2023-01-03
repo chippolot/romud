@@ -28,6 +28,8 @@ func (l *List[T]) Remove(value T) {
 		if i.Value == value {
 			if prev != nil {
 				prev.Next = i.Next
+			} else {
+				l.Head = i.Next
 			}
 			i.Next = nil
 			return

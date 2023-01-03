@@ -1,11 +1,13 @@
 package mud
 
+import "github.com/chippolot/go-mud/src/utils"
+
 const (
-	Cnd_Healthy Condition = iota
-	Cnd_Stunned
-	Cnd_Incapacitated
+	Cnd_Dead Condition = iota
 	Cnd_MortallyWounded
-	Cnd_Dead
+	Cnd_Incapacitated
+	Cnd_Stunned
+	Cnd_Healthy
 )
 
 type Condition int
@@ -54,6 +56,14 @@ func newStatsData(cfg *StatsConfig) *StatsData {
 	}
 }
 
+func (s *StatsData) AddHP(delta int) {
+	s.HP = utils.MinInts(s.MaxHP, s.HP+delta)
+}
+
+func (s *StatsData) AddMov(delta int) {
+	s.Mov = utils.MaxInts(0, utils.MinInts(s.MaxMov, s.Mov+delta))
+}
+
 func (s *StatsData) Condition() Condition {
 	if s.HP < -10 {
 		return Cnd_Dead
@@ -84,13 +94,13 @@ func (s *StatsData) ConditionShortString() string {
 		} else if pct >= 0.85 {
 			return "<c green>a few scratches</c>"
 		} else if pct >= 0.70 {
-			return "<c yellow>bumps and bruises</c>"
+			return "<c green>bumps and bruises</c>"
 		} else if pct >= 0.50 {
 			return "<c yellow>roughed up</c>"
 		} else if pct >= 0.30 {
-			return "<c magenta>bleeding</c>"
+			return "<c yellow>bleeding</c>"
 		} else if pct >= 0.15 {
-			return "<c magenta>bleeding heavily</c>"
+			return "<c yellow>bleeding heavily</c>"
 		} else {
 			return "<c red>awful condition</c>"
 		}

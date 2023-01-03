@@ -264,8 +264,9 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		SendToPlayer(e, "You can't do that while you're fighting!")
 		return false
 	}
-	if e.Dead() {
+	if e.data.Stats.Condition() < Cnd_Healthy {
 		SendToPlayer(e, "You're not feeling up for that!")
+		return false
 	}
 
 	curRoom := w.rooms[e.data.RoomId]
@@ -300,7 +301,7 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		BroadcastToRoom(nextRoom, "%s wanders in from the %s", e.Name(), fromDirStr)
 	}
 
-	e.data.Stats.Mov--
+	e.data.Stats.AddMov(-1)
 
 	if e.player != nil {
 		DoLook(e, w, nil)

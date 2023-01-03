@@ -72,10 +72,6 @@ func (e *Entity) Name() string {
 	return e.cfg.Name
 }
 
-func (e *Entity) Dead() bool {
-	return e.data.Stats.HP <= 0
-}
-
 func (e *Entity) Matches(s string) bool {
 	if strings.EqualFold(e.Name(), s) {
 		return true

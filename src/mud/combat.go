@@ -20,8 +20,8 @@ func (c *CombatData) Valid(e *Entity) bool {
 	return c != nil &&
 		c.target != nil &&
 		e.data.RoomId == c.target.data.RoomId &&
-		!e.Dead() &&
-		!c.target.Dead()
+		e.data.Stats.Condition() > Cnd_Stunned &&
+		c.target.data.Stats.Condition() != Cnd_Dead
 }
 
 func (c *CombatData) AttackCooldown() time.Duration {
@@ -38,7 +38,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) {
 		return
 	}
 	// Can't fight when you're dead!
-	if e.Dead() || tgt.Dead() {
+	if e.data.Stats.Condition() <= Cnd_Stunned || tgt.data.Stats.Condition() == Cnd_Dead {
 		return
 	}
 	log.Printf("%s starting combat with %s", e.Name(), tgt.Name())
@@ -63,6 +63,10 @@ func (c *CombatList) EndCombat(e *Entity) {
 func performAttack(e *Entity, w *World, tgt *Entity) {
 	if e.data.RoomId != tgt.data.RoomId {
 		log.Printf("Trying to hit target %d in different room!", tgt.id)
+		return
+	}
+	if e.data.Stats.Condition() <= Cnd_Stunned {
+		SendToPlayer(e, "You're in no condition to fight!")
 		return
 	}
 
@@ -109,10 +113,9 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 
 func applyDamage(tgt *Entity, w *World, from *Entity, dam int) int {
 	// Start fighting damage source
-	if from != nil {
+	if from != nil && from.data.Stats.Condition() > Cnd_Stunned {
 		w.inCombat.StartCombat(tgt, from)
 	}
-	dam = utils.MinInts(dam, tgt.data.Stats.HP)
 	tgt.data.Stats.HP = tgt.data.Stats.HP - dam
 	// TODO MORE
 	return dam

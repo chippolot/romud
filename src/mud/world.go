@@ -150,19 +150,10 @@ func (w *World) OnPlayerInput(p *Player, input string) StateId {
 		return 0
 	}
 
-	cmd := strings.ToLower(tokens[0])
-	if cmd == "quit" {
+	success := ProcessCommand(e, w, tokens)
+	if tokens[0] == "quit" && success {
 		return LoggedOutStateId
 	}
 
-	tokens[0] = cmd
-	if cmdDesc, ok := CommandsLookup[cmd]; ok {
-		if cmdDesc.fn != nil {
-			cmdDesc.fn(e, w, tokens[:])
-			return 0
-		}
-	}
-
-	SendToPlayer(e, "Huh??")
 	return 0
 }

@@ -43,6 +43,13 @@
     [] Corpses
     [] Hit and damage bonuses
     [] Damage dependent messages
+    [] Look descriptions
+[] Positions
+    [] Limit actions
+    [] Rest + Sleep actions
+        [] Restore stats
+    [] Look descriptions
+    [] Combat knockdown
 [] Looking at players
 [] Positions
 [] Doors

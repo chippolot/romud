@@ -11,10 +11,13 @@ import (
 type ActionFunc func(e *Entity, world *World, tokens []string)
 
 type CommandDesc struct {
-	fn      ActionFunc
-	aliases []string
-	desc    string
-	usage   string
+	fn                ActionFunc
+	aliases           []string
+	desc              string
+	usage             string
+	allowDuringCombat bool
+	minCondition      Condition
+	minPosition       Position
 }
 
 type CommandMap map[string]*CommandDesc
@@ -25,20 +28,20 @@ var Commands CommandList
 
 func init() {
 	Commands = []*CommandDesc{
-		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat"},
-		{DoSay, []string{"say"}, "Say something in the current room", "say hi"},
-		{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!"},
-		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!"},
-		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat"},
-		{DoListen, []string{"listen"}, "Describes the sound of an object", "hear cat"},
-		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo"},
-		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo"},
-		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo"},
-		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north"},
-		{DoWho, []string{"who"}, "Lists all online players", "who"},
-		{DoCommands, []string{"commands"}, "Lists available commands", "commands"},
-		{DoSave, []string{"save"}, "Saves the game", "save"},
-		{nil, []string{"quit"}, "Quits the game", "quit"},
+		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
+		{DoSay, []string{"say"}, "Say something in the current room", "say hi", true, Cnd_Healthy, Pos_Prone},
+		{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!", true, Cnd_Healthy, Pos_Prone},
+		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
+		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
+		{DoListen, []string{"listen"}, "Describes the sound of an object", "hear cat", false, Cnd_Healthy, Pos_Prone},
+		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo", false, Cnd_Healthy, Pos_Sitting},
+		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo", false, Cnd_Healthy, Pos_Sitting},
+		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo", false, Cnd_Healthy, Pos_Sitting},
+		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
+		{DoWho, []string{"who"}, "Lists all online players", "who", true, 0, 0},
+		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
+		{DoSave, []string{"save"}, "Saves the game", "save", false, Cnd_Healthy, 0},
+		{DoQuit, []string{"quit"}, "Quits the game", "quit", false, 0, 0}, // TODO handle this here!
 	}
 
 	CommandsLookup = make(CommandMap)
@@ -50,6 +53,23 @@ func init() {
 			CommandsLookup[alias] = cmd
 		}
 	}
+}
+
+func ProcessCommand(e *Entity, w *World, tokens []string) bool {
+	cmd := strings.ToLower(tokens[0])
+
+	tokens[0] = cmd
+	if cmdDesc, ok := CommandsLookup[cmd]; ok {
+		// TODO Check if command can be performed in current state
+
+		if cmdDesc.fn != nil {
+			cmdDesc.fn(e, w, tokens[:])
+			return true
+		}
+	}
+
+	SendToPlayer(e, "Huh??")
+	return false
 }
 
 func DoAttack(e *Entity, w *World, tokens []string) {
@@ -227,6 +247,9 @@ func DoCommands(e *Entity, _ *World, _ []string) {
 func DoSave(e *Entity, w *World, _ []string) {
 	w.SavePlayerCharacter(e.player.id)
 	SendToPlayer(e, "Saved game.")
+}
+
+func DoQuit(e *Entity, w *World, _ []string) {
 }
 
 func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) (string, bool) {

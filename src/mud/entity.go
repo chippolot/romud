@@ -48,17 +48,18 @@ type EntityData struct {
 type EntityList []*Entity
 
 type Entity struct {
-	id     EntityId
-	cfg    *EntityConfig
-	data   *EntityData
-	player *Player
-	combat *CombatData
+	id       EntityId
+	cfg      *EntityConfig
+	data     *EntityData
+	player   *Player
+	combat   *CombatData
+	position Position
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
-	return &Entity{eid, cfg, newEntityData(cfg), nil, nil}
+	return &Entity{eid, cfg, newEntityData(cfg), nil, nil, Pos_Standing}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
@@ -137,3 +138,12 @@ func (pp *EntityPromptProvider) Prompt() string {
 	}
 	return prompt
 }
+
+type Position int
+
+const (
+	Pos_Sleeping Position = iota
+	Pos_Prone
+	Pos_Sitting
+	Pos_Standing
+)

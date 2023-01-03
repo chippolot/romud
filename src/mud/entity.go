@@ -11,7 +11,7 @@ import (
 const PlayerEntityKey = "_player"
 
 const (
-	EFlag_Stationary bits.Bits = iota << 1
+	EFlag_Stationary bits.Bits = 1 << iota
 )
 
 var entityIdCounter EntityId

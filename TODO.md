@@ -28,6 +28,7 @@
     [x] Viewing in Room
     [x] Looking At
 [x] Wandering Mobs
+[x] Remove Disconnected entities!
 [] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -39,8 +40,7 @@
     [] Hit and damage bonuses
     [] KOed and Death
     [] Damage depedent messages
-[] Remove Disconnected entities!
-[] Log Flags
+[x] Log Flags
 [] Looking at players
 [] Positions
 [] Doors

@@ -77,12 +77,12 @@ func wanderNpcs(w *World) {
 
 func runCombat(w *World) {
 	now := time.Now()
-	for i := w.inCombat.Head; i != nil; i = i.Next {
+	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
 		if !e.combat.Valid(e) {
-			e.combat = nil
-			w.inCombat.Remove(e)
+			i = i.Next
+			w.inCombat.EndCombat(e)
 			continue
 		}
 
@@ -91,5 +91,6 @@ func runCombat(w *World) {
 			performAttack(e, w, e.combat.target)
 			e.combat.nextAttack = e.combat.nextAttack.Add(e.combat.AttackCooldown())
 		}
+		i = i.Next
 	}
 }

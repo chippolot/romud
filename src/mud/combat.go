@@ -67,8 +67,12 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 	var dam int
 
 	// Roll to hit
-	hit := D20.Roll() + GetAbilityModifier(e.data.Stats.Str)
-	if hit <= tgt.cfg.Stats.AC {
+	hitBase := D20.Roll()
+	hitMod := GetAbilityModifier(e.data.Stats.Str)
+	hitProf := 3 // TODO Real proficiency bonus here
+	hit := hitBase + hitMod + hitProf
+	log.Printf("HitRoll: %d + %d + %d = %d >? %d", hitBase, hitMod, hitProf, hit, tgt.data.Stats.AC)
+	if hit <= tgt.data.Stats.AC {
 		dam = 0
 	} else {
 		// Roll for damage

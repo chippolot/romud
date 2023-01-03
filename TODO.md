@@ -35,6 +35,7 @@
     [] KOed and Death
     [] Better ranging and ending combat
     [] Damage depedent messages
+[] Log Flags
 [] Looking at players
 [] Positions
 [] Doors

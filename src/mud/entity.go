@@ -147,3 +147,13 @@ const (
 	Pos_Sitting
 	Pos_Standing
 )
+
+func (p Position) InactionString() string {
+	switch p {
+	case Pos_Sleeping:
+		return "You're too busy dreaming"
+	case Pos_Prone, Pos_Sitting:
+		return "You'll have to get up first!"
+	}
+	return ""
+}

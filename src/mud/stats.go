@@ -2,16 +2,6 @@ package mud
 
 import "github.com/chippolot/go-mud/src/utils"
 
-const (
-	Cnd_Dead Condition = iota
-	Cnd_MortallyWounded
-	Cnd_Incapacitated
-	Cnd_Stunned
-	Cnd_Healthy
-)
-
-type Condition int
-
 type StatsConfig struct {
 	HP     Dice
 	AC     int
@@ -105,4 +95,26 @@ func (s *StatsData) ConditionShortString() string {
 			return "<c red>awful condition</c>"
 		}
 	}
+}
+
+const (
+	Cnd_Dead Condition = iota
+	Cnd_MortallyWounded
+	Cnd_Incapacitated
+	Cnd_Stunned
+	Cnd_Healthy
+)
+
+type Condition int
+
+func (c Condition) InactionString() string {
+	switch c {
+	case Cnd_Dead:
+		return "If only you were alive..."
+	case Cnd_MortallyWounded, Cnd_Incapacitated:
+		return "You can't do that while you're bleeding out!"
+	case Cnd_Stunned:
+		return "You can't do that in your state!"
+	}
+	return ""
 }

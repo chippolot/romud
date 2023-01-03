@@ -44,12 +44,14 @@
     [] Hit and damage bonuses
     [] Damage dependent messages
     [] Look descriptions
+    [] Condition change messages
 [] Positions
-    [] Limit actions
+    [x] Limit actions
     [] Rest + Sleep actions
         [] Restore stats
     [] Look descriptions
     [] Combat knockdown
+[] Self status command
 [] Looking at players
 [] Positions
 [] Doors

@@ -61,6 +61,18 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 	tokens[0] = cmd
 	if cmdDesc, ok := CommandsLookup[cmd]; ok {
 		// TODO Check if command can be performed in current state
+		if e.combat != nil && !cmdDesc.allowDuringCombat {
+			SendToPlayer(e, "Things are a little too chaotic for that!")
+			return false
+		}
+		if e.position < cmdDesc.minPosition {
+			SendToPlayer(e, e.position.InactionString())
+			return false
+		}
+		if e.data.Stats.Condition() < cmdDesc.minCondition {
+			SendToPlayer(e, e.data.Stats.Condition().InactionString())
+			return false
+		}
 
 		if cmdDesc.fn != nil {
 			cmdDesc.fn(e, w, tokens[:])

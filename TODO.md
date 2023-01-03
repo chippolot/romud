@@ -30,11 +30,14 @@
 [x] Wandering Mobs
 [] Combat
     [x] Why isn't player dealing damage 
-    [] Improve prompts!
-    [] Roll for damage / hits
+    [x] Better ranging and ending combat
+    [x] Combat prompt
+    [x] Roll for damage / hits
+    [] End of battle message
+    [] XP gain
+    [] Corpses
     [] Hit and damage bonuses
     [] KOed and Death
-    [] Better ranging and ending combat
     [] Damage depedent messages
 [] Remove Disconnected entities!
 [] Log Flags

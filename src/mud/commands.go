@@ -264,6 +264,9 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		SendToPlayer(e, "You can't do that while you're fighting!")
 		return false
 	}
+	if e.Dead() {
+		SendToPlayer(e, "You're not feeling up for that!")
+	}
 
 	curRoom := w.rooms[e.data.RoomId]
 

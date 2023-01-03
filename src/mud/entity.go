@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 const PlayerEntityKey = "_player"
@@ -70,6 +71,28 @@ func (e *Entity) Name() string {
 	}
 	return e.cfg.Name
 }
+
+func (e *Entity) ConditionString() string {
+	pct := float32(e.data.Stats.HP) / float32(e.data.Stats.MaxHP)
+	if pct >= 0.95 {
+		return "<c green>excellent</c>"
+	} else if pct >= 0.85 {
+		return "<c green>a few scratches</c>"
+	} else if pct >= 0.70 {
+		return "<c yellow>small wounds</c>"
+	} else if pct >= 0.50 {
+		return "<c yellow>bleeding</c>"
+	} else if pct >= 0.30 {
+		return "<c magenta>wounded</c>"
+	} else if pct >= 0.15 {
+		return "<c magenta>heavy wounds</c>"
+	} else if pct > 0 {
+		return "<c red>awful condition</c>"
+	} else {
+		return "<c red>dead</c>"
+	}
+}
+
 func (e *Entity) Dead() bool {
 	return e.data.Stats.HP <= 0
 }
@@ -133,5 +156,9 @@ type EntityPromptProvider struct {
 }
 
 func (pp *EntityPromptProvider) Prompt() string {
-	return fmt.Sprintf("<<c green>%dh(%dH):%dv(%dMV)</c>> ", pp.character.data.Stats.HP, pp.character.data.Stats.MaxHP, pp.character.data.Stats.Mov, pp.character.data.Stats.MaxMov)
+	prompt := fmt.Sprintf("<<c green>%dh(%dH):%dv(%dMV)</c>> ", pp.character.data.Stats.HP, pp.character.data.Stats.MaxHP, pp.character.data.Stats.Mov, pp.character.data.Stats.MaxMov)
+	if pp.character.combat != nil {
+		prompt = fmt.Sprintf("%s%s<%s (%s)>:<%s (%s)> ", prompt, utils.NewLine, pp.character.Name(), pp.character.ConditionString(), pp.character.combat.target.Name(), pp.character.combat.target.ConditionString())
+	}
+	return prompt
 }

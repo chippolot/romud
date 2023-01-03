@@ -76,14 +76,14 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 		dam = 0
 	} else {
 		// Roll for damage
-		dam = e.data.Stats.attack.Roll()
+		dam = e.cfg.Stats.Attack.Roll()
 		dam = applyDamage(tgt, w, e, dam)
 	}
 
 	r := w.rooms[e.data.RoomId]
 	if dam > 0 {
-		SendToPlayer(e, "Your attack hits %s for %d damage!", tgt.cfg.Name, dam)
-		SendToPlayer(tgt, "%s's attack hits you for %d damage!", e.cfg.Name, dam)
+		SendToPlayer(e, "Your attack hits %s <c yellow>(%d)</c>", tgt.cfg.Name, dam)
+		SendToPlayer(tgt, "%s's attack hits you <c red>(%d)</c>", e.cfg.Name, dam)
 		BroadcastToRoomExcept2(r, e, tgt, "%s's attack misses %s", e.cfg.Name, tgt.cfg.Name)
 	} else {
 		SendToPlayer(e, "Your attack misses %s...", tgt.cfg.Name)

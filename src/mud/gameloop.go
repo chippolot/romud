@@ -91,18 +91,25 @@ func runCombat(w *World) {
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
+		// Pre attack cleanup
 		if !e.combat.Valid(e) {
 			i = i.Next
 			w.inCombat.EndCombat(e)
 			continue
 		}
 
+		// Handle attack
 		nextAttack := e.combat.nextAttack
 		if now.After(nextAttack) {
 			performAttack(e, w, e.combat.target)
 			e.combat.nextAttack = e.combat.nextAttack.Add(e.combat.AttackCooldown())
 		}
 		i = i.Next
+
+		// Post attack cleanup
+		if !e.combat.Valid(e) {
+			w.inCombat.EndCombat(e)
+		}
 	}
 }
 

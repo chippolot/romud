@@ -68,20 +68,30 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 
 	// Roll to hit
 	hitBase := D20.Roll()
+	critMiss := hitBase == 1
+	critHit := hitBase == 20
 	hitMod := GetAbilityModifier(e.data.Stats.Str)
 	hitProf := 3 // TODO Real proficiency bonus here
 	hit := hitBase + hitMod + hitProf
-	utils.DefaultLogger.LogF(LogFlag_DiceRolls, "HitRoll: (base: %d + mod: %d + prof: %d) hit: %d > AC: %d = %t", hitBase, hitMod, hitProf, hit, tgt.data.Stats.AC, hit > tgt.data.Stats.AC)
-	if hit < tgt.data.Stats.AC {
+
+	if (critMiss || hit < tgt.data.Stats.AC) && !critHit {
 		dam = 0
 	} else {
 		// Roll for damage
-		dam = e.cfg.Stats.Attack.Roll()
+		if critHit {
+			dam = e.cfg.Stats.Attack.CriticalRoll()
+		} else {
+			dam = e.cfg.Stats.Attack.Roll()
+		}
 		dam = applyDamage(tgt, w, e, dam)
 	}
 
 	r := w.rooms[e.data.RoomId]
 	if dam > 0 {
+		if critHit {
+			SendToPlayer(e, "<c yellow>Wow, that was strong!</c>")
+			SendToPlayer(tgt, "<c red>Ouch, that one stung!</c>")
+		}
 		SendToPlayer(e, "Your attack hits %s <c yellow>(%d)</c>", tgt.cfg.Name, dam)
 		SendToPlayer(tgt, "%s's attack hits you <c red>(%d)</c>", e.cfg.Name, dam)
 		BroadcastToRoomExcept2(r, e, tgt, "%s's attack misses %s", e.cfg.Name, tgt.cfg.Name)

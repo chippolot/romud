@@ -36,6 +36,17 @@ func ParseDice(s string) (Dice, error) {
 	return Dice{}, fmt.Errorf("failed to parse dice from string: %s", s)
 }
 
+func (d *Dice) CriticalRoll() int {
+	if d == nil {
+		return 0
+	}
+	sum := 0
+	for i := 0; i < int(d.Num*2); i++ {
+		sum += rand.Intn(int(d.Sides)) + 1
+	}
+	return sum + d.Plus
+}
+
 func (d *Dice) Roll() int {
 	if d == nil {
 		return 0

@@ -34,12 +34,13 @@
     [x] Better ranging and ending combat
     [x] Combat prompt
     [x] Roll for damage / hits
+    [x] Critical hits
     [] End of battle message
     [] XP gain
     [] Corpses
     [] Hit and damage bonuses
     [] KOed and Death
-    [] Damage depedent messages
+    [] Damage dependent messages
 [x] Log Flags
 [] Looking at players
 [] Positions

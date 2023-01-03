@@ -72,7 +72,7 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 	hitProf := 3 // TODO Real proficiency bonus here
 	hit := hitBase + hitMod + hitProf
 	log.Printf("HitRoll: %d + %d + %d = %d >? %d", hitBase, hitMod, hitProf, hit, tgt.data.Stats.AC)
-	if hit <= tgt.data.Stats.AC {
+	if hit < tgt.data.Stats.AC {
 		dam = 0
 	} else {
 		// Roll for damage

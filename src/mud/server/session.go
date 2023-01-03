@@ -49,7 +49,9 @@ func (s *Session) SetPromptProvider(pp PromptProvider) {
 }
 
 func (s *Session) Send(format string, a ...any) {
-	s.sendQueue.WriteNewLine()
+	if s.sendQueue.Len() == 0 {
+		s.sendQueue.WriteNewLine()
+	}
 	if len(a) == 0 {
 		s.sendQueue.WriteLine(format)
 	} else {

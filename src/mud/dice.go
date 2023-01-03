@@ -47,6 +47,10 @@ func (d *Dice) Roll() int {
 	return sum + d.Plus
 }
 
+func (d *Dice) String() string {
+	return fmt.Sprintf("%dd%d+%d", d.Num, d.Sides, d.Plus)
+}
+
 func (d *Dice) UnmarshalJSON(data []byte) (err error) {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {

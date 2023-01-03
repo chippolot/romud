@@ -29,6 +29,11 @@
     [x] Looking At
 [x] Wandering Mobs
 [] Combat
+    [] Why isn't player dealing damage
+    [] Better ranging and ending combat
+    [] KOed and Death
+    [] Roll for damage / hits
+    [] Damage depedent messages
 [] Looking at players
 [] Positions
 [] Doors

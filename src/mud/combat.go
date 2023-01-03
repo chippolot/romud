@@ -16,8 +16,8 @@ func (c *CombatData) Valid(e *Entity) bool {
 	return c != nil &&
 		c.target != nil &&
 		e.data.RoomId == c.target.data.RoomId &&
-		e.Dead() &&
-		c.target.Dead()
+		!e.Dead() &&
+		!c.target.Dead()
 }
 
 func (c *CombatData) AttackCooldown() time.Duration {
@@ -26,28 +26,26 @@ func (c *CombatData) AttackCooldown() time.Duration {
 
 type CombatList EntityList
 
-func (c *CombatList) StartCombat(e *Entity, target *Entity) {
+func (c *CombatList) StartCombat(e *Entity, tgt *Entity) {
 	// Already fighting!
-	if e.combat != nil && e.combat.target == target {
+	if e.combat != nil && e.combat.target == tgt {
 		return
 	}
+	log.Printf("%s starting combat with %s", e.Name(), tgt.Name())
 
 	if e.combat != nil {
-		e.combat.target = target
+		e.combat.target = tgt
 	} else {
-		e.combat = &CombatData{target, time.Now()}
+		e.combat = &CombatData{tgt, time.Now()}
 		*c = utils.AddUnique(*c, e)
 	}
-}
-
-func (c CombatList) InCombat(e *Entity) bool {
-	return utils.FindIndex(c, e) != -1
 }
 
 func (c *CombatList) EndCombat(e *Entity) {
 	if e.combat == nil {
 		return
 	}
+	log.Printf("%s ending combat", e.Name())
 	idx := utils.FindIndex(*c, e)
 	if idx == -1 {
 		return
@@ -61,6 +59,8 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 		log.Printf("Trying to hit target %d in different room!", tgt.id)
 		return
 	}
+
+	w.inCombat.StartCombat(e, tgt)
 	dam := applyDamage(tgt, w, e, e.data.Stats.Attack.Roll())
 
 	r := w.rooms[e.data.RoomId]
@@ -83,9 +83,6 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int) int {
 	}
 	dam = utils.MinInts(dam, tgt.data.Stats.HP)
 	tgt.data.Stats.HP = tgt.data.Stats.HP - dam
-	if tgt.Dead() {
-		w.inCombat.EndCombat(tgt)
-	}
 	// TODO MORE
 	return dam
 }

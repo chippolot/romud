@@ -48,7 +48,7 @@ func (s *Session) SetPromptProvider(pp PromptProvider) {
 	s.promptProvider = pp
 }
 
-func (s *Session) Enqueue(format string, a ...any) {
+func (s *Session) Send(format string, a ...any) {
 	s.sendQueue.WriteNewLine()
 	if len(a) == 0 {
 		s.sendQueue.WriteLine(format)
@@ -57,8 +57,10 @@ func (s *Session) Enqueue(format string, a ...any) {
 	}
 }
 
-func (s *Session) Send(format string, a ...any) {
-	s.Enqueue(format, a...)
+func (s *Session) Flush() {
+	if s.sendQueue.Len() == 0 {
+		return
+	}
 	s.sendQueue.WriteNewLine()
 	s.sendQueue.WriteString(s.promptProvider.Prompt())
 	str := processANSIColorCodes(s.sendQueue.String())

@@ -3,11 +3,14 @@ package mud
 import (
 	"log"
 	"strings"
+
+	"github.com/chippolot/go-mud/src/mud/server"
 )
 
 type World struct {
 	db            Database
 	players       map[PlayerId]*Entity
+	sessions      map[server.SessionId]*server.Session
 	entities      map[EntityId]*Entity
 	entityConfigs map[string]*EntityConfig
 	rooms         map[RoomId]*Room
@@ -16,7 +19,7 @@ type World struct {
 }
 
 func NewWorld(db Database) *World {
-	return &World{db, make(map[PlayerId]*Entity), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, &CombatList{}}
+	return &World{db, make(map[PlayerId]*Entity), make(map[server.SessionId]*server.Session), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, &CombatList{}}
 }
 
 func (w *World) EntryRoomId() RoomId {
@@ -87,7 +90,7 @@ func (w *World) AddEntity(e *Entity, roomId RoomId) {
 	if e.player != nil {
 		w.players[e.player.id] = e
 		BroadcastToWorldExcept(w, e, "%s Joins", e.Name())
-		e.player.Enqueue(Preamble)
+		e.player.Send(Preamble)
 
 		DoLook(e, w, nil)
 	}
@@ -110,10 +113,21 @@ func (w *World) RemoveEntity(eid EntityId) {
 	r.RemoveEntity(e)
 	delete(w.entities, eid)
 
+	e.combat = nil
+	e.data.RoomId = InvalidId
+
 	if e.player != nil {
 		delete(w.players, e.player.id)
 		BroadcastToWorldExcept(w, e, "%s Leaves", e.Name())
 	}
+}
+
+func (w *World) AddSession(s *server.Session) {
+	w.sessions[s.Id] = s
+}
+
+func (w *World) RemoveSession(sid server.SessionId) {
+	delete(w.sessions, sid)
 }
 
 func (w *World) AddRoom(r *Room) *Room {

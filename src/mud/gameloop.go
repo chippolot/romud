@@ -29,6 +29,7 @@ func GameLoop(w *World) {
 		{restoreStats, time.Second * 10, time.Now()},
 		{wanderNpcs, time.Second * 3, time.Now()},
 		{runCombat, time.Second, time.Now()},
+		{flushPlayerOuput, time.Millisecond, time.Now()},
 	}
 
 	for {
@@ -41,6 +42,16 @@ func GameLoop(w *World) {
 
 func restoreStats(w *World) {
 	for _, e := range w.entities {
+		// Fighting entities don't heal
+		if e.combat != nil {
+			continue
+		}
+
+		// Dead entities don't heal
+		if e.Dead() {
+			continue
+		}
+
 		if e.data.Stats.HP < e.data.Stats.MaxHP {
 			hpGain := 3 // TODO Improve this
 			e.data.Stats.HP = utils.MinInts(e.data.Stats.HP+hpGain, e.data.Stats.MaxHP)
@@ -92,5 +103,11 @@ func runCombat(w *World) {
 			e.combat.nextAttack = e.combat.nextAttack.Add(e.combat.AttackCooldown())
 		}
 		i = i.Next
+	}
+}
+
+func flushPlayerOuput(w *World) {
+	for _, s := range w.sessions {
+		s.Flush()
 	}
 }

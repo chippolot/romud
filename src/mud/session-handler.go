@@ -29,12 +29,18 @@ func (s *SessionHandler) Run() {
 		switch evt := sessionEvent.Event.(type) {
 
 		case *server.SessionStartedEvent:
+			s.world.AddSession(sessionEvent.Session)
 			player := NewPlayer(sessionEvent.Session)
 			s.players[sid] = &PlayerSessionData{player: player}
 			log.Printf("session %d connected", sid)
 			s.ChangeGameState(sid, LoginStateId)
 
 		case *server.SessionEndedEvent:
+			s.world.RemoveSession(sid)
+			p := s.players[sid]
+			if e, ok := s.world.TryGetEntityByPlayerId(p.player.id); ok {
+				s.world.RemoveEntity(e.id)
+			}
 			delete(s.players, sid)
 			log.Printf("session %d disconnected", sid)
 

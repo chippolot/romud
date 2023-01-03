@@ -9,6 +9,10 @@ type StringBuilder struct {
 	builder strings.Builder
 }
 
+func (sb *StringBuilder) Len() int {
+	return sb.builder.Len()
+}
+
 func (sb *StringBuilder) WriteString(s string) *StringBuilder {
 	sb.builder.WriteString(s)
 	return sb

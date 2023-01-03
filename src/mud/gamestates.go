@@ -47,11 +47,11 @@ func (s *LoginState) ProcessInput(input string) StateId {
 			s.player.Send("Couldn't load data for player %s, please try another name.", name)
 			return 0
 		}
-		s.player.Enqueue("Welcome back, %s!", name)
+		s.player.Send("Welcome back, %s!", name)
 	} else {
 		log.Printf("creating new player: %s", name)
 		*s.playerCharacter = s.world.CreatePlayerCharacter(name, s.player)
-		s.player.Enqueue("Ah, %s, a fine name indeed!", name)
+		s.player.Send("Ah, %s, a fine name indeed!", name)
 	}
 
 	return PlayingStateId
@@ -70,7 +70,7 @@ func (s *PlayingState) StateId() StateId {
 }
 func (s *PlayingState) OnEnter() {
 	s.playerCharacter.player.session.SetPromptProvider(&EntityPromptProvider{s.playerCharacter})
-	s.playerCharacter.player.Enqueue("Welcome to GoMUD!")
+	s.playerCharacter.player.Send("Welcome to GoMUD!")
 
 	roomId := s.world.entryRoomId
 	if s.playerCharacter.data.RoomId != InvalidId {

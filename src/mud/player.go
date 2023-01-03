@@ -31,10 +31,6 @@ func NewPlayer(session *server.Session) *Player {
 	return p
 }
 
-func (p *Player) Enqueue(format string, a ...any) {
-	p.session.Enqueue(format, a...)
-}
-
 func (p *Player) Send(format string, a ...any) {
 	p.session.Send(format, a...)
 }

@@ -29,12 +29,14 @@
     [x] Looking At
 [x] Wandering Mobs
 [] Combat
-    [x] Why isn't player dealing damage
+    [x] Why isn't player dealing damage 
+    [] Improve prompts!
     [] Roll for damage / hits
     [] Hit and damage bonuses
     [] KOed and Death
     [] Better ranging and ending combat
     [] Damage depedent messages
+[] Remove Disconnected entities!
 [] Log Flags
 [] Looking at players
 [] Positions

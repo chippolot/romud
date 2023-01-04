@@ -8,7 +8,7 @@ import (
 )
 
 func LoadRooms(w *World, path string) error {
-	bytes, err := LoadFileBytes(path)
+	bytes, err := utils.LoadFileBytes(path)
 	if err != nil {
 		return err
 	}
@@ -33,7 +33,7 @@ func LoadRooms(w *World, path string) error {
 }
 
 func LoadEntities(w *World, path string) error {
-	bytes, err := LoadFileBytes(path)
+	bytes, err := utils.LoadFileBytes(path)
 	if err != nil {
 		return err
 	}

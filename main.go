@@ -10,6 +10,7 @@ import (
 
 	"github.com/chippolot/go-mud/src/mud"
 	"github.com/chippolot/go-mud/src/mud/server"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 func main() {
@@ -33,6 +34,7 @@ func main() {
 	// Create world
 	world := mud.NewWorld(db, events)
 	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
+	world.SetEntryRoomId(3001)
 
 	// Create test entity
 	if mobCfg, ok := world.TryGetEntityConfig("mob"); ok {
@@ -63,7 +65,7 @@ func main() {
 }
 
 func loadConfig(path string) (*AppConfig, error) {
-	bytes, err := mud.LoadFileBytes(path)
+	bytes, err := utils.LoadFileBytes(path)
 	if err != nil {
 		return nil, err
 	}

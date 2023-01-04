@@ -1,0 +1,718 @@
+[
+ {
+  "Id": 18601,
+  "Name": "The Beginning Of The Passage",
+  "Desc": "   You find yourself entering a long corridor.  You can hear the sound\nof creatures roaming about, but you can't tell where the sound emanates\nfrom exactly.\n   Exits lead to the east along the hallway, and south back to the\nentrance.",
+  "Exits": [
+   {
+    "RoomId": 18602,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18600,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18602,
+  "Name": "The Dirty Hallway",
+  "Desc": "   You continue wandering down the hallway.  Nothing much different here,\nbut you are positive you here noises behind the door to the south, and\ncoming from the east.  The walls are a bit slimy and moldy here... yeech,\ncouldn't they hire someone to clean this place?  What will the newbies\nthink?  Oh well, you can continue along the hallway to the east or west.",
+  "Exits": [
+   {
+    "RoomId": 18601,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18603,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18606,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18603,
+  "Name": "A Nexus",
+  "Desc": "   Well... you've reached an intersection of two passages, to the north\nand east, the passage brightens, while the darker hallway continues to\nthe south.",
+  "Exits": [
+   {
+    "RoomId": 18602,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18644,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18646,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18607,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18604,
+  "Name": "A Narrow Passage",
+  "Desc": "   The thin passage is plain and undecorated, but still clean.  It\nends abruptly to the south at a small oak door, behind which you here\nmovement...",
+  "Exits": [
+   {
+    "RoomId": 18647,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18612,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18605,
+  "Name": "The Dark Pit",
+  "Desc": "   Ick... a dark damp dirty pit.  Even worse, what is that dark damp\ndirty thing looking at you from the corner?  Ewww... maybe you should\ngo back up where it is a bit safer, unless you think you can tackle\nthat thing in the corner.",
+  "Exits": [
+   {
+    "RoomId": 18606,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18606,
+  "Name": "A Small Room",
+  "Desc": "   Hmmm... this is an interesting little room.  Ack, and there is\nan interesting little creature staring at you too.  He looks a bit\nsurprised at your intrusion.  You can leave via the doors north or\neast, or you can stay and annoy him a bit more.  There also appears\nto be some type of well down here also, but it has a rather secure\ngrate covering it.",
+  "Exits": [
+   {
+    "RoomId": 18602,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18607,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18605,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18607,
+  "Name": "More Of The Hallway",
+  "Desc": "   Oh joy!  More of this annoying passage.  Perhaps there is something\nmore exciting through that door to the west?  Or you can keep searching\nthe hallways to the north or south.",
+  "Exits": [
+   {
+    "RoomId": 18606,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18603,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18611,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18608,
+  "Name": "An Open Field By The Great Field",
+  "Desc": "   Finally, you are in an open field... it is so nice to breathe fresh air\nagain!  You can return to that dank, smelly place to the east, or take the\nexit to the north which appears to lead into a large field.",
+  "Exits": [
+   {
+    "RoomId": 3061,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18609,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18609,
+  "Name": "The End Of The Passage",
+  "Desc": "    Ahhh... at last, the end of the hallway... you can exit into open\nair to the west,or return to the east and make sure you didn't miss\nanything.",
+  "Exits": [
+   {
+    "RoomId": 18610,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18608,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18610,
+  "Name": "A Brighter Hallway",
+  "Desc": "   The hallway continues on in a east-west direction... and it seems to\nbe brightening up to the west.",
+  "Exits": [
+   {
+    "RoomId": 18611,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18609,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18611,
+  "Name": "Another Corner",
+  "Desc": "   Another corner of the passage, and just as untidy as the rest of\nthis place (maybe more so?).  There is a door to the east though...\nwonder where that leads?  Oh, and the hallway continues west and\nnorth.",
+  "Exits": [
+   {
+    "RoomId": 18607,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18612,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18610,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18612,
+  "Name": "The Alchemist's Room",
+  "Desc": "   Lots of bottles and flasks lie about this room, but it all looks like\nworthless clutter.  It appears whatever alchemist has been working here\nis really very adept at his art.  There are a lot of formulae and spells\nwritten on the walls too... couldn't he buy some paper?  There is a door\nto the north, and also a dark stairway in the corner leading down, with a\nlarge sign next to it that you probably should read...",
+  "Exits": [
+   {
+    "RoomId": 18604,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18611,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18632,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18620,
+  "Name": "A Turn In The Passage",
+  "Desc": "   This corner is much like all the others... except you see a strange\nglow coming from the south.  Could be an exit... you hope.",
+  "Exits": [
+   {
+    "RoomId": 18621,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18629,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18621,
+  "Name": "A T-Intersection In The Passage",
+  "Desc": "   This is an intersection of a long east-west passage with a corridor\nleading south.  The air seems a bit clearer here though, as if you were\napproaching an exit.",
+  "Exits": [
+   {
+    "RoomId": 18622,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18633,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18620,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18622,
+  "Name": "Another Corner",
+  "Desc": "   The passage turns from north to west here.  The walls are still\ncovered with the same disgusting green fungus you have seen all\nalong, and you hear sounds of creatures moving all around you...",
+  "Exits": [
+   {
+    "RoomId": 18628,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18621,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18623,
+  "Name": "A Corner In The Hallway",
+  "Desc": "   You can hear creatures moving all around you... and it is not\na comforting sound at all.  The furnishing is nothing to speak of\neither, plain grey brick walls with green fungus (or something)\ngrowing on them.",
+  "Exits": [
+   {
+    "RoomId": 18624,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18627,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18624,
+  "Name": "Another Turn",
+  "Desc": "   Hmmm... the passage turns south here.  You beginning to realize you\ncan easily lose your bearings if you aren't careful, and you don't think\nyou would like spending too much time here...",
+  "Exits": [
+   {
+    "RoomId": 18623,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18630,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18625,
+  "Name": "A Large Room",
+  "Desc": "   The passage opens into a large oval room.  There really isn't much of\ninterest here though.",
+  "Exits": [
+   {
+    "RoomId": 18626,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18631,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18626,
+  "Name": "A Long East-West Passage",
+  "Desc": "   This is a long, narrow passage leading east and west.  The walls are\ndamp and covered with mildew and fungus.  There is a very unhealthy air\nabout this place and you're beginning to want out of here... soon.",
+  "Exits": [
+   {
+    "RoomId": 18625,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18627,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18627,
+  "Name": "A Crossing Of Corridors",
+  "Desc": "   Here a narrow east-west passage crosses with a wider passage to the\nnorth and south.  The air is dank, and has an odor of decay and debris.\nNot a nice place at all really...",
+  "Exits": [
+   {
+    "RoomId": 18623,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18628,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18632,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18626,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18628,
+  "Name": "A Corner Room",
+  "Desc": "   This room is hardly more than a crossing of passages.  You do sense a\nslight breeze wafting down the passage to the north though, but it smells\naltogether bad...",
+  "Exits": [
+   {
+    "RoomId": 18622,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18627,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18629,
+  "Name": "The Red Room",
+  "Desc": "   It takes you a moment to realize that the red glow here is coming\nfrom a round portal on the floor.  It looks almost as if someone had\npainted a picture of a dirt running through a field on the floor of\nthis room.  Oddly enough, it is so realistic you can feel the wind in\nthe field coming out of the picture.",
+  "Exits": [
+   {
+    "RoomId": 18620,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18630,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3061,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18630,
+  "Name": "A Branching Passage",
+  "Desc": "   The north-south passage branches to the east here.  There is a queer red\nglow coming from that way as well, along with a faint breeze.",
+  "Exits": [
+   {
+    "RoomId": 18624,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18634,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18629,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18631,
+  "Name": "A Passage",
+  "Desc": "   Ick... this place is just disgusting.  You try and stay clear of the\nwalls, but the passage is so narrow you keep bumping them anyway.  You\nare almost convinced that the fungus coating the walls is grabbing at\nyou too.",
+  "Exits": [
+   {
+    "RoomId": 18625,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18632,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18638,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18632,
+  "Name": "The Entrance",
+  "Desc": "   It is dark, dank, disgusting and cold up here.  Plus you here the\nsounds of creatures all around you... and somehow they don't sound\nfriendly.  It is probably wise to exercise some degree of caution\nhere... no telling what you may run into here.",
+  "Exits": [
+   {
+    "RoomId": 18627,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18635,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18631,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18612,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18633,
+  "Name": "Another Corner",
+  "Desc": "   Well... what is there to say.  More fungus, more weird sounds, and a\nslight breeze from the north.  Bet you want to sign a lease, don't ya...",
+  "Exits": [
+   {
+    "RoomId": 18621,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18634,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18634,
+  "Name": "An Intersection Of Passages",
+  "Desc": "   Cold, smelly, and coated with green fungus... just like last week's\nleft-overs.  Furthermore you want nothing to do with either, you just\nwant out right now.",
+  "Exits": [
+   {
+    "RoomId": 18633,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18630,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18637,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18635,
+  "Name": "A Turn In The Passage",
+  "Desc": "   This place is just plain nauseating... it certainly smells as if\nsomething (or someone) died in here.  You hope you aren't next, but\nfrom the sounds you hear all around you, it seems as if something has\nother ideas about that.",
+  "Exits": [
+   {
+    "RoomId": 18632,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18636,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18636,
+  "Name": "A Branch To The South",
+  "Desc": "   The east-west passage branches of to the south here.  All around you\nis the odour of death.  Actually, the mold and fungus on the walls is\ndoing great, but otherwise... well... you don't want to think about what\nelse lives here.",
+  "Exits": [
+   {
+    "RoomId": 18637,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18639,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18635,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18637,
+  "Name": "Yet Another Corner",
+  "Desc": "   The passage turns here and heads north.  You sense something up ahead\nthat way, but you aren't sure what.  You aren't sure if you want to know\nwhat either at this point.",
+  "Exits": [
+   {
+    "RoomId": 18636,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18634,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18638,
+  "Name": "A Large Room",
+  "Desc": "   You almost stumble as you enter this room... the sudden feeling of no\nwalls on either side of you makes you a bit nervous.  Suddenly you are\nvulnerable on all sides.  You can't even tell how big a room this is,\nbecause it extends to the east farther than you light will reach...",
+  "Exits": [
+   {
+    "RoomId": 18631,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18639,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18639,
+  "Name": "A Large Room",
+  "Desc": "   As you enter, you light glints of the wall to the east.  There appears\nto be words scrawled on the wall, and a crude picture.  To the west the\nroom extends beyond the reach of your light, and the dark shadows make you\nparanoid... anything could be hiding there.  You are painfully aware of\nhow exposed you are without walls around you.",
+  "Exits": [
+   {
+    "RoomId": 18636,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18638,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18640,
+  "Name": "The Statue's Room",
+  "Desc": "   Here, the passage enters a small room.  Exits lead to the east and south,\nand you notice a wonderful, large (and tastefully done) statue to the north.",
+  "Exits": [
+   {
+    "RoomId": 18641,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18644,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18641,
+  "Name": "The Hallway",
+  "Desc": "   As you continue wandering down the hallway, you notice banners,\npictures, and other fine decorations adorning the walls all along\nthis passage.  It seems very different from the dismal passage where\nyou entered.",
+  "Exits": [
+   {
+    "RoomId": 18642,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18640,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18642,
+  "Name": "The North Stairs",
+  "Desc": "   Here, the hall opens into a wide room, with a high domed roof.  Now that\nthat you have come clear of the enclosed passage, you can see that the stair\nleads upward to an open air balcony overlooking the area.  To the south the\nroom continues, and another stair is visible matching the one in front of\nyou.",
+  "Exits": [
+   {
+    "RoomId": 18647,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18641,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18643,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18643,
+  "Name": "The Balcony",
+  "Desc": "   Here you can look out and observe the world around.  Constructed in a\nsemi-circle around the dome of the room, the balcony allows you to look\nout in almost any direction.  Wandering to the north end, you can see that\nthe Great Fields north of Midgaard continue off towards the Dragonhelm\nMountains to the north.",
+  "Exits": [
+   {
+    "RoomId": 18642,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 18645,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18644,
+  "Name": "A Bright Hallway",
+  "Desc": "   Wow!  What a change from the dismal passage to the south.  Whoever\nkeeps this room up must really like newbies.  The walls and floor are\nclean, and tastefully decorated.  You also notice an interesting design\non the floor.",
+  "Exits": [
+   {
+    "RoomId": 18603,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18640,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18645,
+  "Name": "The Balcony",
+  "Desc": "   Here you can look out and observe the world around.  Constructed in a\nsemi-circle around the dome of the room, the balcony allows you to look out\nin almost any direction.  Wandering to the south end, you can see the great\ncity of Midgaard off to the south-west.",
+  "Exits": [
+   {
+    "RoomId": 18643,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18647,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18646,
+  "Name": "A Bright Hallway",
+  "Desc": "   Wow!  What a change from the dismal passage to the west.  Whoever keeps\nthis  room up must really like newbies.  The walls and floor are clean, and\ntastefully decorated.  You also notice an interesting design on the floor.",
+  "Exits": [
+   {
+    "RoomId": 18647,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 18603,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 18647,
+  "Name": "The South Stairs",
+  "Desc": "   Here, the hall opens into a wide room, with a high domed roof.  Now that\nthat you have come clear of the enclosed passage, you can see that the stair\nleads upward to an open air balcony overlooking the area.  to the north the\nroom continues, and another stair is visible matching the one in front of\nyou.",
+  "Exits": [
+   {
+    "RoomId": 18642,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18604,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 18646,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18645,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ }
+]

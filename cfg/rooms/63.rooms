@@ -1,0 +1,789 @@
+[
+ {
+  "Id": 6302,
+  "Name": "The Webby Passage",
+  "Desc": "   You find that footing here is very good, almost too good.  The\nlimbs are coated with cobwebs and seem unusually strong for tree\nbranches.  Paths lead in four directions.  The eastward path goes\ndown a bit.",
+  "Exits": [
+   {
+    "RoomId": 6304,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6305,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6301,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6303,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6303,
+  "Name": "The Wasp Hive",
+  "Desc": "   Drones scuttle about in this room.  The cells on the walls are\nhoneycomb in shape and many of the maggots and wasps you see have\nfang-marks on their bodies.  You sense some order in their markings.",
+  "Exits": [
+   {
+    "RoomId": 6302,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6304,
+  "Name": "The Webby Passage",
+  "Desc": "   Another webby passage, all sticky and wet.  Tiny ballooning\nspiders fill the air.  It seems that these young ones are newborns.",
+  "Exits": [
+   {
+    "RoomId": 6305,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6302,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6305,
+  "Name": "Beneath The Busy Path",
+  "Desc": "   You here the sounds of crawling arachnids above.  The rhythms of\nthe footsteps suggest a primitive order in there movement.  The light\nseems brighter upwards.",
+  "Exits": [
+   {
+    "RoomId": 6304,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6306,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6306,
+  "Name": "On The Busy Path",
+  "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as rats, wolves, and humans.",
+  "Exits": [
+   {
+    "RoomId": 6307,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6305,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6307,
+  "Name": "On The Busy Path",
+  "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as cats, wolves, and humans.  ",
+  "Exits": [
+   {
+    "RoomId": 6306,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6308,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6308,
+  "Name": "On The Busy Path",
+  "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as cats, dogs, and humans.",
+  "Exits": [
+   {
+    "RoomId": 6307,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6306,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6305,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6309,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6309,
+  "Name": "A Split In The Path",
+  "Desc": "   As always, there is a split in the road.  One road is strewn with\ncricket feelers.  The other is well-kept and suitable for smooth\ntravelling.  The webbing that was prevalent in earlier rooms is almost\nnon-existant now.",
+  "Exits": [
+   {
+    "RoomId": 6320,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6310,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6308,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6310,
+  "Name": "A Fuzzy Tree Limb",
+  "Desc": "   You are on a 'fuzzy' tree limb.  Interesting, since the branches\nseem to have 'hairs' sprouting from its bark.  As you look closer\nyou see millions of aphids covering each limb.",
+  "Exits": [
+   {
+    "RoomId": 6309,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6311,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6311,
+  "Name": "The Tree Trunk",
+  "Desc": "   You feel that you can rest here safely.  There is evidence of\nwebbing here, but it is of a finer quality.",
+  "Exits": [
+   {
+    "RoomId": 6310,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6312,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6312,
+  "Name": "The Tree Lair Entrance",
+  "Desc": "   It seems the inhabitant of this place does not web her victims,\nas evidenced by the remains before you.  The area is cluttered with\ndesiccated corpses, apparently bitten but unwebbed, and drained of\ntheir life juices.",
+  "Exits": [
+   {
+    "RoomId": 6311,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6313,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6313,
+  "Name": "The Wolf Spider Lair",
+  "Desc": "   Very dark, as all lairs of spiders are.  Not much of furnishings\nsave an exit.  The wolf spider keeps no corpses here, but rather\nthrows them out at her leisure.",
+  "Exits": [
+   {
+    "RoomId": 6312,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6320,
+  "Name": "The Webless Path",
+  "Desc": "   Strange.  No webbing here.  In fact, no sounds whatsoever.  \nThe path continues northward, where you find that you may have\nto tightrope your way across a ravine.",
+  "Exits": [
+   {
+    "RoomId": 6309,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6321,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6321,
+  "Name": "Above The Ravine",
+  "Desc": "   Stranger still.  Your feet get a real firm grip on the spiderline.\nYou are above a deep ravine.  This line connects you between two trees.\nBelow you can see a prismatic web with lots of animal bones caught in it:\nsome bear and small deer bones in fact.  No human skeletons are visible \n(yet).",
+  "Exits": [
+   {
+    "RoomId": 6320,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6323,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6322,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 6321,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6323,
+  "Name": "The Web Forest",
+  "Desc": "   The trees here take on a different appearance -- they are not trees\nanymore, but disjointed make-shift silken made shafts, sticky to the\ntouch, and webby in texture.  This is another world it would appear.",
+  "Exits": [
+   {
+    "RoomId": 6321,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6324,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6324,
+  "Name": "The Slave Pit",
+  "Desc": "   You have entered the slave pit.  A voice blares in the distance,\n'Get back to work, maggots!'  Rails upon rails of mined gold and silver\nclutter the trail beneath you.",
+  "Exits": [
+   {
+    "RoomId": 6325,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6323,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6325,
+  "Name": "The Tether Path",
+  "Desc": "   Another tether path just like the rest of them.  Surprisingly\nwell-lit by the golden orbs that hang from the sides, you can see\nthe paths become finer and finer in quality.",
+  "Exits": [
+   {
+    "RoomId": 6326,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6324,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6326,
+  "Name": "A Road Crossing",
+  "Desc": "   Another shifty little strand of webs, almost ethereal in nature.",
+  "Exits": [
+   {
+    "RoomId": 6325,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6327,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6327,
+  "Name": "A Leader Strand",
+  "Desc": "   This strand is weightier, more sturdy.  It shimmers as you step on\nit.  You are definitely not in the Midgaardian realms anymore.  Just\nwhere you are you can't tell.  It feels like you're moving through\nether.  You can still get back down to more surer lands.",
+  "Exits": [
+   {
+    "RoomId": 6328,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6326,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6328,
+  "Name": "The Entrance Of The Ethereal Web",
+  "Desc": "   You are at the entrance to ethereal web.  Flickering in and out,\nin and out, each strand reveals a different hue from black to green \nto blue.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6330,
+  "Name": "The Young Wormkin's Crib",
+  "Desc": "   A playpen of sorts, with maggots of wasps and other baby\nvermin lying about.  You feel that humans have been played with\nhere too, and eaten later.  You sense that the maker of this\nplace has an appetite for dragon meat, and uses this room as a\nbreeding area.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6331,
+  "Name": "The Base Of The Web",
+  "Desc": "   Large strands connect at this point.  The node shimmers and\nflickers within the ether.  You see many flying creatures --\ninsects, pegasi, and dragon wormkins -- navigate the dangerous\npassages of the web.  Exits go in many directions.",
+  "Exits": [
+   {
+    "RoomId": 6334,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6330,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6332,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6333,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6332,
+  "Name": "Through The Trees",
+  "Desc": "   This part of the web intersects through the branches of some\ntrees.  Various leaves and other debris that the many drones have\nnot picked up yet lie here.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6335,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6333,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6333,
+  "Name": "Above The Clouds",
+  "Desc": "   You can see all of Midgaard in this ethereal web.  Many\nof the larger dragons that do wish to fly seem to fly away\nfrom the sticky strands of the web.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6334,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6335,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6334,
+  "Name": "On A Cloud",
+  "Desc": "   This cloud is rather thick in consistency.  You suddenly realize\nthis is not a typical cloud, but it might be the nest of an aerial\ncreature.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6335,
+  "Name": "A Link In The Ethereal Web",
+  "Desc": "   This is another link in the ethereal web.  Various creatures seem\nto get caught (or hypnotized) by its sticky strands.",
+  "Exits": [
+   {
+    "RoomId": 6336,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6331,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6336,
+  "Name": "The Tenuous Strand",
+  "Desc": "   Very windy here since it goes up into the sky somewhat.  Still, it\nis safe enough to move around.",
+  "Exits": [
+   {
+    "RoomId": 6340,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6341,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6331,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6340,
+  "Name": "The Elder Wormkin's Room",
+  "Desc": "   A more mature wormkin it seems resides here.  Various tomes\nof arcane lore clutter the area, along with shards of armor and\nweaponry.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6341,
+  "Name": "Another Tree Limb",
+  "Desc": "   Once again the web crosses another tree limb.  To the side you\nsee the possible entrance to another creature's lair.",
+  "Exits": [
+   {
+    "RoomId": 6342,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6334,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6345,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6342,
+  "Name": "The Bird Spider's Lair",
+  "Desc": "   This is a big game hunter among most spiders.  Crushed\njewels and weapons suggest the inhabitant must have powerful\njaws.  Beware!",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6345,
+  "Name": "A Link In The Ethereal Web",
+  "Desc": "   This is another link in the ethereal web.  Various creatures\nseem to get caught (or hypnotized) by its sticky strands.",
+  "Exits": [
+   {
+    "RoomId": 6350,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6346,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6345,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6346,
+  "Name": "The Quiet Tree Top",
+  "Desc": "   This is a quiet tree top.  Downwards you can see a familiar path\nthat may lead back to Midgaard.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 6355,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6346,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6347,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6350,
+  "Name": "The Ki-Rin Chamber",
+  "Desc": "   A wise ki-rin was entrapped here many years ago.  It is from her\nthat the ruler of this realm draws magical strength.",
+  "Exits": [
+   {
+    "RoomId": 6347,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6355,
+  "Name": "A Link In The Ethereal Web",
+  "Desc": "   This is another link in the ethereal web.  Various creatures\nseem to get caught (or hypnotized) by its sticky strands.  To\nthe north you sense the heavy breathing of a fiery animal.",
+  "Exits": [
+   {
+    "RoomId": 6365,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6360,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6360,
+  "Name": "Yevaud's Lair",
+  "Desc": "   Yevaud, the Usurper of Midgaard, resides here.  A voice cries\nout, 'BEWARE, the Usurper of Midgaard lives here!  FLEE while you can!'\nBut even Yevaud has his master... or so you deduce.",
+  "Exits": [
+   {
+    "RoomId": 6355,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6365,
+  "Name": "A Link In The Ethereal Web",
+  "Desc": "   This is another link in the ethereal web.  Various creatures\nseem to get caught (or hypnotized) by its sticky strands.  A\nsingle spider line lies to the north, while ghastly seemings are\ndue southward.  The grim entrance of Arachnos' Lair is downward.",
+  "Exits": [
+   {
+    "RoomId": 6371,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6331,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6366,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6390,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6366,
+  "Name": "The Entrance To The Donjonkeep",
+  "Desc": "   A dark path at the end of the web strand, you see ahead\na torch lit chamber where the souls of unavenged adventurers\ncome and gnash their teeth.  The howls and screams of many\necho through the hall ways.  You see one definite path ahead.",
+  "Exits": [
+   {
+    "RoomId": 6367,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6367,
+  "Name": "The Guardian's Room",
+  "Desc": "   A chair sits here for a tireless guardian who ensures that no\nsoul escapes.  Other than that, the room is undecorated.",
+  "Exits": [
+   {
+    "RoomId": 6368,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6368,
+  "Name": "The Realm Of The Hopeless",
+  "Desc": "   Here you see many misguided souls who think they still live.\nThey search for those who killed them without warrant, and seek\nthe free souls of living beings to inhabit and perhaps adventure\nonce more.",
+  "Exits": [
+   {
+    "RoomId": 6369,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6369,
+  "Name": "The Realm Of The Hopeless",
+  "Desc": "   Here you see many misguided souls who think they still live.\nThey search for those who killed them without warrant, and seek\nthe free souls of living beings to inhabit and perhaps adventure\nonce more.",
+  "Exits": [
+   {
+    "RoomId": 6368,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6370,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6370,
+  "Name": "The Donjonkeep",
+  "Desc": "   No souls have ever lived in this place.  The wails of slaves and\nthe howls of wolves are the only way you can describe the sounds you\nhear.  The walls are thin and wispy.  The only light you receive is\nthe shimmering from the strand of the ethereal web you used to get\nhere.  ",
+  "Exits": [
+   {
+    "RoomId": 6371,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6371,
+  "Name": "The Single Spider Line",
+  "Desc": "   A single spider line supports you once more.  As you look across\nthe ether you seen a single shack up ahead with a light in the window.\nYou sense a great evil coming from the north and feel inclined to go\nback on the ethereal web and take your chances there.",
+  "Exits": [
+   {
+    "RoomId": 6331,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6372,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6372,
+  "Name": "The Single Spider Line",
+  "Desc": "   A single spider line supports you once more.  The shack comes\ncloser into view and you are even more inclined to go back now.",
+  "Exits": [
+   {
+    "RoomId": 6373,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6371,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6373,
+  "Name": "The Hermit's Corner",
+  "Desc": "   Here you see evidence of a vagrant's abode.  The shack is to the\nnorth, if you dare enter it.  You get the sneaking feeling you should\ngo back now.  The skies above you darken and roar with the laughter\nof thunder.",
+  "Exits": [
+   {
+    "RoomId": 6372,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6380,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6380,
+  "Name": "Mahatma's Inescapable Trap",
+  "Desc": "   Mahatma, that silly thief, is here, and he steals everything you\nhave.  He says 'Here, have a quick trip to the Temple of Midgaard.'\nHe plunges a black dagger into your back...",
+  "Exits": [],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6390,
+  "Name": "The Entrance To The Arachnos' Lair",
+  "Desc": "   All strands inevitably lead here, the center of the web, the\nentrance to Arachnos' Lair.",
+  "Exits": [
+   {
+    "RoomId": 6391,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6391,
+  "Name": "The Sticky Chamber",
+  "Desc": "   You can still bail out since your knees are shaking from the\nanticipation (or is it fear?).  The sky is clear on this strand of \nweb, surprisingly unsticky.  The strand does not vibrate like the \nothers.  A few ballooning spiders pass by, cackling 'You're gonna\ndie, you're gonna fry.  Good bye!'",
+  "Exits": [
+   {
+    "RoomId": 6392,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6331,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6392,
+  "Name": "The Great Door",
+  "Desc": "   Before you you see a large, web-like door.  Various designs\nof ancient runes and names of Midgaard heroes are etched into\nthe webwork.  Perhaps lists of victims?  You can't tell.  ",
+  "Exits": [
+   {
+    "RoomId": 6399,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6391,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6399,
+  "Name": "The Lair Of Arachnos",
+  "Desc": "   This is the lair of the Empress Spider, Arachnos.  You can\nsee a lavishly adorned rainbow web, her lair allows her to move\nto any universe she wishes by using her magical strands to the\nPrime Material Plane.  Coffers upon coffers of gold, magical\njewels and gems await.  Unfortunately Arachnos is a baggy spider\ntoo, and webs all her treasures to her beautiful silken body.",
+  "Exits": [
+   {
+    "RoomId": 6392,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ }
+]

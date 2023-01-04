@@ -28,6 +28,10 @@ func (w *World) EntryRoomId() RoomId {
 	return w.entryRoomId
 }
 
+func (w *World) SetEntryRoomId(id RoomId) {
+	w.entryRoomId = id
+}
+
 func (w *World) CreatePlayerCharacter(name string, player *Player) *Entity {
 	playerEntityCfg, ok := w.entityConfigs[PlayerEntityKey]
 	if !ok {

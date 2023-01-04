@@ -48,12 +48,14 @@
     [] Look descriptions
     [] Condition change messages
     [] Kick to the ground
+[] Circle Data Converter
+    [x] Rooms
+    [] Mobs
 [] Positions
     [x] Limit actions
     [x] Rest + Sleep actions
         [x] Restore stats
     [] Look descriptions
-    [] Combat knockdown
 [] Self status command
 [] Looking at players
 [] Positions

@@ -1,0 +1,718 @@
+[
+ {
+  "Id": 6401,
+  "Name": "A Mountain Trail",
+  "Desc": "   You're really high up now.  You can keep going even\nfarther up into the mountains to the east, or go back\ndown to the west.",
+  "Exits": [
+   {
+    "RoomId": 6402,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6400,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6402,
+  "Name": "A Mountain Trail",
+  "Desc": "   Wispy clouds are beginning to surround you now, and\nyour ears pop due to the altitude.  To the east, you see\nthe summit of the mountain, and from the way the nearby\nmountains are arranged behind it, you believe you're\non your way to a big valley.  You can also go down\nto the west.",
+  "Exits": [
+   {
+    "RoomId": 6401,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6403,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6403,
+  "Name": "Near The Mountain's Peak",
+  "Desc": "   The peak of this mountain is another couple hundred\nfeet above you, but here is where the trail leads down\ninto the valley...  What an odd valley!\n   The valley seems to have been filled up by a hundreds\nof feet of lava many years ago.  It gives the valley an\nodd, 'flat' look and darkish ground.  The path leads\ndown east into the valley, and west back to civilization.",
+  "Exits": [
+   {
+    "RoomId": 6402,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6404,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6404,
+  "Name": "The Trail To The Valley",
+  "Desc": "   The trail leads down into the valley, where, by judging\nby the height of the trees, the lava had cooled tens\nof decades ago.  Down below you see the path lead into\nthe small forest in the valley, and disappear out of\nsight.  East leads into the valley, West back to civilization.",
+  "Exits": [
+   {
+    "RoomId": 6405,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6403,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6405,
+  "Name": "In The Valley",
+  "Desc": "   The ground has taken on the texture of dirt on the top,\nbut this valley is far too flat and too rocky to disguise\nthe catastrophe that happened here so long ago.  Looking\nup to the mountains ringing this area, you notice several\nmountains look as if they had 'exploded', which is strange,\nconsidering that they are not volcanos.\n   The path leads into the woods to the east, and back up\nthe mountain to the west.",
+  "Exits": [
+   {
+    "RoomId": 6404,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6406,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6406,
+  "Name": "In A Clearing",
+  "Desc": "   You come to a small clearing now, after walking for several\nminutes through the silent woods.  An odd block sticks up\nhere and there in   the ground... wait a minute.  These\nstones seem a little too regular, and from the circle \nformation and size you could almost swear that they were...\ncrenellations?  Could some sort of building been buried\nby the lava here?  A rusty ring sticks out of the earth\nin the center... a trapdoor?  This is almost too good to\nbe true!",
+  "Exits": [
+   {
+    "RoomId": 6407,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 6405,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6407,
+  "Name": "A Stairwell",
+  "Desc": "   This small room is the top of a stairwell leading down\ndeep into the tower.  A small trapdoor overhead leaks\nthe light of day around its edges.  To the south is a \nwooden door, preserved through the ages by means \nunknown.  To the west is a short hall.",
+  "Exits": [
+   {
+    "RoomId": 6408,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6409,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6406,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 6413,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6408,
+  "Name": "A Linen Closet",
+  "Desc": "   This small room holds many types of linen on shelves \nalong the walls.  They are undoubtedly preserved by\nmagic against the toil of the ages, since they seem\nfreshly washed and folded.  You wonder what sort of\nmage could wield so much power to waste on such little\nthings.",
+  "Exits": [
+   {
+    "RoomId": 6407,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6409,
+  "Name": "A Corridor",
+  "Desc": "   This is only a clean corridor, that leads back to the \nstairwell to the east, and has doors leading to other\nrooms to the north and south.",
+  "Exits": [
+   {
+    "RoomId": 6411,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6407,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6410,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6410,
+  "Name": "A Bathroom",
+  "Desc": "   This is some sort of bathroom, like you've never seen\nbefore...  Water appliances leading from nowhere deliver\nhot and cold running water to basins that drain to...\nwhere?  How strange!",
+  "Exits": [
+   {
+    "RoomId": 6409,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6411,
+  "Name": "The Master Bedroom",
+  "Desc": "   This is an opulent room, decorated in silks and gold.\nThere is an ebony desk against one wall, cooled lava rock\nspilling over its surface from the window it once looked\nout at.  A nice, spacious closet is filled with clothes\njust cleaned and pressed.",
+  "Exits": [
+   {
+    "RoomId": 6409,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6412,
+  "Name": "The Library",
+  "Desc": "   A great mages' library is contained on this floor of \nthe tower.  You feel you could learn anything you wanted\nto if you only looked and read long enough.  A door\nopens up back on the stairwell to the east.",
+  "Exits": [
+   {
+    "RoomId": 6413,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6414,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6413,
+  "Name": "The Stairwell",
+  "Desc": "   This stairwell continues up and down, and there is\na door to the west.",
+  "Exits": [
+   {
+    "RoomId": 6412,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6407,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 6415,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6414,
+  "Name": "A Hidden Hall",
+  "Desc": "   This is a small hidden hall with a secret entrance to the\nlibrary on the north end of the west wall, and a trapdoor \non the south end.",
+  "Exits": [
+   {
+    "RoomId": 6412,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6416,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6415,
+  "Name": "A Stairwell",
+  "Desc": "   This stairwell continues up and down, and there is a door\nto the west opening up onto this level.",
+  "Exits": [
+   {
+    "RoomId": 6417,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6413,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 6422,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6416,
+  "Name": "The Hidden Treasure Room",
+  "Desc": "   Jackpot!  A small room filled with treasure chests!  Go get them!",
+  "Exits": [
+   {
+    "RoomId": 6414,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6417,
+  "Name": "A Hallway",
+  "Desc": "   This hall runs through the tower.  There's more hall to\nthe west, and doors to your north and south.  A door to\nthe east leads back to the stairwell.",
+  "Exits": [
+   {
+    "RoomId": 6419,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6415,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6418,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6420,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6418,
+  "Name": "A Servant's Room",
+  "Desc": "   This seems to be a small servant's bedroom, sparsely\ndecorated and outfitted with a bed, nightstand, chair\nand table, etc.  Nothing real important here.",
+  "Exits": [
+   {
+    "RoomId": 6417,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6419,
+  "Name": "A Servant's Room",
+  "Desc": "   This seems to be a small servant's bedroom, sparsely \ndecorated and outfitted with a bed, nightstand, chair\nand table, etc.  Nothing real important here.",
+  "Exits": [
+   {
+    "RoomId": 6417,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6420,
+  "Name": "A Hallway",
+  "Desc": "   This hallway continues to the east, and has a door to \nthe north.  You could swear that the way this level is\narranged... nah, couldn't be.",
+  "Exits": [
+   {
+    "RoomId": 6421,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6417,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6421,
+  "Name": "A Servant's Room",
+  "Desc": "   This seems to be a small servant's bedroom, sparsely\ndecorated and outfitted with a bed, nightstand, chair\nand a table, etc.  Nothing real important here.",
+  "Exits": [
+   {
+    "RoomId": 6420,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6422,
+  "Name": "The Stairwell",
+  "Desc": "   This stairwell leads up and down, and there is a big\nopen room to your west.",
+  "Exits": [
+   {
+    "RoomId": 6423,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6415,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 6425,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6423,
+  "Name": "The Dining Hall",
+  "Desc": "   This is a large dining hall, with a long table that runs\ndown the length of it.  Chairs are set up along the sides\nto accomodate approximately 10 people.  There are paintings\nand tapestries on the walls, adding color to the stonework,\nThe cooled lava that had poured in the windows makes the place \nseem eerie somehow .  There is a door to the north, and\nthe stairwell is to the east.",
+  "Exits": [
+   {
+    "RoomId": 6424,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6422,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6424,
+  "Name": "The Kitchen Area",
+  "Desc": "   This is a well-stocked kitchen, the larders still fresh\nand full as if by magic.  Perhaps this would be a good\nplace to take a break.",
+  "Exits": [
+   {
+    "RoomId": 6423,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6425,
+  "Name": "The Stairwell",
+  "Desc": "   The stairwell leads up and down here, and there is a hall\nyou can enter to the west.",
+  "Exits": [
+   {
+    "RoomId": 6426,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6422,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 6429,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6426,
+  "Name": "A Hall",
+  "Desc": "   This area of the tower seems dank and oppressive.  The\nhall runs north-south, and there is an empty cell to your\nwest.  The stairwell is to your east.",
+  "Exits": [
+   {
+    "RoomId": 6427,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6425,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6428,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6427,
+  "Name": "A Hall",
+  "Desc": "   This is the northern end of the hall.  There are cells to\nyour right and left, empty and awaiting occupants.",
+  "Exits": [
+   {
+    "RoomId": 6426,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6428,
+  "Name": "A Hall",
+  "Desc": "   This is the southern end of the hall.  There are cells to\nyour right and left, empty and awaiting occupants.",
+  "Exits": [
+   {
+    "RoomId": 6426,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6429,
+  "Name": "A Stairwell",
+  "Desc": "   The stairwell continues up and down here.  A large room\nopens up to the west.",
+  "Exits": [
+   {
+    "RoomId": 6430,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6425,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 6431,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6430,
+  "Name": "A Mage's Office",
+  "Desc": "   A small desk here is cluttered with magically preserved\npapers and documents.  None seem of value, except perhaps\nto a historian.  This place seems vaguely uninteresting...",
+  "Exits": [
+   {
+    "RoomId": 6429,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6431,
+  "Name": "The Stairwell",
+  "Desc": "   The stairs go up and down here, and there is a room to the\nwest...",
+  "Exits": [
+   {
+    "RoomId": 6432,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6429,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 6433,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6432,
+  "Name": "A Sitting Room",
+  "Desc": "   This is a simply furnished room, with chairs all about.\nA fireplace is inset into an inner wall, the chimney\nundoubtedly directed by magic...\n   This would be a nice place to rest awhile...",
+  "Exits": [
+   {
+    "RoomId": 6431,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6433,
+  "Name": "The Stairwell",
+  "Desc": "    This is where the stairwell finally ends.  There is a hall\nto your west.",
+  "Exits": [
+   {
+    "RoomId": 6434,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6431,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6434,
+  "Name": "A Hallway",
+  "Desc": "   This small hallway on the former 'ground floor' ran north-\nsouth.  To the east is the stairwell that leads up into \nthe shadowy recesses of the tower.  To the west is the\nentrance way to the tower.  The north is completely blocked\noff by lava, and the way south is still clear.",
+  "Exits": [
+   {
+    "RoomId": 6433,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6437,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6435,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6435,
+  "Name": "The Entranceway",
+  "Desc": "   This is a grand chamber with giant double-doors to the\nwest.  To the east is the main floor of the tower.  This\nroom is arranged highly attractively and very impressively,\nwith sculptures and tapistries everywhere.  The doors seem\nimpenetrable... you don't think you'd be able to get through\nthem if you really had to...",
+  "Exits": [
+   {
+    "RoomId": 6434,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6436,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6436,
+  "Name": "The Doorway",
+  "Desc": "   This was the entrance to the tower.  Now lava has blocked\nit up completely.  However:\n   It seems when the lava came down a man was outside the\ndoors.  He was blasted into the doors, and died instantly,\nbut his skeleton still clutches a staff in perfect \ncondition...",
+  "Exits": [
+   {
+    "RoomId": 6435,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6437,
+  "Name": "The Hallway",
+  "Desc": "    This is the southern part of the hallway.  There is \na door to the west, barred with gleaming bands of lights.\nTo the north is more hallway.",
+  "Exits": [
+   {
+    "RoomId": 6434,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6438,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6438,
+  "Name": "The Stairs",
+  "Desc": "   Stairs lead down here into the tower's basement, or you\ncan head east into the main floor of the tower.",
+  "Exits": [
+   {
+    "RoomId": 6439,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 6437,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6439,
+  "Name": "The Stairs",
+  "Desc": "   Stairs lead up here to the main level, or you can go east\nto the basement of the tower.",
+  "Exits": [
+   {
+    "RoomId": 6440,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6438,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6440,
+  "Name": "An Alcove",
+  "Desc": "   This alcove leads into a huge room to your north, and\nto stairs leading down to the east, and stairs going \nup to your west.",
+  "Exits": [
+   {
+    "RoomId": 6441,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6442,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6439,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6441,
+  "Name": "The Laboratory",
+  "Desc": "   This laboratory has lots of stuff in it.  Beakers,\nflasks, burners, tongs, mortars and pestles, jars filled\nwith normal things, jars filled with abnormal things, jars\nfilled with things you'd rather not think about...\nA search could reveal many things...",
+  "Exits": [
+   {
+    "RoomId": 6440,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6442,
+  "Name": "The Stairs",
+  "Desc": "   Stairs lead down here to the second level of the basement,\nor back west to the alcove.",
+  "Exits": [
+   {
+    "RoomId": 6440,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6443,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6443,
+  "Name": "The Stairs",
+  "Desc": "   Stairs lead up here to the first level of the basement, or\nyou can go east to another big room.",
+  "Exits": [
+   {
+    "RoomId": 6444,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6442,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6444,
+  "Name": "The Summoning Room",
+  "Desc": "   This room is darkly lit by a giant glowing pentagram in\nthe center of the room.  Bands of force encircle some\nsort of being trapped inside.  You think that going\ninside would be an EXTREMELY BAD idea...",
+  "Exits": [
+   {
+    "RoomId": 6445,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6443,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6445,
+  "Name": "Inside A Pentagram",
+  "Desc": "   The small god entrapped by the wizard looks at you with\nan insane expression.  Four hundred years of imprisonment\ndoesn't do much for one's...\n\n   OOPS!\n\n   He killed you!\n   You are dead, R.I.P.",
+  "Exits": [
+   {
+    "RoomId": 6444,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ }
+]

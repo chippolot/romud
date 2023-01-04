@@ -1,0 +1,794 @@
+[
+ {
+  "Id": 6101,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way east-west between huge,\nancient trees whose grey trunks remind you of ancient pillars in a\nenormous, deserted hall.  To the south, a frail path leads away from\nthe trail.",
+  "Exits": [
+   {
+    "RoomId": 6100,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6104,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6102,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6102,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way east-west between huge,\nancient trees that stand close on all sides.  Not a sound is to be\nheard - everything is ominously quiet.",
+  "Exits": [
+   {
+    "RoomId": 6101,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6103,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6103,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are where the dusty trail bends, as to avoid conflict with a\ncolossal trunk to the west.  Not a sound is to be heard - everything\nis ominously quiet.  The trail leads east and south and there is a\nsmall path leading off the trail to the north.",
+  "Exits": [
+   {
+    "RoomId": 6150,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6102,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6108,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6104,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  You\nfeel as if the ancient trees observe you in watchful silence.  The path\ncontinues north and south.",
+  "Exits": [
+   {
+    "RoomId": 6105,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6101,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6105,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  Ancient\ngrey trees loom all around you.  The path continues north and west.",
+  "Exits": [
+   {
+    "RoomId": 6104,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6106,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6106,
+  "Name": "A Junction In The Deep, Dark Forest",
+  "Desc": "   You are by a junction where three paths meet.  Ancient grey trees tower\nabove you on all sides.  Paths lead east, south and west.",
+  "Exits": [
+   {
+    "RoomId": 6105,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6117,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6107,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6107,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  Ancient\ngrey trees loom all around you.  The path continues north and east.",
+  "Exits": [
+   {
+    "RoomId": 6108,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6106,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6108,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads north and west and to the\nsouth, a frail path leads away from the trail.",
+  "Exits": [
+   {
+    "RoomId": 6103,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6107,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6109,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6109,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way east-west between huge, ancient\ntrees that stand close on all sides.  Not a sound is to be heard - everything\nis ominously quiet.",
+  "Exits": [
+   {
+    "RoomId": 6108,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6110,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6110,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way between huge, ancient trees that\nstand close on all sides.  The trail leads east and south.  To the west, a\nnarrow path leads away from the trail.",
+  "Exits": [
+   {
+    "RoomId": 6109,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6111,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6130,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6111,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way north-south between huge, ancient\ntrees that loom ominously above you.",
+  "Exits": [
+   {
+    "RoomId": 6110,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6112,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6112,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads north and west and to the\neast, a frail path leads away from the trail.",
+  "Exits": [
+   {
+    "RoomId": 6111,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6113,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6127,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6113,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  Ancient\ngrey trees loom in all directions.  The path continues south and west.",
+  "Exits": [
+   {
+    "RoomId": 6114,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6112,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6114,
+  "Name": "A Junction In The Deep, Dark Forest",
+  "Desc": "   You are by a junction where three paths meet.  Ancient grey trees tower\nabove you on all sides.  Paths lead north, east and west.",
+  "Exits": [
+   {
+    "RoomId": 6113,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6115,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6122,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6115,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  You feel\nas if the ancient trees observe you in watchful silence.  The path continues\nnorth and west.",
+  "Exits": [
+   {
+    "RoomId": 6116,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6114,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6116,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  Giant,\ngrey trees loom ominously on all sides.  The path continues east and south.",
+  "Exits": [
+   {
+    "RoomId": 6117,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6115,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6117,
+  "Name": "A Junction In The Deep, Dark Forest",
+  "Desc": "   You are by a junction where three paths meet.  Ancient, grey trees seem\nto observe you silently you from all sides.  Paths lead north, east and west.",
+  "Exits": [
+   {
+    "RoomId": 6106,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6118,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6116,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6118,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  Ancient,\ngrey trees loom everywhere.  The path continues south and west.",
+  "Exits": [
+   {
+    "RoomId": 6119,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6117,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6119,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  Huge,\nancient trees are on all sides.  The path continues north and south.",
+  "Exits": [
+   {
+    "RoomId": 6118,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6120,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6120,
+  "Name": "On The River Bank In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  To the\nsouth a fast river is flowing westward through the forest.  Ancient grey\ntrees loom on both banks.  The path continues north and west.",
+  "Exits": [
+   {
+    "RoomId": 6119,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 901,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6121,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6121,
+  "Name": "A Dead End Path On The River Bank In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  The\nancient trees stand so close that the path disappears between the dusty\nroots.  To the south a dark river flows from east to west.  The only exit\nappears to be east.",
+  "Exits": [
+   {
+    "RoomId": 6120,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6122,
+  "Name": "A Small Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  Giant,\ngrey trees loom ominously all around.  The path continues east and south.",
+  "Exits": [
+   {
+    "RoomId": 6114,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6123,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6123,
+  "Name": "A Junction On The River Bank In The Deep, Dark Forest",
+  "Desc": "   You are by a junction where three paths meet.  Ancient, grey trees seem\nto observe you silently you from all around.  To the south a dark river\nflows from east to west through the forest.  Paths lead north, east and west.",
+  "Exits": [
+   {
+    "RoomId": 6124,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6125,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6122,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6124,
+  "Name": "A Dead End Path In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.  The\nancient trees stand so close that the path disappears between the dusty\nroots.  To the south a dark river flows from east to west.  The only exit\nappears to be west.",
+  "Exits": [
+   {
+    "RoomId": 6123,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6125,
+  "Name": "A Small Path On The River Bank In The Deep, Dark Forest",
+  "Desc": "   You are on a narrow path leading through the deep, dark forest.\nAncient grey trees loom everywhere.  To the south a dark river flows\nwestward through the forest.  The path continues north and east.",
+  "Exits": [
+   {
+    "RoomId": 6126,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6123,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6126,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads north and west, and to the\nsouth a frail path leads away from the trail.",
+  "Exits": [
+   {
+    "RoomId": 6128,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6127,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6125,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6127,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads east and south.",
+  "Exits": [
+   {
+    "RoomId": 6126,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6112,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6128,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way east-west between huge, ancient\ntrees that stand close on all sides.  Not a sound is to be heard - everything\nis ominously quiet.",
+  "Exits": [
+   {
+    "RoomId": 6126,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6129,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6129,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way east-west between huge, ancient\ntrees that stand close on all sides.  Not a sound is to be heard - everything\nis ominously quiet.",
+  "Exits": [
+   {
+    "RoomId": 6128,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6135,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6130,
+  "Name": "A Narrow Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail winding its way westward between huge, ancient\ntrees that stand close on all sides.  The tree trunks seem to be covered in\nsome sticky substance which gets much stickier towards the west!  Beware!",
+  "Exits": [
+   {
+    "RoomId": 6110,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6131,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6132,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6131,
+  "Name": "The Deadly Spider Web",
+  "Desc": "   You are walking along the narrow path, ducking under the sticky ropes\nas you advance...\n\n\u003e\nA huge, poisonous spider drops from above!\nA huge, poisonous spider drops from above!\nA huge, poisonous spider drops from above!\n\n\u003e\nThe huge, poisonous spider stings you!  You resist the poison!\nThe huge, poisonous spider stings you!  You are poisoned!\nThe huge, poisonous spider stings you!  You are poisoned!\n\nYou are dead.",
+  "Exits": [
+   {
+    "RoomId": 6130,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6134,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6133,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6132,
+  "Name": "Up In The Tree",
+  "Desc": "   You are hanging on the outside of a huge tree trunk covered in a sticky\nsubstance.  Directly to the west is an immense spider web suspended between\nnumerous of the giant trees including the one you are hanging on.  To the\nnorth is what looks like a large webbed entrance.",
+  "Exits": [
+   {
+    "RoomId": 6301,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6133,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6130,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6133,
+  "Name": "On The spider web",
+  "Desc": "   You are balancing carefully on the giant sticky threads that holds the\ngiant web in place.  To the east is a giant tree trunk and to the west is\nan entrance to a cave-like structure made from many layers of spider web.",
+  "Exits": [
+   {
+    "RoomId": 6132,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6134,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6134,
+  "Name": "The Den Of The Queen Spider",
+  "Desc": "   You are inside a cave-like structure that seems to be made entirely\nfrom countless layers of spider web.  Temperature and humidity is very\nhigh making it hard to breathe the foul air that lingers here.  The walls\nare covered with open cocoons.",
+  "Exits": [
+   {
+    "RoomId": 6133,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6135,
+  "Name": "A Dusty Trail In The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail leading through the deep, dark forest.  Ancient\ngrey trees loom all around you.  The trail continues north and east.",
+  "Exits": [
+   {
+    "RoomId": 6136,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6129,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6136,
+  "Name": "A Dusty Trail In The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail leading through the deep, dark forest.  Ancient,\ngrey trees loom everywhere.  The trail continues south and west.  A broad\nirregular path leads eastward away from the trail.",
+  "Exits": [
+   {
+    "RoomId": 6135,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6137,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6142,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6137,
+  "Name": "At The End Of The Trail Through The Deep, Dark Forest",
+  "Desc": "   You are on a dusty trail leading through the deep, dark forest.  Ancient\ngrey trees loom all around you.  A small trail leads northwards and the only\nother exit is east, along the main trail.",
+  "Exits": [
+   {
+    "RoomId": 6138,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6136,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6138,
+  "Name": "On The Narrow Trail",
+  "Desc": "   The trail continues to the north and south as it leads through\nthe heavy underbrush of this part of the Haon-Dor Forest.  Ancient\ngrey trees loom all around you.  The brush seems to be bending\nclosely over the path in a somewhat ominous manner, but you easily\nshrug it off.  The trail looks to open up somewhat a short distance\nto the south.",
+  "Exits": [
+   {
+    "RoomId": 6139,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6137,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6139,
+  "Name": "On The Narrow Trail",
+  "Desc": "   The trail continues to the north and south as it leads through\nthe heavy underbrush of this part of the Haon-Dor Forest.  The\ntrail looks surprisingly well trodden along this part.  The brush\nseems to be bending closely over the path in a somewhat ominous\nmanner, but you easily shrug it off.",
+  "Exits": [
+   {
+    "RoomId": 6203,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6138,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6142,
+  "Name": "Outside A Cave In The Deep, Dark Forest",
+  "Desc": "   You are at the end of a broad, irregular path.  To the north is a very\nlarge ominous-looking cave opening.  The trees here have many marks as if\nsomething with huge claws has been tearing at them in rage.",
+  "Exits": [
+   {
+    "RoomId": 6143,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6136,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6143,
+  "Name": "The Cave Of The Green Dragon",
+  "Desc": "   You are in a big natural cave.  The floor is littered with bones of\nall sorts and the stench is so massive that you could cut it with a\nknife.  The only exit is to the south.",
+  "Exits": [
+   {
+    "RoomId": 6142,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6150,
+  "Name": "The Narrow Trail",
+  "Desc": "   This trail looks much spookier than any other that's you have seen.  The\nusual animal claw marks and bites on the trees are becoming few and far\nbetween.  The trail continues north.",
+  "Exits": [
+   {
+    "RoomId": 6103,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6151,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6151,
+  "Name": "The Narrow Trail",
+  "Desc": "   This area of the trail is also very peculiar.  You can see no signs of\nanimal life what so ever.  The structure of the surrounding trees forces\nthe path to make a sharp turn to the east.",
+  "Exits": [
+   {
+    "RoomId": 6152,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6150,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6152,
+  "Name": "The Circle Of Trees",
+  "Desc": "   The trees here seem to form a circle around the enormous tree in\nthe center.  You notice a wooden door carved into the huge tree to\nthe east.  The trail that you followed to get here seems to end at\nthe base of the tree.",
+  "Exits": [
+   {
+    "RoomId": 6153,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6151,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6153,
+  "Name": "Inside The Great Tree",
+  "Desc": "   You have stepped inside of this hollowed tree.  From here steps lead down\ninto darkness or you can exit the tree by going west.",
+  "Exits": [
+   {
+    "RoomId": 6152,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 6154,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6154,
+  "Name": "The Underground Hallway",
+  "Desc": "   This hallway is apparently one of the roots of the tree hollowed out.\nThe hall leads south to a room where you hear strange noises or you can\ngo up the steps.",
+  "Exits": [
+   {
+    "RoomId": 6155,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6153,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 6155,
+  "Name": "The Cultist Temple",
+  "Desc": "   This temple, built to a god you don't worship, is a nice place to\nvisit but you feel very uncomfortable about spending any amount of\ntime here.  The wooden altar seems to almost glow as you enter the\nroom.  The only exit is the way you came in.",
+  "Exits": [
+   {
+    "RoomId": 6154,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ }
+]

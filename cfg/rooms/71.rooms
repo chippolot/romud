@@ -1,0 +1,458 @@
+[
+ {
+  "Id": 7101,
+  "Name": "Under The Mudhole",
+  "Desc": "   You stand in a small room with a great big opening in the ceiling.  From\nthis opening there is mud dripping down in large lumps.  \u003eYUCK\u003c.  You can\nsmell the foul stench of the slimy sediment as you try not to get covered\nby the falling sludge.  To the east there is an entryway leading out from\nhere and it seems absolutely impossible to force the muddy descent.",
+  "Exits": [
+   {
+    "RoomId": 7103,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7102,
+  "Name": "Under The Dark Pit",
+  "Desc": "   Nice place you found yourself in.  You stand in the middle of a room\nwith only two exits, up and east.  A tall ladder has been left here so\nthat you can climb up through the pit without the use of a rope.",
+  "Exits": [
+   {
+    "RoomId": 7104,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7300,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7103,
+  "Name": "A Muddy Bend In The Sewer System",
+  "Desc": "   You are standing in what looks like a bend in the pipe system of the\nsewer.  The 'floor' is covered completely by mud!  This includes covering\nyour legs up to your knees as well.  The pipe leads west and south.",
+  "Exits": [
+   {
+    "RoomId": 7104,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7101,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7104,
+  "Name": "A Junction In The Sewer Pipes",
+  "Desc": "   You stand in the middle of what looks like a triple junction of pipes\ngoing east, west and north.",
+  "Exits": [
+   {
+    "RoomId": 7103,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7102,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7105,
+  "Name": "Down The Old Well",
+  "Desc": "   You are dangling on the slippery sides of the old well leading down and\nup.  The only secure point here is the metal bars that are cemented into the\nsides, the ones that you cling frantically to so that you don't fall.  Who\nknows how deep this well is?  The bars lead down and up and nowhere else.",
+  "Exits": [
+   {
+    "RoomId": 7015,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 4294967295,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7106,
+  "Name": "The Northwestern Corner Of The Ledge",
+  "Desc": "   You stand, swaying out from the ledge, with only a couple of inches of\nsafe, solid ledge under your feet.  The ledge continues to the east but not\nback south.  It seems that the ledge is too narrow to turn on so you'll have\nto continue forward.",
+  "Exits": [
+   {
+    "RoomId": 7113,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7107,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7279,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7107,
+  "Name": "The Narrow Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
+  "Exits": [
+   {
+    "RoomId": 7106,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7190,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7108,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7108,
+  "Name": "The Narrow Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
+  "Exits": [
+   {
+    "RoomId": 7190,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7107,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7109,
+  "Name": "The Narrow Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
+  "Exits": [
+   {
+    "RoomId": 7110,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7108,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7190,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7110,
+  "Name": "The Narrow Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
+  "Exits": [
+   {
+    "RoomId": 7111,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7107,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7190,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7111,
+  "Name": "The Southwestern Corner Of The Ledge",
+  "Desc": "   This seems like a ledge that is a little broader than the one just to\nthe north of here.  The ledge seems to lead around some sort of Abyss of\ntotal darkness.  The ledge seems to have an odd-looking edge here.",
+  "Exits": [
+   {
+    "RoomId": 7279,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 7110,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7115,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7112,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7112,
+  "Name": "An Odd Intersection",
+  "Desc": "   You stand in a rather odd intersection of pipes.  The pipes actually\ndon't resemble pipes anymore.  They look more like a real stone tunnel,\nor a passageway hewn directly into the rock.  The ways from here lead\nnorth, east and west.",
+  "Exits": [
+   {
+    "RoomId": 7111,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7122,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7113,
+  "Name": "The Narrow Ledge Going East To West",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
+  "Exits": [
+   {
+    "RoomId": 7116,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7190,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7114,
+  "Name": "Mid-Air",
+  "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
+  "Exits": [
+   {
+    "RoomId": 7118,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7120,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7117,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7115,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7119,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7115,
+  "Name": "The Broad Ledge",
+  "Desc": "   You are standing on a ledge that seems quite a lot larger than the\nrest of the ledges.  This one leads to the west and the east, plus it\nhas an exit going to the south.  Though you could jump into mid-air,\nbut it probably wouldn't be such a good idea.  The way south is in\nutter darkness.",
+  "Exits": [
+   {
+    "RoomId": 7121,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7129,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7111,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7116,
+  "Name": "The Northeastern Corner Of The Ledge",
+  "Desc": "   You stand, swaying out from the ledge, with only a couple of inches of\nsafe, solid ledge under your feet.  The ledge continues to the west and\nleads south from here into darkness.",
+  "Exits": [
+   {
+    "RoomId": 7113,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7280,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 7117,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7117,
+  "Name": "The Narrow Eastern Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.  And THAT is west of here\nso watch your step.",
+  "Exits": [
+   {
+    "RoomId": 7118,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7114,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7118,
+  "Name": "The Narrow Eastern Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.  And THAT is west of here\nso watch your step.",
+  "Exits": [
+   {
+    "RoomId": 7119,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7114,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7119,
+  "Name": "The Narrow Eastern Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.  And THAT is west of here\nso watch your step.",
+  "Exits": [
+   {
+    "RoomId": 7120,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7114,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7120,
+  "Name": "The Narrow Eastern Ledge",
+  "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.  And THAT is west of here\nso watch your step.  You also see a small opening to the east.",
+  "Exits": [
+   {
+    "RoomId": 7123,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7121,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7114,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7121,
+  "Name": "The Southeastern Corner Of The Ledge",
+  "Desc": "   This seems like a ledge that is a little broader than the one just to the\nnorth of here.  The ledge seems to lead around some sort of abyss of total\ndarkness.",
+  "Exits": [
+   {
+    "RoomId": 7120,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7115,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7279,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7122,
+  "Name": "Under The Pit",
+  "Desc": "   You stand in a completely dark cavern leading west.  The wall looks\nweird here.",
+  "Exits": [
+   {
+    "RoomId": 7112,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7123,
+  "Name": "Under The Shaft",
+  "Desc": "   A ladder leads up from here to the Shaft.  A small opening leads west\nfrom here.",
+  "Exits": [
+   {
+    "RoomId": 7120,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7041,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7129,
+  "Name": "The Sewer Line",
+  "Desc": "   You are in a narrow part of the sewer.  Down the sewer continues and to\nthe north is the ledge.",
+  "Exits": [
+   {
+    "RoomId": 7221,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 7115,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7190,
+  "Name": "Mid-Air",
+  "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
+  "Exits": [
+   {
+    "RoomId": 7110,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7107,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7113,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7109,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7108,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ }
+]

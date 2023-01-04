@@ -1,7 +1,9 @@
 package utils
 
 import (
+	"io"
 	"io/fs"
+	"os"
 	"path/filepath"
 )
 
@@ -17,4 +19,18 @@ func FindFilePathsWithExtension(root, ext string) []string {
 		return nil
 	})
 	return ret
+}
+
+func LoadFileBytes(path string) ([]byte, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	bytes, err := io.ReadAll(file)
+	if err != nil {
+		return nil, err
+	}
+	return bytes, nil
 }

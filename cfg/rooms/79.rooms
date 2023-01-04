@@ -1,0 +1,322 @@
+[
+ {
+  "Id": 7901,
+  "Name": "The Southern End Of The Hall",
+  "Desc": "   You are standing in a vast hall that is dimly lit, but wherever the\nlight comes from, is a mystery.  The walls seem to radiate warmth and\ngive the pleasent feeling of being welcome here.  A large portrait is\nhanging on one of the walls.  A large wooden staircase leads up into\nthe tower.  To the east there is a high passage away from the hall.\nThis ends shortly after by a tall oak door.  The enormous hall extends\nfurther north from here.  To the south you can see a huge, and VERY \nheavy-looking iron-wrought door.  It looks like this is the only exit\nfrom this magnificent old house.",
+  "Exits": [
+   {
+    "RoomId": 7904,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7910,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7900,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7902,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7909,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7902,
+  "Name": "Redferne's Library",
+  "Desc": "   This is truly a magnificent place!  Books and scrolls lie together\non every shelf.  A large globe, with the map of the world upon it,\nstands in the dimly lit north-western corner of the room.  Two large\nand comfortable looking leather armchairs adorn the center of the\nlibrary together with a huge oak desk.  Dim light radiates from an\nenormous crystal chandelier hanging down from the ceiling approximately\n10 feet off the floor.  To the east there is a great old ashen door.  A\nlarge glass window is set in the west wall.",
+  "Exits": [
+   {
+    "RoomId": 7901,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7903,
+  "Name": "The Artifact Room Of Naris",
+  "Desc": "   This is gloomy and dark room with only a faint light radiating from the\nwalls.  A bunch of funny-looking items fill the center of the room.  There\nis no furniture here what-so-ever.  The only way out seems to be west,\nthrough the low steel door.",
+  "Exits": [
+   {
+    "RoomId": 7910,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7904,
+  "Name": "The Northern End Of The Hall",
+  "Desc": "   You are standing in the northern end of the huge hall.  This part is\nunder the grand wooden staircase so the light seems to be a little less\nbright here, but this doesn't affect your sight at all.  To the north\nlies the kitchen.  To the south lies the southern end of the hall.  To\nthe east there is a huge metal door.  To the west there is a large\naspenwood door.",
+  "Exits": [
+   {
+    "RoomId": 7906,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7913,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7901,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7905,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7905,
+  "Name": "The Sitting Room Of Naris",
+  "Desc": "   You are standing in the middle of a really comfortable place.  The\nwalls are decorated with paintings of smiling Kings and Queens.  The\nmost attractive picture is one of a Prince in shining armour.  By one\nof the walls there is an old armchair.  The only exit is through the\naspenwood door to the east.",
+  "Exits": [
+   {
+    "RoomId": 7904,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7906,
+  "Name": "The Kitchen Of Naris",
+  "Desc": "   This must be the place of food and drink.  You can hear the faint noise\nof rats feasting on meat and bread from somewhere undeterminable.  The sound\nmakes you feel the agony of HUNGER.  The only visible exit is south to the\nNorthern end of the hall.",
+  "Exits": [
+   {
+    "RoomId": 7907,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7908,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7904,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7907,
+  "Name": "The Larder",
+  "Desc": "   You can see food all over.  Among the heaps of food you notice HUGE rats\nscuttling around, nibbling pieces off the heaps here and there.",
+  "Exits": [
+   {
+    "RoomId": 7906,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7908,
+  "Name": "The Fridge",
+  "Desc": "   This place is LOADED with drink, water and booze.",
+  "Exits": [
+   {
+    "RoomId": 7906,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7909,
+  "Name": "On The Stairs",
+  "Desc": "   You can see up and down the stairway.  It seems to take forever, either\ngoing up OR down.  It is just a seemingly insurmountable climb, either way.\nUp is the bedroom of Redferne, and down leads to the southern end of the\nhall.",
+  "Exits": [
+   {
+    "RoomId": 7911,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7901,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7910,
+  "Name": "The Treasure Room",
+  "Desc": "   This place is gloomy.  A HUGE safe is cemented into the west wall.  The\nonly visible exit is west, through the oak door.",
+  "Exits": [
+   {
+    "RoomId": 7903,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7901,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7911,
+  "Name": "Redferne's Bedroom",
+  "Desc": "   This is a snugly set bedroom with all the necessities for a romantic\nevening.  A large fireplace adorns the east wall, and sizzling away is\nthe wood that is ablaze within.  The bed is enormous, covering at least\nHALF of this great room.  The room stretches at least 140 feet, so can\nyou imagine the BED?  A large staircase leads down to the hall.  A couple\nof doors open up to a broad balcony to the south.",
+  "Exits": [
+   {
+    "RoomId": 7912,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7909,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7912,
+  "Name": "Redferne's Balcony",
+  "Desc": "   You see a splendid of the most of this world.  The valleys stretch as\nfar as the eye reaches to the south from here.  Down below you can see\nthe entrance of this magnificent building.  To the north are the doors\nto Redferne's bedroom.",
+  "Exits": [
+   {
+    "RoomId": 7911,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 4294967295,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7913,
+  "Name": "The Monster Pen",
+  "Desc": "   This looks like the cage in which a large carnivore is being kept.\nJudging by the state the walls are in, this could very well be a large\nAGGRESSIVE animal.  This makes you pretty insecure, this stating your\nfeeling about the place quite mildly.",
+  "Exits": [
+   {
+    "RoomId": 7904,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7914,
+  "Name": "On The Huge Chain",
+  "Desc": "   This place has quite a good view over Midgaard.  Your possibilities of\nmovement seem to extend only to the up and down directions.  Unless you\nwant to let go of the secure and seemingly unmovable chain, then those are\nthe directions you should take from here.",
+  "Exits": [
+   {
+    "RoomId": 7915,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 3120,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7915,
+  "Name": "The Chain Where It Is Too Windy",
+  "Desc": "   Hanging on to the chain you figure out that there is no way of leaving\ndown from here.  The wind pulls you from left to right and back.  This\nseems like a totally impossible task.  The ascend is the only way ahead\nfor you.  Otherwise you would risk death by falling to the hard ground\nbelow.  DO NOT DESCEND NOW OR YOU WILL SURELY DIE!!!!",
+  "Exits": [
+   {
+    "RoomId": 7916,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7920,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7916,
+  "Name": "On The Great Chain Of Naris",
+  "Desc": "   You are approximately on the middle of the treacherous Chain.  One false\nstep and death will come and collect you quickly.  The chain leads upwards\nand down.  No way are you going to descend now... You've only just begun\nyour climb.  Besides it could cost you your life.  Look down and you'll\nsee why.",
+  "Exits": [
+   {
+    "RoomId": 7918,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7915,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7917,
+  "Name": "The Chain",
+  "Desc": "   As you descend, the chain seems to absorb all weather around it, making\nit swing less and less in the very powerful wind tearing at it.  The Chain\nseems to chuckle quietly, and as you descend further you hear a soft whisper\noriginating from within the Chain *ITSELF*.  It says 'Welcome back some\nother time, stranger.  Your company is always... hmmm... interesting.  God\nSpeed.'  The chain extends further down through the now spreading clouds.",
+  "Exits": [
+   {
+    "RoomId": 4294967295,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7914,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7918,
+  "Name": "The Mighty Chain Of Naris",
+  "Desc": "   This place truly a splendid view of the WHOLE COUNTRY SIDE!  A magnificent\nlight shines upon you and the way up through the clouds is opened.  Up there\nyou can now see the Mansion of Naris, Residence of the Greater God Redferne.\nThe chain beneath you seems to evaporate in the mustering clouds that\nsurround you by now.",
+  "Exits": [
+   {
+    "RoomId": 7900,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7917,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
+  "Id": 7920,
+  "Name": "The Free Fall From The Chain",
+  "Desc": "   This is probably the third worst place to be in this entire MUD right\nnow.  You fall\n.  \n.\n.\nand fall\n.\n.\n.\nand fall\n.\n.\n.\nand HIT THE GROUND WITH SUCH A *SPLUTCH* that you die horribly, but instantly.\nGood-bye cruel world.",
+  "Exits": [
+   {
+    "RoomId": 7918,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 3120,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 7914,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7915,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7916,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7917,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ }
+]

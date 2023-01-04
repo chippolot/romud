@@ -1,0 +1,137 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+
+	"github.com/chippolot/go-mud/src/mud"
+	"github.com/chippolot/go-mud/src/utils"
+)
+
+func main() {
+	if len(os.Args) != 3 {
+		log.Println("Must call with input and output parameters. Ex: convert inpath outpath")
+		os.Exit(1)
+	}
+	inPath := os.Args[1]
+	outPath := os.Args[2]
+
+	if _, stat := os.Stat(inPath); os.IsNotExist(stat) {
+		log.Printf("input path %s does not exist\n", inPath)
+		os.Exit(1)
+	}
+
+	if _, stat := os.Stat(outPath); os.IsNotExist(stat) {
+		log.Printf("output path %s does not exist\n", outPath)
+		os.Exit(1)
+	}
+
+	for _, path := range utils.FindFilePathsWithExtension(inPath, ".wld") {
+		log.Println("Parsing:", path)
+		id := trimExtension(filepath.Base(path))
+		if bytes, err := utils.LoadFileBytes(path); err == nil {
+			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%s.rooms", id)))
+		} else {
+			log.Panic(err)
+			os.Exit(1)
+		}
+	}
+}
+
+func parseRooms(data []byte, outPath string) {
+	var line string
+	var sb strings.Builder
+	lines := strings.Split(string(data), "\n")
+
+	rooms := make(mud.RoomConfigList, 0)
+	for len(lines) > 0 {
+		line, lines = nextLine(lines)
+		if len(line) == 0 || line[0] != '#' {
+			continue
+		}
+		room := &mud.RoomConfig{}
+		room.Exits = make(mud.RoomExitsConfig)
+
+		// Parse Id
+		rid, _ := strconv.Atoi(line[1:])
+		room.Id = mud.RoomId(rid)
+
+		// Parse Name
+		line, lines = nextLine(lines)
+		room.Name = line[:len(line)-1]
+
+		// Parse Description
+		sb.Reset()
+		line, lines = nextLine(lines)
+		for line != "~" {
+			if sb.Len() != 0 {
+				sb.WriteString("\n")
+			}
+			sb.WriteString(line)
+			line, lines = nextLine(lines)
+		}
+		room.Desc = sb.String()
+
+		line, lines = nextLine(lines)
+		for line != "S" {
+			if len(line) == 0 {
+				line, lines = nextLine(lines)
+				continue
+			}
+			if line[0] == 'D' && len(line) == 2 {
+				idir := line[1] - '0'
+				dir := mud.Direction(idir)
+				lines = nextLineUntil(lines, '~')
+				lines = nextLineUntil(lines, '~')
+				line, lines = nextLine(lines)
+				toks := strings.Split(line, " ")
+				toRid, _ := strconv.Atoi(toks[2])
+				room.Exits[dir] = mud.RoomId(toRid)
+			}
+			line, lines = nextLine(lines)
+		}
+
+		rooms = append(rooms, room)
+	}
+	save(outPath, &rooms)
+}
+
+func nextLine(lines []string) (string, []string) {
+	lines = lines[1:]
+	if len(lines) == 0 {
+		return "", lines
+	} else {
+		return lines[0], lines
+	}
+}
+
+func nextLineUntil(lines []string, char byte) []string {
+	line, lines := nextLine(lines)
+	for len(line) == 0 || line[len(line)-1] != char {
+		line, lines = nextLine(lines)
+	}
+	return lines
+}
+
+func save[T any](path string, data T) error {
+	log.Println("Saving to:", path)
+	jsonData, err := json.MarshalIndent(data, "", " ")
+	if err != nil {
+		return err
+	}
+
+	err = os.WriteFile(path, jsonData, 0644)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func trimExtension(fileName string) string {
+	return fileName[:len(fileName)-len(filepath.Ext(fileName))]
+}

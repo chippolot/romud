@@ -12,6 +12,14 @@ type RoomId uint32
 
 type RoomExitsConfig map[Direction]RoomId
 
+func (cfg *RoomExitsConfig) MarshalJSON() ([]byte, error) {
+	arr := make([]RoomExitConfig, 0)
+	for dir, rid := range *cfg {
+		arr = append(arr, RoomExitConfig{rid, dir})
+	}
+	return json.Marshal(arr)
+}
+
 func (cfg *RoomExitsConfig) UnmarshalJSON(data []byte) (err error) {
 	var arr []RoomExitConfig
 	if err := json.Unmarshal(data, &arr); err != nil {
@@ -36,7 +44,7 @@ type RoomConfig struct {
 	Id           RoomId
 	Name         string
 	Desc         string
-	Exits        *RoomExitsConfig
+	Exits        RoomExitsConfig
 	Perceptibles *PerceptiblesConfig
 }
 
@@ -60,7 +68,7 @@ func (r *Room) RemoveEntity(e *Entity) {
 }
 
 func (r *Room) IsExitOpen(dir Direction) bool {
-	_, ok := (*r.cfg.Exits)[dir]
+	_, ok := r.cfg.Exits[dir]
 	return ok
 }
 
@@ -83,14 +91,14 @@ func (r *Room) Describe(subject *Entity) string {
 }
 
 func describeExits(r *Room, sb *utils.StringBuilder) {
-	if len(*r.cfg.Exits) == 0 {
+	if len(r.cfg.Exits) == 0 {
 		return
 	}
 	sb.WriteNewLine()
 	sb.WriteString("<c dim yellow>Obvious Exits: ")
 	i := 0
-	for verb := range *r.cfg.Exits {
-		if i > 0 && i < len(*r.cfg.Exits)-1 {
+	for verb := range r.cfg.Exits {
+		if i > 0 && i < len(r.cfg.Exits) {
 			sb.WriteString(", ")
 		}
 		sb.WriteString(verb.String())
@@ -145,33 +153,36 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 type Direction int
 
 const (
-	DirectionInvalid Direction = iota
-	DirectionEast
-	DirectionWest
-	DirectionNorth
-	DirectionSouth
-	DirectionUp
-	DirectionDown
+	DirNorth Direction = iota
+	DirEast
+	DirSouth
+	DirWest
+	DirUp
+	DirDown
 )
 
 func ParseDirection(s string) (Direction, error) {
 	s = strings.TrimSpace(strings.ToLower(s))
 	switch s {
 	case "e", "east":
-		return DirectionEast, nil
+		return DirEast, nil
 	case "w", "west":
-		return DirectionWest, nil
+		return DirWest, nil
 	case "n", "north":
-		return DirectionNorth, nil
+		return DirNorth, nil
 	case "s", "south":
-		return DirectionSouth, nil
+		return DirSouth, nil
 	case "u", "up":
-		return DirectionUp, nil
+		return DirUp, nil
 	case "d", "down":
-		return DirectionDown, nil
+		return DirDown, nil
 	default:
 		return 0, fmt.Errorf("failed to parse Direction: %s", s)
 	}
+}
+
+func (d *Direction) MarshalJSON() ([]byte, error) {
+	return json.Marshal(d.String())
 }
 
 func (d *Direction) UnmarshalJSON(data []byte) (err error) {
@@ -187,17 +198,17 @@ func (d *Direction) UnmarshalJSON(data []byte) (err error) {
 
 func (d *Direction) String() string {
 	switch *d {
-	case DirectionEast:
+	case DirEast:
 		return "east"
-	case DirectionWest:
+	case DirWest:
 		return "west"
-	case DirectionNorth:
+	case DirNorth:
 		return "north"
-	case DirectionSouth:
+	case DirSouth:
 		return "south"
-	case DirectionUp:
+	case DirUp:
 		return "up"
-	case DirectionDown:
+	case DirDown:
 		return "down"
 	}
 	return "unknown"
@@ -205,18 +216,18 @@ func (d *Direction) String() string {
 
 func (d *Direction) Reverse() (Direction, error) {
 	switch *d {
-	case DirectionEast:
-		return DirectionWest, nil
-	case DirectionWest:
-		return DirectionEast, nil
-	case DirectionNorth:
-		return DirectionSouth, nil
-	case DirectionSouth:
-		return DirectionNorth, nil
-	case DirectionUp:
-		return DirectionDown, nil
-	case DirectionDown:
-		return DirectionUp, nil
+	case DirEast:
+		return DirWest, nil
+	case DirWest:
+		return DirEast, nil
+	case DirNorth:
+		return DirSouth, nil
+	case DirSouth:
+		return DirNorth, nil
+	case DirUp:
+		return DirDown, nil
+	case DirDown:
+		return DirUp, nil
 	}
 	return 0, fmt.Errorf("failed to reverse direction: %s", d)
 }

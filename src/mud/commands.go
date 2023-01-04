@@ -377,7 +377,7 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 
 	curRoom := w.rooms[e.data.RoomId]
 
-	nextRoomId, ok := (*curRoom.cfg.Exits)[dir]
+	nextRoomId, ok := curRoom.cfg.Exits[dir]
 	if !ok {
 		SendToPlayer(e, "Can't go that way!")
 		return false

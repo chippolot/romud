@@ -15,10 +15,6 @@ const (
 	Dam_Admin = 999
 )
 
-func GetAbilityModifier(score int) int {
-	return (score - 10) / 2
-}
-
 type CombatData struct {
 	target     *Entity
 	nextAttack time.Time
@@ -90,7 +86,7 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 	critMiss := hitBase == 1
 	critHit := hitBase == 20
 	hitMod := GetAbilityModifier(e.data.Stats.Str)
-	hitProf := 3 // TODO Real proficiency bonus here
+	hitProf := ProficiencyChart[e.data.Stats.Level]
 	hit := hitBase + hitMod + hitProf
 
 	if (critMiss || hit < tgt.data.Stats.AC) && !critHit {
@@ -161,16 +157,24 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 	// Handle kills
 	if cnd == Cnd_Dead {
 		if from != nil {
-			if !IsMaxLevel(from) {
-				xpGain := tgt.cfg.Stats.XPValue
-				from.data.Stats.AddXP(xpGain)
-				SendToPlayer(from, "You gain %d XP from defeating %s", xpGain, tgt.Name())
-				if IsReadyForLevelUp(from) {
-					SendToPlayer(from, "You're ready for level %d!", from.data.Stats.Level+1)
-				}
+			xp := tgt.cfg.Stats.XPValue
+			xp = applyXp(from, xp)
+			if xp > 0 {
+				SendToPlayer(from, "You gain %d XP from defeating %s", xp, tgt.Name())
 			}
 		}
 	}
 
 	return dam
+}
+
+func applyXp(e *Entity, xp int) int {
+	if !IsMaxLevel(e) {
+		e.data.Stats.AddXP(xp)
+		if IsReadyForLevelUp(e) {
+			SendToPlayer(e, "You're ready for level %d!", e.data.Stats.Level+1)
+		}
+		return xp
+	}
+	return 0
 }

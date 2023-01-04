@@ -19,6 +19,8 @@
         "Con": 13,
         "Int": 1,
         "Wis": 7,
-        "Cha": 3
+        "Cha": 3,
+        "Level": 1,
+        "XPValue": 25
     }
 }]

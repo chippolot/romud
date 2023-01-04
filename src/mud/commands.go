@@ -30,6 +30,7 @@ var Commands CommandList
 func init() {
 	Commands = []*CommandDesc{
 		{DoAdmin, []string{"admin"}, "Runs an admin command", "admin {command} {params}", true, 0, 0},
+		{DoAdvance, []string{"advance"}, "Advances up to the next experience level", "advance", false, Cnd_Healthy, Pos_Sitting},
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
 		{DoListen, []string{"listen"}, "Describes the sound of an object", "hear cat", false, Cnd_Healthy, Pos_Prone},
@@ -104,8 +105,33 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 	case "pdam":
 		dam, _ := strconv.Atoi(tokens[2])
 		applyDamage(e, w, nil, dam, Dam_Admin)
+	case "pxp":
+		xp, _ := strconv.Atoi(tokens[2])
+		applyXp(e, xp)
 	default:
 		SendToPlayer(e, "Unrecognized admin command: %s", tokens[1])
+	}
+}
+
+func DoAdvance(e *Entity, w *World, _ []string) {
+	if !IsReadyForLevelUp(e) {
+		SendToPlayer(e, "You need more experience to advance to the next level")
+		return
+	}
+
+	e.data.Stats.Level += 1
+
+	// TODO Class hit die
+	// TODO Handle stat increases
+	hpGain := D8.Roll() + GetAbilityModifier(e.data.Stats.Con)
+	e.data.Stats.MaxHP += utils.MaxInts(1, hpGain)
+
+	SendToPlayer(e, "You advance to level %d!", e.data.Stats.Level)
+	SendToPlayer(e, "  You gain %d hp", hpGain)
+	BroadcastToWorldExcept(w, e, "Hooray! %s is now level %d", e.Name(), e.data.Stats.Level)
+
+	if e.player != nil {
+		w.SavePlayerCharacter(e.player.id)
 	}
 }
 

@@ -47,7 +47,7 @@ func newStatsData(cfg *StatsConfig) *StatsData {
 		Int:    cfg.Int,
 		Wis:    cfg.Wis,
 		Cha:    cfg.Cha,
-		Level:  cfg.Level,
+		Level:  utils.MaxInts(1, cfg.Level),
 	}
 }
 
@@ -172,6 +172,10 @@ var ProficiencyChart = []int{
 	6,
 	6,
 	6,
+}
+
+func GetAbilityModifier(score int) int {
+	return (score - 10) / 2
 }
 
 func IsMaxLevel(e *Entity) bool {

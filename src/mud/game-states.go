@@ -2,6 +2,7 @@ package mud
 
 import (
 	"log"
+	"time"
 
 	"github.com/chippolot/go-mud/src/mud/server"
 )
@@ -97,14 +98,18 @@ func (s *PlayingState) OnExit() {
 }
 
 type LoggedOutState struct {
-	session *server.Session
+	player *Player
 }
 
 func (s *LoggedOutState) StateId() StateId {
 	return GameState_LoggedOut
 }
 func (s *LoggedOutState) OnEnter() {
-	_ = s.session.Close()
+	s.player.session.SetPromptProvider(&server.DefaultPromptProvider{})
+	go func() {
+		time.Sleep(time.Second / 2)
+		_ = s.player.session.Close()
+	}()
 }
 func (s *LoggedOutState) ProcessInput(_ string) StateId {
 	return 0

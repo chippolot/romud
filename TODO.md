@@ -40,13 +40,13 @@
     [x] End of battle message
     [x] Regain health on login
     [x] KOed and Death
+    [x] Condition change messages
     [] XP gain
     [] Corpses
     [] Leave corpse on death
     [] Hit and damage bonuses
     [] Damage dependent messages
     [] Look descriptions
-    [] Condition change messages
     [] Kick to the ground
 [] Circle Data Converter
     [x] Rooms
@@ -56,6 +56,9 @@
     [x] Rest + Sleep actions
         [x] Restore stats
     [] Look descriptions
+[] Leveling up
+[] Races
+[] Classes
 [] Self status command
 [] Looking at players
 [] Positions
@@ -64,6 +67,7 @@
 [] Items
     [] Viewing in Room
     [] Looking At
+[] Groups
 [] Servers
     [] TLS
     [] SSH

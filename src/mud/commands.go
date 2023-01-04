@@ -3,6 +3,7 @@ package mud
 import (
 	"fmt"
 	"log"
+	"strconv"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -28,6 +29,7 @@ var Commands CommandList
 
 func init() {
 	Commands = []*CommandDesc{
+		{DoAdmin, []string{"admin"}, "Runs an admin command", "admin {command} {params}", true, 0, 0},
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
 		{DoListen, []string{"listen"}, "Describes the sound of an object", "hear cat", false, Cnd_Healthy, Pos_Prone},
@@ -79,13 +81,32 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 		}
 
 		if cmdDesc.fn != nil {
-			cmdDesc.fn(e, w, tokens[:])
+			cmdDesc.fn(e, w, tokens)
 			return true
 		}
 	}
 
 	SendToPlayer(e, "Huh??")
 	return false
+}
+
+func DoAdmin(e *Entity, w *World, tokens []string) {
+	tokens = lowerTokens(tokens)
+
+	if len(tokens) < 2 {
+		SendToPlayer(e, "What command do you want to run?")
+		return
+	}
+
+	switch tokens[1] {
+	case "pkill":
+		applyDamage(e, w, nil, 9999, Dam_Admin)
+	case "pdam":
+		dam, _ := strconv.Atoi(tokens[2])
+		applyDamage(e, w, nil, dam, Dam_Admin)
+	default:
+		SendToPlayer(e, "Unrecognized admin command: %s", tokens[1])
+	}
 }
 
 func DoAttack(e *Entity, w *World, tokens []string) {

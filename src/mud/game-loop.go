@@ -75,13 +75,16 @@ func restoreStats(w *World) {
 			}
 		case Cnd_Incapacitated:
 			hpGain = -1
-			message = "<c red>You are bleeding...</c>"
 		case Cnd_MortallyWounded:
 			hpGain = -2
-			message = "<c red>You are bleeding badly and will die soon!</c>"
 		}
 
-		e.data.Stats.AddHP(hpGain)
+		if hpGain > 0 {
+			e.data.Stats.AddHP(hpGain)
+		} else {
+			applyDamage(e, w, nil, -hpGain, Dam_Bleeding)
+			message = "<c red>You are bleeding!</c>"
+		}
 		e.data.Stats.AddMov(movGain)
 
 		// Force a new prompt if something changed

@@ -3,17 +3,18 @@ package mud
 import "github.com/chippolot/go-mud/src/utils"
 
 type StatsConfig struct {
-	HP     Dice
-	AC     int
-	Attack Dice
-	Speed  int
-	Str    int
-	Dex    int
-	Con    int
-	Int    int
-	Wis    int
-	Cha    int
-	XP     int
+	HP      Dice
+	AC      int
+	Attack  Dice
+	Speed   int
+	Str     int
+	Dex     int
+	Con     int
+	Int     int
+	Wis     int
+	Cha     int
+	Level   int
+	XPValue int
 }
 
 type StatsData struct {
@@ -28,6 +29,7 @@ type StatsData struct {
 	Int    int
 	Wis    int
 	Cha    int
+	Level  int
 	XP     int
 }
 
@@ -45,6 +47,7 @@ func newStatsData(cfg *StatsConfig) *StatsData {
 		Int:    cfg.Int,
 		Wis:    cfg.Wis,
 		Cha:    cfg.Cha,
+		Level:  cfg.Level,
 	}
 }
 
@@ -54,6 +57,10 @@ func (s *StatsData) AddHP(delta int) {
 
 func (s *StatsData) AddMov(delta int) {
 	s.Mov = utils.MaxInts(0, utils.MinInts(s.MaxMov, s.Mov+delta))
+}
+
+func (s *StatsData) AddXP(delta int) {
+	s.XP += delta
 }
 
 func (s *StatsData) Condition() Condition {
@@ -119,4 +126,63 @@ func (c Condition) InactionString() string {
 		return "You can't do that in your state!"
 	}
 	return ""
+}
+
+var XPChart = []int{
+	0,
+	300,
+	900,
+	2700,
+	6500,
+	14000,
+	23000,
+	34000,
+	48000,
+	64000,
+	85000,
+	100000,
+	120000,
+	140000,
+	165000,
+	195000,
+	225000,
+	265000,
+	305000,
+	355000,
+}
+
+var ProficiencyChart = []int{
+	2,
+	2,
+	2,
+	2,
+	3,
+	3,
+	3,
+	3,
+	4,
+	4,
+	4,
+	4,
+	5,
+	5,
+	5,
+	5,
+	6,
+	6,
+	6,
+	6,
+}
+
+func IsMaxLevel(e *Entity) bool {
+	return e.data.Stats.Level >= len(XPChart)
+}
+
+func IsReadyForLevelUp(e *Entity) bool {
+	maxLevel := len(XPChart)
+	nextLevel := e.data.Stats.Level + 1
+	if nextLevel > maxLevel {
+		return false
+	}
+	return e.data.Stats.XP >= XPChart[nextLevel]
 }

@@ -11,6 +11,8 @@ type DamageType int
 
 const (
 	Dam_Melee DamageType = iota
+	Dam_Bleeding
+	Dam_Admin = 999
 )
 
 func GetAbilityModifier(score int) int {
@@ -105,11 +107,18 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 }
 
 func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageType) int {
+	cnd := tgt.data.Stats.Condition()
+	if cnd == Cnd_Dead {
+		return 0
+	}
+
 	// Start fighting damage source
 	if from != nil && tgt.combat == nil && from.data.Stats.Condition() > Cnd_Stunned {
 		w.inCombat.StartCombat(tgt, from)
 	}
+
 	tgt.data.Stats.HP = tgt.data.Stats.HP - dam
+	cnd = tgt.data.Stats.Condition()
 
 	// Send damage messages
 	r := w.rooms[tgt.data.RoomId]
@@ -127,7 +136,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 	}
 
 	// Send status messages
-	switch tgt.data.Stats.Condition() {
+	switch cnd {
 	case Cnd_Stunned:
 		SendToPlayer(tgt, "You are stunned, but may regain consciousness in time")
 		BroadcastToRoomExcept(r, tgt, "%s is stunned, but may regain consciousness in time", tgt.cfg.Name)
@@ -138,7 +147,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 		SendToPlayer(tgt, "You are bleeding profusely and will die soon if not healed")
 		BroadcastToRoomExcept(r, tgt, "%s is bleeding profusely and will die soon if not healed", tgt.cfg.Name)
 	case Cnd_Dead:
-		SendToPlayer(tgt, "You feel your soul slip from your body. You are DEAD")
+		SendToPlayer(tgt, "You feel your soul slip from your body. You are DEAD!")
 		BroadcastToRoomExcept(r, tgt, "%s is DEAD. R.I.P.", tgt.cfg.Name)
 	default:
 		if dam > tgt.data.Stats.MaxHP/4 {
@@ -148,5 +157,20 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 			SendToPlayer(tgt, "You sure are BLEEDING a lot!")
 		}
 	}
+
+	// Handle kills
+	if cnd == Cnd_Dead {
+		if from != nil {
+			if !IsMaxLevel(from) {
+				xpGain := tgt.cfg.Stats.XPValue
+				from.data.Stats.AddXP(xpGain)
+				SendToPlayer(from, "You gain %d XP from defeating %s", xpGain, tgt.Name())
+				if IsReadyForLevelUp(from) {
+					SendToPlayer(from, "You're ready for level %d!", from.data.Stats.Level+1)
+				}
+			}
+		}
+	}
+
 	return dam
 }

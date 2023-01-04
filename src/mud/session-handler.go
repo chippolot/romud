@@ -69,7 +69,7 @@ func (s *SessionHandler) ChangeGameState(sid server.SessionId, id StateId) {
 	case GameState_Playing:
 		newState = &PlayingState{s.players[sid].playerCharacter, s.world}
 	case GameState_LoggedOut:
-		newState = &LoggedOutState{s.players[sid].player.session}
+		newState = &LoggedOutState{s.players[sid].player}
 	default:
 		log.Printf("unknown state id: %d", id)
 	}

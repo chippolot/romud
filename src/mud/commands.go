@@ -37,6 +37,10 @@ func init() {
 		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo", false, Cnd_Healthy, Pos_Sitting},
+		{DoSit, []string{"sit"}, "Sit down on the ground", "sit", false, Cnd_Healthy, Pos_Prone},
+		{DoSleep, []string{"sleep"}, "Fall asleep to refresh yourself", "sleep", false, Cnd_Healthy, Pos_Sleeping},
+		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
+		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
 		{DoWho, []string{"who"}, "Lists all online players", "who", true, 0, 0},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
@@ -98,6 +102,10 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 		if tgt == e {
 			SendToPlayer(e, "Stop hitting yourself!")
 			BroadcastToRoomExcept(r, e, "%s hits %sself??", e.Name(), e.player.data.Gender.GetObjectPronoun())
+			return
+		}
+		if e.data.Stats.Condition() <= Cnd_Stunned {
+			SendToPlayer(e, "You're in no condition to fight!")
 			return
 		}
 		performAttack(e, w, tgt)
@@ -212,6 +220,66 @@ func DoSmell(e *Entity, w *World, tokens []string) {
 		} else {
 			SendToPlayer(e, "You don't want to smell that!")
 		}
+	}
+}
+
+func DoSit(e *Entity, w *World, _ []string) {
+	if e.position == Pos_Sitting {
+		SendToPlayer(e, "But you're already sitting!")
+		return
+	}
+
+	oldPos := e.position
+	e.position = Pos_Sitting
+
+	r := w.rooms[e.data.RoomId]
+	if oldPos == Pos_Prone {
+		SendToPlayer(e, "You sit up")
+		BroadcastToRoomExcept(r, e, "%s sits up", e.Name())
+	} else {
+		SendToPlayer(e, "You sit down")
+		BroadcastToRoomExcept(r, e, "%s sits down", e.Name())
+	}
+}
+
+func DoSleep(e *Entity, w *World, _ []string) {
+	if e.position == Pos_Sleeping {
+		SendToPlayer(e, "But you're already sleeping!")
+		return
+	}
+	e.position = Pos_Sleeping
+	SendToPlayer(e, "You lie down and doze off...")
+
+	r := w.rooms[e.data.RoomId]
+	BroadcastToRoomExcept(r, e, "%s lies down and falls asleep", e.Name())
+}
+
+func DoWake(e *Entity, w *World, _ []string) {
+	if e.position != Pos_Sleeping {
+		SendToPlayer(e, "But you're not sleeping!")
+		return
+	}
+	e.position = Pos_Prone
+	SendToPlayer(e, "You open your eyes and wake up")
+
+	r := w.rooms[e.data.RoomId]
+	BroadcastToRoomExcept(r, e, "%s wakes up", e.Name())
+}
+
+func DoStand(e *Entity, w *World, _ []string) {
+	if e.position == Pos_Standing {
+		SendToPlayer(e, "But you're already standing!")
+		return
+	}
+	e.position = Pos_Standing
+
+	r := w.rooms[e.data.RoomId]
+	if e.combat != nil {
+		SendToPlayer(e, "You scramble back to your feet!")
+		BroadcastToRoomExcept(r, e, "%s scrambles back to their feet", e.Name())
+	} else {
+		SendToPlayer(e, "You stand up")
+		BroadcastToRoomExcept(r, e, "%s stands up", e.Name())
 	}
 }
 

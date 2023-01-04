@@ -47,8 +47,8 @@
     [] Condition change messages
 [] Positions
     [x] Limit actions
-    [] Rest + Sleep actions
-        [] Restore stats
+    [x] Rest + Sleep actions
+        [x] Restore stats
     [] Look descriptions
     [] Combat knockdown
 [] Self status command

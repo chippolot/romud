@@ -65,8 +65,11 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 		log.Printf("Trying to hit target %d in different room!", tgt.id)
 		return
 	}
+	if e.position < Pos_Standing {
+		SendToPlayer(e, "You can't fight while you're knocked down!")
+		return
+	}
 	if e.data.Stats.Condition() <= Cnd_Stunned {
-		SendToPlayer(e, "You're in no condition to fight!")
 		return
 	}
 

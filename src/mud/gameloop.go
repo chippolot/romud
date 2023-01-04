@@ -59,8 +59,17 @@ func restoreStats(w *World) {
 
 		switch e.data.Stats.Condition() {
 		case Cnd_Healthy, Cnd_Stunned:
-			hpGain = 3  // TODO Improve this
-			movGain = 3 // TODO Improve this
+			switch e.position {
+			case Pos_Sitting, Pos_Prone:
+				hpGain = 5
+				movGain = 5
+			case Pos_Sleeping:
+				hpGain = 7
+				movGain = 7
+			default:
+				hpGain = 3
+				movGain = 3
+			}
 		case Cnd_Incapacitated:
 			hpGain = -1
 			message = "<c red>You are bleeding...</c>"

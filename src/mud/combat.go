@@ -7,6 +7,12 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
+type DamageType int
+
+const (
+	Dam_Melee DamageType = iota
+)
+
 func GetAbilityModifier(score int) int {
 	return (score - 10) / 2
 }
@@ -94,32 +100,53 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 		} else {
 			dam = e.cfg.Stats.Attack.Roll()
 		}
-		dam = applyDamage(tgt, w, e, dam)
 	}
-
-	r := w.rooms[e.data.RoomId]
-	if dam > 0 {
-		if critHit {
-			SendToPlayer(e, "<c yellow>Wow, that was strong!</c>")
-			SendToPlayer(tgt, "<c red>Ouch, that one stung!</c>")
-		}
-		SendToPlayer(e, "Your attack hits %s <c yellow>(%d)</c>", tgt.cfg.Name, dam)
-		SendToPlayer(tgt, "%s's attack hits you <c red>(%d)</c>", e.cfg.Name, dam)
-		BroadcastToRoomExcept2(r, e, tgt, "%s's attack misses %s", e.cfg.Name, tgt.cfg.Name)
-	} else {
-		SendToPlayer(e, "Your attack misses %s...", tgt.cfg.Name)
-		SendToPlayer(tgt, "%s's attack misses you...", e.cfg.Name)
-		BroadcastToRoomExcept2(r, e, tgt, "%s's attack misses %s", e.cfg.Name, tgt.cfg.Name)
-	}
-	// TODO MORE
+	applyDamage(tgt, w, e, dam, Dam_Melee)
 }
 
-func applyDamage(tgt *Entity, w *World, from *Entity, dam int) int {
+func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageType) int {
 	// Start fighting damage source
-	if from != nil && from.data.Stats.Condition() > Cnd_Stunned {
+	if from != nil && tgt.combat == nil && from.data.Stats.Condition() > Cnd_Stunned {
 		w.inCombat.StartCombat(tgt, from)
 	}
 	tgt.data.Stats.HP = tgt.data.Stats.HP - dam
-	// TODO MORE
+
+	// Send damage messages
+	r := w.rooms[tgt.data.RoomId]
+	switch damType {
+	case Dam_Melee:
+		if dam > 0 {
+			SendToPlayer(from, "Your attack hits %s <c yellow>(%d)</c>", tgt.cfg.Name, dam)
+			SendToPlayer(tgt, "%s's attack hits you <c red>(%d)</c>", from.cfg.Name, dam)
+			BroadcastToRoomExcept2(r, from, tgt, "%s's attack misses %s", from.cfg.Name, tgt.cfg.Name)
+		} else {
+			SendToPlayer(from, "Your attack misses %s...", tgt.cfg.Name)
+			SendToPlayer(tgt, "%s's attack misses you...", from.cfg.Name)
+			BroadcastToRoomExcept2(r, from, tgt, "%s's attack misses %s", from.cfg.Name, tgt.cfg.Name)
+		}
+	}
+
+	// Send status messages
+	switch tgt.data.Stats.Condition() {
+	case Cnd_Stunned:
+		SendToPlayer(tgt, "You are stunned, but may regain consciousness in time")
+		BroadcastToRoomExcept(r, tgt, "%s is stunned, but may regain consciousness in time", tgt.cfg.Name)
+	case Cnd_Incapacitated:
+		SendToPlayer(tgt, "You are incapacitated and will die soon if not healed")
+		BroadcastToRoomExcept(r, tgt, "%s is incapacitated and will die soon if not healed", tgt.cfg.Name)
+	case Cnd_MortallyWounded:
+		SendToPlayer(tgt, "You are bleeding profusely and will die soon if not healed")
+		BroadcastToRoomExcept(r, tgt, "%s is bleeding profusely and will die soon if not healed", tgt.cfg.Name)
+	case Cnd_Dead:
+		SendToPlayer(tgt, "You feel your soul slip from your body. You are DEAD")
+		BroadcastToRoomExcept(r, tgt, "%s is DEAD. R.I.P.", tgt.cfg.Name)
+	default:
+		if dam > tgt.data.Stats.MaxHP/4 {
+			SendToPlayer(tgt, "<c red>Ouch, that one stung!</c>")
+		}
+		if tgt.data.Stats.HP < tgt.data.Stats.MaxHP/4 {
+			SendToPlayer(tgt, "You sure are BLEEDING a lot!")
+		}
+	}
 	return dam
 }

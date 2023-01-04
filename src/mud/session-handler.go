@@ -50,7 +50,8 @@ func (s *SessionHandler) Run() {
 					s.ChangeGameState(sid, newStateId)
 				}
 			}
-
+		case *ChangeStateEvent:
+			s.ChangeGameState(sid, evt.newState)
 		default:
 			log.Printf("unexpected event type: %T", sessionEvent.Event)
 		}

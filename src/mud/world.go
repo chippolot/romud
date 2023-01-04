@@ -16,10 +16,12 @@ type World struct {
 	rooms         map[RoomId]*Room
 	entryRoomId   RoomId
 	inCombat      *CombatList
+	loggingOut    map[PlayerId]bool
+	events        chan<- server.SessionEvent
 }
 
-func NewWorld(db Database) *World {
-	return &World{db, make(map[PlayerId]*Entity), make(map[server.SessionId]*server.Session), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, &CombatList{}}
+func NewWorld(db Database, events chan<- server.SessionEvent) *World {
+	return &World{db, make(map[PlayerId]*Entity), make(map[server.SessionId]*server.Session), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, &CombatList{}, make(map[PlayerId]bool), events}
 }
 
 func (w *World) EntryRoomId() RoomId {
@@ -118,8 +120,17 @@ func (w *World) RemoveEntity(eid EntityId) {
 
 	if e.player != nil {
 		delete(w.players, e.player.id)
+		delete(w.loggingOut, e.player.id)
 		BroadcastToWorldExcept(w, e, "%s Leaves", e.Name())
 	}
+}
+
+func (w *World) LogoutPlayer(p *Player) {
+	if _, ok := w.loggingOut[p.id]; ok {
+		return
+	}
+	w.loggingOut[p.id] = true
+	w.events <- server.SessionEvent{p.session, &ChangeStateEvent{LoggedOutStateId}}
 }
 
 func (w *World) AddSession(s *server.Session) {
@@ -150,10 +161,7 @@ func (w *World) OnPlayerInput(p *Player, input string) StateId {
 		return 0
 	}
 
-	success := ProcessCommand(e, w, tokens)
-	if tokens[0] == "quit" && success {
-		return LoggedOutStateId
-	}
+	ProcessCommand(e, w, tokens)
 
 	return 0
 }

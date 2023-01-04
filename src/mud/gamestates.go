@@ -15,6 +15,10 @@ const (
 	PlayingStateId
 )
 
+type ChangeStateEvent struct {
+	newState StateId
+}
+
 type GameState interface {
 	StateId() StateId
 
@@ -71,6 +75,11 @@ func (s *PlayingState) StateId() StateId {
 func (s *PlayingState) OnEnter() {
 	s.playerCharacter.player.session.SetPromptProvider(&EntityPromptProvider{s.playerCharacter})
 	s.playerCharacter.player.Send("Welcome to GoMUD!")
+
+	// Heal up
+	if s.playerCharacter.data.Stats.HP < 1 {
+		s.playerCharacter.data.Stats.HP = 1
+	}
 
 	roomId := s.world.entryRoomId
 	if s.playerCharacter.data.RoomId != InvalidId {

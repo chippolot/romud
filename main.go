@@ -27,8 +27,11 @@ func main() {
 	// Create DB
 	db := mud.NewFileSystemDatabase(path.Join(projectRoot, "db"))
 
+	// Create events channel
+	events := make(chan server.SessionEvent, 32)
+
 	// Create world
-	world := mud.NewWorld(db)
+	world := mud.NewWorld(db, events)
 	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
 
 	// Create test entity
@@ -40,7 +43,6 @@ func main() {
 	}
 
 	// Create session handler
-	events := make(chan server.SessionEvent, 32)
 	sessionHandler := mud.NewSessionHandler(world, events)
 	go sessionHandler.Run()
 

@@ -37,14 +37,19 @@
     [x] Roll for damage / hits
     [x] Critical hits
     [x] End combat if stunned
-    [] End of battle message
-    [] KOed and Death
+    [x] End of battle message
+    [x] Regain health on login
+    [x] KOed and Death
+    [] Die if session ends while stunned or lower
+    [] Handle session ending while in combat
     [] XP gain
     [] Corpses
+    [] Leave corpse on death
     [] Hit and damage bonuses
     [] Damage dependent messages
     [] Look descriptions
     [] Condition change messages
+    [] Kick to the ground
 [] Positions
     [x] Limit actions
     [x] Rest + Sleep actions

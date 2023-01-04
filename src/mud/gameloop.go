@@ -28,6 +28,7 @@ func GameLoop(w *World) {
 		{restoreStats, time.Second * 10, time.Now()},
 		{wanderNpcs, time.Second * 3, time.Now()},
 		{runCombat, time.Second, time.Now()},
+		{logoutTheDead, time.Millisecond, time.Now()},
 		{flushPlayerOuput, time.Millisecond, time.Now()},
 	}
 
@@ -132,6 +133,14 @@ func runCombat(w *World) {
 		// Post attack cleanup
 		if !e.combat.Valid(e) {
 			w.inCombat.EndCombat(e)
+		}
+	}
+}
+
+func logoutTheDead(w *World) {
+	for _, e := range w.players {
+		if e.data.Stats.Condition() == Cnd_Dead {
+			w.LogoutPlayer(e.player)
 		}
 	}
 }

@@ -130,7 +130,7 @@ func (w *World) LogoutPlayer(p *Player) {
 		return
 	}
 	w.loggingOut[p.id] = true
-	w.events <- server.SessionEvent{p.session, &ChangeStateEvent{LoggedOutStateId}}
+	w.events <- server.SessionEvent{p.session, &ChangeStateEvent{GameState_LoggedOut}}
 }
 
 func (w *World) AddSession(s *server.Session) {

@@ -9,10 +9,10 @@ import (
 type StateId int
 
 const (
-	NoneStateId StateId = iota
-	LoggedOutStateId
-	LoginStateId
-	PlayingStateId
+	GameState_None StateId = iota
+	GameState_LoggedOut
+	GameState_LoggingIn
+	GameState_Playing
 )
 
 type ChangeStateEvent struct {
@@ -34,7 +34,7 @@ type LoginState struct {
 }
 
 func (s *LoginState) StateId() StateId {
-	return LoginStateId
+	return GameState_LoggingIn
 }
 func (s *LoginState) OnEnter() {
 	s.player.session.SetPromptProvider(&server.DefaultPromptProvider{})
@@ -58,7 +58,7 @@ func (s *LoginState) ProcessInput(input string) StateId {
 		s.player.Send("Ah, %s, a fine name indeed!", name)
 	}
 
-	return PlayingStateId
+	return GameState_Playing
 }
 func (s *LoginState) OnExit() {
 
@@ -70,7 +70,7 @@ type PlayingState struct {
 }
 
 func (s *PlayingState) StateId() StateId {
-	return PlayingStateId
+	return GameState_Playing
 }
 func (s *PlayingState) OnEnter() {
 	s.playerCharacter.player.session.SetPromptProvider(&EntityPromptProvider{s.playerCharacter})
@@ -101,7 +101,7 @@ type LoggedOutState struct {
 }
 
 func (s *LoggedOutState) StateId() StateId {
-	return LoggedOutStateId
+	return GameState_LoggedOut
 }
 func (s *LoggedOutState) OnEnter() {
 	_ = s.session.Close()

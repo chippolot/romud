@@ -33,7 +33,7 @@ func (s *SessionHandler) Run() {
 			player := NewPlayer(sessionEvent.Session)
 			s.players[sid] = &PlayerSessionData{player: player}
 			log.Printf("session %d connected", sid)
-			s.ChangeGameState(sid, LoginStateId)
+			s.ChangeGameState(sid, GameState_LoggingIn)
 
 		case *server.SessionEndedEvent:
 			s.world.RemoveSession(sid)
@@ -46,7 +46,7 @@ func (s *SessionHandler) Run() {
 
 		case *server.ClientInputEvent:
 			if state, ok := s.states[sid]; ok {
-				if newStateId := state.ProcessInput(evt.Input); newStateId != NoneStateId {
+				if newStateId := state.ProcessInput(evt.Input); newStateId != GameState_None {
 					s.ChangeGameState(sid, newStateId)
 				}
 			}
@@ -64,11 +64,11 @@ func (s *SessionHandler) ChangeGameState(sid server.SessionId, id StateId) {
 	}
 	var newState GameState
 	switch id {
-	case LoginStateId:
+	case GameState_LoggingIn:
 		newState = &LoginState{s.players[sid].player, s.world, &s.players[sid].playerCharacter}
-	case PlayingStateId:
+	case GameState_Playing:
 		newState = &PlayingState{s.players[sid].playerCharacter, s.world}
-	case LoggedOutStateId:
+	case GameState_LoggedOut:
 		newState = &LoggedOutState{s.players[sid].player.session}
 	default:
 		log.Printf("unknown state id: %d", id)

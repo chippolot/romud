@@ -13,6 +13,7 @@ type StatsConfig struct {
 	Int    int
 	Wis    int
 	Cha    int
+	XP     int
 }
 
 type StatsData struct {
@@ -27,6 +28,7 @@ type StatsData struct {
 	Int    int
 	Wis    int
 	Cha    int
+	XP     int
 }
 
 func newStatsData(cfg *StatsConfig) *StatsData {

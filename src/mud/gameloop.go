@@ -33,8 +33,10 @@ func GameLoop(w *World) {
 	}
 
 	for {
-		for _, sys := range systems {
-			sys.Update(w)
+		if len(w.sessions) > 0 {
+			for _, sys := range systems {
+				sys.Update(w)
+			}
 		}
 		time.Sleep(time.Second / 30.0)
 	}

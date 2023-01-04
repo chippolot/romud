@@ -40,8 +40,6 @@
     [x] End of battle message
     [x] Regain health on login
     [x] KOed and Death
-    [] Die if session ends while stunned or lower
-    [] Handle session ending while in combat
     [] XP gain
     [] Corpses
     [] Leave corpse on death

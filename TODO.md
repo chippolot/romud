@@ -60,6 +60,12 @@
         [x] Restore stats
     [] Look descriptions
 [] Items
+    [] Containers
+    [] Inventory
+    [] Get
+    [] Get From
+    [] Get All From
+    [] Drop
     [] Viewing in Room
     [] Looking At
 [] Leveling up

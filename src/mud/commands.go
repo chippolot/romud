@@ -142,7 +142,8 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 		SendToPlayer(e, "What do you want to attack?")
 	default:
 		r := w.rooms[e.data.RoomId]
-		tgt, ok := TryGetEntityByKeywords(lowerTokens(tokens[1:]), r.entities, e)
+		q := NewSearchQuery(lowerTokens(tokens[1:]))
+		tgt, ok := SearchEntityMap(q, r.entities, e)
 		if !ok {
 			SendToPlayer(e, "They don't seem to be here...")
 			return
@@ -413,7 +414,8 @@ func DoQuit(e *Entity, w *World, _ []string) {
 func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) (string, bool) {
 	// First try and resolve entity in room
 	r := w.rooms[perceiver.data.RoomId]
-	tgt, ok := TryGetEntityByKeywords(tokens, r.entities, perceiver)
+	q := NewSearchQuery(tokens)
+	tgt, ok := SearchEntityMap(q, r.entities, perceiver)
 	if ok {
 		if desc, ok := tgt.TryPerceive(sense, tokens); ok {
 			return desc, true

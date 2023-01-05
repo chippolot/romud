@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 const (
@@ -40,48 +41,63 @@ type ItemData struct {
 }
 
 type Item struct {
-	id   ItemId
-	cfg  *ItemConfig
-	data *ItemData
+	id       ItemId
+	cfg      *ItemConfig
+	data     *ItemData
+	contents []*Item
 }
 
 func NewItem(cfg *ItemConfig) *Item {
 	itemIdCounter++
 	id := itemIdCounter
-	return &Item{id, cfg, newItemData(cfg)}
+	return &Item{id, cfg, newItemData(cfg), make([]*Item, 0)}
 }
 
 func newItemData(cfg *ItemConfig) *ItemData {
 	return &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0)}
 }
 
-func (e *Item) Matches(s string) bool {
-	if strings.EqualFold(e.cfg.Name, s) {
+func (i *Item) MatchesKeyword(keyword string) bool {
+	if strings.EqualFold(i.cfg.Name, keyword) {
 		return true
 	}
-	_, ok := e.cfg.lookup[s]
+	_, ok := i.cfg.lookup[keyword]
 	return ok
 }
 
-func (e *Item) TryPerceive(sense SenseType, words []string) (string, bool) {
-	desc, ok := e.cfg.Perceptibles.TryPerceive(sense, words)
+func (i *Item) TryPerceive(sense SenseType, words []string) (string, bool) {
+	desc, ok := i.cfg.Perceptibles.TryPerceive(sense, words)
 	if ok {
 		return desc, ok
 	}
-	if sense == SenseLook && e.cfg.FullDesc != "" {
-		return e.cfg.FullDesc, true
+	if sense == SenseLook && i.cfg.FullDesc != "" {
+		return i.cfg.FullDesc, true
 	}
 	return "", false
 }
 
-func (i *Item) AddToContainer(w *World, i2 *Item) bool {
-
+func (i *Item) AddToContainer(w *World, i2 *Item) {
+	i.contents = append(i.contents, i2)
+	i.data.Contents = append(i.data.Contents, i2.data)
 }
 
-func (i *Item) RemoveFromContainer(w *World, keywords []string) (*Item, bool) {
-
+func (i *Item) RemoveFromContainer(w *World, query SearchQuery) (*Item, bool) {
+	if idx, ok := SearchListIndex[*Item](query, i.contents); ok {
+		item := i.contents[idx]
+		utils.SwapDelete(i.contents, idx)
+		utils.SwapDelete(i.data.Contents, idx)
+		return item, true
+	}
+	return nil, false
 }
 
-func (i *Item) RemoveAllFromContainer(w *World) ([]*Item, bool) {
-
+func (i *Item) RemoveAllFromContainer(w *World) []*Item {
+	if len(i.contents) == 0 {
+		return i.contents[:0]
+	}
+	items := make([]*Item, len(i.contents))
+	copy(items, i.contents)
+	i.contents = i.contents[:0]
+	i.data.Contents = i.data.Contents[:0]
+	return items
 }

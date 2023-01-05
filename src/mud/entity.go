@@ -71,11 +71,11 @@ func (e *Entity) Name() string {
 	return e.cfg.Name
 }
 
-func (e *Entity) Matches(s string) bool {
-	if strings.EqualFold(e.Name(), s) {
+func (e *Entity) MatchesKeyword(keyword string) bool {
+	if strings.EqualFold(e.Name(), keyword) {
 		return true
 	}
-	_, ok := e.cfg.lookup[s]
+	_, ok := e.cfg.lookup[keyword]
 	return ok
 }
 
@@ -99,30 +99,11 @@ func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) 
 	return nil, false
 }
 
-func TryGetEntityByKeywords(words []string, ents map[EntityId]*Entity, self *Entity) (*Entity, bool) {
-	switch len(words) {
-	case 0:
-		return nil, false
-	case 1:
-		word := words[0]
-		// TODO Generify this
-		if word == "self" || word == "me" || word == "myself" {
-			return self, true
-		}
+func SearchEntityMap(query SearchQuery, entities map[EntityId]*Entity, self *Entity) (*Entity, bool) {
+	if query.Joined == "self" || query.Joined == "me" || query.Joined == "myself" {
+		return self, true
 	}
-
-	var joined = strings.Join(words, " ")
-	for _, e := range ents {
-		if e.Matches(joined) {
-			return e, true
-		}
-		for _, w := range words {
-			if e.Matches(w) {
-				return e, true
-			}
-		}
-	}
-	return nil, false
+	return SearchMap[EntityId, *Entity](query, entities)
 }
 
 type Position int

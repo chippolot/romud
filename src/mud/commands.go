@@ -354,7 +354,7 @@ func DoStatus(e *Entity, w *World, _ []string) {
 	sb.WriteLinef("Int    : <c yellow>%d</c>", e.data.Stats.Int)
 	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.data.Stats.Wis)
 	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.data.Stats.Cha)
-	sb.WriteHorizontalDivider()
+	sb.WriteString(utils.HorizontalDivider)
 	SendToPlayer(e, sb.String())
 }
 

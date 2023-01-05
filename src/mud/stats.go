@@ -182,11 +182,15 @@ func IsMaxLevel(e *Entity) bool {
 	return e.data.Stats.Level >= len(XPChart)
 }
 
-func IsReadyForLevelUp(e *Entity) bool {
-	maxLevel := len(XPChart)
-	nextLevel := e.data.Stats.Level + 1
-	if nextLevel > maxLevel {
-		return false
+func GetXpForNextLevel(e *Entity) int {
+	if IsMaxLevel(e) {
+		return -1
 	}
-	return e.data.Stats.XP >= XPChart[nextLevel]
+	nextLevel := e.data.Stats.Level + 1
+	requiredXp := XPChart[nextLevel] - e.data.Stats.XP
+	return utils.MaxInts(0, requiredXp)
+}
+
+func IsReadyForLevelUp(e *Entity) bool {
+	return !IsMaxLevel(e) && GetXpForNextLevel(e) == 0
 }

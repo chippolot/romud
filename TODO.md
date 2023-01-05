@@ -59,7 +59,7 @@
 [] Leveling up
 [] Races
 [] Classes
-[] Self status command
+[x] Self status command
 [] Looking at players
 [] Positions
 [] Doors

@@ -43,6 +43,7 @@ func init() {
 		{DoSleep, []string{"sleep"}, "Fall asleep to refresh yourself", "sleep", false, Cnd_Healthy, Pos_Sleeping},
 		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},
+		{DoStatus, []string{"status"}, "Displays status for the current player", "status", true, 0, 0},
 		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
@@ -328,6 +329,31 @@ func DoStand(e *Entity, w *World, _ []string) {
 		SendToPlayer(e, "You stand up")
 		BroadcastToRoomExcept(r, e, "%s stands up", e.Name())
 	}
+}
+
+func DoStatus(e *Entity, w *World, _ []string) {
+	var sb utils.StringBuilder
+	sb.WriteHorizontalDivider()
+	sb.WriteLinef("%s", e.Name())
+	sb.WriteNewLine()
+	sb.WriteLinef("Level  : <c yellow>%d</c>", e.data.Stats.Level)
+	if !IsMaxLevel(e) {
+		sb.WriteLinef("Next   : <c yellow>%d</c> XP", GetXpForNextLevel(e))
+	}
+	sb.WriteNewLine()
+	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.HP, e.data.Stats.MaxHP)
+	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.Mov, e.data.Stats.MaxMov)
+	sb.WriteNewLine()
+	sb.WriteLinef("AC     : <c yellow>%d</c>", e.data.Stats.AC)
+	sb.WriteNewLine()
+	sb.WriteLinef("Str    : <c yellow>%d</c>", e.data.Stats.Str)
+	sb.WriteLinef("Dex    : <c yellow>%d</c>", e.data.Stats.Dex)
+	sb.WriteLinef("Con    : <c yellow>%d</c>", e.data.Stats.Con)
+	sb.WriteLinef("Int    : <c yellow>%d</c>", e.data.Stats.Int)
+	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.data.Stats.Wis)
+	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.data.Stats.Cha)
+	sb.WriteHorizontalDivider()
+	SendToPlayer(e, sb.String())
 }
 
 func DoWho(e *Entity, w *World, _ []string) {

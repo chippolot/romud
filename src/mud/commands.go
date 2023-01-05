@@ -344,6 +344,8 @@ func DoStatus(e *Entity, w *World, _ []string) {
 	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.HP, e.data.Stats.MaxHP)
 	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.Mov, e.data.Stats.MaxMov)
 	sb.WriteNewLine()
+	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", GetAbilityModifier(e.data.Stats.Str)+ProficiencyChart[e.data.Stats.Level])
+	sb.WriteLinef("Attack : <c yellow>%d</c>d<c yellow>%d</c>+<c yellow>%d</c>", e.cfg.Stats.Attack.Num, e.cfg.Stats.Attack.Sides, e.cfg.Stats.Attack.Plus)
 	sb.WriteLinef("AC     : <c yellow>%d</c>", e.data.Stats.AC)
 	sb.WriteNewLine()
 	sb.WriteLinef("Str    : <c yellow>%d</c>", e.data.Stats.Str)

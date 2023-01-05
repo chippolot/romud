@@ -30,6 +30,7 @@
 [x] Wandering Mobs
 [x] Remove Disconnected entities!
 [x] Log Flags
+[x] Self status command
 [] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -41,11 +42,13 @@
     [x] Regain health on login
     [x] KOed and Death
     [x] Condition change messages
-    [] XP gain
+    [x] XP gain
+    [x] Damage dependent messages
     [] Corpses
     [] Leave corpse on death
     [] Hit and damage bonuses
-    [] Damage dependent messages
+    [] Weapons
+    [] Weapon dependent messages
     [] Look descriptions
     [] Kick to the ground
 [] Circle Data Converter
@@ -56,17 +59,15 @@
     [x] Rest + Sleep actions
         [x] Restore stats
     [] Look descriptions
-[] Leveling up
-[] Races
-[] Classes
-[x] Self status command
-[] Looking at players
-[] Positions
-[] Doors
-[] Figure out thread safety
 [] Items
     [] Viewing in Room
     [] Looking At
+[] Leveling up
+[] Races
+[] Classes
+[] Looking at players
+[] Doors
+[] Figure out thread safety
 [] Groups
 [] Servers
     [] TLS

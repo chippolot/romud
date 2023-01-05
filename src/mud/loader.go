@@ -20,7 +20,7 @@ func LoadRooms(w *World, path string) error {
 	}
 
 	for _, cfg := range cfgList {
-		r, err := ParseRoom(cfg)
+		r, err := NewRoom(cfg)
 		if err != nil {
 			log.Fatalf("Failed to parse room with error: %v", err)
 		}

@@ -53,7 +53,7 @@ type Room struct {
 	entities map[EntityId]*Entity
 }
 
-func ParseRoom(cfg *RoomConfig) (*Room, error) {
+func NewRoom(cfg *RoomConfig) (*Room, error) {
 	r := &Room{cfg, make(map[EntityId]*Entity)}
 	return r, nil
 }

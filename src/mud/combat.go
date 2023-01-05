@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -120,39 +121,12 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 	r := w.rooms[tgt.data.RoomId]
 	switch damType {
 	case Dam_Melee:
-		if dam > 0 {
-			SendToPlayer(from, "Your attack hits %s <c yellow>(%d)</c>", tgt.cfg.Name, dam)
-			SendToPlayer(tgt, "%s's attack hits you <c red>(%d)</c>", from.cfg.Name, dam)
-			BroadcastToRoomExcept2(r, from, tgt, "%s's attack misses %s", from.cfg.Name, tgt.cfg.Name)
-		} else {
-			SendToPlayer(from, "Your attack misses %s...", tgt.cfg.Name)
-			SendToPlayer(tgt, "%s's attack misses you...", from.cfg.Name)
-			BroadcastToRoomExcept2(r, from, tgt, "%s's attack misses %s", from.cfg.Name, tgt.cfg.Name)
-		}
+		sendDamageMessages(dam, from, tgt, r, "slash", "slashes")
+
 	}
 
 	// Send status messages
-	switch cnd {
-	case Cnd_Stunned:
-		SendToPlayer(tgt, "You are stunned, but may regain consciousness in time")
-		BroadcastToRoomExcept(r, tgt, "%s is stunned, but may regain consciousness in time", tgt.cfg.Name)
-	case Cnd_Incapacitated:
-		SendToPlayer(tgt, "You are incapacitated and will die soon if not healed")
-		BroadcastToRoomExcept(r, tgt, "%s is incapacitated and will die soon if not healed", tgt.cfg.Name)
-	case Cnd_MortallyWounded:
-		SendToPlayer(tgt, "You are bleeding profusely and will die soon if not healed")
-		BroadcastToRoomExcept(r, tgt, "%s is bleeding profusely and will die soon if not healed", tgt.cfg.Name)
-	case Cnd_Dead:
-		SendToPlayer(tgt, "You feel your soul slip from your body. You are DEAD!")
-		BroadcastToRoomExcept(r, tgt, "%s is DEAD. R.I.P.", tgt.cfg.Name)
-	default:
-		if dam > tgt.data.Stats.MaxHP/4 {
-			SendToPlayer(tgt, "<c red>Ouch, that one stung!</c>")
-		}
-		if tgt.data.Stats.HP < tgt.data.Stats.MaxHP/4 {
-			SendToPlayer(tgt, "You sure are BLEEDING a lot!")
-		}
-	}
+	sendStatusMessages(dam, tgt, r)
 
 	// Handle kills
 	if cnd == Cnd_Dead {
@@ -177,4 +151,65 @@ func applyXp(e *Entity, xp int) int {
 		return xp
 	}
 	return 0
+}
+
+func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingular string, atkVerbPlural string) {
+	var toSrc, toDst, toRoom string
+	if dam <= 0 {
+		toSrc = fmt.Sprintf("Your %s misses %s", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s's %s misses you", src.Name(), atkVerbSingular)
+		toRoom = fmt.Sprintf("%s tries to %s %s, but misses", src.Name(), atkVerbSingular, dst.Name())
+	} else if dam <= 2 {
+		toSrc = fmt.Sprintf("Your %s lightly grazes %s", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s's %s lightly grazes you", src.Name(), atkVerbSingular)
+		toRoom = fmt.Sprintf("%s's %s lightly grazes %s", src.Name(), atkVerbSingular, dst.Name())
+	} else if dam <= 4 {
+		toSrc = fmt.Sprintf("You barely %s %s", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s barely %s you", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s barely %s %s", src.Name(), atkVerbPlural, dst.Name())
+	} else if dam <= 6 {
+		toSrc = fmt.Sprintf("You %s %s", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s you", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s", src.Name(), atkVerbPlural, dst.Name())
+	} else if dam <= 8 {
+		toSrc = fmt.Sprintf("You %s %s hard", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s you hard", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s hard", src.Name(), atkVerbPlural, dst.Name())
+	} else if dam <= 10 {
+		toSrc = fmt.Sprintf("You %s %s very hard", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s you very hard", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s very hard", src.Name(), atkVerbPlural, dst.Name())
+	} else {
+		toSrc = fmt.Sprintf("You %s %s EXTREMELY hard", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s you EXTREMELY hard", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s EXTREMELY hard", src.Name(), atkVerbPlural, dst.Name())
+	}
+	// TODO More here?
+	SendToPlayer(src, toSrc+" <c yellow>(%d)</c>", dam)
+	SendToPlayer(dst, toDst+" <c red>(%d)</c>", dam)
+	BroadcastToRoomExcept2(r, src, dst, toRoom)
+}
+
+func sendStatusMessages(dam int, target *Entity, r *Room) {
+	switch target.data.Stats.Condition() {
+	case Cnd_Stunned:
+		SendToPlayer(target, "You are stunned, but may regain consciousness in time")
+		BroadcastToRoomExcept(r, target, "%s is stunned, but may regain consciousness in time", target.cfg.Name)
+	case Cnd_Incapacitated:
+		SendToPlayer(target, "You are incapacitated and will die soon if not healed")
+		BroadcastToRoomExcept(r, target, "%s is incapacitated and will die soon if not healed", target.cfg.Name)
+	case Cnd_MortallyWounded:
+		SendToPlayer(target, "You are bleeding profusely and will die soon if not healed")
+		BroadcastToRoomExcept(r, target, "%s is bleeding profusely and will die soon if not healed", target.cfg.Name)
+	case Cnd_Dead:
+		SendToPlayer(target, "You feel your soul slip from your body. You are DEAD!")
+		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.cfg.Name)
+	default:
+		if dam > target.data.Stats.MaxHP/4 {
+			SendToPlayer(target, "<c red>Ouch, that one stung!</c>")
+		}
+		if target.data.Stats.HP < target.data.Stats.MaxHP/4 {
+			SendToPlayer(target, "You sure are BLEEDING a lot!")
+		}
+	}
 }

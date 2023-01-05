@@ -74,7 +74,7 @@ func (s *PlayingState) StateId() StateId {
 	return GameState_Playing
 }
 func (s *PlayingState) OnEnter() {
-	s.playerCharacter.player.session.SetPromptProvider(&EntityPromptProvider{s.playerCharacter})
+	s.playerCharacter.player.session.SetPromptProvider(&PlayerPromptProvider{s.playerCharacter})
 	s.playerCharacter.player.Send("Welcome to GoMUD!")
 
 	// Heal up

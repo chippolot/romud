@@ -1,11 +1,9 @@
 package mud
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
-	"github.com/chippolot/go-mud/src/utils"
 )
 
 const PlayerEntityKey = "_player"
@@ -125,18 +123,6 @@ func TryGetEntityByKeywords(words []string, ents map[EntityId]*Entity, self *Ent
 		}
 	}
 	return nil, false
-}
-
-type EntityPromptProvider struct {
-	character *Entity
-}
-
-func (pp *EntityPromptProvider) Prompt() string {
-	prompt := fmt.Sprintf("<<c green>%dh(%dH):%dv(%dMV)</c>> ", pp.character.data.Stats.HP, pp.character.data.Stats.MaxHP, pp.character.data.Stats.Mov, pp.character.data.Stats.MaxMov)
-	if pp.character.combat != nil {
-		prompt = fmt.Sprintf("%s%s<%s (%s)>:<%s (%s)> ", prompt, utils.NewLine, pp.character.Name(), pp.character.data.Stats.ConditionShortString(), pp.character.combat.target.Name(), pp.character.combat.target.data.Stats.ConditionShortString())
-	}
-	return prompt
 }
 
 type Position int

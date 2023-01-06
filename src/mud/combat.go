@@ -156,33 +156,33 @@ func applyXp(e *Entity, xp int) int {
 func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingular string, atkVerbPlural string) {
 	var toSrc, toDst, toRoom string
 	if dam <= 0 {
-		toSrc = fmt.Sprintf("Your %s misses %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s's %s misses you", src.Name(), atkVerbSingular)
+		toSrc = fmt.Sprintf("Your %s misses %s completely", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s's %s misses you completely", src.Name(), atkVerbSingular)
 		toRoom = fmt.Sprintf("%s tries to %s %s, but misses", src.Name(), atkVerbSingular, dst.Name())
 	} else if dam <= 2 {
-		toSrc = fmt.Sprintf("Your %s lightly grazes %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s's %s lightly grazes you", src.Name(), atkVerbSingular)
-		toRoom = fmt.Sprintf("%s's %s lightly grazes %s", src.Name(), atkVerbSingular, dst.Name())
+		toSrc = fmt.Sprintf("Your %s knicks %s as it fails to fully connect", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s's %s knicks you as it fails to fully connect", src.Name(), atkVerbSingular)
+		toRoom = fmt.Sprintf("%s's %s knicks %s as it fails to fully connect", src.Name(), atkVerbSingular, dst.Name())
 	} else if dam <= 4 {
-		toSrc = fmt.Sprintf("You barely %s %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s barely %s you", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s barely %s %s", src.Name(), atkVerbPlural, dst.Name())
+		toSrc = fmt.Sprintf("Your %s barely scratches %s", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s barely scratch you", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s barely scratch %s", src.Name(), atkVerbPlural, dst.Name())
 	} else if dam <= 6 {
 		toSrc = fmt.Sprintf("You %s %s", atkVerbSingular, dst.Name())
 		toDst = fmt.Sprintf("%s %s you", src.Name(), atkVerbPlural)
 		toRoom = fmt.Sprintf("%s %s %s", src.Name(), atkVerbPlural, dst.Name())
 	} else if dam <= 8 {
-		toSrc = fmt.Sprintf("You %s %s hard", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you hard", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s hard", src.Name(), atkVerbPlural, dst.Name())
+		toSrc = fmt.Sprintf("You %s %s ferociously", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s you ferociously", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s ferociously", src.Name(), atkVerbPlural, dst.Name())
 	} else if dam <= 10 {
-		toSrc = fmt.Sprintf("You %s %s very hard", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you very hard", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s very hard", src.Name(), atkVerbPlural, dst.Name())
+		toSrc = fmt.Sprintf("You %s %s with all your might", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s you with all your might", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s with all your might", src.Name(), atkVerbPlural, dst.Name())
 	} else {
-		toSrc = fmt.Sprintf("You %s %s EXTREMELY hard", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you EXTREMELY hard", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s EXTREMELY hard", src.Name(), atkVerbPlural, dst.Name())
+		toSrc = fmt.Sprintf("You %s %s UNBELIEVABLY HARD", atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s %s you UNBELIEVABLY HARD", src.Name(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s UNBELIEVABLY HARD", src.Name(), atkVerbPlural, dst.Name())
 	}
 	// TODO More here?
 	SendToPlayer(src, toSrc+" <c yellow>(%d)</c>", dam)
@@ -193,8 +193,8 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingu
 func sendStatusMessages(dam int, target *Entity, r *Room) {
 	switch target.data.Stats.Condition() {
 	case Cnd_Stunned:
-		SendToPlayer(target, "You are stunned, but may regain consciousness in time")
-		BroadcastToRoomExcept(r, target, "%s is stunned, but may regain consciousness in time", target.cfg.Name)
+		SendToPlayer(target, "You are dazed and disoriented, struggling to regain your footing")
+		BroadcastToRoomExcept(r, target, "%s is dazed and disoriented, struggling to regain their footing", target.cfg.Name)
 	case Cnd_Incapacitated:
 		SendToPlayer(target, "You are incapacitated and will die soon if not healed")
 		BroadcastToRoomExcept(r, target, "%s is incapacitated and will die soon if not healed", target.cfg.Name)

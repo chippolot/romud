@@ -23,5 +23,5 @@ go.work
 _examples
 .idea
 .vscode
-*.player
+*.ply
 .DS_STORE

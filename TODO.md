@@ -31,6 +31,9 @@
 [x] Remove Disconnected entities!
 [x] Log Flags
 [x] Self status command
+[x] Circle Data Converter
+    [x] Rooms
+[x] Leveling up
 [] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -51,9 +54,6 @@
     [] Weapon dependent messages
     [] Look descriptions
     [] Kick to the ground
-[] Circle Data Converter
-    [x] Rooms
-    [] Mobs
 [] Positions
     [x] Limit actions
     [x] Rest + Sleep actions
@@ -62,14 +62,13 @@
 [] Items
     [x] Viewing in Room
     [x] Inventory
+    [x] Get
+    [x] Drop
     [] Containers
-    [] Get
     [] Get From
     [] Get All From
-    [] Drop
     [] Weights
     [] Looking At
-[] Leveling up
 [] Races
 [] Classes
 [] Looking at players

@@ -455,12 +455,18 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 	curRoom := w.rooms[e.data.RoomId]
 
 	nextRoomId, ok := curRoom.cfg.Exits[dir]
+	log.Printf("Moving to room %d", nextRoomId)
 	if !ok {
 		SendToPlayer(e, "Can't go that way!")
 		return false
 	}
 
-	nextRoom := w.rooms[nextRoomId]
+	nextRoom, ok := w.rooms[nextRoomId]
+	if !ok {
+		log.Printf("Tried to move to invalid room id: %d", nextRoomId)
+		SendToPlayer(e, "An unseen force blocks you from going there!")
+		return false
+	}
 	curRoom.RemoveEntity(e)
 	nextRoom.AddEntity(e)
 

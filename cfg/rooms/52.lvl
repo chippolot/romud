@@ -1,5 +1,17 @@
 [
  {
+  "Id": 5200,
+  "Name": "The Grand Gate Of Thalos",
+  "Desc": "   You stand in the archway of a gigantic stone archway.  The two\nsteel gates have been forced open and have rusted in place.  A hollow\ngust of wind blows by you into the deserted, and seemingly destroyed,\ncity.",
+  "Exits": [
+   {
+    "RoomId": 5201,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 5201,
   "Name": "Main Street",
   "Desc": "   This was once a magnificent street, but now is in total ruin.  The\nstreets are barren and windswept and the silence is unending.  To the south\nyou see a ruined cottage while north leads into a dark back alley.  Howls\nand screams echo through the deserted city.",
@@ -77,10 +89,6 @@
   "Desc": "   A circular path surrounds a magnificent domed temple in the center\nof the city.  Flowers have withered away and the once lush trees are bare.\nVines and ivy snake up the sides of the temple and entangle themselves\naround your feet.",
   "Exits": [
    {
-    "RoomId": 5211,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5203,
     "Verb": "east"
    },
@@ -91,6 +99,10 @@
    {
     "RoomId": 5205,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5211,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -100,10 +112,6 @@
   "Name": "A Garden Path",
   "Desc": "   A circular path surrounds a magnificent domed temple in the center\nof the city.  Flowers have withered away and the once lush trees are bare.\nVines and ivy creep up the sides of the temple and entangle themselves \naround your feet.",
   "Exits": [
-   {
-    "RoomId": 5207,
-    "Verb": "west"
-   },
    {
     "RoomId": 5204,
     "Verb": "north"
@@ -115,6 +123,10 @@
    {
     "RoomId": 5206,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5207,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -149,20 +161,20 @@
   "Desc": "   You stand in the middle of a large square lined on each side with\nbaskets, carts, and stands of all shapes and sizes.  Abandoned, these\nlittle shops still contain some of their goods once sold to a demanding\npublic.",
   "Exits": [
    {
-    "RoomId": 5220,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5208,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5225,
     "Verb": "north"
    },
    {
     "RoomId": 5205,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5220,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5208,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -285,20 +297,20 @@
   "Desc": "   This small side street is lined with the remains of once great\nbuildings.  To the west is a dark, foreboding structure while to the\neast lies the entrance to a small tavern.  The street continues north\nand south.",
   "Exits": [
    {
-    "RoomId": 5214,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5219,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5212,
     "Verb": "north"
    },
    {
     "RoomId": 5230,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5214,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5219,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -385,12 +397,12 @@
   "Desc": "   A narrow alley leads east to a wider street and west to one of \nthe city watchtowers.",
   "Exits": [
    {
-    "RoomId": 5215,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5214,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5215,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -413,12 +425,12 @@
   "Desc": "   A large cart sits here carrying rotted fruit and vegetables.  Flies \nswarm all about what seems to be the last remaining bits of food left\nin the city.",
   "Exits": [
    {
-    "RoomId": 5217,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5207,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5217,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -593,10 +605,6 @@
   "Desc": "   This is the main reception area of Thalos' city hall.  The walls have\nbeen charred and scored massively and debris is spread from wall to wall.\nA large gaping hole in the west wall allows you to see out to one of\nthe city's side streets.  Obviously no one will be seeing you through today.  \nHallways lead south and east.",
   "Exits": [
    {
-    "RoomId": 5212,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5202,
     "Verb": "north"
    },
@@ -607,6 +615,10 @@
    {
     "RoomId": 5231,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5212,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -705,12 +717,12 @@
   "Desc": "   A narrow back alley goes south to main street and north towards\na watchtower.  A mass of howls catches you of guard.",
   "Exits": [
    {
-    "RoomId": 5240,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5201,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5240,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -773,16 +785,16 @@
   "Desc": "   A narrow back alley leads west to a small side street and east to one \nof the city watchtowers.  Great amounts of steam issue forth from the\nbuilding to the south.",
   "Exits": [
    {
-    "RoomId": 5241,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5242,
     "Verb": "south"
    },
    {
     "RoomId": 5209,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5241,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null

@@ -156,6 +156,11 @@ func (w *World) TryGetItemConfig(key string) (*ItemConfig, bool) {
 	return nil, false
 }
 
+func (w *World) AddItem(i *Item, roomId RoomId) {
+	r := w.rooms[roomId]
+	r.AddItem(i)
+}
+
 func (w *World) LogoutPlayer(p *Player) {
 	if _, ok := w.loggingOut[p.id]; ok {
 		return

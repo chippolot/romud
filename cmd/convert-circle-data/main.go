@@ -47,11 +47,14 @@ func parseRooms(data []byte, outPath string) {
 	var line string
 	var sb strings.Builder
 	lines := strings.Split(string(data), "\n")
+	if len(lines) > 0 {
+		line = lines[0]
+	}
 
 	rooms := make(mud.RoomConfigList, 0)
 	for len(lines) > 0 {
-		line, lines = nextLine(lines)
 		if len(line) == 0 || line[0] != '#' {
+			line, lines = nextLine(lines)
 			continue
 		}
 		room := &mud.RoomConfig{}
@@ -97,6 +100,7 @@ func parseRooms(data []byte, outPath string) {
 		}
 
 		rooms = append(rooms, room)
+		line, lines = nextLine(lines)
 	}
 	save(outPath, &rooms)
 }

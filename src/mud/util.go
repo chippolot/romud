@@ -1,4 +1,4 @@
 package mud
 
-const InvalidId = 0
+const InvalidId = -1
 const InvalidName = ""

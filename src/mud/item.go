@@ -12,9 +12,9 @@ const (
 	IFlag_Light
 )
 
-var itemIdCounter ItemId
+var itemIdCounter ItemId = InvalidId
 
-type ItemId uint32
+type ItemId int32
 
 type ItemConfigList []*ItemConfig
 

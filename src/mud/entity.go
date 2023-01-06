@@ -13,9 +13,9 @@ const (
 	EFlag_Stationary bits.Bits = 1 << iota
 )
 
-var entityIdCounter EntityId
+var entityIdCounter EntityId = InvalidId
 
-type EntityId uint32
+type EntityId int32
 
 type EntityConfigList []*EntityConfig
 

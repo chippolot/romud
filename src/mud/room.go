@@ -8,7 +8,7 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-type RoomId uint32
+type RoomId int32
 
 type RoomExitsConfig map[Direction]RoomId
 
@@ -99,6 +99,7 @@ func (r *Room) Describe(subject *Entity) string {
 	describeExits(r, &sb)
 	describePlayers(r, &sb, subject)
 	describeNonPlayerEntities(r, &sb)
+	describeItems(r, &sb)
 	return sb.String()
 }
 
@@ -160,6 +161,25 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 	}
 	sb.WriteNewLine()
 	sb.WriteStringf("<c blue>%s</c>", strings.Join(descs, utils.NewLine))
+}
+
+func describeItems(r *Room, sb *utils.StringBuilder) {
+	if len(r.items) == 0 {
+		return
+	}
+	var descs = make([]string, 0)
+	for _, i := range r.items {
+		desc := i.cfg.RoomDesc
+		if desc == "" {
+			desc = fmt.Sprintf("A %s is here", i.cfg.Name)
+		}
+		descs = append(descs, desc)
+	}
+	if len(descs) == 0 {
+		return
+	}
+	sb.WriteNewLine()
+	sb.WriteStringf("<c white>%s</c>", strings.Join(descs, utils.NewLine))
 }
 
 type Direction int

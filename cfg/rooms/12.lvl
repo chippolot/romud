@@ -1,5 +1,17 @@
 [
  {
+  "Id": 1200,
+  "Name": "The Meeting Room Of The Gods",
+  "Desc": "   The meeting room is plain and very simple.  A circular table sits\nin the middle of the room, lit by some unseen light source.  There\nare many chairs around the table, all empty.  The Immortal Board Room\nis to the north.",
+  "Exits": [
+   {
+    "RoomId": 1204,
+    "Verb": "north"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 1201,
   "Name": "The Inn Of The Gods",
   "Desc": "   The Inn of the Gods is a small room, holding only a shelf with many\nsmall precious stones on it.  When a God comes to rent his belongings,\nhis essence is stored in the stones.  The Immortal Board Room is to\nthe south.",

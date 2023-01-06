@@ -1,5 +1,21 @@
 [
  {
+  "Id": 3300,
+  "Name": "A Scraggly Trail",
+  "Desc": "   This trail slopes up and away from the main road to \nthe west.  At points the trail seems to fade into \nobscurity against the grey stone and near-grey mountain \ngrass prevalent here.  The trail leads generally eastward \nand up higher into the rocky ground.  There is a sign \nhere, seemingly out-of-place in this rough country.",
+  "Exits": [
+   {
+    "RoomId": 3301,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3500,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 3301,
   "Name": "A Scraggly Trail",
   "Desc": "   What could barely be called a trail leads west back \ndown the mountainside, and down into a very small valley \nwhere a small house sits in the middle of a well-groomed \nyard.  The door to the house is open and inviting, \nwelcoming you for a visit.",
@@ -37,12 +53,12 @@
   "Desc": "   The path you are on leads from the front door of the\ncottage to your east, to the edge of the small valley\nto the west.  The building seems quiet...almost too\nquiet.  A small voice in the back of your head, the\nsame voice that has saved your life on countless\noccasions, seems to be telling you that something is\nvery, very wrong here.",
   "Exits": [
    {
-    "RoomId": 3302,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3304,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3302,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -85,12 +101,12 @@
   "Desc": "   You are standing on a ridge in the mountains, just east\nof a very small valley.  You spot a tiny cottage sitting \nin the center of the valley, and the ridge continues \nsouth.  Looking at the sheer drops to the north and west, \nyou consider not taking those directions.",
   "Exits": [
    {
-    "RoomId": 3307,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3305,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3307,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -161,16 +177,16 @@
   "Desc": "   You are standing upon another mini-plateau, bordered by\na sheer wall of rock to the north.  You can climb up the \nslope to the east, or continue along the flat area to the \nwest.  Another slope leads downwards to the south, looking\nunsafe but climbable.",
   "Exits": [
    {
+    "RoomId": 3309,
+    "Verb": "east"
+   },
+   {
     "RoomId": 3314,
     "Verb": "south"
    },
    {
     "RoomId": 3311,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3309,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -241,12 +257,12 @@
   "Desc": "   A small path leads south here, away from the rocky \nslope leading up to the east.  A small spring burbles \nhere, evidently the cause of much of the traffic.  \nLooking up, you see sheer rock walls surrounding much \nof the depression, making an effective fortress of\nthis place.",
   "Exits": [
    {
-    "RoomId": 3314,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3316,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3314,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -357,16 +373,16 @@
   "Desc": "   This is a T-intersection in the cave passageway, the \nnorth leading back towards the cave's entrance (you \nthink!), the west leading towards a well-lighted area.  \nEastwards the passageway continues into the shadowy \nrecesses of the mountain uninvitingly.  The echoes of \nvoices are confusing you a bit, and you are not sure \nwhether you should try to remain quiet or not.",
   "Exits": [
    {
+    "RoomId": 3321,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3324,
     "Verb": "east"
    },
    {
     "RoomId": 3323,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3321,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -389,12 +405,12 @@
   "Desc": "   The passageway you are in leads south and west from \nhere.  Many large stones and rocks are on the floor of the\ncave, making walking difficult in the dim light from the \nsconces on the walls.  You hear the continued echo of \nvoices, seemingly fainter now.  Must be the strange \nacoustics of this place...",
   "Exits": [
    {
-    "RoomId": 3325,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3322,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3325,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -421,12 +437,12 @@
   "Desc": "   You can head north and west through the cave passageways\nhere, both ways dimly lit by the ever-present sconces on \nthe walls.  The echoes you heard earlier seem to be getting\nlouder, and seem to be coming from the northern passage.  \nYou feeled a bit chilled from the cooled cave air and \nshiver a bit in the faint whisper of a breeze.  This place \nis a little too eerie and dark to be comfortable in.",
   "Exits": [
    {
-    "RoomId": 3327,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3325,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3327,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -513,12 +529,12 @@
   "Desc": "   You are standing at the southern bend of this passage,\nable to head east and north from here.  The rock around you\nechoes the sound of far-off pounding to you, making the\nplace seem somehow alive, with a heartbeat.  This place\nis fairly eerie, now that you come to think of it.",
   "Exits": [
    {
-    "RoomId": 3331,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3333,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3331,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -561,12 +577,12 @@
   "Desc": "   This area darker than the rest of the passageway, due\nto the fact that the sconces along the walls stop abruptly\nhere.  The way to the south is completely dark, in direct\ncontrast to the tunnels to the west.  You peer hard to the\nsouth, but can make out nothing in the impenetrable \ndarkness.  And still that distant thumping impinges on \nyour consciousness...",
   "Exits": [
    {
-    "RoomId": 3334,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3336,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3334,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -609,12 +625,12 @@
   "Desc": "   The tunnel weaves around, twisting to the north and \nwest here.  The darkness around you is near total.  Ahead, \nyou hear the sounds of something metal banging against \nstone.  Could someone be mining out the tunnel, perhaps?",
   "Exits": [
    {
-    "RoomId": 3339,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3337,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3339,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -653,12 +669,12 @@
   "Desc": "   This treacherous slope leads ever-downward quite a ways,\ndown to a valley where there seems to be a small village!  \nWhat a village is doing this far from civilization, and how\nthey survive you've no idea.  From the smoke wafting from \nsome of the chimneys, it looks like this place is still \ninhabited as well.\n   Now if you can only get down this slope without breaking\nan ankle...",
   "Exits": [
    {
-    "RoomId": 3308,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3342,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3308,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -733,16 +749,16 @@
   "Desc": "   Nothing is going on in this section of village either.  To the\neast is an actual road intersection, and to the west you see one\nof the ends of this road.  A large grassy area to the south is\nfenced off for a horse corral.",
   "Exits": [
    {
-    "RoomId": 3348,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3347,
     "Verb": "south"
    },
    {
     "RoomId": 3343,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3348,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -765,10 +781,6 @@
   "Desc": "   You are standing in an intersection deep in the heart\nof Stanneg by the Mountains.  In fact, this is the ONLY\nintersection anywhere in Stanneg by the Mountain it \nappears.\n   There are some buildings to the north, and south, and\neast, and west.  None particularly stand out from the \nothers.",
   "Exits": [
    {
-    "RoomId": 3349,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3355,
     "Verb": "east"
    },
@@ -779,6 +791,10 @@
    {
     "RoomId": 3346,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3349,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -893,16 +909,16 @@
   "Desc": "   This is a plainly decorated room, the main room of the\nStanneg Inn.  A large arch to the west leads to a common\nroom where food and drink can be ordered, and a set of\nrickety wooden stairs lead up to the rooms are.  A thread-\nbare rug lies in the middle of the floor, evidently well-\nloved by a cat or two from the quantity of hair on it.",
   "Exits": [
    {
+    "RoomId": 3355,
+    "Verb": "south"
+   },
+   {
     "RoomId": 3357,
     "Verb": "west"
    },
    {
     "RoomId": 3358,
     "Verb": "up"
-   },
-   {
-    "RoomId": 3355,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -937,12 +953,12 @@
   "Desc": "   This slope is fairly shallow and easy to walk on, \ndespite the loose shale and gravel.  To the east is a high \nridge you could stand on, and to the west is a flat area \nnear two trails leading up and down into the mountains.  \nHigh above you, to your west, is that ominous, dark peak, \nwhich seems to radiating a sense of hopelessness...",
   "Exits": [
    {
-    "RoomId": 3308,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3360,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3308,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1065,12 +1081,12 @@
   "Desc": "   This path leads up, up, up the side of the mountain, to \nthe evil-seeming cave.  It also heads down to the south--a \nlot safer place to be.  In fact, you hear footsteps above \nyour head...",
   "Exits": [
    {
-    "RoomId": 3368,
-    "Verb": "up"
-   },
-   {
     "RoomId": 3366,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3368,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -1081,12 +1097,12 @@
   "Desc": "   Unfortunately, you realize too late that this bigger \nledge that leads north to the darkened cave is an ideal \nspot for an ambush.  This ledge gives you a beautiful \npanoramic view of the entire mountain range, however.  \nBreathtaking!",
   "Exits": [
    {
-    "RoomId": 3369,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3367,
     "Verb": "down"
+   },
+   {
+    "RoomId": 3369,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1097,16 +1113,16 @@
   "Desc": "   You are standing in the entrance of a simply huge cave!\nThe size is stunning!  All around the entrance are burnt \nbones and various types of wooden and metal debris.  Giant \nclaw marks are all along the ground, leading back deeper \ninto the cave.\n   Two tunnels lead off from here, one up, one down.  There\nare claw marks leading in either direction.",
   "Exits": [
    {
+    "RoomId": 3373,
+    "Verb": "down"
+   },
+   {
     "RoomId": 3368,
     "Verb": "south"
    },
    {
     "RoomId": 3370,
     "Verb": "up"
-   },
-   {
-    "RoomId": 3373,
-    "Verb": "down"
    }
   ],
   "Perceptibles": null

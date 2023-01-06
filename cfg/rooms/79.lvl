@@ -1,9 +1,29 @@
 [
  {
+  "Id": 7900,
+  "Name": "Outside Redferne's Residence",
+  "Desc": "   A huge cloud forms the plateau on which you are now standing.  The\nwind here is absolutely quiet and the sun is shining warmly upon you.\nFrom under the cloud you can hear the faint sounds of Midgaard.  Right\nbefore you to the north lies the grand Mansion of Naris.",
+  "Exits": [
+   {
+    "RoomId": 7901,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7918,
+    "Verb": "down"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 7901,
   "Name": "The Southern End Of The Hall",
   "Desc": "   You are standing in a vast hall that is dimly lit, but wherever the\nlight comes from, is a mystery.  The walls seem to radiate warmth and\ngive the pleasent feeling of being welcome here.  A large portrait is\nhanging on one of the walls.  A large wooden staircase leads up into\nthe tower.  To the east there is a high passage away from the hall.\nThis ends shortly after by a tall oak door.  The enormous hall extends\nfurther north from here.  To the south you can see a huge, and VERY \nheavy-looking iron-wrought door.  It looks like this is the only exit\nfrom this magnificent old house.",
   "Exits": [
+   {
+    "RoomId": 7904,
+    "Verb": "north"
+   },
    {
     "RoomId": 7910,
     "Verb": "east"
@@ -19,10 +39,6 @@
    {
     "RoomId": 7909,
     "Verb": "up"
-   },
-   {
-    "RoomId": 7904,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -57,20 +73,20 @@
   "Desc": "   You are standing in the northern end of the huge hall.  This part is\nunder the grand wooden staircase so the light seems to be a little less\nbright here, but this doesn't affect your sight at all.  To the north\nlies the kitchen.  To the south lies the southern end of the hall.  To\nthe east there is a huge metal door.  To the west there is a large\naspenwood door.",
   "Exits": [
    {
-    "RoomId": 7906,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 7913,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7901,
     "Verb": "south"
    },
    {
     "RoomId": 7905,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7906,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7913,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -93,16 +109,16 @@
   "Desc": "   This must be the place of food and drink.  You can hear the faint noise\nof rats feasting on meat and bread from somewhere undeterminable.  The sound\nmakes you feel the agony of HUNGER.  The only visible exit is south to the\nNorthern end of the hall.",
   "Exits": [
    {
+    "RoomId": 7904,
+    "Verb": "south"
+   },
+   {
     "RoomId": 7907,
     "Verb": "north"
    },
    {
     "RoomId": 7908,
     "Verb": "east"
-   },
-   {
-    "RoomId": 7904,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -169,12 +185,12 @@
   "Desc": "   This is a snugly set bedroom with all the necessities for a romantic\nevening.  A large fireplace adorns the east wall, and sizzling away is\nthe wood that is ablaze within.  The bed is enormous, covering at least\nHALF of this great room.  The room stretches at least 140 feet, so can\nyou imagine the BED?  A large staircase leads down to the hall.  A couple\nof doors open up to a broad balcony to the south.",
   "Exits": [
    {
-    "RoomId": 7912,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7909,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7912,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -189,7 +205,7 @@
     "Verb": "north"
    },
    {
-    "RoomId": 4294967295,
+    "RoomId": -1,
     "Verb": "down"
    }
   ],
@@ -261,12 +277,12 @@
   "Desc": "   As you descend, the chain seems to absorb all weather around it, making\nit swing less and less in the very powerful wind tearing at it.  The Chain\nseems to chuckle quietly, and as you descend further you hear a soft whisper\noriginating from within the Chain *ITSELF*.  It says 'Welcome back some\nother time, stranger.  Your company is always... hmmm... interesting.  God\nSpeed.'  The chain extends further down through the now spreading clouds.",
   "Exits": [
    {
-    "RoomId": 4294967295,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7914,
     "Verb": "down"
+   },
+   {
+    "RoomId": -1,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -293,18 +309,6 @@
   "Desc": "   This is probably the third worst place to be in this entire MUD right\nnow.  You fall\n.  \n.\n.\nand fall\n.\n.\n.\nand fall\n.\n.\n.\nand HIT THE GROUND WITH SUCH A *SPLUTCH* that you die horribly, but instantly.\nGood-bye cruel world.",
   "Exits": [
    {
-    "RoomId": 7915,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 7916,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 7917,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7918,
     "Verb": "up"
    },
@@ -315,6 +319,18 @@
    {
     "RoomId": 7914,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7915,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7916,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7917,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null

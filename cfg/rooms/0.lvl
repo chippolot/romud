@@ -1,5 +1,17 @@
 [
  {
+  "Id": 0,
+  "Name": "The Void",
+  "Desc": "   You don't think that you are not floating in nothing.  You can see\na strange portal located above you.",
+  "Exits": [
+   {
+    "RoomId": 3001,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 1,
   "Name": "Limbo",
   "Desc": "   You are floating in a formless void, detached from all sensation of physical\nmatter, surrounded by swirling glowing light, which fades into the relative\ndarkness around you without any trace of edges or shadow.\n   There is a \"No Tipping\" notice pinned to the darkness.",

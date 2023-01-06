@@ -7,9 +7,9 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-type PlayerId uint32
+type PlayerId int32
 
-var playerIdCounter PlayerId
+var playerIdCounter PlayerId = InvalidId
 
 type PlayerCharacterData struct {
 	Player    *PlayerData
@@ -29,7 +29,6 @@ type Player struct {
 
 func NewPlayer(session *server.Session) *Player {
 	playerIdCounter++
-	// TODO Set gender from prompt
 	p := &Player{id: playerIdCounter, data: &PlayerData{Gender: Male}, session: session}
 	return p
 }

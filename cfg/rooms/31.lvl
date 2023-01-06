@@ -1,9 +1,33 @@
 [
  {
+  "Id": 3100,
+  "Name": "The Northwest End Of The Concourse",
+  "Desc": "   You are at the concourse, the city wall is just west.  A small promenade\ngoes east, and the bridge is just north of here.  The concourse continues\nsouth along the city wall.",
+  "Exits": [
+   {
+    "RoomId": 3051,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3101,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3127,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 3101,
   "Name": "The Promenade",
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues further east and to the west you see the city wall.  Park Road\nleads south from here.",
   "Exits": [
+   {
+    "RoomId": 3100,
+    "Verb": "west"
+   },
    {
     "RoomId": 3102,
     "Verb": "east"
@@ -11,10 +35,6 @@
    {
     "RoomId": 3131,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3100,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -81,16 +101,16 @@
   "Desc": "   You are standing just inside the small park of Midgaard.  To the north is\nthe promenade and a small path leads south into the park.  To your east is\nthe famous Park Cafe.",
   "Exits": [
    {
-    "RoomId": 3102,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3106,
     "Verb": "east"
    },
    {
     "RoomId": 3108,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3102,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -177,6 +197,10 @@
   "Desc": "   The road continues north and south.  A building is just west of here, you\nnotice a sign on the door.  The park entrance is to the east.",
   "Exits": [
    {
+    "RoomId": 3131,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3112,
     "Verb": "east"
    },
@@ -187,10 +211,6 @@
    {
     "RoomId": 3110,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3131,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -253,16 +273,16 @@
   "Desc": "   You are in the park.  The paths lead north and east.  Eastward is the\npark entrance and to the west you see a small pond.",
   "Exits": [
    {
-    "RoomId": 3114,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3109,
     "Verb": "north"
    },
    {
     "RoomId": 3116,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3114,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -345,14 +365,6 @@
   "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
   "Exits": [
    {
-    "RoomId": 3135,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 7914,
-    "Verb": "up"
-   },
-   {
     "RoomId": 3133,
     "Verb": "north"
    },
@@ -363,6 +375,14 @@
    {
     "RoomId": 3134,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3135,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7914,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -437,12 +457,12 @@
   "Desc": "   You are on Emerald Avenue which continues north.  The Concourse is south\nof here.",
   "Exits": [
    {
-    "RoomId": 3128,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3121,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3128,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -489,16 +509,16 @@
   "Desc": "   The Concourse continues both east and west.  Emerald Avenue is north of\nhere.",
   "Exits": [
    {
+    "RoomId": 3127,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3125,
     "Verb": "north"
    },
    {
     "RoomId": 3129,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3127,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -509,20 +529,20 @@
   "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
   "Exits": [
    {
-    "RoomId": 3150,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3128,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3126,
     "Verb": "north"
    },
    {
     "RoomId": 3130,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3150,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3128,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -565,16 +585,16 @@
   "Desc": "   You are at Emerald Avenue which continues north and south.  Penny Lane leads\neast from here.",
   "Exits": [
    {
+    "RoomId": 3117,
+    "Verb": "south"
+   },
+   {
     "RoomId": 3103,
     "Verb": "north"
    },
    {
     "RoomId": 3139,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3117,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -617,12 +637,12 @@
   "Desc": "   You are at a bend on Park Road.  To the north the road goes on and to the\neast is the Road Crossing.",
   "Exits": [
    {
-    "RoomId": 3120,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3118,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3120,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -721,12 +741,12 @@
   "Desc": "   You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.  An iron\ngrate is to the north.",
   "Exits": [
    {
-    "RoomId": 3151,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3129,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3151,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -737,12 +757,12 @@
   "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
   "Exits": [
    {
-    "RoomId": 3150,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3152,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3150,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -753,12 +773,12 @@
   "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
   "Exits": [
    {
-    "RoomId": 3153,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3151,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3153,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -813,12 +833,12 @@
   "Desc": "   The arch under the bridge is covered by seaweed about a foot above the\nsurface of the river.  The water gently flows through an opening in the lower\npart of the city wall.",
   "Exits": [
    {
-    "RoomId": 900,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3201,
     "Verb": "east"
+   },
+   {
+    "RoomId": 900,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null

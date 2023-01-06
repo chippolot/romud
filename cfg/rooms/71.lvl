@@ -1,5 +1,21 @@
 [
  {
+  "Id": 7100,
+  "Name": "The Edge Of The Water",
+  "Desc": "   The pool side is dimly lit up by your light.  You can see absolutely\nnothing else nearby.  The darkness her seems enormously oppressive here.\nThe air is damp and the rock on which you stand is slippery.  The pool\nseems too dark to make anything clear.  The pool seems to extend to the\neast.  The rock can be climbed upwards from here.",
+  "Exits": [
+   {
+    "RoomId": -1,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7000,
+    "Verb": "up"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 7101,
   "Name": "Under The Mudhole",
   "Desc": "   You stand in a small room with a great big opening in the ceiling.  From\nthis opening there is mud dripping down in large lumps.  \u003eYUCK\u003c.  You can\nsmell the foul stench of the slimy sediment as you try not to get covered\nby the falling sludge.  To the east there is an entryway leading out from\nhere and it seems absolutely impossible to force the muddy descent.",
@@ -69,7 +85,7 @@
     "Verb": "up"
    },
    {
-    "RoomId": 4294967295,
+    "RoomId": -1,
     "Verb": "down"
    }
   ],
@@ -261,16 +277,16 @@
   "Desc": "   You are standing on a ledge that seems quite a lot larger than the\nrest of the ledges.  This one leads to the west and the east, plus it\nhas an exit going to the south.  Though you could jump into mid-air,\nbut it probably wouldn't be such a good idea.  The way south is in\nutter darkness.",
   "Exits": [
    {
-    "RoomId": 7111,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7121,
     "Verb": "east"
    },
    {
     "RoomId": 7129,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7111,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -401,12 +417,12 @@
   "Desc": "   A ladder leads up from here to the Shaft.  A small opening leads west\nfrom here.",
   "Exits": [
    {
-    "RoomId": 7041,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7120,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7041,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -433,10 +449,6 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
-    "RoomId": 7113,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7109,
     "Verb": "north"
    },
@@ -451,6 +463,10 @@
    {
     "RoomId": 7107,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7113,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null

@@ -1,5 +1,17 @@
 [
  {
+  "Id": 7200,
+  "Name": "The Treasury",
+  "Desc": "   You are in a small but well equipped treasury.  You can see some writing\non the wall.  The ceiling has a funny glow, which enables you to see.  You\ncan get back into the inner lair through the stone door which is east.",
+  "Exits": [
+   {
+    "RoomId": 7201,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 7201,
   "Name": "The Inner Lair",
   "Desc": "   You are in a octagonal room with smooth purple stone walls.  The floor is \nmade from black stone.  In the western wall you see a large black stone door.",
@@ -41,16 +53,16 @@
   "Desc": "   On the floor you see a lot of human decay, like bones and skulls.  You\nalso see a lot of slime.  On the wall is a torch sitting in its sconce.",
   "Exits": [
    {
-    "RoomId": 7202,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7206,
     "Verb": "east"
    },
    {
     "RoomId": 7204,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7202,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -81,12 +93,12 @@
   "Desc": "   On the floor you see a lot of human decay, like bones and skulls.  You\nalso see a lot of slime.  On the wall is a torch sitting in its sconce.",
   "Exits": [
    {
-    "RoomId": 7202,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7206,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7202,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -149,12 +161,12 @@
   "Desc": "   You are in a narrow crawlway.  It is rather boring here.",
   "Exits": [
    {
-    "RoomId": 7208,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7210,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7208,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -313,12 +325,12 @@
   "Desc": "   You are in yet another sewer drain.",
   "Exits": [
    {
-    "RoomId": 7219,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7221,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7219,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -329,16 +341,16 @@
   "Desc": "   You are in a sewer drain, there is nothing special in here, except for a \nloud echo.",
   "Exits": [
    {
-    "RoomId": 7220,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7129,
     "Verb": "up"
    },
    {
     "RoomId": 7222,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7220,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -501,12 +513,12 @@
   "Desc": "   You hang onto some steps leading down into utter darkness.  There is an\nexit leading up as well, though you'll have to open the tiny rock again to\ndo so.",
   "Exits": [
    {
-    "RoomId": 7111,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7299,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7111,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -565,16 +577,16 @@
   "Desc": "   You are in a small hallway.  There are doors to the east and to\nthe west.  To the south there are a black hole.  There is writing\nin the wall.  Wails can be heard from the south.",
   "Exits": [
    {
+    "RoomId": 7284,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7286,
     "Verb": "east"
    },
    {
     "RoomId": 7282,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7284,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -648,12 +660,12 @@
   "Desc": "   You are walking in a tunnel.  It is very cold.  You can feel the presence\nof a living thing... SOMEWHERE.",
   "Exits": [
    {
-    "RoomId": 7300,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7302,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7300,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -684,16 +696,16 @@
   "Desc": "   You are standing in a mudlike substance.  The smell here is awful, it is\nrotten.  To the west you can see some light.",
   "Exits": [
    {
+    "RoomId": 7304,
+    "Verb": "east"
+   },
+   {
     "RoomId": 7308,
     "Verb": "south"
    },
    {
     "RoomId": 7302,
     "Verb": "west"
-   },
-   {
-    "RoomId": 7304,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -856,12 +868,12 @@
   "Desc": "   You definitely do NOT like this area.  It is very dank, and most of the\nroom is wet.",
   "Exits": [
    {
-    "RoomId": 7312,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7345,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7312,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1012,16 +1024,16 @@
   "Desc": "   You are standing in a dark tunnel, it leads upwards.",
   "Exits": [
    {
+    "RoomId": 7323,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7319,
     "Verb": "south"
    },
    {
     "RoomId": 7336,
     "Verb": "west"
-   },
-   {
-    "RoomId": 7323,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1088,10 +1100,6 @@
   "Desc": "   You are standing in a crossing of hallways.  You can leave this place\nin every direction, except up and down.  In the dust you notice strange\nfootprints.",
   "Exits": [
    {
-    "RoomId": 7325,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7331,
     "Verb": "north"
    },
@@ -1102,6 +1110,10 @@
    {
     "RoomId": 7327,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7325,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -1160,12 +1172,12 @@
   "Desc": "   You are standing in a tunnel.  Above you, you can feel a breeze.",
   "Exits": [
    {
-    "RoomId": 7326,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7329,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7326,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -1176,16 +1188,16 @@
   "Desc": "   This room is very bright.  On the walls you can see some silver.  Exits\nare west, east and south.",
   "Exits": [
    {
+    "RoomId": 7333,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7332,
     "Verb": "east"
    },
    {
     "RoomId": 7326,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7333,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -1236,12 +1248,12 @@
   "Desc": "   You are standing in a dark tunnel.  It continues to the north and to the\nsouth.  Bones are spread on the floor.",
   "Exits": [
    {
-    "RoomId": 7336,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7334,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7336,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null

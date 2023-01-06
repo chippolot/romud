@@ -37,11 +37,19 @@ func main() {
 	world.SetEntryRoomId(3001)
 
 	// Create test entity
-	if mobCfg, ok := world.TryGetEntityConfig("mob"); ok {
-		mob := mud.NewEntity(mobCfg)
+	if cfg, ok := world.TryGetEntityConfig("mob"); ok {
+		mob := mud.NewEntity(cfg)
 		world.AddEntity(mob, world.EntryRoomId())
 	} else {
-		log.Fatalln("Failed to load MOB")
+		log.Fatalln("Failed to load mob")
+	}
+
+	// Create test item
+	if cfg, ok := world.TryGetItemConfig("woodshortsword"); ok {
+		itm := mud.NewItem(cfg)
+		world.AddItem(itm, world.EntryRoomId())
+	} else {
+		log.Fatalln("Failed to load item")
 	}
 
 	// Create session handler

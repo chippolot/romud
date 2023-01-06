@@ -1,9 +1,25 @@
 [
  {
+  "Id": 3000,
+  "Name": "The Reading Room",
+  "Desc": "   You are in a small, simple room which is mostly empty, save a few\nwooden desks and benches.  To the east you hear the bustle of the Temple\nof Midgaard, a sharp contrast to the relative quiet of this peaceful\nroom.",
+  "Exits": [
+   {
+    "RoomId": 3001,
+    "Verb": "east"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 3001,
   "Name": "The Temple Of Midgaard",
   "Desc": "   You are in the southern end of the temple hall in the Temple of Midgaard.\nThe temple has been constructed from giant marble blocks, eternal in\nappearance, and most of the walls are covered by ancient wall paintings\npicturing Gods, Giants and peasants.\n   Large steps lead down through the grand temple gate, descending the huge\nmound upon which the temple is built and ends on the temple square below.\nTo the west, you see the Reading Room.  The donation room is in a small\nalcove to your east.",
   "Exits": [
+   {
+    "RoomId": 3054,
+    "Verb": "north"
+   },
    {
     "RoomId": 3063,
     "Verb": "east"
@@ -19,10 +35,6 @@
    {
     "RoomId": 3005,
     "Verb": "down"
-   },
-   {
-    "RoomId": 3054,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -193,10 +205,6 @@
   "Desc": "   You are at the end of the main street of Midgaard.  South of here is the\nentrance to the Guild of Magic Users.  The street continues east towards the\nmarket square.  The magic shop is to the north and to the west is the city\ngate.",
   "Exits": [
    {
-    "RoomId": 3040,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3033,
     "Verb": "north"
    },
@@ -207,6 +215,10 @@
    {
     "RoomId": 3017,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3040,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -217,20 +229,20 @@
   "Desc": "   You are on the main street passing through the City of Midgaard.  South of\nhere is the entrance to the Armory, and the bakery is to the north.  East of\nhere is the market square.",
   "Exits": [
    {
-    "RoomId": 3014,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3020,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3012,
     "Verb": "west"
    },
    {
     "RoomId": 3009,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3014,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3020,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -240,6 +252,10 @@
   "Name": "Market Square",
   "Desc": "   You are standing on the market square, the famous Square of Midgaard.\nA large, peculiar looking statue is standing in the middle of the square.\nRoads lead in every direction, north to the temple square, south to the\ncommon square, east and westbound is the main street.",
   "Exits": [
+   {
+    "RoomId": 3013,
+    "Verb": "west"
+   },
    {
     "RoomId": 3005,
     "Verb": "north"
@@ -251,10 +267,6 @@
    {
     "RoomId": 3025,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3013,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -264,10 +276,6 @@
   "Name": "Main Street",
   "Desc": "   You are on the main street crossing through town.  To the north is the\ngeneral store, and the main street continues east.  To the west you see and\nhear the market place, to the south a small door leads into the Pet Shop.",
   "Exits": [
-   {
-    "RoomId": 3010,
-    "Verb": "north"
-   },
    {
     "RoomId": 3016,
     "Verb": "east"
@@ -279,6 +287,10 @@
    {
     "RoomId": 3014,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3010,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -288,10 +300,6 @@
   "Name": "Main Street",
   "Desc": "   The main street, to the north is the weapon shop and to the south is the\nGuild of Swordsmen.  To the east you leave town and to the west the street\nleads to the market square.",
   "Exits": [
-   {
-    "RoomId": 3011,
-    "Verb": "north"
-   },
    {
     "RoomId": 3041,
     "Verb": "east"
@@ -303,6 +311,10 @@
    {
     "RoomId": 3015,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3011,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -373,12 +385,12 @@
   "Desc": "   The entrance hall to the Guild of Swordsmen.  A place where one has to be\ncareful not to say something wrong (or right).  To the east is the bar and to\nthe north is the main street.",
   "Exits": [
    {
-    "RoomId": 3016,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3022,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3016,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -389,12 +401,12 @@
   "Desc": "   The bar of swordsmen, once upon a time beautifully furnished.  But now the\nfurniture is all around you in small pieces.  To the south is the yard, and\nto the west is the entrance hall.",
   "Exits": [
    {
-    "RoomId": 3021,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3023,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3021,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -441,6 +453,10 @@
   "Desc": "   The common square, people pass you, talking to each other.  To the west is\nthe poor alley and to the east is the dark alley.  To the north, this square\nis connected to the market square.  From the south you notice a nasty smell.",
   "Exits": [
    {
+    "RoomId": 3014,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3026,
     "Verb": "east"
    },
@@ -451,10 +467,6 @@
    {
     "RoomId": 3024,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3014,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -517,12 +529,12 @@
   "Desc": "   The secret practice yard of thieves and assassins.  To the north is the\nbar.  A well leads down into darkness.",
   "Exits": [
    {
-    "RoomId": 3028,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7043,
     "Verb": "down"
+   },
+   {
+    "RoomId": 3028,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -672,16 +684,16 @@
   "Desc": "   You are standing in the alley which continues east and west.  South of\nhere you see the levee.",
   "Exits": [
    {
+    "RoomId": 3049,
+    "Verb": "south"
+   },
+   {
     "RoomId": 3026,
     "Verb": "west"
    },
    {
     "RoomId": 3046,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3049,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -708,12 +720,12 @@
   "Desc": "   You are standing on the road next to the western city wall, which\ncontinues north.  South of here is a bridge across the river.",
   "Exits": [
    {
-    "RoomId": 3043,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3051,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3043,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -780,12 +792,12 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  To the west you\ncan see the edge of a big forest.",
   "Exits": [
    {
-    "RoomId": 3040,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6092,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3040,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -796,12 +808,12 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  To the east the\nplains stretch out in the distance.",
   "Exits": [
    {
-    "RoomId": 3041,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3503,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3041,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -812,12 +824,12 @@
   "Desc": "   You are by the temple altar in the northern end of the Temple of\nMidgaard.  A huge altar made from white polished marble is standing\nin front of you and behind it is a ten foot tall sitting statue of\nOdin, the King of the Gods.\n   To the north, steps lead out the back of the temple towards the\ncountryside.",
   "Exits": [
    {
-    "RoomId": 3059,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3001,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3059,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -847,12 +859,12 @@
   "Desc": "   You are on a dirt path leading away from the Temple Altar which is south\nof here.  To the north, the path continues through the lush contryside of\nMidgaard towards the Dragonhelm Mountains far off to the north.",
   "Exits": [
    {
-    "RoomId": 3054,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3060,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3054,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -863,12 +875,12 @@
   "Desc": "   You are walking on a wide dirt path through the lush, green, fresh\nMidgaard countryside.  You can see to the horizon to the north, east,\nand west; the busy city of Midgaard lies to the south.  All around you\nis healthy green grass and an occasional large oak tree.  The sun feels\nwonderful on your face and a pleasant wind blows through your hair.  Birds\nchirp quietly to themselves and you can smell the faint scent of flowers\nand freshly cut grass.  You feel like you could lie down in the grass and\nstay here forever, surrounded by powerful beauty in all directions.\n   The path you are on continues north through the field and south back\nto Midgaard.",
   "Exits": [
    {
-    "RoomId": 3061,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3059,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3061,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -878,6 +890,10 @@
   "Name": "The Great Field Of Midgaard",
   "Desc": "   You are walking on a wide dirt path through the lush, green, fresh\nMidgaard countryside.  You can see to the horizon to the north, east,\nand west; the busy city of Midgaard lies to the south.  All around you\nis healthy green grass and an occasional large oak tree.  The sun feels\nwonderful on your face and a pleasant wind blows through your hair.  Birds\nchirp quietly to themselves and you can smell the faint scent of flowers\nand freshly cut grass.  You feel like you could lie down in the grass and\nstay here forever, surrounded by powerful beauty in all directions.\n   There is a strange structure on the eastern side of the path.  A small\ndirt path splits off of the main path and leads off to the west.",
   "Exits": [
+   {
+    "RoomId": 3066,
+    "Verb": "west"
+   },
    {
     "RoomId": 3065,
     "Verb": "north"
@@ -889,10 +905,6 @@
    {
     "RoomId": 3060,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3066,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -939,7 +951,7 @@
   "Desc": "   You are walking on a wide dirt path through the lush, green, fresh\nMidgaard countryside.  You can see to the horizon to the north, east,\nand west; the busy city of Midgaard lies to the south.  All around you\nis healthy green grass and an occasional large oak tree.  The sun feels\nwonderful on your face and a pleasant wind blows through your hair.  Birds\nchirp quietly to themselves and you can smell the faint scent of flowers\nand freshly cut grass.  You feel like you could lie down in the grass and\nstay here forever, surrounded by powerful beauty in all directions.\n   The way north appears to be blocked by a large plot device and you cannot\nsee any way around it.",
   "Exits": [
    {
-    "RoomId": 4294967295,
+    "RoomId": -1,
     "Verb": "north"
    },
    {

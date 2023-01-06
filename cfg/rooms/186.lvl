@@ -1,5 +1,21 @@
 [
  {
+  "Id": 18600,
+  "Name": "The Entrance To The Newbie Zone",
+  "Desc": "   Ahhh... the entrance to the newbie zone!  Just the place you have\nbeen looking for.  Well, when you've readied yourself you can enter\nto the north.",
+  "Exits": [
+   {
+    "RoomId": 18601,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3061,
+    "Verb": "west"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 18601,
   "Name": "The Beginning Of The Passage",
   "Desc": "   You find yourself entering a long corridor.  You can hear the sound\nof creatures roaming about, but you can't tell where the sound emanates\nfrom exactly.\n   Exits lead to the east along the hallway, and south back to the\nentrance.",
@@ -41,6 +57,10 @@
   "Desc": "   Well... you've reached an intersection of two passages, to the north\nand east, the passage brightens, while the darker hallway continues to\nthe south.",
   "Exits": [
    {
+    "RoomId": 18602,
+    "Verb": "west"
+   },
+   {
     "RoomId": 18644,
     "Verb": "north"
    },
@@ -51,10 +71,6 @@
    {
     "RoomId": 18607,
     "Verb": "south"
-   },
-   {
-    "RoomId": 18602,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -93,16 +109,16 @@
   "Desc": "   Hmmm... this is an interesting little room.  Ack, and there is\nan interesting little creature staring at you too.  He looks a bit\nsurprised at your intrusion.  You can leave via the doors north or\neast, or you can stay and annoy him a bit more.  There also appears\nto be some type of well down here also, but it has a rather secure\ngrate covering it.",
   "Exits": [
    {
-    "RoomId": 18605,
-    "Verb": "down"
-   },
-   {
     "RoomId": 18602,
     "Verb": "north"
    },
    {
     "RoomId": 18607,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18605,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -221,12 +237,12 @@
   "Desc": "   This corner is much like all the others... except you see a strange\nglow coming from the south.  Could be an exit... you hope.",
   "Exits": [
    {
-    "RoomId": 18629,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18621,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18629,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -437,20 +453,20 @@
   "Desc": "   It is dark, dank, disgusting and cold up here.  Plus you here the\nsounds of creatures all around you... and somehow they don't sound\nfriendly.  It is probably wise to exercise some degree of caution\nhere... no telling what you may run into here.",
   "Exits": [
    {
-    "RoomId": 18627,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 18635,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18631,
     "Verb": "west"
    },
    {
     "RoomId": 18612,
     "Verb": "up"
+   },
+   {
+    "RoomId": 18627,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18635,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -533,12 +549,12 @@
   "Desc": "   The passage turns here and heads north.  You sense something up ahead\nthat way, but you aren't sure what.  You aren't sure if you want to know\nwhat either at this point.",
   "Exits": [
    {
-    "RoomId": 18634,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18636,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18634,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -581,12 +597,12 @@
   "Desc": "   Here, the passage enters a small room.  Exits lead to the east and south,\nand you notice a wonderful, large (and tastefully done) statue to the north.",
   "Exits": [
    {
-    "RoomId": 18644,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18641,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18644,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null

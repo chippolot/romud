@@ -1,5 +1,21 @@
 [
  {
+  "Id": 1500,
+  "Name": "A Road Leading From The Bank",
+  "Desc": "   You find yourself on a small road leading away from the edge\nof the River of Lost Souls.  The dark waters of the River can\nbe seen and heard just south of here.  Looking to the east and\nwest, you see only the walls of the rocky cliffs.  Off to the\nnorth a strange path seems to lead straight into the depths of\nthe mountain.",
+  "Exits": [
+   {
+    "RoomId": 1501,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5619,
+    "Verb": "south"
+   }
+  ],
+  "Perceptibles": null
+ },
+ {
   "Id": 1501,
   "Name": "A Long Road",
   "Desc": "   You stand here in spiritual emptiness, beginning a long and dangerous\npath.  Your honest submission has already been made, but the truth of your\nheart has yet to be told.  Leave here now, and do not come back until\nyou have grown.",
@@ -21,12 +37,12 @@
   "Desc": "   You stop for a moment, screaming in frustration.  Surely it was that one\nsin that was avoidable, of all that you regret.  The hitting and the hurting\nflash briefly before you.  Moments later the pain passes, and the straight\npath reveals itself before you.",
   "Exits": [
    {
-    "RoomId": 1501,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1503,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1501,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -105,16 +121,16 @@
   "Desc": "   It was written once, on an ancient parchment in a curious and flowing\nscript, that there is in fact no god but Allah, and that Muhammad was\nthe last of His Prophets.  With this recognition, all else became empty\nand meaningless.",
   "Exits": [
    {
+    "RoomId": 1505,
+    "Verb": "down"
+   },
+   {
     "RoomId": 1523,
     "Verb": "east"
    },
    {
     "RoomId": 1518,
     "Verb": "west"
-   },
-   {
-    "RoomId": 1505,
-    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -141,12 +157,12 @@
   "Desc": "   Some have been brought here not for what they did, but what they\nfailed to do.  It is these, the poor souls that were presented the\nfair evidence and rejected it with an honest mind, that deserve our\npity the most of all.",
   "Exits": [
    {
-    "RoomId": 1510,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1508,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1510,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -173,12 +189,12 @@
   "Desc": "   He called the populace to strict religious purity, rigidly enforcing\nthe times of prayer and the most correct forms of the words of the Muezzin.\nAll of this he strengthened by his most impeccable example, shunning all\nriches and riding in tattered rags through his capital on the back of a\ndonkey.  Despite all this, remember.  Behind closed doors, all men are\nhypocrites.",
   "Exits": [
    {
-    "RoomId": 1510,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1512,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1510,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -253,12 +269,12 @@
   "Desc": "   The din of a great battle shakes these halls, the moans of the earth\nerupting at the shakings of the End Time.  Be ready for that day, be very\nready, for if you are not, he will claim you for one of his own.",
   "Exits": [
    {
-    "RoomId": 1515,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1517,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1515,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -333,12 +349,12 @@
   "Desc": "   Every majestic and happy tale must end, usually all too soon, and thus\nit was with the golden age of the Caliphate.  The Rashidun were pure men,\ngood men, true to the path, but their followers soon began to bicker, and\ncivil war was on the horizon.",
   "Exits": [
    {
-    "RoomId": 1520,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1522,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1520,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -465,16 +481,16 @@
   "Desc": "   It is incumbent upon all Muslims to make the pilgrimage to Mecca once\nin their lifetime, if they are able, and for those unfortunate enough to\nfollow the lives of the lower evils, such a pilgrimage with an open and\ncontrite heart shall absolve them of all.",
   "Exits": [
    {
+    "RoomId": 1535,
+    "Verb": "up"
+   },
+   {
     "RoomId": 1530,
     "Verb": "east"
    },
    {
     "RoomId": 1528,
     "Verb": "west"
-   },
-   {
-    "RoomId": 1535,
-    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -485,16 +501,16 @@
   "Desc": "   It is written that no one may intercede with God on behalf of another.\nNo prayers from another may save the soul of a doomed man; his only hope\nis prayers of his own.",
   "Exits": [
    {
+    "RoomId": 1536,
+    "Verb": "up"
+   },
+   {
     "RoomId": 1517,
     "Verb": "south"
    },
    {
     "RoomId": 1529,
     "Verb": "west"
-   },
-   {
-    "RoomId": 1536,
-    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -525,16 +541,16 @@
   "Desc": "   When the records of men's deeds are laid open, and heaven is stripped\nbare; when Hell burns fiercely and Paradise is brought near: then each\nsoul shall know what it has done.",
   "Exits": [
    {
+    "RoomId": 1535,
+    "Verb": "down"
+   },
+   {
     "RoomId": 1533,
     "Verb": "east"
    },
    {
     "RoomId": 1531,
     "Verb": "west"
-   },
-   {
-    "RoomId": 1535,
-    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -633,12 +649,12 @@
   "Desc": "   The Compassionate, the Merciful, Sovereign of the Day of Judgment!\nYou alone we worship, and to You alone we turn for help.  Guide us to\nthe Straight Path, the path of those whom You have favored, not of\nthose who have gone astray.",
   "Exits": [
    {
-    "RoomId": 1538,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1535,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1538,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null

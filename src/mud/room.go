@@ -3,7 +3,6 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -80,7 +79,6 @@ func (r *Room) AddItem(i *Item) {
 }
 
 func (r *Room) SearchItem(query SearchQuery) (*Item, bool) {
-	log.Println("SEARCH ITEM", query.IsEmpty())
 	return SearchMap(query, r.items)
 }
 

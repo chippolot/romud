@@ -1,6 +1,12 @@
 [{
     "Key": "woodshortsword",
-    "Name": "Wooden Sort Sword",
+    "Name": "a wooden short sword",
     "Keywords": ["wooden", "short", "sword"],
     "RoomDesc": "A wooden short sword lies discarded on the ground."
+}, {
+    "Key": "bag",
+    "Name": "a small bag",
+    "Keywords": ["small", "bag"],
+    "RoomDesc": "A small bag is here.",
+    "Flags": ["container"]
 }]

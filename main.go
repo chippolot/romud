@@ -51,6 +51,12 @@ func main() {
 	} else {
 		log.Fatalln("Failed to load item")
 	}
+	if cfg, ok := world.TryGetItemConfig("bag"); ok {
+		itm := mud.NewItem(cfg)
+		world.AddItem(itm, world.EntryRoomId())
+	} else {
+		log.Fatalln("Failed to load item")
+	}
 
 	// Create session handler
 	sessionHandler := mud.NewSessionHandler(world, events)

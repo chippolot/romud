@@ -3,8 +3,6 @@ package mud
 import (
 	"math/rand"
 	"time"
-
-	"github.com/chippolot/go-mud/src/bits"
 )
 
 type UpdateSystem struct {
@@ -100,7 +98,7 @@ func wanderNpcs(w *World) {
 			continue
 		}
 
-		if bits.Has(e.cfg.Flags, EFlag_Stationary) {
+		if e.cfg.Flags.Has(EFlag_Stationary) {
 			continue
 		}
 

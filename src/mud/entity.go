@@ -4,15 +4,10 @@ import (
 	"log"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/bits"
 	"github.com/chippolot/go-mud/src/utils"
 )
 
 const PlayerEntityKey = "_player"
-
-const (
-	EFlag_Stationary bits.Bits = 1 << iota
-)
 
 var entityIdCounter EntityId = InvalidId
 
@@ -28,7 +23,7 @@ type EntityConfig struct {
 	FullDesc     string
 	Perceptibles *PerceptiblesConfig
 	Stats        *StatsConfig
-	Flags        bits.Bits
+	Flags        EntityFlags
 	lookup       map[string]bool
 }
 

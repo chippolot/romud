@@ -33,6 +33,8 @@ func init() {
 		{DoAdvance, []string{"advance"}, "Advances up to the next experience level", "advance", false, Cnd_Healthy, Pos_Sitting},
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
+		{DoDrop, []string{"drop"}, "Drops an item", "drop sword", true, Cnd_Healthy, Pos_Sitting},
+		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", true, Cnd_Healthy, Pos_Sitting},
 		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
 		{DoListen, []string{"listen"}, "Describes the sound of an object", "listen cat", false, Cnd_Healthy, Pos_Prone},
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
@@ -143,8 +145,8 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 		SendToPlayer(e, "What do you want to attack?")
 	default:
 		r := w.rooms[e.data.RoomId]
-		q := NewSearchQuery(lowerTokens(tokens[1:]))
-		tgt, ok := SearchEntityMap(q, r.entities, e)
+		q := NewSearchQuery(lowerTokens(tokens[1:])...)
+		tgt, ok := r.SearchEntity(q)
 		if !ok {
 			SendToPlayer(e, "They don't seem to be here...")
 			return
@@ -159,6 +161,44 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 			return
 		}
 		performAttack(e, w, tgt)
+	}
+}
+
+func DoGet(e *Entity, w *World, tokens []string) {
+	if len(tokens) == 1 {
+		SendToPlayer(e, "What do you want to get?")
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+
+	q := NewSearchQuery(lowerTokens(tokens[1:])...)
+	if item, ok := r.SearchItem(q); !ok {
+		SendToPlayer(e, "You don't see that here...")
+	} else {
+		r.RemoveItem(item)
+		e.AddToInventory(item)
+		SendToPlayer(e, "You pick up a %s", item.cfg.Name)
+		BroadcastToRoomExcept(r, e, "%s picks up a %s", e.Name(), item.cfg.Name)
+	}
+}
+
+func DoDrop(e *Entity, w *World, tokens []string) {
+	if len(tokens) == 1 {
+		SendToPlayer(e, "What do you want to drop?")
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+
+	q := NewSearchQuery(lowerTokens(tokens[1:])...)
+	if item, ok := e.SearchInventory(q); !ok {
+		SendToPlayer(e, "You don't have one of those...")
+	} else {
+		e.RemoveFromInventory(item)
+		r.AddItem(item)
+		SendToPlayer(e, "You drop a %s", item.cfg.Name)
+		BroadcastToRoomExcept(r, e, "%s drops a %s", e.Name(), item.cfg.Name)
 	}
 }
 
@@ -426,7 +466,7 @@ func DoQuit(e *Entity, w *World, _ []string) {
 func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) (string, bool) {
 	// First try and resolve entity in room
 	r := w.rooms[perceiver.data.RoomId]
-	q := NewSearchQuery(tokens)
+	q := NewSearchQuery(tokens...)
 	tgt, ok := SearchEntityMap(q, r.entities, perceiver)
 	if ok {
 		if desc, ok := tgt.TryPerceive(sense, tokens); ok {

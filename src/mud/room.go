@@ -3,6 +3,7 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -64,6 +65,10 @@ func (r *Room) AddEntity(e *Entity) {
 	r.entities[e.id] = e
 }
 
+func (r *Room) SearchEntity(query SearchQuery) (*Entity, bool) {
+	return SearchMap(query, r.entities)
+}
+
 func (r *Room) RemoveEntity(e *Entity) {
 	e.data.RoomId = InvalidId
 	delete(r.entities, e.id)
@@ -72,6 +77,11 @@ func (r *Room) RemoveEntity(e *Entity) {
 func (r *Room) AddItem(i *Item) {
 	i.data.RoomId = r.cfg.Id
 	r.items[i.id] = i
+}
+
+func (r *Room) SearchItem(query SearchQuery) (*Item, bool) {
+	log.Println("SEARCH ITEM", query.IsEmpty())
+	return SearchMap(query, r.items)
 }
 
 func (r *Room) RemoveItem(i *Item) {

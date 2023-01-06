@@ -1,6 +1,8 @@
 package mud
 
-import "strings"
+import (
+	"strings"
+)
 
 type Matchable interface {
 	MatchesKeyword(keyword string) bool
@@ -11,12 +13,12 @@ type SearchQuery struct {
 	Joined   string
 }
 
-func NewSearchQuery(keywords []string) SearchQuery {
+func NewSearchQuery(keywords ...string) SearchQuery {
 	return SearchQuery{keywords, strings.Join(keywords, " ")}
 }
 
 func (s SearchQuery) IsEmpty() bool {
-	return len(s.Keywords) != 0
+	return len(s.Keywords) == 0
 }
 
 func SearchMap[TKey comparable, TItem Matchable](query SearchQuery, items map[TKey]TItem) (TItem, bool) {

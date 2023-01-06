@@ -67,6 +67,7 @@
     [] Get From
     [] Get All From
     [] Drop
+    [] Weights
     [] Looking At
 [] Leveling up
 [] Races

@@ -60,9 +60,9 @@
         [x] Restore stats
     [] Look descriptions
 [] Items
+    [x] Viewing in Room
+    [x] Inventory
     [] Containers
-    [] Viewing in Room
-    [] Inventory
     [] Get
     [] Get From
     [] Get All From

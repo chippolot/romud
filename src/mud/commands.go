@@ -33,7 +33,8 @@ func init() {
 		{DoAdvance, []string{"advance"}, "Advances up to the next experience level", "advance", false, Cnd_Healthy, Pos_Sitting},
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
-		{DoListen, []string{"listen"}, "Describes the sound of an object", "hear cat", false, Cnd_Healthy, Pos_Prone},
+		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
+		{DoListen, []string{"listen"}, "Describes the sound of an object", "listen cat", false, Cnd_Healthy, Pos_Prone},
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
 		{DoQuit, []string{"quit"}, "Quits the game", "quit", false, 0, 0}, // TODO handle this here!
@@ -158,6 +159,17 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 			return
 		}
 		performAttack(e, w, tgt)
+	}
+}
+
+func DoInventory(e *Entity, _ *World, _ []string) {
+	SendToPlayer(e, "You are carrying:")
+	if len(e.inventory) == 0 {
+		SendToPlayer(e, "  Nothing.")
+		return
+	}
+	for _, i := range e.inventory {
+		SendToPlayer(e, "  <c white>%s</c>", i.cfg.Name)
 	}
 }
 

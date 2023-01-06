@@ -90,8 +90,7 @@ func (r *Room) TryPerceive(sense SenseType, words []string) (string, bool) {
 
 func (r *Room) Describe(subject *Entity) string {
 	var sb utils.StringBuilder
-	sb.WriteNewLine().
-		WriteString("<c bright yellow>").
+	sb.WriteString("<c bright yellow>").
 		WriteString(r.cfg.Name).
 		WriteLine("</c>").
 		WriteLinef("   %s", r.cfg.Desc).

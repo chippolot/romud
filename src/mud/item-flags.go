@@ -13,6 +13,7 @@ const (
 	IFlag_Container     ItemFlags = 1 << iota // Items that can contain other items
 	IFlag_Light                               // Items that light the room that they're in
 	IFlag_Environmental                       // Static items that can't be picked up
+	IFlag_Crumbles                            // Items which crumble when soemthing tries to pick them up
 )
 
 func ParseItemFlag(str string) (ItemFlags, error) {
@@ -23,6 +24,8 @@ func ParseItemFlag(str string) (ItemFlags, error) {
 		return IFlag_Light, nil
 	case "environmental":
 		return IFlag_Environmental, nil
+	case "crumbles":
+		return IFlag_Crumbles, nil
 	default:
 		return 0, fmt.Errorf("unknown item flag: %s", str)
 	}

@@ -37,26 +37,10 @@ func main() {
 	world.SetEntryRoomId(3001)
 
 	// Create test entity
-	if cfg, ok := world.TryGetEntityConfig("mob"); ok {
-		mob := mud.NewEntity(cfg)
-		world.AddEntity(mob, world.EntryRoomId())
-	} else {
-		log.Fatalln("Failed to load mob")
-	}
+	addEntities(world, "mob")
 
 	// Create test item
-	if cfg, ok := world.TryGetItemConfig("woodshortsword"); ok {
-		itm := mud.NewItem(cfg)
-		world.AddItem(itm, world.EntryRoomId())
-	} else {
-		log.Fatalln("Failed to load item")
-	}
-	if cfg, ok := world.TryGetItemConfig("bag"); ok {
-		itm := mud.NewItem(cfg)
-		world.AddItem(itm, world.EntryRoomId())
-	} else {
-		log.Fatalln("Failed to load item")
-	}
+	addItems(world, "woodshortsword", "bag", "ancientscroll")
 
 	// Create session handler
 	sessionHandler := mud.NewSessionHandler(world, events)
@@ -74,6 +58,28 @@ func main() {
 		err = srv.Start(s.Port, events)
 		if err != nil {
 			log.Fatalln(err)
+		}
+	}
+}
+
+func addEntities(w *mud.World, keys ...string) {
+	for _, key := range keys {
+		if cfg, ok := w.TryGetEntityConfig(key); ok {
+			ent := mud.NewEntity(cfg)
+			w.AddEntity(ent, w.EntryRoomId())
+		} else {
+			log.Fatalf("Failed to load entity: %s", key)
+		}
+	}
+}
+
+func addItems(w *mud.World, keys ...string) {
+	for _, key := range keys {
+		if cfg, ok := w.TryGetItemConfig(key); ok {
+			itm := mud.NewItem(cfg)
+			w.AddItem(itm, w.EntryRoomId())
+		} else {
+			log.Fatalf("Failed to load item: %s", key)
 		}
 	}
 }

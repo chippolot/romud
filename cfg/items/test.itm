@@ -9,4 +9,10 @@
     "Keywords": ["small", "bag"],
     "RoomDesc": "A small bag is here.",
     "Flags": ["container"]
+}, {
+    "Key": "ancientscroll",
+    "Name": "an ancient scroll",
+    "Keywords": ["ancient", "scroll"],
+    "RoomDesc": "An ancient scroll is resting here. It looks ready to disintegrate at the lightest touch.",
+    "Flags": ["crumbles"]
 }]

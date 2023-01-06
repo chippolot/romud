@@ -277,7 +277,13 @@ func DoGet(e *Entity, w *World, tokens []string) {
 
 	// Perform transfer and notify
 	container.RemoveItem(item)
-	e.AddItem(item)
+	if item.cfg.Flags.Has(IFlag_Crumbles) {
+		msgToEntity = fmt.Sprintf("%s crumbles to dust when you try to pick it up", item.Name())
+		msgToRoom = fmt.Sprintf("%s crumbles to dust when %s tries to pick it up", item.Name(), e.Name())
+	} else {
+		e.AddItem(item)
+	}
+
 	SendToPlayer(e, msgToEntity)
 	BroadcastToRoomExcept(r, e, msgToRoom)
 }

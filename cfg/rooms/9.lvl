@@ -5,16 +5,16 @@
   "Desc": "   The river is deep, and runs swiftly in an east-west direction.  To the\nnorth the river eddies and enters a backwash where a small bank extends\ndown from a dark, thick stand of trees.  It doesn't look particulary\ninviting however.",
   "Exits": [
    {
+    "RoomId": 902,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6120,
     "Verb": "north"
    },
    {
     "RoomId": 900,
     "Verb": "east"
-   },
-   {
-    "RoomId": 902,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -57,10 +57,6 @@
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
    {
-    "RoomId": 905,
-    "Verb": "west"
-   },
-   {
     "RoomId": 911,
     "Verb": "north"
    },
@@ -71,6 +67,10 @@
    {
     "RoomId": 906,
     "Verb": "south"
+   },
+   {
+    "RoomId": 905,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -97,10 +97,6 @@
   "Desc": "   You are making your way along a channel in the river delta between\nthe island to the west and the shore to the south and east.  To the\nsouth an aging broken down looking pier juts out from land and toward\nthe west the channel works it way close to the island as it moves around\nits southern tip.",
   "Exits": [
    {
-    "RoomId": 905,
-    "Verb": "north"
-   },
-   {
     "RoomId": 904,
     "Verb": "east"
    },
@@ -111,6 +107,10 @@
    {
     "RoomId": 908,
     "Verb": "west"
+   },
+   {
+    "RoomId": 905,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -137,16 +137,16 @@
   "Desc": "   The going is rough here.  The tide struggles with the normal flow\nof the river and here near the edge of the sea there is a large\namount of growth.  To the west the channel passes the southern tip of\nthe island and heads for open waters.",
   "Exits": [
    {
+    "RoomId": 909,
+    "Verb": "west"
+   },
+   {
     "RoomId": 906,
     "Verb": "north"
    },
    {
     "RoomId": 907,
     "Verb": "east"
-   },
-   {
-    "RoomId": 909,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -185,16 +185,16 @@
   "Desc": "   The river splits as runs up against the island and a navigatble\nchannel slips off to the north and west.",
   "Exits": [
    {
-    "RoomId": 912,
-    "Verb": "north"
-   },
-   {
     "RoomId": 904,
     "Verb": "south"
    },
    {
     "RoomId": 912,
     "Verb": "west"
+   },
+   {
+    "RoomId": 912,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -206,15 +206,15 @@
   "Exits": [
    {
     "RoomId": 911,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 911,
     "Verb": "south"
    },
    {
     "RoomId": 913,
     "Verb": "west"
+   },
+   {
+    "RoomId": 911,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null

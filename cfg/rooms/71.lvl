@@ -121,12 +121,12 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
-    "RoomId": 7190,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7107,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7190,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -137,16 +137,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
-    "RoomId": 7110,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7108,
     "Verb": "north"
    },
    {
     "RoomId": 7190,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7110,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -157,16 +157,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
-    "RoomId": 7111,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7107,
     "Verb": "north"
    },
    {
     "RoomId": 7190,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7111,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -176,10 +176,6 @@
   "Name": "The Southwestern Corner Of The Ledge",
   "Desc": "   This seems like a ledge that is a little broader than the one just to\nthe north of here.  The ledge seems to lead around some sort of Abyss of\ntotal darkness.  The ledge seems to have an odd-looking edge here.",
   "Exits": [
-   {
-    "RoomId": 7279,
-    "Verb": "down"
-   },
    {
     "RoomId": 7110,
     "Verb": "north"
@@ -191,6 +187,10 @@
    {
     "RoomId": 7112,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7279,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -233,6 +233,10 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
+    "RoomId": 7119,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7118,
     "Verb": "east"
    },
@@ -247,10 +251,6 @@
    {
     "RoomId": 7115,
     "Verb": "up"
-   },
-   {
-    "RoomId": 7119,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -261,16 +261,16 @@
   "Desc": "   You are standing on a ledge that seems quite a lot larger than the\nrest of the ledges.  This one leads to the west and the east, plus it\nhas an exit going to the south.  Though you could jump into mid-air,\nbut it probably wouldn't be such a good idea.  The way south is in\nutter darkness.",
   "Exits": [
    {
+    "RoomId": 7111,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7121,
     "Verb": "east"
    },
    {
     "RoomId": 7129,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7111,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -281,16 +281,16 @@
   "Desc": "   You stand, swaying out from the ledge, with only a couple of inches of\nsafe, solid ledge under your feet.  The ledge continues to the west and\nleads south from here into darkness.",
   "Exits": [
    {
+    "RoomId": 7117,
+    "Verb": "south"
+   },
+   {
     "RoomId": 7113,
     "Verb": "west"
    },
    {
     "RoomId": 7280,
     "Verb": "down"
-   },
-   {
-    "RoomId": 7117,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -401,12 +401,12 @@
   "Desc": "   A ladder leads up from here to the Shaft.  A small opening leads west\nfrom here.",
   "Exits": [
    {
-    "RoomId": 7120,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7041,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7120,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -417,12 +417,12 @@
   "Desc": "   You are in a narrow part of the sewer.  Down the sewer continues and to\nthe north is the ledge.",
   "Exits": [
    {
-    "RoomId": 7221,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7115,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7221,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -432,14 +432,6 @@
   "Name": "Mid-Air",
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
-   {
-    "RoomId": 7110,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 7107,
-    "Verb": "west"
-   },
    {
     "RoomId": 7113,
     "Verb": "up"
@@ -451,6 +443,14 @@
    {
     "RoomId": 7108,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7110,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7107,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null

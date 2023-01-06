@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const PlayerFileExtension = ".player"
+const PlayerFileExtension = ".ply"
 const PlayersDirectory = "players"
 
 type Database interface {

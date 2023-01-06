@@ -35,7 +35,7 @@ func main() {
 		log.Println("Parsing:", path)
 		id := trimExtension(filepath.Base(path))
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
-			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%s.rooms", id)))
+			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%s%s", id, mud.RoomsFileExtension)))
 		} else {
 			log.Panic(err)
 			os.Exit(1)

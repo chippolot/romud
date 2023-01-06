@@ -29,10 +29,6 @@
   "Desc": "   You are inside the shadow grove.  Giant trees seem to glare at you\nfrom all sides.  The shadowy mist obscures most of your vision.  Strange\nsounds moaning and growling come from all directions.\n   All exits lead into shadows, you are very confused.",
   "Exits": [
    {
-    "RoomId": 2505,
-    "Verb": "south"
-   },
-   {
     "RoomId": 2501,
     "Verb": "west"
    },
@@ -43,6 +39,10 @@
    {
     "RoomId": 2503,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2505,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -53,20 +53,20 @@
   "Desc": "   You are inside the shadow grove.  Giant trees seem the glare at you\nfrom all sides.  The shadowy mist obscures most of your vision.  Strange\nsounds of moaning and growling come from all directions.\n   All exits lead into shadows, you are very confused.",
   "Exits": [
    {
-    "RoomId": 2506,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 2502,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2509,
     "Verb": "north"
    },
    {
     "RoomId": 2501,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2506,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 2502,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -101,6 +101,10 @@
   "Desc": "   You are inside the shadow grove.  Giant trees seem to glare at you\nfrom all sides.  The shadowy mist obscures most of your vision.  Strange\nsounds of moaning and growling come from all directions.\n   All exits lead into shadows, you are very confused.",
   "Exits": [
    {
+    "RoomId": 2504,
+    "Verb": "west"
+   },
+   {
     "RoomId": 2502,
     "Verb": "north"
    },
@@ -111,10 +115,6 @@
    {
     "RoomId": 2508,
     "Verb": "south"
-   },
-   {
-    "RoomId": 2504,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -124,10 +124,6 @@
   "Name": "The Shadow Grove",
   "Desc": "   You are inside the shadow grove.  Giant trees seem to glare at you\nfrom all sides.  The shadowy mist obscures most of your vision.  Strange\nsounds of moaning and growling come from all directions.\n   All exits lead into shadows, you are very confused.",
   "Exits": [
-   {
-    "RoomId": 2511,
-    "Verb": "west"
-   },
    {
     "RoomId": 2503,
     "Verb": "north"
@@ -139,6 +135,10 @@
    {
     "RoomId": 2509,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2511,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -148,6 +148,10 @@
   "Name": "The Shadow Grove",
   "Desc": "   You are inside the shadow grove.  Giant trees seem to glare at you\nfrom all sides.  The shadowy mist obscures most of your vision.  Strange\nsounds of moaning and growling come from all directions.\n   All exits lead into shadows, you are very confused.",
   "Exits": [
+   {
+    "RoomId": 2504,
+    "Verb": "north"
+   },
    {
     "RoomId": 2508,
     "Verb": "east"
@@ -159,10 +163,6 @@
    {
     "RoomId": 2509,
     "Verb": "west"
-   },
-   {
-    "RoomId": 2504,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -221,20 +221,20 @@
   "Desc": "   You are inside the shadow grove.  Giant trees seem to glare at you\nfrom all sides.  The shadowy mist obscures most of your vision.  Strange\nsounds of moaning and growling come from all directions.\n   All directions lead into shadows, you are very confused.",
   "Exits": [
    {
-    "RoomId": 2509,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 2502,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2507,
     "Verb": "north"
    },
    {
     "RoomId": 2511,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2509,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 2502,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -244,6 +244,10 @@
   "Name": "A Small Clearing",
   "Desc": "   You are in a small clearing in the shadow grove.  There is charred grass\nunderfoot, and the signs of fire here and there.  It is almost as if the\nplant life shuns this spot.  The shadowy mist hovers all around, obscuring\nyour view into the grove.\n   A small path leads north to some shadowy structure.  All other exits are\nshrouded in shadowy mist.",
   "Exits": [
+   {
+    "RoomId": 2510,
+    "Verb": "west"
+   },
    {
     "RoomId": 2512,
     "Verb": "north"
@@ -255,10 +259,6 @@
    {
     "RoomId": 2502,
     "Verb": "south"
-   },
-   {
-    "RoomId": 2510,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -281,6 +281,10 @@
   "Desc": "   You are inside the High Tower of Sorcery.  The sight is truly amazing.\nFrom here, it is obvious that somehow, the tower is much larger on the\ninside than it is on the outside.  Young mages walk about, completely\noblivious to your presence.\n   Exits lead north to the common room, west to the dinning room, east\nto a plain hallway and back south through the gate.",
   "Exits": [
    {
+    "RoomId": 2514,
+    "Verb": "north"
+   },
+   {
     "RoomId": 2515,
     "Verb": "east"
    },
@@ -291,10 +295,6 @@
    {
     "RoomId": 2516,
     "Verb": "west"
-   },
-   {
-    "RoomId": 2514,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -304,6 +304,10 @@
   "Name": "Common Room",
   "Desc": "   You are in the common room.  There are many apprentice warlocks here\ntalking and resting, playing games, comparing notes.  Obviously they\nare taking a break from their rigorous studies.  There are benches,\ntables and a small water fountain here, otherwise the room is quite\nunremarkable.\n   Exits lead off in all directions.",
   "Exits": [
+   {
+    "RoomId": 2519,
+    "Verb": "west"
+   },
    {
     "RoomId": 2517,
     "Verb": "north"
@@ -315,10 +319,6 @@
    {
     "RoomId": 2513,
     "Verb": "south"
-   },
-   {
-    "RoomId": 2519,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -429,6 +429,10 @@
   "Desc": "   You are in a damp intersection of what seems to be the basement of\nthe tower.  The sound of running water can be heard coming from the\nsouth, other than that, an almost tangible stillness fills the air.\n   Passages lead off in all directions, and a ladder leads up.",
   "Exits": [
    {
+    "RoomId": 2521,
+    "Verb": "up"
+   },
+   {
     "RoomId": 2523,
     "Verb": "north"
    },
@@ -443,10 +447,6 @@
    {
     "RoomId": 2526,
     "Verb": "west"
-   },
-   {
-    "RoomId": 2521,
-    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -457,12 +457,12 @@
   "Desc": "   You are at the end of a dark passage which ends in a stout wooden door.\nOther then through the door, the only apparent exit is back the way you\ncame.",
   "Exits": [
    {
-    "RoomId": 2522,
-    "Verb": "south"
-   },
-   {
     "RoomId": 2527,
     "Verb": "north"
+   },
+   {
+    "RoomId": 2522,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -473,12 +473,12 @@
   "Desc": "   You are at the end of a dark passage.  A half opened door is to the\neast, shedding soft light around the edges.  Faint snoring sounds can\nbe heard behind the door.\n   Exits lead east through the door, or back west.",
   "Exits": [
    {
-    "RoomId": 2522,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2528,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2522,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -620,16 +620,16 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.",
   "Exits": [
    {
-    "RoomId": 2538,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2537,
     "Verb": "east"
    },
    {
     "RoomId": 2531,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2538,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -676,16 +676,16 @@
   "Desc": "   You are in a long hallway leading from the south.  The walls emit a\nfaint magical glow which provides enough light to see by.\n   Stairs lead up to the next level and the hallway leads back south.",
   "Exits": [
    {
+    "RoomId": 2540,
+    "Verb": "up"
+   },
+   {
     "RoomId": 2539,
     "Verb": "east"
    },
    {
     "RoomId": 2534,
     "Verb": "south"
-   },
-   {
-    "RoomId": 2540,
-    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -708,10 +708,6 @@
   "Desc": "   You are in a long hallway leading west from here.  The walls emit a\nfaint magical glow which provides enough light to see by.  Some faint\nmoonlight can be seen in the cul de sac to the east.\n   The hallway continues west and stairs lead down to the level below.",
   "Exits": [
    {
-    "RoomId": 2542,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2541,
     "Verb": "east"
    },
@@ -722,6 +718,10 @@
    {
     "RoomId": 2538,
     "Verb": "down"
+   },
+   {
+    "RoomId": 2542,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -800,16 +800,16 @@
   "Desc": "   You are in a long hallway leading east and west.  The walls emit a\nfaint magical glow which provides enough light to see by.  Flashes of\nlight can be seen under the doorway to the north.",
   "Exits": [
    {
-    "RoomId": 2547,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2546,
     "Verb": "north"
    },
    {
     "RoomId": 2543,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2547,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -880,16 +880,16 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.",
   "Exits": [
    {
-    "RoomId": 2548,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2551,
     "Verb": "south"
    },
    {
     "RoomId": 2552,
     "Verb": "west"
+   },
+   {
+    "RoomId": 2548,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -900,16 +900,16 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.",
   "Exits": [
    {
+    "RoomId": 2550,
+    "Verb": "north"
+   },
+   {
     "RoomId": 2553,
     "Verb": "south"
    },
    {
     "RoomId": 2554,
     "Verb": "west"
-   },
-   {
-    "RoomId": 2550,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1184,12 +1184,12 @@
   "Desc": "   You are atop a stairway.  The halls here look quite a bit less used than\nthose below.  Obviously access to these magic filled corridors is limited\nto those of the upper echelon of mages.  The walls here emit a faint blue\nmagical aura which provides some light.\n   The hallway leads west from here and the stairs go down.",
   "Exits": [
    {
-    "RoomId": 2568,
-    "Verb": "down"
-   },
-   {
     "RoomId": 2570,
     "Verb": "west"
+   },
+   {
+    "RoomId": 2568,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -1200,16 +1200,16 @@
   "Desc": "   You are in a long hallway stretching east and west.  The walls here emit\na faint magical energy providing enough light to see by.\n   There is a thick looking wooden door to the north.",
   "Exits": [
    {
+    "RoomId": 2572,
+    "Verb": "west"
+   },
+   {
     "RoomId": 2571,
     "Verb": "north"
    },
    {
     "RoomId": 2569,
     "Verb": "east"
-   },
-   {
-    "RoomId": 2572,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -1384,20 +1384,20 @@
   "Desc": "   You are in a very hot room.  Against one wall is a large forge, magical\nfires crackle within and heavy blue smoke pours into a vent in the ceiling.\nA rune-encrusted mithril anvil is in the center of the room, looking well\nused.  Other tools of metallurgy hang on a rack which floats about three\nmeters in the air of its own force.",
   "Exits": [
    {
-    "RoomId": 2579,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 2578,
-    "Verb": "east"
-   },
-   {
     "RoomId": 2582,
     "Verb": "south"
    },
    {
     "RoomId": 2612,
     "Verb": "up"
+   },
+   {
+    "RoomId": 2579,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 2578,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1552,16 +1552,16 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.\n   A bronze door can be seen to the east.",
   "Exits": [
    {
-    "RoomId": 2593,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2594,
     "Verb": "east"
    },
    {
     "RoomId": 2589,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2593,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1627,12 +1627,12 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.",
   "Exits": [
    {
-    "RoomId": 2598,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2593,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2598,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1671,12 +1671,12 @@
   "Desc": "   You are atop the stairway to the upper levels of the high tower.  The\nwalls emit a faint magical glow which provides enough light to see by.\n   A hallway leads west from here, and the stairs lead down.",
   "Exits": [
    {
-    "RoomId": 2600,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2598,
     "Verb": "down"
+   },
+   {
+    "RoomId": 2600,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -1739,12 +1739,12 @@
   "Desc": "   You have discovered the cache of the Master Spellbinder.  There are\nthree very large silver chased cabinets here, other than that, the room\nis bare.\n   A silver door can be seen to the south.",
   "Exits": [
    {
-    "RoomId": 2605,
-    "Verb": "south"
-   },
-   {
     "RoomId": 2602,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2605,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -1791,12 +1791,12 @@
   "Desc": "   You are at a bend in the long hallway.  The walls emit a faint magical\nglow which provides enough light to see by.\n   The hallway continues east and south.",
   "Exits": [
    {
-    "RoomId": 2607,
-    "Verb": "south"
-   },
-   {
     "RoomId": 2605,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2607,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -1807,12 +1807,12 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.",
   "Exits": [
    {
-    "RoomId": 2608,
-    "Verb": "south"
-   },
-   {
     "RoomId": 2606,
     "Verb": "north"
+   },
+   {
+    "RoomId": 2608,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -1843,6 +1843,10 @@
   "Desc": "   You are in the golem master's workshop.  A few unfinished looking humanoid\nforms of different make are here, some moving, some not.  The animated forms\nlunge to attack you.",
   "Exits": [
    {
+    "RoomId": 2608,
+    "Verb": "east"
+   },
+   {
     "RoomId": 2611,
     "Verb": "south"
    },
@@ -1853,10 +1857,6 @@
    {
     "RoomId": 2610,
     "Verb": "north"
-   },
-   {
-    "RoomId": 2608,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1907,12 +1907,12 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.",
   "Exits": [
    {
-    "RoomId": 2608,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2614,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2608,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1923,12 +1923,12 @@
   "Desc": "   You are at a bend in the long hallway.  The walls emit a faint magical\nglow which provides enough light to see by.\n   The hallway continues north and east from here.",
   "Exits": [
    {
-    "RoomId": 2615,
-    "Verb": "east"
-   },
-   {
     "RoomId": 2613,
     "Verb": "north"
+   },
+   {
+    "RoomId": 2615,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1955,16 +1955,16 @@
   "Desc": "   You are in a long hallway leading east and west.  The walls emit a\nfaint magical glow which provides enough light to see by.\n   An emerald door can be seen to the south.",
   "Exits": [
    {
+    "RoomId": 2615,
+    "Verb": "west"
+   },
+   {
     "RoomId": 2619,
     "Verb": "east"
    },
    {
     "RoomId": 2617,
     "Verb": "south"
-   },
-   {
-    "RoomId": 2615,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -2015,16 +2015,16 @@
   "Desc": "   You are in a long hallway leading east and west.  The walls emit a\nfaint magical glow which provides enough light to see by.\n   A glass door can be seen to the south.",
   "Exits": [
    {
-    "RoomId": 2616,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2621,
     "Verb": "east"
    },
    {
     "RoomId": 2620,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2616,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -2063,16 +2063,16 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.\n   A blackened door can be seen to the east.",
   "Exits": [
    {
+    "RoomId": 2626,
+    "Verb": "north"
+   },
+   {
     "RoomId": 2623,
     "Verb": "east"
    },
    {
     "RoomId": 2621,
     "Verb": "south"
-   },
-   {
-    "RoomId": 2626,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -2143,12 +2143,12 @@
   "Desc": "   You are in a long hallway leading north and south.  The walls emit a\nfaint magical glow which provides enough light to see by.",
   "Exits": [
    {
-    "RoomId": 2628,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2626,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2628,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -2159,12 +2159,12 @@
   "Desc": "   You are at the end of a long hallway.  The walls here glow with a faint\nmagical energy which provides plenty of light.\n   Stairs lead up to the next level here and the hallway continues south.",
   "Exits": [
    {
-    "RoomId": 2627,
-    "Verb": "south"
-   },
-   {
     "RoomId": 2629,
     "Verb": "up"
+   },
+   {
+    "RoomId": 2627,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -2331,20 +2331,20 @@
   "Desc": "   You are in the great library of magic.  A strong musty smell permeates\nthe entire area.  Upon shelves which float just out of reach are hundreds\nof books, tomes and scrolls of every possible shape size and colour.  The\nelusive books seem to wink in and out of existence before your untrained\neyes.  It is very quiet here.",
   "Exits": [
    {
-    "RoomId": 2643,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 2641,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2637,
     "Verb": "east"
    },
    {
     "RoomId": 2642,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2643,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 2641,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -2403,10 +2403,6 @@
   "Desc": "   You are in the great library of magic.  A strong musty smell permeates\nthe entire area.  Upon shelves which float just out of reach are hundreds\nof books, tomes and scrolls of every possible shape size and colour.  The\nelusive books seem to wink in and out of existence before your untrained\neyes.  It is very quiet here.",
   "Exits": [
    {
-    "RoomId": 2640,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2642,
     "Verb": "north"
    },
@@ -2417,6 +2413,10 @@
    {
     "RoomId": 2638,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2640,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -2426,6 +2426,10 @@
   "Name": "In The Library",
   "Desc": "   You are in the great library of magic.  A strong musty smell permeates\nthe entire area.  Upon shelves which float just out of reach are hundreds\nof books, tomes and scrolls of every possible shape size and colour.  The\nelusive books seem to wink in and out of existence before your untrained\neyes.  It is very quiet here.",
   "Exits": [
+   {
+    "RoomId": 2639,
+    "Verb": "west"
+   },
    {
     "RoomId": 2638,
     "Verb": "north"
@@ -2437,10 +2441,6 @@
    {
     "RoomId": 2641,
     "Verb": "south"
-   },
-   {
-    "RoomId": 2639,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -2527,12 +2527,12 @@
   "Desc": "   You feel a slight tingle as you pass through the archway, as if the living\nmagical energies here had infused your body, found it wanting and left.  The\nintense glow from the arch above you is almost blinding.  Through the light\nyou can barely make out a stairway leading up.",
   "Exits": [
    {
-    "RoomId": 2649,
-    "Verb": "up"
-   },
-   {
     "RoomId": 2647,
     "Verb": "north"
+   },
+   {
+    "RoomId": 2649,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -2559,6 +2559,14 @@
   "Desc": "   You are at an intersection of several hallways.  You feel as if strange\nmystical forces are pushing and pulling at each other from all around you.\nThe sensation of being trapped, in the middle is almost tangible in the air\nhere.\n   A grey tiled hallway leads south, black tiled east, white tiled west,\nand a multi-coloured hallway swirling with patterns that remain just barely\nunrecognizable is to the north.",
   "Exits": [
    {
+    "RoomId": 2673,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 2658,
+    "Verb": "east"
+   },
+   {
     "RoomId": 2651,
     "Verb": "south"
    },
@@ -2569,14 +2577,6 @@
    {
     "RoomId": 2649,
     "Verb": "down"
-   },
-   {
-    "RoomId": 2673,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 2658,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -2603,12 +2603,12 @@
   "Desc": "   You are in a grey tiled hallway leading north and south.  Dim balls\nof energy float here and there shedding a warm light, and showing the\nway.  A feeling of peace and balance comes over you.\n   Large, grey metal double doors can be seen to the south.",
   "Exits": [
    {
-    "RoomId": 2653,
-    "Verb": "south"
-   },
-   {
     "RoomId": 2651,
     "Verb": "north"
+   },
+   {
+    "RoomId": 2653,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -2695,12 +2695,12 @@
   "Desc": "   You are in a long dark hallway leading east and west.  Not much can\nbe seen in the unnatural darkness here, but you get a deep sense of dread\nthe further you go.",
   "Exits": [
    {
-    "RoomId": 2659,
-    "Verb": "east"
-   },
-   {
     "RoomId": 2650,
     "Verb": "west"
+   },
+   {
+    "RoomId": 2659,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -2727,12 +2727,12 @@
   "Desc": "   You are at the end of a long dark hallway.  The darkness here is almost\ntangible in its thickness.  A deep sense of fear and loathing comes over\nyou.\n   A pair of obsidian doors can be seen to the east.",
   "Exits": [
    {
-    "RoomId": 2659,
-    "Verb": "west"
-   },
-   {
     "RoomId": 2661,
     "Verb": "east"
+   },
+   {
+    "RoomId": 2659,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -2742,6 +2742,10 @@
   "Name": "The Chamber Of Darkness",
   "Desc": "   You are in a vast chamber.  The walls fade into darkness, leaving you\nwith a very vague idea of the actual size of the room.  Swirling here and\nthere in the dark, are patches of pure black which seem to suck in your\nlight and leave it that much darker here.",
   "Exits": [
+   {
+    "RoomId": 2662,
+    "Verb": "north"
+   },
    {
     "RoomId": 2664,
     "Verb": "east"
@@ -2753,10 +2757,6 @@
    {
     "RoomId": 2660,
     "Verb": "west"
-   },
-   {
-    "RoomId": 2662,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -2959,12 +2959,12 @@
   "Desc": "   You are at the entrance to the audience chamber of the Grand Master of\nMagic.  Beautiful tapestries displaying the ancient masters of lore are on\nthe walls, and the floor is covered with a plush multicoloured carpet, which\nseems to rustle and move at the touch of your boots.",
   "Exits": [
    {
-    "RoomId": 2677,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2675,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2677,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -2975,20 +2975,20 @@
   "Desc": "   You are in a large chamber.  Small bolts of energy leap from wall to\nwall, crackling with power.  The floor is a swirl of indeterminable colours\nand patterns ever changing.  Bright bursts of colour seem to explode into\nthe air and fade again at random times.  All this splendor plays about and\ndraws attention to a large throne in the center of the room, it seems to be\ncut from a single enormous emerald.",
   "Exits": [
    {
-    "RoomId": 2679,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 2680,
-    "Verb": "north"
-   },
-   {
     "RoomId": 2678,
     "Verb": "east"
    },
    {
     "RoomId": 2676,
     "Verb": "south"
+   },
+   {
+    "RoomId": 2679,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 2680,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -3023,16 +3023,16 @@
   "Desc": "   You are in a small chapel designed around a beautifully crafted golden\naltar.  Many icons to lesser deities line the room, but it is obvious by\none glance at the symbols on the altar, that this room was designed for\nthe worship of Mystra, the goddess of magic.",
   "Exits": [
    {
+    "RoomId": 2681,
+    "Verb": "east"
+   },
+   {
     "RoomId": 2677,
     "Verb": "south"
    },
    {
     "RoomId": 2682,
     "Verb": "west"
-   },
-   {
-    "RoomId": 2681,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null

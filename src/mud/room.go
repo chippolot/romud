@@ -51,10 +51,11 @@ type RoomConfig struct {
 type Room struct {
 	cfg      *RoomConfig
 	entities map[EntityId]*Entity
+	items    map[ItemId]*Item
 }
 
 func NewRoom(cfg *RoomConfig) (*Room, error) {
-	r := &Room{cfg, make(map[EntityId]*Entity)}
+	r := &Room{cfg, make(map[EntityId]*Entity), make(map[ItemId]*Item)}
 	return r, nil
 }
 
@@ -64,7 +65,18 @@ func (r *Room) AddEntity(e *Entity) {
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
+	e.data.RoomId = InvalidId
 	delete(r.entities, e.id)
+}
+
+func (r *Room) AddItem(i *Item) {
+	i.data.RoomId = r.cfg.Id
+	r.items[i.id] = i
+}
+
+func (r *Room) RemoveItem(i *Item) {
+	i.data.RoomId = InvalidId
+	delete(r.items, i.id)
 }
 
 func (r *Room) IsExitOpen(dir Direction) bool {

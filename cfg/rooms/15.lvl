@@ -85,16 +85,16 @@
   "Desc": "   Even the darkest have a place on the road to the truth.  It is in this\nplace, so empty and forgotten, that God has chosen the worst, and brought\nthem close to Him for one last time.",
   "Exits": [
    {
+    "RoomId": 1513,
+    "Verb": "east"
+   },
+   {
     "RoomId": 1508,
     "Verb": "west"
    },
    {
     "RoomId": 1505,
     "Verb": "up"
-   },
-   {
-    "RoomId": 1513,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -141,12 +141,12 @@
   "Desc": "   Some have been brought here not for what they did, but what they\nfailed to do.  It is these, the poor souls that were presented the\nfair evidence and rejected it with an honest mind, that deserve our\npity the most of all.",
   "Exits": [
    {
-    "RoomId": 1508,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1510,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1508,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -237,12 +237,12 @@
   "Desc": "   Temptation is the IF, the wondering, the second-guessing, the \"I will\nbe a better man... if...\"  And that if is usually taken, sitting alone,\nlistening to that voice, calling you, offering such an easy way, but such\na crooked one.",
   "Exits": [
    {
-    "RoomId": 1514,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1516,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1514,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -333,12 +333,12 @@
   "Desc": "   Every majestic and happy tale must end, usually all too soon, and thus\nit was with the golden age of the Caliphate.  The Rashidun were pure men,\ngood men, true to the path, but their followers soon began to bicker, and\ncivil war was on the horizon.",
   "Exits": [
    {
-    "RoomId": 1522,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1520,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1522,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -381,12 +381,12 @@
   "Desc": "   In the creation of the heavens and the earth, and in the alternation of\nnight and day, there are signs for men of sense; those that remember Allah\nsay: \"Lord, You have not created this in vain!\"",
   "Exits": [
    {
-    "RoomId": 1523,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1525,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1523,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -465,16 +465,16 @@
   "Desc": "   It is incumbent upon all Muslims to make the pilgrimage to Mecca once\nin their lifetime, if they are able, and for those unfortunate enough to\nfollow the lives of the lower evils, such a pilgrimage with an open and\ncontrite heart shall absolve them of all.",
   "Exits": [
    {
-    "RoomId": 1535,
-    "Verb": "up"
-   },
-   {
     "RoomId": 1530,
     "Verb": "east"
    },
    {
     "RoomId": 1528,
     "Verb": "west"
+   },
+   {
+    "RoomId": 1535,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -485,16 +485,16 @@
   "Desc": "   It is written that no one may intercede with God on behalf of another.\nNo prayers from another may save the soul of a doomed man; his only hope\nis prayers of his own.",
   "Exits": [
    {
-    "RoomId": 1536,
-    "Verb": "up"
-   },
-   {
     "RoomId": 1517,
     "Verb": "south"
    },
    {
     "RoomId": 1529,
     "Verb": "west"
+   },
+   {
+    "RoomId": 1536,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -565,16 +565,16 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
-    "RoomId": 1528,
-    "Verb": "down"
-   },
-   {
     "RoomId": 1535,
     "Verb": "east"
    },
    {
     "RoomId": 1531,
     "Verb": "up"
+   },
+   {
+    "RoomId": 1528,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -584,6 +584,14 @@
   "Name": "The Final Facing",
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
+   {
+    "RoomId": 1532,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 1529,
+    "Verb": "down"
+   },
    {
     "RoomId": 1537,
     "Verb": "north"
@@ -595,14 +603,6 @@
    {
     "RoomId": 1536,
     "Verb": "east"
-   },
-   {
-    "RoomId": 1532,
-    "Verb": "up"
-   },
-   {
-    "RoomId": 1529,
-    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -633,12 +633,12 @@
   "Desc": "   The Compassionate, the Merciful, Sovereign of the Day of Judgment!\nYou alone we worship, and to You alone we turn for help.  Guide us to\nthe Straight Path, the path of those whom You have favored, not of\nthose who have gone astray.",
   "Exits": [
    {
-    "RoomId": 1535,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1538,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1535,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null

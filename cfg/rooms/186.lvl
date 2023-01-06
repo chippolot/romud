@@ -21,16 +21,16 @@
   "Desc": "   You continue wandering down the hallway.  Nothing much different here,\nbut you are positive you here noises behind the door to the south, and\ncoming from the east.  The walls are a bit slimy and moldy here... yeech,\ncouldn't they hire someone to clean this place?  What will the newbies\nthink?  Oh well, you can continue along the hallway to the east or west.",
   "Exits": [
    {
-    "RoomId": 18601,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18603,
     "Verb": "east"
    },
    {
     "RoomId": 18606,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18601,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -40,10 +40,6 @@
   "Name": "A Nexus",
   "Desc": "   Well... you've reached an intersection of two passages, to the north\nand east, the passage brightens, while the darker hallway continues to\nthe south.",
   "Exits": [
-   {
-    "RoomId": 18602,
-    "Verb": "west"
-   },
    {
     "RoomId": 18644,
     "Verb": "north"
@@ -55,6 +51,10 @@
    {
     "RoomId": 18607,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18602,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -93,16 +93,16 @@
   "Desc": "   Hmmm... this is an interesting little room.  Ack, and there is\nan interesting little creature staring at you too.  He looks a bit\nsurprised at your intrusion.  You can leave via the doors north or\neast, or you can stay and annoy him a bit more.  There also appears\nto be some type of well down here also, but it has a rather secure\ngrate covering it.",
   "Exits": [
    {
+    "RoomId": 18605,
+    "Verb": "down"
+   },
+   {
     "RoomId": 18602,
     "Verb": "north"
    },
    {
     "RoomId": 18607,
     "Verb": "east"
-   },
-   {
-    "RoomId": 18605,
-    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -113,16 +113,16 @@
   "Desc": "   Oh joy!  More of this annoying passage.  Perhaps there is something\nmore exciting through that door to the west?  Or you can keep searching\nthe hallways to the north or south.",
   "Exits": [
    {
-    "RoomId": 18606,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18603,
     "Verb": "north"
    },
    {
     "RoomId": 18611,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18606,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -181,16 +181,16 @@
   "Desc": "   Another corner of the passage, and just as untidy as the rest of\nthis place (maybe more so?).  There is a door to the east though...\nwonder where that leads?  Oh, and the hallway continues west and\nnorth.",
   "Exits": [
    {
+    "RoomId": 18610,
+    "Verb": "west"
+   },
+   {
     "RoomId": 18607,
     "Verb": "north"
    },
    {
     "RoomId": 18612,
     "Verb": "east"
-   },
-   {
-    "RoomId": 18610,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -201,16 +201,16 @@
   "Desc": "   Lots of bottles and flasks lie about this room, but it all looks like\nworthless clutter.  It appears whatever alchemist has been working here\nis really very adept at his art.  There are a lot of formulae and spells\nwritten on the walls too... couldn't he buy some paper?  There is a door\nto the north, and also a dark stairway in the corner leading down, with a\nlarge sign next to it that you probably should read...",
   "Exits": [
    {
-    "RoomId": 18604,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18611,
     "Verb": "west"
    },
    {
     "RoomId": 18632,
     "Verb": "down"
+   },
+   {
+    "RoomId": 18604,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -221,12 +221,12 @@
   "Desc": "   This corner is much like all the others... except you see a strange\nglow coming from the south.  Could be an exit... you hope.",
   "Exits": [
    {
-    "RoomId": 18621,
-    "Verb": "east"
-   },
-   {
     "RoomId": 18629,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18621,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -289,12 +289,12 @@
   "Desc": "   Hmmm... the passage turns south here.  You beginning to realize you\ncan easily lose your bearings if you aren't careful, and you don't think\nyou would like spending too much time here...",
   "Exits": [
    {
-    "RoomId": 18623,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18630,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18623,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -321,12 +321,12 @@
   "Desc": "   This is a long, narrow passage leading east and west.  The walls are\ndamp and covered with mildew and fungus.  There is a very unhealthy air\nabout this place and you're beginning to want out of here... soon.",
   "Exits": [
    {
-    "RoomId": 18625,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18627,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18625,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -477,16 +477,16 @@
   "Desc": "   Cold, smelly, and coated with green fungus... just like last week's\nleft-overs.  Furthermore you want nothing to do with either, you just\nwant out right now.",
   "Exits": [
    {
-    "RoomId": 18633,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18630,
     "Verb": "north"
    },
    {
     "RoomId": 18637,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18633,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -533,12 +533,12 @@
   "Desc": "   The passage turns here and heads north.  You sense something up ahead\nthat way, but you aren't sure what.  You aren't sure if you want to know\nwhat either at this point.",
   "Exits": [
    {
-    "RoomId": 18636,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18634,
     "Verb": "north"
+   },
+   {
+    "RoomId": 18636,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -581,12 +581,12 @@
   "Desc": "   Here, the passage enters a small room.  Exits lead to the east and south,\nand you notice a wonderful, large (and tastefully done) statue to the north.",
   "Exits": [
    {
-    "RoomId": 18641,
-    "Verb": "east"
-   },
-   {
     "RoomId": 18644,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18641,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -633,12 +633,12 @@
   "Desc": "   Here you can look out and observe the world around.  Constructed in a\nsemi-circle around the dome of the room, the balcony allows you to look\nout in almost any direction.  Wandering to the north end, you can see that\nthe Great Fields north of Midgaard continue off towards the Dragonhelm\nMountains to the north.",
   "Exits": [
    {
-    "RoomId": 18642,
-    "Verb": "down"
-   },
-   {
     "RoomId": 18645,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18642,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -649,12 +649,12 @@
   "Desc": "   Wow!  What a change from the dismal passage to the south.  Whoever\nkeeps this room up must really like newbies.  The walls and floor are\nclean, and tastefully decorated.  You also notice an interesting design\non the floor.",
   "Exits": [
    {
-    "RoomId": 18603,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18640,
     "Verb": "north"
+   },
+   {
+    "RoomId": 18603,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null

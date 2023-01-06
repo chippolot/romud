@@ -13,6 +13,7 @@ type World struct {
 	sessions      map[server.SessionId]*server.Session
 	entities      map[EntityId]*Entity
 	entityConfigs map[string]*EntityConfig
+	itemConfigs   map[string]*ItemConfig
 	rooms         map[RoomId]*Room
 	entryRoomId   RoomId
 	inCombat      *CombatList
@@ -21,7 +22,19 @@ type World struct {
 }
 
 func NewWorld(db Database, events chan<- server.SessionEvent) *World {
-	return &World{db, make(map[PlayerId]*Entity), make(map[server.SessionId]*server.Session), make(map[EntityId]*Entity), make(map[string]*EntityConfig), make(map[RoomId]*Room), 0, &CombatList{}, make(map[PlayerId]bool), events}
+	return &World{
+		db,
+		make(map[PlayerId]*Entity),
+		make(map[server.SessionId]*server.Session),
+		make(map[EntityId]*Entity),
+		make(map[string]*EntityConfig),
+		make(map[string]*ItemConfig),
+		make(map[RoomId]*Room),
+		0,
+		&CombatList{},
+		make(map[PlayerId]bool),
+		events,
+	}
 }
 
 func (w *World) EntryRoomId() RoomId {
@@ -127,6 +140,20 @@ func (w *World) RemoveEntity(eid EntityId) {
 		delete(w.loggingOut, e.player.id)
 		BroadcastToWorldExcept(w, e, "%s Leaves", e.Name())
 	}
+}
+
+func (w *World) AddItemConfig(cfg *ItemConfig) {
+	if _, found := w.itemConfigs[cfg.Key]; found {
+		log.Fatalf("Registered multiple item configs with key: %v", cfg.Key)
+	}
+	w.itemConfigs[cfg.Key] = cfg
+}
+
+func (w *World) TryGetItemConfig(key string) (*ItemConfig, bool) {
+	if cfg, ok := w.itemConfigs[key]; ok {
+		return cfg, true
+	}
+	return nil, false
 }
 
 func (w *World) LogoutPlayer(p *Player) {

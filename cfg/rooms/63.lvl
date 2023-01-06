@@ -5,6 +5,10 @@
   "Desc": "   You find that footing here is very good, almost too good.  The\nlimbs are coated with cobwebs and seem unusually strong for tree\nbranches.  Paths lead in four directions.  The eastward path goes\ndown a bit.",
   "Exits": [
    {
+    "RoomId": 6303,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6304,
     "Verb": "north"
    },
@@ -15,10 +19,6 @@
    {
     "RoomId": 6301,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6303,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -73,12 +73,12 @@
   "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as rats, wolves, and humans.",
   "Exits": [
    {
-    "RoomId": 6307,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6305,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6307,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -129,16 +129,16 @@
   "Desc": "   As always, there is a split in the road.  One road is strewn with\ncricket feelers.  The other is well-kept and suitable for smooth\ntravelling.  The webbing that was prevalent in earlier rooms is almost\nnon-existant now.",
   "Exits": [
    {
+    "RoomId": 6308,
+    "Verb": "east"
+   },
+   {
     "RoomId": 6320,
     "Verb": "south"
    },
    {
     "RoomId": 6310,
     "Verb": "north"
-   },
-   {
-    "RoomId": 6308,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -297,12 +297,12 @@
   "Desc": "   Another shifty little strand of webs, almost ethereal in nature.",
   "Exits": [
    {
-    "RoomId": 6325,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6327,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6325,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -353,10 +353,6 @@
   "Desc": "   Large strands connect at this point.  The node shimmers and\nflickers within the ether.  You see many flying creatures --\ninsects, pegasi, and dragon wormkins -- navigate the dangerous\npassages of the web.  Exits go in many directions.",
   "Exits": [
    {
-    "RoomId": 6334,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6330,
     "Verb": "north"
    },
@@ -367,6 +363,10 @@
    {
     "RoomId": 6333,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6334,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -377,16 +377,16 @@
   "Desc": "   This part of the web intersects through the branches of some\ntrees.  Various leaves and other debris that the many drones have\nnot picked up yet lie here.",
   "Exits": [
    {
-    "RoomId": 6331,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6335,
     "Verb": "south"
    },
    {
     "RoomId": 6333,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6331,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -529,20 +529,20 @@
   "Desc": "   This is a quiet tree top.  Downwards you can see a familiar path\nthat may lead back to Midgaard.",
   "Exits": [
    {
-    "RoomId": 6331,
-    "Verb": "down"
-   },
-   {
-    "RoomId": 6355,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6346,
     "Verb": "east"
    },
    {
     "RoomId": 6347,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6331,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 6355,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -697,12 +697,12 @@
   "Desc": "   A single spider line supports you once more.  The shack comes\ncloser into view and you are even more inclined to go back now.",
   "Exits": [
    {
-    "RoomId": 6373,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6371,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6373,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -748,12 +748,12 @@
   "Desc": "   You can still bail out since your knees are shaking from the\nanticipation (or is it fear?).  The sky is clear on this strand of \nweb, surprisingly unsticky.  The strand does not vibrate like the \nothers.  A few ballooning spiders pass by, cackling 'You're gonna\ndie, you're gonna fry.  Good bye!'",
   "Exits": [
    {
-    "RoomId": 6392,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6331,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6392,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null

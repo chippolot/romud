@@ -5,10 +5,6 @@
   "Desc": "   You are standing in a vast hall that is dimly lit, but wherever the\nlight comes from, is a mystery.  The walls seem to radiate warmth and\ngive the pleasent feeling of being welcome here.  A large portrait is\nhanging on one of the walls.  A large wooden staircase leads up into\nthe tower.  To the east there is a high passage away from the hall.\nThis ends shortly after by a tall oak door.  The enormous hall extends\nfurther north from here.  To the south you can see a huge, and VERY \nheavy-looking iron-wrought door.  It looks like this is the only exit\nfrom this magnificent old house.",
   "Exits": [
    {
-    "RoomId": 7904,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7910,
     "Verb": "east"
    },
@@ -23,6 +19,10 @@
    {
     "RoomId": 7909,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7904,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -293,18 +293,6 @@
   "Desc": "   This is probably the third worst place to be in this entire MUD right\nnow.  You fall\n.  \n.\n.\nand fall\n.\n.\n.\nand fall\n.\n.\n.\nand HIT THE GROUND WITH SUCH A *SPLUTCH* that you die horribly, but instantly.\nGood-bye cruel world.",
   "Exits": [
    {
-    "RoomId": 7918,
-    "Verb": "up"
-   },
-   {
-    "RoomId": 3120,
-    "Verb": "down"
-   },
-   {
-    "RoomId": 7914,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7915,
     "Verb": "east"
    },
@@ -315,6 +303,18 @@
    {
     "RoomId": 7917,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7918,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 3120,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 7914,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null

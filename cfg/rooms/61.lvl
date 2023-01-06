@@ -41,16 +41,16 @@
   "Desc": "   You are where the dusty trail bends, as to avoid conflict with a\ncolossal trunk to the west.  Not a sound is to be heard - everything\nis ominously quiet.  The trail leads east and south and there is a\nsmall path leading off the trail to the north.",
   "Exits": [
    {
+    "RoomId": 6108,
+    "Verb": "south"
+   },
+   {
     "RoomId": 6150,
     "Verb": "north"
    },
    {
     "RoomId": 6102,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6108,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -61,12 +61,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  You\nfeel as if the ancient trees observe you in watchful silence.  The path\ncontinues north and south.",
   "Exits": [
    {
-    "RoomId": 6105,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6101,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6105,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -77,12 +77,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  Ancient\ngrey trees loom all around you.  The path continues north and west.",
   "Exits": [
    {
-    "RoomId": 6104,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6106,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6104,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -185,12 +185,12 @@
   "Desc": "   You are on a dusty trail winding its way north-south between huge, ancient\ntrees that loom ominously above you.",
   "Exits": [
    {
-    "RoomId": 6110,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6112,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6110,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -273,12 +273,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  Giant,\ngrey trees loom ominously on all sides.  The path continues east and south.",
   "Exits": [
    {
-    "RoomId": 6117,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6115,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6117,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -325,12 +325,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  Huge,\nancient trees are on all sides.  The path continues north and south.",
   "Exits": [
    {
-    "RoomId": 6118,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6120,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6118,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -389,16 +389,16 @@
   "Desc": "   You are by a junction where three paths meet.  Ancient, grey trees seem\nto observe you silently you from all around.  To the south a dark river\nflows from east to west through the forest.  Paths lead north, east and west.",
   "Exits": [
    {
+    "RoomId": 6122,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6124,
     "Verb": "east"
    },
    {
     "RoomId": 6125,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6122,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -437,16 +437,16 @@
   "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads north and west, and to the\nsouth a frail path leads away from the trail.",
   "Exits": [
    {
-    "RoomId": 6128,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6127,
     "Verb": "north"
    },
    {
     "RoomId": 6125,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6128,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -457,12 +457,12 @@
   "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads east and south.",
   "Exits": [
    {
-    "RoomId": 6126,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6112,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6126,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -609,16 +609,16 @@
   "Desc": "   You are on a dusty trail leading through the deep, dark forest.  Ancient,\ngrey trees loom everywhere.  The trail continues south and west.  A broad\nirregular path leads eastward away from the trail.",
   "Exits": [
    {
-    "RoomId": 6135,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6137,
     "Verb": "west"
    },
    {
     "RoomId": 6142,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6135,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -705,12 +705,12 @@
   "Desc": "   This trail looks much spookier than any other that's you have seen.  The\nusual animal claw marks and bites on the trees are becoming few and far\nbetween.  The trail continues north.",
   "Exits": [
    {
-    "RoomId": 6103,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6151,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6103,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -737,12 +737,12 @@
   "Desc": "   The trees here seem to form a circle around the enormous tree in\nthe center.  You notice a wooden door carved into the huge tree to\nthe east.  The trail that you followed to get here seems to end at\nthe base of the tree.",
   "Exits": [
    {
-    "RoomId": 6153,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6151,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6153,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -769,12 +769,12 @@
   "Desc": "   This hallway is apparently one of the roots of the tree hollowed out.\nThe hall leads south to a room where you hear strange noises or you can\ngo up the steps.",
   "Exits": [
    {
-    "RoomId": 6155,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6153,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6155,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null

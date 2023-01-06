@@ -113,12 +113,12 @@
   "Desc": "   You are walking along a small path through the park.  The path continues\nsouth and east.",
   "Exits": [
    {
-    "RoomId": 3113,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3108,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3113,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -177,10 +177,6 @@
   "Desc": "   The road continues north and south.  A building is just west of here, you\nnotice a sign on the door.  The park entrance is to the east.",
   "Exits": [
    {
-    "RoomId": 3131,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3112,
     "Verb": "east"
    },
@@ -191,6 +187,10 @@
    {
     "RoomId": 3110,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3131,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -345,10 +345,6 @@
   "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
   "Exits": [
    {
-    "RoomId": 3134,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3135,
     "Verb": "west"
    },
@@ -363,6 +359,10 @@
    {
     "RoomId": 3136,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3134,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -437,12 +437,12 @@
   "Desc": "   You are on Emerald Avenue which continues north.  The Concourse is south\nof here.",
   "Exits": [
    {
-    "RoomId": 3121,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3128,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3121,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -489,16 +489,16 @@
   "Desc": "   The Concourse continues both east and west.  Emerald Avenue is north of\nhere.",
   "Exits": [
    {
-    "RoomId": 3127,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3125,
     "Verb": "north"
    },
    {
     "RoomId": 3129,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3127,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -509,20 +509,20 @@
   "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
   "Exits": [
    {
-    "RoomId": 3126,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3130,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3150,
     "Verb": "south"
    },
    {
     "RoomId": 3128,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3126,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3130,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -585,12 +585,12 @@
   "Desc": "   You are standing at a bend on Emerald Avenue.  To the east the road goes on\nand to the south is the Road Crossing.",
   "Exits": [
    {
-    "RoomId": 3120,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3119,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3120,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -617,12 +617,12 @@
   "Desc": "   You are at a bend on Park Road.  To the north the road goes on and to the\neast is the Road Crossing.",
   "Exits": [
    {
-    "RoomId": 3118,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3120,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3118,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -649,12 +649,12 @@
   "Desc": "   You are standing in the waiting room at the town hall.  Wooden chairs stand\nalong the walls and a long desk with a typewriter is placed in the middle of\nthe room.",
   "Exits": [
    {
-    "RoomId": 3117,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3138,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3117,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -677,12 +677,12 @@
   "Desc": "   You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane\ncontinues in eastward direction.",
   "Exits": [
    {
-    "RoomId": 3132,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3140,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3132,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -721,12 +721,12 @@
   "Desc": "   You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.  An iron\ngrate is to the north.",
   "Exits": [
    {
-    "RoomId": 3129,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3151,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3129,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -737,12 +737,12 @@
   "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
   "Exits": [
    {
-    "RoomId": 3152,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3150,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3152,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -753,12 +753,12 @@
   "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
   "Exits": [
    {
-    "RoomId": 3151,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3153,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3151,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -813,12 +813,12 @@
   "Desc": "   The arch under the bridge is covered by seaweed about a foot above the\nsurface of the river.  The water gently flows through an opening in the lower\npart of the city wall.",
   "Exits": [
    {
-    "RoomId": 3201,
-    "Verb": "east"
-   },
-   {
     "RoomId": 900,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3201,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -845,12 +845,12 @@
   "Desc": "   North of here you see the dump.  The river flows from east to west.  The\nriverbanks are too steep to climb.",
   "Exits": [
    {
-    "RoomId": 3201,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3203,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3201,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -861,16 +861,16 @@
   "Desc": "   The levee is directly north of here.  The river flows in an east west\ndirection.",
   "Exits": [
    {
-    "RoomId": 3202,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3049,
     "Verb": "north"
    },
    {
     "RoomId": 3204,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3202,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null

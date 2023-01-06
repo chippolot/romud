@@ -61,12 +61,12 @@
     [] Look descriptions
 [] Items
     [] Containers
+    [] Viewing in Room
     [] Inventory
     [] Get
     [] Get From
     [] Get All From
     [] Drop
-    [] Viewing in Room
     [] Looking At
 [] Leveling up
 [] Races

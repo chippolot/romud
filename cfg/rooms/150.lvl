@@ -5,12 +5,12 @@
   "Desc": "   You stand in the center of the great King's Road.  The road is very well\nbuilt, and goes in a straight line due east-west.",
   "Exits": [
    {
-    "RoomId": 15002,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15000,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15002,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -281,16 +281,16 @@
   "Desc": "   You are standing by the King's huge ivory throne.  The throne is, to\nan even greater degree than the Hall itself, a masterpiece.  It is\nintricately and beautifully carved, and it seems to be made out of a \nsingle block of ivory, though you shiver at the thought of meeting\nthe animal that died to yield a piece of that size.  The Hall continues\nto the east, west and south.",
   "Exits": [
    {
-    "RoomId": 15018,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15012,
     "Verb": "south"
    },
    {
     "RoomId": 15016,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15018,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -301,16 +301,16 @@
   "Desc": "   You are standing in the north-east end of the Great Hall.  It\nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\nwest, you see King Welmar's great throne, and to the east there is\nan exit to a small passage.",
   "Exits": [
    {
+    "RoomId": 15019,
+    "Verb": "east"
+   },
+   {
     "RoomId": 15013,
     "Verb": "south"
    },
    {
     "RoomId": 15017,
     "Verb": "west"
-   },
-   {
-    "RoomId": 15019,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -393,12 +393,12 @@
   "Desc": "   This is the Training Room of the men of the Castle guard.  It is\nvery large, with weapons standing in racks by all the walls.  Most\nof the weapons seem to be intended for training only, with blunt\nedges and the like, but there are some that might be useful for\nreal fighting.  There is a door to the north.",
   "Exits": [
    {
-    "RoomId": 15024,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15028,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15024,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -625,16 +625,16 @@
   "Desc": "   You have arrived at the part of the Castle where prominent\nguests are housed.  To the east there is a large, ornamented\ndoor, and a somewhat smaller one leads north. ",
   "Exits": [
    {
-    "RoomId": 15033,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15043,
     "Verb": "north"
    },
    {
     "RoomId": 15039,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15033,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -661,12 +661,12 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads north and south.",
   "Exits": [
    {
-    "RoomId": 15045,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15035,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15045,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -793,12 +793,12 @@
   "Desc": "   You are standing in the north-eastern of the three great watch-\ntowers of the Castle.  To the west, you can enter the Ball Room and\nthere are stairs leading up into the Tower.",
   "Exits": [
    {
-    "RoomId": 15054,
-    "Verb": "up"
-   },
-   {
     "RoomId": 15047,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15054,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -809,20 +809,20 @@
   "Desc": "   You are standing on a great staircase, that leads up and down.  To \nthe east, there is a large oak door, and a corridor leads south.",
   "Exits": [
    {
-    "RoomId": 15050,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 15045,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15053,
     "Verb": "up"
    },
    {
     "RoomId": 15025,
     "Verb": "down"
+   },
+   {
+    "RoomId": 15050,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 15045,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -833,12 +833,12 @@
   "Desc": "   You have entered a large, cosy living room.  There is a fireplace\nwith a fire burning, and a few comfortable chairs around a little\ntable.  There is a door to the west, and also an exit to the east.",
   "Exits": [
    {
-    "RoomId": 15051,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15049,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15051,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -885,6 +885,14 @@
   "Desc": "   This is the highest of all the towers, and is obviously used for\nlookout purposes.  The view is splendid in all four directions.  All\naround you, the rich countryside spreads out to the horizon.  To the\nnorth and east you see a vast mountain range, and far to the west\na beautiful lake.  A bit closer, the town of Midgaard lies at the\nend of the King's Road.  The only exit you can see is down again.",
   "Exits": [
    {
+    "RoomId": 4294967295,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 4294967295,
+    "Verb": "west"
+   },
+   {
     "RoomId": 15048,
     "Verb": "down"
    },
@@ -895,14 +903,6 @@
    {
     "RoomId": 4294967295,
     "Verb": "east"
-   },
-   {
-    "RoomId": 4294967295,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 4294967295,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -945,10 +945,6 @@
   "Desc": "   This small passage is about thirty feet long and is well lit by the\ntorches on each wall.  The torches have been locked inside small metal\ncages to ensure that they are not removed.  The strangest thing about\nthe torches however, is the manner in which they burn, they have what\nappears to be a constant flame in that it does not flicker whatsoever,\nand does not give off any smoke.  Perhaps they have been magicked to\nburn forever...\n   There are three cells along this passage way, one on each side of\nthe corridor right near the north end and one isolated at the south\nend of the corridor with a small metal plaque located over the door\nin the keystone of the archway.",
   "Exits": [
    {
-    "RoomId": 15056,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15060,
     "Verb": "east"
    },
@@ -959,6 +955,10 @@
    {
     "RoomId": 15058,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15056,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1021,12 +1021,12 @@
   "Desc": "   Continuing through the heavy undergrowth, you find yourself\nin the middle of the forest.  The sounds of the forest can be\nheard all round and you feel a peaceful feeling come over you\nas you realize that mankind has not passed this way for some\ntime.\n   The fading trail you are on appears to have been so little\nused that it has almost completely grown over with vegitation\nfrom the woods here.  \n   The faded trail appears to lead north and east.",
   "Exits": [
    {
-    "RoomId": 15061,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15063,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15061,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1053,16 +1053,16 @@
   "Desc": "   As you leave the forest to the north, you find yourself at\nwhat appears to be the beginning of a dirt road and a small\nvillage.  Upon first laying eyes on this place you realize\nthat there is something funny about this settlement... there\nis no sound other that the whistling wind here.  You would have\nexpected to hear people going about their regular business, but\nthe village is silent.  You cannot see any movement around the\nvillage either.  It is almost as still and silent as the woods\nto the north.\nThere is a small sign lying by the side of the road here.",
   "Exits": [
    {
+    "RoomId": 15063,
+    "Verb": "north"
+   },
+   {
     "RoomId": 15065,
     "Verb": "south"
    },
    {
     "RoomId": 15068,
     "Verb": "west"
-   },
-   {
-    "RoomId": 15063,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null

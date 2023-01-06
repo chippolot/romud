@@ -57,12 +57,12 @@
   "Desc": "   This is a narrow path leading to the Dwarven Kingdom.  It looks less\ntravelled than the others, and it is very creepy.  The path opens up to \nthe south, and continues to the north.",
   "Exits": [
    {
-    "RoomId": 6506,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6540,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6506,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -73,12 +73,12 @@
   "Desc": "   Here is an entrance to the mountain.  The door looks very well built,\nand you can hear noise coming from within.",
   "Exits": [
    {
-    "RoomId": 6503,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6513,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6503,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -89,12 +89,12 @@
   "Desc": "  This is a narrow path that bends to the east here.  The trees hang\nover the path, and it is very overgrown.  The narrow path continues to\nthe south and to the east.",
   "Exits": [
    {
-    "RoomId": 6504,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6507,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6504,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -121,12 +121,12 @@
   "Desc": "   This path leads to the north and south.  To the north you can see a\ndoor, and to the south the path continues.",
   "Exits": [
    {
-    "RoomId": 6507,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6509,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6507,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -137,16 +137,16 @@
   "Desc": "   Here the path turns to the west.  You can see a door in front of you,\nand the path continues to the west and south.",
   "Exits": [
    {
-    "RoomId": 6510,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6508,
     "Verb": "south"
    },
    {
     "RoomId": 6522,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6510,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -189,12 +189,12 @@
   "Desc": "   Here there is a door to the castle to the east.  The castle is \nelegantly designed, and looks much like a roll of toilet paper\nstanding  on its end.  There is a sign which says:\n\n              ******************************************\n              *  WELCOME TO THE CASTLE OF STRANGELOVE  *\n              *      Here, celibacy is uninvited       *\n              ******************************************\n",
   "Exits": [
    {
-    "RoomId": 6511,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6525,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6511,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -205,16 +205,16 @@
   "Desc": "   Everything here is covered in soot and very grimy.  The path continues\nto the east and north, and there is a door to the west.",
   "Exits": [
    {
-    "RoomId": 6526,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6514,
     "Verb": "north"
    },
    {
     "RoomId": 6505,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6526,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -241,12 +241,12 @@
   "Desc": "   You are on a path that leads to the Hide \u0026 Tooth shop to the west, and\nthe path continues to the south.",
   "Exits": [
    {
-    "RoomId": 6516,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6514,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6516,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -273,16 +273,16 @@
   "Desc": "   You are on a path to the north of the Hide \u0026 Tooth shop.  The path \ncontinues to the north, and there is Granite Head's bakery to the west.",
   "Exits": [
    {
+    "RoomId": 6535,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6518,
     "Verb": "north"
    },
    {
     "RoomId": 6516,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6535,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -373,12 +373,12 @@
   "Desc": "   Here is the first of two main rooms of barracks.  The barracks\ncontinue to the south, and you can leave the room to the north.",
   "Exits": [
    {
-    "RoomId": 6521,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6524,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6521,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -401,12 +401,12 @@
   "Desc": "   You are just inside the castle.  It is very tubular in shape,\nand it is very featureless.  There is a set of stairs that lead\nup, and the door leads out of the castle to the west.",
   "Exits": [
    {
-    "RoomId": 6512,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6528,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6512,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -417,12 +417,12 @@
   "Desc": "   There is a layer of dust on the floor at least 3 inches thick!  It is\nprobable that not many people have been in here for many months.",
   "Exits": [
    {
-    "RoomId": 6513,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6527,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6513,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -601,12 +601,12 @@
   "Desc": "   You are at the bottom of the mineshaft.  The air here is very sooty, and\nit is very hard to breath.  The mineshaft leads up and east.",
   "Exits": [
    {
-    "RoomId": 6543,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6541,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6543,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -617,12 +617,12 @@
   "Desc": "   You are deep inside the mine, and you feel very uncomfortable.  The\npath continues to the east, and leads to the mineshaft to the west.",
   "Exits": [
    {
-    "RoomId": 6544,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6542,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6544,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -632,6 +632,10 @@
   "Name": "The Mine Crossroad",
   "Desc": "   You are at a crossroad in the mine.  There is a door to the north,\nand the path continues to the south, east, and west.",
   "Exits": [
+   {
+    "RoomId": 6546,
+    "Verb": "north"
+   },
    {
     "RoomId": 6545,
     "Verb": "east"
@@ -643,10 +647,6 @@
    {
     "RoomId": 6543,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6546,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -725,16 +725,16 @@
   "Desc": "   You are in a maze.",
   "Exits": [
    {
+    "RoomId": 6550,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6548,
     "Verb": "north"
    },
    {
     "RoomId": 6548,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6550,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -744,6 +744,10 @@
   "Name": "The Maze",
   "Desc": "   You are in a maze.",
   "Exits": [
+   {
+    "RoomId": 6552,
+    "Verb": "south"
+   },
    {
     "RoomId": 6548,
     "Verb": "west"
@@ -755,10 +759,6 @@
    {
     "RoomId": 6549,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6552,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null

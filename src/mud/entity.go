@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 const PlayerEntityKey = "_player"
@@ -38,30 +39,32 @@ func (cfg *EntityConfig) Init() {
 }
 
 type EntityData struct {
-	Key    string
-	RoomId RoomId
-	Stats  *StatsData
+	Key       string
+	RoomId    RoomId
+	Stats     *StatsData
+	Inventory []*ItemData
 }
 
 type EntityList []*Entity
 
 type Entity struct {
-	id       EntityId
-	cfg      *EntityConfig
-	data     *EntityData
-	player   *Player
-	combat   *CombatData
-	position Position
+	id        EntityId
+	cfg       *EntityConfig
+	data      *EntityData
+	player    *Player
+	combat    *CombatData
+	position  Position
+	inventory ItemList
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
-	return &Entity{eid, cfg, newEntityData(cfg), nil, nil, Pos_Standing}
+	return &Entity{eid, cfg, newEntityData(cfg), nil, nil, Pos_Standing, make(ItemList, 0)}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats)}
+	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0)}
 }
 
 func (e *Entity) Name() string {
@@ -69,6 +72,22 @@ func (e *Entity) Name() string {
 		return e.player.data.Name
 	}
 	return e.cfg.Name
+}
+
+func (e *Entity) AddToInventory(item *Item) {
+	e.inventory = append(e.inventory, item)
+	e.data.Inventory = append(e.data.Inventory, item.data)
+}
+
+func (e *Entity) SearchInventory(query SearchQuery) (*Item, bool) {
+	return SearchList(query, e.inventory)
+}
+
+func (e *Entity) RemoveFromInventory(item *Item) {
+	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
+		e.inventory = utils.SwapDelete(e.inventory, idx)
+		e.data.Inventory = utils.SwapDelete(e.data.Inventory, idx)
+	}
 }
 
 func (e *Entity) MatchesKeyword(keyword string) bool {
@@ -103,7 +122,7 @@ func SearchEntityMap(query SearchQuery, entities map[EntityId]*Entity, self *Ent
 	if query.Joined == "self" || query.Joined == "me" || query.Joined == "myself" {
 		return self, true
 	}
-	return SearchMap[EntityId, *Entity](query, entities)
+	return SearchMap(query, entities)
 }
 
 type Position int

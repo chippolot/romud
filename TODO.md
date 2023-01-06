@@ -64,6 +64,7 @@
     [x] Inventory
     [x] Get
     [x] Drop
+    [x] Scavengers
     [] Containers
     [] Get From
     [] Get All From

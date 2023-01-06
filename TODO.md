@@ -65,8 +65,9 @@
     [x] Get
     [x] Drop
     [x] Scavengers
-    [] Containers
-    [] Get From
+    [x] Containers
+    [x] Get From
+    [x] Put in
     [] Get All From
     [] Weights
     [] Looking At

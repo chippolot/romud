@@ -194,16 +194,16 @@ func sendStatusMessages(dam int, target *Entity, r *Room) {
 	switch target.data.Stats.Condition() {
 	case Cnd_Stunned:
 		SendToPlayer(target, "You are dazed and disoriented, struggling to regain your footing")
-		BroadcastToRoomExcept(r, target, "%s is dazed and disoriented, struggling to regain their footing", target.cfg.Name)
+		BroadcastToRoomExcept(r, target, "%s is dazed and disoriented, struggling to regain their footing", target.Name())
 	case Cnd_Incapacitated:
 		SendToPlayer(target, "You are incapacitated and will die soon if not healed")
-		BroadcastToRoomExcept(r, target, "%s is incapacitated and will die soon if not healed", target.cfg.Name)
+		BroadcastToRoomExcept(r, target, "%s is incapacitated and will die soon if not healed", target.Name())
 	case Cnd_MortallyWounded:
 		SendToPlayer(target, "You are bleeding profusely and will die soon if not healed")
-		BroadcastToRoomExcept(r, target, "%s is bleeding profusely and will die soon if not healed", target.cfg.Name)
+		BroadcastToRoomExcept(r, target, "%s is bleeding profusely and will die soon if not healed", target.Name())
 	case Cnd_Dead:
 		SendToPlayer(target, "You feel your soul slip from your body. You are DEAD!")
-		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.cfg.Name)
+		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.Name())
 	default:
 		if dam > target.data.Stats.MaxHP/4 {
 			SendToPlayer(target, "<c red>Ouch, that one stung!</c>")

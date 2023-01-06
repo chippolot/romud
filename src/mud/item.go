@@ -80,8 +80,12 @@ func (i *Item) SetData(data *ItemData, w *World) {
 	}
 }
 
+func (i *Item) Name() string {
+	return i.cfg.Name
+}
+
 func (i *Item) MatchesKeyword(keyword string) bool {
-	if strings.EqualFold(i.cfg.Name, keyword) {
+	if strings.EqualFold(i.Name(), keyword) {
 		return true
 	}
 	_, ok := i.cfg.lookup[keyword]
@@ -126,7 +130,7 @@ func (i *Item) RemoveItem(item *Item) {
 
 func (i *Item) DescribeContents() string {
 	if !i.cfg.Flags.Has(IFlag_Container) {
-		return fmt.Sprintf("%s is not a container!", i.cfg.Name)
+		return fmt.Sprintf("%s is not a container!", i.Name())
 	}
 
 	var sb utils.StringBuilder
@@ -136,12 +140,12 @@ func (i *Item) DescribeContents() string {
 	} else {
 		state = "in room"
 	}
-	sb.WriteLinef("You look in %s (%s):", i.cfg.Name, state)
+	sb.WriteLinef("You look in %s (%s):", i.Name(), state)
 	if len(i.contents) == 0 {
 		sb.WriteLine("  Nothing.")
 	} else {
 		for _, i2 := range i.contents {
-			sb.WriteLinef("  <c white>%s</c>", i2.cfg.Name)
+			sb.WriteLinef("  <c white>%s</c>", i2.Name())
 		}
 	}
 	return sb.String()
@@ -161,11 +165,11 @@ func (i *Item) RemoveAllFromContainer(w *World) ItemList {
 	return items
 }
 
-func SearchItem(query SearchQuery, e *Entity, r *Room) (*Item, bool) {
-	if item, ok := e.SearchInventory(query); ok {
-		return item, true
-	} else if item, ok := r.SearchItem(query); ok {
-		return item, true
+func SearchItem(query SearchQuery, containers ...ItemContainer) (*Item, ItemContainer, bool) {
+	for _, c := range containers {
+		if item, ok := c.SearchItem(query); ok {
+			return item, c, true
+		}
 	}
-	return nil, false
+	return nil, nil, false
 }

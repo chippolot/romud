@@ -59,6 +59,10 @@ func NewRoom(cfg *RoomConfig) (*Room, error) {
 	return r, nil
 }
 
+func (r *Room) Name() string {
+	return r.cfg.Name
+}
+
 func (r *Room) AddEntity(e *Entity) {
 	e.data.RoomId = r.cfg.Id
 	r.entities[e.id] = e
@@ -99,7 +103,7 @@ func (r *Room) TryPerceive(sense SenseType, words []string) (string, bool) {
 func (r *Room) Describe(subject *Entity) string {
 	var sb utils.StringBuilder
 	sb.WriteString("<c bright yellow>").
-		WriteString(r.cfg.Name).
+		WriteString(r.Name()).
 		WriteLine("</c>").
 		WriteLinef("   %s", r.cfg.Desc).
 		WriteString(utils.HorizontalDivider)
@@ -178,7 +182,7 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 	for _, i := range r.items {
 		desc := i.cfg.RoomDesc
 		if desc == "" {
-			desc = fmt.Sprintf("A %s is here", i.cfg.Name)
+			desc = fmt.Sprintf("A %s is here", i.Name())
 		}
 		descs = append(descs, desc)
 	}

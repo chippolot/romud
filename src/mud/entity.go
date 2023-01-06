@@ -85,16 +85,16 @@ func (e *Entity) Name() string {
 	return e.cfg.Name
 }
 
-func (e *Entity) AddToInventory(item *Item) {
+func (e *Entity) AddItem(item *Item) {
 	e.inventory = append(e.inventory, item)
 	e.data.Inventory = append(e.data.Inventory, item.data)
 }
 
-func (e *Entity) SearchInventory(query SearchQuery) (*Item, bool) {
+func (e *Entity) SearchItem(query SearchQuery) (*Item, bool) {
 	return SearchList(query, e.inventory)
 }
 
-func (e *Entity) RemoveFromInventory(item *Item) {
+func (e *Entity) RemoveItem(item *Item) {
 	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
 		e.inventory = utils.SwapDelete(e.inventory, idx)
 		e.data.Inventory = utils.SwapDelete(e.data.Inventory, idx)
@@ -122,7 +122,7 @@ func (e *Entity) TryPerceive(sense SenseType, words []string) (string, bool) {
 
 func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) {
 	for _, e := range ents {
-		if strings.EqualFold(e.cfg.Name, name) {
+		if strings.EqualFold(e.Name(), name) {
 			return e, true
 		}
 	}

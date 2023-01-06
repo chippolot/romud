@@ -39,6 +39,7 @@ func init() {
 		{DoListen, []string{"listen"}, "Describes the sound of an object", "listen cat", false, Cnd_Healthy, Pos_Prone},
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
+		{DoPut, []string{"put", "place"}, "Places an item in a container", "put sword in bag", true, Cnd_Healthy, Pos_Sitting},
 		{DoQuit, []string{"quit"}, "Quits the game", "quit", false, 0, 0}, // TODO handle this here!
 		{DoSave, []string{"save"}, "Saves the game", "save", false, Cnd_Healthy, 0},
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi", true, Cnd_Healthy, Pos_Prone},
@@ -164,6 +165,49 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 	}
 }
 
+func DoPut(e *Entity, w *World, tokens []string) {
+	if len(tokens) == 1 {
+		SendToPlayer(e, "What do you want to put and in what?")
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+
+	// Trying to put something from a container?
+	// TODO do not require 'in' here!
+	idx := utils.FindIndex(tokens, "in")
+	if idx == -1 || len(tokens) == idx+1 {
+		SendToPlayer(e, "What do you want to put that in?")
+		return
+	}
+	if idx == 1 {
+		SendToPlayer(e, "What do you want to put in that?")
+	}
+
+	// Find the container
+	containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
+	container, ok := e.SearchItem(containerQuery)
+	if !ok {
+		SendToPlayer(e, "You don't seem to be holding '%s'", containerQuery.Joined)
+		return
+	}
+
+	// Find the item
+	itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
+	item, ok := e.SearchItem(itemQuery)
+	if !ok {
+		SendToPlayer(e, "You don't see %s here", itemQuery.Joined)
+		return
+	}
+
+	// Perform transfer and notify
+	e.RemoveItem(item)
+	container.AddItem(item)
+
+	SendToPlayer(e, "You put %s in %s", item.Name(), container.Name())
+	BroadcastToRoomExcept(r, e, "%s puts %s in %s", e.Name(), item.Name(), container.Name())
+}
+
 func DoGet(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
 		SendToPlayer(e, "What do you want to get?")
@@ -172,6 +216,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 
 	r := w.rooms[e.data.RoomId]
 
+	var ok bool
 	var item *Item
 	container := ItemContainer(r)
 
@@ -188,27 +233,30 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			SendToPlayer(e, "What do you want to get from that?")
 		}
 
-		// Find the container
-		containerToks := tokens[idx+1:]
-		containerQuery := NewSearchQuery(lowerTokens(containerToks)...)
-		containerItem, ok := SearchItem(containerQuery, e, r)
+		// Find the container and item// Find the container
+		containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
+		container, _, ok = SearchItem(containerQuery, e, r)
 		if !ok {
-			SendToPlayer(e, "You don't see a %s here", containerQuery.Joined)
+			SendToPlayer(e, "You see %s here", containerQuery.Joined)
 			return
 		}
-		container = containerItem
+
+		// Resolve container name
+		containerName := "something"
+		if named, ok := container.(Named); ok {
+			containerName = named.Name()
+		}
 
 		// Find the item
-		itemToks := tokens[1:idx]
-		itemQuery := NewSearchQuery(lowerTokens(itemToks)...)
+		itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
 		item, ok = container.SearchItem(itemQuery)
 		if !ok {
-			SendToPlayer(e, "You don't see a %s in that", itemQuery.Joined)
+			SendToPlayer(e, "You don't see %s in %s", itemQuery.Joined, containerName)
 			return
 		}
 
-		msgToEntity = fmt.Sprintf("You remove %s from %s", item.cfg.Name, containerItem.cfg.Name)
-		msgToRoom = fmt.Sprintf("%s removes %s from %s", e.Name(), item.cfg.Name, containerItem.cfg.Name)
+		msgToEntity = fmt.Sprintf("You remove %s from %s", item.Name(), containerName)
+		msgToRoom = fmt.Sprintf("%s removes %s from %s", e.Name(), item.Name(), containerName)
 	} else {
 		// Find item in room
 		q := NewSearchQuery(lowerTokens(tokens[1:])...)
@@ -223,13 +271,13 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		if item.cfg.Flags.Has(IFlag_Environmental) {
 			SendToPlayer(e, "You can't pick that up!")
 		}
-		msgToEntity = fmt.Sprintf("You pick up %s", item.cfg.Name)
-		msgToRoom = fmt.Sprintf("%s picks up %s", e.Name(), item.cfg.Name)
+		msgToEntity = fmt.Sprintf("You pick up %s", item.Name())
+		msgToRoom = fmt.Sprintf("%s picks up %s", e.Name(), item.Name())
 	}
 
 	// Perform transfer and notify
 	container.RemoveItem(item)
-	e.AddToInventory(item)
+	e.AddItem(item)
 	SendToPlayer(e, msgToEntity)
 	BroadcastToRoomExcept(r, e, msgToRoom)
 }
@@ -243,13 +291,13 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	q := NewSearchQuery(lowerTokens(tokens[1:])...)
-	if item, ok := e.SearchInventory(q); !ok {
+	if item, ok := e.SearchItem(q); !ok {
 		SendToPlayer(e, "You don't have one of those...")
 	} else {
-		e.RemoveFromInventory(item)
+		e.RemoveItem(item)
 		r.AddItem(item)
-		SendToPlayer(e, "You drop a %s", item.cfg.Name)
-		BroadcastToRoomExcept(r, e, "%s drops a %s", e.Name(), item.cfg.Name)
+		SendToPlayer(e, "You drop %s", item.Name())
+		BroadcastToRoomExcept(r, e, "%s drops %s", e.Name(), item.Name())
 	}
 }
 
@@ -260,7 +308,7 @@ func DoInventory(e *Entity, _ *World, _ []string) {
 		return
 	}
 	for _, i := range e.inventory {
-		SendToPlayer(e, "  <c white>%s</c>", i.cfg.Name)
+		SendToPlayer(e, "  <c white>%s</c>", i.Name())
 	}
 }
 
@@ -327,7 +375,7 @@ func DoLook(e *Entity, w *World, tokens []string) {
 			return
 		}
 		q := NewSearchQuery(lowerTokens(tokens[2:])...)
-		if item, ok := SearchItem(q, e, r); ok {
+		if item, _, ok := SearchItem(q, e, r); ok {
 			SendToPlayer(e, item.DescribeContents())
 			return
 		}

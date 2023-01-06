@@ -64,19 +64,8 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 
 	// Create character entity
 	e := w.CreatePlayerCharacter(name, player)
-	e.data = data.Character
+	e.SetData(data.Character, w)
 	e.player.data = data.Player
-
-	// Prepare inventory
-	for _, idata := range e.data.Inventory {
-		cfg, ok := w.itemConfigs[idata.Key]
-		if !ok {
-			log.Fatalf("cannot create item. expected item config with key %s", cfg.Key)
-		}
-		item := NewItem(cfg)
-		item.data = idata
-		e.inventory = append(e.inventory, item)
-	}
 
 	return e, nil
 }

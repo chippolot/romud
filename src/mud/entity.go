@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"log"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
@@ -65,6 +66,21 @@ func NewEntity(cfg *EntityConfig) *Entity {
 
 func newEntityData(cfg *EntityConfig) *EntityData {
 	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0)}
+}
+
+func (e *Entity) SetData(data *EntityData, w *World) {
+	e.data = data
+
+	// Prepare inventory
+	for _, idata := range e.data.Inventory {
+		cfg, ok := w.itemConfigs[idata.Key]
+		if !ok {
+			log.Fatalf("cannot create item. expected item config with key %s", cfg.Key)
+		}
+		item := NewItem(cfg)
+		item.SetData(idata, w)
+		e.inventory = append(e.inventory, item)
+	}
 }
 
 func (e *Entity) Name() string {

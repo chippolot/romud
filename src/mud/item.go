@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"log"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
@@ -61,6 +62,23 @@ func newItemData(cfg *ItemConfig) *ItemData {
 	return &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0)}
 }
 
+func (i *Item) SetData(data *ItemData, w *World) {
+	i.data = data
+
+	// Prepare contents
+	if bits.Has(i.cfg.Flags, IFlag_Container) {
+		for _, idata := range i.data.Contents {
+			cfg, ok := w.itemConfigs[idata.Key]
+			if !ok {
+				log.Fatalf("cannot create item. expected item config with key %s", cfg.Key)
+			}
+			item := NewItem(cfg)
+			item.SetData(idata, w)
+			i.contents = append(i.contents, item)
+		}
+	}
+}
+
 func (i *Item) MatchesKeyword(keyword string) bool {
 	if strings.EqualFold(i.cfg.Name, keyword) {
 		return true
@@ -81,15 +99,24 @@ func (i *Item) TryPerceive(sense SenseType, words []string) (string, bool) {
 }
 
 func (i *Item) AddToContainer(i2 *Item) {
+	if !bits.Has(i.cfg.Flags, IFlag_Container) {
+		log.Panicf("trying to add item to non-container item: %s", i.cfg.Key)
+	}
 	i.contents = append(i.contents, i2)
 	i.data.Contents = append(i.data.Contents, i2.data)
 }
 
 func (i *Item) SearchContainer(query SearchQuery) (*Item, bool) {
+	if !bits.Has(i.cfg.Flags, IFlag_Container) {
+		return nil, false
+	}
 	return SearchList(query, i.contents)
 }
 
 func (i *Item) RemoveFromContainer(item *Item) {
+	if !bits.Has(i.cfg.Flags, IFlag_Container) {
+		log.Panicf("trying to remove item to non-container item: %s", i.cfg.Key)
+	}
 	if idx := utils.FindIndex(i.contents, item); idx != -1 {
 		i.contents = utils.SwapDelete(i.contents, idx)
 		i.data.Contents = utils.SwapDelete(i.data.Contents, idx)
@@ -97,6 +124,9 @@ func (i *Item) RemoveFromContainer(item *Item) {
 }
 
 func (i *Item) RemoveAllFromContainer(w *World) ItemList {
+	if !bits.Has(i.cfg.Flags, IFlag_Container) {
+		log.Panicf("trying to remove items to non-container item: %s", i.cfg.Key)
+	}
 	if len(i.contents) == 0 {
 		return i.contents[:0]
 	}

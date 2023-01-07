@@ -1,7 +1,7 @@
 ## Resources
 * https://github.com/mudcoders/awesome-mud
 
-## Short Term
+## TODO
 [x] Users can see each others' messages
 [x] Users get joined/left notifications for other users
 [x] Users join basic room with description
@@ -34,7 +34,17 @@
 [x] Circle Data Converter
     [x] Rooms
 [x] Leveling up
-[] Combat
+[x] Items p1
+    [x] Viewing in Room
+    [x] Inventory
+    [x] Get
+    [x] Drop
+    [x] Scavengers
+    [x] Containers
+    [x] Get From
+    [x] Put in
+    [x] Get All From
+[x] Combat p1
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
     [x] Combat prompt
@@ -47,6 +57,12 @@
     [x] Condition change messages
     [x] XP gain
     [x] Damage dependent messages
+[x] Positions p1
+    [x] Limit actions
+    [x] Rest + Sleep actions
+        [x] Restore stats
+----------------------------------------
+[] Combat p2
     [] Corpses
     [] Leave corpse on death
     [] Hit and damage bonuses
@@ -54,21 +70,9 @@
     [] Weapon dependent messages
     [] Look descriptions
     [] Kick to the ground
-[] Positions
-    [x] Limit actions
-    [x] Rest + Sleep actions
-        [x] Restore stats
+[] Positions p2
     [] Look descriptions
-[] Items
-    [x] Viewing in Room
-    [x] Inventory
-    [x] Get
-    [x] Drop
-    [x] Scavengers
-    [x] Containers
-    [x] Get From
-    [x] Put in
-    [] Get All From
+[] Items p2
     [] Weights
     [] Looking At
 [] Races
@@ -84,7 +88,5 @@
 [] Passwords
 [] User can login w/ character name and password
 [] Generify connections -- support ssh
-
-## Long Term
 [] Look into MUD protocols
 [] Look into MUD compression

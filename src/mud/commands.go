@@ -217,10 +217,6 @@ func DoGet(e *Entity, w *World, tokens []string) {
 
 	r := w.rooms[e.data.RoomId]
 
-	var ok bool
-	var item *Item
-	container := ItemContainer(r)
-
 	// Trying to get something from a container?
 	// TODO do not require 'from' here!
 	if idx := utils.FindIndex(tokens, "from"); idx != -1 {
@@ -234,21 +230,21 @@ func DoGet(e *Entity, w *World, tokens []string) {
 
 		// Find the container and item
 		containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
-		containerItem, _, ok := SearchItems(containerQuery, e, r)
-		if !ok {
+		containerItems := SearchItems(containerQuery, e, r)
+		if len(containerItems) == 0 {
 			SendToPlayer(e, "You see %s here", containerQuery.Joined)
 			return
 		}
 
 		// Make sure it's a container
+		containerItem := containerItems[0]
 		if !containerItem.cfg.Flags.Has(IFlag_Container) {
 			SendToPlayer(e, "The %s is not a container", containerItem.Name())
 			return
 		}
-		container = containerItem
 
 		// Get the items
-		items := container.SearchItems(NewSearchQuery(lowerTokens(tokens[1:])...))
+		items := containerItem.SearchItems(NewSearchQuery(lowerTokens(tokens[1:])...))
 		if len(items) == 0 {
 			SendToPlayer(e, "The %s is empty", containerItem.Name())
 		} else {
@@ -257,21 +253,22 @@ func DoGet(e *Entity, w *World, tokens []string) {
 				func(i *Item) string {
 					return fmt.Sprintf("%s takes out %s from %s", e.Name(), i.Name(), containerItem.Name())
 				},
-				container, items)
+				containerItem, items...)
 		}
 
 	} else {
 		// Find item in room
 		q := NewSearchQuery(lowerTokens(tokens[1:])...)
-		item, ok = r.SearchItems(q)
-		if !ok {
+		items := r.SearchItems(q)
+		if len(items) == 0 {
 			SendToPlayer(e, "You don't see that here...")
 			return
 		}
+		item := items[0]
 		performGet(e, w,
 			func(i *Item) string { return fmt.Sprintf("You pick up %s", item.Name()) },
 			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.Name(), item.Name()) },
-			container, item)
+			r, item)
 	}
 }
 
@@ -284,9 +281,10 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	q := NewSearchQuery(lowerTokens(tokens[1:])...)
-	if item, ok := e.SearchItems(q); !ok {
+	if items := e.SearchItems(q); len(items) == 0 {
 		SendToPlayer(e, "You don't have one of those...")
 	} else {
+		item := items[0]
 		e.RemoveItem(item)
 		r.AddItem(item)
 		SendToPlayer(e, "You drop %s", item.Name())
@@ -368,8 +366,8 @@ func DoLook(e *Entity, w *World, tokens []string) {
 			return
 		}
 		q := NewSearchQuery(lowerTokens(tokens[2:])...)
-		if item, _, ok := SearchItems(q, e, r); ok {
-			SendToPlayer(e, item.DescribeContents())
+		if items := SearchItems(q, e, r); len(items) > 0 {
+			SendToPlayer(e, items[0].DescribeContents())
 			return
 		}
 		SendToPlayer(e, "You don't see that here.")
@@ -587,9 +585,9 @@ func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) 
 	// First try and resolve entity in room
 	r := w.rooms[perceiver.data.RoomId]
 	q := NewSearchQuery(tokens...)
-	tgt, ok := SearchEntities(q, r.entities, perceiver)
-	if ok {
-		if desc, ok := tgt.TryPerceive(sense, tokens); ok {
+	tgts := SearchEntities(q, perceiver, r)
+	if len(tgts) > 0 {
+		if desc, ok := tgts[0].TryPerceive(sense, tokens); ok {
 			return desc, true
 		}
 	}

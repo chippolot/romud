@@ -140,7 +140,10 @@ func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) 
 	return nil, false
 }
 
-func SearchEntities(query SearchQuery, containers ...EntityContainer) []*Entity {
+func SearchEntities(query SearchQuery, self *Entity, containers ...EntityContainer) []*Entity {
+	if query.Joined == "me" || query.Joined == "self" || query.Joined == "myself" {
+		return []*Entity{self}
+	}
 	// TODO dot notation for specifying container type
 	for _, c := range containers {
 		if ents := c.SearchEntities(query); len(ents) != 0 {

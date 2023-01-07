@@ -166,51 +166,6 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 	}
 }
 
-func DoPut(e *Entity, w *World, tokens []string) {
-	if len(tokens) == 1 {
-		SendToPlayer(e, "What do you want to put and in what?")
-		return
-	}
-
-	r := w.rooms[e.data.RoomId]
-
-	// Trying to put something from a container?
-	// TODO do not require 'in' here!
-	idx := utils.FindIndex(tokens, "in")
-	if idx == -1 || len(tokens) == idx+1 {
-		SendToPlayer(e, "What do you want to put that in?")
-		return
-	}
-	if idx == 1 {
-		SendToPlayer(e, "What do you want to put in that?")
-	}
-
-	// Find the container
-	containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
-	containers := e.SearchItems(containerQuery)
-	if len(containers) == 0 {
-		SendToPlayer(e, "You don't seem to be holding '%s'", containerQuery.Joined)
-		return
-	}
-	container := containers[0]
-
-	// Find the item
-	itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
-	items := e.SearchItems(itemQuery)
-	if len(items) == 0 {
-		SendToPlayer(e, "You don't see %s here", itemQuery.Joined)
-		return
-	}
-	item := items[0]
-
-	// Perform transfer and notify
-	e.RemoveItem(item)
-	container.AddItem(item)
-
-	SendToPlayer(e, "You put %s in %s", item.Name(), container.Name())
-	BroadcastToRoomExcept(r, e, "%s puts %s in %s", e.Name(), item.Name(), container.Name())
-}
-
 func DoGet(e *Entity, w *World, tokens []string) {
 	if len(tokens) == 1 {
 		SendToPlayer(e, "What do you want to get?")
@@ -246,7 +201,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		}
 
 		// Get the items
-		items := containerItem.SearchItems(NewSearchQuery(lowerTokens(tokens[1:])...))
+		items := containerItem.SearchItems(NewSearchQuery(lowerTokens(tokens[1:idx])...))
 		if len(items) == 0 {
 			SendToPlayer(e, "The %s is empty", containerItem.Name())
 		} else {
@@ -266,11 +221,62 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			SendToPlayer(e, "You don't see that here...")
 			return
 		}
-		item := items[0]
 		performGet(e, w,
-			func(i *Item) string { return fmt.Sprintf("You pick up %s", item.Name()) },
-			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.Name(), item.Name()) },
-			r, item)
+			func(i *Item) string { return fmt.Sprintf("You pick up %s", i.Name()) },
+			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.Name(), i.Name()) },
+			r, items...)
+	}
+}
+
+func DoPut(e *Entity, w *World, tokens []string) {
+	if len(tokens) == 1 {
+		SendToPlayer(e, "What do you want to put and in what?")
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+
+	// Trying to put something from a container?
+	// TODO do not require 'in' here!
+	idx := utils.FindIndex(tokens, "in")
+	if idx == -1 || len(tokens) == idx+1 {
+		SendToPlayer(e, "What do you want to put that in?")
+		return
+	}
+	if idx == 1 {
+		SendToPlayer(e, "What do you want to put in that?")
+	}
+
+	// Find the container
+	containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
+	containers := e.SearchItems(containerQuery)
+	if len(containers) == 0 {
+		SendToPlayer(e, "You don't seem to be holding '%s'", containerQuery.Joined)
+		return
+	}
+	container := containers[0]
+
+	// Find the item
+	itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
+	items := e.SearchItems(itemQuery)
+	if len(items) == 0 {
+		SendToPlayer(e, "You don't see %s here", itemQuery.Joined)
+		return
+	} else if len(items) == 1 && items[0] == container {
+		SendToPlayer(e, "You can't put that in itself!")
+		return
+	}
+	for _, item := range items {
+		if item == container {
+			continue
+		}
+
+		// Perform transfer and notify
+		e.RemoveItem(item)
+		container.AddItem(item)
+
+		SendToPlayer(e, "You put %s in %s", item.Name(), container.Name())
+		BroadcastToRoomExcept(r, e, "%s puts %s in %s", e.Name(), item.Name(), container.Name())
 	}
 }
 
@@ -286,11 +292,12 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 	if items := e.SearchItems(q); len(items) == 0 {
 		SendToPlayer(e, "You don't have one of those...")
 	} else {
-		item := items[0]
-		e.RemoveItem(item)
-		r.AddItem(item)
-		SendToPlayer(e, "You drop %s", item.Name())
-		BroadcastToRoomExcept(r, e, "%s drops %s", e.Name(), item.Name())
+		for _, item := range items {
+			e.RemoveItem(item)
+			r.AddItem(item)
+			SendToPlayer(e, "You drop %s", item.Name())
+			BroadcastToRoomExcept(r, e, "%s drops %s", e.Name(), item.Name())
+		}
 	}
 }
 

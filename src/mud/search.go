@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"log"
 	"strconv"
 	"strings"
 
@@ -20,16 +19,20 @@ type SearchQuery struct {
 
 func NewSearchQuery(keywords ...string) SearchQuery {
 	q := SearchQuery{keywords, strings.Join(keywords, " "), 0}
-	for idx, k := range keywords {
-		idxDot := strings.IndexByte(k, '.')
-		if idxDot == -1 {
-			continue
-		}
-		nstr := k[idxDot+1:]
-		if n, err := strconv.Atoi(nstr); err == nil {
-			q.Number = utils.MaxInts(0, n-1)
-			keywords[idx] = keywords[idx][:idxDot]
-			break
+	if q.Joined == "all" {
+		q.Number = -1
+	} else {
+		for idx, k := range keywords {
+			idxDot := strings.IndexByte(k, '.')
+			if idxDot == -1 {
+				continue
+			}
+			nstr := k[idxDot+1:]
+			if n, err := strconv.Atoi(nstr); err == nil {
+				q.Number = utils.MaxInts(0, n-1)
+				keywords[idx] = keywords[idx][:idxDot]
+				break
+			}
 		}
 	}
 	return q
@@ -89,7 +92,9 @@ func filterSearchResults[TItem Matchable](query SearchQuery, results []TItem) []
 	if len(results) == 0 {
 		return results
 	}
-	log.Println("FOUND?", len(results), query.Number)
+	if query.Number == -1 {
+		return results
+	}
 	if query.Number >= len(results) {
 		return results[:0]
 	}

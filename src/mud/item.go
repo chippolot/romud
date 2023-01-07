@@ -9,6 +9,7 @@ import (
 )
 
 var itemIdCounter ItemId = InvalidId
+var emptyItemList = make([]*Item, 0)
 
 type ItemId int32
 
@@ -40,7 +41,8 @@ type ItemData struct {
 
 type ItemContainer interface {
 	AddItem(item *Item)
-	SearchItem(query SearchQuery) (*Item, bool)
+	SearchItems(query SearchQuery) []*Item
+	AllItems() []*Item
 	RemoveItem(item *Item)
 }
 
@@ -111,11 +113,15 @@ func (i *Item) AddItem(i2 *Item) {
 	i.data.Contents = append(i.data.Contents, i2.data)
 }
 
-func (i *Item) SearchItem(query SearchQuery) (*Item, bool) {
+func (i *Item) SearchItems(query SearchQuery) []*Item {
 	if !i.cfg.Flags.Has(IFlag_Container) {
-		return nil, false
+		return emptyItemList
 	}
 	return SearchList(query, i.contents)
+}
+
+func (i *Item) AllItems() []*Item {
+	return i.contents
 }
 
 func (i *Item) RemoveItem(item *Item) {
@@ -165,11 +171,12 @@ func (i *Item) RemoveAllFromContainer(w *World) ItemList {
 	return items
 }
 
-func SearchItem(query SearchQuery, containers ...ItemContainer) (*Item, ItemContainer, bool) {
+func SearchItems(query SearchQuery, containers ...ItemContainer) []*Item {
+	// TODO dot notation for specifying container type
 	for _, c := range containers {
-		if item, ok := c.SearchItem(query); ok {
-			return item, c, true
+		if items := c.SearchItems(query); len(items) != 0 {
+			return items
 		}
 	}
-	return nil, nil, false
+	return nil
 }

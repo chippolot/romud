@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"strconv"
 	"strings"
 )
 
@@ -11,58 +12,81 @@ type Matchable interface {
 type SearchQuery struct {
 	Keywords []string
 	Joined   string
+	Number   int
 }
 
 func NewSearchQuery(keywords ...string) SearchQuery {
-	return SearchQuery{keywords, strings.Join(keywords, " ")}
+	q := SearchQuery{keywords, strings.Join(keywords, " "), 1}
+	for _, k := range keywords {
+		idxDot := strings.IndexByte(k, '.')
+		if idxDot == -1 {
+			continue
+		}
+		nstr := k[idxDot+1:]
+		if n, err := strconv.Atoi(nstr); err == nil {
+			q.Number = n
+			break
+		}
+	}
+	return q
 }
 
 func (s SearchQuery) IsEmpty() bool {
 	return len(s.Keywords) == 0
 }
 
-func SearchMap[TKey comparable, TItem Matchable](query SearchQuery, items map[TKey]TItem) (TItem, bool) {
-	var none TItem
+func SearchMap[TKey comparable, TItem Matchable](query SearchQuery, items map[TKey]TItem) []TItem {
+	res := make([]TItem, 0)
 
 	if query.IsEmpty() {
-		return none, false
+		return res
 	}
 
 	for _, item := range items {
-		if item.MatchesKeyword(query.Joined) {
-			return item, true
-		}
-		for _, keyword := range query.Keywords {
-			if item.MatchesKeyword(keyword) {
-				return item, true
-			}
+		if doesSearchQueryMatch(query, item) {
+			res = append(res, item)
 		}
 	}
-	return none, false
+	return filterSearchResults(query, res)
 }
 
-func SearchList[TItem Matchable](query SearchQuery, items []TItem) (TItem, bool) {
-	if idx, ok := SearchListIndex(query, items); ok {
-		return items[idx], true
-	}
-	var none TItem
-	return none, false
-}
+func SearchList[TItem Matchable](query SearchQuery, items []TItem) []TItem {
 
-func SearchListIndex[TItem Matchable](query SearchQuery, items []TItem) (int, bool) {
+	res := make([]TItem, 0)
+
 	if query.IsEmpty() {
-		return -1, false
+		return res
 	}
 
-	for idx, item := range items {
-		if item.MatchesKeyword(query.Joined) {
-			return idx, true
-		}
-		for _, keyword := range query.Keywords {
-			if item.MatchesKeyword(keyword) {
-				return idx, true
-			}
+	for _, item := range items {
+		if doesSearchQueryMatch(query, item) {
+			res = append(res, item)
 		}
 	}
-	return -1, false
+	return filterSearchResults(query, res)
+}
+
+func doesSearchQueryMatch[TItem Matchable](query SearchQuery, item TItem) bool {
+	if query.Joined == "all" {
+		return true
+	}
+	if item.MatchesKeyword(query.Joined) {
+		return true
+	}
+	for _, keyword := range query.Keywords {
+		if item.MatchesKeyword(keyword) {
+			return true
+		}
+	}
+	return false
+}
+
+func filterSearchResults[TItem Matchable](query SearchQuery, results []TItem) []TItem {
+	if len(results) == 0 {
+		return results
+	}
+	if query.Number >= len(results) {
+		return results[:0]
+	}
+	return results[query.Number : query.Number+1]
 }

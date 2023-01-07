@@ -41,6 +41,13 @@ type EntityData struct {
 	Inventory []*ItemData
 }
 
+type EntityContainer interface {
+	AddEntity(entity *Entity)
+	SearchEntities(query SearchQuery) []*Entity
+	AllEntities() []*Entity
+	RemoveEntity(entity *Entity)
+}
+
 type EntityList []*Entity
 
 type Entity struct {
@@ -90,8 +97,12 @@ func (e *Entity) AddItem(item *Item) {
 	e.data.Inventory = append(e.data.Inventory, item.data)
 }
 
-func (e *Entity) SearchItem(query SearchQuery) (*Item, bool) {
+func (e *Entity) SearchItems(query SearchQuery) []*Item {
 	return SearchList(query, e.inventory)
+}
+
+func (e *Entity) AllItems() []*Item {
+	return e.inventory
 }
 
 func (e *Entity) RemoveItem(item *Item) {
@@ -129,11 +140,14 @@ func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) 
 	return nil, false
 }
 
-func SearchEntityMap(query SearchQuery, entities map[EntityId]*Entity, self *Entity) (*Entity, bool) {
-	if query.Joined == "self" || query.Joined == "me" || query.Joined == "myself" {
-		return self, true
+func SearchEntities(query SearchQuery, containers ...EntityContainer) []*Entity {
+	// TODO dot notation for specifying container type
+	for _, c := range containers {
+		if ents := c.SearchEntities(query); len(ents) != 0 {
+			return ents
+		}
 	}
-	return SearchMap(query, entities)
+	return nil
 }
 
 type Position int

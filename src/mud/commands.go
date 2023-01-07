@@ -147,11 +147,12 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 	default:
 		r := w.rooms[e.data.RoomId]
 		q := NewSearchQuery(lowerTokens(tokens[1:])...)
-		tgt, ok := r.SearchEntity(q)
-		if !ok {
+		tgts := r.SearchEntities(q)
+		if len(tgts) == 0 {
 			SendToPlayer(e, "They don't seem to be here...")
 			return
 		}
+		tgt := tgts[0]
 		if tgt == e {
 			SendToPlayer(e, "Stop hitting yourself!")
 			BroadcastToRoomExcept(r, e, "%s hits %sself??", e.Name(), e.player.data.Gender.GetObjectPronoun())
@@ -186,7 +187,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 
 	// Find the container
 	containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
-	container, ok := e.SearchItem(containerQuery)
+	container, ok := e.SearchItems(containerQuery)
 	if !ok {
 		SendToPlayer(e, "You don't seem to be holding '%s'", containerQuery.Joined)
 		return
@@ -194,7 +195,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 
 	// Find the item
 	itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
-	item, ok := e.SearchItem(itemQuery)
+	item, ok := e.SearchItems(itemQuery)
 	if !ok {
 		SendToPlayer(e, "You don't see %s here", itemQuery.Joined)
 		return
@@ -220,8 +221,6 @@ func DoGet(e *Entity, w *World, tokens []string) {
 	var item *Item
 	container := ItemContainer(r)
 
-	var msgToEntity, msgToRoom string
-
 	// Trying to get something from a container?
 	// TODO do not require 'from' here!
 	if idx := utils.FindIndex(tokens, "from"); idx != -1 {
@@ -233,59 +232,47 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			SendToPlayer(e, "What do you want to get from that?")
 		}
 
-		// Find the container and item// Find the container
+		// Find the container and item
 		containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
-		container, _, ok = SearchItem(containerQuery, e, r)
+		containerItem, _, ok := SearchItems(containerQuery, e, r)
 		if !ok {
 			SendToPlayer(e, "You see %s here", containerQuery.Joined)
 			return
 		}
 
-		// Resolve container name
-		containerName := "something"
-		if named, ok := container.(Named); ok {
-			containerName = named.Name()
-		}
-
-		// Find the item
-		itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
-		item, ok = container.SearchItem(itemQuery)
-		if !ok {
-			SendToPlayer(e, "You don't see %s in %s", itemQuery.Joined, containerName)
+		// Make sure it's a container
+		if !containerItem.cfg.Flags.Has(IFlag_Container) {
+			SendToPlayer(e, "The %s is not a container", containerItem.Name())
 			return
 		}
+		container = containerItem
 
-		msgToEntity = fmt.Sprintf("You remove %s from %s", item.Name(), containerName)
-		msgToRoom = fmt.Sprintf("%s removes %s from %s", e.Name(), item.Name(), containerName)
+		// Get the items
+		items := container.SearchItems(NewSearchQuery(lowerTokens(tokens[1:])...))
+		if len(items) == 0 {
+			SendToPlayer(e, "The %s is empty", containerItem.Name())
+		} else {
+			performGet(e, w,
+				func(i *Item) string { return fmt.Sprintf("You take out %s from %s", i.Name(), containerItem.Name()) },
+				func(i *Item) string {
+					return fmt.Sprintf("%s takes out %s from %s", e.Name(), i.Name(), containerItem.Name())
+				},
+				container, items)
+		}
+
 	} else {
 		// Find item in room
 		q := NewSearchQuery(lowerTokens(tokens[1:])...)
-		var ok bool
-		item, ok = r.SearchItem(q)
+		item, ok = r.SearchItems(q)
 		if !ok {
 			SendToPlayer(e, "You don't see that here...")
 			return
 		}
-
-		// Can't pick up environmental items
-		if item.cfg.Flags.Has(IFlag_Environmental) {
-			SendToPlayer(e, "You can't pick that up!")
-		}
-		msgToEntity = fmt.Sprintf("You pick up %s", item.Name())
-		msgToRoom = fmt.Sprintf("%s picks up %s", e.Name(), item.Name())
+		performGet(e, w,
+			func(i *Item) string { return fmt.Sprintf("You pick up %s", item.Name()) },
+			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.Name(), item.Name()) },
+			container, item)
 	}
-
-	// Perform transfer and notify
-	container.RemoveItem(item)
-	if item.cfg.Flags.Has(IFlag_Crumbles) {
-		msgToEntity = fmt.Sprintf("%s crumbles to dust when you try to pick it up", item.Name())
-		msgToRoom = fmt.Sprintf("%s crumbles to dust when %s tries to pick it up", item.Name(), e.Name())
-	} else {
-		e.AddItem(item)
-	}
-
-	SendToPlayer(e, msgToEntity)
-	BroadcastToRoomExcept(r, e, msgToRoom)
 }
 
 func DoDrop(e *Entity, w *World, tokens []string) {
@@ -297,7 +284,7 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	q := NewSearchQuery(lowerTokens(tokens[1:])...)
-	if item, ok := e.SearchItem(q); !ok {
+	if item, ok := e.SearchItems(q); !ok {
 		SendToPlayer(e, "You don't have one of those...")
 	} else {
 		e.RemoveItem(item)
@@ -381,7 +368,7 @@ func DoLook(e *Entity, w *World, tokens []string) {
 			return
 		}
 		q := NewSearchQuery(lowerTokens(tokens[2:])...)
-		if item, _, ok := SearchItem(q, e, r); ok {
+		if item, _, ok := SearchItems(q, e, r); ok {
 			SendToPlayer(e, item.DescribeContents())
 			return
 		}
@@ -600,7 +587,7 @@ func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) 
 	// First try and resolve entity in room
 	r := w.rooms[perceiver.data.RoomId]
 	q := NewSearchQuery(tokens...)
-	tgt, ok := SearchEntityMap(q, r.entities, perceiver)
+	tgt, ok := SearchEntities(q, r.entities, perceiver)
 	if ok {
 		if desc, ok := tgt.TryPerceive(sense, tokens); ok {
 			return desc, true
@@ -681,4 +668,41 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		DoLook(e, w, nil)
 	}
 	return true
+}
+
+func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn func(*Item) string, from ItemContainer, items ...*Item) {
+	if len(items) == 0 {
+		containerName := "something"
+		if named, ok := from.(Named); ok {
+			containerName = named.Name()
+		}
+		SendToPlayer(e, "The %s is empty", containerName)
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+
+	for _, item := range items {
+
+		// Can't pick up environmental items
+		if item.cfg.Flags.Has(IFlag_Environmental) {
+			SendToPlayer(e, "You can't pick that up!")
+			continue
+		}
+
+		// Start transfer
+		from.RemoveItem(item)
+
+		// Some items crumble!
+		if item.cfg.Flags.Has(IFlag_Crumbles) {
+			SendToPlayer(e, "%s crumbles to dust as you touch it", item.Name())
+			BroadcastToRoomExcept(r, e, "%s crumbles to dust as %s touches it", item.Name(), e.Name())
+			continue
+		} else {
+			// Finish transfer and notify
+			e.AddItem(item)
+			SendToPlayer(e, playerMsgFn(item))
+			BroadcastToRoomExcept(r, e, roomMsgFn(item))
+		}
+	}
 }

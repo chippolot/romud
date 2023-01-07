@@ -68,8 +68,16 @@ func (r *Room) AddEntity(e *Entity) {
 	r.entities[e.id] = e
 }
 
-func (r *Room) SearchEntity(query SearchQuery) (*Entity, bool) {
+func (r *Room) SearchEntities(query SearchQuery) []*Entity {
 	return SearchMap(query, r.entities)
+}
+
+func (r *Room) AllEntities() []*Entity {
+	ents := make([]*Entity, len(r.entities))
+	for _, e := range r.entities {
+		ents = append(ents, e)
+	}
+	return ents
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
@@ -82,8 +90,16 @@ func (r *Room) AddItem(i *Item) {
 	r.items[i.id] = i
 }
 
-func (r *Room) SearchItem(query SearchQuery) (*Item, bool) {
+func (r *Room) SearchItems(query SearchQuery) []*Item {
 	return SearchMap(query, r.items)
+}
+
+func (r *Room) AllItems() []*Item {
+	items := make([]*Item, 0)
+	for _, i := range r.items {
+		items = append(items, i)
+	}
+	return items
 }
 
 func (r *Room) RemoveItem(i *Item) {

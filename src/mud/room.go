@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
+	"unicode"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -61,6 +62,12 @@ func NewRoom(cfg *RoomConfig) (*Room, error) {
 
 func (r *Room) Name() string {
 	return r.cfg.Name
+}
+
+func (r *Room) NameCapitalized() string {
+	arr := []rune(r.Name())
+	arr[0] = unicode.ToUpper(arr[0])
+	return string(arr)
 }
 
 func (r *Room) AddEntity(e *Entity) {
@@ -179,7 +186,7 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 		}
 		desc := e.cfg.RoomDesc
 		if desc == "" {
-			desc = fmt.Sprintf("A %s is here", e.Name())
+			desc = fmt.Sprintf("%s is here", e.Name())
 		}
 		descs = append(descs, desc)
 	}
@@ -198,7 +205,7 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 	for _, i := range r.items {
 		desc := i.cfg.RoomDesc
 		if desc == "" {
-			desc = fmt.Sprintf("A %s is here", i.Name())
+			desc = fmt.Sprintf("%s is here", i.Name())
 		}
 		descs = append(descs, desc)
 	}

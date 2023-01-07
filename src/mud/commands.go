@@ -104,17 +104,45 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 		return
 	}
 
+	r := w.rooms[e.data.RoomId]
+
 	switch tokens[1] {
 	case "pkill":
-		applyDamage(e, w, nil, 9999, Dam_Admin)
+		dam := 9999
+		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
+		applyDamage(e, w, nil, dam, Dam_Admin)
+	case "pheal":
+		heal := 9999
+		SendToPlayer(e, "Admin: Healing Player for %d", heal)
+		e.data.Stats.AddHP(heal)
 	case "pdam":
 		dam, _ := strconv.Atoi(tokens[2])
+		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
 		applyDamage(e, w, nil, dam, Dam_Admin)
 	case "pxp":
 		xp, _ := strconv.Atoi(tokens[2])
 		applyXp(e, xp)
+		SendToPlayer(e, "Added XP %d", xp)
+	case "spawne":
+		key := tokens[2]
+		if cfg, ok := w.TryGetEntityConfig(key); ok {
+			ent := NewEntity(cfg)
+			w.AddEntity(ent, r.cfg.Id)
+			SendToPlayer(e, "Admin: Spawned Entity %s", key)
+		} else {
+			SendToPlayer(e, "Admin: Failed to load entity %s", key)
+		}
+	case "spawni":
+		key := tokens[2]
+		if cfg, ok := w.TryGetItemConfig(key); ok {
+			itm := NewItem(cfg)
+			w.AddItem(itm, r.cfg.Id)
+			SendToPlayer(e, "Admin: Spawned Item %s", key)
+		} else {
+			SendToPlayer(e, "Admin: Failed to load item %s", key)
+		}
 	default:
-		SendToPlayer(e, "Unrecognized admin command: %s", tokens[1])
+		SendToPlayer(e, "Admin: Unrecognized command: %s", tokens[1])
 	}
 }
 
@@ -208,7 +236,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			performGet(e, w,
 				func(i *Item) string { return fmt.Sprintf("You take out %s from %s", i.Name(), containerItem.Name()) },
 				func(i *Item) string {
-					return fmt.Sprintf("%s takes out %s from %s", e.Name(), i.Name(), containerItem.Name())
+					return fmt.Sprintf("%s takes out %s from %s", e.NameCapitalized(), i.Name(), containerItem.Name())
 				},
 				containerItem, items...)
 		}
@@ -223,7 +251,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		}
 		performGet(e, w,
 			func(i *Item) string { return fmt.Sprintf("You pick up %s", i.Name()) },
-			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.Name(), i.Name()) },
+			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.NameCapitalized(), i.Name()) },
 			r, items...)
 	}
 }
@@ -276,7 +304,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 		container.AddItem(item)
 
 		SendToPlayer(e, "You put %s in %s", item.Name(), container.Name())
-		BroadcastToRoomExcept(r, e, "%s puts %s in %s", e.Name(), item.Name(), container.Name())
+		BroadcastToRoomExcept(r, e, "%s puts %s in %s", e.NameCapitalized(), item.Name(), container.Name())
 	}
 }
 
@@ -296,7 +324,7 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 			e.RemoveItem(item)
 			r.AddItem(item)
 			SendToPlayer(e, "You drop %s", item.Name())
-			BroadcastToRoomExcept(r, e, "%s drops %s", e.Name(), item.Name())
+			BroadcastToRoomExcept(r, e, "%s drops %s", e.NameCapitalized(), item.Name())
 		}
 	}
 }
@@ -308,7 +336,7 @@ func DoInventory(e *Entity, _ *World, _ []string) {
 		return
 	}
 	for _, i := range e.inventory {
-		SendToPlayer(e, "  <c white>%s</c>", i.Name())
+		SendToPlayer(e, "  <c white>%s</c>", i.NameCapitalized())
 	}
 }
 
@@ -321,7 +349,7 @@ func DoSay(e *Entity, w *World, tokens []string) {
 	SendToPlayer(e, "Ok.")
 
 	r := w.rooms[e.data.RoomId]
-	BroadcastToRoomExcept(r, e, "%s says, '%s'", e.Name(), msg)
+	BroadcastToRoomExcept(r, e, "%s says, '%s'", e.NameCapitalized(), msg)
 }
 
 func DoYell(e *Entity, w *World, tokens []string) {
@@ -331,7 +359,7 @@ func DoYell(e *Entity, w *World, tokens []string) {
 	msg := strings.Join(tokens[1:], " ")
 
 	SendToPlayer(e, "Ok.")
-	BroadcastToWorldExcept(w, e, "%s yells, '%s'", e.Name(), msg)
+	BroadcastToWorldExcept(w, e, "%s yells, '%s'", e.NameCapitalized(), msg)
 }
 
 func DoWhisper(e *Entity, w *World, tokens []string) {
@@ -349,7 +377,7 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 		} else if te, ok := TryGetEntityByName(name, w.entities); ok {
 			SendToPlayer(e, "Ok.")
 			if te.player != nil {
-				SendToPlayer(te, "%s whispers to you, %s", e.Name(), msg)
+				SendToPlayer(te, "%s whispers to you, %s", e.NameCapitalized(), msg)
 			}
 		} else {
 			SendToPlayer(e, "No player named %s is online", name)
@@ -463,10 +491,10 @@ func DoSit(e *Entity, w *World, _ []string) {
 	r := w.rooms[e.data.RoomId]
 	if oldPos == Pos_Prone {
 		SendToPlayer(e, "You sit up")
-		BroadcastToRoomExcept(r, e, "%s sits up", e.Name())
+		BroadcastToRoomExcept(r, e, "%s sits up", e.NameCapitalized())
 	} else {
 		SendToPlayer(e, "You sit down")
-		BroadcastToRoomExcept(r, e, "%s sits down", e.Name())
+		BroadcastToRoomExcept(r, e, "%s sits down", e.NameCapitalized())
 	}
 }
 
@@ -479,7 +507,7 @@ func DoSleep(e *Entity, w *World, _ []string) {
 	SendToPlayer(e, "You lie down and doze off...")
 
 	r := w.rooms[e.data.RoomId]
-	BroadcastToRoomExcept(r, e, "%s lies down and falls asleep", e.Name())
+	BroadcastToRoomExcept(r, e, "%s lies down and falls asleep", e.NameCapitalized())
 }
 
 func DoWake(e *Entity, w *World, _ []string) {
@@ -491,7 +519,7 @@ func DoWake(e *Entity, w *World, _ []string) {
 	SendToPlayer(e, "You open your eyes and wake up")
 
 	r := w.rooms[e.data.RoomId]
-	BroadcastToRoomExcept(r, e, "%s wakes up", e.Name())
+	BroadcastToRoomExcept(r, e, "%s wakes up", e.NameCapitalized())
 }
 
 func DoStand(e *Entity, w *World, _ []string) {
@@ -504,10 +532,10 @@ func DoStand(e *Entity, w *World, _ []string) {
 	r := w.rooms[e.data.RoomId]
 	if e.combat != nil {
 		SendToPlayer(e, "You scramble back to your feet!")
-		BroadcastToRoomExcept(r, e, "%s scrambles back to their feet", e.Name())
+		BroadcastToRoomExcept(r, e, "%s scrambles back to their feet", e.NameCapitalized())
 	} else {
 		SendToPlayer(e, "You stand up")
-		BroadcastToRoomExcept(r, e, "%s stands up", e.Name())
+		BroadcastToRoomExcept(r, e, "%s stands up", e.NameCapitalized())
 	}
 }
 
@@ -634,7 +662,6 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 	curRoom := w.rooms[e.data.RoomId]
 
 	nextRoomId, ok := curRoom.cfg.Exits[dir]
-	log.Printf("Moving to room %d", nextRoomId)
 	if !ok {
 		SendToPlayer(e, "Can't go that way!")
 		return false
@@ -658,15 +685,15 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 	}
 
 	if e.player != nil {
-		BroadcastToRoomExcept(curRoom, e, "%s leaves %s", e.Name(), dir.String())
+		BroadcastToRoomExcept(curRoom, e, "%s leaves %s", e.NameCapitalized(), dir.String())
 	} else {
-		BroadcastToRoom(curRoom, "%s wanders %s", e.Name(), dir.String())
+		BroadcastToRoom(curRoom, "%s wanders %s", e.NameCapitalized(), dir.String())
 	}
 
 	if e.player != nil {
-		BroadcastToRoomExcept(nextRoom, e, "%s enters from the %s", e.Name(), fromDirStr)
+		BroadcastToRoomExcept(nextRoom, e, "%s enters from the %s", e.NameCapitalized(), fromDirStr)
 	} else {
-		BroadcastToRoom(nextRoom, "%s wanders in from the %s", e.Name(), fromDirStr)
+		BroadcastToRoom(nextRoom, "%s wanders in from the %s", e.NameCapitalized(), fromDirStr)
 	}
 
 	e.data.Stats.AddMov(-1)
@@ -702,8 +729,14 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 
 		// Some items crumble!
 		if item.cfg.Flags.Has(IFlag_Crumbles) {
-			SendToPlayer(e, "%s crumbles to dust as you touch it", item.Name())
-			BroadcastToRoomExcept(r, e, "%s crumbles to dust as %s touches it", item.Name(), e.Name())
+			// Drop all items in parent container
+			if item.cfg.Flags.Has(IFlag_Container) {
+				for _, i2 := range item.RemoveAllFromContainer() {
+					from.AddItem(i2)
+				}
+			}
+			SendToPlayer(e, "%s crumbles to dust as you touch it", item.NameCapitalized())
+			BroadcastToRoomExcept(r, e, "%s crumbles to dust as %s touches it", item.NameCapitalized(), e.Name())
 			continue
 		} else {
 			// Finish transfer and notify

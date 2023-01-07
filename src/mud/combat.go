@@ -130,6 +130,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 
 	// Handle kills
 	if cnd == Cnd_Dead {
+		// Distribute XP
 		if from != nil {
 			xp := tgt.cfg.Stats.XPValue
 			xp = applyXp(from, xp)
@@ -137,9 +138,24 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 				SendToPlayer(from, "You gain %d XP from defeating %s", xp, tgt.Name())
 			}
 		}
+
+		// Create corpse
+		createCorpse(tgt, w)
+		w.RemoveEntity(tgt.id)
 	}
 
 	return dam
+}
+
+func createCorpse(from *Entity, w *World) {
+	cfg := &ItemConfig{}
+	cfg.Key = from.cfg.Key + "_corpse"
+	cfg.Name = fmt.Sprintf("the corpse of %s", from.Name())
+	cfg.Keywords = append([]string{"corpse"}, from.cfg.Keywords...)
+	cfg.Flags = IFlag_Container | IFlag_Crumbles
+	cfg.Init()
+	corpse := NewItem(cfg)
+	w.AddItem(corpse, from.data.RoomId)
 }
 
 func applyXp(e *Entity, xp int) int {
@@ -157,32 +173,32 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingu
 	var toSrc, toDst, toRoom string
 	if dam <= 0 {
 		toSrc = fmt.Sprintf("Your %s misses %s completely", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s's %s misses you completely", src.Name(), atkVerbSingular)
-		toRoom = fmt.Sprintf("%s tries to %s %s, but misses", src.Name(), atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s's %s misses you completely", src.NameCapitalized(), atkVerbSingular)
+		toRoom = fmt.Sprintf("%s tries to %s %s, but misses", src.NameCapitalized(), atkVerbSingular, dst.Name())
 	} else if dam <= 2 {
 		toSrc = fmt.Sprintf("Your %s knicks %s as it fails to fully connect", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s's %s knicks you as it fails to fully connect", src.Name(), atkVerbSingular)
-		toRoom = fmt.Sprintf("%s's %s knicks %s as it fails to fully connect", src.Name(), atkVerbSingular, dst.Name())
+		toDst = fmt.Sprintf("%s's %s knicks you as it fails to fully connect", src.NameCapitalized(), atkVerbSingular)
+		toRoom = fmt.Sprintf("%s's %s knicks %s as it fails to fully connect", src.NameCapitalized(), atkVerbSingular, dst.Name())
 	} else if dam <= 4 {
 		toSrc = fmt.Sprintf("Your %s barely scratches %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s barely scratch you", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s barely scratch %s", src.Name(), atkVerbPlural, dst.Name())
+		toDst = fmt.Sprintf("%s %s barely scratch you", src.NameCapitalized(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s barely scratch %s", src.NameCapitalized(), atkVerbPlural, dst.Name())
 	} else if dam <= 6 {
 		toSrc = fmt.Sprintf("You %s %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s", src.Name(), atkVerbPlural, dst.Name())
+		toDst = fmt.Sprintf("%s %s you", src.NameCapitalized(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s", src.NameCapitalized(), atkVerbPlural, dst.Name())
 	} else if dam <= 8 {
 		toSrc = fmt.Sprintf("You %s %s ferociously", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you ferociously", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s ferociously", src.Name(), atkVerbPlural, dst.Name())
+		toDst = fmt.Sprintf("%s %s you ferociously", src.NameCapitalized(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s ferociously", src.NameCapitalized(), atkVerbPlural, dst.Name())
 	} else if dam <= 10 {
 		toSrc = fmt.Sprintf("You %s %s with all your might", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you with all your might", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s with all your might", src.Name(), atkVerbPlural, dst.Name())
+		toDst = fmt.Sprintf("%s %s you with all your might", src.NameCapitalized(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s with all your might", src.NameCapitalized(), atkVerbPlural, dst.Name())
 	} else {
 		toSrc = fmt.Sprintf("You %s %s UNBELIEVABLY HARD", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you UNBELIEVABLY HARD", src.Name(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s UNBELIEVABLY HARD", src.Name(), atkVerbPlural, dst.Name())
+		toDst = fmt.Sprintf("%s %s you UNBELIEVABLY HARD", src.NameCapitalized(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s %s %s UNBELIEVABLY HARD", src.NameCapitalized(), atkVerbPlural, dst.Name())
 	}
 	// TODO More here?
 	SendToPlayer(src, toSrc+" <c yellow>(%d)</c>", dam)
@@ -194,16 +210,16 @@ func sendStatusMessages(dam int, target *Entity, r *Room) {
 	switch target.data.Stats.Condition() {
 	case Cnd_Stunned:
 		SendToPlayer(target, "You are dazed and disoriented, struggling to regain your footing")
-		BroadcastToRoomExcept(r, target, "%s is dazed and disoriented, struggling to regain their footing", target.Name())
+		BroadcastToRoomExcept(r, target, "%s is dazed and disoriented, struggling to regain their footing", target.NameCapitalized())
 	case Cnd_Incapacitated:
 		SendToPlayer(target, "You are incapacitated and will die soon if not healed")
-		BroadcastToRoomExcept(r, target, "%s is incapacitated and will die soon if not healed", target.Name())
+		BroadcastToRoomExcept(r, target, "%s is incapacitated and will die soon if not healed", target.NameCapitalized())
 	case Cnd_MortallyWounded:
 		SendToPlayer(target, "You are bleeding profusely and will die soon if not healed")
-		BroadcastToRoomExcept(r, target, "%s is bleeding profusely and will die soon if not healed", target.Name())
+		BroadcastToRoomExcept(r, target, "%s is bleeding profusely and will die soon if not healed", target.NameCapitalized())
 	case Cnd_Dead:
 		SendToPlayer(target, "You feel your soul slip from your body. You are DEAD!")
-		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.Name())
+		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.NameCapitalized())
 	default:
 		if dam > target.data.Stats.MaxHP/4 {
 			SendToPlayer(target, "<c red>Ouch, that one stung!</c>")

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"strings"
+	"unicode"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -86,6 +87,12 @@ func (i *Item) Name() string {
 	return i.cfg.Name
 }
 
+func (i *Item) NameCapitalized() string {
+	arr := []rune(i.Name())
+	arr[0] = unicode.ToUpper(arr[0])
+	return string(arr)
+}
+
 func (i *Item) MatchesKeyword(keyword string) bool {
 	if strings.EqualFold(i.Name(), keyword) {
 		return true
@@ -157,7 +164,7 @@ func (i *Item) DescribeContents() string {
 	return sb.String()
 }
 
-func (i *Item) RemoveAllFromContainer(w *World) ItemList {
+func (i *Item) RemoveAllFromContainer() ItemList {
 	if !i.cfg.Flags.Has(IFlag_Container) {
 		log.Panicf("trying to remove items to non-container item: %s", i.cfg.Key)
 	}

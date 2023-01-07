@@ -25,10 +25,20 @@ type Dice struct {
 func ParseDice(s string) (Dice, error) {
 	i1 := strings.Index(s, "d")
 	i2 := strings.Index(s, "+")
-	if i1 != -1 && i2 != -1 {
+	if i2 == -1 {
+		i2 = len(s)
+	}
+	if i1 != -1 {
+		// Parse 'XdY'
 		num, err1 := strconv.ParseUint(s[:i1], 10, 8)
 		sides, err2 := strconv.ParseUint(s[i1+1:i2], 10, 8)
-		plus, err3 := strconv.ParseInt(s[i2+1:], 10, 16)
+
+		// Optionally parse the number after a '+'
+		var plus int64
+		var err3 error
+		if i2 != len(s) {
+			plus, err3 = strconv.ParseInt(s[i2+1:], 10, 16)
+		}
 		if err1 == nil && err2 == nil && err3 == nil {
 			return Dice{uint(num), uint(sides), int(plus)}, nil
 		}

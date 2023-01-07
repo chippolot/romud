@@ -62,19 +62,28 @@
     [x] Rest + Sleep actions
         [x] Restore stats
 ----------------------------------------
+[] Spawning
+    [] Debug command
+    [] Data driven
 [] Combat p2
     [] Corpses
     [] Leave corpse on death
+    [] Kick to the ground
     [] Hit and damage bonuses
     [] Weapons
     [] Weapon dependent messages
     [] Look descriptions
-    [] Kick to the ground
+    [] More 5E combat options
 [] Positions p2
     [] Look descriptions
 [] Items p2
+    [] Gold
+    [] Equipment
+        [] Equipment Stats
+    [] Wearing
     [] Weights
     [] Looking At
+[] Shops
 [] Races
 [] Classes
 [] Looking at players

@@ -3,6 +3,7 @@ package mud
 import (
 	"log"
 	"strings"
+	"unicode"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -90,6 +91,12 @@ func (e *Entity) Name() string {
 		return e.player.data.Name
 	}
 	return e.cfg.Name
+}
+
+func (e *Entity) NameCapitalized() string {
+	arr := []rune(e.Name())
+	arr[0] = unicode.ToUpper(arr[0])
+	return string(arr)
 }
 
 func (e *Entity) AddItem(item *Item) {

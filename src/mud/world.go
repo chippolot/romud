@@ -138,7 +138,7 @@ func (w *World) RemoveEntity(eid EntityId) {
 	e.combat = nil
 	e.data.RoomId = InvalidId
 
-	if e.player != nil {
+	if e.player != nil && e.data.Stats.Condition() != Cnd_Dead {
 		delete(w.players, e.player.id)
 		delete(w.loggingOut, e.player.id)
 		BroadcastToWorldExcept(w, e, "%s Leaves", e.Name())

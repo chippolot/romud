@@ -23,4 +23,23 @@
         "Level": 1,
         "XPValue": 25
     }
+}, {
+    "Key": "rat",
+    "Name": "a small rat",
+    "Keywords": ["rat"],
+    "RoomDesc": "A small rat scurries between your feet.",
+    "Stats": {
+        "HP": "2d6",
+        "Attack": "1d4+2",
+        "AC": 12,
+        "Speed": 30,
+        "Str": 7,
+        "Dex": 15,
+        "Con": 11,
+        "Int": 2,
+        "Wis": 10,
+        "Cha": 4,
+        "Level": 1,
+        "XPValue": 25
+    }
 }]

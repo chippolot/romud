@@ -1,8 +1,11 @@
 package mud
 
 import (
+	"log"
 	"strconv"
 	"strings"
+
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type Matchable interface {
@@ -16,15 +19,16 @@ type SearchQuery struct {
 }
 
 func NewSearchQuery(keywords ...string) SearchQuery {
-	q := SearchQuery{keywords, strings.Join(keywords, " "), 1}
-	for _, k := range keywords {
+	q := SearchQuery{keywords, strings.Join(keywords, " "), 0}
+	for idx, k := range keywords {
 		idxDot := strings.IndexByte(k, '.')
 		if idxDot == -1 {
 			continue
 		}
 		nstr := k[idxDot+1:]
 		if n, err := strconv.Atoi(nstr); err == nil {
-			q.Number = n
+			q.Number = utils.MaxInts(0, n-1)
+			keywords[idx] = keywords[idx][:idxDot]
 			break
 		}
 	}
@@ -85,6 +89,7 @@ func filterSearchResults[TItem Matchable](query SearchQuery, results []TItem) []
 	if len(results) == 0 {
 		return results
 	}
+	log.Println("FOUND?", len(results), query.Number)
 	if query.Number >= len(results) {
 		return results[:0]
 	}

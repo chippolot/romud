@@ -187,19 +187,21 @@ func DoPut(e *Entity, w *World, tokens []string) {
 
 	// Find the container
 	containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
-	container, ok := e.SearchItems(containerQuery)
-	if !ok {
+	containers := e.SearchItems(containerQuery)
+	if len(containers) == 0 {
 		SendToPlayer(e, "You don't seem to be holding '%s'", containerQuery.Joined)
 		return
 	}
+	container := containers[0]
 
 	// Find the item
 	itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
-	item, ok := e.SearchItems(itemQuery)
-	if !ok {
+	items := e.SearchItems(itemQuery)
+	if len(items) == 0 {
 		SendToPlayer(e, "You don't see %s here", itemQuery.Joined)
 		return
 	}
+	item := items[0]
 
 	// Perform transfer and notify
 	e.RemoveItem(item)
@@ -230,14 +232,14 @@ func DoGet(e *Entity, w *World, tokens []string) {
 
 		// Find the container and item
 		containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
-		containerItems := SearchItems(containerQuery, e, r)
-		if len(containerItems) == 0 {
+		contianers := SearchItems(containerQuery, e, r)
+		if len(contianers) == 0 {
 			SendToPlayer(e, "You see %s here", containerQuery.Joined)
 			return
 		}
 
 		// Make sure it's a container
-		containerItem := containerItems[0]
+		containerItem := contianers[0]
 		if !containerItem.cfg.Flags.Has(IFlag_Container) {
 			SendToPlayer(e, "The %s is not a container", containerItem.Name())
 			return

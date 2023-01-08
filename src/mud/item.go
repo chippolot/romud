@@ -24,6 +24,7 @@ type ItemConfig struct {
 	FullDesc     string
 	Perceptibles *PerceptiblesConfig
 	Flags        ItemFlags
+	Value        int
 	lookup       map[string]bool
 }
 

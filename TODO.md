@@ -64,13 +64,12 @@
     [x] Limit actions
     [x] Rest + Sleep actions
         [x] Restore stats
+[x] Scavengers
+[x] Spawning - Debug command
 ----------------------------------------
 [] Heal on login after time
-[] Scavengers
-[] Spawning
-    [x] Debug command
-    [] Data driven
-[] Combat p2
+[] Spawning - Data driven
+[] Combat
     [] Mobs can fill corpse from random table
     [] Kick to the ground
     [] Weapons
@@ -79,9 +78,9 @@
     [] Attack type strengths / weaknesses
     [] Multi-attack
     [] Multiple damage per attack
-[] Positions p2
+[] Positions
     [] Look descriptions
-[] Items p2
+[] Items
     [] Gold
     [] Equipment
         [] Equipment Stats

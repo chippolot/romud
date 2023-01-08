@@ -1,6 +1,8 @@
 package mud
 
 import (
+	"fmt"
+	"math"
 	"math/rand"
 	"time"
 )
@@ -23,11 +25,12 @@ func (s *UpdateSystem) Update(w *World) {
 
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
-		{restoreStats, time.Second * 10, time.Now()},
-		{wanderNpcs, time.Second * 3, time.Now()},
-		{runCombat, time.Second, time.Now()},
-		{logoutTheDead, time.Millisecond, time.Now()},
-		{flushPlayerOuput, time.Millisecond, time.Now()},
+		{restoreStats, time.Second * 10, time.Now().Add(randSec(3))},
+		{scavengerNPCs, time.Second * 3, time.Now().Add(randSec(3))},
+		{wanderNPCs, time.Second * 3, time.Now().Add(randSec(3))},
+		{runCombat, time.Second, time.Now().Add(randSec(3))},
+		{logoutTheDead, time.Millisecond, time.Now().Add(randSec(3))},
+		{flushPlayerOuput, time.Millisecond, time.Now().Add(randSec(3))},
 	}
 
 	for {
@@ -92,7 +95,7 @@ func restoreStats(w *World) {
 	}
 }
 
-func wanderNpcs(w *World) {
+func wanderNPCs(w *World) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -102,14 +105,84 @@ func wanderNpcs(w *World) {
 			continue
 		}
 
+		if e.combat != nil {
+			continue
+		}
+
+		if rand.Intn(15) != 0 {
+			continue
+		}
+
 		// TODO Stay in zone
+		// Pick a random open exit to take
 		r := w.rooms[e.data.RoomId]
-		dir := Direction(rand.Intn(20))
+		numExits := len(r.cfg.Exits)
+		rndExit := rand.Intn(numExits)
+		var dir Direction
+		i := 0
+		for dir, _ = range r.cfg.Exits {
+			if i == rndExit {
+				break
+			}
+			i++
+		}
 		if !r.IsExitOpen(dir) {
 			continue
 		}
 
 		performMove(e, w, dir)
+	}
+}
+
+func scavengerNPCs(w *World) {
+	for _, e := range w.entities {
+		if e.player != nil {
+			continue
+		}
+
+		isScavenger := e.cfg.Flags.Has(EFlag_Scavenger)
+		isTrashCollector := e.cfg.Flags.Has(EFlag_TrashCollector)
+		if !isScavenger && !isTrashCollector {
+			continue
+		}
+
+		if e.combat != nil {
+			continue
+		}
+
+		r := w.rooms[e.data.RoomId]
+		if len(r.items) == 0 || rand.Intn(15) != 0 {
+			continue
+		}
+
+		// Pick up an item
+		var toPickup *Item
+		var toPickupVal = 0
+		if !isScavenger && isTrashCollector {
+			toPickupVal = math.MaxInt
+		}
+		for _, item := range r.items {
+			if item.cfg.Flags.Has(IFlag_Environmental) {
+				continue
+			}
+			itemValue := item.cfg.Value
+
+			// Scavengers pick up the most valuable items whereas trash collectors
+			// pick up the least valuable item
+			if (isScavenger && itemValue >= toPickupVal) ||
+				(isTrashCollector && itemValue < toPickupVal && itemValue < 10) {
+				toPickup = item
+				toPickupVal = itemValue
+			}
+		}
+
+		if toPickup != nil {
+			performGet(e, w,
+				func(i *Item) string { return "" },
+				func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.Name(), toPickup.Name()) },
+				r,
+				toPickup)
+		}
 	}
 }
 
@@ -152,4 +225,8 @@ func flushPlayerOuput(w *World) {
 	for _, s := range w.sessions {
 		s.Flush()
 	}
+}
+
+func randSec(sec int) time.Duration {
+	return time.Millisecond * time.Duration(rand.Intn(sec*1000))
 }

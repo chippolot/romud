@@ -37,7 +37,7 @@ func main() {
 	world.SetEntryRoomId(3001)
 
 	// Create test entity
-	addEntities(world, "mob")
+	addEntities(world, "mob", "rat", "rat", "janitor")
 
 	// Create test item
 	addItems(world, "woodshortsword", "bag", "ancientscroll")

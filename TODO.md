@@ -67,10 +67,11 @@
 [x] Scavengers
 [x] Spawning - Debug command
 ----------------------------------------
+[] "get all corpse"
 [] Heal on login after time
 [] Spawning - Data driven
 [] Combat
-    [] Mobs can fill corpse from random table
+    [] Mobs can spawn w/ items from random table
     [] Kick to the ground
     [] Weapons
     [] Weapon dependent messages

@@ -202,19 +202,28 @@ func DoGet(e *Entity, w *World, tokens []string) {
 
 	r := w.rooms[e.data.RoomId]
 
+	var containerToks []string
+	var itemToks []string
+
 	// Trying to get something from a container?
-	// TODO do not require 'from' here!
-	if idx := utils.FindIndex(tokens, "from"); idx != -1 {
-		if len(tokens) == idx+1 {
+	if tokens[1] == "all" {
+		containerToks = tokens[2:]
+		itemToks = tokens[1:2]
+	} else if idx := utils.FindIndex(tokens, "from"); idx != -1 {
+		containerToks = tokens[idx+1:]
+		itemToks = tokens[1:idx]
+	}
+	if containerToks != nil {
+		if len(containerToks) == 0 {
 			SendToPlayer(e, "What do you want to get something out of?")
 			return
 		}
-		if idx == 1 {
+		if len(itemToks) == 0 {
 			SendToPlayer(e, "What do you want to get from that?")
 		}
 
 		// Find the container and item
-		containerQuery := NewSearchQuery(lowerTokens(tokens[idx+1:])...)
+		containerQuery := NewSearchQuery(lowerTokens(containerToks)...)
 		contianers := SearchItems(containerQuery, e, r)
 		if len(contianers) == 0 {
 			SendToPlayer(e, "You see %s here", containerQuery.Joined)
@@ -229,14 +238,14 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		}
 
 		// Get the items
-		items := containerItem.SearchItems(NewSearchQuery(lowerTokens(tokens[1:idx])...))
+		items := containerItem.SearchItems(NewSearchQuery(lowerTokens(itemToks)...))
 		if len(items) == 0 {
 			SendToPlayer(e, "The %s is empty", containerItem.Name())
 		} else {
 			performGet(e, w,
-				func(i *Item) string { return fmt.Sprintf("You take out %s from %s", i.Name(), containerItem.Name()) },
+				func(i *Item) string { return fmt.Sprintf("You get %s from %s", i.Name(), containerItem.Name()) },
 				func(i *Item) string {
-					return fmt.Sprintf("%s takes out %s from %s", e.NameCapitalized(), i.Name(), containerItem.Name())
+					return fmt.Sprintf("%s gets %s from %s", e.NameCapitalized(), i.Name(), containerItem.Name())
 				},
 				containerItem, items...)
 		}

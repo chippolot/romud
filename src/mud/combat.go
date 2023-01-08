@@ -235,6 +235,10 @@ func createCorpse(from *Entity, w *World) {
 	cfg.Flags = IFlag_Container | IFlag_Crumbles
 	cfg.Init()
 	corpse := NewItem(cfg)
+	for _, i := range from.inventory {
+		from.RemoveItem(i)
+		corpse.AddItem(i)
+	}
 	w.AddItem(corpse, from.data.RoomId)
 }
 

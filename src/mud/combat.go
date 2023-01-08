@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"time"
@@ -11,9 +12,83 @@ import (
 type DamageType int
 
 const (
-	Dam_Melee DamageType = iota
-	Dam_Bleeding
-	Dam_Admin = 999
+	Dam_Acid DamageType = iota
+	Dam_Bludgeoning
+	Dam_Cold
+	Dam_Fire
+	Dam_Force
+	Dam_Lightning
+	Dam_Necrotic
+	Dam_Piercing
+	Dam_Poison
+	Dam_Psychic
+	Dam_Radiant
+	Dam_Slashing
+	Dam_Thunder
+)
+
+func ParseDamageType(str string) (DamageType, error) {
+	switch str {
+	case "acid":
+		return Dam_Acid, nil
+	case "bludgeoning":
+		return Dam_Bludgeoning, nil
+	case "cold":
+		return Dam_Cold, nil
+	case "fire":
+		return Dam_Fire, nil
+	case "force":
+		return Dam_Force, nil
+	case "lightning":
+		return Dam_Lightning, nil
+	case "necrotic":
+		return Dam_Necrotic, nil
+	case "piercing":
+		return Dam_Piercing, nil
+	case "poison":
+		return Dam_Poison, nil
+	case "psychic":
+		return Dam_Psychic, nil
+	case "radiant":
+		return Dam_Radiant, nil
+	case "slashing":
+		return Dam_Slashing, nil
+	case "thunder":
+		return Dam_Thunder, nil
+	default:
+		return 0, fmt.Errorf("unknown damage type: %s", str)
+	}
+}
+
+func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *dt, err = ParseDamageType(str); err != nil {
+		return nil
+	} else {
+		return err
+	}
+}
+
+// TODO Support multi-attack
+type AttackConfig struct {
+	Name         string
+	ToHit        int
+	Damage       Dice
+	DamageType   DamageType
+	VerbSingular string
+	VerbPlural   string
+	Weight       float32
+}
+
+type DamageContext int
+
+const (
+	DamCtx_Melee DamageContext = iota
+	DamCtx_Bleeding
+	DamCtx_Admin = 999
 )
 
 type CombatData struct {
@@ -82,28 +157,33 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 
 	var dam int
 
+	// Select attack
+	attack := e.RandomAttack()
+	toHit := attack.ToHit
+	if e.player != nil {
+		toHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
+	}
+
 	// Roll to hit
 	hitBase := D20.Roll()
 	critMiss := hitBase == 1
 	critHit := hitBase == 20
-	hitMod := GetAbilityModifier(e.data.Stats.Str)
-	hitProf := ProficiencyChart[e.data.Stats.Level]
-	hit := hitBase + hitMod + hitProf
+	hit := hitBase + toHit
 
 	if (critMiss || hit < tgt.data.Stats.AC) && !critHit {
 		dam = 0
 	} else {
 		// Roll for damage
 		if critHit {
-			dam = e.cfg.Stats.Attack.CriticalRoll()
+			dam = attack.Damage.CriticalRoll()
 		} else {
-			dam = e.cfg.Stats.Attack.Roll()
+			dam = attack.Damage.Roll()
 		}
 	}
-	applyDamage(tgt, w, e, dam, Dam_Melee)
+	applyDamage(tgt, w, e, dam, DamCtx_Melee, attack.DamageType, attack.VerbSingular, attack.VerbPlural)
 }
 
-func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageType) int {
+func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, verbSingular string, verbPlural string) int {
 	cnd := tgt.data.Stats.Condition()
 	if cnd == Cnd_Dead {
 		return 0
@@ -119,9 +199,9 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damType DamageTyp
 
 	// Send damage messages
 	r := w.rooms[tgt.data.RoomId]
-	switch damType {
-	case Dam_Melee:
-		sendDamageMessages(dam, from, tgt, r, "slash", "slashes")
+	switch damCtx {
+	case DamCtx_Melee:
+		sendDamageMessages(dam, from, tgt, r, verbSingular, verbPlural)
 
 	}
 

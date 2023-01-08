@@ -1,8 +1,15 @@
 [{
     "Key": "_player",
+    "Attacks": [{
+        "Name": "Slash",
+        "ToHit": 6,
+        "Damage": "1d6+2",
+        "DamageType": "slashing",
+        "VerbSingular": "slash",
+        "VerbPlural": "slashes"
+    }],
     "Stats": {
         "HP": "2d5+20",
-        "Attack": "1d6+2",
         "AC": 16,
         "Speed": 30,
         "Str": 15,

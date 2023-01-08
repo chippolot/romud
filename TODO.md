@@ -57,17 +57,19 @@
     [x] Condition change messages
     [x] XP gain
     [x] Damage dependent messages
+    [x] Corpses
+    [x] Leave corpse on death
 [x] Positions p1
     [x] Limit actions
     [x] Rest + Sleep actions
         [x] Restore stats
 ----------------------------------------
+[] Heal on login after time
 [] Spawning
-    [] Debug command
+    [x] Debug command
     [] Data driven
 [] Combat p2
-    [] Corpses
-    [] Leave corpse on death
+    [] Mobs can fill corpse from random table
     [] Kick to the ground
     [] Hit and damage bonuses
     [] Weapons

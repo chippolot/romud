@@ -9,9 +9,16 @@
         "Keywords": ["nose"],
         "Desc": "Wow! What a fun nose!"
     }],
+    "Attacks": [{
+        "Name": "Bite",
+        "ToHit": 4,
+        "Damage": "1d4+2",
+        "DamageType": "piercing",
+        "VerbSingular": "bite",
+        "VerbPlural": "bites"
+    }],
     "Stats": {
         "HP": "2d5+20",
-        "Attack": "1d3+2",
         "AC": 13,
         "Speed": 30,
         "Str": 5,
@@ -28,9 +35,16 @@
     "Name": "a small rat",
     "Keywords": ["rat"],
     "RoomDesc": "A small rat scurries between your feet.",
+    "Attacks": [{
+        "Name": "Bite",
+        "ToHit": 4,
+        "Damage": "1d4+2",
+        "DamageType": "piercing",
+        "VerbSingular": "bite",
+        "VerbPlural": "bites"
+    }],
     "Stats": {
         "HP": "2d6",
-        "Attack": "1d4+2",
         "AC": 12,
         "Speed": 30,
         "Str": 7,

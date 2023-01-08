@@ -110,7 +110,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 	case "pkill":
 		dam := 9999
 		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
-		applyDamage(e, w, nil, dam, Dam_Admin)
+		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, "hit", "hits")
 	case "pheal":
 		heal := 9999
 		SendToPlayer(e, "Admin: Healing Player for %d", heal)
@@ -118,7 +118,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 	case "pdam":
 		dam, _ := strconv.Atoi(tokens[2])
 		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
-		applyDamage(e, w, nil, dam, Dam_Admin)
+		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, "hit", "hits")
 	case "pxp":
 		xp, _ := strconv.Atoi(tokens[2])
 		applyXp(e, xp)
@@ -540,6 +540,8 @@ func DoStand(e *Entity, w *World, _ []string) {
 }
 
 func DoStatus(e *Entity, w *World, _ []string) {
+	attack := e.cfg.Attacks[0]
+
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
 	sb.WriteLinef("%s", e.Name())
@@ -553,7 +555,7 @@ func DoStatus(e *Entity, w *World, _ []string) {
 	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.Mov, e.data.Stats.MaxMov)
 	sb.WriteNewLine()
 	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", GetAbilityModifier(e.data.Stats.Str)+ProficiencyChart[e.data.Stats.Level])
-	sb.WriteLinef("Attack : <c yellow>%d</c>d<c yellow>%d</c>+<c yellow>%d</c>", e.cfg.Stats.Attack.Num, e.cfg.Stats.Attack.Sides, e.cfg.Stats.Attack.Plus)
+	sb.WriteLinef("Attack : <c yellow>%v</c>", attack.Damage)
 	sb.WriteLinef("AC     : <c yellow>%d</c>", e.data.Stats.AC)
 	sb.WriteNewLine()
 	sb.WriteLinef("Str    : <c yellow>%d</c>", e.data.Stats.Str)

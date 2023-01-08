@@ -5,7 +5,6 @@ import "github.com/chippolot/go-mud/src/utils"
 type StatsConfig struct {
 	HP      Dice
 	AC      int
-	Attack  Dice
 	Speed   int
 	Str     int
 	Dex     int

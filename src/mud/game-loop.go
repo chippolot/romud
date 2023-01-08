@@ -80,7 +80,7 @@ func restoreStats(w *World) {
 		if hpGain > 0 {
 			e.data.Stats.AddHP(hpGain)
 		} else {
-			applyDamage(e, w, nil, -hpGain, Dam_Bleeding)
+			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
 			message = "<c red>You are bleeding!</c>"
 		}
 		e.data.Stats.AddMov(movGain)

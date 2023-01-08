@@ -2,6 +2,7 @@ package mud
 
 import (
 	"log"
+	"math/rand"
 	"strings"
 	"unicode"
 
@@ -24,6 +25,7 @@ type EntityConfig struct {
 	FullDesc     string
 	Perceptibles *PerceptiblesConfig
 	Stats        *StatsConfig
+	Attacks      []*AttackConfig
 	Flags        EntityFlags
 	lookup       map[string]bool
 }
@@ -32,6 +34,11 @@ func (cfg *EntityConfig) Init() {
 	cfg.lookup = make(map[string]bool)
 	for _, s := range cfg.Keywords {
 		cfg.lookup[strings.ToLower(s)] = true
+	}
+	for _, a := range cfg.Attacks {
+		if a.Weight == 0 {
+			a.Weight = 1
+		}
 	}
 }
 
@@ -97,6 +104,25 @@ func (e *Entity) NameCapitalized() string {
 	arr := []rune(e.Name())
 	arr[0] = unicode.ToUpper(arr[0])
 	return string(arr)
+}
+
+func (e *Entity) RandomAttack() *AttackConfig {
+	// Calc total weight
+	sum := float32(0)
+	for _, a := range e.cfg.Attacks {
+		sum += a.Weight
+	}
+
+	// Weighted selection
+	rnd := rand.Float32() * sum
+	for _, a := range e.cfg.Attacks {
+		if rnd <= a.Weight {
+			return a
+		}
+		rnd -= a.Weight
+	}
+	log.Panicf("failed to select random atttack for entity %s", e.Name())
+	return nil
 }
 
 func (e *Entity) AddItem(item *Item) {

@@ -66,6 +66,7 @@
         [x] Restore stats
 ----------------------------------------
 [] Heal on login after time
+[] Scavengers
 [] Spawning
     [x] Debug command
     [] Data driven
@@ -75,6 +76,9 @@
     [] Weapons
     [] Weapon dependent messages
     [] More 5E combat options
+    [] Attack type strengths / weaknesses
+    [] Multi-attack
+    [] Multiple damage per attack
 [] Positions p2
     [] Look descriptions
 [] Items p2

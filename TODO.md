@@ -59,6 +59,7 @@
     [x] Damage dependent messages
     [x] Corpses
     [x] Leave corpse on death
+    [x] Hit and damage bonuses
 [x] Positions p1
     [x] Limit actions
     [x] Rest + Sleep actions
@@ -71,10 +72,8 @@
 [] Combat p2
     [] Mobs can fill corpse from random table
     [] Kick to the ground
-    [] Hit and damage bonuses
     [] Weapons
     [] Weapon dependent messages
-    [] Look descriptions
     [] More 5E combat options
 [] Positions p2
     [] Look descriptions

@@ -69,9 +69,16 @@
 [x] Spawning - Debug command
 [x] "get all corpse"
 [x] Heal on login after time
+[x] Aliases
 ----------------------------------------
-[] Spawning - Data driven
-[] Aliases
+[] Spawning - Data drives
+[] Stacking + Merging items
+[] Give command
+[] Search
+    [] Require double quotes for entity disambiguation
+    [] Support all for put
+    [] Support all for give
+    [] Support all for drop
 [] Items
     [] Gold / Stacking
     [] Equipment

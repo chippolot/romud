@@ -34,7 +34,7 @@ func init() {
 		{DoAdvance, []string{"advance"}, "Advances up to the next experience level", "advance", false, Cnd_Healthy, Pos_Sitting},
 		{DoAlias, []string{"alias"}, "Creates a new alias which expands to the subsequent text. If run alone, lists current aliases.", "alias gac get all corpse", true, 0, 0},
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
-		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
+		{DoListCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
 		{DoDrop, []string{"drop"}, "Drops an item", "drop sword", true, Cnd_Healthy, Pos_Sitting},
 		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", true, Cnd_Healthy, Pos_Sitting},
 		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
@@ -50,7 +50,7 @@ func init() {
 		{DoSleep, []string{"sleep"}, "Fall asleep to refresh yourself", "sleep", false, Cnd_Healthy, Pos_Sleeping},
 		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},
-		{DoStatus, []string{"status"}, "Displays status for the current player", "status", true, 0, 0},
+		{DoStatus, []string{"st", "status"}, "Displays status for the current player", "status", true, 0, 0},
 		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoUnalias, []string{"unalias"}, "Removes an existing alias", "unalias", true, 0, 0},
@@ -327,7 +327,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 	itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
 	items := e.SearchItems(itemQuery)
 	if len(items) == 0 {
-		SendToPlayer(e, "You don't see '%s' here", itemQuery.Joined)
+		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Joined)
 		return
 	} else if len(items) == 1 && items[0] == container {
 		SendToPlayer(e, "You can't put that in itself!")
@@ -639,7 +639,7 @@ func DoStatus(e *Entity, w *World, _ []string) {
 	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.Mov, e.data.Stats.MaxMov)
 	sb.WriteNewLine()
 	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", GetAbilityModifier(e.data.Stats.Str)+ProficiencyChart[e.data.Stats.Level])
-	sb.WriteLinef("Attack : <c yellow>%v</c>", attack.Damage)
+	sb.WriteLinef("Attack : %s", attack.Damage.StringColorized("yellow"))
 	sb.WriteLinef("AC     : <c yellow>%d</c>", e.data.Stats.AC)
 	sb.WriteNewLine()
 	sb.WriteLinef("Str    : <c yellow>%d</c>", e.data.Stats.Str)
@@ -648,6 +648,8 @@ func DoStatus(e *Entity, w *World, _ []string) {
 	sb.WriteLinef("Int    : <c yellow>%d</c>", e.data.Stats.Int)
 	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.data.Stats.Wis)
 	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.data.Stats.Cha)
+	sb.WriteNewLine()
+	sb.WriteLinef("Carry  : <c yellow>%d</c>/<c yellow>%d</c>", e.ItemWeight(), e.data.Stats.CarryingCapacity())
 	sb.WriteString(utils.HorizontalDivider)
 	SendToPlayer(e, sb.String())
 }
@@ -675,22 +677,22 @@ func DoMove(e *Entity, w *World, tokens []string) {
 	_ = performMove(e, w, dir)
 }
 
-func DoCommands(e *Entity, _ *World, _ []string) {
-	commands := make([]string, 0)
-
-	commands = append(commands, "Available Commands:")
-	commands = append(commands, utils.HorizontalDivider)
+func DoListCommands(e *Entity, _ *World, _ []string) {
+	var sb utils.StringBuilder
+	sb.WriteLine("Available Commands:")
+	sb.WriteHorizontalDivider()
 	for _, cmd := range Commands {
 		if len(cmd.aliases) == 1 {
-			commands = append(commands, fmt.Sprintf("%s:", cmd.aliases[0]))
+			sb.WriteLinef("%-20s%s", cmd.aliases[0], cmd.desc)
 		} else {
-			commands = append(commands, fmt.Sprintf("[%s]:", strings.Join(cmd.aliases, ",")))
+			lines := utils.LineBreak(strings.Join(cmd.aliases, ","), 15, ",")
+			for i := 0; i < len(lines)-1; i++ {
+				sb.WriteLine(lines[i])
+			}
+			sb.WriteLinef("%-20s%s", lines[len(lines)-1], cmd.desc)
 		}
-		commands = append(commands, fmt.Sprintf("\t%s", cmd.desc))
-		commands = append(commands, fmt.Sprintf("\tUsage: %s", cmd.usage))
 	}
-
-	SendToPlayer(e, strings.Join(commands, utils.NewLine))
+	SendToPlayer(e, sb.String())
 }
 
 func DoSave(e *Entity, w *World, _ []string) {
@@ -807,6 +809,11 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 		// Can't pick up environmental items
 		if item.cfg.Flags.Has(IFlag_Environmental) {
 			SendToPlayer(e, "You can't pick that up!")
+			continue
+		}
+
+		if e.ItemWeight()+item.ItemWeight() > e.data.Stats.CarryingCapacity() {
+			SendToPlayer(e, "You can't hold the weight of %s", item.Name())
 			continue
 		}
 

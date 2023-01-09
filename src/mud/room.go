@@ -80,7 +80,7 @@ func (r *Room) SearchEntities(query SearchQuery) []*Entity {
 }
 
 func (r *Room) AllEntities() []*Entity {
-	ents := make([]*Entity, len(r.entities))
+	ents := make([]*Entity, 0, len(r.entities))
 	for _, e := range r.entities {
 		ents = append(ents, e)
 	}
@@ -102,11 +102,19 @@ func (r *Room) SearchItems(query SearchQuery) []*Item {
 }
 
 func (r *Room) AllItems() []*Item {
-	items := make([]*Item, 0)
+	items := make([]*Item, 0, len(r.items))
 	for _, i := range r.items {
 		items = append(items, i)
 	}
 	return items
+}
+
+func (r *Room) ItemWeight() int {
+	w := 0
+	for _, i := range r.items {
+		w += i.cfg.Weight
+	}
+	return w
 }
 
 func (r *Room) RemoveItem(i *Item) {

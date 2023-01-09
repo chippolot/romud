@@ -72,6 +72,10 @@ func (d *Dice) String() string {
 	return fmt.Sprintf("%dd%d+%d", d.Num, d.Sides, d.Plus)
 }
 
+func (d *Dice) StringColorized(color string) string {
+	return fmt.Sprintf("<c %s>%d</c>d<c %s>%d</c>+<c %s>%d</c>", color, d.Num, color, d.Sides, color, d.Plus)
+}
+
 func (d *Dice) UnmarshalJSON(data []byte) (err error) {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {

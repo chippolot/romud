@@ -146,6 +146,14 @@ func (e *Entity) AllItems() []*Item {
 	return e.inventory
 }
 
+func (e *Entity) ItemWeight() int {
+	w := 0
+	for _, i := range e.AllItems() {
+		w += i.cfg.Weight
+	}
+	return w
+}
+
 func (e *Entity) RemoveItem(item *Item) {
 	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
 		e.inventory = utils.SwapDelete(e.inventory, idx)

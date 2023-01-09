@@ -73,6 +73,10 @@ func (s *StatsData) AddXP(delta int) {
 	s.XP += delta
 }
 
+func (s *StatsData) CarryingCapacity() int {
+	return s.Str * 15
+}
+
 func (s *StatsData) MaxStatType(stats ...StatType) StatType {
 	maxStat := stats[0]
 	maxVal := s.GetStat(stats[0])

@@ -2,17 +2,26 @@
     "Key": "woodshortsword",
     "Name": "a wooden short sword",
     "Keywords": ["wooden", "short", "sword"],
-    "RoomDesc": "A wooden short sword lies discarded on the ground."
+    "RoomDesc": "A wooden short sword lies discarded on the ground.",
+    "Weight": 15
 }, {
     "Key": "bag",
     "Name": "a small bag",
     "Keywords": ["small", "bag"],
     "RoomDesc": "A small bag is here.",
-    "Flags": ["container"]
+    "Flags": ["container"],
+    "Weight": 5
 }, {
     "Key": "ancientscroll",
     "Name": "an ancient scroll",
     "Keywords": ["ancient", "scroll"],
     "RoomDesc": "An ancient scroll is resting here. It looks ready to disintegrate at the lightest touch.",
-    "Flags": ["crumbles"]
+    "Flags": ["crumbles"],
+    "Weight": 1
+}, {
+    "Key": "anvil",
+    "Name": "an iron anvil",
+    "Keywords": ["anvil"],
+    "RoomDesc": "An iron anvil sits here. It looks pretty heavy.",
+    "Weight": 250
 }]

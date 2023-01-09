@@ -25,6 +25,7 @@ type ItemConfig struct {
 	Perceptibles *PerceptiblesConfig
 	Flags        ItemFlags
 	Value        int
+	Weight       int
 	lookup       map[string]bool
 }
 
@@ -45,6 +46,7 @@ type ItemContainer interface {
 	AddItem(item *Item)
 	SearchItems(query SearchQuery) []*Item
 	AllItems() []*Item
+	ItemWeight() int
 	RemoveItem(item *Item)
 }
 
@@ -130,6 +132,14 @@ func (i *Item) SearchItems(query SearchQuery) []*Item {
 
 func (i *Item) AllItems() []*Item {
 	return i.contents
+}
+
+func (i *Item) ItemWeight() int {
+	w := i.cfg.Weight
+	for _, i2 := range i.AllItems() {
+		w += i2.cfg.Weight
+	}
+	return w
 }
 
 func (i *Item) RemoveItem(item *Item) {

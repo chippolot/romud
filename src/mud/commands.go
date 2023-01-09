@@ -3,6 +3,7 @@ package mud
 import (
 	"fmt"
 	"log"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -31,6 +32,7 @@ func init() {
 	Commands = []*CommandDesc{
 		{DoAdmin, []string{"admin"}, "Runs an admin command", "admin {command} {params}", true, 0, 0},
 		{DoAdvance, []string{"advance"}, "Advances up to the next experience level", "advance", false, Cnd_Healthy, Pos_Sitting},
+		{DoAlias, []string{"alias"}, "Creates a new alias which expands to the subsequent text. If run alone, lists current aliases.", "alias gac get all corpse", true, 0, 0},
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
 		{DoCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
 		{DoDrop, []string{"drop"}, "Drops an item", "drop sword", true, Cnd_Healthy, Pos_Sitting},
@@ -51,6 +53,7 @@ func init() {
 		{DoStatus, []string{"status"}, "Displays status for the current player", "status", true, 0, 0},
 		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo", false, Cnd_Healthy, Pos_Sitting},
+		{DoUnalias, []string{"unalias"}, "Removes an existing alias", "unalias", true, 0, 0},
 		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
 		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
 		{DoWho, []string{"who"}, "Lists all online players", "who", true, 0, 0},
@@ -70,8 +73,14 @@ func init() {
 
 func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 	cmd := strings.ToLower(tokens[0])
-
 	tokens[0] = cmd
+
+	if e.player != nil {
+		if alias, ok := e.player.data.Aliases[cmd]; ok {
+			return ProcessCommand(e, w, append(strings.Split(alias, " "), tokens[1:]...))
+		}
+	}
+
 	if cmdDesc, ok := CommandsLookup[cmd]; ok {
 		// TODO Check if command can be performed in current state
 		if e.combat != nil && !cmdDesc.allowDuringCombat {
@@ -247,7 +256,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		containerQuery := NewSearchQuery(lowerTokens(containerToks)...)
 		contianers := SearchItems(containerQuery, e, r)
 		if len(contianers) == 0 {
-			SendToPlayer(e, "You see %s here", containerQuery.Joined)
+			SendToPlayer(e, "You don't see '%s' here", containerQuery.Joined)
 			return
 		}
 
@@ -318,7 +327,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 	itemQuery := NewSearchQuery(lowerTokens(tokens[1:idx])...)
 	items := e.SearchItems(itemQuery)
 	if len(items) == 0 {
-		SendToPlayer(e, "You don't see %s here", itemQuery.Joined)
+		SendToPlayer(e, "You don't see '%s' here", itemQuery.Joined)
 		return
 	} else if len(items) == 1 && items[0] == container {
 		SendToPlayer(e, "You can't put that in itself!")
@@ -505,6 +514,51 @@ func DoSmell(e *Entity, w *World, tokens []string) {
 			SendToPlayer(e, desc)
 		} else {
 			SendToPlayer(e, "You don't want to smell that!")
+		}
+	}
+}
+
+func DoAlias(e *Entity, w *World, tokens []string) {
+	if e.player == nil {
+		return
+	}
+	switch len(tokens) {
+	case 0, 1:
+		var sb utils.StringBuilder
+		sb.WriteLine("Current Aliases")
+		sb.WriteHorizontalDivider()
+		aliasKeys := utils.Keys(e.player.data.Aliases)
+		sort.Strings(aliasKeys)
+		for _, aKey := range aliasKeys {
+			sb.WriteLinef("  %s -> %s", aKey, e.player.data.Aliases[aKey])
+		}
+		SendToPlayer(e, sb.String())
+	case 2:
+		SendToPlayer(e, "What do you want %s to expand to?", tokens[1])
+	default:
+		if _, ok := CommandsLookup[tokens[1]]; ok {
+			SendToPlayer(e, "Cannot add alias %s -- command already exists", tokens[1])
+			return
+		}
+		e.player.data.Aliases[tokens[1]] = strings.Join(tokens[2:], " ")
+		SendToPlayer(e, "Added alias for %s", tokens[1])
+	}
+}
+
+func DoUnalias(e *Entity, w *World, tokens []string) {
+	if e.player == nil {
+		return
+	}
+	switch len(tokens) {
+	case 0, 1:
+		SendToPlayer(e, "What do you want to unalias?")
+	default:
+		aliasKey := tokens[1]
+		if _, ok := e.player.data.Aliases[aliasKey]; !ok {
+			SendToPlayer(e, "You don't have an alias for %s", tokens[1])
+		} else {
+			delete(e.player.data.Aliases, aliasKey)
+			SendToPlayer(e, "Removed alias for %s", tokens[1])
 		}
 	}
 }

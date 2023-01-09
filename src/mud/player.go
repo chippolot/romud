@@ -21,6 +21,7 @@ type PlayerData struct {
 	Name        string
 	Gender      Gender
 	LastSavedAt time.Time
+	Aliases     map[string]string
 }
 
 type Player struct {
@@ -31,8 +32,15 @@ type Player struct {
 
 func NewPlayer(session *server.Session) *Player {
 	playerIdCounter++
-	p := &Player{id: playerIdCounter, data: &PlayerData{Gender: Male}, session: session}
+	p := &Player{id: playerIdCounter, data: &PlayerData{Gender: Male, Aliases: make(map[string]string)}, session: session}
 	return p
+}
+
+func (p *Player) SetData(data *PlayerData) {
+	p.data = data
+	if data.Aliases == nil {
+		data.Aliases = make(map[string]string)
+	}
 }
 
 func (p *Player) Send(format string, a ...any) {

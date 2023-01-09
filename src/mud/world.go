@@ -66,7 +66,7 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 	// Create character entity
 	e := w.CreatePlayerCharacter(name, player)
 	e.SetData(data.Character, w)
-	e.player.data = data.Player
+	e.player.SetData(data.Player)
 
 	// Heal up
 	timeSinceSave := time.Now().UTC().Sub(e.player.data.LastSavedAt)

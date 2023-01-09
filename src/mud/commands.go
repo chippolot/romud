@@ -43,6 +43,7 @@ func init() {
 		{DoQuit, []string{"quit"}, "Quits the game", "quit", false, 0, 0}, // TODO handle this here!
 		{DoSave, []string{"save"}, "Saves the game", "save", false, Cnd_Healthy, 0},
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi", true, Cnd_Healthy, Pos_Prone},
+		{DoShove, []string{"shove"}, "Attempts to shove an opponent during combat. If successful, opponent is knocked down.", "shove goblin", true, Cnd_Healthy, Pos_Standing},
 		{DoSit, []string{"sit"}, "Sit down on the ground", "sit", false, Cnd_Healthy, Pos_Prone},
 		{DoSleep, []string{"sleep"}, "Fall asleep to refresh yourself", "sleep", false, Cnd_Healthy, Pos_Sleeping},
 		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo", false, Cnd_Healthy, Pos_Sitting},
@@ -169,29 +170,49 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 }
 
 func DoAttack(e *Entity, w *World, tokens []string) {
-	switch len(tokens) {
-	case 1:
+	if len(tokens) < 2 {
 		SendToPlayer(e, "What do you want to attack?")
-	default:
-		r := w.rooms[e.data.RoomId]
-		q := NewSearchQuery(lowerTokens(tokens[1:])...)
-		tgts := r.SearchEntities(q)
-		if len(tgts) == 0 {
-			SendToPlayer(e, "They don't seem to be here...")
-			return
-		}
-		tgt := tgts[0]
-		if tgt == e {
-			SendToPlayer(e, "Stop hitting yourself!")
-			BroadcastToRoomExcept(r, e, "%s hits %sself??", e.Name(), e.player.data.Gender.GetObjectPronoun())
-			return
-		}
-		if e.data.Stats.Condition() <= Cnd_Stunned {
-			SendToPlayer(e, "You're in no condition to fight!")
-			return
-		}
-		performAttack(e, w, tgt)
+		return
 	}
+
+	r := w.rooms[e.data.RoomId]
+	q := NewSearchQuery(lowerTokens(tokens[1:])...)
+	tgts := r.SearchEntities(q)
+	if len(tgts) == 0 {
+		SendToPlayer(e, "They don't seem to be here...")
+		return
+	}
+	tgt := tgts[0]
+	if tgt == e {
+		SendToPlayer(e, "Stop hitting yourself!")
+		BroadcastToRoomExcept(r, e, "%s hits %sself??", e.Name(), e.Gender().GetObjectPronoun())
+		return
+	}
+	performAttack(e, w, tgt)
+}
+
+func DoShove(e *Entity, w *World, tokens []string) {
+	if len(tokens) < 2 {
+		SendToPlayer(e, "What do you want to shove?")
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+	q := NewSearchQuery(lowerTokens(tokens[1:])...)
+	tgts := r.SearchEntities(q)
+	if len(tgts) == 0 {
+		SendToPlayer(e, "They don't seem to be here...")
+		return
+	}
+
+	tgt := tgts[0]
+	if tgt == e {
+		SendToPlayer(e, "Good luck with that!")
+		BroadcastToRoomExcept(r, e, "%s tries to showve %sself but just ends up looking ridiculous", e.Name(), e.Gender().GetObjectPronoun())
+		return
+	}
+
+	performShove(e, w, tgt)
 }
 
 func DoGet(e *Entity, w *World, tokens []string) {
@@ -740,14 +761,16 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 
 		// Some items crumble!
 		if item.cfg.Flags.Has(IFlag_Crumbles) {
+			SendToPlayer(e, "%s crumbles to dust as you touch it", item.NameCapitalized())
+			BroadcastToRoomExcept(r, e, "%s crumbles to dust as %s touches it", item.NameCapitalized(), e.Name())
+
 			// Drop all items in parent container
 			if item.cfg.Flags.Has(IFlag_Container) {
 				for _, i2 := range item.RemoveAllFromContainer() {
 					from.AddItem(i2)
+					BroadcastToRoom(r, "%s falls to the floor", i2.Name())
 				}
 			}
-			SendToPlayer(e, "%s crumbles to dust as you touch it", item.NameCapitalized())
-			BroadcastToRoomExcept(r, e, "%s crumbles to dust as %s touches it", item.NameCapitalized(), e.Name())
 			continue
 		} else {
 			// Finish transfer and notify

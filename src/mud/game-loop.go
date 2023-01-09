@@ -14,7 +14,7 @@ type UpdateSystem struct {
 }
 
 func (s *UpdateSystem) Update(w *World) {
-	now := time.Now()
+	now := time.Now().UTC()
 	nextUpdate := s.last.Add(s.freq)
 	if now.Before(nextUpdate) {
 		return
@@ -25,12 +25,12 @@ func (s *UpdateSystem) Update(w *World) {
 
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
-		{restoreStats, time.Second * 10, time.Now().Add(randSec(3))},
-		{scavengerNPCs, time.Second * 3, time.Now().Add(randSec(3))},
-		{wanderNPCs, time.Second * 3, time.Now().Add(randSec(3))},
-		{runCombat, time.Second, time.Now().Add(randSec(3))},
-		{logoutTheDead, time.Millisecond, time.Now().Add(randSec(3))},
-		{flushPlayerOuput, time.Millisecond, time.Now().Add(randSec(3))},
+		{restoreStats, time.Second * 10, time.Now().UTC().Add(randSec(3))},
+		{scavengerNPCs, time.Second * 3, time.Now().UTC().Add(randSec(3))},
+		{wanderNPCs, time.Second * 3, time.Now().UTC().Add(randSec(3))},
+		{runCombat, time.Second, time.Now().UTC().Add(randSec(3))},
+		{logoutTheDead, time.Millisecond, time.Now().UTC().Add(randSec(3))},
+		{flushPlayerOuput, time.Millisecond, time.Now().UTC().Add(randSec(3))},
 	}
 
 	for {
@@ -187,7 +187,7 @@ func scavengerNPCs(w *World) {
 }
 
 func runCombat(w *World) {
-	now := time.Now()
+	now := time.Now().UTC()
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
@@ -201,7 +201,7 @@ func runCombat(w *World) {
 		// Handle attack
 		nextAttack := e.combat.nextAttack
 		if now.After(nextAttack) {
-			performAttack(e, w, e.combat.target)
+			runCombatLogic(e, w, e.combat.target)
 			e.combat.nextAttack = e.combat.nextAttack.Add(e.combat.AttackCooldown())
 		}
 		i = i.Next

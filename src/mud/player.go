@@ -2,6 +2,7 @@ package mud
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/chippolot/go-mud/src/mud/server"
 	"github.com/chippolot/go-mud/src/utils"
@@ -17,8 +18,9 @@ type PlayerCharacterData struct {
 }
 
 type PlayerData struct {
-	Name   string
-	Gender Gender
+	Name        string
+	Gender      Gender
+	LastSavedAt time.Time
 }
 
 type Player struct {

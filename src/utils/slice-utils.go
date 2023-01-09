@@ -9,13 +9,6 @@ func FindIndex[T comparable](s []T, v T) int {
 	return -1
 }
 
-func AddUnique[T comparable](s []T, v T) []T {
-	if FindIndex(s, v) == -1 {
-		return append(s, v)
-	}
-	return s
-}
-
 func SwapDelete[T any](s []T, idx int) []T {
 	c := len(s)
 	s[idx] = s[c-1]

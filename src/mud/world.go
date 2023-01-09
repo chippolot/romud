@@ -3,6 +3,7 @@ package mud
 import (
 	"log"
 	"strings"
+	"time"
 
 	"github.com/chippolot/go-mud/src/mud/server"
 )
@@ -67,6 +68,11 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 	e.SetData(data.Character, w)
 	e.player.data = data.Player
 
+	// Heal up
+	timeSinceSave := time.Now().UTC().Sub(e.player.data.LastSavedAt)
+	hpPerMin := 15
+	e.data.Stats.AddHP(int(timeSinceSave.Minutes() * float64(hpPerMin)))
+
 	return e, nil
 }
 
@@ -76,6 +82,9 @@ func (w *World) SavePlayerCharacter(pid PlayerId) {
 		log.Printf("failed to resolve player entity for player %v", pid)
 		return
 	}
+
+	// Record last save time
+	e.player.data.LastSavedAt = time.Now().UTC()
 
 	data := &PlayerCharacterData{e.player.data, e.data}
 	go func() {

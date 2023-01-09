@@ -20,6 +20,7 @@ type EntityConfigList []*EntityConfig
 type EntityConfig struct {
 	Key          string
 	Name         string
+	Gender       Gender
 	Keywords     []string
 	RoomDesc     string
 	FullDesc     string
@@ -98,6 +99,13 @@ func (e *Entity) Name() string {
 		return e.player.data.Name
 	}
 	return e.cfg.Name
+}
+
+func (e *Entity) Gender() Gender {
+	if e.player != nil {
+		return e.player.data.Gender
+	}
+	return e.cfg.Gender
 }
 
 func (e *Entity) NameCapitalized() string {

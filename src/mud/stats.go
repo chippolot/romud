@@ -2,6 +2,17 @@ package mud
 
 import "github.com/chippolot/go-mud/src/utils"
 
+type StatType int
+
+const (
+	Stat_Str StatType = iota
+	Stat_Dex
+	Stat_Con
+	Stat_Int
+	Stat_Wis
+	Stat_Cha
+)
+
 type StatsConfig struct {
 	HP      Dice
 	AC      int
@@ -62,6 +73,37 @@ func (s *StatsData) AddXP(delta int) {
 	s.XP += delta
 }
 
+func (s *StatsData) MaxStatType(stats ...StatType) StatType {
+	maxStat := stats[0]
+	maxVal := s.GetStat(stats[0])
+	for _, stat := range stats {
+		val := s.GetStat(stat)
+		if val > maxVal {
+			maxStat = stat
+			maxVal = val
+		}
+	}
+	return maxStat
+}
+
+func (s *StatsData) GetStat(stat StatType) int {
+	switch stat {
+	case Stat_Str:
+		return s.Str
+	case Stat_Dex:
+		return s.Dex
+	case Stat_Con:
+		return s.Con
+	case Stat_Int:
+		return s.Int
+	case Stat_Wis:
+		return s.Wis
+	case Stat_Cha:
+		return s.Cha
+	}
+	return 0
+}
+
 func (s *StatsData) Condition() Condition {
 	if s.HP < -10 {
 		return Cnd_Dead
@@ -103,6 +145,12 @@ func (s *StatsData) ConditionShortString() string {
 			return "<c red>awful condition</c>"
 		}
 	}
+}
+
+func ContestAbility(e *Entity, tgt *Entity, stat StatType) bool {
+	eRoll := D20.Roll() + GetAbilityModifier(e.data.Stats.GetStat(stat))
+	tgtRoll := D20.Roll() + GetAbilityModifier(tgt.data.Stats.GetStat(stat))
+	return eRoll > tgtRoll
 }
 
 const (

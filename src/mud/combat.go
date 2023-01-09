@@ -9,6 +9,14 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
+type AdvantageType int
+
+const (
+	Advantage_None AdvantageType = iota
+	Advantage_Advantage
+	Advantage_Disadvantage
+)
+
 type DamageType int
 
 const (
@@ -91,9 +99,17 @@ const (
 	DamCtx_Admin = 999
 )
 
+type CombatSkill int
+
+const (
+	CombatSkill_None CombatSkill = iota
+	CombatSkill_Shove
+)
+
 type CombatData struct {
-	target     *Entity
-	nextAttack time.Time
+	target         *Entity
+	nextAttack     time.Time
+	requestedSkill CombatSkill
 }
 
 func (c *CombatData) Valid(e *Entity) bool {
@@ -112,23 +128,24 @@ type CombatList struct {
 	utils.List[*Entity]
 }
 
-func (c *CombatList) StartCombat(e *Entity, tgt *Entity) {
+func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 	// Already fighting!
 	if e.combat != nil && e.combat.target == tgt {
-		return
+		return false
 	}
 	// Can't fight when you're dead!
 	if e.data.Stats.Condition() <= Cnd_Stunned || tgt.data.Stats.Condition() == Cnd_Dead {
-		return
+		return false
 	}
 	log.Printf("%s starting combat with %s", e.Name(), tgt.Name())
 
 	if e.combat != nil {
 		e.combat.target = tgt
 	} else if !c.Contains(e) {
-		e.combat = &CombatData{tgt, time.Now()}
+		e.combat = &CombatData{tgt, time.Now().UTC(), CombatSkill_None}
 		c.Add(e)
 	}
+	return true
 }
 
 func (c *CombatList) EndCombat(e *Entity) {
@@ -140,47 +157,144 @@ func (c *CombatList) EndCombat(e *Entity) {
 	e.combat = nil
 }
 
-func performAttack(e *Entity, w *World, tgt *Entity) {
+func validateAttack(e *Entity, tgt *Entity) bool {
 	if e.data.RoomId != tgt.data.RoomId {
-		log.Printf("Trying to hit target %d in different room!", tgt.id)
-		return
+		log.Printf("Trying to attack target %d in different room!", tgt.id)
+		return false
 	}
 	if e.position < Pos_Standing {
 		SendToPlayer(e, "You can't fight while you're knocked down!")
-		return
+		return false
 	}
 	if e.data.Stats.Condition() <= Cnd_Stunned {
+		SendToPlayer(e, "You're in no condition for that!")
+		return false
+	}
+	return true
+}
+
+func performAttack(e *Entity, w *World, tgt *Entity) {
+	if !validateAttack(e, tgt) {
 		return
 	}
 
-	w.inCombat.StartCombat(e, tgt)
-
-	var dam int
-
-	// Select attack
-	attack := e.RandomAttack()
-	toHit := attack.ToHit
-	if e.player != nil {
-		toHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
-	}
-
-	// Roll to hit
-	hitBase := D20.Roll()
-	critMiss := hitBase == 1
-	critHit := hitBase == 20
-	hit := hitBase + toHit
-
-	if (critMiss || hit < tgt.data.Stats.AC) && !critHit {
-		dam = 0
-	} else {
-		// Roll for damage
-		if critHit {
-			dam = attack.Damage.CriticalRoll()
+	// Already in combat
+	if e.combat != nil {
+		// Trying to attack current target!
+		if e.combat.target == tgt {
+			SendToPlayer(e, "You're already fighting them!")
+			// Trying to attack different target. Just update target and wait for next combat round.
 		} else {
-			dam = attack.Damage.Roll()
+			SendToPlayer(e, "You turn to face %s", tgt.Name())
+			e.combat.target = tgt
+		}
+		return
+	} else {
+		if w.inCombat.StartCombat(e, tgt) {
+			runCombatLogic(e, w, tgt)
 		}
 	}
-	applyDamage(tgt, w, e, dam, DamCtx_Melee, attack.DamageType, attack.VerbSingular, attack.VerbPlural)
+}
+
+func performShove(e *Entity, w *World, tgt *Entity) {
+	if !validateAttack(e, tgt) {
+		return
+	}
+
+	if tgt.position != Pos_Standing {
+		SendToPlayer(e, "You can't shove something that isn't standing!")
+	}
+
+	if e.combat != nil {
+		SendToPlayer(e, "You prepare to shove %s", tgt.Name())
+		e.combat.requestedSkill = CombatSkill_Shove
+		if e.combat.target != tgt {
+			SendToPlayer(e, "You turn to face %s", tgt.Name())
+			e.combat.target = tgt
+		}
+	} else {
+		if w.inCombat.StartCombat(e, tgt) {
+			e.combat.requestedSkill = CombatSkill_Shove
+			runCombatLogic(e, w, tgt)
+		}
+	}
+}
+
+func runCombatLogic(e *Entity, w *World, tgt *Entity) {
+	if e == tgt {
+		log.Panic("trying to run combat against self?")
+		return
+	}
+
+	// Not ready to attack
+	if e.combat == nil || e.combat.nextAttack.After(time.Now().UTC()) {
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+
+	if e.position < Pos_Standing {
+		e.position = Pos_Standing
+		SendToPlayer(e, "You scramble to your feet")
+		BroadcastToRoomExcept(r, e, "%s scrambles to %s feet", e.Name(), e.Gender().GetPossessivePronoun())
+		return
+	}
+
+	switch e.combat.requestedSkill {
+	case CombatSkill_Shove:
+		// STR or DEX contest
+		if ContestAbility(e, tgt, tgt.data.Stats.MaxStatType(Stat_Str, Stat_Dex)) {
+			tgt.position = Pos_Prone
+			SendToPlayer(e, "You shove %s, knocking %s to the ground", tgt.Name(), tgt.Gender().GetObjectPronoun())
+			SendToPlayer(tgt, "%s shoves you, knocking you to the ground", e.NameCapitalized())
+			BroadcastToRoomExcept(r, e, "%s shoves %s, knocking %s to the ground", e.NameCapitalized(), tgt.Name(), tgt.Gender().GetObjectPronoun())
+		} else {
+			SendToPlayer(e, "You try to shove %s but fail miserably", tgt.Name())
+			SendToPlayer(tgt, "%s tries to shove you but fails miserably", e.NameCapitalized())
+			BroadcastToRoomExcept(r, e, "%s tries to shove %s but fails miserably", e.NameCapitalized(), tgt.Name())
+		}
+	default:
+		var dam int
+
+		// Select attack
+		attack := e.RandomAttack()
+		toHit := attack.ToHit
+		if e.player != nil {
+			toHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
+		}
+
+		// Determine advantage / disadvantage
+		var advantageType AdvantageType
+		if tgt.position < Pos_Standing {
+			advantageType = Advantage_Advantage
+		}
+
+		// Roll to hit
+		hitBase := D20.Roll()
+		if advantageType == Advantage_Advantage {
+			hitBase2 := D20.Roll()
+			hitBase = utils.MaxInts(hitBase, hitBase2)
+		} else if advantageType == Advantage_Disadvantage {
+			hitBase2 := D20.Roll()
+			hitBase = utils.MinInts(hitBase, hitBase2)
+		}
+		critMiss := hitBase == 1
+		critHit := hitBase == 20
+		hit := hitBase + toHit
+
+		if (critMiss || hit < tgt.data.Stats.AC) && !critHit {
+			dam = 0
+		} else {
+			// Roll for damage
+			if critHit {
+				dam = attack.Damage.CriticalRoll()
+			} else {
+				dam = attack.Damage.Roll()
+			}
+		}
+		applyDamage(tgt, w, e, dam, DamCtx_Melee, attack.DamageType, attack.VerbSingular, attack.VerbPlural)
+	}
+	e.combat.requestedSkill = CombatSkill_None
 }
 
 func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, verbSingular string, verbPlural string) int {

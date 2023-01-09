@@ -60,19 +60,30 @@
     [x] Corpses
     [x] Leave corpse on death
     [x] Hit and damage bonuses
+    [x] Kick to the ground
 [x] Positions p1
     [x] Limit actions
     [x] Rest + Sleep actions
         [x] Restore stats
 [x] Scavengers
 [x] Spawning - Debug command
+[x] "get all corpse"
+[x] Heal on login after time
 ----------------------------------------
-[] "get all corpse"
-[] Heal on login after time
 [] Spawning - Data driven
+[] Items
+    [] Gold / Stacking
+    [] Equipment
+        [] Equipment Stats
+    [] Wearing
+    [] Weights
+    [] Looking At
+[] Commands
+    [] Give
 [] Combat
+    [] More Skills!
+        [] Grapple?
     [] Mobs can spawn w/ items from random table
-    [] Kick to the ground
     [] Weapons
     [] Weapon dependent messages
     [] More 5E combat options
@@ -81,17 +92,11 @@
     [] Multiple damage per attack
 [] Positions
     [] Look descriptions
-[] Items
-    [] Gold
-    [] Equipment
-        [] Equipment Stats
-    [] Wearing
-    [] Weights
-    [] Looking At
 [] Shops
 [] Races
 [] Classes
 [] Looking at players
+[] Followers
 [] Doors
 [] Figure out thread safety
 [] Groups

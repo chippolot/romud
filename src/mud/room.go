@@ -14,7 +14,7 @@ type RoomId int32
 type RoomExitsConfig map[Direction]RoomId
 
 func (cfg *RoomExitsConfig) MarshalJSON() ([]byte, error) {
-	arr := make([]RoomExitConfig, 0)
+	arr := make([]RoomExitConfig, 0, len(*cfg))
 	for dir, rid := range *cfg {
 		arr = append(arr, RoomExitConfig{rid, dir})
 	}

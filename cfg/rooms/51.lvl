@@ -45,12 +45,12 @@
   "Desc": "   You walk along a highly ornate city street going north and west.",
   "Exits": [
    {
-    "RoomId": 5101,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5103,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5101,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -109,16 +109,16 @@
   "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a large building.",
   "Exits": [
    {
-    "RoomId": 5107,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5118,
     "Verb": "north"
    },
    {
     "RoomId": 5103,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5107,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -241,16 +241,16 @@
   "Desc": "   You walk along a highly ornate city street leading north-south and east.",
   "Exits": [
    {
-    "RoomId": 5110,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5115,
     "Verb": "north"
    },
    {
     "RoomId": 5117,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5110,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -349,16 +349,16 @@
   "Desc": "   You walk along a highly ornate city street going eastward.  To the north\nis a building.",
   "Exits": [
    {
-    "RoomId": 5117,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5120,
     "Verb": "north"
    },
    {
     "RoomId": 5123,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5117,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -445,20 +445,20 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the north is a obsidian stairway.",
   "Exits": [
    {
-    "RoomId": 5128,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5131,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5135,
     "Verb": "north"
    },
    {
     "RoomId": 5126,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5128,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5131,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -469,12 +469,12 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
   "Exits": [
    {
-    "RoomId": 5127,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5129,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5127,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -485,16 +485,16 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the north is a door.",
   "Exits": [
    {
+    "RoomId": 5150,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5130,
     "Verb": "east"
    },
    {
     "RoomId": 5128,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5150,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -521,12 +521,12 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
   "Exits": [
    {
-    "RoomId": 5132,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5127,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5132,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -537,16 +537,16 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the south is a door.",
   "Exits": [
    {
+    "RoomId": 5131,
+    "Verb": "east"
+   },
+   {
     "RoomId": 5133,
     "Verb": "south"
    },
    {
     "RoomId": 5134,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5131,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -633,16 +633,16 @@
   "Desc": "   You are walking down a grand hallway, heavily decorated with adamantite\nand gold.  To the north the hall goes down a flight of stairs while a door is \nto the west.",
   "Exits": [
    {
-    "RoomId": 5140,
-    "Verb": "down"
-   },
-   {
     "RoomId": 5136,
     "Verb": "south"
    },
    {
     "RoomId": 5139,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5140,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -665,12 +665,12 @@
   "Desc": "   You are climbing a set of obsidian stairs surrounded by adamantite walls.\nTo the north are a set of large golden doors.",
   "Exits": [
    {
-    "RoomId": 5138,
-    "Verb": "up"
-   },
-   {
     "RoomId": 5141,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5138,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -681,16 +681,16 @@
   "Desc": "   This is the south side of a large auditorium used for services by the\ndrow priestesses.  In the center is a large sacrificial pit and beyond that\nis an altar.",
   "Exits": [
    {
+    "RoomId": 5144,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5142,
     "Verb": "east"
    },
    {
     "RoomId": 5140,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5144,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -744,6 +744,10 @@
   "Desc": "   You are standing in front of a highly and freshly bloodstained altar.  \nEngraved on the top of the altar is a giant spider with a human head.  Looking \ndown from the altar you see a large sacrificial pit with thousands of swarming\nspiders looking for their next meal!",
   "Exits": [
    {
+    "RoomId": 5143,
+    "Verb": "down"
+   },
+   {
     "RoomId": 5148,
     "Verb": "north"
    },
@@ -754,10 +758,6 @@
    {
     "RoomId": 5144,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5143,
-    "Verb": "down"
    }
   ],
   "Perceptibles": null

@@ -153,16 +153,16 @@
   "Desc": "   Here the path turns to the west.  You can see a door in front of you,\nand the path continues to the west and south.",
   "Exits": [
    {
-    "RoomId": 6522,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6510,
     "Verb": "north"
    },
    {
     "RoomId": 6508,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6522,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -241,12 +241,12 @@
   "Desc": "   You are on a path in the dwarven village which leads north to the shops\nand south to the corner of the area.",
   "Exits": [
    {
-    "RoomId": 6515,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6513,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6515,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -417,12 +417,12 @@
   "Desc": "   You are just inside the castle.  It is very tubular in shape,\nand it is very featureless.  There is a set of stairs that lead\nup, and the door leads out of the castle to the west.",
   "Exits": [
    {
-    "RoomId": 6512,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6528,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6512,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -509,12 +509,12 @@
   "Desc": "   This is the Queen's waiting room.  Here the men literally\n'wait' for the queen.  You've heard that the queen really\nlikes to get to 'know' her people, in the biblical sense.\n   The Queen's bedroom is to the north, and you can see stairs\nto the west.",
   "Exits": [
    {
-    "RoomId": 6532,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6530,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6532,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -617,12 +617,12 @@
   "Desc": "   You are at the bottom of the mineshaft.  The air here is very sooty, and\nit is very hard to breath.  The mineshaft leads up and east.",
   "Exits": [
    {
-    "RoomId": 6541,
-    "Verb": "up"
-   },
-   {
     "RoomId": 6543,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6541,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -649,10 +649,6 @@
   "Desc": "   You are at a crossroad in the mine.  There is a door to the north,\nand the path continues to the south, east, and west.",
   "Exits": [
    {
-    "RoomId": 6546,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6545,
     "Verb": "east"
    },
@@ -663,6 +659,10 @@
    {
     "RoomId": 6543,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6546,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -685,12 +685,12 @@
   "Desc": "   You have entered the maze of the mines.  To the east you can see\nsome inscriptions, and you can exit to the south.",
   "Exits": [
    {
-    "RoomId": 6544,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6547,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6544,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -701,16 +701,16 @@
   "Desc": "   You are inside the maze, but not far enough in that you could\nget lost.  There is an enscription on the wall which says:\n\n          1    3    2    4\n          N    W    N    S\n\nThis isn't too tough, so don't take it so rough.",
   "Exits": [
    {
+    "RoomId": 6546,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6548,
     "Verb": "north"
    },
    {
     "RoomId": 6544,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6546,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -741,16 +741,16 @@
   "Desc": "   You are in a maze.",
   "Exits": [
    {
+    "RoomId": 6550,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6548,
     "Verb": "north"
    },
    {
     "RoomId": 6548,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6550,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null

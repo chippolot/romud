@@ -197,16 +197,16 @@
   "Desc": "   Here footworn paths meet leading north, south and east.  The trees\nseem to be closing in on you at this point, and you can barely see\nthe sky through the thick branches above your head.",
   "Exits": [
    {
+    "RoomId": 3516,
+    "Verb": "south"
+   },
+   {
     "RoomId": 3507,
     "Verb": "north"
    },
    {
     "RoomId": 3514,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3516,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -217,12 +217,12 @@
   "Desc": "   You are on a north-south trail through the woods.  To the west,\nimpassable mountains glare at you, and the thick woods and undergrowth\nprevent any movement westward.",
   "Exits": [
    {
-    "RoomId": 3508,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3515,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3508,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -233,16 +233,16 @@
   "Desc": "   The trees of Miden'nir are lush and green, hiding the evil that lurks\nin these woods.  You can go north toward the mountains, or west to the\nforest, but the steep mountains prevent any movement east.",
   "Exits": [
    {
+    "RoomId": 3509,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3550,
     "Verb": "north"
    },
    {
     "RoomId": 3513,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3509,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -253,12 +253,12 @@
   "Desc": "   The forest is dark, and becomes even darker west.  You sense\nthat there is something evil hidden in these woods.  The forest\ngets lighter to the north.  The wind kicks up as you ponder your\noptions.",
   "Exits": [
    {
-    "RoomId": 3514,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3512,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3514,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -268,10 +268,6 @@
   "Name": "The Deep Forest",
   "Desc": "   It is quite dark here, forest surrounds you.  With each step, the\nforest seems to close around you, and get darker and more foreboding.\nIt might just be time to head back to somewhere safe.",
   "Exits": [
-   {
-    "RoomId": 3517,
-    "Verb": "south"
-   },
    {
     "RoomId": 3510,
     "Verb": "west"
@@ -283,6 +279,10 @@
    {
     "RoomId": 3513,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3517,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -293,16 +293,16 @@
   "Desc": "   The forest is light here and you can easily pick your way through the \ntrail.  To the east, the forest becomes thick and darker.  South, the\ntrail continues.",
   "Exits": [
    {
-    "RoomId": 3518,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3511,
     "Verb": "north"
    },
    {
     "RoomId": 3516,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3518,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -353,16 +353,16 @@
   "Desc": "   The trail becomes nearly unpassable here.  You can go north\nas the forest is relatively light.  To the south, you can see a\npath.",
   "Exits": [
    {
-    "RoomId": 3515,
-    "Verb": "north"
-   },
-   {
     "RoomId": -1,
     "Verb": "east"
    },
    {
     "RoomId": 3522,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3515,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -373,20 +373,20 @@
   "Desc": "   You are hemmed in by trees on either side of you.  The path\ncontinues north and south, and while is much to thick to explore\nwest, you can head off into the woods to the west.",
   "Exits": [
    {
-    "RoomId": 3516,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3520,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3521,
     "Verb": "south"
    },
    {
     "RoomId": -1,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3516,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3520,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -517,16 +517,16 @@
   "Desc": "   The tunnel gets lighter to the north, presumably leading out, while to\nthe south the passage gets smaller and smaller.  A small alcove has been\ncarved into the east wall.",
   "Exits": [
    {
+    "RoomId": 3555,
+    "Verb": "south"
+   },
+   {
     "RoomId": 3552,
     "Verb": "north"
    },
    {
     "RoomId": 3554,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3555,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -549,12 +549,12 @@
   "Desc": "   As you explore further into the mountainside, the tunnel gets smaller\nand smaller to the south.  You almost have to hunch over to make your way\nthrough this area.  A small archway to the south leads into a large chamber.",
   "Exits": [
    {
-    "RoomId": 3556,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3553,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3556,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -613,16 +613,16 @@
   "Desc": "   You are standing south of the Inn.  You could easily go north and enter\nthrough the front door, or west and to the rear of the establishment.  You\nhere some muffled cries from a tiny trail leading south of here.",
   "Exits": [
    {
+    "RoomId": 3570,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3575,
     "Verb": "south"
    },
    {
     "RoomId": 3573,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3570,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -737,12 +737,12 @@
   "Desc": "   The path continues east and west of here.  You notice fresh tracks in\nthe soft ground that show the horsemen fled to the west.",
   "Exits": [
    {
-    "RoomId": 3575,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3582,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3575,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -753,12 +753,12 @@
   "Desc": "   The path continues east and south.  You notice fresh tracks in the\nsoft ground that show the horsemen turned, and fled south.",
   "Exits": [
    {
-    "RoomId": 3583,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3581,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3583,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null

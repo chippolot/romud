@@ -73,19 +73,18 @@
 [x] Aliases
 ----------------------------------------
 [] Spawning - Data drives
-[] Stacking + Merging items
-[] Give command
-[] Search
-    [] Require double quotes for entity disambiguation
-    [] Support all for put
-    [] Support all for give
-    [] Support all for drop
 [] Items
     [] Gold / Stacking
     [] Equipment
         [] Equipment Stats
     [] Wearing
     [] Looking At
+[] Give command
+[] Search
+    [] Require double quotes for entity disambiguation
+    [] Support all for put
+    [] Support all for give
+    [] Support all for drop
 [] Commands
     [] Give
 [] Combat

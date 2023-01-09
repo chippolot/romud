@@ -89,12 +89,12 @@
   "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as rats, wolves, and humans.",
   "Exits": [
    {
-    "RoomId": 6305,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6307,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6305,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -121,20 +121,20 @@
   "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as cats, dogs, and humans.",
   "Exits": [
    {
-    "RoomId": 6305,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 6309,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6307,
     "Verb": "north"
    },
    {
     "RoomId": 6306,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6305,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6309,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -241,10 +241,6 @@
   "Desc": "   Stranger still.  Your feet get a real firm grip on the spiderline.\nYou are above a deep ravine.  This line connects you between two trees.\nBelow you can see a prismatic web with lots of animal bones caught in it:\nsome bear and small deer bones in fact.  No human skeletons are visible \n(yet).",
   "Exits": [
    {
-    "RoomId": 6321,
-    "Verb": "up"
-   },
-   {
     "RoomId": 6320,
     "Verb": "east"
    },
@@ -255,6 +251,10 @@
    {
     "RoomId": 6322,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6321,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -265,12 +265,12 @@
   "Desc": "   The trees here take on a different appearance -- they are not trees\nanymore, but disjointed make-shift silken made shafts, sticky to the\ntouch, and webby in texture.  This is another world it would appear.",
   "Exits": [
    {
-    "RoomId": 6321,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6324,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6321,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -369,10 +369,6 @@
   "Desc": "   Large strands connect at this point.  The node shimmers and\nflickers within the ether.  You see many flying creatures --\ninsects, pegasi, and dragon wormkins -- navigate the dangerous\npassages of the web.  Exits go in many directions.",
   "Exits": [
    {
-    "RoomId": 6332,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6333,
     "Verb": "south"
    },
@@ -383,6 +379,10 @@
    {
     "RoomId": 6330,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6332,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -413,16 +413,16 @@
   "Desc": "   You can see all of Midgaard in this ethereal web.  Many\nof the larger dragons that do wish to fly seem to fly away\nfrom the sticky strands of the web.",
   "Exits": [
    {
-    "RoomId": 6335,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6331,
     "Verb": "east"
    },
    {
     "RoomId": 6334,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6335,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -461,16 +461,16 @@
   "Desc": "   Very windy here since it goes up into the sky somewhat.  Still, it\nis safe enough to move around.",
   "Exits": [
    {
-    "RoomId": 6340,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6341,
     "Verb": "west"
    },
    {
     "RoomId": 6331,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6340,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -493,16 +493,16 @@
   "Desc": "   Once again the web crosses another tree limb.  To the side you\nsee the possible entrance to another creature's lair.",
   "Exits": [
    {
+    "RoomId": 6345,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6342,
     "Verb": "east"
    },
    {
     "RoomId": 6334,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6345,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -545,6 +545,10 @@
   "Desc": "   This is a quiet tree top.  Downwards you can see a familiar path\nthat may lead back to Midgaard.",
   "Exits": [
    {
+    "RoomId": 6346,
+    "Verb": "east"
+   },
+   {
     "RoomId": 6347,
     "Verb": "west"
    },
@@ -555,10 +559,6 @@
    {
     "RoomId": 6355,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6346,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -780,12 +780,12 @@
   "Desc": "   Before you you see a large, web-like door.  Various designs\nof ancient runes and names of Midgaard heroes are etched into\nthe webwork.  Perhaps lists of victims?  You can't tell.  ",
   "Exits": [
    {
-    "RoomId": 6399,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6391,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6399,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null

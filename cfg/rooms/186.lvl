@@ -37,16 +37,16 @@
   "Desc": "   You continue wandering down the hallway.  Nothing much different here,\nbut you are positive you here noises behind the door to the south, and\ncoming from the east.  The walls are a bit slimy and moldy here... yeech,\ncouldn't they hire someone to clean this place?  What will the newbies\nthink?  Oh well, you can continue along the hallway to the east or west.",
   "Exits": [
    {
+    "RoomId": 18601,
+    "Verb": "west"
+   },
+   {
     "RoomId": 18603,
     "Verb": "east"
    },
    {
     "RoomId": 18606,
     "Verb": "south"
-   },
-   {
-    "RoomId": 18601,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -57,20 +57,20 @@
   "Desc": "   Well... you've reached an intersection of two passages, to the north\nand east, the passage brightens, while the darker hallway continues to\nthe south.",
   "Exits": [
    {
-    "RoomId": 18602,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 18644,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18646,
     "Verb": "east"
    },
    {
     "RoomId": 18607,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18602,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18644,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -197,16 +197,16 @@
   "Desc": "   Another corner of the passage, and just as untidy as the rest of\nthis place (maybe more so?).  There is a door to the east though...\nwonder where that leads?  Oh, and the hallway continues west and\nnorth.",
   "Exits": [
    {
-    "RoomId": 18610,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18607,
     "Verb": "north"
    },
    {
     "RoomId": 18612,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18610,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -353,10 +353,6 @@
   "Desc": "   Here a narrow east-west passage crosses with a wider passage to the\nnorth and south.  The air is dank, and has an odor of decay and debris.\nNot a nice place at all really...",
   "Exits": [
    {
-    "RoomId": 18623,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18628,
     "Verb": "east"
    },
@@ -367,6 +363,10 @@
    {
     "RoomId": 18626,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18623,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -453,20 +453,20 @@
   "Desc": "   It is dark, dank, disgusting and cold up here.  Plus you here the\nsounds of creatures all around you... and somehow they don't sound\nfriendly.  It is probably wise to exercise some degree of caution\nhere... no telling what you may run into here.",
   "Exits": [
    {
-    "RoomId": 18631,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 18612,
-    "Verb": "up"
-   },
-   {
     "RoomId": 18627,
     "Verb": "north"
    },
    {
     "RoomId": 18635,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18631,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 18612,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -549,12 +549,12 @@
   "Desc": "   The passage turns here and heads north.  You sense something up ahead\nthat way, but you aren't sure what.  You aren't sure if you want to know\nwhat either at this point.",
   "Exits": [
    {
-    "RoomId": 18636,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18634,
     "Verb": "north"
+   },
+   {
+    "RoomId": 18636,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -713,6 +713,10 @@
   "Desc": "   Here, the hall opens into a wide room, with a high domed roof.  Now that\nthat you have come clear of the enclosed passage, you can see that the stair\nleads upward to an open air balcony overlooking the area.  to the north the\nroom continues, and another stair is visible matching the one in front of\nyou.",
   "Exits": [
    {
+    "RoomId": 18645,
+    "Verb": "up"
+   },
+   {
     "RoomId": 18642,
     "Verb": "north"
    },
@@ -723,10 +727,6 @@
    {
     "RoomId": 18646,
     "Verb": "west"
-   },
-   {
-    "RoomId": 18645,
-    "Verb": "up"
    }
   ],
   "Perceptibles": null

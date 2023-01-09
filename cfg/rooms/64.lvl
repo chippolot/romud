@@ -69,12 +69,12 @@
   "Desc": "   The trail leads down into the valley, where, by judging\nby the height of the trees, the lava had cooled tens\nof decades ago.  Down below you see the path lead into\nthe small forest in the valley, and disappear out of\nsight.  East leads into the valley, West back to civilization.",
   "Exits": [
    {
-    "RoomId": 6403,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6405,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6403,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -85,12 +85,12 @@
   "Desc": "   The ground has taken on the texture of dirt on the top,\nbut this valley is far too flat and too rocky to disguise\nthe catastrophe that happened here so long ago.  Looking\nup to the mountains ringing this area, you notice several\nmountains look as if they had 'exploded', which is strange,\nconsidering that they are not volcanos.\n   The path leads into the woods to the east, and back up\nthe mountain to the west.",
   "Exits": [
    {
-    "RoomId": 6406,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6404,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6406,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -197,12 +197,12 @@
   "Desc": "   A great mages' library is contained on this floor of \nthe tower.  You feel you could learn anything you wanted\nto if you only looked and read long enough.  A door\nopens up back on the stairwell to the east.",
   "Exits": [
    {
-    "RoomId": 6414,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6413,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6414,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -233,12 +233,12 @@
   "Desc": "   This is a small hidden hall with a secret entrance to the\nlibrary on the north end of the west wall, and a trapdoor \non the south end.",
   "Exits": [
    {
-    "RoomId": 6412,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6416,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6412,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -281,20 +281,20 @@
   "Desc": "   This hall runs through the tower.  There's more hall to\nthe west, and doors to your north and south.  A door to\nthe east leads back to the stairwell.",
   "Exits": [
    {
-    "RoomId": 6419,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 6415,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6418,
     "Verb": "south"
    },
    {
     "RoomId": 6420,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6419,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6415,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -357,16 +357,16 @@
   "Desc": "   This stairwell leads up and down, and there is a big\nopen room to your west.",
   "Exits": [
    {
-    "RoomId": 6423,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6415,
     "Verb": "up"
    },
    {
     "RoomId": 6425,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6423,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -469,16 +469,16 @@
   "Desc": "   The stairwell continues up and down here.  A large room\nopens up to the west.",
   "Exits": [
    {
+    "RoomId": 6431,
+    "Verb": "down"
+   },
+   {
     "RoomId": 6430,
     "Verb": "west"
    },
    {
     "RoomId": 6425,
     "Verb": "up"
-   },
-   {
-    "RoomId": 6431,
-    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -549,16 +549,16 @@
   "Desc": "   This small hallway on the former 'ground floor' ran north-\nsouth.  To the east is the stairwell that leads up into \nthe shadowy recesses of the tower.  To the west is the\nentrance way to the tower.  The north is completely blocked\noff by lava, and the way south is still clear.",
   "Exits": [
    {
-    "RoomId": 6433,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6437,
     "Verb": "south"
    },
    {
     "RoomId": 6435,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6433,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -677,12 +677,12 @@
   "Desc": "   Stairs lead down here to the second level of the basement,\nor back west to the alcove.",
   "Exits": [
    {
-    "RoomId": 6443,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6440,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6443,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null

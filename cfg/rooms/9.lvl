@@ -21,16 +21,16 @@
   "Desc": "   The river is deep, and runs swiftly in an east-west direction.  To the\nnorth the river eddies and enters a backwash where a small bank extends\ndown from a dark, thick stand of trees.  It doesn't look particulary\ninviting however.",
   "Exits": [
    {
+    "RoomId": 902,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6120,
     "Verb": "north"
    },
    {
     "RoomId": 900,
     "Verb": "east"
-   },
-   {
-    "RoomId": 902,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -73,10 +73,6 @@
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
    {
-    "RoomId": 905,
-    "Verb": "west"
-   },
-   {
     "RoomId": 911,
     "Verb": "north"
    },
@@ -87,6 +83,10 @@
    {
     "RoomId": 906,
     "Verb": "south"
+   },
+   {
+    "RoomId": 905,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -113,20 +113,20 @@
   "Desc": "   You are making your way along a channel in the river delta between\nthe island to the west and the shore to the south and east.  To the\nsouth an aging broken down looking pier juts out from land and toward\nthe west the channel works it way close to the island as it moves around\nits southern tip.",
   "Exits": [
    {
-    "RoomId": 905,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 904,
-    "Verb": "east"
-   },
-   {
     "RoomId": 907,
     "Verb": "south"
    },
    {
     "RoomId": 908,
     "Verb": "west"
+   },
+   {
+    "RoomId": 905,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 904,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -137,12 +137,12 @@
   "Desc": "   You float next to a crumbling pier long since neglected.\nTo the west the water gets sluggish and there are many weeds and\nsome seaweed floating about.",
   "Exits": [
    {
-    "RoomId": 906,
-    "Verb": "north"
-   },
-   {
     "RoomId": 908,
     "Verb": "west"
+   },
+   {
+    "RoomId": 906,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -173,12 +173,12 @@
   "Desc": "   The delta meets the sea here.  To the west you see nothing but\nocean on the horizon.  Sea birds squawk noisily at your approach\nand take flight from a nearby beach head on the island.  It looks\nas though this could be the last stop for those heading out to sea.",
   "Exits": [
    {
-    "RoomId": 910,
-    "Verb": "north"
-   },
-   {
     "RoomId": 908,
     "Verb": "east"
+   },
+   {
+    "RoomId": 910,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -257,12 +257,12 @@
   "Desc": "   Bodies lie everywhere.  Commoner, peasant, duke, duchess.  The Gods\nwill not hear you call here.  Hence they will not answer you.  To the\nsouth the path ends at a dark cave entrance.\nA sign has been posted beside the entrance.",
   "Exits": [
    {
-    "RoomId": 915,
-    "Verb": "south"
-   },
-   {
     "RoomId": 913,
     "Verb": "north"
+   },
+   {
+    "RoomId": 915,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -333,12 +333,12 @@
   "Desc": "   Dare we surmise how many more rooms Minos has?  The paths appear to be\nendless.  You shudder the sounds of death cries from the east.  A loud\nvoice bellows another warning: 'Leave now or face my wrath!'\nThere is a crawlway leading upwards at the far end of the room and\nthere is a fresh breeze comming from there.",
   "Exits": [
    {
-    "RoomId": 921,
-    "Verb": "south"
-   },
-   {
     "RoomId": 923,
     "Verb": "up"
+   },
+   {
+    "RoomId": 921,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null

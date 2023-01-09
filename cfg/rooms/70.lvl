@@ -5,12 +5,12 @@
   "Desc": "   This is a small fissure in the solid rock.  Under you lies the deep dark\npool.  The water trickles quietly down from the ledge above you.  The water\nsmells like the water in a sewer.",
   "Exits": [
    {
-    "RoomId": 7100,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7070,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7100,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -69,12 +69,12 @@
   "Desc": "   You are standing by the edge of a dark pit that leads down into even\ndeeper darkness.  \u003eBWWAAADDRR\u003c - The smell from down there is unbearable.\nThe sewer stretches into the darkness to the east.",
   "Exits": [
    {
-    "RoomId": 7009,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7102,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7009,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -85,12 +85,12 @@
   "Desc": "   You are standing in the middle of a bend of the sewer pipe.  It is very\ndark around here and the mud is sticking to your legs, not very pleasant.\nThe pipe leads east and south from here.",
   "Exits": [
    {
-    "RoomId": 7011,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7006,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7011,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -133,16 +133,16 @@
   "Desc": "   You have both your feet safely stuck in mud.  It isn't the mud that is\nwrong it is the smell, the sounds, the total darkness that surrounds you.\nEverything here is so depressing.  The pipe leads on with a trail of thick\nmud to the north, east and south.",
   "Exits": [
    {
+    "RoomId": 7007,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7014,
     "Verb": "east"
    },
    {
     "RoomId": 7009,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7007,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -193,16 +193,16 @@
   "Desc": "   You have entered a kind of tube intersection that leads south, west\nand east.  Your legs are covered in mud up to the knees.  REAL yucky!  ",
   "Exits": [
    {
-    "RoomId": 7024,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7021,
     "Verb": "south"
    },
    {
     "RoomId": 7005,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7024,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -229,16 +229,16 @@
   "Desc": "   You wouldn't want to know the true feeling of standing in this mud up to\nyour hips.  \u003eBWAADR\u003c.  All that fills your mind right now is the dream of\na hot bath.  This is NOT very clean mud you know, remember you're in the\nsewer!  The pipes leads north, south and east.",
   "Exits": [
    {
+    "RoomId": 7012,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7026,
     "Verb": "east"
    },
    {
     "RoomId": 7014,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7012,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -249,12 +249,12 @@
   "Desc": "   You stand in a bend of the pipe system of the sewer with mud up to your\nthighs.  Contemplating a higher level of existence here would be utterly\ninappropriate, as the smell would keep any intelligent creature from even\nthinking of anything but getting away from this foul end of the WORLD.\nThe bend goes from north to west.",
   "Exits": [
    {
-    "RoomId": 7008,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7013,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7008,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -369,16 +369,16 @@
   "Desc": "   You are standing in mud up to your ankles.  This is an intersection with \nsewer pipes leading east, south and west.",
   "Exits": [
    {
-    "RoomId": 7037,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7025,
     "Verb": "south"
    },
    {
     "RoomId": 7011,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7037,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -389,16 +389,16 @@
   "Desc": "   You have never seen anything so BORING... This is an intersection with\npipes leading north, south and east.",
   "Exits": [
    {
+    "RoomId": 7024,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7038,
     "Verb": "east"
    },
    {
     "RoomId": 7026,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7024,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -409,16 +409,16 @@
   "Desc": "   This one seems interesting, a big difference from all the other junctions.\nIt seems cleaner than the rest of them.  Weird.  Something that looks like \nan air shaft leads upwards, but it looks far too slippery to climb.\nThe pipes lead to the south, west and north.",
   "Exits": [
    {
-    "RoomId": 7013,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7025,
     "Verb": "north"
    },
    {
     "RoomId": 7028,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7013,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -429,16 +429,16 @@
   "Desc": "   You stand in a junction of sewer pipes leading north, east and west.",
   "Exits": [
    {
-    "RoomId": 7015,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7026,
     "Verb": "north"
    },
    {
     "RoomId": 7034,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7015,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -449,16 +449,16 @@
   "Desc": "   You stand in the middle of a huge junction of concrete sewer pipes.  The \npipes lead into three different directions: east, south and west.",
   "Exits": [
    {
+    "RoomId": 7021,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7035,
     "Verb": "east"
    },
    {
     "RoomId": 7030,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7021,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -497,16 +497,16 @@
   "Desc": "   You stand in a junction with pipes leading west, north and east.",
   "Exits": [
    {
-    "RoomId": 7030,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7044,
     "Verb": "east"
    },
    {
     "RoomId": 7018,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7030,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -517,12 +517,12 @@
   "Desc": "   You can look in two directions where the pipe leads: south and west.",
   "Exits": [
    {
-    "RoomId": 7028,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7035,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7028,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -605,12 +605,12 @@
   "Desc": "   You are standing by the edge of a deep, dark shaft leading down.  A single\nladder is your tool to work your way down if you so wish.  The sewer pipe\nleads south from here.",
   "Exits": [
    {
-    "RoomId": 7123,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7043,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7123,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -637,16 +637,16 @@
   "Desc": "   You are in a passageway in the pipes of the sewer system leading north,\neast and west.",
   "Exits": [
    {
+    "RoomId": 7031,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7043,
     "Verb": "north"
    },
    {
     "RoomId": 7049,
     "Verb": "east"
-   },
-   {
-    "RoomId": 7031,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -781,12 +781,12 @@
   "Desc": "   You stand in water to your knees.  A doorway leads west from here.  The\npipe stretches north.",
   "Exits": [
    {
-    "RoomId": 7052,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7047,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7052,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -813,12 +813,12 @@
   "Desc": "   You can't see much of this, even with a light.  The hallway goes into a\npassageway to the south.  A doorway leads west.",
   "Exits": [
    {
-    "RoomId": 7057,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7052,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7057,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -845,12 +845,12 @@
   "Desc": "   You can't see anything but the ground where you put your feet.  The\npassageway seems to continue south and north.",
   "Exits": [
    {
-    "RoomId": 7059,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7057,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7059,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -877,16 +877,16 @@
   "Desc": "   You can't see anything but the ground where you put your feet.\nThe passageway seems to continue west and north.  To the east there\nis water covering the floor and that leads through an arched entry\nto a watery sewer.",
   "Exits": [
    {
+    "RoomId": 7049,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7059,
     "Verb": "north"
    },
    {
     "RoomId": 7068,
     "Verb": "east"
-   },
-   {
-    "RoomId": 7049,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -1049,16 +1049,16 @@
   "Desc": "   You can't see much here but the echo tells you that there is quite a drop\ndown.  You can just make out a huge dark pool out there in the darkness,\nmostly because of the trickling of water.  The water from the sewer actually\nwashes over this ledge and makes it quite slippery.  From here it drops,\nlike a waterfall, into the pool far down.  Under you there is a small fissure\nin the rock.  It seems big enough to contain a few people.",
   "Exits": [
    {
-    "RoomId": 7069,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7066,
     "Verb": "west"
    },
    {
     "RoomId": 7000,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7069,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null

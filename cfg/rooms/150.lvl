@@ -5,16 +5,16 @@
   "Desc": "   You stand at the beginning of the actual King's Road.  The road is wide\nenough for several horses to ride along side by side with room to spare.\nThe stones which make up the road have been put into place with such skill\nthat the road seems to be perfectly smooth and perfectly straight.\n   You spot a small trail leading to the south through the undergrowth which\nsurrounds the road at this point.\nA traveller passes by and waves cheerfully at you.",
   "Exits": [
    {
+    "RoomId": 3502,
+    "Verb": "west"
+   },
+   {
     "RoomId": 15001,
     "Verb": "east"
    },
    {
     "RoomId": 15061,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3502,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -25,12 +25,12 @@
   "Desc": "   You stand in the center of the great King's Road.  The road is very well\nbuilt, and goes in a straight line due east-west.",
   "Exits": [
    {
-    "RoomId": 15000,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15002,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15000,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -73,12 +73,12 @@
   "Desc": "   You have arrived at the drawbridge leading into the Castle.  Before\nyou is a huge, double-doored gate.  It seems very strong.  You see some\nwhirls in the moat.",
   "Exits": [
    {
-    "RoomId": 15007,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15003,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15007,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -205,6 +205,10 @@
   "Desc": "   You are standing in the southern end of the Great Hall.  It\nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\nnorth, you see King Welmar's great throne, and to the south is the\nCastle Entrance.",
   "Exits": [
    {
+    "RoomId": 15017,
+    "Verb": "north"
+   },
+   {
     "RoomId": 15013,
     "Verb": "east"
    },
@@ -215,10 +219,6 @@
    {
     "RoomId": 15011,
     "Verb": "west"
-   },
-   {
-    "RoomId": 15017,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -301,16 +301,16 @@
   "Desc": "   You are standing by the King's huge ivory throne.  The throne is, to\nan even greater degree than the Hall itself, a masterpiece.  It is\nintricately and beautifully carved, and it seems to be made out of a \nsingle block of ivory, though you shiver at the thought of meeting\nthe animal that died to yield a piece of that size.  The Hall continues\nto the east, west and south.",
   "Exits": [
    {
-    "RoomId": 15018,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15012,
     "Verb": "south"
    },
    {
     "RoomId": 15016,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15018,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -361,12 +361,12 @@
   "Desc": "   You are standing in a north-south leading passage.  There is a door\nto the east.",
   "Exits": [
    {
-    "RoomId": 15015,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15021,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15015,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -377,16 +377,16 @@
   "Desc": "   You are standing in a corridor, that stretches further to the east.\nThere are doors to the north and west.  The corridor itself is mainly\nused by servants, and lacks some of the beauty of the rest of the\ncastle.",
   "Exits": [
    {
-    "RoomId": 15020,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15026,
     "Verb": "north"
    },
    {
     "RoomId": 15022,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15020,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -429,16 +429,16 @@
   "Desc": "   You are standing in a small passage leading north and south.  There\nis also an exit to the west, from which grunts, cheers and heavy blows\ncan be heard.",
   "Exits": [
    {
-    "RoomId": 15023,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15029,
     "Verb": "north"
    },
    {
     "RoomId": 15019,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15023,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -449,12 +449,12 @@
   "Desc": "   You are standing below a great staircase, that leads up to the\nsecond floor of the Castle.  The stairs are made of marble, and there\nare pillars carved in the likenesses of trees with little animals\nrunning up and down the trunks.",
   "Exits": [
    {
-    "RoomId": 15020,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15049,
     "Verb": "up"
+   },
+   {
+    "RoomId": 15020,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -501,12 +501,12 @@
   "Desc": "   You are standing by a staircase leading down.  As you look down,\nyou notice that for the first time since you entered the castle,\nthings are not aesthetically made.  Instead it looks more functional\nand prison-like.",
   "Exits": [
    {
-    "RoomId": 15024,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15055,
     "Verb": "down"
+   },
+   {
+    "RoomId": 15024,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -597,16 +597,16 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads north and south.  There\nis also an exit to the east here.",
   "Exits": [
    {
+    "RoomId": 15030,
+    "Verb": "south"
+   },
+   {
     "RoomId": 15040,
     "Verb": "north"
    },
    {
     "RoomId": 15036,
     "Verb": "east"
-   },
-   {
-    "RoomId": 15030,
-    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -617,12 +617,12 @@
   "Desc": "   You are standing by a great iron door.  The door is very large, and\nseems very solid indeed.  There is a sign posted by it. ",
   "Exits": [
    {
-    "RoomId": 15037,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15035,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15037,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -645,16 +645,16 @@
   "Desc": "   You have arrived at the part of the Castle where prominent\nguests are housed.  To the east there is a large, ornamented\ndoor, and a somewhat smaller one leads north. ",
   "Exits": [
    {
-    "RoomId": 15033,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15043,
     "Verb": "north"
    },
    {
     "RoomId": 15039,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15033,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -773,16 +773,16 @@
   "Desc": "   You are standing in the great Ball Room.  It is a truly large room,\nwith a stage for an orchestra in the south-east end.",
   "Exits": [
    {
-    "RoomId": 15047,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15041,
     "Verb": "south"
    },
    {
     "RoomId": 15045,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15047,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -906,6 +906,14 @@
   "Exits": [
    {
     "RoomId": -1,
+    "Verb": "north"
+   },
+   {
+    "RoomId": -1,
+    "Verb": "east"
+   },
+   {
+    "RoomId": -1,
     "Verb": "south"
    },
    {
@@ -915,14 +923,6 @@
    {
     "RoomId": 15048,
     "Verb": "down"
-   },
-   {
-    "RoomId": -1,
-    "Verb": "north"
-   },
-   {
-    "RoomId": -1,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1073,16 +1073,16 @@
   "Desc": "   As you leave the forest to the north, you find yourself at\nwhat appears to be the beginning of a dirt road and a small\nvillage.  Upon first laying eyes on this place you realize\nthat there is something funny about this settlement... there\nis no sound other that the whistling wind here.  You would have\nexpected to hear people going about their regular business, but\nthe village is silent.  You cannot see any movement around the\nvillage either.  It is almost as still and silent as the woods\nto the north.\nThere is a small sign lying by the side of the road here.",
   "Exits": [
    {
-    "RoomId": 15063,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15065,
     "Verb": "south"
    },
    {
     "RoomId": 15068,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15063,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1092,6 +1092,10 @@
   "Name": "A Small Intersection",
   "Desc": "   Continuing along the dirt road, you find yourself at a place where\na small path splits away from the main road and leads off to the west.\nThe woods around the village seem to be pressing inwards towards you\nas if the village hides a secret which they do not want to be spread\nabout.\n   There is another house standing on the east side of the road.  ",
   "Exits": [
+   {
+    "RoomId": 15064,
+    "Verb": "north"
+   },
    {
     "RoomId": 15069,
     "Verb": "east"
@@ -1103,10 +1107,6 @@
    {
     "RoomId": 15072,
     "Verb": "west"
-   },
-   {
-    "RoomId": 15064,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -1116,10 +1116,6 @@
   "Name": "A Dirt Road",
   "Desc": "   This section of the dirt road is quiet, but there is an awful stench\nin the air.  It brings to mind rotting corpses and raw sewage.  The woods\ncontiue to press closely about you, and almost totally surround the small\nbuilding to the west with a thatched roof.  There is a blackened shell of\na building to the east with a small sign hanging out front from a black\nand charred chain.\n   The dirt road continues north and south.",
   "Exits": [
-   {
-    "RoomId": 15065,
-    "Verb": "north"
-   },
    {
     "RoomId": 15071,
     "Verb": "east"
@@ -1131,6 +1127,10 @@
    {
     "RoomId": 15070,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15065,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null

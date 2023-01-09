@@ -133,16 +133,16 @@
   "Desc": "   Here the field changes color, becoming almost\ntransparent.  Beyond, you think you can make out a few\nshapes, but nothing too terribly distinct.  From the north\ncomes the rushing sound of water, and through the trees\nyou believe you can see a river cutting through the\nforest.  The trail you are on leads north-south through\nthe woods, following the energy barrier all along its\nlength.",
   "Exits": [
    {
-    "RoomId": 6209,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6207,
     "Verb": "south"
    },
    {
     "RoomId": 6210,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6209,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -181,12 +181,12 @@
   "Desc": "   To the west the magical energy barrier crackles and\nhums to itself, almost looking harmless.  Almost -- all\naround on the ground are charred corpses and bodies.\nSeveral poles with skulls on top face to the west, warning\ntravellers on the forest paths away from here.  The air\nsmells of death and decay, and the air is very still.  You\nfeel uncomfortable.",
   "Exits": [
    {
-    "RoomId": 6210,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6212,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6210,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -221,12 +221,12 @@
   "Desc": "   The northern trail winds through the trees, heading\nfrom a forest clearings to the south to where there appears\nto be a river's edge to the north.  This trail appears to\nbe well-used and you spot many tracks in the earth.  Again\nthe hairs on the back of your neck stand up, and you wonder\nif you're being spied upon.",
   "Exits": [
    {
-    "RoomId": 6212,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6214,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6212,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -345,16 +345,16 @@
   "Desc": "   In the middle of this small clearing in the forest is a\nfairly large rock sticking up out of the ground.  Paths \nlead away to the east, west, and south from here.  The \ntrees above block out the sky fairly effectively, also\nblotting out the glowing energy barrier above your head.",
   "Exits": [
    {
+    "RoomId": 6220,
+    "Verb": "east"
+   },
+   {
     "RoomId": 6222,
     "Verb": "south"
    },
    {
     "RoomId": 6227,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6220,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -365,16 +365,16 @@
   "Desc": "   A smaller northern path leads away from the main east-\nwest trail here towards a clearing.  The main path leads \nwindingly around the trees to the east and west, the woods\nblocking out whatever may be ahead.  Again you get that \nstrange feeling of being watched.",
   "Exits": [
    {
+    "RoomId": 6225,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6221,
     "Verb": "north"
    },
    {
     "RoomId": 6223,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6225,
-    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -561,16 +561,16 @@
   "Desc": "   The ground is getting very rocky here, causing the \ntrees of the woods to become more sparse.  Several bushes \nhave found purchase in the soil, but not near enough to \nblock free movement in this area.  The trail leads on up \nto what appears to be a cave in the side of the mountain \nto the west, and a side trail runs along the forest's edge\nto the north.  To the east, the trail runs deep into the \nforest out of sight.",
   "Exits": [
    {
-    "RoomId": 6241,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6233,
     "Verb": "east"
    },
    {
     "RoomId": 6242,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6241,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -665,12 +665,12 @@
   "Desc": "   The river pours down the side of the mountains to the \nwest, originating from a large hole in the face of one of \nthe sheer rock protuberances.  The energy barrier climbs \nright up the mountain, and seals off any means of escape \nby that means.  The trail you are on runs by the side of \nthe river to the east, and a path leads by the forest side\nto the south.",
   "Exits": [
    {
-    "RoomId": 6241,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6239,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6241,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -821,16 +821,16 @@
   "Desc": "   A few sleeping pallets, made of moldy straw and \nstinking furs are arranged around a small firepit here.  \nA wooden cup, carved by a crude tool and cruder hands \nsits near the ashes filled with water you consider \nundrinkable.  Somewhere to the east you hear an orc \nchild's whining cry, and a voice hushes it urgently.  \nBeware, orcs!  Adventurers are here!  Hide your children!",
   "Exits": [
    {
-    "RoomId": 6246,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6250,
     "Verb": "east"
    },
    {
     "RoomId": 6252,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6246,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -840,6 +840,10 @@
   "Name": "A Cave",
   "Desc": "   Several grass sleeping pallets are here, clustered \naround the remains of an old fire.  The sloping of the \ncave's ceiling allow for smoke ventilation towards the \nsurface in here you note, lucky for the orcs.  A few \nstrings of burnt meat still hang over the fire, untended \nand uneaten.  On the floor near your feet you spy a small, \ntwisted piece of wire... one orc's idea of a treasured ring, \nno doubt.  Kicking the trinket away, you try to push the \npity out of your heart for these wretches.",
   "Exits": [
+   {
+    "RoomId": 6247,
+    "Verb": "north"
+   },
    {
     "RoomId": 6251,
     "Verb": "east"
@@ -851,10 +855,6 @@
    {
     "RoomId": 6249,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6247,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -941,12 +941,12 @@
   "Desc": "   This forking off from the mail tunnel seems odd; the \nwalls are strangely smooth, as if they were carved out by \nforces unknown.  The end is abrupt and short, but there is\na steel door inset in the wall of the west side of the \ntunnel.  The smell from the lower tunnel doesn't seem \nnearly as bad here... this might be a good place to rest\nand catch your breath.",
   "Exits": [
    {
-    "RoomId": 6243,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6256,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6243,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -1021,16 +1021,16 @@
   "Desc": "   Another table is set up will all sorts of alchemical \napparatus here, vials and beakers, distillation equipment \nand et cetera.  The stuff looks expensive, but bulky and \nfragile; not good treasure to cart away with you at all.",
   "Exits": [
    {
+    "RoomId": 6261,
+    "Verb": "east"
+   },
+   {
     "RoomId": 6263,
     "Verb": "south"
    },
    {
     "RoomId": 6259,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6261,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1053,16 +1053,16 @@
   "Desc": "   Some small cages sit here, containing many different \ntypes of rodents.  Leaning down to look better, you are \nvery surprised as a tiny, common garden mouse growls at \nyou and tries to rip your face off through the bars.  \nThere are some bulges on its back, and it doesn't seem to \nbe in a very good mood.  It quivers some, not fully in\ncontrol of its motor functions.  Poor thing.",
   "Exits": [
    {
-    "RoomId": 6265,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6259,
     "Verb": "north"
    },
    {
     "RoomId": 6263,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6265,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -1125,20 +1125,20 @@
   "Desc": "   This is a fairly roomy laboratory that extends to the \nnorth, with cages set on the east side of the room.  A \nmetal table here is empty, although you can see some \noutlines in the dust that suggest books had laid here \nonce.",
   "Exits": [
    {
-    "RoomId": 6263,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 6267,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6258,
     "Verb": "south"
    },
    {
     "RoomId": 6265,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6263,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6267,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null

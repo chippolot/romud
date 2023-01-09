@@ -5,12 +5,12 @@
   "Desc": "   You are standing at the end of a dusty road, near the eastern edge of the\nlarge forest of Haon-Dor.  To the east you see the road heading back to the\nwalled city, Midgaard, and to the west is a narrow trail leading through the\nforest.",
   "Exits": [
    {
-    "RoomId": 6001,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6090,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6001,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -77,16 +77,16 @@
   "Desc": "   You are on a trail winding east and west through the dense forest.  To the\nwest, the trees are so huge and their crowns so dense that forest remains in\ntotal darkness.  A small path leads south through the trees.",
   "Exits": [
    {
-    "RoomId": 6003,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6005,
     "Verb": "south"
    },
    {
     "RoomId": 6100,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6003,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -217,16 +217,16 @@
   "Desc": "   You are on a small path leading through the dense forest.  The crowns of the\nold trees leave the forest floor in an unreal twilight illumination.  Paths\nlead north, east and south.",
   "Exits": [
    {
-    "RoomId": 6007,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6013,
     "Verb": "east"
    },
    {
     "RoomId": 6021,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6007,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -361,12 +361,12 @@
   "Desc": "   You are on a small path leading through the dense forest.  The crowns of\nthe old trees leave the forest in an unreal twilight illumination.  The path\ncontinues south and west.",
   "Exits": [
    {
-    "RoomId": 6021,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6019,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6021,
+    "Verb": "west"
    }
   ],
   "Perceptibles": null
@@ -525,16 +525,16 @@
   "Desc": "   You are in a huge oak, about one third of the way to the top.  The branches\nabove you block out much of the light, but enough filters through for you to\nsee.  Small animals and birds scatter at your approach, rustling the leaves\nall about you.  You could easily climb back down to the ground, or continue up\nthe tree.  One large branch juts outward to the west, possibly providing a\nthird choice of exit.",
   "Exits": [
    {
-    "RoomId": 6029,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6031,
     "Verb": "west"
    },
    {
     "RoomId": 6032,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6029,
+    "Verb": "down"
    }
   ],
   "Perceptibles": null
@@ -561,12 +561,12 @@
   "Desc": "   You are in a huge oak, about midway to the top.  The branches above you\nblock out much of the light, but enough filters through for you to see.  A few\nbirds have remained to watch you from the fringe branches, well out of your\nreach.  Scratches mar the tree here, and torn bark is scattered near you on the\nbranch.  It would seem some large forest cat lives nearby, so you had better be\ncareful!  You can continue a bit farther up the tree, or descend to limbs that\ndon't sway so much.",
   "Exits": [
    {
-    "RoomId": 6033,
-    "Verb": "up"
-   },
-   {
     "RoomId": 6030,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6033,
+    "Verb": "up"
    }
   ],
   "Perceptibles": null
@@ -641,12 +641,12 @@
   "Desc": "   You are on a small shaded path through the dense forest.  The crowns of\nthe old trees leave the forest in an unreal twilight illumination.  The path\ncontinues north and east.",
   "Exits": [
    {
-    "RoomId": 6068,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6062,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6068,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -689,16 +689,16 @@
   "Desc": "   You are at a fork in the small shaded path winding through the trees.  The\nforest gradually becomes more dense to the west.  The path branches to the\nnorth and south here, and also continues to the east.",
   "Exits": [
    {
+    "RoomId": 6071,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6065,
     "Verb": "east"
    },
    {
     "RoomId": 6061,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6071,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -709,12 +709,12 @@
   "Desc": "   You are standing in a small clearing, beside a large fallen tree.  A large\namount of the tree has already decomposed, but some pieces remain, scattered\nabout the clearing.  Paths border the clearing to the north and south.",
   "Exits": [
    {
-    "RoomId": 6062,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6072,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6062,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -725,16 +725,16 @@
   "Desc": "   You are on a small shaded path leading through the dense forest.  The\ncrowns of the old trees leave the forest in an unreal twilight illumination.\nThe path continues north, south, and west.",
   "Exits": [
    {
-    "RoomId": 6073,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6063,
     "Verb": "south"
    },
    {
     "RoomId": 6069,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6073,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -745,12 +745,12 @@
   "Desc": "   You are on a small shadowy path leading through the dense forest.  The\ncrowns of the old trees leave the forest in an unreal twilight illumination.\nThe path continues south and east.",
   "Exits": [
    {
-    "RoomId": 6064,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6068,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6064,
+    "Verb": "south"
    }
   ],
   "Perceptibles": null
@@ -841,10 +841,6 @@
   "Desc": "   You have just left the shaded path, and you are now standing at the head of\na very short trail.  It looks like someone begin clearing away the underbrush\nhere, but didn't get finished.  You may leave in any direction, but the path\nis to the west.",
   "Exits": [
    {
-    "RoomId": 6074,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6070,
     "Verb": "east"
    },
@@ -855,6 +851,10 @@
    {
     "RoomId": 6075,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6074,
+    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -865,16 +865,16 @@
   "Desc": "   You are on a small shaded path leading between the trees.  The forest\ngradually becomes more dense to the west, and to the northwest the terrain\nis quite hilly.  The path continues north and south.  To the east you see a\ntrail winding through the younger section of the forest.",
   "Exits": [
    {
+    "RoomId": 6078,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6074,
     "Verb": "east"
    },
    {
     "RoomId": 6072,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6078,
-    "Verb": "north"
    }
   ],
   "Perceptibles": null
@@ -945,6 +945,10 @@
   "Desc": "   You are standing among tightly packed trees between several hills.  You\nlost track of the path long ago, and now must rely on your instincts to guide\nyou.  The ground is very rough and rocky here, and only the most hardy plants\nsurvive.  The crowns of the old trees leave the hills in an unreal twilight\nillumination.",
   "Exits": [
    {
+    "RoomId": 6078,
+    "Verb": "east"
+   },
+   {
     "RoomId": 6073,
     "Verb": "south"
    },
@@ -955,10 +959,6 @@
    {
     "RoomId": 6081,
     "Verb": "north"
-   },
-   {
-    "RoomId": 6078,
-    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -969,20 +969,20 @@
   "Desc": "   You are standing among tightly packed trees between several hills.  You\nlost track of the path long ago, and now must rely on your instincts to guide\nyou.  The ground is very rough and rocky here, and only the most hardy plants\nsurvive.  The crowns of the old trees leave the hills in an unreal twilight\nillumination.",
   "Exits": [
    {
-    "RoomId": 6081,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 6082,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6076,
     "Verb": "south"
    },
    {
     "RoomId": 6081,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6081,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6082,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null
@@ -1037,12 +1037,12 @@
   "Desc": "   You are on a dust covered east-west road through the western plains.  An\noccasional hunter or adventurer can be seen, heading to or from the forest.\nTo the east is the walled city, Midgaard, and to the west the road ends at\nthe head of a narrow trail into a large forest.",
   "Exits": [
    {
-    "RoomId": 6091,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6000,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6091,
+    "Verb": "east"
    }
   ],
   "Perceptibles": null

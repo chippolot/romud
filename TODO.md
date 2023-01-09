@@ -34,7 +34,7 @@
 [x] Circle Data Converter
     [x] Rooms
 [x] Leveling up
-[x] Items p1
+[x] Items
     [x] Viewing in Room
     [x] Inventory
     [x] Get
@@ -44,7 +44,8 @@
     [x] Get From
     [x] Put in
     [x] Get All From
-[x] Combat p1
+    [x] Weights
+[x] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
     [x] Combat prompt
@@ -61,7 +62,7 @@
     [x] Leave corpse on death
     [x] Hit and damage bonuses
     [x] Kick to the ground
-[x] Positions p1
+[x] Positions
     [x] Limit actions
     [x] Rest + Sleep actions
         [x] Restore stats
@@ -84,7 +85,6 @@
     [] Equipment
         [] Equipment Stats
     [] Wearing
-    [] Weights
     [] Looking At
 [] Commands
     [] Give

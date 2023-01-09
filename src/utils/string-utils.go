@@ -15,7 +15,7 @@ func LineBreak(str string, maxLen int, delimeter string) []string {
 	toks := strings.Split(str, delimeter)
 
 	for idx, s := range toks {
-		if sb.Len()+len(s) > maxLen {
+		if sb.Len()+len(s)+1 > maxLen {
 			lines = append(lines, sb.String())
 			sb.Reset()
 		}

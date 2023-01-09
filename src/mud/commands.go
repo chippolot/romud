@@ -683,13 +683,13 @@ func DoListCommands(e *Entity, _ *World, _ []string) {
 	sb.WriteHorizontalDivider()
 	for _, cmd := range Commands {
 		if len(cmd.aliases) == 1 {
-			sb.WriteLinef("%-20s%s", cmd.aliases[0], cmd.desc)
+			sb.WriteLinef("%-20s: %s", cmd.aliases[0], cmd.desc)
 		} else {
 			lines := utils.LineBreak(strings.Join(cmd.aliases, ","), 15, ",")
-			for i := 0; i < len(lines)-1; i++ {
-				sb.WriteLine(lines[i])
+			sb.WriteLinef("%-20s: %s", lines[0], cmd.desc)
+			for i := 1; i < len(lines); i++ {
+				sb.WriteLinef("  %s", lines[i])
 			}
-			sb.WriteLinef("%-20s%s", lines[len(lines)-1], cmd.desc)
 		}
 	}
 	SendToPlayer(e, sb.String())

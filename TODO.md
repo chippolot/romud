@@ -71,6 +71,7 @@
 [x] Heal on login after time
 ----------------------------------------
 [] Spawning - Data driven
+[] Aliases
 [] Items
     [] Gold / Stacking
     [] Equipment

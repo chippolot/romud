@@ -48,6 +48,9 @@
     [x] Looking At
     [x] Equip Command
     [x] Unequip Command
+    [x] Equipment Stats
+    [x] Use Weapons in Combat
+    [x] Show Equipped
 [x] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -85,10 +88,7 @@
 [] Items
     [] Gold / Stacking
     [] Equipment
-        [] Equipment Stats
-        [] Use Weapons in Combat
         [] Use Armor in Combat
-        [x] Show Equipped
         [] Mobs use equipment
         [] Prevent dual wield
         [] Slot specific equip messages

@@ -620,7 +620,8 @@ func DoStand(e *Entity, w *World, _ []string) {
 }
 
 func DoStatus(e *Entity, w *World, _ []string) {
-	attack := e.cfg.Attacks[0]
+	aData := GetAttackData(e)
+	aDamage := aData.Damage.Add(aData.DamageMod)
 
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
@@ -634,8 +635,8 @@ func DoStatus(e *Entity, w *World, _ []string) {
 	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.HP, e.data.Stats.MaxHP)
 	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.Mov, e.data.Stats.MaxMov)
 	sb.WriteNewLine()
-	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", GetAbilityModifier(e.data.Stats.Str)+ProficiencyChart[e.data.Stats.Level])
-	sb.WriteLinef("Attack : %s", attack.Damage.StringColorized("yellow"))
+	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", aData.ToHit)
+	sb.WriteLinef("Attack : %s", aDamage.StringColorized("yellow"))
 	sb.WriteLinef("AC     : <c yellow>%d</c>", e.data.Stats.AC)
 	sb.WriteNewLine()
 	sb.WriteLinef("Str    : <c yellow>%d</c>", e.data.Stats.Str)

@@ -6,7 +6,9 @@
     "Equipment": {
         "Weapon": {
             "Damage": "1d4",
-            "DamageType": "slashing"
+            "DamageType": "slashing",
+            "VerbSingular": "slash",
+            "VerbPlural": "slashes"
         },
         "Slot": "held1h"
     },

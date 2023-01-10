@@ -23,27 +23,56 @@ type Dice struct {
 }
 
 func ParseDice(s string) (Dice, error) {
-	i1 := strings.Index(s, "d")
-	i2 := strings.Index(s, "+")
-	if i2 == -1 {
-		i2 = len(s)
-	}
-	if i1 != -1 {
-		// Parse 'XdY'
-		num, err1 := strconv.ParseUint(s[:i1], 10, 8)
-		sides, err2 := strconv.ParseUint(s[i1+1:i2], 10, 8)
+	var num, sides uint64
+	var plus int64
+	var err error
 
-		// Optionally parse the number after a '+'
-		var plus int64
-		var err3 error
-		if i2 != len(s) {
-			plus, err3 = strconv.ParseInt(s[i2+1:], 10, 16)
-		}
-		if err1 == nil && err2 == nil && err3 == nil {
-			return Dice{uint(num), uint(sides), int(plus)}, nil
-		}
+	sLen := len(s)
+
+	i1 := strings.Index(s, "d")
+	if i1 == -1 {
+		i1 = sLen
 	}
-	return Dice{}, fmt.Errorf("failed to parse dice from string: %s", s)
+
+	i2 := strings.LastIndexAny(s, "+-")
+	if i2 == -1 || i2 < i1 {
+		i2 = sLen
+	}
+
+	// Parse first num
+	num, err = strconv.ParseUint(s[:i1], 10, 8)
+	if err != nil {
+		return Dice{}, fmt.Errorf("failed to parse dice from string: %s -- %v", s, err)
+	}
+
+	// Just a constant number
+	if i1 == sLen {
+		return Dice{uint(0), uint(0), int(num)}, nil
+	}
+
+	// Parse second num
+	sides, err = strconv.ParseUint(s[i1+1:i2], 10, 8)
+	if err != nil {
+		return Dice{}, fmt.Errorf("failed to parse dice from string: %s -- %v", s, err)
+	}
+
+	// Just a num + sides
+	if i2 == sLen {
+		return Dice{uint(num), uint(sides), 0}, nil
+	}
+
+	// Parse third num
+	plus, err = strconv.ParseInt(s[i2+1:], 10, 16)
+	if err != nil {
+		return Dice{}, fmt.Errorf("failed to parse dice from string: %s -- %v", s, err)
+	}
+
+	// Num + sides + plus
+	return Dice{uint(num), uint(sides), int(plus)}, nil
+}
+
+func (d *Dice) Add(num int) Dice {
+	return Dice{d.Num, d.Sides, int(d.Num) + num}
 }
 
 func (d *Dice) CriticalRoll() int {
@@ -69,11 +98,19 @@ func (d *Dice) Roll() int {
 }
 
 func (d *Dice) String() string {
-	return fmt.Sprintf("%dd%d+%d", d.Num, d.Sides, d.Plus)
+	if d.Sides == 0 {
+		return fmt.Sprintf("%d", d.Plus)
+	} else {
+		return fmt.Sprintf("%dd%d+%d", d.Num, d.Sides, d.Plus)
+	}
 }
 
 func (d *Dice) StringColorized(color string) string {
-	return fmt.Sprintf("<c %s>%d</c>d<c %s>%d</c>+<c %s>%d</c>", color, d.Num, color, d.Sides, color, d.Plus)
+	if d.Sides == 0 {
+		return fmt.Sprintf("<c %s>%d</c>", color, d.Plus)
+	} else {
+		return fmt.Sprintf("<c %s>%d</c>d<c %s>%d</c>+<c %s>%d</c>", color, d.Num, color, d.Sides, color, d.Plus)
+	}
 }
 
 func (d *Dice) UnmarshalJSON(data []byte) (err error) {

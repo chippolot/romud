@@ -80,6 +80,14 @@ func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
 	}
 }
 
+type AttackData struct {
+	ToHit                    int
+	Damage                   Dice
+	DamageMod                int
+	DamageType               DamageType
+	VerbSingular, VerbPlural string
+}
+
 // TODO Support multi-attack
 type AttackConfig struct {
 	Name         string
@@ -155,6 +163,32 @@ func (c *CombatList) EndCombat(e *Entity) {
 	log.Printf("%s ending combat", e.Name())
 	c.Remove(e)
 	e.combat = nil
+}
+
+func GetAttackData(e *Entity) AttackData {
+	aData := AttackData{}
+	if weapon, ok := e.GetWeapon(); ok {
+		aData.ToHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
+		aData.Damage = weapon.Damage
+		aData.DamageMod = GetAbilityModifier(e.data.Stats.Str)
+		aData.DamageType = weapon.DamageType
+		aData.VerbSingular = weapon.VerbSingular
+		aData.VerbPlural = weapon.VerbPlural
+	} else {
+		attack := e.RandomAttack()
+		aData.ToHit = attack.ToHit
+		aData.Damage = attack.Damage
+		if e.player != nil {
+			aData.DamageMod = GetAbilityModifier(e.data.Stats.Str)
+		}
+		aData.DamageType = attack.DamageType
+		aData.VerbSingular = attack.VerbSingular
+		aData.VerbPlural = attack.VerbPlural
+	}
+	if e.player != nil {
+		aData.ToHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
+	}
+	return aData
 }
 
 func validateAttack(e *Entity, tgt *Entity) bool {
@@ -256,12 +290,8 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	default:
 		var dam int
 
-		// Select attack
-		attack := e.RandomAttack()
-		toHit := attack.ToHit
-		if e.player != nil {
-			toHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
-		}
+		// Pick random attack or use weapon
+		aData := GetAttackData(e)
 
 		// Determine advantage / disadvantage
 		var advantageType AdvantageType
@@ -280,21 +310,21 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		}
 		critMiss := hitBase == 1
 		critHit := hitBase == 20
-		hit := hitBase + toHit
+		hit := hitBase + aData.ToHit
 
 		if (critMiss || hit < tgt.data.Stats.AC) && !critHit {
 			dam = 0
 		} else {
 			// Roll for damage
 			if critHit {
-				dam = attack.Damage.CriticalRoll()
+				dam = aData.Damage.CriticalRoll()
 			} else {
-				dam = attack.Damage.Roll()
+				dam = aData.Damage.Roll()
 			}
-			dam += GetAbilityModifier(e.data.Stats.Str)
+			dam += aData.DamageMod
 			dam = utils.MaxInts(1, dam)
 		}
-		applyDamage(tgt, w, e, dam, DamCtx_Melee, attack.DamageType, attack.VerbSingular, attack.VerbPlural)
+		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)
 	}
 	e.combat.requestedSkill = CombatSkill_None
 }

@@ -221,6 +221,16 @@ func (e *Entity) Equip(item *Item) ([]*Item, bool) {
 	}
 }
 
+func (e *Entity) GetWeapon() (*WeaponConfig, bool) {
+	if weaponItem, ok := e.equipped[EqSlot_HeldR]; ok && weaponItem.cfg.Equipment.Weapon != nil {
+		return weaponItem.cfg.Equipment.Weapon, true
+	}
+	if weaponItem, ok := e.equipped[EqSlot_HeldL]; ok && weaponItem.cfg.Equipment.Weapon != nil {
+		return weaponItem.cfg.Equipment.Weapon, true
+	}
+	return nil, false
+}
+
 func (e *Entity) Unequip(item *Item) bool {
 	if item.cfg.Equipment == nil {
 		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())

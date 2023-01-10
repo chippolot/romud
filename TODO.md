@@ -45,6 +45,7 @@
     [x] Put in
     [x] Get All From
     [x] Weights
+    [x] Looking At
 [x] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -84,9 +85,6 @@
     [] Equipment
         [] Equipment Stats
     [] Wearing
-    [] Looking At
-[] Commands
-    [] Give
 [] Combat
     [] More Skills!
         [] Grapple?

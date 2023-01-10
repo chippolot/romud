@@ -84,6 +84,11 @@
     [] Gold / Stacking
     [] Equipment
         [] Equipment Stats
+        [] Use Weapons in Combat
+        [] Use Armor in Combat
+        [] Equip Command
+        [] Unequip Command
+        [] Show Equipped
     [] Wearing
 [] Combat
     [] More Skills!

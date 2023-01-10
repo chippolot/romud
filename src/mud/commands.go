@@ -818,22 +818,17 @@ func performEquip(e *Entity, w *World, item *Item) {
 	if !ok {
 		return
 	}
-	r := w.rooms[e.data.RoomId]
 	for _, u := range unequipped {
-		SendToPlayer(e, "You unequip %s", u.Name())
-		BroadcastToRoomExcept(r, e, "%s unequip %s", e.NameCapitalized(), u.Name())
+		sendUnequipMessages(e, w, u)
 	}
-	SendToPlayer(e, "You equip %s", item.Name())
-	BroadcastToRoomExcept(r, e, "%s equip %s", e.NameCapitalized(), item.Name())
+	sendEquipMessages(e, w, item)
 }
 
 func performUnequip(e *Entity, w *World, item *Item) {
 	if ok := e.Unequip(item); !ok {
 		return
 	}
-	r := w.rooms[e.data.RoomId]
-	SendToPlayer(e, "You unequip %s", item.Name())
-	BroadcastToRoomExcept(r, e, "%s unequip %s", e.NameCapitalized(), item.Name())
+	sendUnequipMessages(e, w, item)
 }
 
 func parseSearchQuery(tokens []string, allowCount bool) (SearchQuery, bool, []string) {
@@ -848,4 +843,16 @@ func parseSearchQuery(tokens []string, allowCount bool) (SearchQuery, bool, []st
 		return NewSearchQuery(tokens[1], num), true, tokens[2:]
 	}
 	return NewSearchQuery(tokens[0], 1), true, tokens[1:]
+}
+
+func sendEquipMessages(e *Entity, w *World, item *Item) {
+	r := w.rooms[e.data.RoomId]
+	SendToPlayer(e, "You equip %s", item.Name())
+	BroadcastToRoomExcept(r, e, "%s equip %s", e.NameCapitalized(), item.Name())
+}
+
+func sendUnequipMessages(e *Entity, w *World, item *Item) {
+	r := w.rooms[e.data.RoomId]
+	SendToPlayer(e, "You unequip %s", item.Name())
+	BroadcastToRoomExcept(r, e, "%s unequip %s", e.NameCapitalized(), item.Name())
 }

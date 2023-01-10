@@ -35,6 +35,7 @@
         "Name": "a small rat",
         "Keywords": ["rat"],
         "RoomDesc": "A small rat scurries between your feet.",
+        "FullDesc": "Yuck! A rat!",
         "Attacks": [{
             "Name": "Bite",
             "ToHit": 4,

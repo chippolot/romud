@@ -17,16 +17,15 @@ type ItemId int32
 type ItemConfigList []*ItemConfig
 
 type ItemConfig struct {
-	Key          string
-	Name         string
-	Keywords     []string
-	RoomDesc     string
-	FullDesc     string
-	Perceptibles *PerceptiblesConfig
-	Flags        ItemFlags
-	Value        int
-	Weight       int
-	lookup       map[string]bool
+	Key      string
+	Name     string
+	Keywords []string
+	RoomDesc string
+	FullDesc string
+	Flags    ItemFlags
+	Value    int
+	Weight   int
+	lookup   map[string]bool
 }
 
 func (cfg *ItemConfig) Init() {
@@ -96,23 +95,20 @@ func (i *Item) NameCapitalized() string {
 	return string(arr)
 }
 
+func (i *Item) FullDesc() string {
+	return i.cfg.FullDesc
+}
+
+func (i *Item) RoomDesc() string {
+	return i.cfg.RoomDesc
+}
+
 func (i *Item) MatchesKeyword(keyword string) bool {
 	if strings.EqualFold(i.Name(), keyword) {
 		return true
 	}
 	_, ok := i.cfg.lookup[keyword]
 	return ok
-}
-
-func (i *Item) TryPerceive(sense SenseType, words []string) (string, bool) {
-	desc, ok := i.cfg.Perceptibles.TryPerceive(sense, words)
-	if ok {
-		return desc, ok
-	}
-	if sense == SenseLook && i.cfg.FullDesc != "" {
-		return i.cfg.FullDesc, true
-	}
-	return "", false
 }
 
 func (i *Item) AddItem(i2 *Item) {

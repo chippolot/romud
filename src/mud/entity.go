@@ -18,17 +18,16 @@ type EntityId int32
 type EntityConfigList []*EntityConfig
 
 type EntityConfig struct {
-	Key          string
-	Name         string
-	Gender       Gender
-	Keywords     []string
-	RoomDesc     string
-	FullDesc     string
-	Perceptibles *PerceptiblesConfig
-	Stats        *StatsConfig
-	Attacks      []*AttackConfig
-	Flags        EntityFlags
-	lookup       map[string]bool
+	Key      string
+	Name     string
+	Gender   Gender
+	Keywords []string
+	RoomDesc string
+	FullDesc string
+	Stats    *StatsConfig
+	Attacks  []*AttackConfig
+	Flags    EntityFlags
+	lookup   map[string]bool
 }
 
 func (cfg *EntityConfig) Init() {
@@ -114,6 +113,14 @@ func (e *Entity) NameCapitalized() string {
 	return string(arr)
 }
 
+func (e *Entity) FullDesc() string {
+	return e.cfg.FullDesc
+}
+
+func (e *Entity) RoomDesc() string {
+	return e.cfg.RoomDesc
+}
+
 func (e *Entity) RandomAttack() *AttackConfig {
 	// Calc total weight
 	sum := float32(0)
@@ -169,17 +176,6 @@ func (e *Entity) MatchesKeyword(keyword string) bool {
 	return ok
 }
 
-func (e *Entity) TryPerceive(sense SenseType, words []string) (string, bool) {
-	desc, ok := e.cfg.Perceptibles.TryPerceive(sense, words)
-	if ok {
-		return desc, ok
-	}
-	if sense == SenseLook && e.cfg.FullDesc != "" {
-		return e.cfg.FullDesc, true
-	}
-	return "", false
-}
-
 func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) {
 	for _, e := range ents {
 		if strings.EqualFold(e.Name(), name) {
@@ -193,7 +189,6 @@ func SearchEntities(query SearchQuery, self *Entity, containers ...EntityContain
 	if query.Keyword == "me" || query.Keyword == "self" || query.Keyword == "myself" {
 		return []*Entity{self}
 	}
-	// TODO dot notation for specifying container type
 	for _, c := range containers {
 		if ents := c.SearchEntities(query); len(ents) != 0 {
 			return ents

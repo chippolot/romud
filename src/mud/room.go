@@ -42,11 +42,10 @@ type RoomExitConfig struct {
 type RoomConfigList []*RoomConfig
 
 type RoomConfig struct {
-	Id           RoomId
-	Name         string
-	Desc         string
-	Exits        RoomExitsConfig
-	Perceptibles *PerceptiblesConfig
+	Id    RoomId
+	Name  string
+	Desc  string
+	Exits RoomExitsConfig
 }
 
 type Room struct {
@@ -125,10 +124,6 @@ func (r *Room) RemoveItem(i *Item) {
 func (r *Room) IsExitOpen(dir Direction) bool {
 	_, ok := r.cfg.Exits[dir]
 	return ok
-}
-
-func (r *Room) TryPerceive(sense SenseType, words []string) (string, bool) {
-	return r.cfg.Perceptibles.TryPerceive(sense, words)
 }
 
 func (r *Room) Describe(subject *Entity) string {

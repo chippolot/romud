@@ -39,7 +39,6 @@ func init() {
 		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", true, Cnd_Healthy, Pos_Sitting},
 		{DoGive, []string{"give"}, "Gives an item to something else", "give sword soldier", true, Cnd_Healthy, Pos_Sitting},
 		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
-		{DoListen, []string{"listen"}, "Describes the sound of an object", "listen cat", false, Cnd_Healthy, Pos_Prone},
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
 		{DoPut, []string{"put", "place"}, "Places an item in a container", "put sword in bag", true, Cnd_Healthy, Pos_Sitting},
@@ -49,11 +48,8 @@ func init() {
 		{DoShove, []string{"shove"}, "Attempts to shove an opponent during combat. If successful, opponent is knocked down.", "shove goblin", true, Cnd_Healthy, Pos_Standing},
 		{DoSit, []string{"sit"}, "Sit down on the ground", "sit", false, Cnd_Healthy, Pos_Prone},
 		{DoSleep, []string{"sleep"}, "Fall asleep to refresh yourself", "sleep", false, Cnd_Healthy, Pos_Sleeping},
-		{DoSmell, []string{"smell"}, "Describes the smell of an object", "smell goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},
 		{DoStatus, []string{"st", "status"}, "Displays status for the current player", "status", true, 0, 0},
-		{DoTaste, []string{"taste"}, "Describes the taste of an object", "taste goo", false, Cnd_Healthy, Pos_Sitting},
-		{DoTouch, []string{"touch"}, "Describes the touch of an object", "touch goo", false, Cnd_Healthy, Pos_Sitting},
 		{DoUnalias, []string{"unalias"}, "Removes an existing alias", "unalias", true, 0, 0},
 		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
 		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
@@ -445,7 +441,6 @@ func DoLook(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	// TODO further generify searching
 	// Is the player trying to look in something?
 	if tokens[1] == "in" {
 		containerQuery, ok, _ := parseSearchQuery(tokens[2:], false)
@@ -461,71 +456,18 @@ func DoLook(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	// Try to resolve item
-	// TODO THIS
-
-	// Try to resolve entity
-	// TODO THIS
-
-	// Try to resolve perceptible or get rid of this system
-	// TODO THIS
-
-	if desc, ok := tryPerceive(SenseLook, lowerTokens(tokens[1:]), e, w); ok {
-		SendToPlayer(e, desc)
+	// Looking at enitty or item?
+	query, ok, _ := parseSearchQuery(tokens[1:], false)
+	if !ok {
+		SendToPlayer(e, "You don't see that here.")
+		return
+	}
+	if ents := SearchEntities(query, e, r); len(ents) > 0 {
+		SendToPlayer(e, ents[0].FullDesc())
+	} else if itms := SearchItems(query, r, e); len(itms) > 0 {
+		SendToPlayer(e, itms[0].FullDesc())
 	} else {
 		SendToPlayer(e, "You don't see that here.")
-	}
-}
-
-func DoListen(e *Entity, w *World, tokens []string) {
-	switch len(tokens) {
-	case 0, 1:
-		SendToPlayer(e, "What do you want to listen to?")
-	default:
-		if desc, ok := tryPerceive(SenseListen, lowerTokens(tokens[1:]), e, w); ok {
-			SendToPlayer(e, desc)
-		} else {
-			SendToPlayer(e, "You don't hear that here.")
-		}
-	}
-}
-
-func DoTaste(e *Entity, w *World, tokens []string) {
-	switch len(tokens) {
-	case 0, 1:
-		SendToPlayer(e, "What do you want to taste?")
-	default:
-		if desc, ok := tryPerceive(SenseTaste, lowerTokens(tokens[1:]), e, w); ok {
-			SendToPlayer(e, desc)
-		} else {
-			SendToPlayer(e, "You don't want to taste that!")
-		}
-	}
-}
-
-func DoTouch(e *Entity, w *World, tokens []string) {
-	switch len(tokens) {
-	case 0, 1:
-		SendToPlayer(e, "What do you want to touch?")
-	default:
-		if desc, ok := tryPerceive(SenseTouch, lowerTokens(tokens[1:]), e, w); ok {
-			SendToPlayer(e, desc)
-		} else {
-			SendToPlayer(e, "You don't want to touch that!")
-		}
-	}
-}
-
-func DoSmell(e *Entity, w *World, tokens []string) {
-	switch len(tokens) {
-	case 0, 1:
-		SendToPlayer(e, "What do you want to smell?")
-	default:
-		if desc, ok := tryPerceive(SenseSmell, lowerTokens(tokens[1:]), e, w); ok {
-			SendToPlayer(e, desc)
-		} else {
-			SendToPlayer(e, "You don't want to smell that!")
-		}
 	}
 }
 
@@ -715,26 +657,6 @@ func DoQuit(e *Entity, w *World, _ []string) {
 	if e.player != nil {
 		w.LogoutPlayer(e.player)
 	}
-}
-
-func tryPerceive(sense SenseType, tokens []string, perceiver *Entity, w *World) (string, bool) {
-	// First try and resolve entity in room
-	r := w.rooms[perceiver.data.RoomId]
-	q, _, tokens := parseSearchQuery(tokens, false)
-	tgts := SearchEntities(q, perceiver, r)
-	if len(tgts) > 0 {
-		if desc, ok := tgts[0].TryPerceive(sense, tokens); ok {
-			return desc, true
-		}
-	}
-
-	// Then try and resolve room element
-	if desc, ok := r.TryPerceive(sense, tokens); ok {
-		return desc, true
-	}
-
-	// Nothing found...
-	return "", false
 }
 
 func lowerTokens(tokens []string) []string {

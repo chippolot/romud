@@ -23,5 +23,6 @@
     "Name": "an iron anvil",
     "Keywords": ["anvil"],
     "RoomDesc": "An iron anvil sits here. It looks pretty heavy.",
+    "FullDesc": "It looks pretty heavy.",
     "Weight": 250
 }]

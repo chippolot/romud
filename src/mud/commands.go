@@ -37,6 +37,7 @@ func init() {
 		{DoListCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
 		{DoDrop, []string{"drop"}, "Drops an item", "drop sword", true, Cnd_Healthy, Pos_Sitting},
 		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", true, Cnd_Healthy, Pos_Sitting},
+		{DoGive, []string{"give"}, "Gives an item to something else", "give sword soldier", true, Cnd_Healthy, Pos_Sitting},
 		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
 		{DoListen, []string{"listen"}, "Describes the sound of an object", "listen cat", false, Cnd_Healthy, Pos_Prone},
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
@@ -272,6 +273,44 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			func(i *Item) string { return fmt.Sprintf("You pick up %s", i.Name()) },
 			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.NameCapitalized(), i.Name()) },
 			r, items...)
+	}
+}
+
+func DoGive(e *Entity, w *World, tokens []string) {
+	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
+	if !ok {
+		SendToPlayer(e, "What do you want to give and to whom?")
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+
+	// Find the target
+	targetQuery, ok, tokens := parseSearchQuery(tokens, false)
+	if !ok {
+		SendToPlayer(e, "Who do you want to give that to?")
+		return
+	}
+	targets := r.SearchEntities(targetQuery)
+	if len(targets) == 0 {
+		SendToPlayer(e, "They don't seem to be here")
+		return
+	}
+	target := targets[0]
+
+	// Find the item
+	items := e.SearchItems(itemQuery)
+	if len(items) == 0 {
+		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+		return
+	}
+	for _, item := range items {
+		// Perform transfer and notify
+		e.RemoveItem(item)
+		target.AddItem(item)
+
+		SendToPlayer(e, "You give %s to %s", item.Name(), target.Name())
+		BroadcastToRoomExcept(r, e, "%s gives %s to %s", e.NameCapitalized(), item.Name(), target.Name())
 	}
 }
 

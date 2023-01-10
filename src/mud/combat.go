@@ -291,6 +291,8 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 			} else {
 				dam = attack.Damage.Roll()
 			}
+			dam += GetAbilityModifier(e.data.Stats.Str)
+			dam = utils.MaxInts(1, dam)
 		}
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, attack.DamageType, attack.VerbSingular, attack.VerbPlural)
 	}
@@ -346,7 +348,7 @@ func createCorpse(from *Entity, w *World) {
 	cfg.Key = from.cfg.Key + "_corpse"
 	cfg.Name = fmt.Sprintf("the corpse of %s", from.Name())
 	cfg.Keywords = append([]string{"corpse"}, from.cfg.Keywords...)
-	cfg.Flags = IFlag_Container | IFlag_Crumbles
+	cfg.Flags = IFlag_Container | IFlag_Crumbles | IFlag_NoStorage
 	cfg.Init()
 	corpse := NewItem(cfg)
 	for _, i := range from.inventory {

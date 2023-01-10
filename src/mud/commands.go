@@ -331,6 +331,10 @@ func DoPut(e *Entity, w *World, tokens []string) {
 		return
 	}
 	container := containers[0]
+	if container.cfg.Flags.Has(IFlag_NoStorage) {
+		SendToPlayer(e, "You can't store things in that!")
+		return
+	}
 
 	// Find the item
 	items := e.SearchItems(itemQuery)

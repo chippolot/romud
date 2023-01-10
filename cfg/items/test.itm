@@ -3,6 +3,13 @@
     "Name": "a wooden short sword",
     "Keywords": ["wooden", "short", "sword"],
     "RoomDesc": "A wooden short sword lies discarded on the ground.",
+    "Equipment": {
+        "Weapon": {
+            "Damage": "1d4",
+            "DamageType": "slashing"
+        },
+        "Slot": "held1h"
+    },
     "Weight": 15
 }, {
     "Key": "bag",

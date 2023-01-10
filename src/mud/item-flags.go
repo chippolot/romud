@@ -11,6 +11,7 @@ type ItemFlags bits.Bits
 
 const (
 	IFlag_Container     ItemFlags = 1 << iota // Items that can contain other items
+	IFlag_NoStorage                           // Items which cannot be used for storage (i.e. can't add contents to them)
 	IFlag_Light                               // Items that light the room that they're in
 	IFlag_Environmental                       // Static items that can't be picked up
 	IFlag_Crumbles                            // Items which crumble when soemthing tries to pick them up
@@ -20,6 +21,8 @@ func ParseItemFlag(str string) (ItemFlags, error) {
 	switch str {
 	case "container":
 		return IFlag_Container, nil
+	case "nostorage":
+		return IFlag_NoStorage, nil
 	case "scavenger":
 		return IFlag_Light, nil
 	case "environmental":

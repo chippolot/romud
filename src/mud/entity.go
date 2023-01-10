@@ -47,6 +47,7 @@ type EntityData struct {
 	RoomId    RoomId
 	Stats     *StatsData
 	Inventory []*ItemData
+	Equipped  map[EquipSlot]*ItemData
 }
 
 type EntityContainer interface {
@@ -66,16 +67,17 @@ type Entity struct {
 	combat    *CombatData
 	position  Position
 	inventory ItemList
+	equipped  map[EquipSlot]*Item
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
-	return &Entity{eid, cfg, newEntityData(cfg), nil, nil, Pos_Standing, make(ItemList, 0)}
+	return &Entity{eid, cfg, newEntityData(cfg), nil, nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item)}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0)}
+	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(map[EquipSlot]*ItemData)}
 }
 
 func (e *Entity) SetData(data *EntityData, w *World) {
@@ -155,8 +157,11 @@ func (e *Entity) AllItems() []*Item {
 
 func (e *Entity) ItemWeight() int {
 	w := 0
-	for _, i := range e.AllItems() {
-		w += i.cfg.Weight
+	for _, i := range e.inventory {
+		w += i.ItemWeight()
+	}
+	for _, i := range e.equipped {
+		w += i.ItemWeight()
 	}
 	return w
 }
@@ -167,6 +172,60 @@ func (e *Entity) RemoveItem(item *Item) {
 		e.data.Inventory = utils.SwapDelete(e.data.Inventory, idx)
 	}
 }
+func (e *Entity) Equip(item *Item) bool {
+	if item.data.Equipment == nil {
+		SendToPlayer(e, "You can't equip %s", item.Name())
+		return false
+	}
+	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
+		slot := item.cfg.Equipment.Slot
+
+		// Find open slot for slot categories
+		switch slot {
+		case EqSlot_Fingers:
+			slot = e.openEquipSlot(EqSlot_FingerR, EqSlot_FingerL)
+		case EqSlot_Wrists:
+			slot = e.openEquipSlot(EqSlot_WristR, EqSlot_WristL)
+		case EqSlot_Neck:
+			slot = e.openEquipSlot(EqSlot_Neck1, EqSlot_Neck2)
+		case EqSlot_Held1H:
+			slot = e.openEquipSlot(EqSlot_HeldR, EqSlot_HeldL)
+		}
+		e.RemoveItem(item)
+		if slot == EqSlot_Held2H {
+			e.equipToSlot(item, EqSlot_HeldL)
+			e.equipToSlot(item, EqSlot_HeldR)
+		} else {
+			e.equipToSlot(item, slot)
+		}
+	} else {
+		SendToPlayer(e, "You aren't carrying %s", item.Name())
+		return false
+	}
+	return true
+}
+
+func (e *Entity) Unequip(item *Item) bool {
+	if item.data.Equipment == nil {
+		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
+		return false
+	}
+	var found bool
+	for slot, item2 := range e.equipped {
+		if item2 == item {
+			delete(e.equipped, slot)
+			delete(e.data.Equipped, slot)
+			found = true
+		}
+	}
+	if found {
+		e.AddItem(item)
+	} else {
+		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
+		return false
+	}
+	return true
+}
 
 func (e *Entity) MatchesKeyword(keyword string) bool {
 	if strings.EqualFold(e.Name(), keyword) {
@@ -174,6 +233,23 @@ func (e *Entity) MatchesKeyword(keyword string) bool {
 	}
 	_, ok := e.cfg.lookup[keyword]
 	return ok
+}
+
+func (e *Entity) equipToSlot(item *Item, slot EquipSlot) {
+	if old, ok := e.equipped[slot]; ok {
+		e.Unequip(old)
+	}
+	e.equipped[slot] = item
+	e.data.Equipped[slot] = item.data
+}
+
+func (e *Entity) openEquipSlot(slots ...EquipSlot) EquipSlot {
+	for _, slot := range slots {
+		if _, ok := e.equipped[slot]; !ok {
+			return slot
+		}
+	}
+	return slots[0]
 }
 
 func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) {

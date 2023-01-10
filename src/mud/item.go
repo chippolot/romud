@@ -17,15 +17,16 @@ type ItemId int32
 type ItemConfigList []*ItemConfig
 
 type ItemConfig struct {
-	Key      string
-	Name     string
-	Keywords []string
-	RoomDesc string
-	FullDesc string
-	Flags    ItemFlags
-	Value    int
-	Weight   int
-	lookup   map[string]bool
+	Key       string
+	Name      string
+	Keywords  []string
+	RoomDesc  string
+	FullDesc  string
+	Flags     ItemFlags
+	Equipment *EquipmentConfig
+	Value     int
+	Weight    int
+	lookup    map[string]bool
 }
 
 func (cfg *ItemConfig) Init() {
@@ -36,9 +37,10 @@ func (cfg *ItemConfig) Init() {
 }
 
 type ItemData struct {
-	Key      string
-	RoomId   RoomId
-	Contents []*ItemData
+	Key       string
+	RoomId    RoomId
+	Contents  []*ItemData
+	Equipment *EquipmentData
 }
 
 type ItemContainer interface {
@@ -65,7 +67,7 @@ func NewItem(cfg *ItemConfig) *Item {
 }
 
 func newItemData(cfg *ItemConfig) *ItemData {
-	return &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0)}
+	return &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0), nil}
 }
 
 func (i *Item) SetData(data *ItemData, w *World) {

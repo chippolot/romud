@@ -88,7 +88,9 @@
         [] Equipment Stats
         [] Use Weapons in Combat
         [] Use Armor in Combat
-        [] Show Equipped
+        [x] Show Equipped
+        [] Mobs use equipment
+        [] Prevent dual wield
         [] Slot specific equip messages
     [] Wearing
 [] Combat

@@ -72,7 +72,7 @@
             "VerbSingular": "punch",
             "VerbPlural": "punches"
         }],
-        "Flags": ["trashcollector"],
+        "Flags": ["trashcollector", "usesequipment"],
         "Stats": {
             "HP": "1d6+4",
             "AC": 10,

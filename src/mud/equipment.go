@@ -159,6 +159,52 @@ func (s *EquipSlot) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
+func GetEquipmentSlotDescription(slot EquipSlot, item *Item) string {
+	if item.cfg.Equipment.Slot.Has(EqSlot_2H) {
+		switch slot {
+		case EqSlot_FingerL, EqSlot_FingerR, EqSlot_Fingers:
+			return "<fingers>"
+		case EqSlot_WristL, EqSlot_WristR, EqSlot_Wrists:
+			return "<wrists>"
+		case EqSlot_HeldL, EqSlot_HeldR, EqSlot_Held1H, EqSlot_Held2H:
+			return "<hands>"
+		}
+	}
+	switch slot {
+	case EqSlot_Waist:
+		return "<waist>"
+	case EqSlot_Neck1, EqSlot_Neck2, EqSlot_Neck:
+		return "<neck>"
+	case EqSlot_Head:
+		return "<head>"
+	case EqSlot_Body:
+		return "<body>"
+	case EqSlot_Hands:
+		return "<hands>"
+	case EqSlot_Arms:
+		return "<arms>"
+	case EqSlot_Legs:
+		return "<legs>"
+	case EqSlot_Feet:
+		return "<feet>"
+	case EqSlot_FingerL:
+		return "<left finger>"
+	case EqSlot_FingerR:
+		return "<right finger>"
+	case EqSlot_WristL:
+		return "<left wrist>"
+	case EqSlot_WristR:
+		return "<right wrist>"
+	case EqSlot_Shoulders:
+		return "<shoulders>"
+	case EqSlot_HeldL:
+		return "<left hand>"
+	case EqSlot_HeldR:
+		return "<right hand>"
+	}
+	return ""
+}
+
 type EquipmentConfig struct {
 	Slot   EquipSlot
 	Armor  *ArmorConfig
@@ -174,28 +220,26 @@ type WeaponConfig struct {
 	DamageType DamageType
 }
 
-type EquipmentData struct {
-	Equipped EquipSlot
-}
-
 type EquipmentDataMap map[EquipSlot]*ItemData
 
 func (m *EquipmentDataMap) MarshalJSON() ([]byte, error) {
-	arr := make([]*ItemData, 0, len(*m))
-	for _, data := range *m {
-		arr = append(arr, data)
+	m2 := make(map[string]*ItemData)
+	for slot, data := range *m {
+		m2[slot.String()] = data
 	}
-	return json.Marshal(arr)
+	return json.Marshal(m2)
 }
 
 func (m *EquipmentDataMap) UnmarshalJSON(data []byte) (err error) {
-	var arr []*ItemData
-	if err := json.Unmarshal(data, &arr); err != nil {
+	var m2 map[string]*ItemData
+	if err := json.Unmarshal(data, &m2); err != nil {
 		return err
 	}
 	*m = make(EquipmentDataMap)
-	for _, data := range arr {
-		(*m)[data.Equipment.Equipped] = data
+	for slotStr, data := range m2 {
+		if slot, err := ParseEquipmentSlot(slotStr); err == nil {
+			(*m)[slot] = data
+		}
 	}
 	return nil
 }

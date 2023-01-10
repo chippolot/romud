@@ -37,6 +37,7 @@ func init() {
 		{DoListCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
 		{DoDrop, []string{"drop"}, "Drops an item", "drop sword", true, Cnd_Healthy, Pos_Sitting},
 		{DoEquip, []string{"equip", "wear"}, "Equips a carried item", "equip sword", false, Cnd_Healthy, Pos_Sitting},
+		{DoEquipment, []string{"eq", "equipment"}, "Lists equipment you are using", "equipment", true, 0, 0},
 		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", false, Cnd_Healthy, Pos_Sitting},
 		{DoGive, []string{"give"}, "Gives an item to something else", "give sword soldier", false, Cnd_Healthy, Pos_Sitting},
 		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
@@ -470,6 +471,10 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 	}
 }
 
+func DoEquipment(e *Entity, w *World, tokens []string) {
+	SendToPlayer(e, e.DescribeEquipment())
+}
+
 func DoLook(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
@@ -501,9 +506,9 @@ func DoLook(e *Entity, w *World, tokens []string) {
 		return
 	}
 	if ents := SearchEntities(query, e, r); len(ents) > 0 {
-		SendToPlayer(e, ents[0].FullDesc())
+		SendToPlayer(e, ents[0].Describe())
 	} else if itms := SearchItems(query, r, e); len(itms) > 0 {
-		SendToPlayer(e, itms[0].FullDesc())
+		SendToPlayer(e, itms[0].Describe())
 	} else {
 		SendToPlayer(e, "You don't see that here.")
 	}
@@ -646,16 +651,16 @@ func DoStatus(e *Entity, w *World, _ []string) {
 }
 
 func DoWho(e *Entity, w *World, _ []string) {
-	lines := make([]string, 0)
-	lines = append(lines, fmt.Sprintf("Online Players: %d", len(w.players)))
-	lines = append(lines, utils.HorizontalDivider)
-	lines = append(lines, fmt.Sprintf("(you)\t%s", e.Name()))
+	var sb utils.StringBuilder
+	sb.WriteLinef("Online Players: %d", len(w.players))
+	sb.WriteHorizontalDivider()
+	sb.WriteLinef("  (you) %s", e.Name())
 	for _, e2 := range w.players {
 		if e2 != e {
-			lines = append(lines, fmt.Sprintf("\t%s", e2.player.data.Name))
+			sb.WriteLinef("  %s", e2.player.data.Name)
 		}
 	}
-	SendToPlayer(e, strings.Join(lines, utils.NewLine))
+	SendToPlayer(e, sb.String())
 }
 
 func DoMove(e *Entity, w *World, tokens []string) {

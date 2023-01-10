@@ -37,10 +37,9 @@ func (cfg *ItemConfig) Init() {
 }
 
 type ItemData struct {
-	Key       string
-	RoomId    RoomId
-	Contents  []*ItemData    `json:",omitempty"`
-	Equipment *EquipmentData `json:",omitempty"`
+	Key      string
+	RoomId   RoomId
+	Contents []*ItemData `json:",omitempty"`
 }
 
 type ItemContainer interface {
@@ -67,10 +66,7 @@ func NewItem(cfg *ItemConfig) *Item {
 }
 
 func newItemData(cfg *ItemConfig) *ItemData {
-	data := &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0), nil}
-	if cfg.Equipment != nil {
-		data.Equipment = &EquipmentData{}
-	}
+	data := &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0)}
 	return data
 }
 
@@ -101,12 +97,8 @@ func (i *Item) NameCapitalized() string {
 	return string(arr)
 }
 
-func (i *Item) FullDesc() string {
+func (i *Item) Describe() string {
 	return i.cfg.FullDesc
-}
-
-func (i *Item) RoomDesc() string {
-	return i.cfg.RoomDesc
 }
 
 func (i *Item) MatchesKeyword(keyword string) bool {

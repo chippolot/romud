@@ -6,6 +6,5 @@ type Named interface {
 }
 
 type Descriptive interface {
-	RoomDesc() string
-	FullDesc() string
+	Describe() string
 }

@@ -3,6 +3,7 @@ package server
 import (
 	"fmt"
 	"net"
+	"strings"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -63,9 +64,15 @@ func (s *Session) Flush() {
 	if s.sendQueue.Len() == 0 {
 		return
 	}
-	s.sendQueue.WriteNewLine()
+	str := s.sendQueue.String()
+	s.sendQueue.Reset()
+	if strings.HasSuffix(str, utils.NewLine) {
+		s.sendQueue.WriteString(str)
+	} else {
+		s.sendQueue.WriteLine(str)
+	}
 	s.sendQueue.WriteString(s.promptProvider.Prompt())
-	str := processANSIColorCodes(s.sendQueue.String())
+	str = processANSIColorCodes(s.sendQueue.String())
 	s.sendQueue.Reset()
 	_, _ = s.Conn.Write([]byte(str))
 }

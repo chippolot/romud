@@ -13,6 +13,7 @@ const (
 	EFlag_Stationary     EntityFlags = 1 << iota // Entities that cannot move
 	EFlag_Scavenger                              // Entities that pick up valuable items on the ground
 	EFlag_TrashCollector                         // Entities that pick up worthless items on the ground
+	EFlag_UsesEquipment                          // Entities that can use equipment
 )
 
 func ParseEntityFlag(str string) (EntityFlags, error) {
@@ -23,6 +24,8 @@ func ParseEntityFlag(str string) (EntityFlags, error) {
 		return EFlag_Scavenger, nil
 	case "trashcollector":
 		return EFlag_TrashCollector, nil
+	case "usesequipment":
+		return EFlag_UsesEquipment, nil
 	default:
 		return 0, fmt.Errorf("unknown entity flag: %s", str)
 	}

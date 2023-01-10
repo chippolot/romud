@@ -1,6 +1,10 @@
 package mud
 
-import "github.com/chippolot/go-mud/src/utils"
+import (
+	"fmt"
+
+	"github.com/chippolot/go-mud/src/utils"
+)
 
 type StatType int
 
@@ -134,7 +138,7 @@ func (s *StatsData) ConditionShortString() string {
 	} else {
 		pct := float32(s.HP) / float32(s.MaxHP)
 		if pct >= 0.95 {
-			return "<c green>excellent</c>"
+			return "<c green>excellent condition</c>"
 		} else if pct >= 0.85 {
 			return "<c green>a few scratches</c>"
 		} else if pct >= 0.70 {
@@ -147,6 +151,35 @@ func (s *StatsData) ConditionShortString() string {
 			return "<c yellow>bleeding heavily</c>"
 		} else {
 			return "<c red>awful condition</c>"
+		}
+	}
+}
+
+func (s *StatsData) ConditionLongString(e *Entity) string {
+	if s.HP < -10 {
+		return fmt.Sprintf("%s is <c red>dead</c>", e.NameCapitalized())
+	} else if s.HP < -5 {
+		return fmt.Sprintf("%s is <c red>mortally wounded</c>", e.NameCapitalized())
+	} else if s.HP < -2 {
+		return fmt.Sprintf("%s is <c red>badly wounded</c>", e.NameCapitalized())
+	} else if s.HP <= 0 {
+		return fmt.Sprintf("%s is in <c red>awful condition</c>", e.NameCapitalized())
+	} else {
+		pct := float32(s.HP) / float32(s.MaxHP)
+		if pct >= 0.95 {
+			return fmt.Sprintf("%s is in <c green>excellent condition</c>", e.NameCapitalized())
+		} else if pct >= 0.85 {
+			return fmt.Sprintf("%s has <c green>a few scratches</c>", e.NameCapitalized())
+		} else if pct >= 0.70 {
+			return fmt.Sprintf("%s has <c green>bumps and bruises</c>", e.NameCapitalized())
+		} else if pct >= 0.50 {
+			return fmt.Sprintf("%s is looking <c yellow>roughed up</c>", e.NameCapitalized())
+		} else if pct >= 0.30 {
+			return fmt.Sprintf("%s is <c yellow>bleeding</c>", e.NameCapitalized())
+		} else if pct >= 0.15 {
+			return fmt.Sprintf("%s is <c yellow>bleeding heavily</c>", e.NameCapitalized())
+		} else {
+			return fmt.Sprintf("%s is in <c red>awful condition</c>", e.NameCapitalized())
 		}
 	}
 }

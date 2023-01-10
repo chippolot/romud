@@ -83,11 +83,10 @@ func newEntityData(cfg *EntityConfig) *EntityData {
 func (e *Entity) SetData(data *EntityData, w *World) {
 	e.data = data
 
-	if e.data.Equipped == nil {
-		e.data.Equipped = make(map[EquipSlot]*ItemData)
-	}
-
 	// Prepare inventory
+	if e.data.Inventory == nil {
+		e.data.Inventory = make([]*ItemData, 0)
+	}
 	for _, idata := range e.data.Inventory {
 		cfg, ok := w.itemConfigs[idata.Key]
 		if !ok {
@@ -99,14 +98,17 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 	}
 
 	// Prepare equipment
-	for _, idata := range e.data.Equipped {
+	if e.data.Equipped == nil {
+		e.data.Equipped = make(map[EquipSlot]*ItemData)
+	}
+	for slot, idata := range e.data.Equipped {
 		cfg, ok := w.itemConfigs[idata.Key]
 		if !ok {
 			log.Fatalf("cannot create equipment. expected item config with key %s", cfg.Key)
 		}
 		item := NewItem(cfg)
 		item.SetData(idata, w)
-		e.equipped[item.cfg.Equipment.Slot] = item
+		e.equipped[slot] = item
 	}
 }
 
@@ -128,14 +130,6 @@ func (e *Entity) NameCapitalized() string {
 	arr := []rune(e.Name())
 	arr[0] = unicode.ToUpper(arr[0])
 	return string(arr)
-}
-
-func (e *Entity) FullDesc() string {
-	return e.cfg.FullDesc
-}
-
-func (e *Entity) RoomDesc() string {
-	return e.cfg.RoomDesc
 }
 
 func (e *Entity) RandomAttack() *AttackConfig {
@@ -188,7 +182,7 @@ func (e *Entity) RemoveItem(item *Item) {
 	}
 }
 func (e *Entity) Equip(item *Item) ([]*Item, bool) {
-	if item.data.Equipment == nil {
+	if item.cfg.Equipment == nil {
 		SendToPlayer(e, "You can't equip %s", item.Name())
 		return nil, false
 	}
@@ -209,7 +203,7 @@ func (e *Entity) Equip(item *Item) ([]*Item, bool) {
 		e.RemoveItem(item)
 		unequipped := make([]*Item, 0)
 		if slot == EqSlot_Held2H {
-			if u := e.equipToSlot(item, EqSlot_HeldL); u != nil {
+			if u := e.unequipFromSlot(item, EqSlot_HeldL); u != nil {
 				unequipped = append(unequipped, u)
 			}
 			if u := e.equipToSlot(item, EqSlot_HeldR); u != nil {
@@ -228,7 +222,7 @@ func (e *Entity) Equip(item *Item) ([]*Item, bool) {
 }
 
 func (e *Entity) Unequip(item *Item) bool {
-	if item.data.Equipment == nil {
+	if item.cfg.Equipment == nil {
 		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
 		return false
 	}
@@ -237,7 +231,6 @@ func (e *Entity) Unequip(item *Item) bool {
 		if item2 == item {
 			delete(e.equipped, slot)
 			delete(e.data.Equipped, slot)
-			item.data.Equipment.Equipped = EqSlot_None
 			found = true
 		}
 	}
@@ -250,6 +243,34 @@ func (e *Entity) Unequip(item *Item) bool {
 	return true
 }
 
+func (e *Entity) Describe() string {
+	var sb utils.StringBuilder
+	sb.WriteLine(e.cfg.FullDesc)
+	sb.WriteLine(e.data.Stats.ConditionLongString(e))
+	if e.cfg.Flags.Has(EFlag_UsesEquipment) {
+		sb.WriteLine(e.DescribeEquipment())
+	}
+	return sb.String()
+}
+
+func (e *Entity) DescribeEquipment() string {
+	var sb utils.StringBuilder
+	sb.WriteLinef("%s is using:", e.NameCapitalized())
+	sb.WriteHorizontalDivider()
+	if len(e.equipped) == 0 {
+		sb.WriteLine("  Nothing.")
+	} else {
+		for slot, eq := range e.equipped {
+			slotDesc := GetEquipmentSlotDescription(slot, eq)
+			if slotDesc == "" {
+				continue
+			}
+			sb.WriteLinef("  %-15s%s", slotDesc, eq.Name())
+		}
+	}
+	return sb.String()
+}
+
 func (e *Entity) MatchesKeyword(keyword string) bool {
 	if strings.EqualFold(e.Name(), keyword) {
 		return true
@@ -259,14 +280,18 @@ func (e *Entity) MatchesKeyword(keyword string) bool {
 }
 
 func (e *Entity) equipToSlot(item *Item, slot EquipSlot) *Item {
+	unequipped := e.unequipFromSlot(item, slot)
+	e.equipped[slot] = item
+	e.data.Equipped[slot] = item.data
+	return unequipped
+}
+
+func (e *Entity) unequipFromSlot(item *Item, slot EquipSlot) *Item {
 	var unequipped *Item
 	if old, ok := e.equipped[slot]; ok {
 		unequipped = old
 		e.Unequip(old)
 	}
-	e.equipped[slot] = item
-	e.data.Equipped[slot] = item.data
-	item.data.Equipment.Equipped = slot
 	return unequipped
 }
 

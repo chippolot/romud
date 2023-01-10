@@ -116,3 +116,45 @@
 [] Generify connections -- support ssh
 [] Look into MUD protocols
 [] Look into MUD compression
+
+
+## Update Parser to support
+```
+GET TAKE
+
+GET and TAKE are exactly the same and can be used interchangeably.
+
+Usage: get | take <object>
+       get | take all.<object>
+       get | take all [container]
+       get | take all all.<container>
+       get | take all.<object> all.<container>
+
+If you find something interesting on the ground, you may use GET to 
+pick it up. GET can also be used to extract items from containers.
+
+Examples:
+
+  > get sword corpse
+  > get all corpse
+  > get all all.bag
+  > get all.bread all.bag
+
+You can also: 
+     get only the 3rd sword lying on the ground 
+     get 4 swords lying on the ground
+     get all swords 
+     get green sword
+     get all green swords
+
+and my favorite
+     get all coins from all corpses in the room
+
+Examples:
+  > get 3.sword 
+  > get 4 sword
+  > get all.sword
+  > get green-sword
+  > get all.green-sword
+  > get all.coins all.corpse
+  ```

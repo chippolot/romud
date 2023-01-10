@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"math"
 	"strconv"
 	"strings"
 
@@ -12,34 +13,30 @@ type Matchable interface {
 }
 
 type SearchQuery struct {
-	Keywords []string
-	Joined   string
-	Number   int
+	Keyword string
+	Index   int
+	Count   int
 }
 
-func NewSearchQuery(keywords ...string) SearchQuery {
-	q := SearchQuery{keywords, strings.Join(keywords, " "), 0}
-	if q.Joined == "all" {
-		q.Number = -1
-	} else {
-		for idx, k := range keywords {
-			idxDot := strings.IndexByte(k, '.')
-			if idxDot == -1 {
-				continue
-			}
-			nstr := k[idxDot+1:]
-			if n, err := strconv.Atoi(nstr); err == nil {
-				q.Number = utils.MaxInts(0, n-1)
-				keywords[idx] = keywords[idx][:idxDot]
-				break
-			}
+func NewSearchQuery(keyword string, count int) SearchQuery {
+	q := SearchQuery{keyword, -1, count}
+	if keyword == "all" {
+		q.Count = math.MaxInt
+	} else if dotIdx := strings.Index(keyword, "."); dotIdx != -1 {
+		preDot := keyword[:dotIdx]
+		postDot := keyword[dotIdx+1:]
+		if num, err := strconv.Atoi(preDot); err == nil {
+			q.Index = utils.MaxInts(0, num-1)
+		} else if preDot == "all" {
+			q.Count = math.MaxInt
 		}
+		q.Keyword = postDot
 	}
 	return q
 }
 
 func (s SearchQuery) IsEmpty() bool {
-	return len(s.Keywords) == 0
+	return s.Keyword == ""
 }
 
 func SearchMap[TKey comparable, TItem Matchable](query SearchQuery, items map[TKey]TItem) []TItem {
@@ -74,16 +71,11 @@ func SearchList[TItem Matchable](query SearchQuery, items []TItem) []TItem {
 }
 
 func doesSearchQueryMatch[TItem Matchable](query SearchQuery, item TItem) bool {
-	if query.Joined == "all" {
+	if query.Keyword == "all" {
 		return true
 	}
-	if item.MatchesKeyword(query.Joined) {
+	if item.MatchesKeyword(query.Keyword) {
 		return true
-	}
-	for _, keyword := range query.Keywords {
-		if item.MatchesKeyword(keyword) {
-			return true
-		}
 	}
 	return false
 }
@@ -92,11 +84,11 @@ func filterSearchResults[TItem Matchable](query SearchQuery, results []TItem) []
 	if len(results) == 0 {
 		return results
 	}
-	if query.Number == -1 {
-		return results
+	if query.Index == -1 {
+		return results[:utils.MinInts(len(results), query.Count)]
 	}
-	if query.Number >= len(results) {
+	if query.Index >= len(results) {
 		return results[:0]
 	}
-	return results[query.Number : query.Number+1]
+	return results[query.Index : query.Index+1]
 }

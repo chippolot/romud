@@ -190,7 +190,7 @@ func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) 
 }
 
 func SearchEntities(query SearchQuery, self *Entity, containers ...EntityContainer) []*Entity {
-	if query.Joined == "me" || query.Joined == "self" || query.Joined == "myself" {
+	if query.Keyword == "me" || query.Keyword == "self" || query.Keyword == "myself" {
 		return []*Entity{self}
 	}
 	// TODO dot notation for specifying container type

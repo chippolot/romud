@@ -10,7 +10,8 @@ import (
 type EquipSlot bits.Bits
 
 const (
-	EqSlot_Waist EquipSlot = 1 << iota
+	EqSlot_None EquipSlot = 1 << iota
+	EqSlot_Waist
 	EqSlot_Neck1
 	EqSlot_Neck2
 	EqSlot_Head
@@ -36,6 +37,8 @@ const (
 
 func ParseEquipmentSlot(str string) (EquipSlot, error) {
 	switch str {
+	case "none":
+		return EqSlot_None, nil
 	case "waist":
 		return EqSlot_Waist, nil
 	case "neck1":
@@ -85,17 +88,73 @@ func ParseEquipmentSlot(str string) (EquipSlot, error) {
 	}
 }
 
-func (f *EquipSlot) Has(flag EquipSlot) bool {
-	return *f&flag != 0
+func (s *EquipSlot) Has(flag EquipSlot) bool {
+	return *s&flag != 0
 }
 
-func (f *EquipSlot) UnmarshalJSON(data []byte) (err error) {
+func (s *EquipSlot) String() string {
+	switch *s {
+	case EqSlot_None:
+		return "none"
+	case EqSlot_Waist:
+		return "waist"
+	case EqSlot_Neck1:
+		return "neck1"
+	case EqSlot_Neck2:
+		return "neck2"
+	case EqSlot_Head:
+		return "head"
+	case EqSlot_Body:
+		return "body"
+	case EqSlot_Hands:
+		return "hands"
+	case EqSlot_Arms:
+		return "arms"
+	case EqSlot_Legs:
+		return "legs"
+	case EqSlot_Feet:
+		return "feet"
+	case EqSlot_FingerL:
+		return "fingerl"
+	case EqSlot_FingerR:
+		return "fingerr"
+	case EqSlot_WristL:
+		return "wristl"
+	case EqSlot_WristR:
+		return "wristr"
+	case EqSlot_Shoulders:
+		return "shoulders"
+	case EqSlot_HeldL:
+		return "heldl"
+	case EqSlot_HeldR:
+		return "heldr"
+	case EqSlot_2H:
+		return "2h"
+	case EqSlot_Fingers:
+		return "fingers"
+	case EqSlot_Wrists:
+		return "wrists"
+	case EqSlot_Held1H:
+		return "held1h"
+	case EqSlot_Held2H:
+		return "held2h"
+	case EqSlot_Neck:
+		return "neck"
+	}
+	return "unknown"
+}
+
+func (s *EquipSlot) MarshalJSON() ([]byte, error) {
+	return json.Marshal(s.String())
+}
+
+func (s *EquipSlot) UnmarshalJSON(data []byte) (err error) {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {
 		return err
 	}
 	if flag, err := ParseEquipmentSlot(str); err == nil {
-		*f = EquipSlot(*f | flag)
+		*s = EquipSlot(*s | flag)
 	}
 	return err
 }
@@ -117,4 +176,26 @@ type WeaponConfig struct {
 
 type EquipmentData struct {
 	Equipped EquipSlot
+}
+
+type EquipmentDataMap map[EquipSlot]*ItemData
+
+func (m *EquipmentDataMap) MarshalJSON() ([]byte, error) {
+	arr := make([]*ItemData, 0, len(*m))
+	for _, data := range *m {
+		arr = append(arr, data)
+	}
+	return json.Marshal(arr)
+}
+
+func (m *EquipmentDataMap) UnmarshalJSON(data []byte) (err error) {
+	var arr []*ItemData
+	if err := json.Unmarshal(data, &arr); err != nil {
+		return err
+	}
+	*m = make(EquipmentDataMap)
+	for _, data := range arr {
+		(*m)[data.Equipment.Equipped] = data
+	}
+	return nil
 }

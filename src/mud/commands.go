@@ -36,8 +36,9 @@ func init() {
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
 		{DoListCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},
 		{DoDrop, []string{"drop"}, "Drops an item", "drop sword", true, Cnd_Healthy, Pos_Sitting},
-		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", true, Cnd_Healthy, Pos_Sitting},
-		{DoGive, []string{"give"}, "Gives an item to something else", "give sword soldier", true, Cnd_Healthy, Pos_Sitting},
+		{DoEquip, []string{"equip", "wear"}, "Equips a carried item", "equip sword", false, Cnd_Healthy, Pos_Sitting},
+		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", false, Cnd_Healthy, Pos_Sitting},
+		{DoGive, []string{"give"}, "Gives an item to something else", "give sword soldier", false, Cnd_Healthy, Pos_Sitting},
 		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
@@ -51,6 +52,7 @@ func init() {
 		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},
 		{DoStatus, []string{"st", "status"}, "Displays status for the current player", "status", true, 0, 0},
 		{DoUnalias, []string{"unalias"}, "Removes an existing alias", "unalias", true, 0, 0},
+		{DoUnequip, []string{"unequip"}, "Unequips an equipped item", "unequip sword", false, Cnd_Healthy, Pos_Sitting},
 		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
 		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
 		{DoWho, []string{"who"}, "Lists all online players", "who", true, 0, 0},
@@ -369,13 +371,45 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	if items := e.SearchItems(itemQuery); len(items) == 0 {
-		SendToPlayer(e, "You don't have one of those...")
+		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
 	} else {
 		for _, item := range items {
 			e.RemoveItem(item)
 			r.AddItem(item)
 			SendToPlayer(e, "You drop %s", item.Name())
 			BroadcastToRoomExcept(r, e, "%s drops %s", e.NameCapitalized(), item.Name())
+		}
+	}
+}
+
+func DoEquip(e *Entity, w *World, tokens []string) {
+	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
+	if !ok {
+		SendToPlayer(e, "What do you want to equip?")
+		return
+	}
+
+	if items := e.SearchItems(itemQuery); len(items) == 0 {
+		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+	} else {
+		for _, item := range items {
+			performEquip(e, w, item)
+		}
+	}
+}
+
+func DoUnequip(e *Entity, w *World, tokens []string) {
+	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
+	if !ok {
+		SendToPlayer(e, "What do you want to equip?")
+		return
+	}
+
+	if items := SearchMap(itemQuery, e.equipped); len(items) == 0 {
+		SendToPlayer(e, "You dont have '%s' equipped", itemQuery.Keyword)
+	} else {
+		for _, item := range items {
+			performUnequip(e, w, item)
 		}
 	}
 }
@@ -777,6 +811,29 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 			BroadcastToRoomExcept(r, e, roomMsgFn(item))
 		}
 	}
+}
+
+func performEquip(e *Entity, w *World, item *Item) {
+	unequipped, ok := e.Equip(item)
+	if !ok {
+		return
+	}
+	r := w.rooms[e.data.RoomId]
+	for _, u := range unequipped {
+		SendToPlayer(e, "You unequip %s", u.Name())
+		BroadcastToRoomExcept(r, e, "%s unequip %s", e.NameCapitalized(), u.Name())
+	}
+	SendToPlayer(e, "You equip %s", item.Name())
+	BroadcastToRoomExcept(r, e, "%s equip %s", e.NameCapitalized(), item.Name())
+}
+
+func performUnequip(e *Entity, w *World, item *Item) {
+	if ok := e.Unequip(item); !ok {
+		return
+	}
+	r := w.rooms[e.data.RoomId]
+	SendToPlayer(e, "You unequip %s", item.Name())
+	BroadcastToRoomExcept(r, e, "%s unequip %s", e.NameCapitalized(), item.Name())
 }
 
 func parseSearchQuery(tokens []string, allowCount bool) (SearchQuery, bool, []string) {

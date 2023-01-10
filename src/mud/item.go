@@ -39,8 +39,8 @@ func (cfg *ItemConfig) Init() {
 type ItemData struct {
 	Key       string
 	RoomId    RoomId
-	Contents  []*ItemData
-	Equipment *EquipmentData
+	Contents  []*ItemData    `json:",omitempty"`
+	Equipment *EquipmentData `json:",omitempty"`
 }
 
 type ItemContainer interface {
@@ -67,7 +67,11 @@ func NewItem(cfg *ItemConfig) *Item {
 }
 
 func newItemData(cfg *ItemConfig) *ItemData {
-	return &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0), nil}
+	data := &ItemData{cfg.Key, InvalidId, make([]*ItemData, 0), nil}
+	if cfg.Equipment != nil {
+		data.Equipment = &EquipmentData{}
+	}
+	return data
 }
 
 func (i *Item) SetData(data *ItemData, w *World) {

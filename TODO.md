@@ -46,6 +46,8 @@
     [x] Get All From
     [x] Weights
     [x] Looking At
+    [x] Equip Command
+    [x] Unequip Command
 [x] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -86,9 +88,8 @@
         [] Equipment Stats
         [] Use Weapons in Combat
         [] Use Armor in Combat
-        [] Equip Command
-        [] Unequip Command
         [] Show Equipped
+        [] Slot specific equip messages
     [] Wearing
 [] Combat
     [] More Skills!

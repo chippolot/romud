@@ -182,17 +182,16 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 	if len(r.entities) == 0 {
 		return
 	}
-	var descs = make([]string, 0)
-	for _, e := range r.entities {
+	descs := GroupDescriptionsFromMap(r.entities, func(_ EntityId, e *Entity) string {
 		if e.player != nil {
-			continue
+			return ""
 		}
 		desc := e.cfg.RoomDesc
 		if desc == "" {
 			desc = fmt.Sprintf("%s is here", e.Name())
 		}
-		descs = append(descs, desc)
-	}
+		return desc
+	})
 	if len(descs) == 0 {
 		return
 	}
@@ -204,14 +203,13 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 	if len(r.items) == 0 {
 		return
 	}
-	var descs = make([]string, 0)
-	for _, i := range r.items {
+	descs := GroupDescriptionsFromMap(r.items, func(_ ItemId, i *Item) string {
 		desc := i.cfg.RoomDesc
 		if desc == "" {
 			desc = fmt.Sprintf("%s is here", i.Name())
 		}
-		descs = append(descs, desc)
-	}
+		return desc
+	})
 	if len(descs) == 0 {
 		return
 	}

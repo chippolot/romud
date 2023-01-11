@@ -51,6 +51,7 @@
     [x] Equipment Stats
     [x] Use Weapons in Combat
     [x] Show Equipped
+    [x] Slot specific equip messages
 [x] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -91,7 +92,6 @@
         [] Use Armor in Combat
         [] Mobs use equipment
         [] Prevent dual wield
-        [] Slot specific equip messages
     [] Wearing
 [] Combat
     [] More Skills!

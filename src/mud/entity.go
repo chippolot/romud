@@ -181,10 +181,10 @@ func (e *Entity) RemoveItem(item *Item) {
 		e.data.Inventory = utils.SwapDelete(e.data.Inventory, idx)
 	}
 }
-func (e *Entity) Equip(item *Item) ([]*Item, bool) {
+func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 	if item.cfg.Equipment == nil {
 		SendToPlayer(e, "You can't equip %s", item.Name())
-		return nil, false
+		return EqSlot_None, nil, false
 	}
 	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
 		slot := item.cfg.Equipment.Slot
@@ -214,10 +214,10 @@ func (e *Entity) Equip(item *Item) ([]*Item, bool) {
 				unequipped = append(unequipped, u)
 			}
 		}
-		return unequipped, true
+		return slot, unequipped, true
 	} else {
 		SendToPlayer(e, "You aren't carrying %s", item.Name())
-		return nil, false
+		return EqSlot_None, nil, false
 	}
 }
 
@@ -278,7 +278,7 @@ func (e *Entity) DescribeEquipment() string {
 			sb.WriteLinef("  %-15s%s", slotDesc, eq.Name())
 		}
 	}
-	return sb.String()
+	return strings.TrimSuffix(sb.String(), utils.NewLine)
 }
 
 func (e *Entity) MatchesKeyword(keyword string) bool {

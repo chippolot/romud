@@ -391,7 +391,11 @@ func DoEquip(e *Entity, w *World, tokens []string) {
 	}
 
 	if items := e.SearchItems(itemQuery); len(items) == 0 {
-		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+		if itemQuery.Keyword == "all" {
+			SendToPlayer(e, "You don't have anything to equip")
+		} else {
+			SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+		}
 	} else {
 		for _, item := range items {
 			performEquip(e, w, item)
@@ -407,7 +411,11 @@ func DoUnequip(e *Entity, w *World, tokens []string) {
 	}
 
 	if items := SearchMap(itemQuery, e.equipped); len(items) == 0 {
-		SendToPlayer(e, "You dont have '%s' equipped", itemQuery.Keyword)
+		if itemQuery.Keyword == "all" {
+			SendToPlayer(e, "You don't have anything equipped")
+		} else {
+			SendToPlayer(e, "You don't have '%s' equipped", itemQuery.Keyword)
+		}
 	} else {
 		for _, item := range items {
 			performUnequip(e, w, item)
@@ -820,14 +828,14 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 }
 
 func performEquip(e *Entity, w *World, item *Item) {
-	unequipped, ok := e.Equip(item)
+	slot, unequipped, ok := e.Equip(item)
 	if !ok {
 		return
 	}
 	for _, u := range unequipped {
 		sendUnequipMessages(e, w, u)
 	}
-	sendEquipMessages(e, w, item)
+	sendEquipMessages(e, w, slot, item)
 }
 
 func performUnequip(e *Entity, w *World, item *Item) {
@@ -849,16 +857,4 @@ func parseSearchQuery(tokens []string, allowCount bool) (SearchQuery, bool, []st
 		return NewSearchQuery(tokens[1], num), true, tokens[2:]
 	}
 	return NewSearchQuery(tokens[0], 1), true, tokens[1:]
-}
-
-func sendEquipMessages(e *Entity, w *World, item *Item) {
-	r := w.rooms[e.data.RoomId]
-	SendToPlayer(e, "You equip %s", item.Name())
-	BroadcastToRoomExcept(r, e, "%s equip %s", e.NameCapitalized(), item.Name())
-}
-
-func sendUnequipMessages(e *Entity, w *World, item *Item) {
-	r := w.rooms[e.data.RoomId]
-	SendToPlayer(e, "You unequip %s", item.Name())
-	BroadcastToRoomExcept(r, e, "%s unequip %s", e.NameCapitalized(), item.Name())
 }

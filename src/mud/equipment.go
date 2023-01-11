@@ -205,6 +205,95 @@ func GetEquipmentSlotDescription(slot EquipSlot, item *Item) string {
 	return ""
 }
 
+func sendEquipMessages(e *Entity, w *World, slot EquipSlot, item *Item) {
+	r := w.rooms[e.data.RoomId]
+
+	if item.cfg.Equipment.Slot.Has(EqSlot_2H) {
+		switch slot {
+		case EqSlot_FingerL, EqSlot_FingerR, EqSlot_Fingers:
+			SendToPlayer(e, "You slide %s onto both of your ring fingrs", item.Name())
+			BroadcastToRoomExcept(r, e, "%s slides %s onto both of %s ring fingrs", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+			return
+		case EqSlot_WristL, EqSlot_WristR, EqSlot_Wrists:
+			SendToPlayer(e, "You put %s around both of your wrists", item.Name())
+			BroadcastToRoomExcept(r, e, "%s puts %s onto both of %s wrists", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+			return
+		case EqSlot_HeldL, EqSlot_HeldR, EqSlot_Held1H, EqSlot_Held2H:
+			SendToPlayer(e, "You grasp %s in both hands", item.Name())
+			BroadcastToRoomExcept(r, e, "%s grasps %s in both of %s hands", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+			return
+		}
+	}
+	switch slot {
+	case EqSlot_Waist:
+		SendToPlayer(e, "You fasten %s around your waist", item.Name())
+		BroadcastToRoomExcept(r, e, "%s fastens %s around %s waist", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Neck1, EqSlot_Neck2, EqSlot_Neck:
+		SendToPlayer(e, "You wear %s around your neck", item.Name())
+		BroadcastToRoomExcept(r, e, "%s wears %s around %s neck", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Head:
+		SendToPlayer(e, "You wear %s on your head", item.Name())
+		BroadcastToRoomExcept(r, e, "%s wears %s on %s head", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Body:
+		SendToPlayer(e, "You wear %s around your body", item.Name())
+		BroadcastToRoomExcept(r, e, "%s wears %s around %s body", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Hands:
+		SendToPlayer(e, "You put %s on your hands", item.Name())
+		BroadcastToRoomExcept(r, e, "%s puts %s on %s hands", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Arms:
+		SendToPlayer(e, "You wear %s on your arms", item.Name())
+		BroadcastToRoomExcept(r, e, "%s wears %s on %s arms", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Legs:
+		SendToPlayer(e, "You wear %s on your legs", item.Name())
+		BroadcastToRoomExcept(r, e, "%s wears %s on %s legs", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Feet:
+		SendToPlayer(e, "You wear %s on your feet", item.Name())
+		BroadcastToRoomExcept(r, e, "%s wears %s on %s feet", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_FingerL:
+		SendToPlayer(e, "You slide %s on your left ring finger", item.Name())
+		BroadcastToRoomExcept(r, e, "%s slides %s on %s left ring finger", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_FingerR:
+		SendToPlayer(e, "You slide %s on your right ring finger", item.Name())
+		BroadcastToRoomExcept(r, e, "%s slides %s on %s right ring finger", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_WristL:
+		SendToPlayer(e, "You put %s around your left wrist", item.Name())
+		BroadcastToRoomExcept(r, e, "%s puts %s around %s left wrist", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_WristR:
+		SendToPlayer(e, "You put %s around your right wrist", item.Name())
+		BroadcastToRoomExcept(r, e, "%s puts %s around %s right wrist", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_Shoulders:
+		SendToPlayer(e, "You wear %s over your shoulders", item.Name())
+		BroadcastToRoomExcept(r, e, "%s wears %s over %s shoulders", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_HeldL:
+		SendToPlayer(e, "You grasp %s in your left hand", item.Name())
+		BroadcastToRoomExcept(r, e, "%s grasps %s in %s left hand", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	case EqSlot_HeldR:
+		SendToPlayer(e, "You grasp %s in your right hand", item.Name())
+		BroadcastToRoomExcept(r, e, "%s grasps %s in %s right hand", e.NameCapitalized(), item.Name(), e.Gender().GetPossessivePronoun())
+		return
+	}
+}
+
+func sendUnequipMessages(e *Entity, w *World, item *Item) {
+	r := w.rooms[e.data.RoomId]
+	SendToPlayer(e, "You unequip %s", item.Name())
+	BroadcastToRoomExcept(r, e, "%s unequip %s", e.NameCapitalized(), item.Name())
+}
+
 type EquipmentConfig struct {
 	Slot   EquipSlot
 	Armor  *ArmorConfig

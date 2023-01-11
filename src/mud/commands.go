@@ -424,14 +424,7 @@ func DoUnequip(e *Entity, w *World, tokens []string) {
 }
 
 func DoInventory(e *Entity, _ *World, _ []string) {
-	SendToPlayer(e, "You are carrying:")
-	if len(e.inventory) == 0 {
-		SendToPlayer(e, "  Nothing.")
-		return
-	}
-	for _, i := range e.inventory {
-		SendToPlayer(e, "  <c white>%s</c>", i.NameCapitalized())
-	}
+	SendToPlayer(e, e.DescribeInventory())
 }
 
 func DoSay(e *Entity, w *World, tokens []string) {

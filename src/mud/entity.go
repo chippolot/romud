@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"fmt"
 	"log"
 	"math/rand"
 	"strings"
@@ -261,6 +262,23 @@ func (e *Entity) Describe() string {
 		sb.WriteLine(e.DescribeEquipment())
 	}
 	return sb.String()
+}
+
+func (e *Entity) DescribeInventory() string {
+	var sb utils.StringBuilder
+	sb.WriteLinef("%s is carrying:", e.NameCapitalized())
+	if len(e.inventory) == 0 {
+		sb.WriteLine("  Nothing.")
+	} else {
+		descs := GroupDescriptionsFromSlice(e.inventory, func(i *Item) string {
+			return fmt.Sprintf("<c white>%s</c>", i.NameCapitalized())
+		})
+		for idx, desc := range descs {
+			descs[idx] = "  " + desc
+		}
+		sb.WriteLine(strings.Join(descs, utils.NewLine))
+	}
+	return strings.TrimSuffix(sb.String(), utils.NewLine)
 }
 
 func (e *Entity) DescribeEquipment() string {

@@ -71,7 +71,7 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 	// Heal up
 	timeSinceSave := time.Now().UTC().Sub(e.player.data.LastSavedAt)
 	hpPerMin := 15
-	e.data.Stats.AddHP(int(timeSinceSave.Minutes() * float64(hpPerMin)))
+	e.stats.AddHP(int(timeSinceSave.Minutes() * float64(hpPerMin)))
 
 	return e, nil
 }
@@ -147,7 +147,7 @@ func (w *World) RemoveEntity(eid EntityId) {
 	e.combat = nil
 	e.data.RoomId = InvalidId
 
-	if e.player != nil && e.data.Stats.Condition() != Cnd_Dead {
+	if e.player != nil && e.stats.Condition() != Cnd_Dead {
 		delete(w.players, e.player.id)
 		delete(w.loggingOut, e.player.id)
 		BroadcastToWorldExcept(w, e, "%s Leaves", e.Name())

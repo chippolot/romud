@@ -296,6 +296,7 @@ func sendUnequipMessages(e *Entity, w *World, item *Item) {
 
 type EquipmentConfig struct {
 	Slot   EquipSlot
+	Stats  StatMap HOOK UP MODS
 	Armor  *ArmorConfig
 	Weapon *WeaponConfig
 }

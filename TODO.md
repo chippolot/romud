@@ -52,6 +52,7 @@
     [x] Use Weapons in Combat
     [x] Show Equipped
     [x] Slot specific equip messages
+    [x] Wear armor in combat
 [x] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -88,12 +89,12 @@
 ----------------------------------------
 [] Spawning - Data drives
 [] Items
+    [] Armor buffs
     [] Gold
     [] Equipment
         [] Use Armor in Combat
         [] Mobs use equipment
         [] Prevent dual wield
-    [] Wearing
 [] Combat
     [] More Skills!
         [] Grapple?

@@ -124,8 +124,8 @@ func (c *CombatData) Valid(e *Entity) bool {
 	return c != nil &&
 		c.target != nil &&
 		e.data.RoomId == c.target.data.RoomId &&
-		e.data.Stats.Condition() > Cnd_Stunned &&
-		c.target.data.Stats.Condition() != Cnd_Dead
+		e.stats.Condition() > Cnd_Stunned &&
+		c.target.stats.Condition() != Cnd_Dead
 }
 
 func (c *CombatData) AttackCooldown() time.Duration {
@@ -142,7 +142,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 		return false
 	}
 	// Can't fight when you're dead!
-	if e.data.Stats.Condition() <= Cnd_Stunned || tgt.data.Stats.Condition() == Cnd_Dead {
+	if e.stats.Condition() <= Cnd_Stunned || tgt.stats.Condition() == Cnd_Dead {
 		return false
 	}
 	log.Printf("%s starting combat with %s", e.Name(), tgt.Name())
@@ -168,9 +168,9 @@ func (c *CombatList) EndCombat(e *Entity) {
 func GetAttackData(e *Entity) AttackData {
 	aData := AttackData{}
 	if weapon, ok := e.GetWeapon(); ok {
-		aData.ToHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
+		aData.ToHit = GetAbilityModifier(e.stats.Str) + ProficiencyChart[e.stats.Level]
 		aData.Damage = weapon.Damage
-		aData.DamageMod = GetAbilityModifier(e.data.Stats.Str)
+		aData.DamageMod = GetAbilityModifier(e.stats.Str)
 		aData.DamageType = weapon.DamageType
 		aData.VerbSingular = weapon.VerbSingular
 		aData.VerbPlural = weapon.VerbPlural
@@ -179,14 +179,14 @@ func GetAttackData(e *Entity) AttackData {
 		aData.ToHit = attack.ToHit
 		aData.Damage = attack.Damage
 		if e.player != nil {
-			aData.DamageMod = GetAbilityModifier(e.data.Stats.Str)
+			aData.DamageMod = GetAbilityModifier(e.stats.Str)
 		}
 		aData.DamageType = attack.DamageType
 		aData.VerbSingular = attack.VerbSingular
 		aData.VerbPlural = attack.VerbPlural
 	}
 	if e.player != nil {
-		aData.ToHit = GetAbilityModifier(e.data.Stats.Str) + ProficiencyChart[e.data.Stats.Level]
+		aData.ToHit = GetAbilityModifier(e.stats.Str) + ProficiencyChart[e.stats.Level]
 	}
 	return aData
 }
@@ -200,7 +200,7 @@ func validateAttack(e *Entity, tgt *Entity) bool {
 		SendToPlayer(e, "You can't fight while you're knocked down!")
 		return false
 	}
-	if e.data.Stats.Condition() <= Cnd_Stunned {
+	if e.stats.Condition() <= Cnd_Stunned {
 		SendToPlayer(e, "You're in no condition for that!")
 		return false
 	}
@@ -277,7 +277,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	switch e.combat.requestedSkill {
 	case CombatSkill_Shove:
 		// STR or DEX contest
-		if ContestAbility(e, tgt, tgt.data.Stats.MaxStatType(Stat_Str, Stat_Dex)) {
+		if ContestAbility(e, tgt, tgt.stats.MaxStatType(Stat_Str, Stat_Dex)) {
 			tgt.position = Pos_Prone
 			SendToPlayer(e, "You shove %s, knocking %s to the ground", tgt.Name(), tgt.Gender().GetObjectPronoun())
 			SendToPlayer(tgt, "%s shoves you, knocking you to the ground", e.NameCapitalized())
@@ -330,18 +330,18 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 }
 
 func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, verbSingular string, verbPlural string) int {
-	cnd := tgt.data.Stats.Condition()
+	cnd := tgt.stats.Condition()
 	if cnd == Cnd_Dead {
 		return 0
 	}
 
 	// Start fighting damage source
-	if from != nil && tgt.combat == nil && from.data.Stats.Condition() > Cnd_Stunned {
+	if from != nil && tgt.combat == nil && from.stats.Condition() > Cnd_Stunned {
 		w.inCombat.StartCombat(tgt, from)
 	}
 
-	tgt.data.Stats.HP = tgt.data.Stats.HP - dam
-	cnd = tgt.data.Stats.Condition()
+	tgt.stats.HP = tgt.stats.HP - dam
+	cnd = tgt.stats.Condition()
 
 	// Send damage messages
 	r := w.rooms[tgt.data.RoomId]
@@ -390,9 +390,9 @@ func createCorpse(from *Entity, w *World) {
 
 func applyXp(e *Entity, xp int) int {
 	if !IsMaxLevel(e) {
-		e.data.Stats.AddXP(xp)
+		e.stats.AddXP(xp)
 		if IsReadyForLevelUp(e) {
-			SendToPlayer(e, "You're ready for level %d!", e.data.Stats.Level+1)
+			SendToPlayer(e, "You're ready for level %d!", e.stats.Level+1)
 		}
 		return xp
 	}
@@ -437,7 +437,7 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingu
 }
 
 func sendStatusMessages(dam int, target *Entity, r *Room) {
-	switch target.data.Stats.Condition() {
+	switch target.stats.Condition() {
 	case Cnd_Stunned:
 		SendToPlayer(target, "You are dazed and disoriented, struggling to regain your footing")
 		BroadcastToRoomExcept(r, target, "%s is dazed and disoriented, struggling to regain their footing", target.NameCapitalized())
@@ -451,10 +451,10 @@ func sendStatusMessages(dam int, target *Entity, r *Room) {
 		SendToPlayer(target, "You feel your soul slip from your body. You are DEAD!")
 		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.NameCapitalized())
 	default:
-		if dam > target.data.Stats.MaxHP/4 {
+		if dam > target.stats.MaxHP/4 {
 			SendToPlayer(target, "<c red>Ouch, that one stung!</c>")
 		}
-		if target.data.Stats.HP < target.data.Stats.MaxHP/4 {
+		if target.stats.HP < target.stats.MaxHP/4 {
 			SendToPlayer(target, "You sure are BLEEDING a lot!")
 		}
 	}

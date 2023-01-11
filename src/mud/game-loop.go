@@ -51,17 +51,17 @@ func restoreStats(w *World) {
 		}
 
 		// Dead entities don't heal
-		if e.data.Stats.Condition() == Cnd_Dead {
+		if e.stats.Condition() == Cnd_Dead {
 			continue
 		}
 
-		oldHP := e.data.Stats.HP
-		oldMov := e.data.Stats.Mov
+		oldHP := e.stats.HP
+		oldMov := e.stats.Mov
 
 		var hpGain, movGain int
 		var message string
 
-		switch e.data.Stats.Condition() {
+		switch e.stats.Condition() {
 		case Cnd_Healthy, Cnd_Stunned:
 			switch e.position {
 			case Pos_Sitting, Pos_Prone:
@@ -81,15 +81,15 @@ func restoreStats(w *World) {
 		}
 
 		if hpGain > 0 {
-			e.data.Stats.AddHP(hpGain)
+			e.stats.AddHP(hpGain)
 		} else {
 			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
 			message = "<c red>You are bleeding!</c>"
 		}
-		e.data.Stats.AddMov(movGain)
+		e.stats.AddMov(movGain)
 
 		// Force a new prompt if something changed
-		if oldHP != e.data.Stats.HP || oldMov != e.data.Stats.Mov {
+		if oldHP != e.stats.HP || oldMov != e.stats.Mov {
 			SendToPlayer(e, message)
 		}
 	}
@@ -215,7 +215,7 @@ func runCombat(w *World) {
 
 func logoutTheDead(w *World) {
 	for _, e := range w.players {
-		if e.data.Stats.Condition() == Cnd_Dead {
+		if e.stats.Condition() == Cnd_Dead {
 			w.LogoutPlayer(e.player)
 		}
 	}

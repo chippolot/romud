@@ -46,7 +46,7 @@ func (cfg *EntityConfig) Init() {
 type EntityData struct {
 	Key       string
 	RoomId    RoomId           `json:",omitempty"`
-	Stats     *StatsData       `json:",omitempty"`
+	Stats     StatMap          `json:",omitempty"`
 	Inventory []*ItemData      `json:",omitempty"`
 	Equipped  EquipmentDataMap `json:",omitempty"`
 }
@@ -65,6 +65,7 @@ type Entity struct {
 	cfg       *EntityConfig
 	data      *EntityData
 	player    *Player
+	stats     *Stats
 	combat    *CombatData
 	position  Position
 	inventory ItemList
@@ -74,7 +75,8 @@ type Entity struct {
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
-	return &Entity{eid, cfg, newEntityData(cfg), nil, nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item)}
+	data := newEntityData(cfg)
+	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item)}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
@@ -257,7 +259,7 @@ func (e *Entity) AC() int {
 		}
 		sum += ac
 	}
-	dexBonus := GetAbilityModifier(e.data.Stats.Dex)
+	dexBonus := GetAbilityModifier(e.stats.Dex)
 	if e.player == nil {
 		dexBonus = 0
 	}
@@ -292,8 +294,10 @@ func (e *Entity) Unequip(item *Item) bool {
 
 func (e *Entity) Describe() string {
 	var sb utils.StringBuilder
-	sb.WriteLine(e.cfg.FullDesc)
-	sb.WriteLine(e.data.Stats.ConditionLongString(e))
+	if e.cfg.FullDesc != "" {
+		sb.WriteLine(e.cfg.FullDesc)
+	}
+	sb.WriteLine(e.stats.ConditionLongString(e))
 	if e.cfg.Flags.Has(EFlag_UsesEquipment) {
 		sb.WriteLine(e.DescribeEquipment())
 	}
@@ -308,26 +312,26 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteHorizontalDivider()
 	sb.WriteLinef("%s", e.Name())
 	sb.WriteNewLine()
-	sb.WriteLinef("Level  : <c yellow>%d</c>", e.data.Stats.Level)
+	sb.WriteLinef("Level  : <c yellow>%d</c>", e.stats.Level)
 	if !IsMaxLevel(e) {
 		sb.WriteLinef("Next   : <c yellow>%d</c> XP", GetXpForNextLevel(e))
 	}
 	sb.WriteNewLine()
-	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.HP, e.data.Stats.MaxHP)
-	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.Mov, e.data.Stats.MaxMov)
+	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.stats.HP, e.stats.MaxHP)
+	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.stats.Mov, e.stats.MaxMov)
 	sb.WriteNewLine()
 	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", aData.ToHit)
 	sb.WriteLinef("Attack : %s", aDamage.StringColorized("yellow"))
 	sb.WriteLinef("AC     : <c yellow>%d</c>", e.AC())
 	sb.WriteNewLine()
-	sb.WriteLinef("Str    : <c yellow>%d</c>", e.data.Stats.Str)
-	sb.WriteLinef("Dex    : <c yellow>%d</c>", e.data.Stats.Dex)
-	sb.WriteLinef("Con    : <c yellow>%d</c>", e.data.Stats.Con)
-	sb.WriteLinef("Int    : <c yellow>%d</c>", e.data.Stats.Int)
-	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.data.Stats.Wis)
-	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.data.Stats.Cha)
+	sb.WriteLinef("Str    : <c yellow>%d</c>", e.stats.Str)
+	sb.WriteLinef("Dex    : <c yellow>%d</c>", e.stats.Dex)
+	sb.WriteLinef("Con    : <c yellow>%d</c>", e.stats.Con)
+	sb.WriteLinef("Int    : <c yellow>%d</c>", e.stats.Int)
+	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.stats.Wis)
+	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.stats.Cha)
 	sb.WriteNewLine()
-	sb.WriteLinef("Carry  : <c yellow>%d</c>/<c yellow>%d</c>", e.ItemWeight(), e.data.Stats.CarryingCapacity())
+	sb.WriteLinef("Carry  : <c yellow>%d</c>/<c yellow>%d</c>", e.ItemWeight(), e.stats.CarryingCapacity())
 	sb.WriteString(utils.HorizontalDivider)
 	return sb.String()
 }

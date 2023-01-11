@@ -91,8 +91,8 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 			SendToPlayer(e, e.position.InactionString())
 			return false
 		}
-		if e.data.Stats.Condition() < cmdDesc.minCondition {
-			SendToPlayer(e, e.data.Stats.Condition().InactionString())
+		if e.stats.Condition() < cmdDesc.minCondition {
+			SendToPlayer(e, e.stats.Condition().InactionString())
 			return false
 		}
 
@@ -124,7 +124,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 	case "pheal":
 		heal := 9999
 		SendToPlayer(e, "Admin: Healing Player for %d", heal)
-		e.data.Stats.AddHP(heal)
+		e.stats.AddHP(heal)
 	case "pdam":
 		dam, _ := strconv.Atoi(tokens[2])
 		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
@@ -162,16 +162,16 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 		return
 	}
 
-	e.data.Stats.Level += 1
+	e.stats.Level += 1
 
 	// TODO Class hit die
 	// TODO Handle stat increases
-	hpGain := D8.Roll() + GetAbilityModifier(e.data.Stats.Con)
-	e.data.Stats.MaxHP += utils.MaxInts(1, hpGain)
+	hpGain := D8.Roll() + GetAbilityModifier(e.stats.Con)
+	e.stats.MaxHP += utils.MaxInts(1, hpGain)
 
-	SendToPlayer(e, "You advance to level %d!", e.data.Stats.Level)
+	SendToPlayer(e, "You advance to level %d!", e.stats.Level)
 	SendToPlayer(e, "  You gain %d hp", hpGain)
-	BroadcastToWorldExcept(w, e, "Hooray! %s is now level %d", e.Name(), e.data.Stats.Level)
+	BroadcastToWorldExcept(w, e, "Hooray! %s is now level %d", e.Name(), e.stats.Level)
 
 	if e.player != nil {
 		w.SavePlayerCharacter(e.player.id)
@@ -684,7 +684,7 @@ func lowerTokens(tokens []string) []string {
 }
 
 func performMove(e *Entity, w *World, dir Direction) bool {
-	if e.data.Stats.Mov <= 0 {
+	if e.stats.Mov <= 0 {
 		SendToPlayer(e, "You're way too tired...")
 		return false
 	}
@@ -692,7 +692,7 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		SendToPlayer(e, "You can't do that while you're fighting!")
 		return false
 	}
-	if e.data.Stats.Condition() < Cnd_Healthy {
+	if e.stats.Condition() < Cnd_Healthy {
 		SendToPlayer(e, "You're not feeling up for that!")
 		return false
 	}
@@ -734,7 +734,7 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		BroadcastToRoom(nextRoom, "%s wanders in from the %s", e.NameCapitalized(), fromDirStr)
 	}
 
-	e.data.Stats.AddMov(-1)
+	e.stats.AddMov(-1)
 
 	if e.player != nil {
 		DoLook(e, w, nil)
@@ -762,7 +762,7 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 			continue
 		}
 
-		if e.ItemWeight()+item.ItemWeight() > e.data.Stats.CarryingCapacity() {
+		if e.ItemWeight()+item.ItemWeight() > e.stats.CarryingCapacity() {
 			SendToPlayer(e, "You can't hold the weight of %s", item.Name())
 			continue
 		}

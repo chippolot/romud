@@ -84,10 +84,11 @@
     [x] Support all for put
     [x] Support all for give
     [x] Support all for drop
+[x] Description grouping
 ----------------------------------------
 [] Spawning - Data drives
 [] Items
-    [] Gold / Stacking
+    [] Gold
     [] Equipment
         [] Use Armor in Combat
         [] Mobs use equipment

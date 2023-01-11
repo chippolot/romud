@@ -53,6 +53,7 @@
     [x] Show Equipped
     [x] Slot specific equip messages
     [x] Wear armor in combat
+    [x] Armor buffs
 [x] Combat
     [x] Why isn't player dealing damage 
     [x] Better ranging and ending combat
@@ -89,7 +90,6 @@
 ----------------------------------------
 [] Spawning - Data drives
 [] Items
-    [] Armor buffs
     [] Gold
     [] Equipment
         [] Use Armor in Combat

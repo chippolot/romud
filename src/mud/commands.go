@@ -53,7 +53,7 @@ func init() {
 		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},
 		{DoStatus, []string{"st", "status"}, "Displays status for the current player", "status", true, 0, 0},
 		{DoUnalias, []string{"unalias"}, "Removes an existing alias", "unalias", true, 0, 0},
-		{DoUnequip, []string{"unequip"}, "Unequips an equipped item", "unequip sword", false, Cnd_Healthy, Pos_Sitting},
+		{DoUnequip, []string{"unequip", "remove"}, "Unequips an equipped item", "unequip sword", false, Cnd_Healthy, Pos_Sitting},
 		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
 		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
 		{DoWho, []string{"who"}, "Lists all online players", "who", true, 0, 0},

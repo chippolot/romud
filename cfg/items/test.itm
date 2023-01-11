@@ -19,8 +19,9 @@
     "Keywords": ["wooden", "breastplate", "armor"],
     "RoomDesc": "A wooden breastplate lies discarded on the ground.",
     "Equipment": {
-        "Armor": {
-            "AC": 3
+        "Stats": {
+            "AC": 3,
+            "MaxHP": 1
         },
         "Slot": "body"
     },
@@ -31,8 +32,9 @@
     "Keywords": ["wooden", "helmet", "armor"],
     "RoomDesc": "A wooden helmet lies discarded on the ground.",
     "Equipment": {
-        "Armor": {
-            "AC": 3
+        "Stats": {
+            "AC": 3,
+            "MaxHP": 1
         },
         "Slot": "head"
     },
@@ -43,8 +45,9 @@
     "Keywords": ["wooden", "greaves", "armor"],
     "RoomDesc": "A set of wooden greaves lies discarded on the ground.",
     "Equipment": {
-        "Armor": {
-            "AC": 3
+        "Stats": {
+            "AC": 3,
+            "MaxHP": 1
         },
         "Slot": "legs"
     },

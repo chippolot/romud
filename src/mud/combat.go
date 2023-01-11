@@ -312,7 +312,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		critHit := hitBase == 20
 		hit := hitBase + aData.ToHit
 
-		if (critMiss || hit < tgt.data.Stats.AC) && !critHit {
+		if (critMiss || hit < tgt.AC()) && !critHit {
 			dam = 0
 		} else {
 			// Roll for damage

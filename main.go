@@ -40,7 +40,7 @@ func main() {
 	addEntities(world, "mob", "rat", "rat", "janitor")
 
 	// Create test item
-	addItems(world, "woodshortsword", "bag", "ancientscroll", "anvil")
+	addItems(world, "woodshortsword", "bag", "ancientscroll", "anvil", "woodbplate", "woodgreaves", "woodhelm")
 
 	// Create session handler
 	sessionHandler := mud.NewSessionHandler(world, events)

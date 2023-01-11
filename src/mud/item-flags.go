@@ -15,6 +15,7 @@ const (
 	IFlag_Light                               // Items that light the room that they're in
 	IFlag_Environmental                       // Static items that can't be picked up
 	IFlag_Crumbles                            // Items which crumble when soemthing tries to pick them up
+	IFlag_HeavyArmor                          // Heavy armor does not receive DEX bonus
 )
 
 func ParseItemFlag(str string) (ItemFlags, error) {

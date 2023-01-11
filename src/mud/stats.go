@@ -34,7 +34,6 @@ type StatsConfig struct {
 type StatsData struct {
 	HP     int
 	MaxHP  int
-	AC     int
 	Mov    int
 	MaxMov int
 	Str    int
@@ -52,7 +51,6 @@ func newStatsData(cfg *StatsConfig) *StatsData {
 	return &StatsData{
 		HP:     maxHP,
 		MaxHP:  maxHP,
-		AC:     cfg.AC,
 		Mov:    cfg.Speed,
 		MaxMov: cfg.Speed,
 		Str:    cfg.Str,

@@ -1,33 +1,30 @@
 [
  {
-  "Id": 0,
+  "Id": 1,
   "Name": "The Void",
   "Desc": "   You don't think that you are not floating in nothing.  You can see\na strange portal located above you.",
   "Exits": [
    {
-    "RoomId": 3001,
+    "RoomId": 3002,
     "Verb": "up"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 1,
+  "Id": 2,
   "Name": "Limbo",
   "Desc": "   You are floating in a formless void, detached from all sensation of physical\nmatter, surrounded by swirling glowing light, which fades into the relative\ndarkness around you without any trace of edges or shadow.\n   There is a \"No Tipping\" notice pinned to the darkness.",
-  "Exits": [],
-  "Perceptibles": null
+  "Exits": []
  },
  {
-  "Id": 3,
+  "Id": 4,
   "Name": "A Totally Empty Room",
   "Desc": "   The walls are completely bare... nothing at all in the room.\nHow... utterly bizarre and completely weird.  There is a strange\nportal just above you, and it almost looks as if there is some\nsort of room above you.",
   "Exits": [
    {
-    "RoomId": 3048,
+    "RoomId": 3049,
     "Verb": "up"
    }
-  ],
-  "Perceptibles": null
+  ]
  }
 ]

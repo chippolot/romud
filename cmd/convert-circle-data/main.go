@@ -62,7 +62,7 @@ func parseRooms(data []byte, outPath string) {
 
 		// Parse Id
 		rid, _ := strconv.Atoi(line[1:])
-		room.Id = mud.RoomId(rid)
+		room.Id = mud.RoomId(rid + 1)
 
 		// Parse Name
 		line, lines = nextLine(lines)
@@ -94,7 +94,7 @@ func parseRooms(data []byte, outPath string) {
 				line, lines = nextLine(lines)
 				toks := strings.Split(line, " ")
 				toRid, _ := strconv.Atoi(toks[2])
-				room.Exits[dir] = mud.RoomId(toRid)
+				room.Exits[dir] = mud.RoomId(toRid + 1)
 			}
 			line, lines = nextLine(lines)
 		}

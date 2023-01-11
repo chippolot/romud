@@ -1,7 +1,7 @@
 [{
     "Key": "woodshortsword",
     "Name": "a wooden short sword",
-    "Keywords": ["wooden", "short", "sword"],
+    "Keywords": ["wooden", "short", "sword", "weapon"],
     "RoomDesc": "A wooden short sword lies discarded on the ground.",
     "Equipment": {
         "Weapon": {
@@ -11,6 +11,42 @@
             "VerbPlural": "slashes"
         },
         "Slot": "held1h"
+    },
+    "Weight": 10
+}, {
+    "Key": "woodbplate",
+    "Name": "a wooden breastplate",
+    "Keywords": ["wooden", "breastplate", "armor"],
+    "RoomDesc": "A wooden breastplate lies discarded on the ground.",
+    "Equipment": {
+        "Armor": {
+            "AC": 3
+        },
+        "Slot": "body"
+    },
+    "Weight": 20
+}, {
+    "Key": "woodhelm",
+    "Name": "wooden helmet",
+    "Keywords": ["wooden", "helmet", "armor"],
+    "RoomDesc": "A wooden helmet lies discarded on the ground.",
+    "Equipment": {
+        "Armor": {
+            "AC": 3
+        },
+        "Slot": "head"
+    },
+    "Weight": 15
+}, {
+    "Key": "woodgreaves",
+    "Name": "wooden greaves",
+    "Keywords": ["wooden", "greaves", "armor"],
+    "RoomDesc": "A set of wooden greaves lies discarded on the ground.",
+    "Equipment": {
+        "Armor": {
+            "AC": 3
+        },
+        "Slot": "legs"
     },
     "Weight": 15
 }, {

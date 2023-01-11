@@ -1,493 +1,445 @@
 [
  {
-  "Id": 5100,
+  "Id": 5101,
   "Name": "The City Entrance",
   "Desc": "   You are at the entrance to a small underground city.  A great adamantite\ngate lies open to the west allowing entrance into the city.",
   "Exits": [
    {
-    "RoomId": 5101,
+    "RoomId": 5102,
     "Verb": "west"
    },
    {
-    "RoomId": 5011,
+    "RoomId": 5012,
     "Verb": "up"
    }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5101,
-  "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate street going north-south.  A large gate\nlies to the east while a building lies to the west.",
-  "Exits": [
-   {
-    "RoomId": 5100,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5102,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5122,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 5123,
-    "Verb": "north"
-   }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5102,
   "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street going north and west.",
+  "Desc": "   You walk along a highly ornate street going north-south.  A large gate\nlies to the east while a building lies to the west.",
   "Exits": [
    {
+    "RoomId": 5101,
+    "Verb": "east"
+   },
+   {
     "RoomId": 5103,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5123,
     "Verb": "west"
    },
    {
-    "RoomId": 5101,
+    "RoomId": 5124,
     "Verb": "north"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5103,
   "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street going east-west.  A large house\nstands to the south.",
+  "Desc": "   You walk along a highly ornate city street going north and west.",
   "Exits": [
    {
     "RoomId": 5102,
-    "Verb": "east"
+    "Verb": "north"
    },
    {
     "RoomId": 5104,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5106,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5104,
-  "Name": "The 3rd House",
-  "Desc": "   You stand inside the 3rd house of the city; it is fairly well decorated\nby drow standards having a few statues, murals and such.  A door leads to the \nsouth.",
+  "Name": "A City Street",
+  "Desc": "   You walk along a highly ornate city street going east-west.  A large house\nstands to the south.",
   "Exits": [
    {
     "RoomId": 5103,
-    "Verb": "north"
+    "Verb": "east"
    },
    {
     "RoomId": 5105,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5107,
+    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5105,
-  "Name": "The Throne Room",
-  "Desc": "   The throne room of the 3rd house is about as decorated as the inner\ncourtyard except with a blood covered altar in the center of the room.",
+  "Name": "The 3rd House",
+  "Desc": "   You stand inside the 3rd house of the city; it is fairly well decorated\nby drow standards having a few statues, murals and such.  A door leads to the \nsouth.",
   "Exits": [
    {
     "RoomId": 5104,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5106,
+    "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5106,
-  "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a large building.",
+  "Name": "The Throne Room",
+  "Desc": "   The throne room of the 3rd house is about as decorated as the inner\ncourtyard except with a blood covered altar in the center of the room.",
   "Exits": [
    {
-    "RoomId": 5118,
+    "RoomId": 5105,
     "Verb": "north"
-   },
-   {
-    "RoomId": 5103,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5107,
-    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5107,
   "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street leading north and east.  To the\nsouth is an extremely large house.",
-  "Exits": [
-   {
-    "RoomId": 5110,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5106,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5108,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5108,
-  "Name": "The 2nd House",
-  "Desc": "   You stand inside the 2nd house of the city.  The room is highly decorated\nwith statues of spiders and murals everywhere.",
-  "Exits": [
-   {
-    "RoomId": 5107,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5109,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5109,
-  "Name": "The Throne Room",
-  "Desc": "   The throne room of the 2nd house is just a little more decorative than\nthe inner courtyard having an altar in the center of the room.",
-  "Exits": [
-   {
-    "RoomId": 5108,
-    "Verb": "east"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5110,
-  "Name": "The Main Gate",
-  "Desc": "   You are at the entrance to the 1st house of the city.  A large gate,\nalmost as big and elegant as the one at the entrance to the city, stands\nhere.",
-  "Exits": [
-   {
-    "RoomId": 5114,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5107,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5111,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5111,
-  "Name": "The 1st House",
-  "Desc": "   You stand in the inner courtyard of the 1st and largest house in the city.\nThe room is extremely large and decorative.  Mural and paintings hang on the \nwalls depicting some battles and a spider queen.",
-  "Exits": [
-   {
-    "RoomId": 5110,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5112,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5112,
-  "Name": "The Throne Room",
-  "Desc": "   The throne room of the 1st house is in one word...awesome.  It is so\nhorrifying it is almost beautiful.",
-  "Exits": [
-   {
-    "RoomId": 5113,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5111,
-    "Verb": "east"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5113,
-  "Name": "The Main Chamber",
-  "Desc": "   This is the council chamber for the Matron Mother herself.  A huge table\nand chairs surrounding it sits in the center of the room.",
-  "Exits": [
-   {
-    "RoomId": 5112,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5114,
-  "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street leading north-south and east.",
-  "Exits": [
-   {
-    "RoomId": 5115,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5117,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5110,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5115,
-  "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street leading south.  A building is\nto the west.",
-  "Exits": [
-   {
-    "RoomId": 5114,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5116,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5116,
-  "Name": "The Clerics' Academy",
-  "Desc": "   This is the most lavish of the academies being that it is for the clerics.",
-  "Exits": [
-   {
-    "RoomId": 5115,
-    "Verb": "east"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5117,
-  "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a giant temple.",
+  "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a large building.",
   "Exits": [
    {
     "RoomId": 5119,
     "Verb": "north"
    },
    {
-    "RoomId": 5121,
+    "RoomId": 5104,
     "Verb": "east"
    },
    {
-    "RoomId": 5114,
+    "RoomId": 5108,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5118,
-  "Name": "The Warriors' Academy",
-  "Desc": "   This looks more like a barracks than a school.",
+  "Id": 5108,
+  "Name": "A City Street",
+  "Desc": "   You walk along a highly ornate city street leading north and east.  To the\nsouth is an extremely large house.",
   "Exits": [
    {
-    "RoomId": 5106,
+    "RoomId": 5111,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5107,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5109,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5119,
-  "Name": "The Entrance To The Temple Of Lloth",
-  "Desc": "   The temple is the largest building in the city.  Even its doors are beyond\nimagination.  Inside of the temple entrance, the walls are made of gold and \nadamantite.",
+  "Id": 5109,
+  "Name": "The 2nd House",
+  "Desc": "   You stand inside the 2nd house of the city.  The room is highly decorated\nwith statues of spiders and murals everywhere.",
   "Exits": [
    {
-    "RoomId": 5117,
+    "RoomId": 5108,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5110,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 5110,
+  "Name": "The Throne Room",
+  "Desc": "   The throne room of the 2nd house is just a little more decorative than\nthe inner courtyard having an altar in the center of the room.",
+  "Exits": [
+   {
+    "RoomId": 5109,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 5111,
+  "Name": "The Main Gate",
+  "Desc": "   You are at the entrance to the 1st house of the city.  A large gate,\nalmost as big and elegant as the one at the entrance to the city, stands\nhere.",
+  "Exits": [
+   {
+    "RoomId": 5115,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5108,
     "Verb": "south"
    },
    {
-    "RoomId": 5126,
-    "Verb": "down"
+    "RoomId": 5112,
+    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5120,
-  "Name": "The Mages' Academy",
-  "Desc": "   The Mages' Academy is fairly well decorated and you can see that the\ndrow prefer magic over physical power greatly.",
+  "Id": 5112,
+  "Name": "The 1st House",
+  "Desc": "   You stand in the inner courtyard of the 1st and largest house in the city.\nThe room is extremely large and decorative.  Mural and paintings hang on the \nwalls depicting some battles and a spider queen.",
   "Exits": [
    {
-    "RoomId": 5121,
-    "Verb": "south"
+    "RoomId": 5111,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5113,
+    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5121,
+  "Id": 5113,
+  "Name": "The Throne Room",
+  "Desc": "   The throne room of the 1st house is in one word...awesome.  It is so\nhorrifying it is almost beautiful.",
+  "Exits": [
+   {
+    "RoomId": 5114,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5112,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 5114,
+  "Name": "The Main Chamber",
+  "Desc": "   This is the council chamber for the Matron Mother herself.  A huge table\nand chairs surrounding it sits in the center of the room.",
+  "Exits": [
+   {
+    "RoomId": 5113,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 5115,
   "Name": "A City Street",
-  "Desc": "   You walk along a highly ornate city street going eastward.  To the north\nis a building.",
+  "Desc": "   You walk along a highly ornate city street leading north-south and east.",
+  "Exits": [
+   {
+    "RoomId": 5111,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5116,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5118,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 5116,
+  "Name": "A City Street",
+  "Desc": "   You walk along a highly ornate city street leading south.  A building is\nto the west.",
+  "Exits": [
+   {
+    "RoomId": 5115,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5117,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 5117,
+  "Name": "The Clerics' Academy",
+  "Desc": "   This is the most lavish of the academies being that it is for the clerics.",
+  "Exits": [
+   {
+    "RoomId": 5116,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 5118,
+  "Name": "A City Street",
+  "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a giant temple.",
   "Exits": [
    {
     "RoomId": 5120,
     "Verb": "north"
    },
    {
-    "RoomId": 5123,
+    "RoomId": 5122,
     "Verb": "east"
    },
    {
-    "RoomId": 5117,
+    "RoomId": 5115,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
+ },
+ {
+  "Id": 5119,
+  "Name": "The Warriors' Academy",
+  "Desc": "   This looks more like a barracks than a school.",
+  "Exits": [
+   {
+    "RoomId": 5107,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 5120,
+  "Name": "The Entrance To The Temple Of Lloth",
+  "Desc": "   The temple is the largest building in the city.  Even its doors are beyond\nimagination.  Inside of the temple entrance, the walls are made of gold and \nadamantite.",
+  "Exits": [
+   {
+    "RoomId": 5118,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5127,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 5121,
+  "Name": "The Mages' Academy",
+  "Desc": "   The Mages' Academy is fairly well decorated and you can see that the\ndrow prefer magic over physical power greatly.",
+  "Exits": [
+   {
+    "RoomId": 5122,
+    "Verb": "south"
+   }
+  ]
  },
  {
   "Id": 5122,
+  "Name": "A City Street",
+  "Desc": "   You walk along a highly ornate city street going eastward.  To the north\nis a building.",
+  "Exits": [
+   {
+    "RoomId": 5121,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5124,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5118,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 5123,
   "Name": "The Slave Chamber",
   "Desc": "   The room is in shambles.  Straw is strewn all about the room as beds for\nthe unfortunate creatures who have fallen prey to drow imperialism.",
   "Exits": [
    {
-    "RoomId": 5101,
+    "RoomId": 5102,
     "Verb": "east"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5123,
+  "Id": 5124,
   "Name": "A City Street",
   "Desc": "   You walk along a highly ornate city street leading west and south.  To\nthe north is a relatively small house.",
   "Exits": [
    {
-    "RoomId": 5124,
+    "RoomId": 5122,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 5125,
     "Verb": "north"
    },
    {
-    "RoomId": 5101,
+    "RoomId": 5102,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5121,
-    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5124,
+  "Id": 5125,
   "Name": "The 4th House",
   "Desc": "   You stand inside the 4th house of the city.  Its inner courtyard is rather \ndull by drow standards and rather small as well.",
   "Exits": [
    {
-    "RoomId": 5123,
-    "Verb": "south"
+    "RoomId": 5126,
+    "Verb": "east"
    },
    {
-    "RoomId": 5125,
-    "Verb": "east"
+    "RoomId": 5124,
+    "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5125,
+  "Id": 5126,
   "Name": "The Throne Room",
   "Desc": "   The throne room is basically similar to the inner courtyard in regards\nto decor.  there is a small throne behind the altar but that is about it.",
   "Exits": [
    {
-    "RoomId": 5124,
+    "RoomId": 5125,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5126,
+  "Id": 5127,
   "Name": "The Entrance Hall",
   "Desc": "   You stand in the entrance way to the temple which opens up to the north\ninto a large hallway going east and west.  Small statues os spiders line the\nentrance way's walls.",
   "Exits": [
    {
-    "RoomId": 5127,
+    "RoomId": 5128,
     "Verb": "north"
    },
    {
-    "RoomId": 5119,
+    "RoomId": 5120,
     "Verb": "up"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5127,
+  "Id": 5128,
   "Name": "A Hallway",
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the north is a obsidian stairway.",
   "Exits": [
    {
-    "RoomId": 5135,
+    "RoomId": 5136,
     "Verb": "north"
    },
    {
-    "RoomId": 5126,
+    "RoomId": 5127,
     "Verb": "south"
    },
-   {
-    "RoomId": 5128,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5131,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5128,
-  "Name": "A Long Hallway",
-  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
-  "Exits": [
    {
     "RoomId": 5129,
     "Verb": "east"
    },
    {
-    "RoomId": 5127,
+    "RoomId": 5132,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5129,
   "Name": "A Long Hallway",
-  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the north is a door.",
+  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
   "Exits": [
-   {
-    "RoomId": 5150,
-    "Verb": "north"
-   },
    {
     "RoomId": 5130,
     "Verb": "east"
@@ -496,24 +448,26 @@
     "RoomId": 5128,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5130,
   "Name": "A Long Hallway",
-  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
+  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the north is a door.",
   "Exits": [
-   {
-    "RoomId": 5134,
-    "Verb": "east"
-   },
    {
     "RoomId": 5129,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5151,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5131,
+    "Verb": "east"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5131,
@@ -521,313 +475,308 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
   "Exits": [
    {
-    "RoomId": 5127,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5132,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5132,
-  "Name": "A Long Hallway",
-  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the south is a door.",
-  "Exits": [
-   {
-    "RoomId": 5131,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5133,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5134,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5133,
-  "Name": "The Warriors' Barracks",
-  "Desc": "   The room is a complete mess.  None of the beds are made, clothes and other\nitems have been left all about the room.  Well drow warriors never were known\nfor neatness.",
-  "Exits": [
-   {
-    "RoomId": 5131,
-    "Verb": "north"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5134,
-  "Name": "A Long Hallway",
-  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
-  "Exits": [
-   {
-    "RoomId": 5132,
+    "RoomId": 5135,
     "Verb": "east"
    },
    {
     "RoomId": 5130,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
+ },
+ {
+  "Id": 5132,
+  "Name": "A Long Hallway",
+  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
+  "Exits": [
+   {
+    "RoomId": 5128,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5133,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 5133,
+  "Name": "A Long Hallway",
+  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the south is a door.",
+  "Exits": [
+   {
+    "RoomId": 5132,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5134,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5135,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 5134,
+  "Name": "The Warriors' Barracks",
+  "Desc": "   The room is a complete mess.  None of the beds are made, clothes and other\nitems have been left all about the room.  Well drow warriors never were known\nfor neatness.",
+  "Exits": [
+   {
+    "RoomId": 5132,
+    "Verb": "north"
+   }
+  ]
  },
  {
   "Id": 5135,
+  "Name": "A Long Hallway",
+  "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
+  "Exits": [
+   {
+    "RoomId": 5133,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5131,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 5136,
   "Name": "The Grand Stairway",
   "Desc": "   You are standing at the bottom of a giant obsidian and adamantite \nstairway.  The edges are trimmed with gold.",
   "Exits": [
    {
-    "RoomId": 5127,
+    "RoomId": 5128,
     "Verb": "south"
    },
    {
-    "RoomId": 5136,
+    "RoomId": 5137,
     "Verb": "up"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5136,
+  "Id": 5137,
   "Name": "The Grand Hallway",
   "Desc": "   You are standing in the middle of a grand hallway.  The walls are \nof the purest adamantite with gold trim.  Mosaics line the walls.",
   "Exits": [
    {
-    "RoomId": 5138,
+    "RoomId": 5139,
     "Verb": "north"
    },
    {
-    "RoomId": 5137,
+    "RoomId": 5138,
     "Verb": "east"
    },
    {
-    "RoomId": 5135,
+    "RoomId": 5136,
     "Verb": "down"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5137,
+  "Id": 5138,
   "Name": "The Mages' Barracks",
   "Desc": "   The mage's living quarters is rather clean with the exception of a few\nused component containers.  It is rather well decorated as well.  Cots line\nthe floor for the mages to sleep on.  The only door is to the west.",
   "Exits": [
    {
-    "RoomId": 5136,
+    "RoomId": 5137,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5138,
+  "Id": 5139,
   "Name": "The Grand Hallway",
   "Desc": "   You are walking down a grand hallway, heavily decorated with adamantite\nand gold.  To the north the hall goes down a flight of stairs while a door is \nto the west.",
   "Exits": [
    {
-    "RoomId": 5136,
+    "RoomId": 5137,
     "Verb": "south"
    },
    {
-    "RoomId": 5139,
+    "RoomId": 5140,
     "Verb": "west"
    },
    {
-    "RoomId": 5140,
+    "RoomId": 5141,
     "Verb": "down"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5139,
+  "Id": 5140,
   "Name": "The Clerics' Barracks",
   "Desc": "   The bed chamber is brightly decorated with spider shaped statues, murals\nand the like.  Large beds line the floor making this a comfortable room to\nlive in.",
   "Exits": [
    {
-    "RoomId": 5138,
+    "RoomId": 5139,
     "Verb": "east"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5140,
+  "Id": 5141,
   "Name": "The Grand Stairway",
   "Desc": "   You are climbing a set of obsidian stairs surrounded by adamantite walls.\nTo the north are a set of large golden doors.",
   "Exits": [
    {
-    "RoomId": 5141,
+    "RoomId": 5142,
     "Verb": "north"
    },
    {
-    "RoomId": 5138,
+    "RoomId": 5139,
     "Verb": "up"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5141,
+  "Id": 5142,
   "Name": "The Main Chamber",
   "Desc": "   This is the south side of a large auditorium used for services by the\ndrow priestesses.  In the center is a large sacrificial pit and beyond that\nis an altar.",
   "Exits": [
    {
-    "RoomId": 5144,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 5142,
+    "RoomId": 5143,
     "Verb": "east"
    },
    {
-    "RoomId": 5140,
+    "RoomId": 5141,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5145,
+    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5142,
+  "Id": 5143,
   "Name": "The Eastern Side Of The Main Chamber",
   "Desc": "   You are on the eastern side of the chamber overlooking the pit.  To the\neast is a door while to the north is an altar.",
   "Exits": [
    {
-    "RoomId": 5145,
-    "Verb": "north"
+    "RoomId": 5142,
+    "Verb": "south"
    },
    {
     "RoomId": 5146,
-    "Verb": "east"
+    "Verb": "north"
    },
    {
-    "RoomId": 5141,
-    "Verb": "south"
+    "RoomId": 5147,
+    "Verb": "east"
    }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 5143,
-  "Name": "The Sacrificial Pit",
-  "Desc": "   As you climb down into the pit, thousands of spiders cover you, tearing\nyour fragile body to shreds.  \n \nLloth thanks you for your sacrifice.\n",
-  "Exits": [],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 5144,
+  "Name": "The Sacrificial Pit",
+  "Desc": "   As you climb down into the pit, thousands of spiders cover you, tearing\nyour fragile body to shreds.  \n \nLloth thanks you for your sacrifice.\n",
+  "Exits": []
+ },
+ {
+  "Id": 5145,
   "Name": "The Western Side Of The Main Chamber",
   "Desc": "   You are on the western side of the main chamber overlooking a sacrificial\npit.  To the north is an altar.",
   "Exits": [
    {
-    "RoomId": 5145,
-    "Verb": "north"
+    "RoomId": 5142,
+    "Verb": "south"
    },
    {
-    "RoomId": 5141,
-    "Verb": "south"
+    "RoomId": 5146,
+    "Verb": "north"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5145,
+  "Id": 5146,
   "Name": "The Altar",
   "Desc": "   You are standing in front of a highly and freshly bloodstained altar.  \nEngraved on the top of the altar is a giant spider with a human head.  Looking \ndown from the altar you see a large sacrificial pit with thousands of swarming\nspiders looking for their next meal!",
   "Exits": [
    {
-    "RoomId": 5143,
-    "Verb": "down"
-   },
-   {
-    "RoomId": 5148,
+    "RoomId": 5149,
     "Verb": "north"
    },
    {
-    "RoomId": 5142,
+    "RoomId": 5143,
     "Verb": "east"
    },
    {
-    "RoomId": 5144,
+    "RoomId": 5145,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5144,
+    "Verb": "down"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5146,
+  "Id": 5147,
   "Name": "The Slave Cells",
   "Desc": "   This is the main room to the cell chambers for the slaves to be \nsacrificed.  You notice there are no guards around.",
   "Exits": [
    {
-    "RoomId": 5147,
+    "RoomId": 5148,
     "Verb": "north"
    },
    {
-    "RoomId": 5142,
+    "RoomId": 5143,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5147,
+  "Id": 5148,
   "Name": "The Slave Pen",
   "Desc": "   Rotten meat and breads lie about the floor while shackles hang from the \nwalls.  The room reeks of death.  You almost become nauseous and decide to\nleave the room since you were obviously too late to save the slave.",
   "Exits": [
    {
-    "RoomId": 5146,
+    "RoomId": 5147,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5148,
+  "Id": 5149,
   "Name": "The Dias",
   "Desc": "   You stand upon a dias behind the altar.  Above you is a enormous illusion\nof a female drow turning into a giant spider and back again.  There is a door \nto the west.",
   "Exits": [
    {
-    "RoomId": 5145,
-    "Verb": "south"
+    "RoomId": 5150,
+    "Verb": "west"
    },
    {
-    "RoomId": 5149,
-    "Verb": "west"
+    "RoomId": 5146,
+    "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5149,
+  "Id": 5150,
   "Name": "The Treasury",
   "Desc": "   This is obviously only a temporary storage place for the collected \ntreasure being rather bare.",
   "Exits": [
    {
-    "RoomId": 5148,
+    "RoomId": 5149,
     "Verb": "east"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 5150,
+  "Id": 5151,
   "Name": "The Weaponsmaster's Chamber",
   "Desc": "   This one-person bedchamber is very elegant.  The owner must be held in\nhigh regard to get this kind of treatment.",
   "Exits": [
    {
-    "RoomId": 5129,
+    "RoomId": 5130,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  }
 ]

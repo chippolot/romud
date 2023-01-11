@@ -1,771 +1,712 @@
 [
  {
-  "Id": 3100,
+  "Id": 3101,
   "Name": "The Northwest End Of The Concourse",
   "Desc": "   You are at the concourse, the city wall is just west.  A small promenade\ngoes east, and the bridge is just north of here.  The concourse continues\nsouth along the city wall.",
   "Exits": [
    {
-    "RoomId": 3051,
+    "RoomId": 3052,
     "Verb": "north"
    },
-   {
-    "RoomId": 3101,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3127,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3101,
-  "Name": "The Promenade",
-  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues further east and to the west you see the city wall.  Park Road\nleads south from here.",
-  "Exits": [
    {
     "RoomId": 3102,
     "Verb": "east"
    },
    {
-    "RoomId": 3131,
+    "RoomId": 3128,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3100,
-    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3102,
   "Name": "The Promenade",
-  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  South of here you see the entrance to\nthe park, and a small building seems to be just west of the entrance.",
+  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues further east and to the west you see the city wall.  Park Road\nleads south from here.",
   "Exits": [
+   {
+    "RoomId": 3101,
+    "Verb": "west"
+   },
    {
     "RoomId": 3103,
     "Verb": "east"
    },
    {
-    "RoomId": 3105,
+    "RoomId": 3132,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3101,
-    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3103,
   "Name": "The Promenade",
-  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  A small path leads south.  Looking across\nthe river you see the levee.",
+  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  South of here you see the entrance to\nthe park, and a small building seems to be just west of the entrance.",
   "Exits": [
    {
     "RoomId": 3104,
     "Verb": "east"
    },
    {
-    "RoomId": 3132,
+    "RoomId": 3106,
     "Verb": "south"
    },
    {
     "RoomId": 3102,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3104,
+  "Name": "The Promenade",
+  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  A small path leads south.  Looking across\nthe river you see the levee.",
+  "Exits": [
+   {
+    "RoomId": 3103,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3105,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3133,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3105,
   "Name": "The Northeast End Of The Concourse",
   "Desc": "   You are at the Concourse.  The city wall is just east and a small\npromenade goes west.  Looking across the river you see a building that\nresembles a warehouse.  The Concourse continues south along the city\nwall.",
   "Exits": [
    {
-    "RoomId": 3130,
+    "RoomId": 3131,
     "Verb": "south"
    },
    {
-    "RoomId": 3103,
+    "RoomId": 3104,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 3105,
+  "Id": 3106,
   "Name": "The Park Entrance",
   "Desc": "   You are standing just inside the small park of Midgaard.  To the north is\nthe promenade and a small path leads south into the park.  To your east is\nthe famous Park Cafe.",
   "Exits": [
    {
-    "RoomId": 3102,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3106,
+    "RoomId": 3107,
     "Verb": "east"
    },
    {
-    "RoomId": 3108,
+    "RoomId": 3109,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3103,
+    "Verb": "north"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 3106,
+  "Id": 3107,
   "Name": "Park Cafe",
   "Desc": "   You are inside Park Cafe, a very cozy place with many tables and\nseats where you can relax and enjoy the view.  To the east you can\nsee the entrance to the park.",
   "Exits": [
    {
-    "RoomId": 3105,
+    "RoomId": 3106,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3107,
-  "Name": "A Small Path In The Park",
-  "Desc": "   You are walking along a small path through the park.  The path continues\nsouth and east.",
-  "Exits": [
-   {
-    "RoomId": 3113,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3108,
-    "Verb": "east"
-   }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3108,
   "Name": "A Small Path In The Park",
-  "Desc": "   You are standing on a small path inside the park.  The park entrance is\njust north of here, and Park Cafe is just east of the entrance.  The path\nleads further east and west.",
+  "Desc": "   You are walking along a small path through the park.  The path continues\nsouth and east.",
   "Exits": [
    {
-    "RoomId": 3105,
-    "Verb": "north"
+    "RoomId": 3114,
+    "Verb": "south"
    },
    {
     "RoomId": 3109,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3107,
-    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3109,
   "Name": "A Small Path In The Park",
-  "Desc": "   You are on a small path running through the park.  It continues west and\nsouth and just north of here you see the southern wall of Park Cafe.",
+  "Desc": "   You are standing on a small path inside the park.  The park entrance is\njust north of here, and Park Cafe is just east of the entrance.  The path\nleads further east and west.",
   "Exits": [
    {
-    "RoomId": 3115,
-    "Verb": "south"
+    "RoomId": 3106,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3110,
+    "Verb": "east"
    },
    {
     "RoomId": 3108,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3110,
+  "Name": "A Small Path In The Park",
+  "Desc": "   You are on a small path running through the park.  It continues west and\nsouth and just north of here you see the southern wall of Park Cafe.",
+  "Exits": [
+   {
+    "RoomId": 3116,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3109,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3111,
   "Name": "Cityguard HeadQuarters",
   "Desc": "   You are inside a tidy office.",
   "Exits": [
    {
-    "RoomId": 3111,
-    "Verb": "east"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3111,
-  "Name": "Park Road",
-  "Desc": "   The road continues north and south.  A building is just west of here, you\nnotice a sign on the door.  The park entrance is to the east.",
-  "Exits": [
-   {
-    "RoomId": 3131,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3112,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3118,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3110,
-    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3112,
-  "Name": "The Western Park Entrance",
-  "Desc": "   You are standing at the western end of the park.  A small path leads east\ninto the park and going west through the entrance you will reach Park Road.",
-  "Exits": [
-   {
-    "RoomId": 3113,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3111,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3113,
-  "Name": "A Path In The Park",
-  "Desc": "   You are in the park.  The paths lead north and west.  Westward is the\npark entrance and to the east you see a small pond.",
-  "Exits": [
-   {
-    "RoomId": 3107,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3114,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3112,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3114,
-  "Name": "The Pond",
-  "Desc": "   You are swimming around in the pond, feeling rather stupid.  You can get\nback on the path from the eastern and western end of the pond.",
-  "Exits": [
-   {
-    "RoomId": 3115,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3113,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3115,
-  "Name": "A Path In The Park",
-  "Desc": "   You are in the park.  The paths lead north and east.  Eastward is the\npark entrance and to the west you see a small pond.",
-  "Exits": [
-   {
-    "RoomId": 3109,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3116,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3114,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3116,
-  "Name": "The Eastern Park Entrance",
-  "Desc": "   You are standing at the eastern end of the park.  A small path leads west\ninto the park.  Going east through the entrance you will reach Emerald\nAvenue.",
-  "Exits": [
-   {
-    "RoomId": 3117,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3115,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3117,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing on the north end of Emerald Avenue.  To the north is the\npromenade and to the west is the park entrance.  To the east is the not very\nbig Town Hall of Midgaard.",
+  "Name": "Park Road",
+  "Desc": "   The road continues north and south.  A building is just west of here, you\nnotice a sign on the door.  The park entrance is to the east.",
   "Exits": [
    {
     "RoomId": 3132,
     "Verb": "north"
    },
    {
-    "RoomId": 3137,
+    "RoomId": 3113,
     "Verb": "east"
    },
    {
     "RoomId": 3119,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3111,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3113,
+  "Name": "The Western Park Entrance",
+  "Desc": "   You are standing at the western end of the park.  A small path leads east\ninto the park and going west through the entrance you will reach Park Road.",
+  "Exits": [
+   {
+    "RoomId": 3114,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3112,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3114,
+  "Name": "A Path In The Park",
+  "Desc": "   You are in the park.  The paths lead north and west.  Westward is the\npark entrance and to the east you see a small pond.",
+  "Exits": [
+   {
+    "RoomId": 3113,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3108,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3115,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3115,
+  "Name": "The Pond",
+  "Desc": "   You are swimming around in the pond, feeling rather stupid.  You can get\nback on the path from the eastern and western end of the pond.",
+  "Exits": [
+   {
+    "RoomId": 3116,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3114,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3116,
+  "Name": "A Path In The Park",
+  "Desc": "   You are in the park.  The paths lead north and east.  Eastward is the\npark entrance and to the west you see a small pond.",
+  "Exits": [
+   {
+    "RoomId": 3110,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3117,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3115,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3117,
+  "Name": "The Eastern Park Entrance",
+  "Desc": "   You are standing at the eastern end of the park.  A small path leads west\ninto the park.  Going east through the entrance you will reach Emerald\nAvenue.",
+  "Exits": [
+   {
+    "RoomId": 3118,
+    "Verb": "east"
    },
    {
     "RoomId": 3116,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3118,
-  "Name": "Park Road",
-  "Desc": "   You are on Park Road which leads north and south.",
-  "Exits": [
-   {
-    "RoomId": 3111,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3135,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3119,
   "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  The road leads north and\nwest.",
-  "Exits": [
-   {
-    "RoomId": 3117,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3133,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3120,
-  "Name": "The Road Crossing",
-  "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
+  "Desc": "   You are standing on the north end of Emerald Avenue.  To the north is the\npromenade and to the west is the park entrance.  To the east is the not very\nbig Town Hall of Midgaard.",
   "Exits": [
    {
     "RoomId": 3133,
     "Verb": "north"
    },
-   {
-    "RoomId": 3136,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3134,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3135,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 7914,
-    "Verb": "up"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3121,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  The road leads south and\neast.",
-  "Exits": [
-   {
-    "RoomId": 3134,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3125,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3122,
-  "Name": "Park Road",
-  "Desc": "   You are on Park Road which leads south and north.  Elm Street is east of\nhere.",
-  "Exits": [
-   {
-    "RoomId": 3123,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3126,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3136,
-    "Verb": "north"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3123,
-  "Name": "Elm Street",
-  "Desc": "   You are on Elm street.  Park Road is to the west and Elm Street continues\nin eastward direction.",
-  "Exits": [
-   {
-    "RoomId": 3124,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3122,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3124,
-  "Name": "The End Of Elm Street",
-  "Desc": "   You are at the end of Elm Street.",
-  "Exits": [
-   {
-    "RoomId": 3123,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3125,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are on Emerald Avenue which continues north.  The Concourse is south\nof here.",
-  "Exits": [
-   {
-    "RoomId": 3121,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3128,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3126,
-  "Name": "Park Road",
-  "Desc": "   You are on Park Road which continues north.  The Concourse is south of\nhere.",
-  "Exits": [
-   {
-    "RoomId": 3129,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3122,
-    "Verb": "north"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3127,
-  "Name": "On The Concourse",
-  "Desc": "   You are at the southwest corner of the city wall.  The Concourse leads\nboth north and east.",
-  "Exits": [
-   {
-    "RoomId": 3100,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3128,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3504,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3128,
-  "Name": "On The Concourse",
-  "Desc": "   The Concourse continues both east and west.  Emerald Avenue is north of\nhere.",
-  "Exits": [
-   {
-    "RoomId": 3129,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3127,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3125,
-    "Verb": "north"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3129,
-  "Name": "On The Concourse",
-  "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
-  "Exits": [
-   {
-    "RoomId": 3128,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3126,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3130,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3150,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3130,
-  "Name": "On The Concourse",
-  "Desc": "   You are at the southeast corner of the city wall.  The Concourse leads\nboth north and west.",
-  "Exits": [
-   {
-    "RoomId": 3104,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3129,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3131,
-  "Name": "Park Road",
-  "Desc": "   You are at Park Road which continues north and south.",
-  "Exits": [
-   {
-    "RoomId": 3101,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3111,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3132,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are at Emerald Avenue which continues north and south.  Penny Lane leads\neast from here.",
-  "Exits": [
-   {
-    "RoomId": 3103,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3139,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3117,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3133,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  To the east the road goes on\nand to the south is the Road Crossing.",
-  "Exits": [
-   {
-    "RoomId": 3119,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3120,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3134,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  To the west the road goes on\nand to the north is the Road Crossing.",
-  "Exits": [
-   {
-    "RoomId": 3121,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3120,
-    "Verb": "north"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3135,
-  "Name": "Park Road",
-  "Desc": "   You are at a bend on Park Road.  To the north the road goes on and to the\neast is the Road Crossing.",
-  "Exits": [
-   {
-    "RoomId": 3118,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3120,
-    "Verb": "east"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3136,
-  "Name": "Park Road",
-  "Desc": "   You are at a bend on Park Road.  To the south the road goes on and to the\nwest is the Road Crossing.",
-  "Exits": [
-   {
-    "RoomId": 3122,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3120,
-    "Verb": "west"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3137,
-  "Name": "The Waiting Room",
-  "Desc": "   You are standing in the waiting room at the town hall.  Wooden chairs stand\nalong the walls and a long desk with a typewriter is placed in the middle of\nthe room.",
-  "Exits": [
    {
     "RoomId": 3138,
     "Verb": "east"
    },
    {
+    "RoomId": 3120,
+    "Verb": "south"
+   },
+   {
     "RoomId": 3117,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 3138,
-  "Name": "The Mayor's Office",
-  "Desc": "   You are in the not very big office of the Mayor of Midgaard.  A large and\npolished but completely empty desk is standing in front of an armchair that\nlooks so comfortable that it most of all resembles a bed with the head end\nraised slightly.",
+  "Id": 3119,
+  "Name": "Park Road",
+  "Desc": "   You are on Park Road which leads north and south.",
+  "Exits": [
+   {
+    "RoomId": 3112,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3136,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3120,
+  "Name": "Emerald Avenue",
+  "Desc": "   You are standing at a bend on Emerald Avenue.  The road leads north and\nwest.",
+  "Exits": [
+   {
+    "RoomId": 3134,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3118,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3121,
+  "Name": "The Road Crossing",
+  "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
+  "Exits": [
+   {
+    "RoomId": 3134,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3137,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3135,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3136,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7915,
+    "Verb": "up"
+   }
+  ]
+ },
+ {
+  "Id": 3122,
+  "Name": "Emerald Avenue",
+  "Desc": "   You are standing at a bend on Emerald Avenue.  The road leads south and\neast.",
+  "Exits": [
+   {
+    "RoomId": 3135,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3126,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3123,
+  "Name": "Park Road",
+  "Desc": "   You are on Park Road which leads south and north.  Elm Street is east of\nhere.",
   "Exits": [
    {
     "RoomId": 3137,
-    "Verb": "west"
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3124,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3127,
+    "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
-  "Id": 3139,
-  "Name": "Penny Lane",
-  "Desc": "   You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane\ncontinues in eastward direction.",
+  "Id": 3124,
+  "Name": "Elm Street",
+  "Desc": "   You are on Elm street.  Park Road is to the west and Elm Street continues\nin eastward direction.",
   "Exits": [
    {
-    "RoomId": 3132,
+    "RoomId": 3125,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3123,
     "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3125,
+  "Name": "The End Of Elm Street",
+  "Desc": "   You are at the end of Elm Street.",
+  "Exits": [
+   {
+    "RoomId": 3124,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3126,
+  "Name": "Emerald Avenue",
+  "Desc": "   You are on Emerald Avenue which continues north.  The Concourse is south\nof here.",
+  "Exits": [
+   {
+    "RoomId": 3122,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3129,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3127,
+  "Name": "Park Road",
+  "Desc": "   You are on Park Road which continues north.  The Concourse is south of\nhere.",
+  "Exits": [
+   {
+    "RoomId": 3123,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3130,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3128,
+  "Name": "On The Concourse",
+  "Desc": "   You are at the southwest corner of the city wall.  The Concourse leads\nboth north and east.",
+  "Exits": [
+   {
+    "RoomId": 3101,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3129,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3505,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3129,
+  "Name": "On The Concourse",
+  "Desc": "   The Concourse continues both east and west.  Emerald Avenue is north of\nhere.",
+  "Exits": [
+   {
+    "RoomId": 3128,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3126,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3130,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3130,
+  "Name": "On The Concourse",
+  "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
+  "Exits": [
+   {
+    "RoomId": 3151,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3129,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3127,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3131,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3131,
+  "Name": "On The Concourse",
+  "Desc": "   You are at the southeast corner of the city wall.  The Concourse leads\nboth north and west.",
+  "Exits": [
+   {
+    "RoomId": 3105,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3130,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3132,
+  "Name": "Park Road",
+  "Desc": "   You are at Park Road which continues north and south.",
+  "Exits": [
+   {
+    "RoomId": 3102,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3112,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3133,
+  "Name": "Emerald Avenue",
+  "Desc": "   You are at Emerald Avenue which continues north and south.  Penny Lane leads\neast from here.",
+  "Exits": [
+   {
+    "RoomId": 3104,
+    "Verb": "north"
    },
    {
     "RoomId": 3140,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3118,
+    "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
+ },
+ {
+  "Id": 3134,
+  "Name": "Emerald Avenue",
+  "Desc": "   You are standing at a bend on Emerald Avenue.  To the east the road goes on\nand to the south is the Road Crossing.",
+  "Exits": [
+   {
+    "RoomId": 3120,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3121,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3135,
+  "Name": "Emerald Avenue",
+  "Desc": "   You are standing at a bend on Emerald Avenue.  To the west the road goes on\nand to the north is the Road Crossing.",
+  "Exits": [
+   {
+    "RoomId": 3121,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3122,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3136,
+  "Name": "Park Road",
+  "Desc": "   You are at a bend on Park Road.  To the north the road goes on and to the\neast is the Road Crossing.",
+  "Exits": [
+   {
+    "RoomId": 3119,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3121,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3137,
+  "Name": "Park Road",
+  "Desc": "   You are at a bend on Park Road.  To the south the road goes on and to the\nwest is the Road Crossing.",
+  "Exits": [
+   {
+    "RoomId": 3123,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3121,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3138,
+  "Name": "The Waiting Room",
+  "Desc": "   You are standing in the waiting room at the town hall.  Wooden chairs stand\nalong the walls and a long desk with a typewriter is placed in the middle of\nthe room.",
+  "Exits": [
+   {
+    "RoomId": 3139,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3118,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3139,
+  "Name": "The Mayor's Office",
+  "Desc": "   You are in the not very big office of the Mayor of Midgaard.  A large and\npolished but completely empty desk is standing in front of an armchair that\nlooks so comfortable that it most of all resembles a bed with the head end\nraised slightly.",
+  "Exits": [
+   {
+    "RoomId": 3138,
+    "Verb": "west"
+   }
+  ]
  },
  {
   "Id": 3140,
   "Name": "Penny Lane",
-  "Desc": "   You are on Penny Lane.  The narrow road continues north and west.",
+  "Desc": "   You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane\ncontinues in eastward direction.",
   "Exits": [
    {
     "RoomId": 3141,
-    "Verb": "north"
+    "Verb": "east"
    },
    {
-    "RoomId": 3139,
+    "RoomId": 3133,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3141,
+  "Name": "Penny Lane",
+  "Desc": "   You are on Penny Lane.  The narrow road continues north and west.",
+  "Exits": [
+   {
+    "RoomId": 3142,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3140,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3142,
   "Name": "The End Of Penny Lane",
   "Desc": "   You are at the end of Penny Lane.  The only exit appears to be south.",
   "Exits": [
    {
-    "RoomId": 3140,
+    "RoomId": 3141,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3150,
-  "Name": "A Gravel Road In The Graveyard",
-  "Desc": "   You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.  An iron\ngrate is to the north.",
-  "Exits": [
-   {
-    "RoomId": 3129,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3151,
-    "Verb": "south"
-   }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3151,
   "Name": "A Gravel Road In The Graveyard",
-  "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
+  "Desc": "   You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.  An iron\ngrate is to the north.",
   "Exits": [
    {
-    "RoomId": 3150,
+    "RoomId": 3130,
     "Verb": "north"
    },
    {
     "RoomId": 3152,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3152,
@@ -780,8 +721,7 @@
     "RoomId": 3153,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3153,
@@ -796,13 +736,12 @@
     "RoomId": 3154,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3154,
-  "Name": "In Front Of The Chapel",
-  "Desc": "   You are on an open space before a small chapel.  A gravel road leads north\nthrough the graveyard and the chapel entrance is to the south.",
+  "Name": "A Gravel Road In The Graveyard",
+  "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
   "Exits": [
    {
     "RoomId": 3153,
@@ -812,57 +751,53 @@
     "RoomId": 3155,
     "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3155,
-  "Name": "Inside The Chapel",
-  "Desc": "   You are in a small, dark chapel.  The dark brown glass in the tiny windows\ndo not let much light through.  A few rows of worn wooden benches stand here\nand an ancient altar sits in the middle of the floor.",
+  "Name": "In Front Of The Chapel",
+  "Desc": "   You are on an open space before a small chapel.  A gravel road leads north\nthrough the graveyard and the chapel entrance is to the south.",
   "Exits": [
    {
     "RoomId": 3154,
     "Verb": "north"
-   }
-  ],
-  "Perceptibles": null
- },
- {
-  "Id": 3200,
-  "Name": "Under The Bridge",
-  "Desc": "   The arch under the bridge is covered by seaweed about a foot above the\nsurface of the river.  The water gently flows through an opening in the lower\npart of the city wall.",
-  "Exits": [
-   {
-    "RoomId": 900,
-    "Verb": "west"
    },
    {
-    "RoomId": 3201,
-    "Verb": "east"
+    "RoomId": 3156,
+    "Verb": "south"
    }
-  ],
-  "Perceptibles": null
+  ]
+ },
+ {
+  "Id": 3156,
+  "Name": "Inside The Chapel",
+  "Desc": "   You are in a small, dark chapel.  The dark brown glass in the tiny windows\ndo not let much light through.  A few rows of worn wooden benches stand here\nand an ancient altar sits in the middle of the floor.",
+  "Exits": [
+   {
+    "RoomId": 3155,
+    "Verb": "north"
+   }
+  ]
  },
  {
   "Id": 3201,
-  "Name": "On The River",
-  "Desc": "   North of here you see the miserable buildings of Poor Alley.  The\nriver flows west towards the bridge.  The riverbanks are too steep to\nclimb.",
+  "Name": "Under The Bridge",
+  "Desc": "   The arch under the bridge is covered by seaweed about a foot above the\nsurface of the river.  The water gently flows through an opening in the lower\npart of the city wall.",
   "Exits": [
    {
     "RoomId": 3202,
     "Verb": "east"
    },
    {
-    "RoomId": 3200,
+    "RoomId": 901,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3202,
   "Name": "On The River",
-  "Desc": "   North of here you see the dump.  The river flows from east to west.  The\nriverbanks are too steep to climb.",
+  "Desc": "   North of here you see the miserable buildings of Poor Alley.  The\nriver flows west towards the bridge.  The riverbanks are too steep to\nclimb.",
   "Exits": [
    {
     "RoomId": 3201,
@@ -872,34 +807,32 @@
     "RoomId": 3203,
     "Verb": "east"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3203,
   "Name": "On The River",
-  "Desc": "   The levee is directly north of here.  The river flows in an east west\ndirection.",
+  "Desc": "   North of here you see the dump.  The river flows from east to west.  The\nriverbanks are too steep to climb.",
   "Exits": [
    {
-    "RoomId": 3049,
-    "Verb": "north"
+    "RoomId": 3202,
+    "Verb": "west"
    },
    {
     "RoomId": 3204,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3202,
-    "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3204,
   "Name": "On The River",
-  "Desc": "   You see the warehouse on the northern riverbank.  East of here you see the\ncity wall.  The river flows west towards the levee.",
+  "Desc": "   The levee is directly north of here.  The river flows in an east west\ndirection.",
   "Exits": [
+   {
+    "RoomId": 3050,
+    "Verb": "north"
+   },
    {
     "RoomId": 3205,
     "Verb": "east"
@@ -908,23 +841,36 @@
     "RoomId": 3203,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
  },
  {
   "Id": 3205,
   "Name": "On The River",
-  "Desc": "   The river enters from a hole in the eastern city wall.  The hole has been\nblocked by several vertically positioned iron bars set into the wall.",
+  "Desc": "   You see the warehouse on the northern riverbank.  East of here you see the\ncity wall.  The river flows west towards the levee.",
   "Exits": [
    {
-    "RoomId": 5001,
+    "RoomId": 3206,
     "Verb": "east"
    },
    {
     "RoomId": 3204,
     "Verb": "west"
    }
-  ],
-  "Perceptibles": null
+  ]
+ },
+ {
+  "Id": 3206,
+  "Name": "On The River",
+  "Desc": "   The river enters from a hole in the eastern city wall.  The hole has been\nblocked by several vertically positioned iron bars set into the wall.",
+  "Exits": [
+   {
+    "RoomId": 3205,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 5002,
+    "Verb": "east"
+   }
+  ]
  }
 ]

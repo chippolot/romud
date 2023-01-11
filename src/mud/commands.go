@@ -621,35 +621,7 @@ func DoStand(e *Entity, w *World, _ []string) {
 }
 
 func DoStatus(e *Entity, w *World, _ []string) {
-	aData := GetAttackData(e)
-	aDamage := aData.Damage.Add(aData.DamageMod)
-
-	var sb utils.StringBuilder
-	sb.WriteHorizontalDivider()
-	sb.WriteLinef("%s", e.Name())
-	sb.WriteNewLine()
-	sb.WriteLinef("Level  : <c yellow>%d</c>", e.data.Stats.Level)
-	if !IsMaxLevel(e) {
-		sb.WriteLinef("Next   : <c yellow>%d</c> XP", GetXpForNextLevel(e))
-	}
-	sb.WriteNewLine()
-	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.HP, e.data.Stats.MaxHP)
-	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.data.Stats.Mov, e.data.Stats.MaxMov)
-	sb.WriteNewLine()
-	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", aData.ToHit)
-	sb.WriteLinef("Attack : %s", aDamage.StringColorized("yellow"))
-	sb.WriteLinef("AC     : <c yellow>%d</c>", e.data.Stats.AC)
-	sb.WriteNewLine()
-	sb.WriteLinef("Str    : <c yellow>%d</c>", e.data.Stats.Str)
-	sb.WriteLinef("Dex    : <c yellow>%d</c>", e.data.Stats.Dex)
-	sb.WriteLinef("Con    : <c yellow>%d</c>", e.data.Stats.Con)
-	sb.WriteLinef("Int    : <c yellow>%d</c>", e.data.Stats.Int)
-	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.data.Stats.Wis)
-	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.data.Stats.Cha)
-	sb.WriteNewLine()
-	sb.WriteLinef("Carry  : <c yellow>%d</c>/<c yellow>%d</c>", e.ItemWeight(), e.data.Stats.CarryingCapacity())
-	sb.WriteString(utils.HorizontalDivider)
-	SendToPlayer(e, sb.String())
+	SendToPlayer(e, e.DescribeStatus())
 }
 
 func DoWho(e *Entity, w *World, _ []string) {

@@ -38,7 +38,7 @@ func (cfg *ItemConfig) Init() {
 
 type ItemData struct {
 	Key      string
-	RoomId   RoomId
+	RoomId   RoomId      `json:",omitempty"`
 	Contents []*ItemData `json:",omitempty"`
 }
 

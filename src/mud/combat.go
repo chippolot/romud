@@ -168,9 +168,9 @@ func (c *CombatList) EndCombat(e *Entity) {
 func GetAttackData(e *Entity) AttackData {
 	aData := AttackData{}
 	if weapon, ok := e.GetWeapon(); ok {
-		aData.ToHit = GetAbilityModifier(e.stats.Str) + ProficiencyChart[e.stats.Level]
+		aData.ToHit = GetAbilityModifier(e.stats.Get(Stat_Str)) + ProficiencyChart[e.stats.Get(Stat_Level)]
 		aData.Damage = weapon.Damage
-		aData.DamageMod = GetAbilityModifier(e.stats.Str)
+		aData.DamageMod = GetAbilityModifier(e.stats.Get(Stat_Str))
 		aData.DamageType = weapon.DamageType
 		aData.VerbSingular = weapon.VerbSingular
 		aData.VerbPlural = weapon.VerbPlural
@@ -179,14 +179,14 @@ func GetAttackData(e *Entity) AttackData {
 		aData.ToHit = attack.ToHit
 		aData.Damage = attack.Damage
 		if e.player != nil {
-			aData.DamageMod = GetAbilityModifier(e.stats.Str)
+			aData.DamageMod = GetAbilityModifier(e.stats.Get(Stat_Str))
 		}
 		aData.DamageType = attack.DamageType
 		aData.VerbSingular = attack.VerbSingular
 		aData.VerbPlural = attack.VerbPlural
 	}
 	if e.player != nil {
-		aData.ToHit = GetAbilityModifier(e.stats.Str) + ProficiencyChart[e.stats.Level]
+		aData.ToHit = GetAbilityModifier(e.stats.Get(Stat_Str)) + ProficiencyChart[e.stats.Get(Stat_Level)]
 	}
 	return aData
 }
@@ -340,7 +340,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 		w.inCombat.StartCombat(tgt, from)
 	}
 
-	tgt.stats.HP = tgt.stats.HP - dam
+	tgt.stats.Add(Stat_HP, -dam)
 	cnd = tgt.stats.Condition()
 
 	// Send damage messages
@@ -390,9 +390,9 @@ func createCorpse(from *Entity, w *World) {
 
 func applyXp(e *Entity, xp int) int {
 	if !IsMaxLevel(e) {
-		e.stats.AddXP(xp)
+		e.stats.Add(Stat_XP, xp)
 		if IsReadyForLevelUp(e) {
-			SendToPlayer(e, "You're ready for level %d!", e.stats.Level+1)
+			SendToPlayer(e, "You're ready for level %d!", e.stats.Get(Stat_Level)+1)
 		}
 		return xp
 	}
@@ -451,10 +451,10 @@ func sendStatusMessages(dam int, target *Entity, r *Room) {
 		SendToPlayer(target, "You feel your soul slip from your body. You are DEAD!")
 		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.NameCapitalized())
 	default:
-		if dam > target.stats.MaxHP/4 {
+		if dam > target.stats.Get(Stat_MaxHP)/4 {
 			SendToPlayer(target, "<c red>Ouch, that one stung!</c>")
 		}
-		if target.stats.HP < target.stats.MaxHP/4 {
+		if target.stats.Get(Stat_HP) < target.stats.Get(Stat_MaxHP)/4 {
 			SendToPlayer(target, "You sure are BLEEDING a lot!")
 		}
 	}

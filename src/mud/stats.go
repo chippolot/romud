@@ -185,29 +185,30 @@ func (s *Stats) RemoveMod(stat StatType, mod int) {
 	s.clamp()
 }
 
-func (s *Stats) AddHP(delta int) {
-	s.data[Stat_HP] += delta
+func (s *Stats) Add(stat StatType, delta int) {
+	s.data[stat] += delta
 	s.clamp()
 }
 
-func (s *Stats) AddMov(delta int) {
-	s.data[Stat_Mov] += delta
+func (s *Stats) Set(stat StatType, val int) {
+	s.data[stat] = val
 	s.clamp()
 }
 
-func (s *Stats) AddXP(delta int) {
-	s.data[Stat_XP] += delta
+func (s *Stats) Get(stat StatType) int {
+	mod := s.mods[stat]
+	return s.data[stat] + mod
 }
 
 func (s *Stats) CarryingCapacity() int {
-	return s.GetStat(Stat_Str) * 15
+	return s.Get(Stat_Str) * 15
 }
 
 func (s *Stats) MaxStatType(stats ...StatType) StatType {
 	maxStat := stats[0]
-	maxVal := s.GetStat(stats[0])
+	maxVal := s.Get(stats[0])
 	for _, stat := range stats {
-		val := s.GetStat(stat)
+		val := s.Get(stat)
 		if val > maxVal {
 			maxStat = stat
 			maxVal = val
@@ -216,13 +217,8 @@ func (s *Stats) MaxStatType(stats ...StatType) StatType {
 	return maxStat
 }
 
-func (s *Stats) GetStat(stat StatType) int {
-	mod := s.mods[stat]
-	return s.data[stat] + mod
-}
-
 func (s *Stats) Condition() Condition {
-	hp := s.GetStat(Stat_HP)
+	hp := s.Get(Stat_HP)
 	if hp < -10 {
 		return Cnd_Dead
 	} else if hp < -5 {
@@ -237,7 +233,7 @@ func (s *Stats) Condition() Condition {
 }
 
 func (s *Stats) ConditionShortString() string {
-	hp := s.GetStat(Stat_HP)
+	hp := s.Get(Stat_HP)
 	if hp < -10 {
 		return "<c red>dead</c>"
 	} else if hp < -5 {
@@ -267,8 +263,8 @@ func (s *Stats) ConditionShortString() string {
 }
 
 func (s *Stats) ConditionLongString(e *Entity) string {
-	hp := s.GetStat(Stat_HP)
-	maxHP := s.GetStat(Stat_MaxHP)
+	hp := s.Get(Stat_HP)
+	maxHP := s.Get(Stat_MaxHP)
 	if hp < -10 {
 		return fmt.Sprintf("%s is <c red>dead</c>", e.NameCapitalized())
 	} else if hp < -5 {
@@ -298,13 +294,13 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 }
 
 func (s *Stats) clamp() {
-	s.data[Stat_HP] = utils.MinInts(s.GetStat(Stat_MaxHP), s.data[Stat_HP])
-	s.data[Stat_Mov] = utils.MinInts(s.GetStat(Stat_MaxMov), s.data[Stat_Mov])
+	s.data[Stat_HP] = utils.MinInts(s.Get(Stat_MaxHP), s.data[Stat_HP])
+	s.data[Stat_Mov] = utils.MinInts(s.Get(Stat_MaxMov), s.data[Stat_Mov])
 }
 
 func ContestAbility(e *Entity, tgt *Entity, stat StatType) bool {
-	eRoll := D20.Roll() + GetAbilityModifier(e.stats.GetStat(stat))
-	tgtRoll := D20.Roll() + GetAbilityModifier(tgt.stats.GetStat(stat))
+	eRoll := D20.Roll() + GetAbilityModifier(e.stats.Get(stat))
+	tgtRoll := D20.Roll() + GetAbilityModifier(tgt.stats.Get(stat))
 	return eRoll > tgtRoll
 }
 
@@ -381,15 +377,15 @@ func GetAbilityModifier(score int) int {
 }
 
 func IsMaxLevel(e *Entity) bool {
-	return e.stats.Level >= len(XPChart)
+	return e.stats.Get(Stat_Level) >= len(XPChart)
 }
 
 func GetXpForNextLevel(e *Entity) int {
 	if IsMaxLevel(e) {
 		return -1
 	}
-	nextLevel := e.stats.Level + 1
-	requiredXp := XPChart[nextLevel] - e.stats.XP
+	nextLevel := e.stats.Get(Stat_Level) + 1
+	requiredXp := XPChart[nextLevel] - e.stats.Get(Stat_XP)
 	return utils.MaxInts(0, requiredXp)
 }
 

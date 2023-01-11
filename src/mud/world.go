@@ -71,7 +71,7 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 	// Heal up
 	timeSinceSave := time.Now().UTC().Sub(e.player.data.LastSavedAt)
 	hpPerMin := 15
-	e.stats.AddHP(int(timeSinceSave.Minutes() * float64(hpPerMin)))
+	e.stats.Add(Stat_HP, int(timeSinceSave.Minutes()*float64(hpPerMin)))
 
 	return e, nil
 }

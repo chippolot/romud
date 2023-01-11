@@ -52,7 +52,7 @@ type PlayerPromptProvider struct {
 }
 
 func (pp *PlayerPromptProvider) Prompt() string {
-	prompt := fmt.Sprintf("<<c green>%dh(%dH):%dv(%dMV)</c>> ", pp.character.stats.HP, pp.character.stats.MaxHP, pp.character.stats.Mov, pp.character.stats.MaxMov)
+	prompt := fmt.Sprintf("<<c green>%dh(%dH):%dv(%dMV)</c>> ", pp.character.stats.Get(Stat_HP), pp.character.stats.Get(Stat_MaxHP), pp.character.stats.Get(Stat_Mov), pp.character.stats.Get(Stat_MaxMov))
 	if pp.character.combat != nil {
 		prompt = fmt.Sprintf("%s%s<%s (%s)>:<%s (%s)> ", prompt, utils.NewLine, pp.character.Name(), pp.character.stats.ConditionShortString(), pp.character.combat.target.Name(), pp.character.combat.target.stats.ConditionShortString())
 	}

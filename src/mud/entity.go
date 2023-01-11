@@ -259,7 +259,7 @@ func (e *Entity) AC() int {
 		}
 		sum += ac
 	}
-	dexBonus := GetAbilityModifier(e.stats.Dex)
+	dexBonus := GetAbilityModifier(e.stats.Get(Stat_Dex))
 	if e.player == nil {
 		dexBonus = 0
 	}
@@ -312,24 +312,23 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteHorizontalDivider()
 	sb.WriteLinef("%s", e.Name())
 	sb.WriteNewLine()
-	sb.WriteLinef("Level  : <c yellow>%d</c>", e.stats.Level)
+	sb.WriteLinef("Level  : <c yellow>%d</c>", e.stats.Get(Stat_Level))
 	if !IsMaxLevel(e) {
 		sb.WriteLinef("Next   : <c yellow>%d</c> XP", GetXpForNextLevel(e))
 	}
 	sb.WriteNewLine()
-	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.stats.HP, e.stats.MaxHP)
-	sb.WriteLinef("Mov    : <c yellow>%d</c>/<c yellow>%d</c>", e.stats.Mov, e.stats.MaxMov)
+	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.stats.Get(Stat_HP), e.stats.Get(Stat_MaxHP))
 	sb.WriteNewLine()
 	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", aData.ToHit)
 	sb.WriteLinef("Attack : %s", aDamage.StringColorized("yellow"))
 	sb.WriteLinef("AC     : <c yellow>%d</c>", e.AC())
 	sb.WriteNewLine()
-	sb.WriteLinef("Str    : <c yellow>%d</c>", e.stats.Str)
-	sb.WriteLinef("Dex    : <c yellow>%d</c>", e.stats.Dex)
-	sb.WriteLinef("Con    : <c yellow>%d</c>", e.stats.Con)
-	sb.WriteLinef("Int    : <c yellow>%d</c>", e.stats.Int)
-	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.stats.Wis)
-	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.stats.Cha)
+	sb.WriteLinef("Str    : <c yellow>%d</c>", e.stats.Get(Stat_Str))
+	sb.WriteLinef("Dex    : <c yellow>%d</c>", e.stats.Get(Stat_Dex))
+	sb.WriteLinef("Con    : <c yellow>%d</c>", e.stats.Get(Stat_Con))
+	sb.WriteLinef("Int    : <c yellow>%d</c>", e.stats.Get(Stat_Int))
+	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.stats.Get(Stat_Wis))
+	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.stats.Get(Stat_Cha))
 	sb.WriteNewLine()
 	sb.WriteLinef("Carry  : <c yellow>%d</c>/<c yellow>%d</c>", e.ItemWeight(), e.stats.CarryingCapacity())
 	sb.WriteString(utils.HorizontalDivider)

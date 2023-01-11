@@ -124,7 +124,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 	case "pheal":
 		heal := 9999
 		SendToPlayer(e, "Admin: Healing Player for %d", heal)
-		e.stats.AddHP(heal)
+		e.stats.Add(Stat_HP, heal)
 	case "pdam":
 		dam, _ := strconv.Atoi(tokens[2])
 		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
@@ -162,16 +162,16 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 		return
 	}
 
-	e.stats.Level += 1
+	e.stats.Add(Stat_Level, 1)
 
 	// TODO Class hit die
 	// TODO Handle stat increases
-	hpGain := D8.Roll() + GetAbilityModifier(e.stats.Con)
-	e.stats.MaxHP += utils.MaxInts(1, hpGain)
+	hpGain := D8.Roll() + GetAbilityModifier(e.stats.Get(Stat_Con))
+	e.stats.Add(Stat_MaxHP, utils.MaxInts(1, hpGain))
 
-	SendToPlayer(e, "You advance to level %d!", e.stats.Level)
+	SendToPlayer(e, "You advance to level %d!", e.stats.Get(Stat_Level))
 	SendToPlayer(e, "  You gain %d hp", hpGain)
-	BroadcastToWorldExcept(w, e, "Hooray! %s is now level %d", e.Name(), e.stats.Level)
+	BroadcastToWorldExcept(w, e, "Hooray! %s is now level %d", e.Name(), e.stats.Get(Stat_Level))
 
 	if e.player != nil {
 		w.SavePlayerCharacter(e.player.id)
@@ -684,7 +684,7 @@ func lowerTokens(tokens []string) []string {
 }
 
 func performMove(e *Entity, w *World, dir Direction) bool {
-	if e.stats.Mov <= 0 {
+	if e.stats.Get(Stat_Mov) <= 0 {
 		SendToPlayer(e, "You're way too tired...")
 		return false
 	}
@@ -734,7 +734,7 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		BroadcastToRoom(nextRoom, "%s wanders in from the %s", e.NameCapitalized(), fromDirStr)
 	}
 
-	e.stats.AddMov(-1)
+	e.stats.Add(Stat_Mov, -1)
 
 	if e.player != nil {
 		DoLook(e, w, nil)

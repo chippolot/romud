@@ -55,8 +55,8 @@ func restoreStats(w *World) {
 			continue
 		}
 
-		oldHP := e.stats.HP
-		oldMov := e.stats.Mov
+		oldHP := e.stats.Get(Stat_HP)
+		oldMov := e.stats.Get(Stat_Mov)
 
 		var hpGain, movGain int
 		var message string
@@ -81,15 +81,15 @@ func restoreStats(w *World) {
 		}
 
 		if hpGain > 0 {
-			e.stats.AddHP(hpGain)
+			e.stats.Add(Stat_HP, hpGain)
 		} else {
 			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
 			message = "<c red>You are bleeding!</c>"
 		}
-		e.stats.AddMov(movGain)
+		e.stats.Add(Stat_Mov, movGain)
 
 		// Force a new prompt if something changed
-		if oldHP != e.stats.HP || oldMov != e.stats.Mov {
+		if oldHP != e.stats.Get(Stat_HP) || oldMov != e.stats.Get(Stat_Mov) {
 			SendToPlayer(e, message)
 		}
 	}

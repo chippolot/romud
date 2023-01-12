@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/chippolot/go-mud/src/bits"
@@ -65,6 +66,27 @@ func (s StatusEffectType) String() string {
 		return "faerie fire"
 	}
 	return "unknown"
+}
+
+func (s *StatusEffectType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(s.String())
+}
+
+func (s *StatusEffectType) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *s, err = ParseStatusEffectType(str); err != nil {
+		return err
+	}
+	return nil
+}
+
+type StatusEffectConfig struct {
+	Type     StatusEffectType
+	Duration int // Seconds
+	Save     *SavingThrowConfig
 }
 
 type StatusEffectData struct {

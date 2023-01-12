@@ -304,6 +304,11 @@ func ContestAbility(e *Entity, tgt *Entity, stat StatType) bool {
 	return eRoll > tgtRoll
 }
 
+func SavingThrow(e *Entity, stat StatType, dc int) bool {
+	roll := D20.Roll() + GetAbilityModifier(e.stats.Get(stat))
+	return roll >= dc
+}
+
 const (
 	Cnd_Dead Condition = iota
 	Cnd_MortallyWounded

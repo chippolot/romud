@@ -115,6 +115,8 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 		item.SetData(idata, w)
 		e.equipped[slot] = item
 	}
+
+	e.updateStatusFlags()
 }
 
 func (e *Entity) Name() string {
@@ -331,7 +333,11 @@ func (e *Entity) Describe() string {
 		sb.WriteLine(e.cfg.FullDesc)
 	}
 	sb.WriteLine(e.stats.ConditionLongString(e))
-	if e.cfg.Flags.Has(EFlag_UsesEquipment) {
+	statuses := e.DescribeStatusEffects()
+	if statuses != "" {
+		sb.WriteLinef("%s is %s", e.NameCapitalized(), statuses)
+	}
+	if e.player != nil || e.cfg.Flags.Has(EFlag_UsesEquipment) {
 		sb.WriteLine(e.DescribeEquipment())
 	}
 	return sb.String()
@@ -340,6 +346,7 @@ func (e *Entity) Describe() string {
 func (e *Entity) DescribeStatus() string {
 	aData := GetAttackData(e)
 	aDamage := aData.Damage.Add(aData.DamageMod)
+	statuses := e.DescribeStatusEffects()
 
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
@@ -364,8 +371,23 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.stats.Get(Stat_Cha))
 	sb.WriteNewLine()
 	sb.WriteLinef("Carry  : <c yellow>%d</c>/<c yellow>%d</c>", e.ItemWeight(), e.stats.CarryingCapacity())
+	if statuses != "" {
+		sb.WriteNewLine()
+		sb.WriteLinef("Status : %s", statuses)
+	}
 	sb.WriteString(utils.HorizontalDivider)
 	return sb.String()
+}
+
+func (e *Entity) DescribeStatusEffects() string {
+	strs := make([]string, 0)
+	for i := 0; i < 64; i++ {
+		status := StatusEffectType(1 << i)
+		if e.HasStatusEffect(status) {
+			strs = append(strs, fmt.Sprintf("<c yellow>%s</c>", strings.Title(status.String())))
+		}
+	}
+	return strings.Join(strs, ",")
 }
 
 func (e *Entity) DescribeInventory() string {

@@ -42,7 +42,15 @@
             "Damage": "1d4+2",
             "DamageType": "piercing",
             "VerbSingular": "bite",
-            "VerbPlural": "bites"
+            "VerbPlural": "bites",
+            "Effect": {
+                "Type": "poisoned",
+                "Duration": 10,
+                "Save": {
+                    "Stat": "Con",
+                    "DC": 10
+                }
+            }
         }],
         "Flags": ["scavenger"],
         "Stats": {

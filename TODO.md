@@ -87,14 +87,16 @@
     [x] Support all for give
     [x] Support all for drop
 [x] Description grouping
+[x] Looking at players
+[x] Status Effects
+    [x] Expiration
+    [x] Application
+    [x] Remove on login
+    [x] From attacks
 ----------------------------------------
 [] Lua scripting
 [] Status Effects
-    [] Remove on login
-    [] From attacks
     [] From equip
-    [] Expiration
-    [] Application
     [] Immunities
 [] Spawning - Data drives
 [] Items
@@ -118,7 +120,6 @@
 [] Shops
 [] Races
 [] Classes
-[] Looking at players
 [] Followers
 [] Doors
 [] Figure out thread safety

@@ -90,6 +90,7 @@ type AttackData struct {
 	Damage                   Dice
 	DamageMod                int
 	DamageType               DamageType
+	Effect                   *StatusEffectConfig
 	VerbSingular, VerbPlural string
 }
 
@@ -99,9 +100,15 @@ type AttackConfig struct {
 	ToHit        int
 	Damage       Dice
 	DamageType   DamageType
+	Effect       *StatusEffectConfig `json:",omitempty"`
 	VerbSingular string
 	VerbPlural   string
 	Weight       float32
+}
+
+type SavingThrowConfig struct {
+	Stat StatType
+	DC   int
 }
 
 type DamageContext int
@@ -175,6 +182,7 @@ func GetAttackData(e *Entity) AttackData {
 		if e.player != nil {
 			aData.DamageMod = GetAbilityModifier(e.stats.Get(Stat_Str))
 		}
+		aData.Effect = attack.Effect
 		aData.DamageType = attack.DamageType
 		aData.VerbSingular = attack.VerbSingular
 		aData.VerbPlural = attack.VerbPlural
@@ -306,9 +314,11 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		critHit := hitBase == 20
 		hit := hitBase + aData.ToHit
 
+		didHit := false
 		if (critMiss || hit < tgt.AC()) && !critHit {
 			dam = 0
 		} else {
+			didHit = true
 			// Roll for damage
 			if critHit {
 				dam = aData.Damage.CriticalRoll()
@@ -319,6 +329,11 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 			dam = utils.MaxInts(1, dam)
 		}
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)
+
+		effect := aData.Effect
+		if didHit && effect != nil && (effect.Save == nil || !SavingThrow(tgt, effect.Save.Stat, effect.Save.DC)) {
+			performAddStatusEffect(tgt, w, e, effect.Type, effect.Duration)
+		}
 	}
 	e.combat.requestedSkill = CombatSkill_None
 }
@@ -407,11 +422,11 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingu
 		toRoom = fmt.Sprintf("%s's %s knicks %s as it fails to fully connect", src.NameCapitalized(), atkVerbSingular, dst.Name())
 	} else if dam <= 4 {
 		toSrc = fmt.Sprintf("Your %s barely scratches %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s barely scratch you", src.NameCapitalized(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s barely scratch %s", src.NameCapitalized(), atkVerbPlural, dst.Name())
+		toDst = fmt.Sprintf("%s's %s barely scratch you", src.NameCapitalized(), atkVerbPlural)
+		toRoom = fmt.Sprintf("%s's %s barely scratches %s", src.NameCapitalized(), atkVerbSingular, dst.Name())
 	} else if dam <= 6 {
 		toSrc = fmt.Sprintf("You %s %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you", src.NameCapitalized(), atkVerbPlural)
+		toDst = fmt.Sprintf("%s %s you", src.NameCapitalized(), atkVerbSingular)
 		toRoom = fmt.Sprintf("%s %s %s", src.NameCapitalized(), atkVerbPlural, dst.Name())
 	} else if dam <= 8 {
 		toSrc = fmt.Sprintf("You %s %s ferociously", atkVerbSingular, dst.Name())

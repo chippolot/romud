@@ -205,6 +205,24 @@ func GetEquipmentSlotDescription(slot EquipSlot, item *Item) string {
 	return ""
 }
 
+func performEquip(e *Entity, w *World, item *Item) {
+	slot, unequipped, ok := e.Equip(item)
+	if !ok {
+		return
+	}
+	for _, u := range unequipped {
+		sendUnequipMessages(e, w, u)
+	}
+	sendEquipMessages(e, w, slot, item)
+}
+
+func performUnequip(e *Entity, w *World, item *Item) {
+	if ok := e.Unequip(item); !ok {
+		return
+	}
+	sendUnequipMessages(e, w, item)
+}
+
 func sendEquipMessages(e *Entity, w *World, slot EquipSlot, item *Item) {
 	r := w.rooms[e.data.RoomId]
 

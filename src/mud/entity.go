@@ -49,7 +49,7 @@ type EntityData struct {
 	Stats     StatMap          `json:",omitempty"`
 	Inventory []*ItemData      `json:",omitempty"`
 	Equipped  EquipmentDataMap `json:",omitempty"`
-	Statuses  StatusDataMap    `json:",omitempty"`
+	Statuses  StatusDataList   `json:",omitempty"`
 }
 
 type EntityContainer interface {
@@ -71,18 +71,18 @@ type Entity struct {
 	position  Position
 	inventory ItemList
 	equipped  map[EquipSlot]*Item
-	statuses  StatusDataMap
+	statuses  StatusEffectType
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), data.Statuses}
+	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), 0}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
+	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataList, 0)}
 }
 
 func (e *Entity) SetData(data *EntityData, w *World) {
@@ -300,6 +300,31 @@ func (e *Entity) AC() int {
 	return e.cfg.Stats.AC + int(sum+float64(dexBonus)*dexBonusRatio)
 }
 
+func (e *Entity) AddStatusEffect(status StatusEffectType, duration int) {
+	for _, s := range e.data.Statuses {
+		if s.Type == status {
+			s.Duration = utils.MaxInts(s.Duration, duration)
+			return
+		}
+	}
+	e.data.Statuses = append(e.data.Statuses, &StatusEffectData{status, duration})
+	e.updateStatusFlags()
+}
+
+func (e *Entity) HasStatusEffect(status StatusEffectType) bool {
+	return e.statuses.Has(status)
+}
+
+func (e *Entity) RemoveStatusEffect(status StatusEffectType) {
+	for idx, s := range e.data.Statuses {
+		if s.Type == status {
+			e.data.Statuses = utils.SwapDelete(e.data.Statuses, idx)
+			e.updateStatusFlags()
+			return
+		}
+	}
+}
+
 func (e *Entity) Describe() string {
 	var sb utils.StringBuilder
 	if e.cfg.FullDesc != "" {
@@ -409,6 +434,13 @@ func (e *Entity) bestEquipSlot(slots ...EquipSlot) EquipSlot {
 		}
 	}
 	return slots[0]
+}
+
+func (e *Entity) updateStatusFlags() {
+	e.statuses = 0
+	for _, s := range e.data.Statuses {
+		e.statuses |= s.Type
+	}
 }
 
 func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) {

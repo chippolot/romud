@@ -1,33 +1,25 @@
 package mud
 
 import (
-	"encoding/json"
 	"fmt"
 
-	"github.com/chippolot/go-mud/src/utils"
+	"github.com/chippolot/go-mud/src/bits"
 )
 
 const (
 	StatusEffectDuration_Permanent = -1
 
-	StatusAddResult_Failed = iota
-	StatusAddResult_Applied
-	StatusAddResult_Prolonged
-
 	// TODO Implement
-	StatusType_Poison StatusEffectType = iota
+	StatusType_Poison StatusEffectType = 1 << iota
 	StatusType_Blind
 	StatusType_Invisible
 	StatusType_Cursed
 	StatusType_Blessed
-	StatusType_Charmed
 	StatusType_NightVision
 	StatusType_FaerieFire
 )
 
-type StatusAddResult byte
-
-type StatusEffectType int
+type StatusEffectType bits.Bits
 
 func ParseStatusEffectType(str string) (StatusEffectType, error) {
 	switch str {
@@ -41,8 +33,6 @@ func ParseStatusEffectType(str string) (StatusEffectType, error) {
 		return StatusType_Cursed, nil
 	case "blessed":
 		return StatusType_Blessed, nil
-	case "charmed":
-		return StatusType_Charmed, nil
 	case "night vision":
 		return StatusType_NightVision, nil
 	case "faerie fire":
@@ -50,6 +40,10 @@ func ParseStatusEffectType(str string) (StatusEffectType, error) {
 	default:
 		return 0, fmt.Errorf("unknown status effect type: %s", str)
 	}
+}
+
+func (s StatusEffectType) Has(status StatusEffectType) bool {
+	return s&status != 0
 }
 
 func (s StatusEffectType) String() string {
@@ -65,8 +59,6 @@ func (s StatusEffectType) String() string {
 		return "cursed"
 	case StatusType_Blessed:
 		return "blessed"
-	case StatusType_Charmed:
-		return "charmed"
 	case StatusType_NightVision:
 		return "night vision"
 	case StatusType_FaerieFire:
@@ -75,53 +67,66 @@ func (s StatusEffectType) String() string {
 	return "unknown"
 }
 
-// TODO remove statuses on login
 type StatusEffectData struct {
+	Type     StatusEffectType
 	Duration int // Seconds
 }
 
-type StatusDataMap map[StatusEffectType]*StatusEffectData
+type StatusDataList []*StatusEffectData
 
-func (m *StatusDataMap) MarshalJSON() ([]byte, error) {
-	m2 := make(map[string]*StatusEffectData)
-	for statusType, data := range *m {
-		m2[statusType.String()] = data
-	}
-	return json.Marshal(m2)
-}
-
-func (m *StatusDataMap) UnmarshalJSON(data []byte) (err error) {
-	var m2 map[string]*StatusEffectData
-	if err := json.Unmarshal(data, &m2); err != nil {
-		return err
-	}
-	*m = make(StatusDataMap)
-	for statusTypeStr, data := range m2 {
-		if statusType, err := ParseStatusEffectType(statusTypeStr); err == nil {
-			(*m)[statusType] = data
+func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectType, duration int) {
+	r := w.rooms[e.data.RoomId]
+	if e.HasStatusEffect(status) {
+		switch status {
+		case StatusType_Poison:
+			SendToPlayer(e, "You suddenly don't feel very well...")
+			BroadcastToRoomExcept(r, e, "%s looks a little sick.", e.NameCapitalized())
+		case StatusType_Blind:
+			SendToPlayer(e, "Your vision fades to black.")
+			BroadcastToRoomExcept(r, e, "%s seems to have been blinded!", e.NameCapitalized())
+		case StatusType_Invisible:
+			SendToPlayer(e, "You vanish.")
+			BroadcastToRoomExcept(r, e, "%s seems to flicker out of existence.", e.NameCapitalized())
+		case StatusType_Cursed:
+			SendToPlayer(e, "You feel a wave of gloom descend on you.")
+			BroadcastToRoomExcept(r, e, "%s glows red for a moment.", e.NameCapitalized())
+		case StatusType_Blessed:
+			SendToPlayer(e, "You feel a tingle as you're bathed in a white light.")
+			BroadcastToRoomExcept(r, e, "%s glows white for a moment.", e.NameCapitalized())
+		case StatusType_NightVision:
+			SendToPlayer(e, "Everything looks a little brighter.")
+			BroadcastToRoomExcept(r, e, "%s's eyes flash brightly.", e.NameCapitalized())
+		case StatusType_FaerieFire:
+			SendToPlayer(e, "You begin emanating a bright purple light.")
+			BroadcastToRoomExcept(r, e, "%s beings emanating a bright purple light.", e.NameCapitalized())
 		}
 	}
-	return nil
+	e.AddStatusEffect(status, duration)
 }
 
-func (s *StatusDataMap) Add(status StatusEffectType, duration int) StatusAddResult {
-	if existing, ok := (*s)[status]; ok {
-		existing.Duration = utils.MaxInts(duration, existing.Duration)
-		return StatusAddResult_Prolonged
+func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectType) {
+	if !e.HasStatusEffect(status) {
+		return
 	}
-	(*s)[status] = &StatusEffectData{Duration: duration}
-	return StatusAddResult_Applied
-}
-
-func (s *StatusDataMap) Has(status StatusEffectType) bool {
-	_, ok := (*s)[status]
-	return ok
-}
-
-func (s *StatusDataMap) Remove(status StatusEffectType) bool {
-	if !s.Has(status) {
-		return false
+	r := w.rooms[e.data.RoomId]
+	e.RemoveStatusEffect(status)
+	if !e.HasStatusEffect(status) {
+		switch status {
+		case StatusType_Poison:
+			SendToPlayer(e, "You feel much better.")
+		case StatusType_Blind:
+			SendToPlayer(e, "Your vision slowly returns")
+		case StatusType_Invisible:
+			SendToPlayer(e, "You blink back into existence.")
+			BroadcastToRoomExcept(r, e, "%s blinks back into existence.", e.NameCapitalized())
+		case StatusType_Cursed:
+			SendToPlayer(e, "It feels like a weight has been lifted from you.")
+		case StatusType_Blessed:
+			SendToPlayer(e, "You feel the warm cozy feeling fade.")
+		case StatusType_NightVision:
+			SendToPlayer(e, "Your vision returns to normal.")
+		case StatusType_FaerieFire:
+			SendToPlayer(e, "The light emanating from you fades.")
+		}
 	}
-	delete(*s, status)
-	return true
 }

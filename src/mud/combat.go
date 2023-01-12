@@ -9,17 +9,11 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-type AdvantageType int
-
 const (
 	Advantage_None AdvantageType = iota
 	Advantage_Advantage
 	Advantage_Disadvantage
-)
 
-type DamageType int
-
-const (
 	Dam_Acid DamageType = iota
 	Dam_Bludgeoning
 	Dam_Cold
@@ -33,7 +27,18 @@ const (
 	Dam_Radiant
 	Dam_Slashing
 	Dam_Thunder
+
+	DamCtx_Melee DamageContext = iota
+	DamCtx_Bleeding
+	DamCtx_Poison
+	DamCtx_Admin = 999
+
+	CombatSkill_None CombatSkill = iota
+	CombatSkill_Shove
 )
+
+type AdvantageType int
+type DamageType int
 
 func ParseDamageType(str string) (DamageType, error) {
 	switch str {
@@ -101,18 +106,7 @@ type AttackConfig struct {
 
 type DamageContext int
 
-const (
-	DamCtx_Melee DamageContext = iota
-	DamCtx_Bleeding
-	DamCtx_Admin = 999
-)
-
 type CombatSkill int
-
-const (
-	CombatSkill_None CombatSkill = iota
-	CombatSkill_Shove
-)
 
 type CombatData struct {
 	target         *Entity
@@ -336,7 +330,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	}
 
 	// Start fighting damage source
-	if from != nil && tgt.combat == nil && from.stats.Condition() > Cnd_Stunned {
+	if from != nil && from != tgt && tgt.combat == nil && from.stats.Condition() > Cnd_Stunned {
 		w.inCombat.StartCombat(tgt, from)
 	}
 
@@ -346,9 +340,11 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	// Send damage messages
 	r := w.rooms[tgt.data.RoomId]
 	switch damCtx {
+	case DamCtx_Poison:
+		SendToPlayer(tgt, "You feel a wave of pain course through you. <c red>(%d)</c>", dam)
+		BroadcastToRoomExcept(r, tgt, "%s shudders in pain", tgt.NameCapitalized())
 	case DamCtx_Melee:
 		sendDamageMessages(dam, from, tgt, r, verbSingular, verbPlural)
-
 	}
 
 	// Send status messages
@@ -430,7 +426,6 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingu
 		toDst = fmt.Sprintf("%s %s you UNBELIEVABLY HARD", src.NameCapitalized(), atkVerbPlural)
 		toRoom = fmt.Sprintf("%s %s %s UNBELIEVABLY HARD", src.NameCapitalized(), atkVerbPlural, dst.Name())
 	}
-	// TODO More here?
 	SendToPlayer(src, toSrc+" <c yellow>(%d)</c>", dam)
 	SendToPlayer(dst, toDst+" <c red>(%d)</c>", dam)
 	BroadcastToRoomExcept2(r, src, dst, toRoom)

@@ -90,6 +90,12 @@
 ----------------------------------------
 [] Lua scripting
 [] Status Effects
+    [] Remove on login
+    [] From attacks
+    [] From equip
+    [] Expiration
+    [] Application
+    [] Immunities
 [] Spawning - Data drives
 [] Items
     [] Gold

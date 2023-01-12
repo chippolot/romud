@@ -5,6 +5,8 @@ import (
 	"math"
 	"math/rand"
 	"time"
+
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type UpdateSystem struct {
@@ -25,12 +27,13 @@ func (s *UpdateSystem) Update(w *World) {
 
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
-		{restoreStats, time.Second * 10, time.Now().UTC().Add(randSec(3))},
-		{scavengerNPCs, time.Second * 3, time.Now().UTC().Add(randSec(3))},
-		{wanderNPCs, time.Second * 3, time.Now().UTC().Add(randSec(3))},
-		{runCombat, time.Second, time.Now().UTC().Add(randSec(3))},
-		{logoutTheDead, time.Millisecond, time.Now().UTC().Add(randSec(3))},
-		{flushPlayerOuput, time.Millisecond, time.Now().UTC().Add(randSec(3))},
+		{updateStatusEffects, time.Second * 1, time.Now().UTC().Add(randSec())},
+		{restoreStats, time.Second * 10, time.Now().UTC().Add(randSec())},
+		{scavengerNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
+		{wanderNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
+		{runCombat, time.Second * 1, time.Now().UTC().Add(randSec())},
+		{logoutTheDead, time.Millisecond, time.Now().UTC().Add(randSec())},
+		{flushPlayerOuput, time.Millisecond, time.Now().UTC().Add(randSec())},
 	}
 
 	for {
@@ -40,6 +43,37 @@ func GameLoop(w *World) {
 			}
 		}
 		time.Sleep(time.Second / 30.0)
+	}
+}
+
+func updateStatusEffects(w *World) {
+	sec := time.Now().UTC().Second()
+	toRemove := make([]StatusEffectType, 0)
+	for _, e := range w.entities {
+		if e.statuses == 0 {
+			continue
+		}
+
+		// Apply status effects
+		if e.HasStatusEffect(StatusType_Poison) && sec%3 == 0 {
+			poisonDam := utils.MaxInts(1, e.stats.Get(Stat_MaxHP)/10)
+			applyDamage(e, w, e, poisonDam, DamCtx_Poison, Dam_Poison, "", "")
+		}
+
+		// Decrease status timers
+		toRemove = toRemove[:0]
+		for _, s := range e.data.Statuses {
+			if s.Duration == StatusEffectDuration_Permanent {
+				continue
+			}
+			s.Duration -= 1
+			if s.Duration <= 0 {
+				toRemove = append(toRemove, s.Type)
+			}
+		}
+		for _, status := range toRemove {
+			performRemoveStatusEffect(e, w, status)
+		}
 	}
 }
 
@@ -227,6 +261,6 @@ func flushPlayerOuput(w *World) {
 	}
 }
 
-func randSec(sec int) time.Duration {
-	return time.Millisecond * time.Duration(rand.Intn(sec*1000))
+func randSec() time.Duration {
+	return time.Millisecond * time.Duration(rand.Intn(1000))
 }

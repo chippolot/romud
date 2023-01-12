@@ -106,56 +106,6 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 	return false
 }
 
-func DoAdmin(e *Entity, w *World, tokens []string) {
-	tokens = lowerTokens(tokens)
-
-	if len(tokens) < 2 {
-		SendToPlayer(e, "What command do you want to run?")
-		return
-	}
-
-	r := w.rooms[e.data.RoomId]
-
-	switch tokens[1] {
-	case "pkill":
-		dam := 9999
-		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
-		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, "hit", "hits")
-	case "pheal":
-		heal := 9999
-		SendToPlayer(e, "Admin: Healing Player for %d", heal)
-		e.stats.Add(Stat_HP, heal)
-	case "pdam":
-		dam, _ := strconv.Atoi(tokens[2])
-		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
-		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, "hit", "hits")
-	case "pxp":
-		xp, _ := strconv.Atoi(tokens[2])
-		applyXp(e, xp)
-		SendToPlayer(e, "Added XP %d", xp)
-	case "spawne":
-		key := tokens[2]
-		if cfg, ok := w.TryGetEntityConfig(key); ok {
-			ent := NewEntity(cfg)
-			w.AddEntity(ent, r.cfg.Id)
-			SendToPlayer(e, "Admin: Spawned Entity %s", key)
-		} else {
-			SendToPlayer(e, "Admin: Failed to load entity %s", key)
-		}
-	case "spawni":
-		key := tokens[2]
-		if cfg, ok := w.TryGetItemConfig(key); ok {
-			itm := NewItem(cfg)
-			w.AddItem(itm, r.cfg.Id)
-			SendToPlayer(e, "Admin: Spawned Item %s", key)
-		} else {
-			SendToPlayer(e, "Admin: Failed to load item %s", key)
-		}
-	default:
-		SendToPlayer(e, "Admin: Unrecognized command: %s", tokens[1])
-	}
-}
-
 func DoAdvance(e *Entity, w *World, _ []string) {
 	if !IsReadyForLevelUp(e) {
 		SendToPlayer(e, "You need more experience to advance to the next level")
@@ -790,24 +740,6 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 			BroadcastToRoomExcept(r, e, roomMsgFn(item))
 		}
 	}
-}
-
-func performEquip(e *Entity, w *World, item *Item) {
-	slot, unequipped, ok := e.Equip(item)
-	if !ok {
-		return
-	}
-	for _, u := range unequipped {
-		sendUnequipMessages(e, w, u)
-	}
-	sendEquipMessages(e, w, slot, item)
-}
-
-func performUnequip(e *Entity, w *World, item *Item) {
-	if ok := e.Unequip(item); !ok {
-		return
-	}
-	sendUnequipMessages(e, w, item)
 }
 
 func parseSearchQuery(tokens []string, allowCount bool) (SearchQuery, bool, []string) {

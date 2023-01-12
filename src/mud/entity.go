@@ -49,6 +49,7 @@ type EntityData struct {
 	Stats     StatMap          `json:",omitempty"`
 	Inventory []*ItemData      `json:",omitempty"`
 	Equipped  EquipmentDataMap `json:",omitempty"`
+	Statuses  StatusDataMap    `json:",omitempty"`
 }
 
 type EntityContainer interface {
@@ -70,17 +71,18 @@ type Entity struct {
 	position  Position
 	inventory ItemList
 	equipped  map[EquipSlot]*Item
+	statuses  StatusDataMap
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item)}
+	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), data.Statuses}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(map[EquipSlot]*ItemData)}
+	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
 }
 
 func (e *Entity) SetData(data *EntityData, w *World) {

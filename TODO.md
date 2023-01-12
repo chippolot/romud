@@ -88,6 +88,8 @@
     [x] Support all for drop
 [x] Description grouping
 ----------------------------------------
+[] Lua scripting
+[] Status Effects
 [] Spawning - Data drives
 [] Items
     [] Gold
@@ -99,7 +101,7 @@
     [] More Skills!
         [] Grapple?
     [] Mobs can spawn w/ items from random table
-    [] Weapons
+    [] Mob Weapons
     [] Weapon dependent messages
     [] More 5E combat options
     [] Attack type strengths / weaknesses

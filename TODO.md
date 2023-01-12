@@ -94,11 +94,14 @@
     [x] Remove on login
     [x] From attacks
 ----------------------------------------
-[] Lua scripting
 [] Status Effects
+    [] Finish implementing
     [] From equip
     [] Immunities
-[] Spawning - Data drives
+[] Lua scripting
+[] Spawning + Zones
+    [] Spawning in zones
+    [] Movement is zone-locked
 [] Items
     [] Gold
     [] Equipment

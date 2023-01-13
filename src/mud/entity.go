@@ -321,6 +321,7 @@ func (e *Entity) AddStatusEffect(status StatusEffectMask, duration utils.Seconds
 	}
 	data := &StatusEffectData{status, duration}
 	statusEffect := newStatusEffect(data)
+	e.data.Statuses = append(e.data.Statuses, data)
 	e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
 	if statusEffect.entityFlags != 0 {
 		e.updateEntityFlagsMask()
@@ -417,7 +418,7 @@ func (e *Entity) DescribeInventory() string {
 	if len(e.inventory) == 0 {
 		sb.WriteLine("  Nothing.")
 	} else {
-		descs := GroupDescriptionsFromSlice(e.inventory, func(i *Item) string {
+		descs := GroupDescriptionsFromSlice(e.inventory, nil, func(i *Item) string {
 			return fmt.Sprintf("<c white>%s</c>", i.NameCapitalized())
 		})
 		for idx, desc := range descs {

@@ -187,17 +187,21 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 	if len(r.entities) == 0 {
 		return
 	}
-	DON'T SHOW INVIS
-	descs := GroupDescriptionsFromMap(r.entities, func(_ EntityId, e *Entity) string {
-		if e.player != nil {
-			return ""
-		}
-		desc := e.cfg.RoomDesc
-		if desc == "" {
-			desc = fmt.Sprintf("%s is here", e.Name())
-		}
-		return desc
-	})
+	descs := GroupDescriptionsFromMap(
+		r.entities,
+		func(_ EntityId, e *Entity) bool {
+			return !e.entityFlags.Has(EFlag_Invisible)
+		},
+		func(_ EntityId, e *Entity) string {
+			if e.player != nil {
+				return ""
+			}
+			desc := e.cfg.RoomDesc
+			if desc == "" {
+				desc = fmt.Sprintf("%s is here", e.Name())
+			}
+			return desc
+		})
 	if len(descs) == 0 {
 		return
 	}
@@ -209,7 +213,7 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 	if len(r.items) == 0 {
 		return
 	}
-	descs := GroupDescriptionsFromMap(r.items, func(_ ItemId, i *Item) string {
+	descs := GroupDescriptionsFromMap(r.items, nil, func(_ ItemId, i *Item) string {
 		desc := i.cfg.RoomDesc
 		if desc == "" {
 			desc = fmt.Sprintf("%s is here", i.Name())

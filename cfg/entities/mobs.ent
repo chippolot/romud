@@ -44,7 +44,7 @@
             "VerbSingular": "bite",
             "VerbPlural": "bites",
             "Effect": {
-                "Type": "poisoned",
+                "Type": "blind",
                 "Duration": 10,
                 "Save": {
                     "Stat": "Con",

@@ -62,13 +62,13 @@ func updateStatusEffects(w *World) {
 
 		// Decrease status timers
 		toRemove = toRemove[:0]
-		for _, s := range e.data.Statuses {
-			if s.Duration == StatusEffectDuration_Permanent {
+		for _, s := range e.statusEffects.statusEffects {
+			if s.data.Duration == StatusEffectDuration_Permanent {
 				continue
 			}
-			s.Duration -= 1
-			if s.Duration <= 0 {
-				toRemove = append(toRemove, s.Type)
+			s.data.Duration -= 1
+			if s.data.Duration <= 0 {
+				toRemove = append(toRemove, s.data.Type)
 			}
 		}
 		for _, status := range toRemove {

@@ -122,6 +122,7 @@ func newStatusEffects() *StatusEffects {
 	return &StatusEffects{make([]*StatusEffect, 0), 0}
 }
 
+// TODO COLORIZE
 func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectMask, duration utils.Seconds) {
 	r := w.rooms[e.data.RoomId]
 	if e.AddStatusEffect(status, duration) {
@@ -151,6 +152,7 @@ func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffec
 	}
 }
 
+// TODO COLORIZE
 func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectMask) {
 	r := w.rooms[e.data.RoomId]
 	if e.RemoveStatusEffect(status) {

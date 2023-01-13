@@ -11,10 +11,13 @@ type Descriptive interface {
 	Describe() string
 }
 
-func GroupDescriptionsFromMap[TKey comparable, TValue any](m map[TKey]TValue, descFn func(TKey, TValue) string) []string {
+func GroupDescriptionsFromMap[TKey comparable, TValue any](m map[TKey]TValue, filterFn func(TKey, TValue) bool, descFn func(TKey, TValue) string) []string {
 	var descs = make([]string, 0)
 	var counts = make(map[string]int)
 	for key, val := range m {
+		if filterFn != nil && !filterFn(key, val) {
+			continue
+		}
 		desc := descFn(key, val)
 		if desc == "" {
 			continue
@@ -38,10 +41,13 @@ func GroupDescriptionsFromMap[TKey comparable, TValue any](m map[TKey]TValue, de
 	return descs
 }
 
-func GroupDescriptionsFromSlice[TValue any](s []TValue, descFn func(TValue) string) []string {
+func GroupDescriptionsFromSlice[TValue any](s []TValue, filterFn func(TValue) bool, descFn func(TValue) string) []string {
 	var descs = make([]string, 0)
 	var counts = make(map[string]int)
 	for _, val := range s {
+		if filterFn != nil && !filterFn(val) {
+			continue
+		}
 		desc := descFn(val)
 		if desc == "" {
 			continue

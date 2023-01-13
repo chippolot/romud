@@ -80,6 +80,7 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 			res := true
 			aliasCommands := strings.Split(alias, ";")
 			for _, aliasCommand := range aliasCommands {
+				aliasCommand = strings.TrimSpace(aliasCommand)
 				res = res && ProcessCommand(e, w, append(strings.Split(aliasCommand, " "), tokens[1:]...))
 			}
 			return res

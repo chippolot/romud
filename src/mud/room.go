@@ -76,7 +76,7 @@ func (r *Room) AddEntity(e *Entity) {
 
 func (r *Room) SearchEntities(query SearchQuery) []*Entity {
 	return SearchMap(query, r.entities, func(e *Entity) bool {
-		return !e.entityFlags.Has(EFlag_Invisible)
+		return e.CanBeSeenBy(nil)
 	})
 }
 
@@ -137,7 +137,7 @@ func (r *Room) Describe(subject *Entity) string {
 		WriteString(utils.HorizontalDivider)
 	describeExits(r, &sb)
 	describePlayers(r, &sb, subject)
-	describeNonPlayerEntities(r, &sb)
+	describeNonPlayerEntities(r, &sb, subject)
 	describeItems(r, &sb)
 	return sb.String()
 }
@@ -171,7 +171,7 @@ func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
 		if subject == e {
 			continue
 		}
-		if e.entityFlags.Has(EFlag_Invisible) {
+		if !e.CanBeSeenBy(subject) {
 			continue
 		}
 		descs = append(descs, fmt.Sprintf("%s is here", e.Name()))
@@ -183,14 +183,14 @@ func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
 	sb.WriteStringf("<c cyan>%s</c>", strings.Join(descs, utils.NewLine))
 }
 
-func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
+func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder, subject *Entity) {
 	if len(r.entities) == 0 {
 		return
 	}
 	descs := GroupDescriptionsFromMap(
 		r.entities,
 		func(_ EntityId, e *Entity) bool {
-			return !e.entityFlags.Has(EFlag_Invisible)
+			return e.CanBeSeenBy(subject)
 		},
 		func(_ EntityId, e *Entity) string {
 			if e.player != nil {

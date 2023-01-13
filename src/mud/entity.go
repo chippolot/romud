@@ -136,17 +136,17 @@ func (e *Entity) Name() string {
 	return e.cfg.Name
 }
 
+func (e *Entity) NameCapitalized() string {
+	arr := []rune(e.Name())
+	arr[0] = unicode.ToUpper(arr[0])
+	return string(arr)
+}
+
 func (e *Entity) Gender() Gender {
 	if e.player != nil {
 		return e.player.data.Gender
 	}
 	return e.cfg.Gender
-}
-
-func (e *Entity) NameCapitalized() string {
-	arr := []rune(e.Name())
-	arr[0] = unicode.ToUpper(arr[0])
-	return string(arr)
 }
 
 func (e *Entity) RandomAttack() *AttackConfig {
@@ -347,6 +347,16 @@ func (e *Entity) RemoveStatusEffect(status StatusEffectMask) bool {
 		}
 	}
 	return false
+}
+
+func (e *Entity) CanBeSeenBy(viewer *Entity) bool {
+	if viewer != nil && viewer.entityFlags.Has(EFlag_Blind) {
+		return false
+	}
+	if e.entityFlags.Has(EFlag_Invisible) {
+		return false
+	}
+	return true
 }
 
 func (e *Entity) Describe() string {

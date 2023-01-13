@@ -39,7 +39,7 @@ func (s SearchQuery) IsEmpty() bool {
 	return s.Keyword == ""
 }
 
-func SearchMap[TKey comparable, TItem Matchable](query SearchQuery, items map[TKey]TItem) []TItem {
+func SearchMap[TKey comparable, TItem Matchable](query SearchQuery, items map[TKey]TItem, filter func(TItem) bool) []TItem {
 	res := make([]TItem, 0)
 
 	if query.IsEmpty() {
@@ -47,14 +47,14 @@ func SearchMap[TKey comparable, TItem Matchable](query SearchQuery, items map[TK
 	}
 
 	for _, item := range items {
-		if doesSearchQueryMatch(query, item) {
+		if doesSearchQueryMatch(query, item) && (filter == nil || filter(item)) {
 			res = append(res, item)
 		}
 	}
 	return filterSearchResults(query, res)
 }
 
-func SearchList[TItem Matchable](query SearchQuery, items []TItem) []TItem {
+func SearchList[TItem Matchable](query SearchQuery, items []TItem, filter func(TItem) bool) []TItem {
 
 	res := make([]TItem, 0)
 
@@ -63,7 +63,7 @@ func SearchList[TItem Matchable](query SearchQuery, items []TItem) []TItem {
 	}
 
 	for _, item := range items {
-		if doesSearchQueryMatch(query, item) {
+		if doesSearchQueryMatch(query, item) && (filter == nil || filter(item)) {
 			res = append(res, item)
 		}
 	}

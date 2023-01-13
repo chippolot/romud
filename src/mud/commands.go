@@ -135,8 +135,13 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 		return
 	}
 
+	if e.entityFlags.Has(EFlag_Blind) {
+		SendToPlayer(e, "You can't see a thing!")
+		return
+	}
+
 	r := w.rooms[e.data.RoomId]
-	tgts := r.SearchEntities(q)
+	tgts := SearchEntities(q, e, r)
 	if len(tgts) == 0 {
 		SendToPlayer(e, "They don't seem to be here...")
 		return
@@ -157,8 +162,13 @@ func DoShove(e *Entity, w *World, tokens []string) {
 		return
 	}
 
+	if e.entityFlags.Has(EFlag_Blind) {
+		SendToPlayer(e, "You can't see a thing!")
+		return
+	}
+
 	r := w.rooms[e.data.RoomId]
-	tgts := r.SearchEntities(q)
+	tgts := SearchEntities(q, e, r)
 	if len(tgts) == 0 {
 		SendToPlayer(e, "They don't seem to be here...")
 		return
@@ -240,7 +250,13 @@ func DoGive(e *Entity, w *World, tokens []string) {
 		SendToPlayer(e, "Who do you want to give that to?")
 		return
 	}
-	targets := r.SearchEntities(targetQuery)
+
+	if e.entityFlags.Has(EFlag_Blind) {
+		SendToPlayer(e, "You can't see a thing!")
+		return
+	}
+
+	targets := SearchEntities(targetQuery, e, r)
 	if len(targets) == 0 {
 		SendToPlayer(e, "They don't seem to be here")
 		return
@@ -360,7 +376,7 @@ func DoUnequip(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	if items := SearchMap(itemQuery, e.equipped); len(items) == 0 {
+	if items := SearchMap(itemQuery, e.equipped, nil); len(items) == 0 {
 		if itemQuery.Keyword == "all" {
 			SendToPlayer(e, "You don't have anything equipped")
 		} else {
@@ -428,6 +444,11 @@ func DoEquipment(e *Entity, w *World, tokens []string) {
 
 func DoLook(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
+
+	if e.entityFlags.Has(EFlag_Blind) {
+		SendToPlayer(e, "You can't see a thing!")
+		return
+	}
 
 	numtoks := len(tokens)
 	if numtoks == 0 || numtoks == 1 {

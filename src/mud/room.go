@@ -75,7 +75,9 @@ func (r *Room) AddEntity(e *Entity) {
 }
 
 func (r *Room) SearchEntities(query SearchQuery) []*Entity {
-	return SearchMap(query, r.entities)
+	return SearchMap(query, r.entities, func(e *Entity) bool {
+		return !e.entityFlags.Has(EFlag_Invisible)
+	})
 }
 
 func (r *Room) AllEntities() []*Entity {
@@ -97,7 +99,7 @@ func (r *Room) AddItem(i *Item) {
 }
 
 func (r *Room) SearchItems(query SearchQuery) []*Item {
-	return SearchMap(query, r.items)
+	return SearchMap(query, r.items, nil)
 }
 
 func (r *Room) AllItems() []*Item {
@@ -169,6 +171,9 @@ func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
 		if subject == e {
 			continue
 		}
+		if e.entityFlags.Has(EFlag_Invisible) {
+			continue
+		}
 		descs = append(descs, fmt.Sprintf("%s is here", e.Name()))
 	}
 	if len(descs) == 0 {
@@ -182,6 +187,7 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder) {
 	if len(r.entities) == 0 {
 		return
 	}
+	DON'T SHOW INVIS
 	descs := GroupDescriptionsFromMap(r.entities, func(_ EntityId, e *Entity) string {
 		if e.player != nil {
 			return ""

@@ -121,7 +121,7 @@ func (i *Item) SearchItems(query SearchQuery) []*Item {
 	if !i.cfg.Flags.Has(IFlag_Container) {
 		return emptyItemList
 	}
-	return SearchList(query, i.contents)
+	return SearchList(query, i.contents, nil)
 }
 
 func (i *Item) AllItems() []*Item {

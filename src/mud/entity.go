@@ -174,7 +174,7 @@ func (e *Entity) AddItem(item *Item) {
 }
 
 func (e *Entity) SearchItems(query SearchQuery) []*Item {
-	return SearchList(query, e.inventory)
+	return SearchList(query, e.inventory, nil)
 }
 
 func (e *Entity) AllItems() []*Item {

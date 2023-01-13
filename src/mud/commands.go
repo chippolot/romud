@@ -77,7 +77,12 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 
 	if e.player != nil {
 		if alias, ok := e.player.data.Aliases[cmd]; ok {
-			return ProcessCommand(e, w, append(strings.Split(alias, " "), tokens[1:]...))
+			res := true
+			aliasCommands := strings.Split(alias, ";")
+			for _, aliasCommand := range aliasCommands {
+				res = res && ProcessCommand(e, w, append(strings.Split(aliasCommand, " "), tokens[1:]...))
+			}
+			return res
 		}
 	}
 

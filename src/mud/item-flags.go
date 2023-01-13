@@ -7,18 +7,18 @@ import (
 	"github.com/chippolot/go-mud/src/bits"
 )
 
-type ItemFlags bits.Bits
+type ItemFlagMask bits.Bits
 
 const (
-	IFlag_Container     ItemFlags = 1 << iota // Items that can contain other items
-	IFlag_NoStorage                           // Items which cannot be used for storage (i.e. can't add contents to them)
-	IFlag_Light                               // Items that light the room that they're in
-	IFlag_Environmental                       // Static items that can't be picked up
-	IFlag_Crumbles                            // Items which crumble when soemthing tries to pick them up
-	IFlag_HeavyArmor                          // Heavy armor does not receive DEX bonus
+	IFlag_Container     ItemFlagMask = 1 << iota // Can contain other items
+	IFlag_NoStorage                              // Cannot be used for storage (i.e. can't add contents to them)
+	IFlag_Light                                  // Light the room that they're in
+	IFlag_Environmental                          // Can't be picked up
+	IFlag_Crumbles                               // Crumble when picked up
+	IFlag_HeavyArmor                             // Heavy armor does not receive DEX bonus
 )
 
-func ParseItemFlag(str string) (ItemFlags, error) {
+func ParseItemFlag(str string) (ItemFlagMask, error) {
 	switch str {
 	case "container":
 		return IFlag_Container, nil
@@ -35,18 +35,18 @@ func ParseItemFlag(str string) (ItemFlags, error) {
 	}
 }
 
-func (f *ItemFlags) Has(flag ItemFlags) bool {
-	return *f&flag != 0
+func (m *ItemFlagMask) Has(flag ItemFlagMask) bool {
+	return *m&flag != 0
 }
 
-func (f *ItemFlags) UnmarshalJSON(data []byte) (err error) {
+func (m *ItemFlagMask) UnmarshalJSON(data []byte) (err error) {
 	var strs []string
 	if err := json.Unmarshal(data, &strs); err != nil {
 		return err
 	}
 	for _, str := range strs {
 		if flag, err := ParseItemFlag(str); err == nil {
-			*f = ItemFlags(*f | flag)
+			*m = ItemFlagMask(*m | flag)
 		} else {
 			return err
 		}

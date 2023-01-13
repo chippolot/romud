@@ -12,7 +12,7 @@ const (
 	StatusEffectDuration_Permanent = -1
 
 	// TODO Implement
-	StatusType_Poison StatusEffectType = 1 << iota
+	StatusType_Poison StatusEffectMask = 1 << iota
 	StatusType_Blind
 	StatusType_Invisible
 	StatusType_Cursed
@@ -21,9 +21,9 @@ const (
 	StatusType_FaerieFire
 )
 
-type StatusEffectType bits.Bits
+type StatusEffectMask bits.Bits
 
-func ParseStatusEffectType(str string) (StatusEffectType, error) {
+func ParseStatusEffectType(str string) (StatusEffectMask, error) {
 	switch str {
 	case "poisoned":
 		return StatusType_Poison, nil
@@ -44,13 +44,13 @@ func ParseStatusEffectType(str string) (StatusEffectType, error) {
 	}
 }
 
-func (s StatusEffectType) Has(status StatusEffectType) bool {
-	return s&status != 0
+func (m *StatusEffectMask) Has(status StatusEffectMask) bool {
+	return *m&status != 0
 }
 
-func (s StatusEffectType) String() string {
+func (m *StatusEffectMask) String() string {
 
-	switch s {
+	switch *m {
 	case StatusType_Poison:
 		return "poisoned"
 	case StatusType_Blind:
@@ -69,11 +69,11 @@ func (s StatusEffectType) String() string {
 	return "unknown"
 }
 
-func (s *StatusEffectType) MarshalJSON() ([]byte, error) {
+func (s *StatusEffectMask) MarshalJSON() ([]byte, error) {
 	return json.Marshal(s.String())
 }
 
-func (s *StatusEffectType) UnmarshalJSON(data []byte) (err error) {
+func (s *StatusEffectMask) UnmarshalJSON(data []byte) (err error) {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {
 		return err
@@ -85,19 +85,40 @@ func (s *StatusEffectType) UnmarshalJSON(data []byte) (err error) {
 }
 
 type StatusEffectConfig struct {
-	Type     StatusEffectType
+	Type     StatusEffectMask
 	Duration utils.Seconds
 	Save     *SavingThrowConfig
 }
 
+type StatusDataList []*StatusEffectData
+
 type StatusEffectData struct {
-	Type     StatusEffectType
+	Type     StatusEffectMask
 	Duration utils.Seconds
 }
 
-type StatusDataList []*StatusEffectData
+type StatusEffect struct {
+	data        *StatusEffectData
+	entityFlags EntityFlagMask
+}
 
-func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectType, duration utils.Seconds) {
+func newStatusEffect(data *StatusEffectData) *StatusEffect {
+	var entityFlags EntityFlagMask
+	switch data.Type {
+	case StatusType_Blind:
+		entityFlags = EFlag_Blind
+	case StatusType_Invisible:
+		entityFlags = EFlag_Invisible
+	}
+	return &StatusEffect{data, entityFlags}
+}
+
+type StatusEffects struct {
+	statusEffects []*StatusEffect
+	mask          StatusEffectMask
+}
+
+func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectMask, duration utils.Seconds) {
 	r := w.rooms[e.data.RoomId]
 	if e.AddStatusEffect(status, duration) {
 		switch status {
@@ -126,7 +147,7 @@ func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffec
 	}
 }
 
-func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectType) {
+func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectMask) {
 	r := w.rooms[e.data.RoomId]
 	if e.RemoveStatusEffect(status) {
 		switch status {

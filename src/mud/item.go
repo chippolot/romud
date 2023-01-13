@@ -22,7 +22,7 @@ type ItemConfig struct {
 	Keywords  []string
 	RoomDesc  string
 	FullDesc  string
-	Flags     ItemFlags
+	Flags     ItemFlagMask
 	Equipment *EquipmentConfig
 	Value     int
 	Weight    int

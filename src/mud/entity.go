@@ -28,7 +28,7 @@ type EntityConfig struct {
 	FullDesc string
 	Stats    *StatsConfig
 	Attacks  []*AttackConfig
-	Flags    EntityFlags
+	Flags    EntityFlagMask
 	lookup   map[string]bool
 }
 
@@ -72,7 +72,7 @@ type Entity struct {
 	position  Position
 	inventory ItemList
 	equipped  map[EquipSlot]*Item
-	statuses  StatusEffectType
+	statuses  StatusEffectMask
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
@@ -303,7 +303,7 @@ func (e *Entity) AC() int {
 	return e.cfg.Stats.AC + int(sum+float64(dexBonus)*dexBonusRatio)
 }
 
-func (e *Entity) AddStatusEffect(status StatusEffectType, duration utils.Seconds) bool {
+func (e *Entity) AddStatusEffect(status StatusEffectMask, duration utils.Seconds) bool {
 	for _, s := range e.data.Statuses {
 		if s.Type == status {
 			s.Duration = utils.Seconds(math.Max(float64(s.Duration), float64(duration)))
@@ -315,11 +315,11 @@ func (e *Entity) AddStatusEffect(status StatusEffectType, duration utils.Seconds
 	return true
 }
 
-func (e *Entity) HasStatusEffect(status StatusEffectType) bool {
+func (e *Entity) HasStatusEffect(status StatusEffectMask) bool {
 	return e.statuses.Has(status)
 }
 
-func (e *Entity) RemoveStatusEffect(status StatusEffectType) bool {
+func (e *Entity) RemoveStatusEffect(status StatusEffectMask) bool {
 	for idx, s := range e.data.Statuses {
 		if s.Type == status {
 			e.data.Statuses = utils.SwapDelete(e.data.Statuses, idx)
@@ -385,7 +385,7 @@ func (e *Entity) DescribeStatus() string {
 func (e *Entity) DescribeStatusEffects() string {
 	strs := make([]string, 0)
 	for i := 0; i < 64; i++ {
-		status := StatusEffectType(1 << i)
+		status := StatusEffectMask(1 << i)
 		if e.HasStatusEffect(status) {
 			strs = append(strs, fmt.Sprintf("<c yellow>%s</c>", strings.Title(status.String())))
 		}

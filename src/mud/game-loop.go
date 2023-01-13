@@ -48,7 +48,7 @@ func GameLoop(w *World) {
 
 func updateStatusEffects(w *World) {
 	sec := time.Now().UTC().Second()
-	toRemove := make([]StatusEffectType, 0)
+	toRemove := make([]StatusEffectMask, 0)
 	for _, e := range w.entities {
 		if e.statuses == 0 {
 			continue

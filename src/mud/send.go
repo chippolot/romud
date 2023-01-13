@@ -1,10 +1,19 @@
 package mud
 
+import "fmt"
+
 func SendToPlayer(e *Entity, format string, a ...any) {
 	if e.player == nil {
 		return
 	}
 	e.player.Send(format, a...)
+}
+
+func SendToPlayerColorized(e *Entity, color string, format string, a ...any) {
+	if e.player == nil {
+		return
+	}
+	e.player.Send(fmt.Sprintf("<c %s>%s</c>", color, fmt.Sprintf(format, a...)))
 }
 
 func BroadcastToWorld(w *World, format string, a ...any) {

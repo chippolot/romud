@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	StatusEffectDuration_Permanent = -1
+	StatusEffectDuration_Permanent = 0
 
 	// TODO Implement
 	StatusType_Poison StatusEffectMask = 1 << iota
@@ -86,8 +86,8 @@ func (s *StatusEffectMask) UnmarshalJSON(data []byte) (err error) {
 
 type StatusEffectConfig struct {
 	Type     StatusEffectMask
-	Duration utils.Seconds
-	Save     *SavingThrowConfig
+	Duration utils.Seconds      `json:",omitempty"`
+	Save     *SavingThrowConfig `json:",omitempty"`
 }
 
 type StatusDataList []*StatusEffectData
@@ -122,56 +122,76 @@ func newStatusEffects() *StatusEffects {
 	return &StatusEffects{make([]*StatusEffect, 0), 0}
 }
 
-// TODO COLORIZE
+func rollForStatusEffect(e *Entity, w *World, src *Entity, cfg *StatusEffectConfig) {
+	if cfg == nil || (cfg.Save != nil && SavingThrow(e, cfg.Save.Stat, cfg.Save.DC)) {
+		return
+	}
+	performAddStatusEffect(e, w, src, cfg.Type, cfg.Duration)
+}
+
 func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectMask, duration utils.Seconds) {
-	r := w.rooms[e.data.RoomId]
+	oldStatusEffectFlags := e.statusEffects.mask
 	if e.AddStatusEffect(status, duration) {
-		switch status {
-		case StatusType_Poison:
-			SendToPlayer(e, "You suddenly don't feel very well...")
-			BroadcastToRoomExcept(r, e, "%s looks a little sick.", e.NameCapitalized())
-		case StatusType_Blind:
-			SendToPlayer(e, "Your vision fades to black.")
-			BroadcastToRoomExcept(r, e, "%s seems to have been blinded!", e.NameCapitalized())
-		case StatusType_Invisible:
-			SendToPlayer(e, "You vanish.")
-			BroadcastToRoomExcept(r, e, "%s seems to flicker out of existence.", e.NameCapitalized())
-		case StatusType_Cursed:
-			SendToPlayer(e, "You feel a wave of gloom descend on you.")
-			BroadcastToRoomExcept(r, e, "%s glows red for a moment.", e.NameCapitalized())
-		case StatusType_Blessed:
-			SendToPlayer(e, "You feel a tingle as you're bathed in a white light.")
-			BroadcastToRoomExcept(r, e, "%s glows white for a moment.", e.NameCapitalized())
-		case StatusType_NightVision:
-			SendToPlayer(e, "Everything looks a little brighter.")
-			BroadcastToRoomExcept(r, e, "%s's eyes flash brightly.", e.NameCapitalized())
-		case StatusType_FaerieFire:
-			SendToPlayer(e, "You begin emanating a bright purple light.")
-			BroadcastToRoomExcept(r, e, "%s beings emanating a bright purple light.", e.NameCapitalized())
-		}
+		newStatusEffectFlags := e.statusEffects.mask
+		describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
+	}
+}
+
+func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectMask) {
+	oldStatusEffectFlags := e.statusEffects.mask
+	if e.RemoveStatusEffect(status) {
+		newStatusEffectFlags := e.statusEffects.mask
+		describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
 	}
 }
 
 // TODO COLORIZE
-func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectMask) {
+func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask, newFlags StatusEffectMask) {
 	r := w.rooms[e.data.RoomId]
-	if e.RemoveStatusEffect(status) {
-		switch status {
-		case StatusType_Poison:
-			SendToPlayer(e, "You feel much better.")
-		case StatusType_Blind:
-			SendToPlayer(e, "Your vision slowly returns")
-		case StatusType_Invisible:
-			SendToPlayer(e, "You blink back into existence.")
-			BroadcastToRoomExcept(r, e, "%s blinks back into existence.", e.NameCapitalized())
-		case StatusType_Cursed:
-			SendToPlayer(e, "It feels like a weight has been lifted from you.")
-		case StatusType_Blessed:
-			SendToPlayer(e, "You feel the warm cozy feeling fade.")
-		case StatusType_NightVision:
-			SendToPlayer(e, "Your vision returns to normal.")
-		case StatusType_FaerieFire:
-			SendToPlayer(e, "The light emanating from you fades.")
+	for i := 0; i < 64; i++ {
+		var f StatusEffectMask = 1 << i
+		if !oldFlags.Has(f) && newFlags.Has(f) {
+			switch f {
+			case StatusType_Poison:
+				SendToPlayerColorized(e, "red", "You suddenly don't feel very well...")
+				BroadcastToRoomExcept(r, e, "%s looks a little sick.", e.NameCapitalized())
+			case StatusType_Blind:
+				SendToPlayerColorized(e, "red", "Your vision fades to black.")
+				BroadcastToRoomExcept(r, e, "%s seems to have been blinded!", e.NameCapitalized())
+			case StatusType_Invisible:
+				SendToPlayerColorized(e, "blue", "You vanish.")
+				BroadcastToRoomExcept(r, e, "%s seems to flicker out of existence.", e.NameCapitalized())
+			case StatusType_Cursed:
+				SendToPlayerColorized(e, "red", "You feel a wave of gloom descend on you.")
+				BroadcastToRoomExcept(r, e, "%s glows red for a moment.", e.NameCapitalized())
+			case StatusType_Blessed:
+				SendToPlayerColorized(e, "blue", "You feel a tingle as you're bathed in a white light.")
+				BroadcastToRoomExcept(r, e, "%s glows white for a moment.", e.NameCapitalized())
+			case StatusType_NightVision:
+				SendToPlayerColorized(e, "blue", "Everything looks a little brighter.")
+				BroadcastToRoomExcept(r, e, "%s's eyes flash brightly.", e.NameCapitalized())
+			case StatusType_FaerieFire:
+				SendToPlayerColorized(e, "red", "You begin emanating a bright purple light.")
+				BroadcastToRoomExcept(r, e, "%s beings emanating a bright purple light.", e.NameCapitalized())
+			}
+		} else if oldFlags.Has(f) && !newFlags.Has(f) {
+			switch f {
+			case StatusType_Poison:
+				SendToPlayer(e, "You feel much better.")
+			case StatusType_Blind:
+				SendToPlayer(e, "Your vision slowly returns")
+			case StatusType_Invisible:
+				SendToPlayer(e, "You blink back into existence.")
+				BroadcastToRoomExcept(r, e, "%s blinks back into existence.", e.NameCapitalized())
+			case StatusType_Cursed:
+				SendToPlayer(e, "It feels like a weight has been lifted from you.")
+			case StatusType_Blessed:
+				SendToPlayer(e, "You feel the warm cozy feeling fade.")
+			case StatusType_NightVision:
+				SendToPlayer(e, "Your vision returns to normal.")
+			case StatusType_FaerieFire:
+				SendToPlayer(e, "The light emanating from you fades.")
+			}
 		}
 	}
 }

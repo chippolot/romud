@@ -329,10 +329,8 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 			dam = utils.MaxInts(1, dam)
 		}
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)
-
-		effect := aData.Effect
-		if didHit && effect != nil && (effect.Save == nil || !SavingThrow(tgt, effect.Save.Stat, effect.Save.DC)) {
-			performAddStatusEffect(tgt, w, e, effect.Type, effect.Duration)
+		if didHit {
+			rollForStatusEffect(tgt, w, e, aData.Effect)
 		}
 	}
 	e.combat.requestedSkill = CombatSkill_None

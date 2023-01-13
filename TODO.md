@@ -94,6 +94,8 @@
     [x] Remove on login
     [x] From attacks
 ----------------------------------------
+[] Text
+    [] Handle blind + invisible at room level -- needs new text parsing
 [] Status Effects
     [] Finish implementing
     [] From equip

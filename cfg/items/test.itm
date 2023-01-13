@@ -36,7 +36,8 @@
             "AC": 3,
             "MaxHP": 1
         },
-        "Slot": "head"
+        "Slot": "head",
+        "StatusEffect": "blind"
     },
     "Weight": 15
 }, {

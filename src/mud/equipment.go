@@ -206,6 +206,7 @@ func GetEquipmentSlotDescription(slot EquipSlot, item *Item) string {
 }
 
 func performEquip(e *Entity, w *World, item *Item) {
+	oldStatusEffectFlags := e.statusEffects.mask
 	slot, unequipped, ok := e.Equip(item)
 	if !ok {
 		return
@@ -214,13 +215,18 @@ func performEquip(e *Entity, w *World, item *Item) {
 		sendUnequipMessages(e, w, u)
 	}
 	sendEquipMessages(e, w, slot, item)
+	newStatusEffectFlags := e.statusEffects.mask
+	describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
 }
 
 func performUnequip(e *Entity, w *World, item *Item) {
+	oldStatusEffectFlags := e.statusEffects.mask
 	if ok := e.Unequip(item); !ok {
 		return
 	}
 	sendUnequipMessages(e, w, item)
+	newStatusEffectFlags := e.statusEffects.mask
+	describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
 }
 
 func sendEquipMessages(e *Entity, w *World, slot EquipSlot, item *Item) {
@@ -313,10 +319,11 @@ func sendUnequipMessages(e *Entity, w *World, item *Item) {
 }
 
 type EquipmentConfig struct {
-	Slot   EquipSlot
-	Stats  StatMap
-	Armor  *ArmorConfig
-	Weapon *WeaponConfig
+	Slot         EquipSlot
+	Stats        StatMap          `json:",omitempty"`
+	StatusEffect StatusEffectMask `json:",omitempty"`
+	Armor        *ArmorConfig     `json:",omitempty"`
+	Weapon       *WeaponConfig    `json:",omitempty"`
 }
 
 type ArmorConfig struct {

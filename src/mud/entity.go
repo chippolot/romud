@@ -90,6 +90,16 @@ func newEntityData(cfg *EntityConfig) *EntityData {
 func (e *Entity) SetData(data *EntityData, w *World) {
 	e.data = data
 
+	// Prepare status effects
+	if e.data.Statuses == nil {
+		e.data.Statuses = make(StatusDataList, 0)
+	}
+	for _, sdata := range e.data.Statuses {
+		statusEffect := newStatusEffect(sdata)
+		e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
+	}
+	e.updateStatusEffectsMask()
+
 	// Prepare inventory
 	if e.data.Inventory == nil {
 		e.data.Inventory = make([]*ItemData, 0)
@@ -116,17 +126,8 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 		item := NewItem(cfg)
 		item.SetData(idata, w)
 		e.equipped[slot] = item
+		e.onEquipped(item)
 	}
-
-	// Prepare status effects
-	if e.data.Statuses == nil {
-		e.data.Statuses = make(StatusDataList, 0)
-	}
-	for _, sdata := range e.data.Statuses {
-		statusEffect := newStatusEffect(sdata)
-		e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
-	}
-	e.updateStatusEffectsMask()
 }
 
 func (e *Entity) Name() string {
@@ -218,9 +219,6 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 			slot = e.bestEquipSlot(EqSlot_HeldR, EqSlot_HeldL)
 		}
 		e.RemoveItem(item)
-		for s, m := range item.cfg.Equipment.Stats {
-			e.stats.AddMod(s, m)
-		}
 		unequipped := make([]*Item, 0)
 		if slot == EqSlot_Held2H {
 			if u := e.unequipFromSlot(item, EqSlot_HeldL); u != nil {
@@ -234,6 +232,7 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 				unequipped = append(unequipped, u)
 			}
 		}
+		e.onEquipped(item)
 		return slot, unequipped, true
 	} else {
 		SendToPlayer(e, "You aren't carrying %s", item.Name())
@@ -255,9 +254,7 @@ func (e *Entity) Unequip(item *Item) bool {
 		}
 	}
 	if found {
-		for s, m := range item.cfg.Equipment.Stats {
-			e.stats.RemoveMod(s, m)
-		}
+		e.onUnequipped(item)
 		e.AddItem(item)
 	} else {
 		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
@@ -481,6 +478,24 @@ func (e *Entity) unequipFromSlot(item *Item, slot EquipSlot) *Item {
 	return unequipped
 }
 
+func (e *Entity) onEquipped(item *Item) {
+	for s, m := range item.cfg.Equipment.Stats {
+		e.stats.AddMod(s, m)
+	}
+	if item.cfg.Equipment.StatusEffect != 0 {
+		e.AddStatusEffect(item.cfg.Equipment.StatusEffect, StatusEffectDuration_Permanent)
+	}
+}
+
+func (e *Entity) onUnequipped(item *Item) {
+	for s, m := range item.cfg.Equipment.Stats {
+		e.stats.RemoveMod(s, m)
+	}
+	if item.cfg.Equipment.StatusEffect != 0 {
+		e.RemoveStatusEffect(item.cfg.Equipment.StatusEffect)
+	}
+}
+
 func (e *Entity) bestEquipSlot(slots ...EquipSlot) EquipSlot {
 	for _, slot := range slots {
 		if _, ok := e.equipped[slot]; !ok {
@@ -492,8 +507,8 @@ func (e *Entity) bestEquipSlot(slots ...EquipSlot) EquipSlot {
 
 func (e *Entity) updateStatusEffectsMask() {
 	e.statusEffects.mask = 0
-	for _, s := range e.data.Statuses {
-		e.statusEffects.mask |= s.Type
+	for _, s := range e.statusEffects.statusEffects {
+		e.statusEffects.mask |= s.data.Type
 	}
 	e.updateEntityFlagsMask()
 }

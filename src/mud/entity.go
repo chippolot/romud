@@ -63,23 +63,24 @@ type EntityContainer interface {
 type EntityList []*Entity
 
 type Entity struct {
-	id        EntityId
-	cfg       *EntityConfig
-	data      *EntityData
-	player    *Player
-	stats     *Stats
-	combat    *CombatData
-	position  Position
-	inventory ItemList
-	equipped  map[EquipSlot]*Item
-	statuses  StatusEffectMask
+	id            EntityId
+	cfg           *EntityConfig
+	data          *EntityData
+	player        *Player
+	stats         *Stats
+	combat        *CombatData
+	position      Position
+	inventory     ItemList
+	equipped      map[EquipSlot]*Item
+	entityFlags   EntityFlagMask
+	statusEffects *StatusEffects
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), 0}
+	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
@@ -117,7 +118,15 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 		e.equipped[slot] = item
 	}
 
-	e.updateStatusFlags()
+	// Prepare status effects
+	if e.data.Statuses == nil {
+		e.data.Statuses = make(StatusDataList, 0)
+	}
+	for _, sdata := range e.data.Statuses {
+		statusEffect := newStatusEffect(sdata)
+		e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
+	}
+	e.updateStatusEffectsMask()
 }
 
 func (e *Entity) Name() string {
@@ -304,26 +313,35 @@ func (e *Entity) AC() int {
 }
 
 func (e *Entity) AddStatusEffect(status StatusEffectMask, duration utils.Seconds) bool {
-	for _, s := range e.data.Statuses {
-		if s.Type == status {
-			s.Duration = utils.Seconds(math.Max(float64(s.Duration), float64(duration)))
+	for _, s := range e.statusEffects.statusEffects {
+		if s.data.Type == status {
+			s.data.Duration = utils.Seconds(math.Max(float64(s.data.Duration), float64(duration)))
 			return false
 		}
 	}
-	e.data.Statuses = append(e.data.Statuses, &StatusEffectData{status, duration})
-	e.updateStatusFlags()
+	data := &StatusEffectData{status, duration}
+	statusEffect := newStatusEffect(data)
+	e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
+	if statusEffect.entityFlags != 0 {
+		e.updateEntityFlagsMask()
+	}
+	e.updateStatusEffectsMask()
 	return true
 }
 
 func (e *Entity) HasStatusEffect(status StatusEffectMask) bool {
-	return e.statuses.Has(status)
+	return e.statusEffects.mask.Has(status)
 }
 
 func (e *Entity) RemoveStatusEffect(status StatusEffectMask) bool {
-	for idx, s := range e.data.Statuses {
-		if s.Type == status {
+	for idx, s := range e.statusEffects.statusEffects {
+		if s.data.Type == status {
+			e.statusEffects.statusEffects = utils.SwapDelete(e.statusEffects.statusEffects, idx)
 			e.data.Statuses = utils.SwapDelete(e.data.Statuses, idx)
-			e.updateStatusFlags()
+			if s.entityFlags != 0 {
+				e.updateEntityFlagsMask()
+			}
+			e.updateStatusEffectsMask()
 			return true
 		}
 	}
@@ -340,7 +358,7 @@ func (e *Entity) Describe() string {
 	if statuses != "" {
 		sb.WriteLinef("%s is %s", e.NameCapitalized(), statuses)
 	}
-	if e.player != nil || e.cfg.Flags.Has(EFlag_UsesEquipment) {
+	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {
 		sb.WriteLine(e.DescribeEquipment())
 	}
 	return sb.String()
@@ -461,10 +479,19 @@ func (e *Entity) bestEquipSlot(slots ...EquipSlot) EquipSlot {
 	return slots[0]
 }
 
-func (e *Entity) updateStatusFlags() {
-	e.statuses = 0
+func (e *Entity) updateStatusEffectsMask() {
+	e.statusEffects.mask = 0
 	for _, s := range e.data.Statuses {
-		e.statuses |= s.Type
+		e.statusEffects.mask |= s.Type
+	}
+	e.updateEntityFlagsMask()
+}
+
+func (e *Entity) updateEntityFlagsMask() {
+	e.entityFlags = 0
+	e.entityFlags |= e.cfg.Flags
+	for _, s := range e.statusEffects.statusEffects {
+		e.entityFlags |= s.entityFlags
 	}
 }
 

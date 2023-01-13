@@ -118,6 +118,10 @@ type StatusEffects struct {
 	mask          StatusEffectMask
 }
 
+func newStatusEffects() *StatusEffects {
+	return &StatusEffects{make([]*StatusEffect, 0), 0}
+}
+
 func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectMask, duration utils.Seconds) {
 	r := w.rooms[e.data.RoomId]
 	if e.AddStatusEffect(status, duration) {

@@ -50,7 +50,7 @@ func updateStatusEffects(w *World) {
 	sec := time.Now().UTC().Second()
 	toRemove := make([]StatusEffectMask, 0)
 	for _, e := range w.entities {
-		if e.statuses == 0 {
+		if e.statusEffects.mask == 0 {
 			continue
 		}
 
@@ -135,7 +135,7 @@ func wanderNPCs(w *World) {
 			continue
 		}
 
-		if e.cfg.Flags.Has(EFlag_Stationary) {
+		if e.entityFlags.Has(EFlag_Stationary) {
 			continue
 		}
 
@@ -174,8 +174,8 @@ func scavengerNPCs(w *World) {
 			continue
 		}
 
-		isScavenger := e.cfg.Flags.Has(EFlag_Scavenger)
-		isTrashCollector := e.cfg.Flags.Has(EFlag_TrashCollector)
+		isScavenger := e.entityFlags.Has(EFlag_Scavenger)
+		isTrashCollector := e.entityFlags.Has(EFlag_TrashCollector)
 		if !isScavenger && !isTrashCollector {
 			continue
 		}

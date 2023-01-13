@@ -93,12 +93,12 @@
     [x] Application
     [x] Remove on login
     [x] From attacks
+    [x] From equipment
 ----------------------------------------
 [] Text
     [] Handle blind + invisible at room level -- needs new text parsing
 [] Status Effects
     [] Finish implementing
-    [] From equip
     [] Immunities
 [] Lua scripting
 [] Spawning + Zones

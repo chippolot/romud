@@ -75,7 +75,7 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 	e.stats.Add(Stat_HP, int(timeSinceSave.Minutes()*float64(hpPerMin)))
 
 	// Update status effect durations
-	toRemove := make([]StatusEffectType, 0)
+	toRemove := make([]StatusEffectMask, 0)
 	for _, se := range e.data.Statuses {
 		if se.Duration == StatusEffectDuration_Permanent {
 			continue

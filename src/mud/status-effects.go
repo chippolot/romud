@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 const (
@@ -85,20 +86,20 @@ func (s *StatusEffectType) UnmarshalJSON(data []byte) (err error) {
 
 type StatusEffectConfig struct {
 	Type     StatusEffectType
-	Duration int // Seconds
+	Duration utils.Seconds
 	Save     *SavingThrowConfig
 }
 
 type StatusEffectData struct {
 	Type     StatusEffectType
-	Duration int // Seconds
+	Duration utils.Seconds
 }
 
 type StatusDataList []*StatusEffectData
 
-func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectType, duration int) {
+func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectType, duration utils.Seconds) {
 	r := w.rooms[e.data.RoomId]
-	if e.HasStatusEffect(status) {
+	if e.AddStatusEffect(status, duration) {
 		switch status {
 		case StatusType_Poison:
 			SendToPlayer(e, "You suddenly don't feel very well...")
@@ -123,16 +124,11 @@ func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffec
 			BroadcastToRoomExcept(r, e, "%s beings emanating a bright purple light.", e.NameCapitalized())
 		}
 	}
-	e.AddStatusEffect(status, duration)
 }
 
 func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectType) {
-	if !e.HasStatusEffect(status) {
-		return
-	}
 	r := w.rooms[e.data.RoomId]
-	e.RemoveStatusEffect(status)
-	if !e.HasStatusEffect(status) {
+	if e.RemoveStatusEffect(status) {
 		switch status {
 		case StatusType_Poison:
 			SendToPlayer(e, "You feel much better.")

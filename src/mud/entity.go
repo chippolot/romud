@@ -3,6 +3,7 @@ package mud
 import (
 	"fmt"
 	"log"
+	"math"
 	"math/rand"
 	"strings"
 	"unicode"
@@ -302,29 +303,31 @@ func (e *Entity) AC() int {
 	return e.cfg.Stats.AC + int(sum+float64(dexBonus)*dexBonusRatio)
 }
 
-func (e *Entity) AddStatusEffect(status StatusEffectType, duration int) {
+func (e *Entity) AddStatusEffect(status StatusEffectType, duration utils.Seconds) bool {
 	for _, s := range e.data.Statuses {
 		if s.Type == status {
-			s.Duration = utils.MaxInts(s.Duration, duration)
-			return
+			s.Duration = utils.Seconds(math.Max(float64(s.Duration), float64(duration)))
+			return false
 		}
 	}
 	e.data.Statuses = append(e.data.Statuses, &StatusEffectData{status, duration})
 	e.updateStatusFlags()
+	return true
 }
 
 func (e *Entity) HasStatusEffect(status StatusEffectType) bool {
 	return e.statuses.Has(status)
 }
 
-func (e *Entity) RemoveStatusEffect(status StatusEffectType) {
+func (e *Entity) RemoveStatusEffect(status StatusEffectType) bool {
 	for idx, s := range e.data.Statuses {
 		if s.Type == status {
 			e.data.Statuses = utils.SwapDelete(e.data.Statuses, idx)
 			e.updateStatusFlags()
-			return
+			return true
 		}
 	}
+	return false
 }
 
 func (e *Entity) Describe() string {

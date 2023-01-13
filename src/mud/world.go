@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/chippolot/go-mud/src/mud/server"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type World struct {
@@ -79,7 +80,7 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 		if se.Duration == StatusEffectDuration_Permanent {
 			continue
 		}
-		se.Duration -= int(timeSinceSave.Seconds())
+		se.Duration -= utils.Seconds(timeSinceSave.Seconds())
 		if se.Duration <= 0 {
 			toRemove = append(toRemove, se.Type)
 		}

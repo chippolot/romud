@@ -97,6 +97,7 @@
 ----------------------------------------
 [] Text
     [] Handle blind + invisible at room level -- needs new text parsing
+    [] Only display a single status update each frame
 [] Status Effects
     [] Finish implementing
     [] Immunities

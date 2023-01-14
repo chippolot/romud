@@ -146,7 +146,6 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 	if e.stats.Condition() <= Cnd_Stunned || tgt.stats.Condition() == Cnd_Dead {
 		return false
 	}
-	log.Printf("%s starting combat with %s", e.Name(), tgt.Name())
 
 	if e.combat != nil {
 		e.combat.target = tgt
@@ -161,7 +160,6 @@ func (c *CombatList) EndCombat(e *Entity) {
 	if e.combat == nil {
 		return
 	}
-	log.Printf("%s ending combat", e.Name())
 	c.Remove(e)
 	e.combat = nil
 }
@@ -195,7 +193,7 @@ func GetAttackData(e *Entity) AttackData {
 
 func validateAttack(e *Entity, tgt *Entity) bool {
 	if e.data.RoomId != tgt.data.RoomId {
-		log.Printf("Trying to attack target %d in different room!", tgt.id)
+		log.Printf("Trying to attack tgt %d in different room!", tgt.id)
 		return false
 	}
 	if e.position < Pos_Standing {
@@ -216,12 +214,12 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 
 	// Already in combat
 	if e.combat != nil {
-		// Trying to attack current target!
+		// Trying to attack current tgt!
 		if e.combat.target == tgt {
 			SendToPlayer(e, "You're already fighting them!")
-			// Trying to attack different target. Just update target and wait for next combat round.
+			// Trying to attack different tgt. Just update tgt and wait for next combat round.
 		} else {
-			SendToPlayer(e, "You turn to face %s", tgt.Name())
+			SendToPlayer(e, "You turn to face %s", LookEntityName(tgt))
 			e.combat.target = tgt
 		}
 		return
@@ -242,10 +240,10 @@ func performShove(e *Entity, w *World, tgt *Entity) {
 	}
 
 	if e.combat != nil {
-		SendToPlayer(e, "You prepare to shove %s", tgt.Name())
+		SendToPlayer(e, "You prepare to shove %s", LookEntityName(tgt))
 		e.combat.requestedSkill = CombatSkill_Shove
 		if e.combat.target != tgt {
-			SendToPlayer(e, "You turn to face %s", tgt.Name())
+			SendToPlayer(e, "You turn to face %s", LookEntityName(tgt))
 			e.combat.target = tgt
 		}
 	} else {
@@ -272,7 +270,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	if e.position < Pos_Standing {
 		e.position = Pos_Standing
 		SendToPlayer(e, "You scramble to your feet")
-		BroadcastToRoomExcept(r, e, "%s scrambles to %s feet", e.Name(), e.Gender().GetPossessivePronoun())
+		BroadcastToRoomExcept(r, e, "%s scrambles to %s feet", LookEntityName(e), e.Gender().GetPossessivePronoun())
 		return
 	}
 
@@ -281,13 +279,13 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		// STR or DEX contest
 		if ContestAbility(e, tgt, tgt.stats.MaxStatType(Stat_Str, Stat_Dex)) {
 			tgt.position = Pos_Prone
-			SendToPlayer(e, "You shove %s, knocking %s to the ground", tgt.Name(), tgt.Gender().GetObjectPronoun())
-			SendToPlayer(tgt, "%s shoves you, knocking you to the ground", e.NameCapitalized())
-			BroadcastToRoomExcept(r, e, "%s shoves %s, knocking %s to the ground", e.NameCapitalized(), tgt.Name(), tgt.Gender().GetObjectPronoun())
+			SendToPlayer(e, "You shove %s, knocking %s to the ground", LookEntityName(tgt), tgt.Gender().GetObjectPronoun())
+			SendToPlayer(tgt, "%s shoves you, knocking you to the ground", LookEntityNameCap(e))
+			BroadcastToRoomExcept(r, e, "%s shoves %s, knocking %s to the ground", LookEntityNameCap(e), LookEntityName(tgt), tgt.Gender().GetObjectPronoun())
 		} else {
-			SendToPlayer(e, "You try to shove %s but fail miserably", tgt.Name())
-			SendToPlayer(tgt, "%s tries to shove you but fails miserably", e.NameCapitalized())
-			BroadcastToRoomExcept(r, e, "%s tries to shove %s but fails miserably", e.NameCapitalized(), tgt.Name())
+			SendToPlayer(e, "You try to shove %s but fail miserably", LookEntityName(tgt))
+			SendToPlayer(tgt, "%s tries to shove you but fails miserably", LookEntityNameCap(e))
+			BroadcastToRoomExcept(r, e, "%s tries to shove %s but fails miserably", LookEntityNameCap(e), LookEntityName(tgt))
 		}
 	default:
 		var dam int
@@ -355,7 +353,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	switch damCtx {
 	case DamCtx_Poison:
 		SendToPlayer(tgt, "You feel a wave of pain course through you. <c red>(%d)</c>", dam)
-		BroadcastToRoomExcept(r, tgt, "%s shudders in pain", tgt.NameCapitalized())
+		BroadcastToRoomExcept(r, tgt, "%s shudders in pain", LookEntityNameCap(tgt))
 	case DamCtx_Melee:
 		sendDamageMessages(dam, from, tgt, r, verbSingular, verbPlural)
 	}
@@ -370,12 +368,18 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 			xp := tgt.cfg.Stats.XPValue
 			xp = applyXp(from, xp)
 			if xp > 0 {
-				SendToPlayer(from, "You gain %d XP from defeating %s", xp, tgt.Name())
+				SendToPlayer(from, "You gain %d XP from defeating %s", xp, LookEntityName(tgt))
 			}
 		}
 
 		// Create corpse
 		createCorpse(tgt, w)
+
+		// If player died, save
+		if tgt.player != nil {
+			w.SavePlayerCharacter(tgt.player.id)
+		}
+
 		w.RemoveEntity(tgt.id)
 	}
 
@@ -383,6 +387,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 }
 
 func createCorpse(from *Entity, w *World) {
+	// Create new corpse
 	cfg := &ItemConfig{}
 	cfg.Key = from.cfg.Key + "_corpse"
 	cfg.Name = fmt.Sprintf("the corpse of %s", from.Name())
@@ -390,10 +395,25 @@ func createCorpse(from *Entity, w *World) {
 	cfg.Flags = IFlag_Container | IFlag_Crumbles | IFlag_NoStorage
 	cfg.Init()
 	corpse := NewItem(cfg)
+
+	// Unequip everything
+	for _, eq := range from.equipped {
+		from.onUnequipped(eq)
+		corpse.AddItem(eq)
+	}
+	for es := range from.equipped {
+		delete(from.equipped, es)
+		delete(from.data.Equipped, es)
+	}
+
+	// Transfer items from dead entity to corpse
 	for _, i := range from.inventory {
-		from.RemoveItem(i)
 		corpse.AddItem(i)
 	}
+	from.inventory = from.inventory[:0]
+	from.data.Inventory = from.data.Inventory[:0]
+
+	// Place corpse in room
 	w.AddItem(corpse, from.data.RoomId)
 }
 
@@ -409,61 +429,59 @@ func applyXp(e *Entity, xp int) int {
 }
 
 func sendDamageMessages(dam int, src *Entity, dst *Entity, r *Room, atkVerbSingular string, atkVerbPlural string) {
-	var toSrc, toDst, toRoom string
+	srcDamStr := fmt.Sprintf("<c yellow>%d</c>", dam)
+	dstDamStr := fmt.Sprintf("<c red>%d</c>", dam)
 	if dam <= 0 {
-		toSrc = fmt.Sprintf("Your %s misses %s completely", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s's %s misses you completely", src.NameCapitalized(), atkVerbSingular)
-		toRoom = fmt.Sprintf("%s tries to %s %s, but misses", src.NameCapitalized(), atkVerbSingular, dst.Name())
+		SendToPlayer(src, "Your %s misses %s completely (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
+		SendToPlayer(dst, "%s's %s misses you completely (%s)", LookEntityNameCap(src), atkVerbSingular, dstDamStr)
+		BroadcastToRoomExcept2(r, src, dst, "%s tries to %s %s, but misses", LookEntityNameCap(src), atkVerbSingular, LookEntityName(dst))
 	} else if dam <= 2 {
-		toSrc = fmt.Sprintf("Your %s knicks %s as it fails to fully connect", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s's %s knicks you as it fails to fully connect", src.NameCapitalized(), atkVerbSingular)
-		toRoom = fmt.Sprintf("%s's %s knicks %s as it fails to fully connect", src.NameCapitalized(), atkVerbSingular, dst.Name())
+		SendToPlayer(src, "Your %s knicks %s as it fails to fully connect (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
+		SendToPlayer(dst, "%s's %s knicks you as it fails to fully connect (%s)", LookEntityNameCap(src), atkVerbSingular, dstDamStr)
+		BroadcastToRoomExcept2(r, src, dst, "%s's %s knicks %s as it fails to fully connect", LookEntityNameCap(src), atkVerbSingular, LookEntityName(dst))
 	} else if dam <= 4 {
-		toSrc = fmt.Sprintf("Your %s barely scratches %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s's %s barely scratch you", src.NameCapitalized(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s's %s barely scratches %s", src.NameCapitalized(), atkVerbSingular, dst.Name())
+		SendToPlayer(src, "Your %s barely scratches %s (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
+		SendToPlayer(dst, "%s's %s barely scratch you (%s)", LookEntityNameCap(src), atkVerbPlural, dstDamStr)
+		BroadcastToRoomExcept2(r, src, dst, "%s's %s barely scratches %s", LookEntityNameCap(src), atkVerbSingular, LookEntityName(dst))
 	} else if dam <= 6 {
-		toSrc = fmt.Sprintf("You %s %s", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you", src.NameCapitalized(), atkVerbSingular)
-		toRoom = fmt.Sprintf("%s %s %s", src.NameCapitalized(), atkVerbPlural, dst.Name())
+		SendToPlayer(src, "You %s %s (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
+		SendToPlayer(dst, "%s %s you (%s)", LookEntityNameCap(src), atkVerbSingular, dstDamStr)
+		BroadcastToRoomExcept2(r, src, dst, "%s %s %s", LookEntityNameCap(src), atkVerbPlural, LookEntityName(dst))
 	} else if dam <= 8 {
-		toSrc = fmt.Sprintf("You %s %s ferociously", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you ferociously", src.NameCapitalized(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s ferociously", src.NameCapitalized(), atkVerbPlural, dst.Name())
+		SendToPlayer(src, "You %s %s ferociously (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
+		SendToPlayer(dst, "%s %s you ferociously (%s)", LookEntityNameCap(src), atkVerbPlural, dstDamStr)
+		BroadcastToRoomExcept2(r, src, dst, "%s %s %s ferociously", LookEntityNameCap(src), atkVerbPlural, LookEntityName(dst))
 	} else if dam <= 10 {
-		toSrc = fmt.Sprintf("You %s %s with all your might", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you with all your might", src.NameCapitalized(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s with all your might", src.NameCapitalized(), atkVerbPlural, dst.Name())
+		SendToPlayer(src, "You %s %s with all your might (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
+		SendToPlayer(dst, "%s %s you with all your might (%s)", LookEntityNameCap(src), atkVerbPlural, dstDamStr)
+		BroadcastToRoomExcept2(r, src, dst, "%s %s %s with all your might", LookEntityNameCap(src), atkVerbPlural, LookEntityName(dst))
 	} else {
-		toSrc = fmt.Sprintf("You %s %s UNBELIEVABLY HARD", atkVerbSingular, dst.Name())
-		toDst = fmt.Sprintf("%s %s you UNBELIEVABLY HARD", src.NameCapitalized(), atkVerbPlural)
-		toRoom = fmt.Sprintf("%s %s %s UNBELIEVABLY HARD", src.NameCapitalized(), atkVerbPlural, dst.Name())
+		SendToPlayer(src, "You %s %s UNBELIEVABLY HARD (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
+		SendToPlayer(dst, "%s %s you UNBELIEVABLY HARD (%s)", LookEntityNameCap(src), atkVerbPlural, dstDamStr)
+		BroadcastToRoomExcept2(r, src, dst, "%s %s %s UNBELIEVABLY HARD", LookEntityNameCap(src), atkVerbPlural, LookEntityName(dst))
 	}
-	SendToPlayer(src, toSrc+" <c yellow>(%d)</c>", dam)
-	SendToPlayer(dst, toDst+" <c red>(%d)</c>", dam)
-	BroadcastToRoomExcept2(r, src, dst, toRoom)
 }
 
-func sendStatusMessages(dam int, target *Entity, r *Room) {
-	switch target.stats.Condition() {
+func sendStatusMessages(dam int, tgt *Entity, r *Room) {
+	switch tgt.stats.Condition() {
 	case Cnd_Stunned:
-		SendToPlayer(target, "You are dazed and disoriented, struggling to regain your footing")
-		BroadcastToRoomExcept(r, target, "%s is dazed and disoriented, struggling to regain their footing", target.NameCapitalized())
+		SendToPlayer(tgt, "You are dazed and disoriented, struggling to regain your footing")
+		BroadcastToRoomExcept(r, tgt, "%s is dazed and disoriented, struggling to regain their footing", LookEntityNameCap(tgt))
 	case Cnd_Incapacitated:
-		SendToPlayer(target, "You are incapacitated and will die soon if not healed")
-		BroadcastToRoomExcept(r, target, "%s is incapacitated and will die soon if not healed", target.NameCapitalized())
+		SendToPlayer(tgt, "You are incapacitated and will die soon if not healed")
+		BroadcastToRoomExcept(r, tgt, "%s is incapacitated and will die soon if not healed", LookEntityNameCap(tgt))
 	case Cnd_MortallyWounded:
-		SendToPlayer(target, "You are bleeding profusely and will die soon if not healed")
-		BroadcastToRoomExcept(r, target, "%s is bleeding profusely and will die soon if not healed", target.NameCapitalized())
+		SendToPlayer(tgt, "You are bleeding profusely and will die soon if not healed")
+		BroadcastToRoomExcept(r, tgt, "%s is bleeding profusely and will die soon if not healed", LookEntityNameCap(tgt))
 	case Cnd_Dead:
-		SendToPlayer(target, "You feel your soul slip from your body. You are DEAD!")
-		BroadcastToRoomExcept(r, target, "%s is DEAD. R.I.P.", target.NameCapitalized())
+		SendToPlayer(tgt, "You feel your soul slip from your body. You are DEAD!")
+		BroadcastToRoomExcept(r, tgt, "%s is DEAD. R.I.P.", LookEntityNameCap(tgt))
 	default:
-		if dam > target.stats.Get(Stat_MaxHP)/4 {
-			SendToPlayer(target, "<c red>Ouch, that one stung!</c>")
+		if dam > tgt.stats.Get(Stat_MaxHP)/4 {
+			SendToPlayer(tgt, "<c red>Ouch, that one stung!</c>")
 		}
-		if target.stats.Get(Stat_HP) < target.stats.Get(Stat_MaxHP)/4 {
-			SendToPlayer(target, "You sure are BLEEDING a lot!")
+		if tgt.stats.Get(Stat_HP) < tgt.stats.Get(Stat_MaxHP)/4 {
+			SendToPlayer(tgt, "You sure are BLEEDING a lot!")
 		}
 	}
 }

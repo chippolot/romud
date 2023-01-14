@@ -74,6 +74,9 @@ func (i *Item) SetData(data *ItemData, w *World) {
 	i.data = data
 
 	// Prepare contents
+	if i.data.Contents == nil {
+		i.data.Contents = make([]*ItemData, 0)
+	}
 	if i.cfg.Flags.Has(IFlag_Container) {
 		for _, idata := range i.data.Contents {
 			cfg, ok := w.itemConfigs[idata.Key]

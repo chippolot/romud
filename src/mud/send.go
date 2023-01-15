@@ -3,6 +3,8 @@ package mud
 import (
 	"fmt"
 	"log"
+
+	"github.com/chippolot/go-mud/src/bits"
 )
 
 const (
@@ -32,51 +34,47 @@ const (
 	ColorBrightMagenta ANSIColor = "bright magenta"
 	ColorBrightCyan    ANSIColor = "bright cyan"
 	ColorBrightWhite   ANSIColor = "bright white"
+
+	SendRst_None   SendRestrictionsMask = 0
+	SendRst_CanSee SendRestrictionsMask = 1 << iota
 )
 
 type ANSIColor string
+type SendRestrictionsMask bits.Bits
 
-func SendToPlayer(e *Entity, format string, a ...any) {
-	SendToPlayerRe(e, nil, format, a...)
+func (m *SendRestrictionsMask) Has(flag SendRestrictionsMask) bool {
+	return *m&flag != 0
 }
 
-func SendToPlayerRe(e *Entity, subject *Entity, format string, a ...any) {
-	if e.player == nil {
-		return
-	}
-	if subject != nil && subject != e && !subject.CanBeSeenBy(e) {
-		return
-	}
-	// Apply look descriptors
-	for idx, tok := range a {
-		if d, ok := tok.(LookDescriptor); ok {
-			a[idx] = d.Desc(e)
-		}
-	}
-	e.player.Send(format, a...)
+func SendToPlayer(e *Entity, format string, a ...any) {
+	sendToPlayer(e, nil, SendRst_None, format, a...)
+}
+
+func SendToPlayerRe(e *Entity, subject *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
+	sendToPlayer(e, subject, restrictions, format, a...)
 }
 
 func BroadcastToWorld(w *World, format string, a ...any) {
 	for _, e := range w.entities {
-		SendToPlayer(e, format, a...)
+		sendToPlayer(e, nil, SendRst_None, format, a...)
 	}
 }
 
-func BroadcastToWorldRe(w *World, e *Entity, format string, a ...any) {
+func BroadcastToWorldRe(w *World, e *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
 	for _, other := range w.entities {
 		if e.id != other.id {
-			SendToPlayerRe(other, e, format, a...)
+			sendToPlayer(other, e, restrictions, format, a...)
 		}
 	}
 }
 
 func BroadcastToRoom(r *Room, format string, a ...any) {
 	for _, e := range r.entities {
-		SendToPlayer(e, format, a...)
+		sendToPlayer(e, nil, SendRst_None, format, a...)
 	}
 }
 
-func BroadcastToRoomRe(w *World, subject *Entity, format string, a ...any) {
+func BroadcastToRoomRe(w *World, subject *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
 	if subject.data.RoomId == InvalidId {
 		log.Println("trying to broadcast to invalid room")
 		return
@@ -86,11 +84,11 @@ func BroadcastToRoomRe(w *World, subject *Entity, format string, a ...any) {
 		if subject.id == other.id {
 			continue
 		}
-		SendToPlayerRe(other, subject, format, a...)
+		sendToPlayer(other, subject, restrictions, format, a...)
 	}
 }
 
-func BroadcastToRoomRe2(w *World, subject *Entity, other *Entity, format string, a ...any) {
+func BroadcastToRoomRe2(w *World, subject *Entity, other *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
 	if subject.data.RoomId == InvalidId {
 		log.Println("trying to broadcast to invalid room")
 		return
@@ -100,10 +98,26 @@ func BroadcastToRoomRe2(w *World, subject *Entity, other *Entity, format string,
 		if subject.id == e.id || other.id == e.id {
 			continue
 		}
-		SendToPlayerRe(e, subject, format, a...)
+		sendToPlayer(e, subject, restrictions, format, a...)
 	}
 }
 
 func Colorize(color ANSIColor, a any) string {
 	return fmt.Sprintf("<c %s>%v</c>", color, a)
+}
+
+func sendToPlayer(e *Entity, subject *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
+	if e.player == nil {
+		return
+	}
+	if subject != nil && subject != e && restrictions.Has(SendRst_CanSee) && !subject.CanBeSeenBy(e) {
+		return
+	}
+	// Apply look descriptors
+	for idx, tok := range a {
+		if d, ok := tok.(LookDescriptor); ok {
+			a[idx] = d.Desc(e)
+		}
+	}
+	e.player.Send(format, a...)
 }

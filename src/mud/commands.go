@@ -127,7 +127,7 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 
 	SendToPlayer(e, "You advance to level %d!", e.stats.Get(Stat_Level))
 	SendToPlayer(e, "  You gain %d hp", hpGain)
-	BroadcastToWorldRe(w, e, "Hooray! %s is now level %d", e.Name(), e.stats.Get(Stat_Level))
+	BroadcastToWorldRe(w, e, SendRst_None, "Hooray! %s is now level %d", LookEntityName(e), e.stats.Get(Stat_Level))
 
 	if e.player != nil {
 		w.SavePlayerCharacter(e.player.id)
@@ -155,7 +155,7 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 	tgt := tgts[0]
 	if tgt == e {
 		SendToPlayer(e, "Stop hitting yourself!")
-		BroadcastToRoomRe(w, e, "%s hits %sself??", e.Name(), e.Gender().GetObjectPronoun())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s hits %sself??", LookEntityName(e), e.Gender().GetObjectPronoun())
 		return
 	}
 	performAttack(e, w, tgt)
@@ -183,7 +183,7 @@ func DoShove(e *Entity, w *World, tokens []string) {
 	tgt := tgts[0]
 	if tgt == e {
 		SendToPlayer(e, "Good luck with that!")
-		BroadcastToRoomRe(w, e, "%s tries to showve %sself but just ends up looking ridiculous", e.Name(), e.Gender().GetObjectPronoun())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s tries to shove %sself but just ends up looking ridiculous", LookEntityName(e), e.Gender().GetObjectPronoun())
 		return
 	}
 
@@ -223,7 +223,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			performGet(e, w,
 				func(i *Item) string { return fmt.Sprintf("You get %s from %s", i.Name(), containerItem.Name()) },
 				func(i *Item) string {
-					return fmt.Sprintf("%s gets %s from %s", e.NameCapitalized(), i.Name(), containerItem.Name())
+					return fmt.Sprintf("%s gets %s from %s", LookEntityNameCap(e), i.Name(), containerItem.Name())
 				},
 				containerItem, items...)
 		}
@@ -236,7 +236,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		}
 		performGet(e, w,
 			func(i *Item) string { return fmt.Sprintf("You pick up %s", i.Name()) },
-			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.NameCapitalized(), i.Name()) },
+			func(i *Item) string { return fmt.Sprintf("%s picks up %s", LookEntityNameCap(e), i.Name()) },
 			r, items...)
 	}
 }
@@ -281,8 +281,8 @@ func DoGive(e *Entity, w *World, tokens []string) {
 		target.AddItem(item)
 
 		SendToPlayer(e, "You give %s to %s", item.Name(), LookEntityName(target))
-		SendToPlayerRe(target, e, "%s give %s to you", LookEntityNameCap(e), item.Name())
-		BroadcastToRoomRe2(w, e, target, "%s gives %s to %s", LookEntityNameCap(e), item.Name(), LookEntityName(target))
+		SendToPlayerRe(target, e, SendRst_CanSee, "%s give %s to you", LookEntityNameCap(e), item.Name())
+		BroadcastToRoomRe2(w, e, target, SendRst_CanSee, "%s gives %s to %s", LookEntityNameCap(e), item.Name(), LookEntityName(target))
 	}
 }
 
@@ -329,7 +329,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 		container.AddItem(item)
 
 		SendToPlayer(e, "You put %s in %s", item.Name(), container.Name())
-		BroadcastToRoomRe(w, e, "%s puts %s in %s", e.NameCapitalized(), item.Name(), container.Name())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s puts %s in %s", LookEntityNameCap(e), item.Name(), container.Name())
 	}
 }
 
@@ -349,7 +349,7 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 			e.RemoveItem(item)
 			r.AddItem(item)
 			SendToPlayer(e, "You drop %s", item.Name())
-			BroadcastToRoomRe(w, e, "%s drops %s", e.NameCapitalized(), item.Name())
+			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s drops %s", LookEntityNameCap(e), item.Name())
 		}
 	}
 }
@@ -406,7 +406,7 @@ func DoSay(e *Entity, w *World, tokens []string) {
 
 	SendToPlayer(e, "Ok.")
 
-	BroadcastToRoomRe(w, e, "%s says, '%s'", e.NameCapitalized(), msg)
+	BroadcastToRoomRe(w, e, SendRst_None, "%s says, '%s'", LookEntityNameCap(e), msg)
 }
 
 func DoYell(e *Entity, w *World, tokens []string) {
@@ -416,7 +416,7 @@ func DoYell(e *Entity, w *World, tokens []string) {
 	msg := strings.Join(tokens[1:], " ")
 
 	SendToPlayer(e, "Ok.")
-	BroadcastToWorldRe(w, e, "%s yells, '%s'", e.NameCapitalized(), msg)
+	BroadcastToWorldRe(w, e, SendRst_None, "%s yells, '%s'", LookEntityNameCap(e), msg)
 }
 
 func DoWhisper(e *Entity, w *World, tokens []string) {
@@ -434,7 +434,7 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 		} else if te, ok := TryGetEntityByName(name, w.entities); ok {
 			SendToPlayer(e, "Ok.")
 			if te.player != nil {
-				SendToPlayerRe(te, e, "%s whispers to you, %s", e.NameCapitalized(), msg)
+				SendToPlayerRe(te, e, SendRst_None, "%s whispers to you, %s", LookEntityNameCap(e), msg)
 			}
 		} else {
 			SendToPlayer(e, "No player named %s is online", name)
@@ -546,10 +546,10 @@ func DoSit(e *Entity, w *World, _ []string) {
 
 	if oldPos == Pos_Prone {
 		SendToPlayer(e, "You sit up")
-		BroadcastToRoomRe(w, e, "%s sits up", e.NameCapitalized())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits up", LookEntityNameCap(e))
 	} else {
 		SendToPlayer(e, "You sit down")
-		BroadcastToRoomRe(w, e, "%s sits down", e.NameCapitalized())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits down", LookEntityNameCap(e))
 	}
 }
 
@@ -560,7 +560,7 @@ func DoSleep(e *Entity, w *World, _ []string) {
 	}
 	e.position = Pos_Sleeping
 	SendToPlayer(e, "You lie down and doze off...")
-	BroadcastToRoomRe(w, e, "%s lies down and falls asleep", e.NameCapitalized())
+	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s lies down and falls asleep", LookEntityNameCap(e))
 }
 
 func DoWake(e *Entity, w *World, _ []string) {
@@ -570,7 +570,7 @@ func DoWake(e *Entity, w *World, _ []string) {
 	}
 	e.position = Pos_Prone
 	SendToPlayer(e, "You open your eyes and wake up")
-	BroadcastToRoomRe(w, e, "%s wakes up", e.NameCapitalized())
+	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wakes up", LookEntityNameCap(e))
 }
 
 func DoStand(e *Entity, w *World, _ []string) {
@@ -582,10 +582,10 @@ func DoStand(e *Entity, w *World, _ []string) {
 
 	if e.combat != nil {
 		SendToPlayer(e, "You scramble back to your feet!")
-		BroadcastToRoomRe(w, e, "%s scrambles back to their feet", e.NameCapitalized())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s scrambles back to their feet", LookEntityNameCap(e))
 	} else {
 		SendToPlayer(e, "You stand up")
-		BroadcastToRoomRe(w, e, "%s stands up", e.NameCapitalized())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s stands up", LookEntityNameCap(e))
 	}
 }
 
@@ -597,7 +597,7 @@ func DoWho(e *Entity, w *World, _ []string) {
 	var sb utils.StringBuilder
 	sb.WriteLinef("Online Players: %d", len(w.players))
 	sb.WriteHorizontalDivider()
-	sb.WriteLinef("  (you) %s", e.Name())
+	sb.WriteLinef("  (you) %s", LookEntityName(e))
 	for _, e2 := range w.players {
 		if e2 != e {
 			sb.WriteLinef("  %s", e2.player.data.Name)
@@ -682,9 +682,9 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 	}
 
 	if e.player != nil {
-		BroadcastToRoomRe(w, e, "%s leaves %s", e.NameCapitalized(), dir.String())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s leaves %s", LookEntityNameCap(e), dir.String())
 	} else {
-		BroadcastToRoom(curRoom, "%s wanders %s", e.NameCapitalized(), dir.String())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders %s", LookEntityNameCap(e), dir.String())
 	}
 
 	curRoom.RemoveEntity(e)
@@ -699,9 +699,9 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 	}
 
 	if e.player != nil {
-		BroadcastToRoomRe(w, e, "%s enters from the %s", e.NameCapitalized(), fromDirStr)
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s enters from the %s", LookEntityNameCap(e), fromDirStr)
 	} else {
-		BroadcastToRoom(nextRoom, "%s wanders in from the %s", e.NameCapitalized(), fromDirStr)
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders in from the %s", LookEntityNameCap(e), fromDirStr)
 	}
 
 	e.stats.Add(Stat_Mov, -1)
@@ -743,7 +743,7 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 		// Some items crumble!
 		if item.cfg.Flags.Has(IFlag_Crumbles) {
 			SendToPlayer(e, "%s crumbles to dust as you touch it", item.NameCapitalized())
-			BroadcastToRoomRe(w, e, "%s crumbles to dust as %s touches it", item.NameCapitalized(), e.Name())
+			BroadcastToRoomRe(w, e, SendRst_None, "%s crumbles to dust as %s touches it", item.NameCapitalized(), LookEntityName(e))
 
 			// Drop all items in parent container
 			if item.cfg.Flags.Has(IFlag_Container) {
@@ -757,7 +757,7 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 			// Finish transfer and notify
 			e.AddItem(item)
 			SendToPlayer(e, playerMsgFn(item))
-			BroadcastToRoomRe(w, e, roomMsgFn(item))
+			BroadcastToRoomRe(w, e, SendRst_CanSee, roomMsgFn(item))
 		}
 	}
 }

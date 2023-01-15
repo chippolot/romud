@@ -136,7 +136,7 @@ func (w *World) AddEntity(e *Entity, roomId RoomId) {
 
 	if e.player != nil {
 		w.players[e.player.id] = e
-		BroadcastToWorldRe(w, e, "%s Joins", e.Name())
+		BroadcastToWorldRe(w, e, SendRst_CanSee, "%s Joins", e.Name())
 		e.player.Send(Preamble)
 
 		DoLook(e, w, nil)
@@ -166,7 +166,7 @@ func (w *World) RemoveEntity(eid EntityId) {
 	if e.player != nil && e.stats.Condition() != Cnd_Dead {
 		delete(w.players, e.player.id)
 		delete(w.loggingOut, e.player.id)
-		BroadcastToWorldRe(w, e, "%s Leaves", e.Name())
+		BroadcastToWorldRe(w, e, SendRst_CanSee, "%s Leaves", e.Name())
 	}
 }
 

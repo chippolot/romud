@@ -105,11 +105,11 @@ func (d *Dice) String() string {
 	}
 }
 
-func (d *Dice) StringColorized(color string) string {
+func (d *Dice) StringColorized(color ANSIColor) string {
 	if d.Sides == 0 {
-		return fmt.Sprintf("<c %s>%d</c>", color, d.Plus)
+		return Colorize(color, d.Plus)
 	} else {
-		return fmt.Sprintf("<c %s>%d</c>d<c %s>%d</c>+<c %s>%d</c>", color, d.Num, color, d.Sides, color, d.Plus)
+		return fmt.Sprintf("%sd%s+%s", Colorize(color, d.Num), Colorize(color, d.Sides), Colorize(color, d.Plus))
 	}
 }
 

@@ -118,7 +118,7 @@ func restoreStats(w *World) {
 			e.stats.Add(Stat_HP, hpGain)
 		} else {
 			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
-			message = Colorize(ColorRed, "You are bleeding!")
+			message = Colorize(Color_Red, "You are bleeding!")
 		}
 		e.stats.Add(Stat_Mov, movGain)
 

@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"fmt"
 	"log"
 	"math"
 	"math/rand"
@@ -384,25 +383,25 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteHorizontalDivider()
 	sb.WriteLinef("%s", e.Name())
 	sb.WriteNewLine()
-	sb.WriteLinef("Level  : <c yellow>%d</c>", e.stats.Get(Stat_Level))
+	sb.WriteLinef("Level  : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Level)))
 	if !IsMaxLevel(e) {
-		sb.WriteLinef("Next   : <c yellow>%d</c> XP", GetXpForNextLevel(e))
+		sb.WriteLinef("Next   : %d XP", Colorize(Color_Yellow, GetXpForNextLevel(e)))
 	}
 	sb.WriteNewLine()
-	sb.WriteLinef("HP     : <c yellow>%d</c>/<c yellow>%d</c>", e.stats.Get(Stat_HP), e.stats.Get(Stat_MaxHP))
+	sb.WriteLinef("HP     : %d/%d", Colorize(Color_Yellow, e.stats.Get(Stat_HP)), Colorize(Color_Yellow, e.stats.Get(Stat_MaxHP)))
 	sb.WriteNewLine()
-	sb.WriteLinef("ToHit  : +<c yellow>%d</c>", aData.ToHit)
+	sb.WriteLinef("ToHit  : +%d", Colorize(Color_Yellow, (aData.ToHit)))
 	sb.WriteLinef("Attack : %s", aDamage.StringColorized("yellow"))
-	sb.WriteLinef("AC     : <c yellow>%d</c>", e.AC())
+	sb.WriteLinef("AC     : %d", Colorize(Color_Yellow, e.AC()))
 	sb.WriteNewLine()
-	sb.WriteLinef("Str    : <c yellow>%d</c>", e.stats.Get(Stat_Str))
-	sb.WriteLinef("Dex    : <c yellow>%d</c>", e.stats.Get(Stat_Dex))
-	sb.WriteLinef("Con    : <c yellow>%d</c>", e.stats.Get(Stat_Con))
-	sb.WriteLinef("Int    : <c yellow>%d</c>", e.stats.Get(Stat_Int))
-	sb.WriteLinef("Wis    : <c yellow>%d</c>", e.stats.Get(Stat_Wis))
-	sb.WriteLinef("Cha    : <c yellow>%d</c>", e.stats.Get(Stat_Cha))
+	sb.WriteLinef("Str    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Str)))
+	sb.WriteLinef("Dex    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Dex)))
+	sb.WriteLinef("Con    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Con)))
+	sb.WriteLinef("Int    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Int)))
+	sb.WriteLinef("Wis    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Wis)))
+	sb.WriteLinef("Cha    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Cha)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Carry  : <c yellow>%d</c>/<c yellow>%d</c>", e.ItemWeight(), e.stats.CarryingCapacity())
+	sb.WriteLinef("Carry  : %d/%d", Colorize(Color_Yellow, e.ItemWeight()), Colorize(Color_Yellow, e.stats.CarryingCapacity()))
 	if statuses != "" {
 		sb.WriteNewLine()
 		sb.WriteLinef("Status : %s", statuses)
@@ -416,7 +415,7 @@ func (e *Entity) DescribeStatusEffects() string {
 	for i := 0; i < 64; i++ {
 		status := StatusEffectMask(1 << i)
 		if e.HasStatusEffect(status) {
-			strs = append(strs, fmt.Sprintf("<c yellow>%s</c>", strings.Title(status.String())))
+			strs = append(strs, Colorize(Color_Yellow, strings.Title(status.String())))
 		}
 	}
 	return strings.Join(strs, ",")
@@ -429,7 +428,7 @@ func (e *Entity) DescribeInventory() string {
 		sb.WriteLine("  Nothing.")
 	} else {
 		descs := GroupDescriptionsFromSlice(e.inventory, nil, func(i *Item) string {
-			return fmt.Sprintf("<c white>%s</c>", i.NameCapitalized())
+			return Colorize(Color_White, i.NameCapitalized())
 		})
 		for idx, desc := range descs {
 			descs[idx] = "  " + desc

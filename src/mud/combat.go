@@ -349,7 +349,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	// Send damage messages
 	switch damCtx {
 	case DamCtx_Poison:
-		SendToPlayer(tgt, "You feel a wave of pain course through you. (%s)", Colorize(ColorBrightRed, dam))
+		SendToPlayer(tgt, "You feel a wave of pain course through you. (%s)", Colorize(Color_BrightRed, dam))
 		BroadcastToRoomRe(w, tgt, SendRst_CanSee, "%s shudders in pain", LookEntityNameCap(tgt))
 	case DamCtx_Melee:
 		sendDamageMessages(dam, from, tgt, w, verbSingular, verbPlural)
@@ -426,8 +426,8 @@ func applyXp(e *Entity, xp int) int {
 }
 
 func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, atkVerbSingular string, atkVerbPlural string) {
-	srcDamStr := Colorize(ColorYellow, dam)
-	dstDamStr := Colorize(ColorRed, dam)
+	srcDamStr := Colorize(Color_Yellow, dam)
+	dstDamStr := Colorize(Color_Red, dam)
 	if dam <= 0 {
 		SendToPlayerRe(src, dst, SendRst_None, "Your %s misses %s completely (%s)", atkVerbSingular, LookEntityName(dst), srcDamStr)
 		SendToPlayerRe(dst, src, SendRst_None, "%s's %s misses you completely (%s)", LookEntityNameCap(src), atkVerbSingular, dstDamStr)
@@ -475,7 +475,7 @@ func sendStatusMessages(dam int, tgt *Entity, w *World) {
 		BroadcastToRoomRe(w, tgt, SendRst_None, "%s is DEAD. R.I.P.", LookEntityNameCap(tgt))
 	default:
 		if dam > tgt.stats.Get(Stat_MaxHP)/4 {
-			SendToPlayer(tgt, Colorize(ColorRed, "Ouch, that one stung!"))
+			SendToPlayer(tgt, Colorize(Color_Red, "Ouch, that one stung!"))
 		}
 		if tgt.stats.Get(Stat_HP) < tgt.stats.Get(Stat_MaxHP)/4 {
 			SendToPlayer(tgt, "You sure are BLEEDING a lot!")

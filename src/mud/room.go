@@ -180,7 +180,7 @@ func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
 		return
 	}
 	sb.WriteNewLine()
-	sb.WriteStringf("<c cyan>%s</c>", strings.Join(descs, utils.NewLine))
+	sb.WriteStringf(Colorize(Color_Cyan, strings.Join(descs, utils.NewLine)))
 }
 
 func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder, subject *Entity) {
@@ -206,7 +206,7 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder, subject *Entity
 		return
 	}
 	sb.WriteNewLine()
-	sb.WriteStringf("<c blue>%s</c>", strings.Join(descs, utils.NewLine))
+	sb.WriteStringf(Colorize(Color_Blue, strings.Join(descs, utils.NewLine)))
 }
 
 func describeItems(r *Room, sb *utils.StringBuilder) {
@@ -224,7 +224,7 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 		return
 	}
 	sb.WriteNewLine()
-	sb.WriteStringf("<c white>%s</c>", strings.Join(descs, utils.NewLine))
+	sb.WriteStringf(Colorize(Color_White, strings.Join(descs, utils.NewLine)))
 }
 
 type Direction int

@@ -36,11 +36,15 @@ const (
 
 type ANSIColor string
 
-func SendToPlayer(e *Entity, subject *Entity, format string, a ...any) {
+func SendToPlayer(e *Entity, format string, a ...any) {
+	SendToPlayerRe(e, nil, format, a...)
+}
+
+func SendToPlayerRe(e *Entity, subject *Entity, format string, a ...any) {
 	if e.player == nil {
 		return
 	}
-	if subject != nil && !subject.CanBeSeenBy(e) {
+	if subject != nil && subject != e && !subject.CanBeSeenBy(e) {
 		return
 	}
 	// Apply look descriptors
@@ -54,57 +58,52 @@ func SendToPlayer(e *Entity, subject *Entity, format string, a ...any) {
 
 func BroadcastToWorld(w *World, format string, a ...any) {
 	for _, e := range w.entities {
-		SendToPlayer(e, nil, format, a...)
+		SendToPlayer(e, format, a...)
 	}
 }
 
-func BroadcastToWorldExcept(w *World, e *Entity, format string, a ...any) {
+func BroadcastToWorldRe(w *World, e *Entity, format string, a ...any) {
 	for _, other := range w.entities {
 		if e.id != other.id {
-			SendToPlayer(e, nil, format, a...)
+			SendToPlayerRe(other, e, format, a...)
 		}
 	}
 }
 
-func BroadcastToRoom(w *World, subject *Entity, format string, a ...any) {
+func BroadcastToRoom(r *Room, format string, a ...any) {
+	for _, e := range r.entities {
+		SendToPlayer(e, format, a...)
+	}
+}
+
+func BroadcastToRoomRe(w *World, subject *Entity, format string, a ...any) {
+	if subject.data.RoomId == InvalidId {
+		log.Println("trying to broadcast to invalid room")
+		return
+	}
+	r := w.rooms[subject.data.RoomId]
+	for _, other := range r.entities {
+		if subject.id == other.id {
+			continue
+		}
+		SendToPlayerRe(other, subject, format, a...)
+	}
+}
+
+func BroadcastToRoomRe2(w *World, subject *Entity, other *Entity, format string, a ...any) {
 	if subject.data.RoomId == InvalidId {
 		log.Println("trying to broadcast to invalid room")
 		return
 	}
 	r := w.rooms[subject.data.RoomId]
 	for _, e := range r.entities {
-		SendToPlayer(e, subject, format, a...)
-	}
-}
-
-func BroadcastToRoomExcept(w *World, subject *Entity, e *Entity, format string, a ...any) {
-	if subject.data.RoomId == InvalidId {
-		log.Println("trying to broadcast to invalid room")
-		return
-	}
-	r := w.rooms[subject.data.RoomId]
-	for _, other := range r.entities {
-		if e.id == other.id {
+		if subject.id == e.id || other.id == e.id {
 			continue
 		}
-		SendToPlayer(other, subject, format, a...)
+		SendToPlayerRe(e, subject, format, a...)
 	}
 }
 
-func BroadcastToRoomExcept2(w *World, subject *Entity, e1 *Entity, e2 *Entity, format string, a ...any) {
-	if subject.data.RoomId == InvalidId {
-		log.Println("trying to broadcast to invalid room")
-		return
-	}
-	r := w.rooms[subject.data.RoomId]
-	for _, other := range r.entities {
-		if e1.id == other.id || e2.id == other.id {
-			continue
-		}
-		SendToPlayer(other, subject, format, a...)
-	}
-}
-
-func Colorize(color ANSIColor, str string) string {
-	return fmt.Sprintf("<c %s>%s</c>", color, str)
+func Colorize(color ANSIColor, a any) string {
+	return fmt.Sprintf("<c %s>%v</c>", color, a)
 }

@@ -96,8 +96,10 @@
     [x] From equipment
 ----------------------------------------
 [] Text
-    [] Handle blind + invisible at room level -- needs new text parsing
+    [x] Handle blind + invisible at room level -- needs new text parsing
         [] Need to differentiate between actions player can FEEL vs ones they can SEE
+        [] Lazy name resolvers for everything!
+        [] Lazy gender resolvers for everything!
         [] Also, handle sleepers!
 [] Status Effects
     [] Finish implementing

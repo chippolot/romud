@@ -152,44 +152,44 @@ func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask,
 		if !oldFlags.Has(f) && newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, e, Colorize(ColorRed, "You suddenly don't feel very well..."))
-				BroadcastToRoomExcept(w, e, e, "%s looks a little sick.", LookEntityNameCap(e))
+				SendToPlayer(e, Colorize(ColorRed, "You suddenly don't feel very well..."))
+				BroadcastToRoomRe(w, e, "%s looks a little sick.", LookEntityNameCap(e))
 			case StatusType_Blind:
-				SendToPlayer(e, e, Colorize(ColorRed, "Your vision fades to black."))
-				BroadcastToRoomExcept(w, e, e, "%s seems to have been blinded!", LookEntityNameCap(e))
+				SendToPlayer(e, Colorize(ColorRed, "Your vision fades to black."))
+				BroadcastToRoomRe(w, e, "%s seems to have been blinded!", LookEntityNameCap(e))
 			case StatusType_Invisible:
-				SendToPlayer(e, e, Colorize(ColorBlue, "You vanish."))
-				BroadcastToRoomExcept(w, e, e, "%s seems to flicker out of existence.", LookEntityNameCap(e))
+				SendToPlayer(e, Colorize(ColorBlue, "You vanish."))
+				BroadcastToRoomRe(w, e, "%s seems to flicker out of existence.", LookEntityNameCap(e))
 			case StatusType_Cursed:
-				SendToPlayer(e, e, Colorize(ColorRed, "You feel a wave of gloom descend on you."))
-				BroadcastToRoomExcept(w, e, e, "%s glows red for a moment.", LookEntityNameCap(e))
+				SendToPlayer(e, Colorize(ColorRed, "You feel a wave of gloom descend on you."))
+				BroadcastToRoomRe(w, e, "%s glows red for a moment.", LookEntityNameCap(e))
 			case StatusType_Blessed:
-				SendToPlayer(e, e, Colorize(ColorBlue, "You feel a tingle as you're bathed in a white light."))
-				BroadcastToRoomExcept(w, e, e, "%s glows white for a moment.", LookEntityNameCap(e))
+				SendToPlayer(e, Colorize(ColorBlue, "You feel a tingle as you're bathed in a white light."))
+				BroadcastToRoomRe(w, e, "%s glows white for a moment.", LookEntityNameCap(e))
 			case StatusType_NightVision:
-				SendToPlayer(e, e, Colorize(ColorBlue, "Everything looks a little brighter."))
-				BroadcastToRoomExcept(w, e, e, "%s's eyes flash brightly.", LookEntityNameCap(e))
+				SendToPlayer(e, Colorize(ColorBlue, "Everything looks a little brighter."))
+				BroadcastToRoomRe(w, e, "%s's eyes flash brightly.", LookEntityNameCap(e))
 			case StatusType_FaerieFire:
-				SendToPlayer(e, e, Colorize(ColorRed, "You begin emanating a bright purple light."))
-				BroadcastToRoomExcept(w, e, e, "%s beings emanating a bright purple light.", LookEntityNameCap(e))
+				SendToPlayer(e, Colorize(ColorRed, "You begin emanating a bright purple light."))
+				BroadcastToRoomRe(w, e, "%s beings emanating a bright purple light.", LookEntityNameCap(e))
 			}
 		} else if oldFlags.Has(f) && !newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, e, "You feel much better.")
+				SendToPlayer(e, "You feel much better.")
 			case StatusType_Blind:
-				SendToPlayer(e, e, "Your vision slowly returns")
+				SendToPlayer(e, "Your vision slowly returns")
 			case StatusType_Invisible:
-				SendToPlayer(e, e, "You blink back into existence.")
-				BroadcastToRoomExcept(w, e, e, "%s blinks back into existence.", LookEntityNameCap(e))
+				SendToPlayer(e, "You blink back into existence.")
+				BroadcastToRoomRe(w, e, "%s blinks back into existence.", LookEntityNameCap(e))
 			case StatusType_Cursed:
-				SendToPlayer(e, e, "It feels like a weight has been lifted from you.")
+				SendToPlayer(e, "It feels like a weight has been lifted from you.")
 			case StatusType_Blessed:
-				SendToPlayer(e, e, "You feel the warm cozy feeling fade.")
+				SendToPlayer(e, "You feel the warm cozy feeling fade.")
 			case StatusType_NightVision:
-				SendToPlayer(e, e, "Your vision returns to normal.")
+				SendToPlayer(e, "Your vision returns to normal.")
 			case StatusType_FaerieFire:
-				SendToPlayer(e, e, "The light emanating from you fades.")
+				SendToPlayer(e, "The light emanating from you fades.")
 			}
 		}
 	}

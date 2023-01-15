@@ -201,7 +201,7 @@ func (e *Entity) RemoveItem(item *Item) {
 }
 func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 	if item.cfg.Equipment == nil {
-		SendToPlayer(e, e, "You can't equip %s", item.Name())
+		SendToPlayer(e, "You can't equip %s", item.Name())
 		return EqSlot_None, nil, false
 	}
 	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
@@ -235,14 +235,14 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 		e.onEquipped(item)
 		return slot, unequipped, true
 	} else {
-		SendToPlayer(e, e, "You aren't carrying %s", item.Name())
+		SendToPlayer(e, "You aren't carrying %s", item.Name())
 		return EqSlot_None, nil, false
 	}
 }
 
 func (e *Entity) Unequip(item *Item) bool {
 	if item.cfg.Equipment == nil {
-		SendToPlayer(e, e, "%s isn't equipped", item.NameCapitalized())
+		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
 		return false
 	}
 	var found bool
@@ -257,7 +257,7 @@ func (e *Entity) Unequip(item *Item) bool {
 		e.onUnequipped(item)
 		e.AddItem(item)
 	} else {
-		SendToPlayer(e, e, "%s isn't equipped", item.NameCapitalized())
+		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
 		return false
 	}
 	return true

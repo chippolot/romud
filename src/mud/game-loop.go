@@ -118,13 +118,13 @@ func restoreStats(w *World) {
 			e.stats.Add(Stat_HP, hpGain)
 		} else {
 			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
-			message = Colorize(ColorRed, "You are bleeding!</c>")
+			message = Colorize(ColorRed, "You are bleeding!")
 		}
 		e.stats.Add(Stat_Mov, movGain)
 
 		// Force a new prompt if something changed
 		if oldHP != e.stats.Get(Stat_HP) || oldMov != e.stats.Get(Stat_Mov) {
-			SendToPlayer(e, e, message)
+			SendToPlayer(e, message)
 		}
 	}
 }

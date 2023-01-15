@@ -147,50 +147,49 @@ func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectMask) {
 
 // TODO COLORIZE
 func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask, newFlags StatusEffectMask) {
-	r := w.rooms[e.data.RoomId]
 	for i := 0; i < 64; i++ {
 		var f StatusEffectMask = 1 << i
 		if !oldFlags.Has(f) && newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayerColorized(e, "red", "You suddenly don't feel very well...")
-				BroadcastToRoomExcept(r, e, "%s looks a little sick.", e.NameCapitalized())
+				SendToPlayer(e, e, Colorize(ColorRed, "You suddenly don't feel very well..."))
+				BroadcastToRoomExcept(w, e, e, "%s looks a little sick.", LookEntityNameCap(e))
 			case StatusType_Blind:
-				SendToPlayerColorized(e, "red", "Your vision fades to black.")
-				BroadcastToRoomExcept(r, e, "%s seems to have been blinded!", e.NameCapitalized())
+				SendToPlayer(e, e, Colorize(ColorRed, "Your vision fades to black."))
+				BroadcastToRoomExcept(w, e, e, "%s seems to have been blinded!", LookEntityNameCap(e))
 			case StatusType_Invisible:
-				SendToPlayerColorized(e, "blue", "You vanish.")
-				BroadcastToRoomExcept(r, e, "%s seems to flicker out of existence.", e.NameCapitalized())
+				SendToPlayer(e, e, Colorize(ColorBlue, "You vanish."))
+				BroadcastToRoomExcept(w, e, e, "%s seems to flicker out of existence.", LookEntityNameCap(e))
 			case StatusType_Cursed:
-				SendToPlayerColorized(e, "red", "You feel a wave of gloom descend on you.")
-				BroadcastToRoomExcept(r, e, "%s glows red for a moment.", e.NameCapitalized())
+				SendToPlayer(e, e, Colorize(ColorRed, "You feel a wave of gloom descend on you."))
+				BroadcastToRoomExcept(w, e, e, "%s glows red for a moment.", LookEntityNameCap(e))
 			case StatusType_Blessed:
-				SendToPlayerColorized(e, "blue", "You feel a tingle as you're bathed in a white light.")
-				BroadcastToRoomExcept(r, e, "%s glows white for a moment.", e.NameCapitalized())
+				SendToPlayer(e, e, Colorize(ColorBlue, "You feel a tingle as you're bathed in a white light."))
+				BroadcastToRoomExcept(w, e, e, "%s glows white for a moment.", LookEntityNameCap(e))
 			case StatusType_NightVision:
-				SendToPlayerColorized(e, "blue", "Everything looks a little brighter.")
-				BroadcastToRoomExcept(r, e, "%s's eyes flash brightly.", e.NameCapitalized())
+				SendToPlayer(e, e, Colorize(ColorBlue, "Everything looks a little brighter."))
+				BroadcastToRoomExcept(w, e, e, "%s's eyes flash brightly.", LookEntityNameCap(e))
 			case StatusType_FaerieFire:
-				SendToPlayerColorized(e, "red", "You begin emanating a bright purple light.")
-				BroadcastToRoomExcept(r, e, "%s beings emanating a bright purple light.", e.NameCapitalized())
+				SendToPlayer(e, e, Colorize(ColorRed, "You begin emanating a bright purple light."))
+				BroadcastToRoomExcept(w, e, e, "%s beings emanating a bright purple light.", LookEntityNameCap(e))
 			}
 		} else if oldFlags.Has(f) && !newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, "You feel much better.")
+				SendToPlayer(e, e, "You feel much better.")
 			case StatusType_Blind:
-				SendToPlayer(e, "Your vision slowly returns")
+				SendToPlayer(e, e, "Your vision slowly returns")
 			case StatusType_Invisible:
-				SendToPlayer(e, "You blink back into existence.")
-				BroadcastToRoomExcept(r, e, "%s blinks back into existence.", e.NameCapitalized())
+				SendToPlayer(e, e, "You blink back into existence.")
+				BroadcastToRoomExcept(w, e, e, "%s blinks back into existence.", LookEntityNameCap(e))
 			case StatusType_Cursed:
-				SendToPlayer(e, "It feels like a weight has been lifted from you.")
+				SendToPlayer(e, e, "It feels like a weight has been lifted from you.")
 			case StatusType_Blessed:
-				SendToPlayer(e, "You feel the warm cozy feeling fade.")
+				SendToPlayer(e, e, "You feel the warm cozy feeling fade.")
 			case StatusType_NightVision:
-				SendToPlayer(e, "Your vision returns to normal.")
+				SendToPlayer(e, e, "Your vision returns to normal.")
 			case StatusType_FaerieFire:
-				SendToPlayer(e, "The light emanating from you fades.")
+				SendToPlayer(e, e, "The light emanating from you fades.")
 			}
 		}
 	}

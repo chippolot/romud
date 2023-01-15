@@ -201,7 +201,7 @@ func (e *Entity) RemoveItem(item *Item) {
 }
 func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 	if item.cfg.Equipment == nil {
-		SendToPlayer(e, "You can't equip %s", item.Name())
+		SendToPlayer(e, e, "You can't equip %s", item.Name())
 		return EqSlot_None, nil, false
 	}
 	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
@@ -235,14 +235,14 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 		e.onEquipped(item)
 		return slot, unequipped, true
 	} else {
-		SendToPlayer(e, "You aren't carrying %s", item.Name())
+		SendToPlayer(e, e, "You aren't carrying %s", item.Name())
 		return EqSlot_None, nil, false
 	}
 }
 
 func (e *Entity) Unequip(item *Item) bool {
 	if item.cfg.Equipment == nil {
-		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
+		SendToPlayer(e, e, "%s isn't equipped", item.NameCapitalized())
 		return false
 	}
 	var found bool
@@ -257,7 +257,7 @@ func (e *Entity) Unequip(item *Item) bool {
 		e.onUnequipped(item)
 		e.AddItem(item)
 	} else {
-		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
+		SendToPlayer(e, e, "%s isn't equipped", item.NameCapitalized())
 		return false
 	}
 	return true
@@ -347,6 +347,9 @@ func (e *Entity) RemoveStatusEffect(status StatusEffectMask) bool {
 }
 
 func (e *Entity) CanBeSeenBy(viewer *Entity) bool {
+	if e == viewer {
+		return true
+	}
 	if viewer != nil && viewer.entityFlags.Has(EFlag_Blind) {
 		return false
 	}

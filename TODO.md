@@ -97,7 +97,8 @@
 ----------------------------------------
 [] Text
     [] Handle blind + invisible at room level -- needs new text parsing
-    [] Only display a single status update each frame
+        [] Need to differentiate between actions player can FEEL vs ones they can SEE
+        [] Also, handle sleepers!
 [] Status Effects
     [] Finish implementing
     [] Immunities

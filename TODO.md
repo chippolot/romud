@@ -99,13 +99,19 @@
         [x] Need to differentiate between actions player can FEEL vs ones they can SEE
     [x] Lazy name resolvers for everything!
 ----------------------------------------
-[] Light Sources
 [] Status Effects
-    [] Advantage / Disadvantage
-    [] Roll Boosts
+    [+] Advantage / Disadvantage
+    [+] Roll Boosts
     [] Finish implementing
     [] Immunities
+[] Equipment
+    [+] Advantage / Disadvantage
+    [+] Roll Boosts
 [] Lua scripting
+[] Advantage / Disadvantage Sources
+[] Light Sources
+    [] Weather
+    [] Indoors / Sector Type
 [] Text
     [] Lazy gender resolvers for everything!
     [] Also, handle sleepers!

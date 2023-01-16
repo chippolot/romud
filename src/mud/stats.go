@@ -7,7 +7,12 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-type StatType int
+const (
+	Roll_Hit RollType = iota
+	Roll_Dam
+	Roll_AbilityCheck // TODO Implement
+	Roll_SavingThrow  // TODO Implement
+)
 
 const (
 	Stat_HP StatType = iota
@@ -25,6 +30,18 @@ const (
 	Stat_Level
 	Stat_XP
 )
+
+const (
+	Cnd_Dead Condition = iota
+	Cnd_MortallyWounded
+	Cnd_Incapacitated
+	Cnd_Stunned
+	Cnd_Healthy
+)
+
+var rollDiceCounter RollDiceId
+
+type StatType int
 
 func ParseStatType(str string) (StatType, error) {
 	switch str {
@@ -134,6 +151,15 @@ func (m *StatMap) UnmarshalJSON(data []byte) (err error) {
 	return nil
 }
 
+type RollType int
+type RollDiceId int
+
+type RollMods struct {
+	AdvantageCount    int
+	DisadvantageCount int
+	ExtraDice         map[RollDiceId]Dice
+}
+
 type StatsConfig struct {
 	HP      Dice
 	AC      int
@@ -149,13 +175,14 @@ type StatsConfig struct {
 }
 
 type Stats struct {
-	cfg  *StatsConfig
-	data StatMap
-	mods StatMap
+	cfg      *StatsConfig
+	data     StatMap
+	statMods StatMap
+	rollMods map[RollType]*RollMods
 }
 
 func newStats(cfg *StatsConfig, data StatMap) *Stats {
-	return &Stats{cfg, data, make(StatMap)}
+	return &Stats{cfg, data, make(StatMap), make(map[RollType]*RollMods)}
 }
 
 func newStatsData(cfg *StatsConfig) StatMap {
@@ -175,16 +202,6 @@ func newStatsData(cfg *StatsConfig) StatMap {
 	}
 }
 
-func (s *Stats) AddMod(stat StatType, mod int) {
-	s.mods[stat] += mod
-	s.clamp()
-}
-
-func (s *Stats) RemoveMod(stat StatType, mod int) {
-	s.mods[stat] -= mod
-	s.clamp()
-}
-
 func (s *Stats) Add(stat StatType, delta int) {
 	s.data[stat] += delta
 	s.clamp()
@@ -196,8 +213,38 @@ func (s *Stats) Set(stat StatType, val int) {
 }
 
 func (s *Stats) Get(stat StatType) int {
-	mod := s.mods[stat]
+	mod := s.statMods[stat]
 	return s.data[stat] + mod
+}
+
+func (s *Stats) AddMod(stat StatType, mod int) {
+	s.statMods[stat] += mod
+	s.clamp()
+}
+
+func (s *Stats) RemoveMod(stat StatType, mod int) {
+	s.statMods[stat] -= mod
+	s.clamp()
+}
+
+func (s *Stats) RollAdvantageCount(roll RollType) int {
+	mods := s.rollMods[roll]
+	if mods == nil {
+		return 0
+	}
+	return mods.AdvantageCount - mods.DisadvantageCount
+}
+
+func (s *Stats) RollBonus(roll RollType) int {
+	mods := s.rollMods[roll]
+	if mods == nil {
+		return 0
+	}
+	sum := 0
+	for _, d := range mods.ExtraDice {
+		sum += d.Roll()
+	}
+	return sum
 }
 
 func (s *Stats) CarryingCapacity() int {
@@ -308,14 +355,6 @@ func SavingThrow(e *Entity, stat StatType, dc int) bool {
 	roll := D20.Roll() + GetAbilityModifier(e.stats.Get(stat))
 	return roll >= dc
 }
-
-const (
-	Cnd_Dead Condition = iota
-	Cnd_MortallyWounded
-	Cnd_Incapacitated
-	Cnd_Stunned
-	Cnd_Healthy
-)
 
 type Condition int
 

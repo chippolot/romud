@@ -10,11 +10,6 @@ import (
 )
 
 const (
-	Advantage_None AdvantageType = iota
-	Advantage_Advantage
-	Advantage_Disadvantage
-)
-const (
 	Dam_Acid DamageType = iota
 	Dam_Bludgeoning
 	Dam_Cold
@@ -295,23 +290,32 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		aData := GetAttackData(e)
 
 		// Determine advantage / disadvantage
-		var advantageType AdvantageType
+		advantageCount := e.stats.RollAdvantageCount(Roll_Hit)
 		if tgt.position < Pos_Standing {
-			advantageType = Advantage_Advantage
+			advantageCount += 1
+		}
+		if e.position < Pos_Standing {
+			advantageCount -= 1
+		}
+		if !e.CanBeSeenBy(tgt) {
+			advantageCount += 1
+		}
+		if !tgt.CanBeSeenBy(e) {
+			advantageCount -= 1
 		}
 
 		// Roll to hit
 		hitBase := D20.Roll()
-		if advantageType == Advantage_Advantage {
+		if advantageCount > 0 {
 			hitBase2 := D20.Roll()
 			hitBase = utils.MaxInts(hitBase, hitBase2)
-		} else if advantageType == Advantage_Disadvantage {
+		} else if advantageCount < 0 {
 			hitBase2 := D20.Roll()
 			hitBase = utils.MinInts(hitBase, hitBase2)
 		}
 		critMiss := hitBase == 1
 		critHit := hitBase == 20
-		hit := hitBase + aData.ToHit
+		hit := hitBase + aData.ToHit + e.stats.RollBonus(Roll_Hit)
 
 		didHit := false
 		if (critMiss || hit < tgt.AC()) && !critHit {
@@ -324,7 +328,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 			} else {
 				dam = aData.Damage.Roll()
 			}
-			dam += aData.DamageMod
+			dam += aData.DamageMod + e.stats.RollBonus(Roll_Dam)
 			dam = utils.MaxInts(1, dam)
 		}
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)

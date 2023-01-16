@@ -35,7 +35,9 @@ const (
 	Color_BrightMagenta ANSIColor = "bright magenta"
 	Color_BrightCyan    ANSIColor = "bright cyan"
 	Color_BrightWhite   ANSIColor = "bright white"
+)
 
+const (
 	SendRst_None   SendRestrictionsMask = 0
 	SendRst_CanSee SendRestrictionsMask = 1 << iota
 )

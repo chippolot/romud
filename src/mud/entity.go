@@ -262,14 +262,14 @@ func (e *Entity) Unequip(item *Item) bool {
 	return true
 }
 
-func (e *Entity) GetWeapon() (*WeaponConfig, bool) {
+func (e *Entity) GetWeapon() (*WeaponConfig, *EquipmentConfig, bool) {
 	if weaponItem, ok := e.equipped[EqSlot_HeldR]; ok && weaponItem.cfg.Equipment.Weapon != nil {
-		return weaponItem.cfg.Equipment.Weapon, true
+		return weaponItem.cfg.Equipment.Weapon, weaponItem.cfg.Equipment, true
 	}
 	if weaponItem, ok := e.equipped[EqSlot_HeldL]; ok && weaponItem.cfg.Equipment.Weapon != nil {
-		return weaponItem.cfg.Equipment.Weapon, true
+		return weaponItem.cfg.Equipment.Weapon, weaponItem.cfg.Equipment, true
 	}
-	return nil, false
+	return nil, nil, false
 }
 
 func (e *Entity) AC() int {
@@ -380,8 +380,11 @@ func (e *Entity) Describe() string {
 
 func (e *Entity) DescribeStatus() string {
 	aData := GetAttackData(e)
-	aDamage := aData.Damage.Add(aData.DamageMod)
 	statuses := e.DescribeStatusEffects()
+	bonusDamage := ""
+	if !aData.DamageMod.IsZero() {
+		bonusDamage = " + " + aData.DamageMod.StringColorized("yellow")
+	}
 
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
@@ -389,23 +392,23 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteNewLine()
 	sb.WriteLinef("Level  : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Level)))
 	if !IsMaxLevel(e) {
-		sb.WriteLinef("Next   : %d XP", Colorize(Color_Yellow, GetXpForNextLevel(e)))
+		sb.WriteLinef("Next   : %s XP", Colorize(Color_Yellow, GetXpForNextLevel(e)))
 	}
 	sb.WriteNewLine()
-	sb.WriteLinef("HP     : %d/%d", Colorize(Color_Yellow, e.stats.Get(Stat_HP)), Colorize(Color_Yellow, e.stats.Get(Stat_MaxHP)))
+	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Yellow, e.stats.Get(Stat_HP)), Colorize(Color_Yellow, e.stats.Get(Stat_MaxHP)))
 	sb.WriteNewLine()
-	sb.WriteLinef("ToHit  : +%d", Colorize(Color_Yellow, aData.ToHit))
-	sb.WriteLinef("Attack : %s", aDamage.StringColorized("yellow"))
-	sb.WriteLinef("AC     : %d", Colorize(Color_Yellow, e.AC()))
+	sb.WriteLinef("ToHit  : +%s", Colorize(Color_Yellow, aData.ToHit))
+	sb.WriteLinef("Attack : %s%s", aData.Damage.StringColorized("yellow"), bonusDamage)
+	sb.WriteLinef("AC     : %s", Colorize(Color_Yellow, e.AC()))
 	sb.WriteNewLine()
-	sb.WriteLinef("Str    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Str)))
-	sb.WriteLinef("Dex    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Dex)))
-	sb.WriteLinef("Con    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Con)))
-	sb.WriteLinef("Int    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Int)))
-	sb.WriteLinef("Wis    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Wis)))
-	sb.WriteLinef("Cha    : %d", Colorize(Color_Yellow, e.stats.Get(Stat_Cha)))
+	sb.WriteLinef("Str    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Str)))
+	sb.WriteLinef("Dex    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Dex)))
+	sb.WriteLinef("Con    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Con)))
+	sb.WriteLinef("Int    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Int)))
+	sb.WriteLinef("Wis    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Wis)))
+	sb.WriteLinef("Cha    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Cha)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Carry  : %d/%d", Colorize(Color_Yellow, e.ItemWeight()), Colorize(Color_Yellow, e.stats.CarryingCapacity()))
+	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Yellow, e.ItemWeight()), Colorize(Color_Yellow, e.stats.CarryingCapacity()))
 	if statuses != "" {
 		sb.WriteNewLine()
 		sb.WriteLinef("Status : %s", statuses)
@@ -488,6 +491,17 @@ func (e *Entity) onEquipped(item *Item) {
 	for s, m := range item.cfg.Equipment.Stats {
 		e.stats.AddMod(s, m)
 	}
+	for r, m := range item.cfg.Equipment.Rolls {
+		if m.Advantage {
+			e.stats.AddAdvantage(r, 1)
+		}
+		if m.Disadvantage {
+			e.stats.AddAdvantage(r, -1)
+		}
+		if m.Bonus != nil {
+			e.stats.AddRollBonus(r, *m.Bonus, item)
+		}
+	}
 	if item.cfg.Equipment.StatusEffect != 0 {
 		e.AddStatusEffect(item.cfg.Equipment.StatusEffect, StatusEffectDuration_Permanent)
 	}
@@ -496,6 +510,17 @@ func (e *Entity) onEquipped(item *Item) {
 func (e *Entity) onUnequipped(item *Item) {
 	for s, m := range item.cfg.Equipment.Stats {
 		e.stats.RemoveMod(s, m)
+	}
+	for r, m := range item.cfg.Equipment.Rolls {
+		if m.Advantage {
+			e.stats.AddAdvantage(r, -1)
+		}
+		if m.Disadvantage {
+			e.stats.AddAdvantage(r, 1)
+		}
+		if m.Bonus != nil {
+			e.stats.RemoveRollBonus(r, item)
+		}
 	}
 	if item.cfg.Equipment.StatusEffect != 0 {
 		e.RemoveStatusEffect(item.cfg.Equipment.StatusEffect)

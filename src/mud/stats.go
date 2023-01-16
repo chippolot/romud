@@ -10,8 +10,6 @@ import (
 const (
 	Roll_Hit RollType = iota
 	Roll_Dam
-	Roll_AbilityCheck // TODO Implement
-	Roll_SavingThrow  // TODO Implement
 )
 
 const (
@@ -38,8 +36,6 @@ const (
 	Cnd_Stunned
 	Cnd_Healthy
 )
-
-var rollDiceCounter RollDiceId
 
 type StatType int
 
@@ -152,12 +148,77 @@ func (m *StatMap) UnmarshalJSON(data []byte) (err error) {
 }
 
 type RollType int
-type RollDiceId int
+
+func ParseRollType(str string) (RollType, error) {
+	switch str {
+	case "Hit":
+		return Roll_Hit, nil
+	case "Damage":
+		return Roll_Dam, nil
+	default:
+		return 0, fmt.Errorf("unknown roll type: %s", str)
+	}
+}
+
+func (s *RollType) String() string {
+	switch *s {
+	case Roll_Hit:
+		return "Hit"
+	case Roll_Dam:
+		return "Damage"
+	}
+	return "unknown"
+}
+
+func (r *RollType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(r.String())
+}
+
+func (s *RollType) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *s, err = ParseRollType(str); err != nil {
+		return err
+	}
+	return nil
+}
+
+type RollModConfig struct {
+	Advantage    bool  `json:",omitempty"`
+	Disadvantage bool  `json:",omitempty"`
+	Bonus        *Dice `json:",omitempty"`
+}
+
+type RollModConfigMap map[RollType]*RollModConfig
+
+func (m *RollModConfigMap) MarshalJSON() ([]byte, error) {
+	m2 := make(map[string]*RollModConfig)
+	for stat, mod := range *m {
+		m2[stat.String()] = mod
+	}
+	return json.Marshal(m2)
+}
+
+func (m *RollModConfigMap) UnmarshalJSON(data []byte) (err error) {
+	var m2 map[string]*RollModConfig
+	if err := json.Unmarshal(data, &m2); err != nil {
+		return err
+	}
+	*m = make(RollModConfigMap)
+	for rollStr, mod := range m2 {
+		if roll, err := ParseRollType(rollStr); err == nil {
+			(*m)[roll] = mod
+		}
+	}
+	return nil
+}
 
 type RollMods struct {
 	AdvantageCount    int
 	DisadvantageCount int
-	ExtraDice         map[RollDiceId]Dice
+	ExtraDice         map[any]Dice
 }
 
 type StatsConfig struct {
@@ -225,6 +286,21 @@ func (s *Stats) AddMod(stat StatType, mod int) {
 func (s *Stats) RemoveMod(stat StatType, mod int) {
 	s.statMods[stat] -= mod
 	s.clamp()
+}
+
+func (s *Stats) AddAdvantage(roll RollType, num int) {
+	mods := s.getRollMods(roll)
+	mods.AdvantageCount += num
+}
+
+func (s *Stats) AddRollBonus(roll RollType, dice Dice, key any) {
+	mods := s.getRollMods(roll)
+	mods.ExtraDice[key] = dice
+}
+
+func (s *Stats) RemoveRollBonus(roll RollType, key any) {
+	mods := s.getRollMods(roll)
+	delete(mods.ExtraDice, key)
 }
 
 func (s *Stats) RollAdvantageCount(roll RollType) int {
@@ -343,6 +419,16 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 func (s *Stats) clamp() {
 	s.data[Stat_HP] = utils.MinInts(s.Get(Stat_MaxHP), s.data[Stat_HP])
 	s.data[Stat_Mov] = utils.MinInts(s.Get(Stat_MaxMov), s.data[Stat_Mov])
+}
+
+func (s *Stats) getRollMods(roll RollType) *RollMods {
+	if mods, ok := s.rollMods[roll]; ok {
+		return mods
+	} else {
+		mods = &RollMods{0, 0, make(map[any]Dice)}
+		s.rollMods[roll] = mods
+		return mods
+	}
 }
 
 func ContestAbility(e *Entity, tgt *Entity, stat StatType) bool {

@@ -10,7 +10,15 @@
             "VerbSingular": "slash",
             "VerbPlural": "slashes"
         },
-        "Slot": "held1h"
+        "Slot": "held1h",
+        "Rolls": {
+            "Hit": {
+                "Advantage": true
+            },
+            "Damage": {
+                "Bonus": "1d4+1"
+            }
+        }
     },
     "Weight": 10
 }, {

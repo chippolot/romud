@@ -86,7 +86,7 @@ func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
 type AttackData struct {
 	ToHit                    int
 	Damage                   Dice
-	DamageMod                int
+	DamageMod                Dice
 	DamageType               DamageType
 	Effect                   *StatusEffectConfig
 	VerbSingular, VerbPlural string
@@ -164,10 +164,11 @@ func (c *CombatList) EndCombat(e *Entity) {
 
 func GetAttackData(e *Entity) AttackData {
 	aData := AttackData{}
-	if weapon, ok := e.GetWeapon(); ok {
+	if weapon, eq, ok := e.GetWeapon(); ok {
+		bonusDice := eq.GetRollBonus(Roll_Dam)
 		aData.ToHit = GetAbilityModifier(e.stats.Get(Stat_Str)) + ProficiencyChart[e.stats.Get(Stat_Level)]
-		aData.Damage = weapon.Damage
-		aData.DamageMod = GetAbilityModifier(e.stats.Get(Stat_Str))
+		aData.Damage = weapon.Damage.Add(GetAbilityModifier(e.stats.Get(Stat_Str)))
+		aData.DamageMod = bonusDice
 		aData.DamageType = weapon.DamageType
 		aData.VerbSingular = weapon.VerbSingular
 		aData.VerbPlural = weapon.VerbPlural
@@ -176,7 +177,7 @@ func GetAttackData(e *Entity) AttackData {
 		aData.ToHit = attack.ToHit
 		aData.Damage = attack.Damage
 		if e.player != nil {
-			aData.DamageMod = GetAbilityModifier(e.stats.Get(Stat_Str))
+			aData.Damage = aData.Damage.Add(GetAbilityModifier(e.stats.Get(Stat_Str)))
 		}
 		aData.Effect = attack.Effect
 		aData.DamageType = attack.DamageType
@@ -328,7 +329,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 			} else {
 				dam = aData.Damage.Roll()
 			}
-			dam += aData.DamageMod + e.stats.RollBonus(Roll_Dam)
+			dam += aData.DamageMod.Roll()
 			dam = utils.MaxInts(1, dam)
 		}
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)

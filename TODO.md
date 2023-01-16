@@ -98,15 +98,15 @@
     [x] Handle blind + invisible at room level -- needs new text parsing
         [x] Need to differentiate between actions player can FEEL vs ones they can SEE
     [x] Lazy name resolvers for everything!
+[x] Equipment
+    [x] Advantage / Disadvantage
+    [x] Roll Boosts
 ----------------------------------------
 [] Status Effects
     [+] Advantage / Disadvantage
     [+] Roll Boosts
     [] Finish implementing
     [] Immunities
-[] Equipment
-    [+] Advantage / Disadvantage
-    [+] Roll Boosts
 [] Lua scripting
 [] Advantage / Disadvantage Sources
 [] Light Sources

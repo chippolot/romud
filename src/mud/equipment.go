@@ -319,8 +319,20 @@ type EquipmentConfig struct {
 	Slot         EquipSlot
 	Stats        StatMap          `json:",omitempty"`
 	StatusEffect StatusEffectMask `json:",omitempty"`
+	Rolls        RollModConfigMap `json:",omitempty"`
 	Armor        *ArmorConfig     `json:",omitempty"`
 	Weapon       *WeaponConfig    `json:",omitempty"`
+}
+
+func (cfg *EquipmentConfig) GetRollBonus(roll RollType) Dice {
+	if cfg.Rolls == nil {
+		return Dice{}
+	}
+	mod := cfg.Rolls[roll]
+	if mod == nil || mod.Bonus == nil {
+		return Dice{}
+	}
+	return *mod.Bonus
 }
 
 type ArmorConfig struct {

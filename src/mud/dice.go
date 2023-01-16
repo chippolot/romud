@@ -22,6 +22,10 @@ type Dice struct {
 	Plus  int
 }
 
+func NewDice(num uint, sides uint, plus int) Dice {
+	return Dice{num, sides, plus}
+}
+
 func ParseDice(s string) (Dice, error) {
 	var num, sides uint64
 	var plus int64
@@ -71,8 +75,12 @@ func ParseDice(s string) (Dice, error) {
 	return Dice{uint(num), uint(sides), int(plus)}, nil
 }
 
+func (d *Dice) IsZero() bool {
+	return d.Num == 0 && d.Plus == 0 && d.Sides == 0
+}
+
 func (d *Dice) Add(num int) Dice {
-	return Dice{d.Num, d.Sides, int(d.Num) + num}
+	return Dice{d.Num, d.Sides, d.Plus + num}
 }
 
 func (d *Dice) CriticalRoll() int {

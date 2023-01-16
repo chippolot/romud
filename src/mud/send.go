@@ -115,7 +115,7 @@ func sendToPlayer(e *Entity, subject *Entity, restrictions SendRestrictionsMask,
 	}
 	// Apply look descriptors
 	for idx, tok := range a {
-		if d, ok := tok.(LookDescriptor); ok {
+		if d, ok := tok.(ObservableDescriptor); ok {
 			a[idx] = d.Desc(e)
 		}
 	}

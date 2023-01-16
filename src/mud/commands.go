@@ -127,7 +127,7 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 
 	SendToPlayer(e, "You advance to level %d!", e.stats.Get(Stat_Level))
 	SendToPlayer(e, "  You gain %d hp", hpGain)
-	BroadcastToWorldRe(w, e, SendRst_None, "Hooray! %s is now level %d", LookName(e), e.stats.Get(Stat_Level))
+	BroadcastToWorldRe(w, e, SendRst_None, "Hooray! %s is now level %d", ObservableName(e), e.stats.Get(Stat_Level))
 
 	if e.player != nil {
 		w.SavePlayerCharacter(e.player.id)
@@ -155,7 +155,7 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 	tgt := tgts[0]
 	if tgt == e {
 		SendToPlayer(e, "Stop hitting yourself!")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s hits %sself??", LookName(e), e.Gender().GetObjectPronoun())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s hits %sself??", ObservableName(e), e.Gender().GetObjectPronoun())
 		return
 	}
 	performAttack(e, w, tgt)
@@ -183,7 +183,7 @@ func DoShove(e *Entity, w *World, tokens []string) {
 	tgt := tgts[0]
 	if tgt == e {
 		SendToPlayer(e, "Good luck with that!")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s tries to shove %sself but just ends up looking ridiculous", LookName(e), e.Gender().GetObjectPronoun())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s tries to shove %sself but just ends up looking ridiculous", ObservableName(e), e.Gender().GetObjectPronoun())
 		return
 	}
 
@@ -211,19 +211,20 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		// Make sure it's a container
 		containerItem := contianers[0]
 		if !containerItem.cfg.Flags.Has(IFlag_Container) {
-			SendToPlayer(e, "The %s is not a container", containerItem.Name())
+			SendToPlayer(e, "The %s is not a container", ObservableName(containerItem))
 			return
 		}
 
 		// Get the items
 		items := containerItem.SearchItems(itemQuery)
 		if len(items) == 0 {
-			SendToPlayer(e, "The %s is empty", containerItem.Name())
+			SendToPlayer(e, "The %s is empty", ObservableName(containerItem))
 		} else {
+			// TODO FIX THESE OBSERVABLES
 			performGet(e, w,
 				func(i *Item) string { return fmt.Sprintf("You get %s from %s", i.Name(), containerItem.Name()) },
 				func(i *Item) string {
-					return fmt.Sprintf("%s gets %s from %s", LookNameCap(e), i.Name(), containerItem.Name())
+					return fmt.Sprintf("%s gets %s from %s", e.NameCapitalized(), i.Name(), containerItem.Name())
 				},
 				containerItem, items...)
 		}
@@ -234,9 +235,10 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			SendToPlayer(e, "You don't see that here...")
 			return
 		}
+		// TODO FIX THESE OBSERVABLES
 		performGet(e, w,
 			func(i *Item) string { return fmt.Sprintf("You pick up %s", i.Name()) },
-			func(i *Item) string { return fmt.Sprintf("%s picks up %s", LookNameCap(e), i.Name()) },
+			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.NameCapitalized(), i.Name()) },
 			r, items...)
 	}
 }
@@ -280,9 +282,9 @@ func DoGive(e *Entity, w *World, tokens []string) {
 		e.RemoveItem(item)
 		target.AddItem(item)
 
-		SendToPlayer(e, "You give %s to %s", item.Name(), LookName(target))
-		SendToPlayerRe(target, e, SendRst_CanSee, "%s give %s to you", LookNameCap(e), item.Name())
-		BroadcastToRoomRe2(w, e, target, SendRst_CanSee, "%s gives %s to %s", LookNameCap(e), item.Name(), LookName(target))
+		SendToPlayer(e, "You give %s to %s", ObservableName(item), ObservableName(target))
+		SendToPlayerRe(target, e, SendRst_CanSee, "%s give %s to you", ObservableNameCap(e), ObservableName(item))
+		BroadcastToRoomRe2(w, e, target, SendRst_CanSee, "%s gives %s to %s", ObservableNameCap(e), ObservableName(item), ObservableName(target))
 	}
 }
 
@@ -328,8 +330,8 @@ func DoPut(e *Entity, w *World, tokens []string) {
 		e.RemoveItem(item)
 		container.AddItem(item)
 
-		SendToPlayer(e, "You put %s in %s", item.Name(), container.Name())
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s puts %s in %s", LookNameCap(e), item.Name(), container.Name())
+		SendToPlayer(e, "You put %s in %s", ObservableName(item), ObservableName(container))
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s puts %s in %s", ObservableNameCap(e), ObservableName(item), ObservableName(container))
 	}
 }
 
@@ -348,8 +350,8 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 		for _, item := range items {
 			e.RemoveItem(item)
 			r.AddItem(item)
-			SendToPlayer(e, "You drop %s", item.Name())
-			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s drops %s", LookNameCap(e), item.Name())
+			SendToPlayer(e, "You drop %s", ObservableName(item))
+			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s drops %s", ObservableNameCap(e), ObservableName(item))
 		}
 	}
 }
@@ -406,7 +408,7 @@ func DoSay(e *Entity, w *World, tokens []string) {
 
 	SendToPlayer(e, "Ok.")
 
-	BroadcastToRoomRe(w, e, SendRst_None, "%s says, '%s'", LookNameCap(e), msg)
+	BroadcastToRoomRe(w, e, SendRst_None, "%s says, '%s'", ObservableNameCap(e), msg)
 }
 
 func DoYell(e *Entity, w *World, tokens []string) {
@@ -416,7 +418,7 @@ func DoYell(e *Entity, w *World, tokens []string) {
 	msg := strings.Join(tokens[1:], " ")
 
 	SendToPlayer(e, "Ok.")
-	BroadcastToWorldRe(w, e, SendRst_None, "%s yells, '%s'", LookNameCap(e), msg)
+	BroadcastToWorldRe(w, e, SendRst_None, "%s yells, '%s'", ObservableNameCap(e), msg)
 }
 
 func DoWhisper(e *Entity, w *World, tokens []string) {
@@ -434,7 +436,7 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 		} else if te, ok := TryGetEntityByName(name, w.entities); ok {
 			SendToPlayer(e, "Ok.")
 			if te.player != nil {
-				SendToPlayerRe(te, e, SendRst_None, "%s whispers to you, %s", LookNameCap(e), msg)
+				SendToPlayerRe(te, e, SendRst_None, "%s whispers to you, %s", ObservableNameCap(e), msg)
 			}
 		} else {
 			SendToPlayer(e, "No player named %s is online", name)
@@ -546,10 +548,10 @@ func DoSit(e *Entity, w *World, _ []string) {
 
 	if oldPos == Pos_Prone {
 		SendToPlayer(e, "You sit up")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits up", LookNameCap(e))
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits up", ObservableNameCap(e))
 	} else {
 		SendToPlayer(e, "You sit down")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits down", LookNameCap(e))
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits down", ObservableNameCap(e))
 	}
 }
 
@@ -560,7 +562,7 @@ func DoSleep(e *Entity, w *World, _ []string) {
 	}
 	e.position = Pos_Sleeping
 	SendToPlayer(e, "You lie down and doze off...")
-	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s lies down and falls asleep", LookNameCap(e))
+	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s lies down and falls asleep", ObservableNameCap(e))
 }
 
 func DoWake(e *Entity, w *World, _ []string) {
@@ -570,7 +572,7 @@ func DoWake(e *Entity, w *World, _ []string) {
 	}
 	e.position = Pos_Prone
 	SendToPlayer(e, "You open your eyes and wake up")
-	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wakes up", LookNameCap(e))
+	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wakes up", ObservableNameCap(e))
 }
 
 func DoStand(e *Entity, w *World, _ []string) {
@@ -582,10 +584,10 @@ func DoStand(e *Entity, w *World, _ []string) {
 
 	if e.combat != nil {
 		SendToPlayer(e, "You scramble back to your feet!")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s scrambles back to their feet", LookNameCap(e))
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s scrambles back to their feet", ObservableNameCap(e))
 	} else {
 		SendToPlayer(e, "You stand up")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s stands up", LookNameCap(e))
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s stands up", ObservableNameCap(e))
 	}
 }
 
@@ -597,10 +599,10 @@ func DoWho(e *Entity, w *World, _ []string) {
 	var sb utils.StringBuilder
 	sb.WriteLinef("Online Players: %d", len(w.players))
 	sb.WriteHorizontalDivider()
-	sb.WriteLinef("  (you) %s", LookName(e))
+	sb.WriteLinef("  (you) %s", e.Name())
 	for _, e2 := range w.players {
 		if e2 != e {
-			sb.WriteLinef("  %s", e2.player.data.Name)
+			sb.WriteLinef("  %s", e2.Name())
 		}
 	}
 	SendToPlayer(e, sb.String())
@@ -682,9 +684,9 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 	}
 
 	if e.player != nil {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s leaves %s", LookNameCap(e), dir.String())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s leaves %s", ObservableNameCap(e), dir.String())
 	} else {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders %s", LookNameCap(e), dir.String())
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders %s", ObservableNameCap(e), dir.String())
 	}
 
 	curRoom.RemoveEntity(e)
@@ -699,9 +701,9 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 	}
 
 	if e.player != nil {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s enters from the %s", LookNameCap(e), fromDirStr)
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s enters from the %s", ObservableNameCap(e), fromDirStr)
 	} else {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders in from the %s", LookNameCap(e), fromDirStr)
+		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders in from the %s", ObservableNameCap(e), fromDirStr)
 	}
 
 	e.stats.Add(Stat_Mov, -1)
@@ -733,7 +735,7 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 		}
 
 		if e.ItemWeight()+item.ItemWeight() > e.stats.CarryingCapacity() {
-			SendToPlayer(e, "You can't hold the weight of %s", item.Name())
+			SendToPlayer(e, "You can't hold the weight of %s", ObservableName(item))
 			continue
 		}
 
@@ -742,14 +744,14 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 
 		// Some items crumble!
 		if item.cfg.Flags.Has(IFlag_Crumbles) {
-			SendToPlayer(e, "%s crumbles to dust as you touch it", item.NameCapitalized())
-			BroadcastToRoomRe(w, e, SendRst_None, "%s crumbles to dust as %s touches it", item.NameCapitalized(), LookName(e))
+			SendToPlayer(e, "%s crumbles to dust as you touch it", ObservableNameCap(item))
+			BroadcastToRoomRe(w, e, SendRst_None, "%s crumbles to dust as %s touches it", ObservableNameCap(item), ObservableName(e))
 
 			// Drop all items in parent container
 			if item.cfg.Flags.Has(IFlag_Container) {
 				for _, i2 := range item.RemoveAllFromContainer() {
 					from.AddItem(i2)
-					BroadcastToRoom(r, "%s falls to the floor", i2.Name())
+					BroadcastToRoom(r, "%s falls to the floor", ObservableName(i2))
 				}
 			}
 			continue

@@ -54,7 +54,8 @@ type PlayerPromptProvider struct {
 func (pp *PlayerPromptProvider) Prompt() string {
 	prompt := fmt.Sprintf("<%s> ", Colorize(Color_Green, fmt.Sprintf("%dh(%dH):%dv(%dMV)", pp.character.stats.Get(Stat_HP), pp.character.stats.Get(Stat_MaxHP), pp.character.stats.Get(Stat_Mov), pp.character.stats.Get(Stat_MaxMov))))
 	if pp.character.combat != nil {
-		prompt = fmt.Sprintf("%s%s<%s (%s)>:<%s (%s)> ", prompt, utils.NewLine, pp.character.Name(), pp.character.stats.ConditionShortString(), pp.character.combat.target.Name(), pp.character.combat.target.stats.ConditionShortString())
+		targetName := ObservableName(pp.character.combat.target).Desc(pp.character)
+		prompt = fmt.Sprintf("%s%s<%s (%s)>:<%s (%s)> ", prompt, utils.NewLine, pp.character.Name(), pp.character.stats.ConditionShortString(), targetName, pp.character.combat.target.stats.ConditionShortString())
 	}
 	return prompt
 }

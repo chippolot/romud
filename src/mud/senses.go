@@ -1,20 +1,29 @@
 package mud
 
-type LookDescriptor interface {
-	Desc(perceiver *Entity) string
+type Observable interface {
+	CanBeSeenBy(observer *Entity) bool
 }
 
-type EntityNameDescriptor struct {
-	e           *Entity
+type NamedObservable interface {
+	Observable
+	Named
+}
+
+type LookDescriptor interface {
+	Desc(observer *Entity) string
+}
+
+type ObservableNameDescriptor struct {
+	obj         NamedObservable
 	capitalized bool
 }
 
-func (d EntityNameDescriptor) Desc(perceiver *Entity) string {
-	if perceiver == nil || (perceiver != d.e && d.e.CanBeSeenBy(perceiver)) {
+func (d ObservableNameDescriptor) Desc(observer *Entity) string {
+	if observer == nil || (observer != d.obj && d.obj.CanBeSeenBy(observer)) {
 		if d.capitalized {
-			return d.e.NameCapitalized()
+			return d.obj.NameCapitalized()
 		} else {
-			return d.e.Name()
+			return d.obj.Name()
 		}
 	}
 	if d.capitalized {
@@ -24,10 +33,10 @@ func (d EntityNameDescriptor) Desc(perceiver *Entity) string {
 	}
 }
 
-func LookEntityName(e *Entity) LookDescriptor {
-	return EntityNameDescriptor{e, false}
+func LookName(o NamedObservable) LookDescriptor {
+	return ObservableNameDescriptor{o, false}
 }
 
-func LookEntityNameCap(e *Entity) LookDescriptor {
-	return EntityNameDescriptor{e, true}
+func LookNameCap(o NamedObservable) LookDescriptor {
+	return ObservableNameDescriptor{o, true}
 }

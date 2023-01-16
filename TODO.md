@@ -94,13 +94,15 @@
     [x] Remove on login
     [x] From attacks
     [x] From equipment
+[x] Text
+    [x] Handle blind + invisible at room level -- needs new text parsing
+        [x] Need to differentiate between actions player can FEEL vs ones they can SEE
 ----------------------------------------
 [] Text
-    [x] Handle blind + invisible at room level -- needs new text parsing
-        [] Need to differentiate between actions player can FEEL vs ones they can SEE
-        [] Lazy name resolvers for everything!
-        [] Lazy gender resolvers for everything!
-        [] Also, handle sleepers!
+    [] Lazy name resolvers for everything!
+    [] Lazy gender resolvers for everything!
+    [] Also, handle sleepers!
+[] Light Sources
 [] Status Effects
     [] Finish implementing
     [] Immunities

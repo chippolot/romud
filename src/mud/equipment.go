@@ -154,7 +154,7 @@ func (s *EquipSlot) UnmarshalJSON(data []byte) (err error) {
 		return err
 	}
 	if flag, err := ParseEquipmentSlot(str); err == nil {
-		*s = EquipSlot(*s | flag)
+		*s |= flag
 	}
 	return err
 }

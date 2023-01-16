@@ -220,7 +220,7 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 		e.RemoveItem(item)
 		unequipped := make([]*Item, 0)
 		if slot == EqSlot_Held2H {
-			if u := e.unequipFromSlot(item, EqSlot_HeldL); u != nil {
+			if u := e.unequipFromSlot(EqSlot_HeldL); u != nil {
 				unequipped = append(unequipped, u)
 			}
 			if u := e.equipToSlot(item, EqSlot_HeldR); u != nil {
@@ -394,7 +394,7 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteNewLine()
 	sb.WriteLinef("HP     : %d/%d", Colorize(Color_Yellow, e.stats.Get(Stat_HP)), Colorize(Color_Yellow, e.stats.Get(Stat_MaxHP)))
 	sb.WriteNewLine()
-	sb.WriteLinef("ToHit  : +%d", Colorize(Color_Yellow, (aData.ToHit)))
+	sb.WriteLinef("ToHit  : +%d", Colorize(Color_Yellow, aData.ToHit))
 	sb.WriteLinef("Attack : %s", aDamage.StringColorized("yellow"))
 	sb.WriteLinef("AC     : %d", Colorize(Color_Yellow, e.AC()))
 	sb.WriteNewLine()
@@ -469,13 +469,13 @@ func (e *Entity) MatchesKeyword(keyword string) bool {
 }
 
 func (e *Entity) equipToSlot(item *Item, slot EquipSlot) *Item {
-	unequipped := e.unequipFromSlot(item, slot)
+	unequipped := e.unequipFromSlot(slot)
 	e.equipped[slot] = item
 	e.data.Equipped[slot] = item.data
 	return unequipped
 }
 
-func (e *Entity) unequipFromSlot(item *Item, slot EquipSlot) *Item {
+func (e *Entity) unequipFromSlot(slot EquipSlot) *Item {
 	var unequipped *Item
 	if old, ok := e.equipped[slot]; ok {
 		unequipped = old

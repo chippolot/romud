@@ -5,14 +5,14 @@ import "strings"
 const NewLine = "\n\r"
 const HorizontalDivider = "---------------------------------"
 
-func LineBreak(str string, maxLen int, delimeter string) []string {
+func LineBreak(str string, maxLen int, delimiter string) []string {
 	if len(str) <= maxLen {
 		return []string{str}
 	}
 
 	var sb StringBuilder
 	lines := make([]string, 0)
-	toks := strings.Split(str, delimeter)
+	toks := strings.Split(str, delimiter)
 
 	for idx, s := range toks {
 		if sb.Len()+len(s)+1 > maxLen {
@@ -21,7 +21,7 @@ func LineBreak(str string, maxLen int, delimeter string) []string {
 		}
 		sb.WriteStringf(s)
 		if idx != len(toks)-1 {
-			sb.WriteString(delimeter)
+			sb.WriteString(delimiter)
 		}
 	}
 	lines = append(lines, sb.String())

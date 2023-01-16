@@ -69,16 +69,16 @@ func (m *StatusEffectMask) String() string {
 	return "unknown"
 }
 
-func (s *StatusEffectMask) MarshalJSON() ([]byte, error) {
-	return json.Marshal(s.String())
+func (m *StatusEffectMask) MarshalJSON() ([]byte, error) {
+	return json.Marshal(m.String())
 }
 
-func (s *StatusEffectMask) UnmarshalJSON(data []byte) (err error) {
+func (m *StatusEffectMask) UnmarshalJSON(data []byte) (err error) {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {
 		return err
 	}
-	if *s, err = ParseStatusEffectType(str); err != nil {
+	if *m, err = ParseStatusEffectType(str); err != nil {
 		return err
 	}
 	return nil
@@ -122,14 +122,14 @@ func newStatusEffects() *StatusEffects {
 	return &StatusEffects{make([]*StatusEffect, 0), 0}
 }
 
-func rollForStatusEffect(e *Entity, w *World, src *Entity, cfg *StatusEffectConfig) {
+func rollForStatusEffect(e *Entity, w *World, cfg *StatusEffectConfig) {
 	if cfg == nil || (cfg.Save != nil && SavingThrow(e, cfg.Save.Stat, cfg.Save.DC)) {
 		return
 	}
-	performAddStatusEffect(e, w, src, cfg.Type, cfg.Duration)
+	performAddStatusEffect(e, w, cfg.Type, cfg.Duration)
 }
 
-func performAddStatusEffect(e *Entity, w *World, src *Entity, status StatusEffectMask, duration utils.Seconds) {
+func performAddStatusEffect(e *Entity, w *World, status StatusEffectMask, duration utils.Seconds) {
 	oldStatusEffectFlags := e.statusEffects.mask
 	if e.AddStatusEffect(status, duration) {
 		newStatusEffectFlags := e.statusEffects.mask

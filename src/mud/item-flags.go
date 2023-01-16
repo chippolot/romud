@@ -46,7 +46,7 @@ func (m *ItemFlagMask) UnmarshalJSON(data []byte) (err error) {
 	}
 	for _, str := range strs {
 		if flag, err := ParseItemFlag(str); err == nil {
-			*m = ItemFlagMask(*m | flag)
+			*m |= flag
 		} else {
 			return err
 		}

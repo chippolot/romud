@@ -10,7 +10,7 @@ type List[T comparable] struct {
 }
 
 func (l *List[T]) Add(value T) {
-	l.Head = &Node[T]{value, l.Head}
+	l.Head = &Node[T]{Value: value, Next: l.Head}
 }
 
 func (l *List[T]) Contains(value T) bool {

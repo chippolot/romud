@@ -444,7 +444,7 @@ func DoWhisper(e *Entity, w *World, tokens []string) {
 	}
 }
 
-func DoEquipment(e *Entity, w *World, tokens []string) {
+func DoEquipment(e *Entity, _ *World, _ []string) {
 	SendToPlayer(e, e.DescribeEquipment())
 }
 
@@ -477,7 +477,7 @@ func DoLook(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	// Looking at enitty or item?
+	// Looking at entity or item?
 	query, ok, _ := parseSearchQuery(tokens[1:], false)
 	if !ok {
 		SendToPlayer(e, "You don't see that here.")
@@ -492,7 +492,7 @@ func DoLook(e *Entity, w *World, tokens []string) {
 	}
 }
 
-func DoAlias(e *Entity, w *World, tokens []string) {
+func DoAlias(e *Entity, _ *World, tokens []string) {
 	if e.player == nil {
 		return
 	}
@@ -519,7 +519,7 @@ func DoAlias(e *Entity, w *World, tokens []string) {
 	}
 }
 
-func DoUnalias(e *Entity, w *World, tokens []string) {
+func DoUnalias(e *Entity, _ *World, tokens []string) {
 	if e.player == nil {
 		return
 	}
@@ -591,7 +591,7 @@ func DoStand(e *Entity, w *World, _ []string) {
 	}
 }
 
-func DoStatus(e *Entity, w *World, _ []string) {
+func DoStatus(e *Entity, _ *World, _ []string) {
 	SendToPlayer(e, e.DescribeStatus())
 }
 
@@ -769,11 +769,13 @@ func parseSearchQuery(tokens []string, allowCount bool) (SearchQuery, bool, []st
 	if numToks == 0 {
 		return SearchQuery{}, false, tokens
 	}
-	if num, err := strconv.Atoi(tokens[0]); err == nil {
-		if numToks == 1 {
-			return SearchQuery{}, false, tokens
+	if allowCount {
+		if num, err := strconv.Atoi(tokens[0]); err == nil {
+			if numToks == 1 {
+				return SearchQuery{}, false, tokens
+			}
+			return NewSearchQuery(tokens[1], num), true, tokens[2:]
 		}
-		return NewSearchQuery(tokens[1], num), true, tokens[2:]
 	}
 	return NewSearchQuery(tokens[0], 1), true, tokens[1:]
 }

@@ -48,7 +48,7 @@ func (m *EntityFlagMask) UnmarshalJSON(data []byte) (err error) {
 	}
 	for _, str := range strs {
 		if flag, err := ParseEntityFlag(str); err == nil {
-			*m = EntityFlagMask(*m | flag)
+			*m |= flag
 		} else {
 			return err
 		}

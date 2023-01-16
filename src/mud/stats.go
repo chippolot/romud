@@ -61,8 +61,8 @@ func ParseStatType(str string) (StatType, error) {
 	}
 }
 
-func (s StatType) String() string {
-	switch s {
+func (s *StatType) String() string {
+	switch *s {
 	case Stat_HP:
 		return "HP"
 	case Stat_MaxHP:

@@ -25,7 +25,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 		statusStr := tokens[2]
 		if status, err := ParseStatusEffectType(statusStr); err == nil {
 			SendToPlayer(e, "Admin: Adding %s effect on Player", status.String())
-			performAddStatusEffect(e, w, e, status, 10)
+			performAddStatusEffect(e, w, status, 10)
 		} else {
 			SendToPlayer(e, "Admin: Failed to parse status effect '%s'", statusStr)
 		}

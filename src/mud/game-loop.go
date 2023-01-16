@@ -154,7 +154,7 @@ func wanderNPCs(w *World) {
 		rndExit := rand.Intn(numExits)
 		var dir Direction
 		i := 0
-		for dir, _ = range r.cfg.Exits {
+		for dir = range r.cfg.Exits {
 			if i == rndExit {
 				break
 			}

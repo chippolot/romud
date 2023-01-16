@@ -7,6 +7,7 @@ import (
 	"github.com/chippolot/go-mud/src/bits"
 )
 
+//goland:noinspection GoSnakeCaseUsage
 const (
 	Color_Black   ANSIColor = "black"
 	Color_Red     ANSIColor = "red"

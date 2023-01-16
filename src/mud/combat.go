@@ -13,7 +13,8 @@ const (
 	Advantage_None AdvantageType = iota
 	Advantage_Advantage
 	Advantage_Disadvantage
-
+)
+const (
 	Dam_Acid DamageType = iota
 	Dam_Bludgeoning
 	Dam_Cold
@@ -27,12 +28,14 @@ const (
 	Dam_Radiant
 	Dam_Slashing
 	Dam_Thunder
-
+)
+const (
 	DamCtx_Melee DamageContext = iota
 	DamCtx_Bleeding
 	DamCtx_Poison
-	DamCtx_Admin = 999
-
+	DamCtx_Admin DamageContext = 999
+)
+const (
 	CombatSkill_None CombatSkill = iota
 	CombatSkill_Shove
 )
@@ -326,7 +329,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		}
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)
 		if didHit {
-			rollForStatusEffect(tgt, w, e, aData.Effect)
+			rollForStatusEffect(tgt, w, aData.Effect)
 		}
 	}
 	e.combat.requestedSkill = CombatSkill_None

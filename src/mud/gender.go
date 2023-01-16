@@ -1,7 +1,7 @@
 package mud
 
 const (
-	NonGenered Gender = iota
+	NonGendered Gender = iota
 	Male
 	Female
 	Other

@@ -97,16 +97,18 @@
 [x] Text
     [x] Handle blind + invisible at room level -- needs new text parsing
         [x] Need to differentiate between actions player can FEEL vs ones they can SEE
+    [x] Lazy name resolvers for everything!
 ----------------------------------------
-[] Text
-    [] Lazy name resolvers for everything!
-    [] Lazy gender resolvers for everything!
-    [] Also, handle sleepers!
 [] Light Sources
 [] Status Effects
+    [] Advantage / Disadvantage
+    [] Roll Boosts
     [] Finish implementing
     [] Immunities
 [] Lua scripting
+[] Text
+    [] Lazy gender resolvers for everything!
+    [] Also, handle sleepers!
 [] Spawning + Zones
     [] Spawning in zones
     [] Movement is zone-locked

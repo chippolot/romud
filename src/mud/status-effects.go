@@ -94,7 +94,7 @@ type StatusDataList []*StatusEffectData
 
 type StatusEffectData struct {
 	Type     StatusEffectMask
-	Duration utils.Seconds
+	Duration utils.Seconds `json:",omitempty"`
 }
 
 type StatusEffect struct {

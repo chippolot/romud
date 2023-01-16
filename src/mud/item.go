@@ -100,6 +100,13 @@ func (i *Item) NameCapitalized() string {
 	return string(arr)
 }
 
+func (i *Item) CanBeSeenBy(viewer *Entity) bool {
+	if viewer != nil && !viewer.CanSee() {
+		return false
+	}
+	return true
+}
+
 func (i *Item) Describe() string {
 	return i.cfg.FullDesc
 }

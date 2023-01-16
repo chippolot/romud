@@ -9,7 +9,7 @@ type NamedObservable interface {
 	Named
 }
 
-type LookDescriptor interface {
+type ObservableDescriptor interface {
 	Desc(observer *Entity) string
 }
 
@@ -33,10 +33,10 @@ func (d ObservableNameDescriptor) Desc(observer *Entity) string {
 	}
 }
 
-func LookName(o NamedObservable) LookDescriptor {
+func ObservableName(o NamedObservable) ObservableDescriptor {
 	return ObservableNameDescriptor{o, false}
 }
 
-func LookNameCap(o NamedObservable) LookDescriptor {
+func ObservableNameCap(o NamedObservable) ObservableDescriptor {
 	return ObservableNameDescriptor{o, true}
 }

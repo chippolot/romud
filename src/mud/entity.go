@@ -345,11 +345,15 @@ func (e *Entity) RemoveStatusEffect(status StatusEffectMask) bool {
 	return false
 }
 
+func (e *Entity) CanSee() bool {
+	return !e.entityFlags.Has(EFlag_Blind)
+}
+
 func (e *Entity) CanBeSeenBy(viewer *Entity) bool {
 	if e == viewer {
 		return true
 	}
-	if viewer != nil && viewer.entityFlags.Has(EFlag_Blind) {
+	if viewer != nil && !viewer.CanSee() {
 		return false
 	}
 	if e.entityFlags.Has(EFlag_Invisible) {

@@ -31,6 +31,7 @@ func GameLoop(w *World) {
 		{restoreStats, time.Second * 10, time.Now().UTC().Add(randSec())},
 		{scavengerNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{wanderNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
+		{aggroNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{runCombat, time.Second * 1, time.Now().UTC().Add(randSec())},
 		{logoutTheDead, time.Millisecond, time.Now().UTC().Add(randSec())},
 		{flushPlayerOuput, time.Millisecond, time.Now().UTC().Add(randSec())},
@@ -48,7 +49,6 @@ func GameLoop(w *World) {
 
 func updateStatusEffects(w *World) {
 	sec := time.Now().UTC().Second()
-	toRemove := make([]StatusEffectMask, 0)
 	for _, e := range w.entities {
 		if e.statusEffects.mask == 0 {
 			continue
@@ -61,18 +61,15 @@ func updateStatusEffects(w *World) {
 		}
 
 		// Decrease status timers
-		toRemove = toRemove[:0]
 		for _, s := range e.statusEffects.statusEffects {
-			if s.data.Duration == StatusEffectDuration_Permanent {
+			if s.data == nil {
 				continue
 			}
+			//TODO Use real elapsed time
 			s.data.Duration -= 1
 			if s.data.Duration <= 0 {
-				toRemove = append(toRemove, s.data.Type)
+				performRemoveStatusEffect(e, w, s.statusType, false)
 			}
-		}
-		for _, status := range toRemove {
-			performRemoveStatusEffect(e, w, status)
 		}
 	}
 }
@@ -165,6 +162,34 @@ func wanderNPCs(w *World) {
 		}
 
 		performMove(e, w, dir)
+	}
+}
+
+func aggroNPCs(w *World) {
+	for _, e := range w.entities {
+		if e.player != nil {
+			continue
+		}
+
+		// Only process aggro mobs
+		if !e.entityFlags.Has(EFlag_Aggro) {
+			continue
+		}
+
+		// Mob already fighting
+		if e.combat != nil {
+			continue
+		}
+
+		// Find target
+		r := w.rooms[e.data.RoomId]
+		for _, other := range r.entities {
+			if other == e || other.player == nil {
+				continue
+			}
+			performAttack(e, w, other)
+			break
+		}
 	}
 }
 

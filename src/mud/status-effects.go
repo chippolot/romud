@@ -3,6 +3,7 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 
 	"github.com/chippolot/go-mud/src/bits"
 	"github.com/chippolot/go-mud/src/utils"
@@ -10,16 +11,29 @@ import (
 
 const (
 	StatusEffectDuration_Permanent = 0
+)
 
+const (
 	// TODO Implement
 	StatusType_Poison StatusEffectMask = 1 << iota
 	StatusType_Blind
 	StatusType_Invisible
-	StatusType_Cursed
 	StatusType_Blessed
-	StatusType_NightVision
-	StatusType_FaerieFire
 )
+
+var StatusEffectConfigs = map[StatusEffectMask]*StatusEffectConfig{
+	StatusType_Blind: NewStatusEffectConfigBuilder().
+		WithEntityFlag(EFlag_Blind).
+		Build(),
+	StatusType_Invisible: NewStatusEffectConfigBuilder().
+		WithEntityFlag(EFlag_Invisible).
+		Build(),
+	StatusType_Blessed: NewStatusEffectConfigBuilder().
+		WithRollBonus(Roll_Hit, NewDice(1, 4, 0)).
+		Build(),
+}
+
+type StatusEffectDuration int
 
 type StatusEffectMask bits.Bits
 
@@ -31,14 +45,8 @@ func ParseStatusEffectType(str string) (StatusEffectMask, error) {
 		return StatusType_Blind, nil
 	case "invisible":
 		return StatusType_Invisible, nil
-	case "cursed":
-		return StatusType_Cursed, nil
 	case "blessed":
 		return StatusType_Blessed, nil
-	case "night vision":
-		return StatusType_NightVision, nil
-	case "faerie fire":
-		return StatusType_FaerieFire, nil
 	default:
 		return 0, fmt.Errorf("unknown status effect type: %s", str)
 	}
@@ -57,14 +65,8 @@ func (m *StatusEffectMask) String() string {
 		return "blind"
 	case StatusType_Invisible:
 		return "invisible"
-	case StatusType_Cursed:
-		return "cursed"
 	case StatusType_Blessed:
 		return "blessed"
-	case StatusType_NightVision:
-		return "night vision"
-	case StatusType_FaerieFire:
-		return "faerie fire"
 	}
 	return "unknown"
 }
@@ -84,33 +86,114 @@ func (m *StatusEffectMask) UnmarshalJSON(data []byte) (err error) {
 	return nil
 }
 
-type StatusEffectConfig struct {
+type ApplyStatusEffectConfig struct {
 	Type     StatusEffectMask
 	Duration utils.Seconds      `json:",omitempty"`
 	Save     *SavingThrowConfig `json:",omitempty"`
 }
 
-type StatusDataList []*StatusEffectData
+type StatusEffectConfig struct {
+	EntityFlags EntityFlagMask
+	Rolls       RollModConfigMap
+}
+
+func (cfg *StatusEffectConfig) getRollMod(roll RollType) *RollModConfig {
+	if cfg.Rolls == nil {
+		cfg.Rolls = make(RollModConfigMap)
+	}
+	mod := cfg.Rolls[roll]
+	if mod == nil {
+		mod = &RollModConfig{}
+		cfg.Rolls[roll] = mod
+	}
+	return mod
+}
+
+type StatusEffectConfigBuilder struct {
+	cfg *StatusEffectConfig
+}
+
+func NewStatusEffectConfigBuilder() *StatusEffectConfigBuilder {
+	return &StatusEffectConfigBuilder{&StatusEffectConfig{}}
+}
+
+func (b *StatusEffectConfigBuilder) WithEntityFlag(f EntityFlagMask) *StatusEffectConfigBuilder {
+	b.cfg.EntityFlags |= f
+	return b
+}
+
+func (b *StatusEffectConfigBuilder) WithRollAdvantage(roll RollType) *StatusEffectConfigBuilder {
+	mod := b.cfg.getRollMod(roll)
+	mod.Advantage = true
+	return b
+}
+
+func (b *StatusEffectConfigBuilder) WithRollDisadvantage(roll RollType) *StatusEffectConfigBuilder {
+	mod := b.cfg.getRollMod(roll)
+	mod.Disadvantage = true
+	return b
+}
+
+func (b *StatusEffectConfigBuilder) WithRollBonus(roll RollType, bonus Dice) *StatusEffectConfigBuilder {
+	mod := b.cfg.getRollMod(roll)
+	mod.Bonus = &bonus
+	return b
+}
+
+func (b *StatusEffectConfigBuilder) Build() *StatusEffectConfig {
+	return b.cfg
+}
+
+type StatusDataMap map[StatusEffectMask]*StatusEffectData
+
+func (m *StatusDataMap) MarshalJSON() ([]byte, error) {
+	m2 := make(map[string]utils.Seconds)
+	for statusType, data := range *m {
+		m2[statusType.String()] = data.Duration
+	}
+	return json.Marshal(m2)
+}
+
+func (m *StatusDataMap) UnmarshalJSON(data []byte) (err error) {
+	var m2 map[string]utils.Seconds
+	if err := json.Unmarshal(data, &m2); err != nil {
+		return err
+	}
+	*m = make(StatusDataMap)
+	for statusTypeStr, duration := range m2 {
+		if statusType, err := ParseStatusEffectType(statusTypeStr); err == nil {
+			(*m)[statusType] = &StatusEffectData{duration}
+		}
+	}
+	return nil
+}
 
 type StatusEffectData struct {
-	Type     StatusEffectMask
 	Duration utils.Seconds `json:",omitempty"`
 }
 
 type StatusEffect struct {
-	data        *StatusEffectData
-	entityFlags EntityFlagMask
+	statusType     StatusEffectMask
+	cfg            *StatusEffectConfig
+	data           *StatusEffectData
+	permanentCount int
 }
 
-func newStatusEffect(data *StatusEffectData) *StatusEffect {
-	var entityFlags EntityFlagMask
-	switch data.Type {
-	case StatusType_Blind:
-		entityFlags = EFlag_Blind
-	case StatusType_Invisible:
-		entityFlags = EFlag_Invisible
+func newStatusEffect(statusType StatusEffectMask, duration utils.Seconds) *StatusEffect {
+	cfg := StatusEffectConfigs[statusType]
+	if cfg == nil {
+		log.Printf("status effect `%v` is missing config", statusType)
+		return nil
 	}
-	return &StatusEffect{data, entityFlags}
+
+	permanentCount := 1
+	var data *StatusEffectData
+	if duration != StatusEffectDuration_Permanent {
+		data = &StatusEffectData{duration}
+		permanentCount = 0
+	}
+
+	return &StatusEffect{statusType, cfg, data, permanentCount}
 }
 
 type StatusEffects struct {
@@ -122,30 +205,29 @@ func newStatusEffects() *StatusEffects {
 	return &StatusEffects{make([]*StatusEffect, 0), 0}
 }
 
-func rollForStatusEffect(e *Entity, w *World, cfg *StatusEffectConfig) {
+func rollForStatusEffect(e *Entity, w *World, cfg *ApplyStatusEffectConfig) {
 	if cfg == nil || (cfg.Save != nil && SavingThrow(e, cfg.Save.Stat, cfg.Save.DC)) {
 		return
 	}
 	performAddStatusEffect(e, w, cfg.Type, cfg.Duration)
 }
 
-func performAddStatusEffect(e *Entity, w *World, status StatusEffectMask, duration utils.Seconds) {
+func performAddStatusEffect(e *Entity, w *World, statusType StatusEffectMask, duration utils.Seconds) {
 	oldStatusEffectFlags := e.statusEffects.mask
-	if e.AddStatusEffect(status, duration) {
+	if e.AddStatusEffect(statusType, duration) {
 		newStatusEffectFlags := e.statusEffects.mask
 		describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
 	}
 }
 
-func performRemoveStatusEffect(e *Entity, w *World, status StatusEffectMask) {
+func performRemoveStatusEffect(e *Entity, w *World, statusType StatusEffectMask, permanent bool) {
 	oldStatusEffectFlags := e.statusEffects.mask
-	if e.RemoveStatusEffect(status) {
+	if e.RemoveStatusEffect(statusType, permanent) {
 		newStatusEffectFlags := e.statusEffects.mask
 		describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
 	}
 }
 
-// TODO COLORIZE
 func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask, newFlags StatusEffectMask) {
 	for i := 0; i < 64; i++ {
 		var f StatusEffectMask = 1 << i
@@ -160,36 +242,21 @@ func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask,
 			case StatusType_Invisible:
 				SendToPlayer(e, Colorize(Color_Blue, "You vanish."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s seems to flicker out of existence.", ObservableNameCap(e))
-			case StatusType_Cursed:
-				SendToPlayer(e, Colorize(Color_Red, "You feel a wave of gloom descend on you."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s glows red for a moment.", ObservableNameCap(e))
 			case StatusType_Blessed:
 				SendToPlayer(e, Colorize(Color_Blue, "You feel a tingle as you're bathed in a white light."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s glows white for a moment.", ObservableNameCap(e))
-			case StatusType_NightVision:
-				SendToPlayer(e, Colorize(Color_Blue, "Everything looks a little brighter."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s's eyes flash brightly.", ObservableNameCap(e))
-			case StatusType_FaerieFire:
-				SendToPlayer(e, Colorize(Color_Red, "You begin emanating a bright purple light."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s beings emanating a bright purple light.", ObservableNameCap(e))
 			}
 		} else if oldFlags.Has(f) && !newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, "You feel much better.")
+				SendToPlayer(e, Colorize(Color_Green, "You feel much better."))
 			case StatusType_Blind:
-				SendToPlayer(e, "Your vision slowly returns")
+				SendToPlayer(e, Colorize(Color_Green, "Your vision slowly returns"))
 			case StatusType_Invisible:
-				SendToPlayer(e, "You blink back into existence.")
+				SendToPlayer(e, Colorize(Color_Blue, "You blink back into existence."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s blinks back into existence.", ObservableNameCap(e))
-			case StatusType_Cursed:
-				SendToPlayer(e, "It feels like a weight has been lifted from you.")
 			case StatusType_Blessed:
-				SendToPlayer(e, "You feel the warm cozy feeling fade.")
-			case StatusType_NightVision:
-				SendToPlayer(e, "Your vision returns to normal.")
-			case StatusType_FaerieFire:
-				SendToPlayer(e, "The light emanating from you fades.")
+				SendToPlayer(e, Colorize(Color_Blue, "You feel the warm cozy feeling fade."))
 			}
 		}
 	}

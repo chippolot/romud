@@ -16,6 +16,7 @@ const (
 	EFlag_UsesEquipment                             // Can use equipment
 	EFlag_Blind                                     // Cannot see
 	EFlag_Invisible                                 // Cannot be seen
+	EFlag_Aggro                                     // Attacks enemies on sight
 )
 
 func ParseEntityFlag(str string) (EntityFlagMask, error) {
@@ -32,6 +33,8 @@ func ParseEntityFlag(str string) (EntityFlagMask, error) {
 		return EFlag_Blind, nil
 	case "invisible":
 		return EFlag_Invisible, nil
+	case "aggro":
+		return EFlag_Aggro, nil
 	default:
 		return 0, fmt.Errorf("unknown entity flag: %s", str)
 	}

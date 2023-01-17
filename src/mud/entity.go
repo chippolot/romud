@@ -49,7 +49,7 @@ type EntityData struct {
 	Stats     StatMap          `json:",omitempty"`
 	Inventory []*ItemData      `json:",omitempty"`
 	Equipped  EquipmentDataMap `json:",omitempty"`
-	Statuses  StatusDataList   `json:",omitempty"`
+	Statuses  StatusDataMap    `json:",omitempty"`
 }
 
 type EntityContainer interface {
@@ -83,7 +83,7 @@ func NewEntity(cfg *EntityConfig) *Entity {
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataList, 0)}
+	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
 }
 
 func (e *Entity) SetData(data *EntityData, w *World) {
@@ -91,10 +91,10 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 
 	// Prepare status effects
 	if e.data.Statuses == nil {
-		e.data.Statuses = make(StatusDataList, 0)
+		e.data.Statuses = make(StatusDataMap)
 	}
-	for _, sdata := range e.data.Statuses {
-		statusEffect := newStatusEffect(sdata)
+	for statusType, sData := range e.data.Statuses {
+		statusEffect := newStatusEffect(statusType, sData.Duration)
 		e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
 	}
 	e.updateStatusEffectsMask()
@@ -308,18 +308,33 @@ func (e *Entity) AC() int {
 	return e.cfg.Stats.AC + int(sum+float64(dexBonus)*dexBonusRatio)
 }
 
-func (e *Entity) AddStatusEffect(status StatusEffectMask, duration utils.Seconds) bool {
+func (e *Entity) AddStatusEffect(statusType StatusEffectMask, duration utils.Seconds) bool {
 	for _, s := range e.statusEffects.statusEffects {
-		if s.data.Type == status {
-			s.data.Duration = utils.Seconds(math.Max(float64(s.data.Duration), float64(duration)))
+		if s.statusType == statusType {
+			if duration == StatusEffectDuration_Permanent {
+				s.permanentCount++
+			} else {
+				if s.data == nil {
+					s.data = &StatusEffectData{duration}
+					e.data.Statuses[statusType] = s.data
+				} else {
+					s.data.Duration = utils.Seconds(math.Max(float64(s.data.Duration), float64(duration)))
+				}
+			}
 			return false
 		}
 	}
-	data := &StatusEffectData{status, duration}
-	statusEffect := newStatusEffect(data)
-	e.data.Statuses = append(e.data.Statuses, data)
+	statusEffect := newStatusEffect(statusType, duration)
+	if duration == StatusEffectDuration_Permanent {
+		statusEffect.permanentCount = 1
+	} else {
+		e.data.Statuses[statusType] = statusEffect.data
+	}
 	e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
-	if statusEffect.entityFlags != 0 {
+	for r, m := range statusEffect.cfg.Rolls {
+		e.stats.AddRollMod(r, m, statusEffect)
+	}
+	if statusEffect.cfg.EntityFlags != 0 {
 		e.updateEntityFlagsMask()
 	}
 	e.updateStatusEffectsMask()
@@ -330,16 +345,35 @@ func (e *Entity) HasStatusEffect(status StatusEffectMask) bool {
 	return e.statusEffects.mask.Has(status)
 }
 
-func (e *Entity) RemoveStatusEffect(status StatusEffectMask) bool {
+// TODO Don't love the permanent flag here -- what else can I name this?
+func (e *Entity) RemoveStatusEffect(statusType StatusEffectMask, permanent bool) bool {
 	for idx, s := range e.statusEffects.statusEffects {
-		if s.data.Type == status {
-			e.statusEffects.statusEffects = utils.SwapDelete(e.statusEffects.statusEffects, idx)
-			e.data.Statuses = utils.SwapDelete(e.data.Statuses, idx)
-			if s.entityFlags != 0 {
-				e.updateEntityFlagsMask()
+		if s.statusType == statusType {
+			if permanent {
+				// If the removal is of a permanent counter, mark it down
+				s.permanentCount--
+			} else {
+				// Otherwise, the status effect's duration has elapsed, remove duration data
+				s.data = nil
+				delete(e.data.Statuses, statusType)
 			}
-			e.updateStatusEffectsMask()
-			return true
+
+			// If the permanent counters have all been removed and the temporary duration has elapsed,
+			// remove the effect
+			if s.permanentCount == 0 && s.data == nil {
+				e.statusEffects.statusEffects = utils.SwapDelete(e.statusEffects.statusEffects, idx)
+
+				for r, m := range s.cfg.Rolls {
+					e.stats.RemoveRollMod(r, m, s)
+				}
+				if s.cfg.EntityFlags != 0 {
+					e.updateEntityFlagsMask()
+				}
+				e.updateStatusEffectsMask()
+				return true
+			} else {
+				return false
+			}
 		}
 	}
 	return false
@@ -492,15 +526,7 @@ func (e *Entity) onEquipped(item *Item) {
 		e.stats.AddMod(s, m)
 	}
 	for r, m := range item.cfg.Equipment.Rolls {
-		if m.Advantage {
-			e.stats.AddAdvantage(r, 1)
-		}
-		if m.Disadvantage {
-			e.stats.AddAdvantage(r, -1)
-		}
-		if m.Bonus != nil {
-			e.stats.AddRollBonus(r, *m.Bonus, item)
-		}
+		e.stats.AddRollMod(r, m, item)
 	}
 	if item.cfg.Equipment.StatusEffect != 0 {
 		e.AddStatusEffect(item.cfg.Equipment.StatusEffect, StatusEffectDuration_Permanent)
@@ -512,18 +538,10 @@ func (e *Entity) onUnequipped(item *Item) {
 		e.stats.RemoveMod(s, m)
 	}
 	for r, m := range item.cfg.Equipment.Rolls {
-		if m.Advantage {
-			e.stats.AddAdvantage(r, -1)
-		}
-		if m.Disadvantage {
-			e.stats.AddAdvantage(r, 1)
-		}
-		if m.Bonus != nil {
-			e.stats.RemoveRollBonus(r, item)
-		}
+		e.stats.RemoveRollMod(r, m, item)
 	}
 	if item.cfg.Equipment.StatusEffect != 0 {
-		e.RemoveStatusEffect(item.cfg.Equipment.StatusEffect)
+		e.RemoveStatusEffect(item.cfg.Equipment.StatusEffect, true)
 	}
 }
 
@@ -539,7 +557,7 @@ func (e *Entity) bestEquipSlot(slots ...EquipSlot) EquipSlot {
 func (e *Entity) updateStatusEffectsMask() {
 	e.statusEffects.mask = 0
 	for _, s := range e.statusEffects.statusEffects {
-		e.statusEffects.mask |= s.data.Type
+		e.statusEffects.mask |= s.statusType
 	}
 	e.updateEntityFlagsMask()
 }
@@ -548,7 +566,7 @@ func (e *Entity) updateEntityFlagsMask() {
 	e.entityFlags = 0
 	e.entityFlags |= e.cfg.Flags
 	for _, s := range e.statusEffects.statusEffects {
-		e.entityFlags |= s.entityFlags
+		e.entityFlags |= s.cfg.EntityFlags
 	}
 }
 

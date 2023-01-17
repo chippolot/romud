@@ -288,19 +288,30 @@ func (s *Stats) RemoveMod(stat StatType, mod int) {
 	s.clamp()
 }
 
-func (s *Stats) AddAdvantage(roll RollType, num int) {
+func (s *Stats) AddRollMod(roll RollType, cfg *RollModConfig, key any) {
 	mods := s.getRollMods(roll)
-	mods.AdvantageCount += num
+	if cfg.Advantage {
+		mods.AdvantageCount++
+	}
+	if cfg.Disadvantage {
+		mods.DisadvantageCount--
+	}
+	if cfg.Bonus != nil {
+		mods.ExtraDice[key] = *cfg.Bonus
+	}
 }
 
-func (s *Stats) AddRollBonus(roll RollType, dice Dice, key any) {
+func (s *Stats) RemoveRollMod(roll RollType, cfg *RollModConfig, key any) {
 	mods := s.getRollMods(roll)
-	mods.ExtraDice[key] = dice
-}
-
-func (s *Stats) RemoveRollBonus(roll RollType, key any) {
-	mods := s.getRollMods(roll)
-	delete(mods.ExtraDice, key)
+	if cfg.Advantage {
+		mods.AdvantageCount--
+	}
+	if cfg.Disadvantage {
+		mods.DisadvantageCount++
+	}
+	if cfg.Bonus != nil {
+		delete(mods.ExtraDice, key)
+	}
 }
 
 func (s *Stats) RollAdvantageCount(roll RollType) int {

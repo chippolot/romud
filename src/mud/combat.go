@@ -83,12 +83,13 @@ func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
 	}
 }
 
+// TODO Consider renaming
 type AttackData struct {
 	ToHit                    int
 	Damage                   Dice
 	DamageMod                Dice
 	DamageType               DamageType
-	Effect                   *StatusEffectConfig
+	Effect                   *ApplyStatusEffectConfig
 	VerbSingular, VerbPlural string
 }
 
@@ -98,7 +99,7 @@ type AttackConfig struct {
 	ToHit        int
 	Damage       Dice
 	DamageType   DamageType
-	Effect       *StatusEffectConfig `json:",omitempty"`
+	Effect       *ApplyStatusEffectConfig `json:",omitempty"`
 	VerbSingular string
 	VerbPlural   string
 	Weight       float32

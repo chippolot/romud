@@ -94,6 +94,8 @@
     [x] Remove on login
     [x] From attacks
     [x] From equipment
+    [x] Advantage / Disadvantage
+    [x] Roll Boosts
 [x] Text
     [x] Handle blind + invisible at room level -- needs new text parsing
         [x] Need to differentiate between actions player can FEEL vs ones they can SEE
@@ -101,14 +103,16 @@
 [x] Equipment
     [x] Advantage / Disadvantage
     [x] Roll Boosts
+[x] Advantage / Disadvantage Sources
 ----------------------------------------
+[] Lua scripting
+[] Status Display
+    [] Hit adv/dis
+    [] Hit bonus
+    [] Dam bonus
 [] Status Effects
-    [+] Advantage / Disadvantage
-    [+] Roll Boosts
     [] Finish implementing
     [] Immunities
-[] Lua scripting
-[] Advantage / Disadvantage Sources
 [] Light Sources
     [] Weather
     [] Indoors / Sector Type

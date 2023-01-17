@@ -11,6 +11,7 @@ import (
 	"github.com/chippolot/go-mud/src/mud"
 	"github.com/chippolot/go-mud/src/mud/server"
 	"github.com/chippolot/go-mud/src/utils"
+	lua "github.com/yuin/gopher-lua"
 )
 
 func main() {
@@ -31,8 +32,12 @@ func main() {
 	// Create events channel
 	events := make(chan server.SessionEvent, 32)
 
+	// Create lua state
+	luaState := lua.NewState()
+	defer luaState.Close()
+
 	// Create world
-	world := mud.NewWorld(db, events)
+	world := mud.NewWorld(db, luaState, events)
 	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
 	world.SetEntryRoomId(3001)
 

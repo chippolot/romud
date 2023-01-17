@@ -65,7 +65,8 @@
             "Cha": 4,
             "Level": 1,
             "XPValue": 25
-        }
+        },
+        "ScriptFile": "scripts/rat.lua"
     },
     {
         "Key": "janitor",

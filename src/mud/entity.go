@@ -19,16 +19,19 @@ type EntityId int32
 type EntityConfigList []*EntityConfig
 
 type EntityConfig struct {
-	Key      string
-	Name     string
-	Gender   Gender
-	Keywords []string
-	RoomDesc string
-	FullDesc string
-	Stats    *StatsConfig
-	Attacks  []*AttackConfig
-	Flags    EntityFlagMask
-	lookup   map[string]bool
+	Key        string
+	Name       string
+	Gender     Gender
+	Keywords   []string
+	RoomDesc   string
+	FullDesc   string
+	Stats      *StatsConfig
+	Attacks    []*AttackConfig
+	Flags      EntityFlagMask
+	ScriptFile string
+
+	scripts *EntityScripts
+	lookup  map[string]bool
 }
 
 func (cfg *EntityConfig) Init() {

@@ -7,20 +7,24 @@ import (
 )
 
 type EntityScripts struct {
-	willLeaveRoom func(*Entity, *Room)
-	didEnterRoom  func(*Entity, *Room)
+	enteredRoom       func(*Entity, *Room)
+	entityEnteredRoom func(*Entity, *Entity, *Room)
 }
 
 func NewEntityScripts(luaState *lua.LState, tbl *lua.LTable) *EntityScripts {
 	scripts := &EntityScripts{}
-	if fn := getScriptFunc(tbl, "willLeaveRoom"); fn != nil {
-		scripts.willLeaveRoom = func(e *Entity, r *Room) {
-			luaState.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}) // TODO pass entity and room
+	if fn := getScriptFunc(tbl, "entityEnteredRoom"); fn != nil {
+		scripts.entityEnteredRoom = func(self *Entity, other *Entity, room *Room) {
+			if err := luaState.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}); err != nil {
+				log.Panicln("error calling enteredRoom script: ", err)
+			}
 		}
 	}
-	if fn := getScriptFunc(tbl, "didEnterRoom"); fn != nil {
-		scripts.didEnterRoom = func(e *Entity, r *Room) {
-			luaState.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}) // TODO pass entity and room
+	if fn := getScriptFunc(tbl, "enteredRoom"); fn != nil {
+		scripts.enteredRoom = func(self *Entity, room *Room) {
+			if err := luaState.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}); err != nil {
+				log.Panicln("error calling enteredRoom script: ", err)
+			}
 		}
 	}
 	return scripts
@@ -40,12 +44,14 @@ func getScriptFunc(tbl *lua.LTable, fnName string) *lua.LFunction {
 }
 
 func triggerEnterRoomScript(e *Entity, r *Room) {
-	if e.cfg.scripts != nil && e.cfg.scripts.didEnterRoom != nil {
-		e.cfg.scripts.didEnterRoom(e, r)
+	if e.cfg.scripts != nil && e.cfg.scripts.enteredRoom != nil {
+		e.cfg.scripts.enteredRoom(e, r)
 	}
 }
-func triggerWillLeaveRoomScript(e *Entity, r *Room) {
-	if e.cfg.scripts != nil && e.cfg.scripts.willLeaveRoom != nil {
-		e.cfg.scripts.willLeaveRoom(e, r)
+func triggerEntityEnteredRoomScript(e *Entity, r *Room) {
+	for _, e2 := range r.entities {
+		if e2.cfg.scripts != nil && e2.cfg.scripts.entityEnteredRoom != nil {
+			e2.cfg.scripts.entityEnteredRoom(e2, e, r)
+		}
 	}
 }

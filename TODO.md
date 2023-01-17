@@ -105,7 +105,12 @@
     [x] Roll Boosts
 [x] Advantage / Disadvantage Sources
 ----------------------------------------
-[] Lua scripting
+[+] Lua scripting
+    [] EnterRoom / EntityEnterRoom
+    [] Bindings
+        [] Attack
+        [] Say
+        [] Move
 [] Status Display
     [] Hit adv/dis
     [] Hit bonus

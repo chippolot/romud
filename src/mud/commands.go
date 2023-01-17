@@ -689,10 +689,6 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders %s", ObservableNameCap(e), dir.String())
 	}
 
-	if e.player == nil {
-		triggerWillLeaveRoomScript(e, curRoom)
-	}
-
 	curRoom.RemoveEntity(e)
 	nextRoom.AddEntity(e)
 
@@ -712,6 +708,7 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 
 	e.stats.Add(Stat_Mov, -1)
 
+	triggerEntityEnteredRoomScript(e, nextRoom)
 	if e.player != nil {
 		DoLook(e, w, nil)
 	} else {

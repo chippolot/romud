@@ -110,7 +110,7 @@ func Colorize(color ANSIColor, a any) string {
 }
 
 func sendToPlayer(e *Entity, subject *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
-	if e.player == nil {
+	if e == nil || e.player == nil {
 		return
 	}
 	if subject != nil && subject != e && restrictions.Has(SendRst_CanSee) && !subject.CanBeSeenBy(e) {

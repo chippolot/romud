@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"fmt"
 	"math"
 	"math/rand"
 	"time"
@@ -161,7 +160,7 @@ func wanderNPCs(w *World) {
 			continue
 		}
 
-		performMove(e, w, dir)
+		performMoveDirection(e, w, dir)
 	}
 }
 
@@ -236,11 +235,7 @@ func scavengerNPCs(w *World) {
 		}
 
 		if toPickup != nil {
-			performGet(e, w,
-				func(i *Item) string { return "" },
-				func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.NameCapitalized(), toPickup.Name()) },
-				r,
-				toPickup)
+			performGet(e, w, toPickup)
 		}
 	}
 }

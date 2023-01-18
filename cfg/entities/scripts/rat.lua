@@ -1,10 +1,10 @@
 return {
     enteredRoom = function(self, room)
-        act.say(self, "I have arrived!")
+        Act.Say(self, "I have arrived!")
     end,
     entityEnteredRoom = function(self, other, room)
-        if util.chance() < 20 then
-            act.whisper(self, other, "Hello friend!")
+        if Util.Chance() < 20 then
+            Act.Whisper(self, other, "Hello friend!")
         end
     end
 }

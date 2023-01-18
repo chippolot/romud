@@ -9,7 +9,7 @@ func DoMove(e *Entity, w *World, tokens []string) {
 		SendToPlayer(e, "%s isn't a direction!", cmd)
 	}
 
-	_ = performMove(e, w, dir)
+	_ = performMoveDirection(e, w, dir)
 }
 
 func DoSit(e *Entity, w *World, _ []string) {
@@ -66,7 +66,7 @@ func DoStand(e *Entity, w *World, _ []string) {
 	}
 }
 
-func performMove(e *Entity, w *World, dir Direction) bool {
+func performMoveDirection(e *Entity, w *World, dir Direction) bool {
 	if e.stats.Get(Stat_Mov) <= 0 {
 		SendToPlayer(e, "You're way too tired...")
 		return false
@@ -80,51 +80,70 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 		return false
 	}
 
-	curRoom := w.rooms[e.data.RoomId]
+	srcRoom := w.rooms[e.data.RoomId]
 
-	nextRoomId, ok := curRoom.cfg.Exits[dir]
+	nextRoomId, ok := srcRoom.cfg.Exits[dir]
 	if !ok {
 		SendToPlayer(e, "Can't go that way!")
 		return false
 	}
 
-	nextRoom, ok := w.rooms[nextRoomId]
+	dstRoom, ok := w.rooms[nextRoomId]
 	if !ok {
 		log.Printf("Tried to move to invalid room id: %d", nextRoomId)
 		SendToPlayer(e, "An unseen force blocks you from going there!")
 		return false
 	}
 
-	if e.player != nil {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s leaves %s", ObservableNameCap(e), dir.String())
-	} else {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders %s", ObservableNameCap(e), dir.String())
-	}
+	performMove(e, w, dstRoom, func() {
+		if e.player != nil {
+			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s leaves %s", ObservableNameCap(e), dir.String())
+		} else {
+			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders %s", ObservableNameCap(e), dir.String())
+		}
+	}, func() {
+		fromDirStr := ""
+		fromDir, err := dir.Reverse()
+		if err != nil {
+			fromDirStr = "somewhere"
+		} else {
+			fromDirStr = fromDir.String()
+		}
 
-	curRoom.RemoveEntity(e)
-	nextRoom.AddEntity(e)
-
-	fromDirStr := ""
-	fromDir, err := dir.Reverse()
-	if err != nil {
-		fromDirStr = "somewhere"
-	} else {
-		fromDirStr = fromDir.String()
-	}
-
-	if e.player != nil {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s enters from the %s", ObservableNameCap(e), fromDirStr)
-	} else {
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders in from the %s", ObservableNameCap(e), fromDirStr)
-	}
+		if e.player != nil {
+			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s enters from the %s", ObservableNameCap(e), fromDirStr)
+		} else {
+			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders in from the %s", ObservableNameCap(e), fromDirStr)
+		}
+	})
 
 	e.stats.Add(Stat_Mov, -1)
+	return true
+}
+
+func performMoveRoom(e *Entity, w *World, dstRoom *Room) {
+	// TODO broadcast something here!
+	performMove(e, w, dstRoom, nil, nil)
+}
+
+func performMove(e *Entity, w *World, dstRoom *Room, broadcastLeaveFn func(), broadcastEnterFn func()) {
+	srcRoom := w.rooms[e.data.RoomId]
+
+	if broadcastLeaveFn != nil {
+		broadcastLeaveFn()
+	}
+
+	srcRoom.RemoveEntity(e)
+	dstRoom.AddEntity(e)
+
+	if broadcastEnterFn != nil {
+		broadcastEnterFn()
+	}
 
 	if e.player != nil {
 		DoLook(e, w, nil)
 	} else {
-		triggerEnterRoomScript(e, nextRoom)
+		triggerEnterRoomScript(e, dstRoom)
 	}
-	triggerEntityEnteredRoomScript(e, nextRoom)
-	return true
+	triggerEntityEnteredRoomScript(e, dstRoom)
 }

@@ -104,13 +104,22 @@
     [x] Advantage / Disadvantage
     [x] Roll Boosts
 [x] Advantage / Disadvantage Sources
+[x] Lua Scripting
+    [x] EnterRoom / EntityEnterRoom
+    [x] Bindings
+        [x] Attack
+        [x] Say / Whisper / Yell
+        [x] Move
+        [x] Get / Equip / Unequip
+    [x] Example : Equipper Mob
+        [x] Picks up equippable items off the ground
+        [x] Equips items
+            [x] Only if slot open
+            [x] When picked up
+            [x] When given
+        [x] Boasts about it
 ----------------------------------------
-[+] Lua scripting
-    [] EnterRoom / EntityEnterRoom
-    [] Bindings
-        [] Attack
-        [] Say
-        [] Move
+[] Lua scripting
 [] Status Display
     [] Hit adv/dis
     [] Hit bonus

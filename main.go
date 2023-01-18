@@ -45,7 +45,7 @@ func main() {
 	mud.RegisterGlobalLuaBindings(L, world)
 
 	// Create test entity
-	addEntities(world, "mob", "rat", "rat", "janitor")
+	addEntities(world, "mob", "rat", "rat", "janitor", "equipper")
 
 	// Create test item
 	addItems(world, "woodshortsword", "bag", "ancientscroll", "anvil", "woodbplate", "woodgreaves", "woodhelm")

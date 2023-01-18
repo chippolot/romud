@@ -9,6 +9,15 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
+const (
+	DirNorth Direction = iota
+	DirEast
+	DirSouth
+	DirWest
+	DirUp
+	DirDown
+)
+
 type RoomId int32
 
 type RoomExitsConfig map[Direction]RoomId
@@ -228,15 +237,6 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 }
 
 type Direction int
-
-const (
-	DirNorth Direction = iota
-	DirEast
-	DirSouth
-	DirWest
-	DirUp
-	DirDown
-)
 
 func ParseDirection(s string) (Direction, error) {
 	s = strings.TrimSpace(strings.ToLower(s))

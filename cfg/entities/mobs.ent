@@ -95,5 +95,34 @@
             "Level": 1,
             "XPValue": 10
         }
+    },
+    {
+        "Key": "equipper",
+        "Name": "the equipper",
+        "Keywords": ["equipper"],
+        "RoomDesc": "The equipper is rummaging around, looking for things to equip.",
+        "Attacks": [{
+            "Name": "Punch",
+            "ToHit": 4,
+            "Damage": "1d4",
+            "DamageType": "bludgeoning",
+            "VerbSingular": "punch",
+            "VerbPlural": "punches"
+        }],
+        "Flags": ["usesequipment", "stationary"],
+        "Stats": {
+            "HP": "1d6+4",
+            "AC": 10,
+            "Speed": 30,
+            "Str": 10,
+            "Dex": 10,
+            "Con": 10,
+            "Int": 10,
+            "Wis": 10,
+            "Cha": 10,
+            "Level": 1,
+            "XPValue": 10
+        },
+        "ScriptFile": "scripts/equipper.lua"
     }
 ]

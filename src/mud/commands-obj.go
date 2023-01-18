@@ -1,8 +1,6 @@
 package mud
 
 import (
-	"fmt"
-
 	"github.com/chippolot/go-mud/src/utils"
 )
 
@@ -58,13 +56,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		if len(items) == 0 {
 			SendToPlayer(e, "The %s is empty", ObservableName(containerItem))
 		} else {
-			// TODO FIX THESE OBSERVABLES
-			performGet(e, w,
-				func(i *Item) string { return fmt.Sprintf("You get %s from %s", i.Name(), containerItem.Name()) },
-				func(i *Item) string {
-					return fmt.Sprintf("%s gets %s from %s", e.NameCapitalized(), i.Name(), containerItem.Name())
-				},
-				containerItem, items...)
+			performGet(e, w, containerItem, items...)
 		}
 	} else {
 		// Find item in room
@@ -73,11 +65,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 			SendToPlayer(e, "You don't see that here...")
 			return
 		}
-		// TODO FIX THESE OBSERVABLES
-		performGet(e, w,
-			func(i *Item) string { return fmt.Sprintf("You pick up %s", i.Name()) },
-			func(i *Item) string { return fmt.Sprintf("%s picks up %s", e.NameCapitalized(), i.Name()) },
-			r, items...)
+		performGet(e, w, r, items...)
 	}
 }
 
@@ -116,13 +104,7 @@ func DoGive(e *Entity, w *World, tokens []string) {
 		return
 	}
 	for _, item := range items {
-		// Perform transfer and notify
-		e.RemoveItem(item)
-		target.AddItem(item)
-
-		SendToPlayer(e, "You give %s to %s", ObservableName(item), ObservableName(target))
-		SendToPlayerRe(target, e, SendRst_CanSee, "%s give %s to you", ObservableNameCap(e), ObservableName(item))
-		BroadcastToRoomRe2(w, e, target, SendRst_CanSee, "%s gives %s to %s", ObservableNameCap(e), ObservableName(item), ObservableName(target))
+		performTransferItem(w, e, target, item)
 	}
 }
 
@@ -163,13 +145,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 		if item == container {
 			continue
 		}
-
-		// Perform transfer and notify
-		e.RemoveItem(item)
-		container.AddItem(item)
-
-		SendToPlayer(e, "You put %s in %s", ObservableName(item), ObservableName(container))
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s puts %s in %s", ObservableNameCap(e), ObservableName(item), ObservableName(container))
+		performTransferItem(w, e, container, item)
 	}
 }
 
@@ -183,13 +159,14 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	if items := e.SearchItems(itemQuery); len(items) == 0 {
-		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+		if itemQuery.Keyword == "all" {
+			SendToPlayer(e, "You have nothing to drop!")
+		} else {
+			SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+		}
 	} else {
 		for _, item := range items {
-			e.RemoveItem(item)
-			r.AddItem(item)
-			SendToPlayer(e, "You drop %s", ObservableName(item))
-			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s drops %s", ObservableNameCap(e), ObservableName(item))
+			performTransferItem(w, e, r, item)
 		}
 	}
 }
@@ -234,7 +211,7 @@ func DoUnequip(e *Entity, w *World, tokens []string) {
 	}
 }
 
-func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn func(*Item) string, from ItemContainer, items ...*Item) {
+func performGet(e *Entity, w *World, from ItemContainer, items ...*Item) {
 	if len(items) == 0 {
 		containerName := "something"
 		if named, ok := from.(Named); ok {
@@ -244,42 +221,85 @@ func performGet(e *Entity, w *World, playerMsgFn func(*Item) string, roomMsgFn f
 		return
 	}
 
-	r := w.rooms[e.data.RoomId]
-
 	for _, item := range items {
+		performTransferItem(w, from, e, item)
+	}
+}
 
-		// Can't pick up environmental items
-		if item.cfg.Flags.Has(IFlag_Environmental) {
-			SendToPlayer(e, "You can't pick that up!")
-			continue
+func performTransferItem(w *World, src ItemContainer, dst ItemContainer, item *Item) {
+	dstE, _ := dst.(*Entity)
+
+	// Can't transfer environmental items
+	if item.cfg.Flags.Has(IFlag_Environmental) {
+		SendToPlayer(dstE, "You can't pick that up!")
+		return
+	}
+
+	// Check destination's item capacity
+	if dstE != nil && dst.ItemWeight()+item.ItemWeight() > dstE.stats.CarryingCapacity() {
+		SendToPlayer(dstE, "You can't hold the weight of %s", ObservableName(item))
+		return
+	}
+
+	// Start transfer
+	src.RemoveItem(item)
+
+	// Some items crumble!
+	if item.cfg.Flags.Has(IFlag_Crumbles) {
+		if dstE != nil {
+			SendToPlayer(dstE, "%s crumbles to dust as you touch it", ObservableNameCap(item))
+			BroadcastToRoomRe(w, dstE, SendRst_None, "%s crumbles to dust as %s touches it", ObservableNameCap(item), ObservableName(dstE))
 		}
 
-		if e.ItemWeight()+item.ItemWeight() > e.stats.CarryingCapacity() {
-			SendToPlayer(e, "You can't hold the weight of %s", ObservableName(item))
-			continue
-		}
-
-		// Start transfer
-		from.RemoveItem(item)
-
-		// Some items crumble!
-		if item.cfg.Flags.Has(IFlag_Crumbles) {
-			SendToPlayer(e, "%s crumbles to dust as you touch it", ObservableNameCap(item))
-			BroadcastToRoomRe(w, e, SendRst_None, "%s crumbles to dust as %s touches it", ObservableNameCap(item), ObservableName(e))
-
-			// Drop all items in parent container
-			if item.cfg.Flags.Has(IFlag_Container) {
-				for _, i2 := range item.RemoveAllFromContainer() {
-					from.AddItem(i2)
-					BroadcastToRoom(r, "%s falls to the floor", ObservableName(i2))
-				}
+		// Drop all items in parent container
+		if item.cfg.Flags.Has(IFlag_Container) {
+			for _, i2 := range item.RemoveAllFromContainer() {
+				src.AddItem(i2)
+				onItemTransferred(w, src, dst, item)
 			}
-			continue
-		} else {
-			// Finish transfer and notify
-			e.AddItem(item)
-			SendToPlayer(e, playerMsgFn(item))
-			BroadcastToRoomRe(w, e, SendRst_CanSee, roomMsgFn(item))
+		}
+		return
+	}
+
+	// Finish transfer and notify
+	dst.AddItem(item)
+	onItemTransferred(w, src, dst, item)
+}
+
+func onItemTransferred(w *World, src ItemContainer, dst ItemContainer, item *Item) {
+	// Transferring to entity
+	if dstE, ok := dst.(*Entity); ok {
+		switch fromObj := src.(type) {
+		// Item picked up
+		case *Room:
+			SendToPlayer(dstE, "You pick up %s", ObservableName(item))
+			BroadcastToRoomRe(w, dstE, SendRst_CanSee, "%s picks up %s", ObservableNameCap(dstE), ObservableName(item))
+		// Item given
+		case *Entity:
+			SendToPlayer(fromObj, "You give %s to %s", ObservableName(item), ObservableName(dstE))
+			SendToPlayerRe(dstE, fromObj, SendRst_CanSee, "%s give %s to you", ObservableNameCap(fromObj), ObservableName(item))
+			BroadcastToRoomRe2(w, fromObj, dstE, SendRst_CanSee, "%s gives %s to %s", ObservableNameCap(fromObj), ObservableName(item), ObservableName(dstE))
+			triggerGivenItemScript(dstE, fromObj, item)
+		// Item otherwise received
+		case NamedObservable:
+			SendToPlayer(dstE, "You get %s from %s", ObservableName(item), ObservableName(fromObj))
+			BroadcastToRoomRe(w, dstE, SendRst_CanSee, "%s gets %s from %s", ObservableNameCap(dstE), ObservableName(item), ObservableName(fromObj))
+		}
+		triggerReceivedItemScript(dstE, item)
+		return
+	}
+
+	// Transferring to room
+	if dstR, ok := dst.(*Room); ok {
+		switch fromObj := src.(type) {
+		// Item dropped
+		case *Entity:
+			SendToPlayer(fromObj, "You drop %s", ObservableName(item))
+			BroadcastToRoomRe(w, fromObj, SendRst_CanSee, "%s drops %s", ObservableNameCap(fromObj), ObservableName(item))
+			triggerItemDroppedScript(item, dstR)
+		// Item fell
+		default:
+			BroadcastToRoom(dstR, "%s falls to the floor", ObservableName(item))
 		}
 	}
 }

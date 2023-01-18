@@ -11,11 +11,11 @@ import (
 func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl := L.NewTable()
 	entityTbl.RawSetString("Name", luar.New(L, lua_EntityName))
-	entityTbl.RawSetString("IsEquipSlotOpen", luar.New(L, lua_EntityIsEquipSlotOpen))
+	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
 	L.SetGlobal("Entity", entityTbl)
 
 	itemTbl := L.NewTable()
-	itemTbl.RawSetString("IsEquippable", luar.New(L, lua_ItemIsEquippable))
+	itemTbl.RawSetString("Equippable", luar.New(L, lua_ItemEquippable))
 	itemTbl.RawSetString("EquipSlot", luar.New(L, lua_ItemEquipSlot))
 	L.SetGlobal("Item", itemTbl)
 
@@ -24,17 +24,11 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	L.SetGlobal("Room", roomTbl)
 
 	dirTbl := L.NewTable()
-	dirTbl.RawSetString("N", lua.LNumber(DirNorth))
 	dirTbl.RawSetString("North", lua.LNumber(DirNorth))
-	dirTbl.RawSetString("S", lua.LNumber(DirSouth))
 	dirTbl.RawSetString("South", lua.LNumber(DirSouth))
-	dirTbl.RawSetString("E", lua.LNumber(DirEast))
 	dirTbl.RawSetString("East", lua.LNumber(DirEast))
-	dirTbl.RawSetString("W", lua.LNumber(DirWest))
 	dirTbl.RawSetString("West", lua.LNumber(DirWest))
-	dirTbl.RawSetString("U", lua.LNumber(DirUp))
 	dirTbl.RawSetString("Up", lua.LNumber(DirUp))
-	dirTbl.RawSetString("D", lua.LNumber(DirDown))
 	dirTbl.RawSetString("Down", lua.LNumber(DirDown))
 	L.SetGlobal("Dir", dirTbl)
 
@@ -58,12 +52,12 @@ func lua_EntityName(e *Entity) string {
 	return e.Name()
 }
 
-func lua_EntityIsEquipSlotOpen(e *Entity, slot EquipSlot) bool {
+func lua_EntityEquipSlotOpen(e *Entity, slot EquipSlot) bool {
 	_, ok := e.data.Equipped[slot]
 	return !ok
 }
 
-func lua_ItemIsEquippable(i *Item) bool {
+func lua_ItemEquippable(i *Item) bool {
 	return i.cfg.Equipment != nil
 }
 

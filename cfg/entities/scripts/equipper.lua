@@ -1,5 +1,5 @@
 local function pickUpEquippable(self, room, item)
-    if Item.IsEquippable(item) then
+    if Item.Equippable(item) then
         Act.Get(self, room, item)
     end
 end
@@ -11,17 +11,17 @@ local function pickUpEquippables(self, room)
 end
 
 local function equipItem(self, item)
-    if not Item.IsEquippable(item) then
+    if not Item.Equippable(item) then
         return
     end
     slot = Item.EquipSlot(item)
-    if Entity.IsEquipSlotOpen(self, slot) then
+    if Entity.EquipSlotOpen(self, slot) then
         Act.Equip(self, item)
     end
 end
 
 local function thankSender(self, from, item) 
-    if not Item.IsEquippable(item) then
+    if not Item.Equippable(item) then
         return
     end
     Act.Say(self, string.format("Ah! Thank you %s!", Entity.Name(from)))

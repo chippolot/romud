@@ -108,13 +108,6 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 	return false
 }
 
-func lowerTokens(tokens []string) []string {
-	for i, s := range tokens {
-		tokens[i] = strings.ToLower(s)
-	}
-	return tokens
-}
-
 func parseSearchQuery(tokens []string, allowCount bool) (SearchQuery, bool, []string) {
 	numToks := len(tokens)
 	if numToks == 0 {

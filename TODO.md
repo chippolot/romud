@@ -120,6 +120,11 @@
         [x] Boasts about it
 ----------------------------------------
 [] Lua scripting
+    [] More bindings
+    [] More examples
+    [] Tick trigger
+    [] Delay?
+    [] Example: Shrieker
 [] Status Display
     [] Hit adv/dis
     [] Hit bonus

@@ -3,8 +3,6 @@ package mud
 import "strconv"
 
 func DoAdmin(e *Entity, w *World, tokens []string) {
-	tokens = lowerTokens(tokens)
-
 	if len(tokens) < 2 {
 		SendToPlayer(e, "What command do you want to run?")
 		return

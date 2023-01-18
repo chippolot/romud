@@ -1,11 +1,56 @@
 package mud
 
 import (
+	"fmt"
 	"sort"
 	"strings"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
+
+func DoLook(e *Entity, w *World, tokens []string) {
+	r := w.rooms[e.data.RoomId]
+
+	if e.entityFlags.Has(EFlag_Blind) {
+		SendToPlayer(e, "You can't see a thing!")
+		return
+	}
+
+	numtoks := len(tokens)
+	if numtoks == 0 || numtoks == 1 {
+		SendToPlayer(e, fmt.Sprintf("%s%s", r.Describe(e), utils.NewLine))
+		return
+	}
+
+	// Is the player trying to look in something?
+	if tokens[1] == "in" {
+		containerQuery, ok, _ := parseSearchQuery(tokens[2:], false)
+		if !ok {
+			SendToPlayer(e, "What do you want to look in?")
+			return
+		}
+		if containers := SearchItems(containerQuery, e, r); len(containers) > 0 {
+			SendToPlayer(e, containers[0].DescribeContents())
+			return
+		}
+		SendToPlayer(e, "You don't see that here.")
+		return
+	}
+
+	// Looking at entity or item?
+	query, ok, _ := parseSearchQuery(tokens[1:], false)
+	if !ok {
+		SendToPlayer(e, "You don't see that here.")
+		return
+	}
+	if ents := SearchEntities(query, e, r); len(ents) > 0 {
+		SendToPlayer(e, ents[0].Describe())
+	} else if itms := SearchItems(query, r, e); len(itms) > 0 {
+		SendToPlayer(e, itms[0].Describe())
+	} else {
+		SendToPlayer(e, "You don't see that here.")
+	}
+}
 
 func DoInventory(e *Entity, _ *World, _ []string) {
 	SendToPlayer(e, e.DescribeInventory())

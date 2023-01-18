@@ -33,13 +33,16 @@ func main() {
 	events := make(chan server.SessionEvent, 32)
 
 	// Create lua state
-	luaState := lua.NewState()
-	defer luaState.Close()
+	L := lua.NewState()
+	defer L.Close()
 
 	// Create world
-	world := mud.NewWorld(db, luaState, events)
+	world := mud.NewWorld(db, L, events)
 	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
 	world.SetEntryRoomId(3001)
+
+	// Register global lua funcs
+	mud.RegisterGlobalLuaBindings(L, world)
 
 	// Create test entity
 	addEntities(world, "mob", "rat", "rat", "janitor")

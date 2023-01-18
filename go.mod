@@ -2,4 +2,7 @@ module github.com/chippolot/go-mud
 
 go 1.19
 
-require github.com/yuin/gopher-lua v1.0.0 // indirect
+require (
+	github.com/yuin/gopher-lua v1.0.0 // indirect
+	layeh.com/gopher-luar v1.0.10 // indirect
+)

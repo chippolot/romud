@@ -22,10 +22,10 @@ type World struct {
 	inCombat      *CombatList
 	loggingOut    map[PlayerId]bool
 	events        chan<- server.SessionEvent
-	luaState      *lua.LState
+	L             *lua.LState
 }
 
-func NewWorld(db Database, luaState *lua.LState, events chan<- server.SessionEvent) *World {
+func NewWorld(db Database, l *lua.LState, events chan<- server.SessionEvent) *World {
 	return &World{
 		db,
 		make(map[PlayerId]*Entity),
@@ -38,7 +38,7 @@ func NewWorld(db Database, luaState *lua.LState, events chan<- server.SessionEve
 		&CombatList{},
 		make(map[PlayerId]bool),
 		events,
-		luaState,
+		l,
 	}
 }
 

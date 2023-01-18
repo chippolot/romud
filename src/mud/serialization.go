@@ -61,7 +61,7 @@ func LoadEntities(w *World, filePath string) error {
 			if scriptsTable, err := LoadScript(w, scriptPath); err != nil {
 				log.Fatalf("Failed to load script file %s -- %v", scriptPath, err)
 			} else {
-				cfg.scripts = NewEntityScripts(w.luaState, scriptsTable)
+				cfg.scripts = NewEntityScripts(w.L, scriptsTable)
 			}
 		}
 	}
@@ -94,17 +94,17 @@ func LoadItems(w *World, filePath string) error {
 }
 
 func LoadScript(w *World, filePath string) (*lua.LTable, error) {
-	if fn, err := w.luaState.LoadFile(filePath); err != nil {
+	if fn, err := w.L.LoadFile(filePath); err != nil {
 		return nil, err
 	} else {
-		if err := w.luaState.CallByParam(lua.P{Fn: fn, NRet: 1, Protect: false}); err != nil {
+		if err := w.L.CallByParam(lua.P{Fn: fn, NRet: 1, Protect: false}); err != nil {
 			return nil, err
 		}
-		tbl, ok := w.luaState.Get(-1).(*lua.LTable)
+		tbl, ok := w.L.Get(-1).(*lua.LTable)
 		if !ok {
 			return nil, fmt.Errorf("expected returned table from lua script: %s", filePath)
 		}
-		w.luaState.Pop(1)
+		w.L.Pop(1)
 		return tbl, nil
 	}
 }

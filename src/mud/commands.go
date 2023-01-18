@@ -400,50 +400,6 @@ func DoInventory(e *Entity, _ *World, _ []string) {
 	SendToPlayer(e, e.DescribeInventory())
 }
 
-func DoSay(e *Entity, w *World, tokens []string) {
-	if len(tokens) == 1 {
-		SendToPlayer(e, "What do you want to say?")
-	}
-	msg := strings.Join(tokens[1:], " ")
-
-	SendToPlayer(e, "Ok.")
-
-	BroadcastToRoomRe(w, e, SendRst_None, "%s says, '%s'", ObservableNameCap(e), msg)
-}
-
-func DoYell(e *Entity, w *World, tokens []string) {
-	if len(tokens) == 1 {
-		SendToPlayer(e, "What do you want to yell?")
-	}
-	msg := strings.Join(tokens[1:], " ")
-
-	SendToPlayer(e, "Ok.")
-	BroadcastToWorldRe(w, e, SendRst_None, "%s yells, '%s'", ObservableNameCap(e), msg)
-}
-
-func DoWhisper(e *Entity, w *World, tokens []string) {
-	switch len(tokens) {
-	case 1:
-		SendToPlayer(e, "What do you want to whisper to who?")
-	case 2:
-		SendToPlayer(e, "What do you want to whisper to %s?", tokens[1])
-	default:
-		name := tokens[1]
-		msg := strings.Join(tokens[2:], " ")
-		if name == e.Name() {
-			SendToPlayer(e, "You try whispering to yourself")
-			return
-		} else if te, ok := TryGetEntityByName(name, w.entities); ok {
-			SendToPlayer(e, "Ok.")
-			if te.player != nil {
-				SendToPlayerRe(te, e, SendRst_None, "%s whispers to you, %s", ObservableNameCap(e), msg)
-			}
-		} else {
-			SendToPlayer(e, "No player named %s is online", name)
-		}
-	}
-}
-
 func DoEquipment(e *Entity, _ *World, _ []string) {
 	SendToPlayer(e, e.DescribeEquipment())
 }
@@ -458,7 +414,7 @@ func DoLook(e *Entity, w *World, tokens []string) {
 
 	numtoks := len(tokens)
 	if numtoks == 0 || numtoks == 1 {
-		SendToPlayer(e, r.Describe(e))
+		SendToPlayer(e, fmt.Sprintf("%s%s", r.Describe(e), utils.NewLine))
 		return
 	}
 
@@ -708,12 +664,12 @@ func performMove(e *Entity, w *World, dir Direction) bool {
 
 	e.stats.Add(Stat_Mov, -1)
 
-	triggerEntityEnteredRoomScript(e, nextRoom)
 	if e.player != nil {
 		DoLook(e, w, nil)
 	} else {
 		triggerEnterRoomScript(e, nextRoom)
 	}
+	triggerEntityEnteredRoomScript(e, nextRoom)
 	return true
 }
 

@@ -1,8 +1,10 @@
 return {
     enteredRoom = function(self, room)
-        print("I ENTER ROOM!")
+        act.say(self, "I have arrived!")
     end,
     entityEnteredRoom = function(self, other, room)
-        print("YOU ENTER ROOM!")
+        if util.chance() < 20 then
+            act.whisper(self, other, "Hello friend!")
+        end
     end
 }

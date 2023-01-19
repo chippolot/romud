@@ -369,29 +369,29 @@ func (s *Stats) Condition() Condition {
 func (s *Stats) ConditionShortString() string {
 	hp := s.Get(Stat_HP)
 	if hp < -10 {
-		return Colorize(Color_Red, "dead")
+		return Colorize(Color_Cnd_Hurt, "dead")
 	} else if hp < -5 {
-		return Colorize(Color_Red, "mortally wounded")
+		return Colorize(Color_Cnd_Hurt, "mortally wounded")
 	} else if hp < -2 {
-		return Colorize(Color_Red, "badly wounded")
+		return Colorize(Color_Cnd_Hurt, "badly wounded")
 	} else if hp <= 0 {
-		return Colorize(Color_Red, "awful condition")
+		return Colorize(Color_Cnd_Hurt, "awful condition")
 	} else {
 		pct := float32(hp) / float32(s.data[Stat_MaxHP])
 		if pct >= 0.95 {
-			return Colorize(Color_Green, "excellent condition")
+			return Colorize(Color_Cnd_Healthy, "excellent condition")
 		} else if pct >= 0.85 {
-			return Colorize(Color_Green, "a few scratches")
+			return Colorize(Color_Cnd_Healthy, "a few scratches")
 		} else if pct >= 0.70 {
-			return Colorize(Color_Green, "bumps and bruises")
+			return Colorize(Color_Cnd_Healthy, "bumps and bruises")
 		} else if pct >= 0.50 {
-			return Colorize(Color_Yellow, "roughed up")
+			return Colorize(Color_Cnd_LightHurt, "roughed up")
 		} else if pct >= 0.30 {
-			return Colorize(Color_Yellow, "bleeding")
+			return Colorize(Color_Cnd_LightHurt, "bleeding")
 		} else if pct >= 0.15 {
-			return Colorize(Color_Yellow, "bleeding heavily")
+			return Colorize(Color_Cnd_LightHurt, "bleeding heavily")
 		} else {
-			return Colorize(Color_Red, "awful condition")
+			return Colorize(Color_Cnd_Hurt, "awful condition")
 		}
 	}
 }
@@ -400,29 +400,29 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 	hp := s.Get(Stat_HP)
 	maxHP := s.Get(Stat_MaxHP)
 	if hp < -10 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Red, "dead"))
+		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
 	} else if hp < -5 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Red, "mortally wounded"))
+		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "mortally wounded"))
 	} else if hp < -2 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Red, "badly wounded"))
+		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "badly wounded"))
 	} else if hp <= 0 {
-		return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Red, "awful condition"))
+		return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
 	} else {
 		pct := float32(hp) / float32(maxHP)
 		if pct >= 0.95 {
-			return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Green, "excellent condition"))
+			return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "excellent condition"))
 		} else if pct >= 0.85 {
-			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Green, "a few scratches"))
+			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "a few scratches"))
 		} else if pct >= 0.70 {
-			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Green, "bumps and bruises"))
+			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "bumps and bruises"))
 		} else if pct >= 0.50 {
-			return fmt.Sprintf("%s is looking %s", e.NameCapitalized(), Colorize(Color_Yellow, "roughed up"))
+			return fmt.Sprintf("%s is looking %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "roughed up"))
 		} else if pct >= 0.30 {
-			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Yellow, "bleeding"))
+			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding"))
 		} else if pct >= 0.15 {
-			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Yellow, "bleeding heavily"))
+			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding heavily"))
 		} else {
-			return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Red, "awful condition"))
+			return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
 		}
 	}
 }

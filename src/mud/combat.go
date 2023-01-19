@@ -361,7 +361,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	// Send damage messages
 	switch damCtx {
 	case DamCtx_Poison:
-		SendToPlayer(tgt, "You feel a wave of pain course through you. (%s)", Colorize(Color_BrightRed, dam))
+		SendToPlayer(tgt, "You feel a wave of pain course through you. (%s)", Colorize(Color_Negative, dam))
 		BroadcastToRoomRe(w, tgt, SendRst_CanSee, "%s shudders in pain", ObservableNameCap(tgt))
 	case DamCtx_Melee:
 		sendDamageMessages(dam, from, tgt, w, verbSingular, verbPlural)
@@ -377,7 +377,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 			xp := tgt.cfg.Stats.XPValue
 			xp = applyXp(from, xp)
 			if xp > 0 {
-				SendToPlayerRe(from, tgt, SendRst_None, "You gain %d XP from defeating %s", xp, ObservableName(tgt))
+				SendToPlayerRe(from, tgt, SendRst_None, "<c %s>You gain %d XP from defeating %s</c>", Color_Header, xp, ObservableName(tgt))
 			}
 		}
 
@@ -438,8 +438,8 @@ func applyXp(e *Entity, xp int) int {
 }
 
 func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, atkVerbSingular string, atkVerbPlural string) {
-	srcDamStr := Colorize(Color_Yellow, dam)
-	dstDamStr := Colorize(Color_Red, dam)
+	srcDamStr := Colorize(Color_PlayerDam, dam)
+	dstDamStr := Colorize(Color_EnemyDam, dam)
 	if dam <= 0 {
 		SendToPlayerRe(src, dst, SendRst_None, "Your %s misses %s completely (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
 		SendToPlayerRe(dst, src, SendRst_None, "%s's %s misses you completely (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr)
@@ -487,7 +487,7 @@ func sendStatusMessages(dam int, tgt *Entity, w *World) {
 		BroadcastToRoomRe(w, tgt, SendRst_None, "%s is DEAD. R.I.P.", ObservableNameCap(tgt))
 	default:
 		if dam > tgt.stats.Get(Stat_MaxHP)/4 {
-			SendToPlayer(tgt, Colorize(Color_Red, "Ouch, that one stung!"))
+			SendToPlayer(tgt, Colorize(Color_NegativeBld, "Ouch, that one stung!"))
 		}
 		if tgt.stats.Get(Stat_HP) < tgt.stats.Get(Stat_MaxHP)/4 {
 			SendToPlayer(tgt, "You sure are BLEEDING a lot!")

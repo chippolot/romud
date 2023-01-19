@@ -8,54 +8,65 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-type UpdateSystem struct {
-	fn   func(w *World)
-	freq time.Duration
-	last time.Time
+type GameTime struct {
+	time float64
+	dt   float64
 }
 
-func (s *UpdateSystem) Update(w *World) {
-	now := time.Now().UTC()
-	nextUpdate := s.last.Add(s.freq)
-	if now.Before(nextUpdate) {
+type UpdateSystem struct {
+	fn   func(w *World, t GameTime)
+	freq float64
+	last float64
+}
+
+func (s *UpdateSystem) Update(w *World, t GameTime) {
+	nextUpdate := s.last + s.freq
+	if t.time < nextUpdate {
 		return
 	}
-	s.last = now
-	s.fn(w)
+	t.dt = t.time - s.last
+	s.fn(w, t)
+	s.last = t.time
 }
 
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
-		{updateStatusEffects, time.Second * 1, time.Now().UTC().Add(randSec())},
-		{restoreStats, time.Second * 10, time.Now().UTC().Add(randSec())},
-		{scavengerNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
-		{wanderNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
-		{aggroNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
-		{assistNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
-		{runCombat, time.Second * 3, time.Now().UTC().Add(randSec())},
-		{logoutTheDead, time.Millisecond, time.Now().UTC().Add(randSec())},
-		{flushPlayerOuput, time.Millisecond, time.Now().UTC().Add(randSec())},
+		{updateStatusEffects, 1, 0},
+		{restoreStats, 10, 0},
+		{scavengerNPCs, 3, 0},
+		{wanderNPCs, 3, 0},
+		{aggroNPCs, 1, 0},
+		{assistNPCs, 1, 0},
+		{runCombat, 3, 0},
+		{logoutTheDead, 0, 0},
+		{flushPlayerOuput, 0, 0},
 	}
 
+	t := GameTime{}
+	lastUpdate := time.Now()
 	for {
 		if len(w.sessions) > 0 {
 			for _, sys := range systems {
-				sys.Update(w)
+				sys.Update(w, t)
 			}
 		}
+
 		time.Sleep(time.Second / 30.0)
+
+		t.dt = time.Since(lastUpdate).Seconds()
+		lastUpdate = time.Now()
+		t.time += t.dt
 	}
 }
 
-func updateStatusEffects(w *World) {
-	sec := time.Now().UTC().Second()
+func updateStatusEffects(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.statusEffects.mask == 0 {
 			continue
 		}
 
 		// Apply status effects
-		if e.HasStatusEffect(StatusType_Poison) && sec%3 == 0 {
+		if e.HasStatusEffect(StatusType_Poison) && int(t.time)%3 == 0 {
 			poisonDam := utils.MaxInts(1, e.stats.Get(Stat_MaxHP)/10)
 			applyDamage(e, w, e, poisonDam, DamCtx_Poison, Dam_Poison, "", "")
 		}
@@ -65,8 +76,7 @@ func updateStatusEffects(w *World) {
 			if s.data == nil {
 				continue
 			}
-			//TODO Use real elapsed time
-			s.data.Duration -= 1
+			s.data.Duration -= utils.Seconds(t.dt)
 			if s.data.Duration <= 0 {
 				performRemoveStatusEffect(e, w, s.statusType, false)
 			}
@@ -74,7 +84,7 @@ func updateStatusEffects(w *World) {
 	}
 }
 
-func restoreStats(w *World) {
+func restoreStats(w *World, t GameTime) {
 	for _, e := range w.entities {
 		// Fighting entities don't heal
 		if e.combat != nil {
@@ -112,7 +122,7 @@ func restoreStats(w *World) {
 			e.stats.Add(Stat_HP, hpGain)
 		} else {
 			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
-			message = Colorize(Color_Red, "You are bleeding!")
+			message = Colorize(Color_NegativeBld, "You are bleeding!")
 		}
 		e.stats.Add(Stat_Mov, movGain)
 
@@ -123,7 +133,7 @@ func restoreStats(w *World) {
 	}
 }
 
-func wanderNPCs(w *World) {
+func wanderNPCs(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -162,7 +172,7 @@ func wanderNPCs(w *World) {
 	}
 }
 
-func aggroNPCs(w *World) {
+func aggroNPCs(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -178,6 +188,10 @@ func aggroNPCs(w *World) {
 			continue
 		}
 
+		if D4.Roll() != 1 {
+			continue
+		}
+
 		// Find target
 		r := w.rooms[e.data.RoomId]
 		for _, other := range r.entities {
@@ -190,7 +204,7 @@ func aggroNPCs(w *World) {
 	}
 }
 
-func assistNPCs(w *World) {
+func assistNPCs(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -205,6 +219,10 @@ func assistNPCs(w *World) {
 
 		// Mob already fighting
 		if e.combat != nil {
+			continue
+		}
+
+		if D4.Roll() != 1 {
 			continue
 		}
 
@@ -225,7 +243,7 @@ func assistNPCs(w *World) {
 	}
 }
 
-func scavengerNPCs(w *World) {
+func scavengerNPCs(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -273,7 +291,7 @@ func scavengerNPCs(w *World) {
 	}
 }
 
-func runCombat(w *World) {
+func runCombat(w *World, t GameTime) {
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
@@ -295,7 +313,7 @@ func runCombat(w *World) {
 	}
 }
 
-func logoutTheDead(w *World) {
+func logoutTheDead(w *World, t GameTime) {
 	for _, e := range w.players {
 		if e.stats.Condition() == Cnd_Dead {
 			w.LogoutPlayer(e.player)
@@ -303,12 +321,8 @@ func logoutTheDead(w *World) {
 	}
 }
 
-func flushPlayerOuput(w *World) {
+func flushPlayerOuput(w *World, t GameTime) {
 	for _, s := range w.sessions {
 		s.Flush()
 	}
-}
-
-func randSec() time.Duration {
-	return time.Millisecond * time.Duration(rand.Intn(1000))
 }

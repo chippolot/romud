@@ -331,11 +331,6 @@ func (e *Entity) AddStatusEffect(statusType StatusEffectMask, duration utils.Sec
 	if duration == StatusEffectDuration_Permanent {
 		statusEffect.permanentCount = 1
 	} else {
-		log.Println("1: ", e)
-		log.Println("2: ", e.data)
-		log.Println("3: ", e.data.Statuses)
-		log.Println("4: ", statusEffect)
-		log.Println("5: ", statusEffect.data)
 		e.data.Statuses[statusType] = statusEffect.data
 	}
 	e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
@@ -425,32 +420,32 @@ func (e *Entity) DescribeStatus() string {
 	statuses := e.DescribeStatusEffects()
 	bonusDamage := ""
 	if !aData.DamageMod.IsZero() {
-		bonusDamage = " + " + aData.DamageMod.StringColorized("yellow")
+		bonusDamage = " + " + aData.DamageMod.StringColorized(Color_Stat)
 	}
 
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
 	sb.WriteLinef("%s", e.Name())
 	sb.WriteNewLine()
-	sb.WriteLinef("Level  : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Level)))
+	sb.WriteLinef("Level  : %s", Colorize(Color_Stat, e.stats.Get(Stat_Level)))
 	if !IsMaxLevel(e) {
-		sb.WriteLinef("Next   : %s XP", Colorize(Color_Yellow, GetXpForNextLevel(e)))
+		sb.WriteLinef("Next   : %s XP", Colorize(Color_Stat, GetXpForNextLevel(e)))
 	}
 	sb.WriteNewLine()
-	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Yellow, e.stats.Get(Stat_HP)), Colorize(Color_Yellow, e.stats.Get(Stat_MaxHP)))
+	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_HP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxHP)))
 	sb.WriteNewLine()
-	sb.WriteLinef("ToHit  : +%s", Colorize(Color_Yellow, aData.ToHit))
-	sb.WriteLinef("Attack : %s%s", aData.Damage.StringColorized("yellow"), bonusDamage)
-	sb.WriteLinef("AC     : %s", Colorize(Color_Yellow, e.AC()))
+	sb.WriteLinef("ToHit  : +%s", Colorize(Color_Stat, aData.ToHit))
+	sb.WriteLinef("Attack : %s%s", aData.Damage.StringColorized(Color_Stat), bonusDamage)
+	sb.WriteLinef("AC     : %s", Colorize(Color_Stat, e.AC()))
 	sb.WriteNewLine()
-	sb.WriteLinef("Str    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Str)))
-	sb.WriteLinef("Dex    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Dex)))
-	sb.WriteLinef("Con    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Con)))
-	sb.WriteLinef("Int    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Int)))
-	sb.WriteLinef("Wis    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Wis)))
-	sb.WriteLinef("Cha    : %s", Colorize(Color_Yellow, e.stats.Get(Stat_Cha)))
+	sb.WriteLinef("Str    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Str)))
+	sb.WriteLinef("Dex    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Dex)))
+	sb.WriteLinef("Con    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Con)))
+	sb.WriteLinef("Int    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Int)))
+	sb.WriteLinef("Wis    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Wis)))
+	sb.WriteLinef("Cha    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Cha)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Yellow, e.ItemWeight()), Colorize(Color_Yellow, e.stats.CarryingCapacity()))
+	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, e.stats.CarryingCapacity()))
 	if statuses != "" {
 		sb.WriteNewLine()
 		sb.WriteLinef("Status : %s", statuses)
@@ -464,7 +459,7 @@ func (e *Entity) DescribeStatusEffects() string {
 	for i := 0; i < 64; i++ {
 		status := StatusEffectMask(1 << i)
 		if e.HasStatusEffect(status) {
-			strs = append(strs, Colorize(Color_Yellow, strings.Title(status.String())))
+			strs = append(strs, Colorize(Color_StatusEffects, strings.Title(status.String())))
 		}
 	}
 	return strings.Join(strs, ",")
@@ -477,7 +472,7 @@ func (e *Entity) DescribeInventory() string {
 		sb.WriteLine("  Nothing.")
 	} else {
 		descs := GroupDescriptionsFromSlice(e.inventory, nil, func(i *Item) string {
-			return Colorize(Color_White, i.NameCapitalized())
+			return Colorize(Color_Enum, i.NameCapitalized())
 		})
 		for idx, desc := range descs {
 			descs[idx] = "  " + desc

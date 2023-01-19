@@ -139,11 +139,10 @@ func (r *Room) IsExitOpen(dir Direction) bool {
 
 func (r *Room) Describe(subject *Entity) string {
 	var sb utils.StringBuilder
-	sb.WriteString("<c bright yellow>").
+	sb.WriteStringf("<c %s>", Color_Header).
 		WriteString(r.Name()).
 		WriteLine("</c>").
-		WriteLinef("   %s", r.cfg.Desc).
-		WriteString(utils.HorizontalDivider)
+		WriteLinef("   %s", r.cfg.Desc)
 	describeExits(r, &sb)
 	describePlayers(r, &sb, subject)
 	describeNonPlayerEntities(r, &sb, subject)
@@ -156,7 +155,7 @@ func describeExits(r *Room, sb *utils.StringBuilder) {
 		return
 	}
 	sb.WriteNewLine()
-	sb.WriteString("<c dim yellow>Obvious Exits: ")
+	sb.WriteStringf("<c %s>Obvious Exits: ", Color_SubHeader)
 	i := 0
 	for verb := range r.cfg.Exits {
 		if i > 0 && i < len(r.cfg.Exits) {
@@ -189,7 +188,7 @@ func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
 		return
 	}
 	sb.WriteNewLine()
-	sb.WriteStringf(Colorize(Color_Cyan, strings.Join(descs, utils.NewLine)))
+	sb.WriteStringf(Colorize(Color_Entities, strings.Join(descs, utils.NewLine)))
 }
 
 func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder, subject *Entity) {
@@ -215,7 +214,7 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder, subject *Entity
 		return
 	}
 	sb.WriteNewLine()
-	sb.WriteStringf(Colorize(Color_Blue, strings.Join(descs, utils.NewLine)))
+	sb.WriteStringf(Colorize(Color_Entities, strings.Join(descs, utils.NewLine)))
 }
 
 func describeItems(r *Room, sb *utils.StringBuilder) {
@@ -233,7 +232,7 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 		return
 	}
 	sb.WriteNewLine()
-	sb.WriteStringf(Colorize(Color_White, strings.Join(descs, utils.NewLine)))
+	sb.WriteStringf(Colorize(Color_Items, strings.Join(descs, utils.NewLine)))
 }
 
 type Direction int

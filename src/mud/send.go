@@ -35,6 +35,25 @@ const (
 	Color_BrightMagenta ANSIColor = "bright magenta"
 	Color_BrightCyan    ANSIColor = "bright cyan"
 	Color_BrightWhite   ANSIColor = "bright white"
+
+	Color_Prompt        = Color_BrightGreen
+	Color_Positive      = Color_Green
+	Color_Negative      = Color_Red
+	Color_NegativeBld   = Color_Red
+	Color_Neutral       = Color_BrightWhite
+	Color_PositiveBld   = Color_BrightGreen
+	Color_Header        = Color_BrightCyan
+	Color_SubHeader     = Color_Cyan
+	Color_Entities      = Color_BrightWhite
+	Color_Items         = Color_BrightWhite
+	Color_Enum          = Color_BrightWhite
+	Color_Stat          = Color_Cyan
+	Color_PlayerDam     = Color_Green
+	Color_EnemyDam      = Color_Red
+	Color_StatusEffects = Color_Yellow
+	Color_Cnd_Hurt      = Color_Red
+	Color_Cnd_LightHurt = Color_Yellow
+	Color_Cnd_Healthy   = Color_Green
 )
 
 const (

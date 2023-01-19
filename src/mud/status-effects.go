@@ -236,29 +236,29 @@ func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask,
 		if !oldFlags.Has(f) && newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, Colorize(Color_Red, "You suddenly don't feel very well..."))
+				SendToPlayer(e, Colorize(Color_NegativeBld, "You suddenly don't feel very well..."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s looks a little sick.", ObservableNameCap(e))
 			case StatusType_Blind:
-				SendToPlayer(e, Colorize(Color_Red, "Your vision fades to black."))
+				SendToPlayer(e, Colorize(Color_NegativeBld, "Your vision fades to black."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s seems to have been blinded!", ObservableNameCap(e))
 			case StatusType_Invisible:
-				SendToPlayer(e, Colorize(Color_Blue, "You vanish."))
+				SendToPlayer(e, Colorize(Color_Neutral, "You vanish."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s seems to flicker out of existence.", ObservableNameCap(e))
 			case StatusType_Blessed:
-				SendToPlayer(e, Colorize(Color_Blue, "You feel a tingle as you're bathed in a white light."))
+				SendToPlayer(e, Colorize(Color_Neutral, "You feel a tingle as you're bathed in a white light."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s glows white for a moment.", ObservableNameCap(e))
 			}
 		} else if oldFlags.Has(f) && !newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, Colorize(Color_Green, "You feel much better."))
+				SendToPlayer(e, Colorize(Color_PositiveBld, "You feel much better."))
 			case StatusType_Blind:
-				SendToPlayer(e, Colorize(Color_Green, "Your vision slowly returns"))
+				SendToPlayer(e, Colorize(Color_PositiveBld, "Your vision slowly returns"))
 			case StatusType_Invisible:
-				SendToPlayer(e, Colorize(Color_Blue, "You blink back into existence."))
+				SendToPlayer(e, Colorize(Color_Neutral, "You blink back into existence."))
 				BroadcastToRoomRe(w, e, SendRst_None, "%s blinks back into existence.", ObservableNameCap(e))
 			case StatusType_Blessed:
-				SendToPlayer(e, Colorize(Color_Blue, "You feel the warm cozy feeling fade."))
+				SendToPlayer(e, Colorize(Color_Neutral, "You feel the warm cozy feeling fade."))
 			}
 		}
 	}

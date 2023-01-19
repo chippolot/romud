@@ -119,6 +119,7 @@
             [x] When given
         [x] Boasts about it
 ----------------------------------------
+[] Clear status effects on death
 [] Lua scripting
     [] More bindings
     [] More examples

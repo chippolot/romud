@@ -173,7 +173,7 @@ func (i *Item) DescribeContents() string {
 		sb.WriteLine("  Nothing.")
 	} else {
 		for _, i2 := range i.contents {
-			sb.WriteLinef("  %s", Colorize(Color_White, i2.Name()))
+			sb.WriteLinef("  %s", Colorize(Color_Enum, i2.Name()))
 		}
 	}
 	return sb.String()

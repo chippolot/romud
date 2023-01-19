@@ -91,6 +91,7 @@ func newEntityData(cfg *EntityConfig) *EntityData {
 
 func (e *Entity) SetData(data *EntityData, w *World) {
 	e.data = data
+	e.stats.data = e.data.Stats
 
 	// Prepare status effects
 	if e.data.Statuses == nil {
@@ -203,7 +204,7 @@ func (e *Entity) RemoveItem(item *Item) {
 }
 func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 	if item.cfg.Equipment == nil {
-		SendToPlayer(e, "You can't equip %s", item.Name())
+		Write("You can't equip %s", item.Name()).ToPlayer(e).Send()
 		return EqSlot_None, nil, false
 	}
 	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
@@ -237,14 +238,14 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 		e.onEquipped(item)
 		return slot, unequipped, true
 	} else {
-		SendToPlayer(e, "You aren't carrying %s", item.Name())
+		Write("You aren't carrying %s", item.Name()).ToPlayer(e).Send()
 		return EqSlot_None, nil, false
 	}
 }
 
 func (e *Entity) Unequip(item *Item) bool {
 	if item.cfg.Equipment == nil {
-		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
+		Write("%s isn't equipped", item.NameCapitalized()).ToPlayer(e).Send()
 		return false
 	}
 	var found bool
@@ -259,7 +260,7 @@ func (e *Entity) Unequip(item *Item) bool {
 		e.onUnequipped(item)
 		e.AddItem(item)
 	} else {
-		SendToPlayer(e, "%s isn't equipped", item.NameCapitalized())
+		Write("%s isn't equipped", item.NameCapitalized()).ToPlayer(e).Send()
 		return false
 	}
 	return true
@@ -348,7 +349,6 @@ func (e *Entity) HasStatusEffect(status StatusEffectMask) bool {
 	return e.statusEffects.mask.Has(status)
 }
 
-// TODO Don't love the permanent flag here -- what else can I name this?
 func (e *Entity) RemoveStatusEffect(statusType StatusEffectMask, permanent bool) bool {
 	for idx, s := range e.statusEffects.statusEffects {
 		if s.statusType == statusType {

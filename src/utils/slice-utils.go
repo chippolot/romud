@@ -9,6 +9,15 @@ func FindIndex[T comparable](s []T, v T) int {
 	return -1
 }
 
+func Contains[T comparable](s []T, v T) bool {
+	for _, v2 := range s {
+		if v == v2 {
+			return true
+		}
+	}
+	return false
+}
+
 func SwapDelete[T any](s []T, idx int) []T {
 	c := len(s)
 	s[idx] = s[c-1]

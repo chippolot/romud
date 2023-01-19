@@ -3,25 +3,25 @@ package mud
 func DoAttack(e *Entity, w *World, tokens []string) {
 	q, ok, tokens := parseSearchQuery(tokens[1:], false)
 	if !ok {
-		SendToPlayer(e, "What do you want to attack?")
+		Write("What do you want to attack?").ToPlayer(e).Send()
 		return
 	}
 
 	if e.entityFlags.Has(EFlag_Blind) {
-		SendToPlayer(e, "You can't see a thing!")
+		Write("You can't see a thing!").ToPlayer(e).Send()
 		return
 	}
 
 	r := w.rooms[e.data.RoomId]
 	tgts := SearchEntities(q, e, r)
 	if len(tgts) == 0 {
-		SendToPlayer(e, "They don't seem to be here...")
+		Write("They don't seem to be here...").ToPlayer(e).Send()
 		return
 	}
 	tgt := tgts[0]
 	if tgt == e {
-		SendToPlayer(e, "Stop hitting yourself!")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s hits %sself??", ObservableName(e), e.Gender().GetObjectPronoun())
+		Write("Stop hitting yourself!").ToPlayer(e).Send()
+		Write("%s hits %sself??", ObservableName(e), e.Gender().GetObjectPronoun()).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 		return
 	}
 	performAttack(e, w, tgt)
@@ -30,26 +30,26 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 func DoShove(e *Entity, w *World, tokens []string) {
 	q, ok, tokens := parseSearchQuery(tokens[1:], false)
 	if !ok {
-		SendToPlayer(e, "What do you want to shove?")
+		Write("What do you want to shove?").ToPlayer(e).Send()
 		return
 	}
 
 	if e.entityFlags.Has(EFlag_Blind) {
-		SendToPlayer(e, "You can't see a thing!")
+		Write("You can't see a thing!").ToPlayer(e).Send()
 		return
 	}
 
 	r := w.rooms[e.data.RoomId]
 	tgts := SearchEntities(q, e, r)
 	if len(tgts) == 0 {
-		SendToPlayer(e, "They don't seem to be here...")
+		Write("They don't seem to be here...").ToPlayer(e).Send()
 		return
 	}
 
 	tgt := tgts[0]
 	if tgt == e {
-		SendToPlayer(e, "Good luck with that!")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s tries to shove %sself but just ends up looking ridiculous", ObservableName(e), e.Gender().GetObjectPronoun())
+		Write("Good luck with that!").ToPlayer(e).Send()
+		Write("%s tries to shove %sself but just ends up looking ridiculous", ObservableName(e), e.Gender().GetObjectPronoun()).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 		return
 	}
 

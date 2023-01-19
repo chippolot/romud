@@ -191,11 +191,11 @@ func validateAttack(e *Entity, tgt *Entity) bool {
 		return false
 	}
 	if e.position < Pos_Standing {
-		SendToPlayer(e, "You can't fight while you're knocked down!")
+		Write("You can't fight while you're knocked down!").ToPlayer(e).Send()
 		return false
 	}
 	if e.stats.Condition() <= Cnd_Stunned {
-		SendToPlayer(e, "You're in no condition for that!")
+		Write("You're in no condition for that!").ToPlayer(e).Send()
 		return false
 	}
 	return true
@@ -205,8 +205,8 @@ func performAssist(e *Entity, w *World, ally *Entity) {
 	if ally.combat == nil || ally.combat.target == nil {
 		return
 	}
-	SendToPlayerRe(e, ally, SendRst_CanSee, "%s leaps to your aid!")
-	BroadcastToRoomRe2(w, e, ally, SendRst_CanSee, "%s joins in the fight with %s", ObservableNameCap(e), ObservableName(ally))
+	Write("%s leaps to your aid!").ToPlayer(e).Subject(ally).Restricted(SendRst_CanSee).Colorized(Color_PositiveBld).Send()
+	Write("%s joins in the fight with %s", ObservableNameCap(e), ObservableName(ally)).ToEntityRoom(w, e).Subject(e).Ignore(ally).Restricted(SendRst_CanSee).Colorized(Color_Neutral).Send()
 	performAttack(e, w, ally.combat.target)
 }
 
@@ -219,10 +219,10 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 	if e.combat != nil {
 		// Trying to attack current tgt!
 		if e.combat.target == tgt {
-			SendToPlayer(e, "You're already fighting them!")
+			Write("You're already fighting them!").ToPlayer(e).Send()
 			// Trying to attack different tgt. Just update tgt and wait for next combat round.
 		} else {
-			SendToPlayerRe(e, tgt, SendRst_None, "You turn to face %s", ObservableName(tgt))
+			Write("You turn to face %s", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
 			e.combat.target = tgt
 		}
 		return
@@ -239,14 +239,14 @@ func performShove(e *Entity, w *World, tgt *Entity) {
 	}
 
 	if tgt.position != Pos_Standing {
-		SendToPlayerRe(e, tgt, SendRst_None, "You can't shove something that isn't standing!")
+		Write("You can't shove something that isn't standing!").ToPlayer(e).Subject(tgt).Send()
 	}
 
 	if e.combat != nil {
-		SendToPlayerRe(e, tgt, SendRst_None, "You prepare to shove %s", ObservableName(tgt))
+		Write("You prepare to shove %s", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
 		e.combat.requestedSkill = CombatSkill_Shove
 		if e.combat.target != tgt {
-			SendToPlayerRe(e, tgt, SendRst_None, "You turn to face %s", ObservableName(tgt))
+			Write("You turn to face %s", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
 			e.combat.target = tgt
 		}
 	} else {
@@ -270,8 +270,8 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 
 	if e.position < Pos_Standing {
 		e.position = Pos_Standing
-		SendToPlayer(e, "You scramble to your feet")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s scrambles to %s feet", ObservableName(e), e.Gender().GetPossessivePronoun())
+		Write("You scramble to your feet").ToPlayer(e).Colorized(Color_Positive).Send()
+		Write("%s scrambles to %s feet", ObservableNameCap(e), e.Gender().GetPossessivePronoun()).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Colorized(Color_Neutral).Send()
 		return
 	}
 
@@ -280,13 +280,13 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		// STR or DEX contest
 		if ContestAbility(e, tgt, tgt.stats.MaxStatType(Stat_Str, Stat_Dex)) {
 			tgt.position = Pos_Prone
-			SendToPlayerRe(e, tgt, SendRst_None, "You shove %s, knocking %s to the ground", ObservableName(tgt), tgt.Gender().GetObjectPronoun())
-			SendToPlayerRe(tgt, e, SendRst_None, "%s shoves you, knocking you to the ground", ObservableNameCap(e))
-			BroadcastToRoomRe2(w, e, tgt, SendRst_CanSee, "%s shoves %s, knocking %s to the ground", ObservableNameCap(e), ObservableName(tgt), tgt.Gender().GetObjectPronoun())
+			Write("You shove %s, knocking %s to the ground", ObservableName(tgt), tgt.Gender().GetObjectPronoun()).ToPlayer(e).Subject(tgt).Colorized(Color_Neutral).Send()
+			Write("%s shoves you, knocking you to the ground", ObservableNameCap(e)).ToPlayer(tgt).Subject(e).Colorized(Color_Negative).Send()
+			Write("%s shoves %s, knocking %s to the ground", ObservableNameCap(e), ObservableName(tgt), tgt.Gender().GetObjectPronoun()).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Restricted(SendRst_CanSee).Send()
 		} else {
-			SendToPlayerRe(e, tgt, SendRst_None, "You try to shove %s but fail miserably", ObservableName(tgt))
-			SendToPlayerRe(tgt, e, SendRst_None, "%s tries to shove you but fails miserably", ObservableNameCap(e))
-			BroadcastToRoomRe2(w, e, tgt, SendRst_CanSee, "%s tries to shove %s but fails miserably", ObservableNameCap(e), ObservableName(tgt))
+			Write("You try to shove %s but fail miserably", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
+			Write("%s tries to shove you but fails miserably", ObservableNameCap(e)).ToPlayer(tgt).Subject(e).Send()
+			Write("%s tries to shove %s but fails miserably", ObservableNameCap(e), ObservableName(tgt)).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Restricted(SendRst_CanSee).Send()
 		}
 	default:
 		var dam int
@@ -361,8 +361,8 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	// Send damage messages
 	switch damCtx {
 	case DamCtx_Poison:
-		SendToPlayer(tgt, "You feel a wave of pain course through you. (%s)", Colorize(Color_Negative, dam))
-		BroadcastToRoomRe(w, tgt, SendRst_CanSee, "%s shudders in pain", ObservableNameCap(tgt))
+		Write("You feel a wave of pain course through you. (%s)", Colorize(Color_Negative, dam)).ToPlayer(tgt).Send()
+		Write("%s shudders in pain", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Restricted(SendRst_CanSee).Send()
 	case DamCtx_Melee:
 		sendDamageMessages(dam, from, tgt, w, verbSingular, verbPlural)
 	}
@@ -372,27 +372,34 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 
 	// Handle kills
 	if cnd == Cnd_Dead {
-		// Distribute XP
-		if from != nil {
-			xp := tgt.cfg.Stats.XPValue
-			xp = applyXp(from, xp)
-			if xp > 0 {
-				SendToPlayerRe(from, tgt, SendRst_None, "<c %s>You gain %d XP from defeating %s</c>", Color_Header, xp, ObservableName(tgt))
-			}
-		}
-
-		// Create corpse
-		createCorpse(tgt, w)
-
-		// If player died, save
-		if tgt.player != nil {
-			w.SavePlayerCharacter(tgt.player.id)
-		}
-
-		w.RemoveEntity(tgt.id)
+		die(tgt, w, from)
 	}
 
 	return dam
+}
+
+func die(tgt *Entity, w *World, killer *Entity) {
+	// Distribute XP
+	if killer != nil {
+		xp := tgt.cfg.Stats.XPValue
+		xp = applyXp(killer, xp)
+		if xp > 0 {
+			Write("You gain %d XP from defeating %s", xp, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()
+		}
+	}
+
+	// Create corpse
+	createCorpse(tgt, w)
+
+	if tgt.player != nil {
+		// Clear temp status effects
+		tgt.data.Statuses = make(StatusDataMap)
+
+		// Save player
+		w.SavePlayerCharacter(tgt.player.id)
+	}
+
+	w.RemoveEntity(tgt.id)
 }
 
 func createCorpse(from *Entity, w *World) {
@@ -430,7 +437,7 @@ func applyXp(e *Entity, xp int) int {
 	if !IsMaxLevel(e) {
 		e.stats.Add(Stat_XP, xp)
 		if IsReadyForLevelUp(e) {
-			SendToPlayer(e, "You're ready for level %d!", e.stats.Get(Stat_Level)+1)
+			Write("You're ready for level %d!", e.stats.Get(Stat_Level)+1).ToPlayer(e).Send()
 		}
 		return xp
 	}
@@ -441,56 +448,56 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, atkVerbSing
 	srcDamStr := Colorize(Color_PlayerDam, dam)
 	dstDamStr := Colorize(Color_EnemyDam, dam)
 	if dam <= 0 {
-		SendToPlayerRe(src, dst, SendRst_None, "Your %s misses %s completely (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
-		SendToPlayerRe(dst, src, SendRst_None, "%s's %s misses you completely (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr)
-		BroadcastToRoomRe2(w, src, dst, SendRst_None, "%s tries to %s %s, but misses", ObservableNameCap(src), atkVerbSingular, ObservableName(dst))
+		Write("Your %s misses %s completely (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s's %s misses you completely (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s tries to %s %s, but misses", ObservableNameCap(src), atkVerbSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 2 {
-		SendToPlayerRe(src, dst, SendRst_None, "Your %s knicks %s as it fails to fully connect (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
-		SendToPlayerRe(dst, src, SendRst_None, "%s's %s knicks you as it fails to fully connect (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr)
-		BroadcastToRoomRe2(w, src, dst, SendRst_None, "%s's %s knicks %s as it fails to fully connect", ObservableNameCap(src), atkVerbSingular, ObservableName(dst))
+		Write("Your %s knicks %s as it fails to fully connect (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s's %s knicks you as it fails to fully connect (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s's %s knicks %s as it fails to fully connect", ObservableNameCap(src), atkVerbSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 4 {
-		SendToPlayerRe(src, dst, SendRst_None, "Your %s barely scratches %s (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
-		SendToPlayerRe(dst, src, SendRst_None, "%s's %s barely scratch you (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr)
-		BroadcastToRoomRe2(w, src, dst, SendRst_None, "%s's %s barely scratches %s", ObservableNameCap(src), atkVerbSingular, ObservableName(dst))
+		Write("Your %s barely scratches %s (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s's %s barely scratch you (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s's %s barely scratches %s", ObservableNameCap(src), atkVerbSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 6 {
-		SendToPlayerRe(src, dst, SendRst_None, "You %s %s (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
-		SendToPlayerRe(dst, src, SendRst_None, "%s %s you (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr)
-		BroadcastToRoomRe2(w, src, dst, SendRst_None, "%s %s %s", ObservableNameCap(src), atkVerbPlural, ObservableName(dst))
+		Write("You %s %s (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 8 {
-		SendToPlayerRe(src, dst, SendRst_None, "You %s %s ferociously (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
-		SendToPlayerRe(dst, src, SendRst_None, "%s %s you ferociously (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr)
-		BroadcastToRoomRe2(w, src, dst, SendRst_None, "%s %s %s ferociously", ObservableNameCap(src), atkVerbPlural, ObservableName(dst))
+		Write("You %s %s ferociously (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you ferociously (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s ferociously", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 10 {
-		SendToPlayerRe(src, dst, SendRst_None, "You %s %s with all your might (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
-		SendToPlayerRe(dst, src, SendRst_None, "%s %s you with all your might (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr)
-		BroadcastToRoomRe2(w, src, dst, SendRst_None, "%s %s %s with all your might", ObservableNameCap(src), atkVerbPlural, ObservableName(dst))
+		Write("You %s %s with all your might (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you with all your might (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s with all your might", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else {
-		SendToPlayerRe(src, dst, SendRst_None, "You %s %s UNBELIEVABLY HARD (%s)", atkVerbSingular, ObservableName(dst), srcDamStr)
-		SendToPlayerRe(dst, src, SendRst_None, "%s %s you UNBELIEVABLY HARD (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr)
-		BroadcastToRoomRe2(w, src, dst, SendRst_None, "%s %s %s UNBELIEVABLY HARD", ObservableNameCap(src), atkVerbPlural, ObservableName(dst))
+		Write("You %s %s UNBELIEVABLY HARD (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you UNBELIEVABLY HARD (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s UNBELIEVABLY HARD", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	}
 }
 
 func sendStatusMessages(dam int, tgt *Entity, w *World) {
 	switch tgt.stats.Condition() {
 	case Cnd_Stunned:
-		SendToPlayer(tgt, "You are dazed and disoriented, struggling to regain your footing")
-		BroadcastToRoomRe(w, tgt, SendRst_CanSee, "%s is dazed and disoriented, struggling to regain their footing", ObservableNameCap(tgt))
+		Write("You are dazed and disoriented, struggling to regain your footing").ToPlayer(tgt).Send()
+		Write("%s is dazed and disoriented, struggling to regain their footing", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Restricted(SendRst_CanSee).Send()
 	case Cnd_Incapacitated:
-		SendToPlayer(tgt, "You are incapacitated and will die soon if not healed")
-		BroadcastToRoomRe(w, tgt, SendRst_CanSee, "%s is incapacitated and will die soon if not healed", ObservableNameCap(tgt))
+		Write("You are incapacitated and will die soon if not healed").ToPlayer(tgt).Send()
+		Write("%s is incapacitated and will die soon if not healed", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Restricted(SendRst_CanSee).Send()
 	case Cnd_MortallyWounded:
-		SendToPlayer(tgt, "You are bleeding profusely and will die soon if not healed")
-		BroadcastToRoomRe(w, tgt, SendRst_CanSee, "%s is bleeding profusely and will die soon if not healed", ObservableNameCap(tgt))
+		Write("You are bleeding profusely and will die soon if not healed").ToPlayer(tgt).Send()
+		Write("%s is bleeding profusely and will die soon if not healed", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Restricted(SendRst_CanSee).Send()
 	case Cnd_Dead:
-		SendToPlayer(tgt, "You feel your soul slip from your body. You are DEAD!")
-		BroadcastToRoomRe(w, tgt, SendRst_None, "%s is DEAD. R.I.P.", ObservableNameCap(tgt))
+		Write("You feel your soul slip from your body. You are DEAD!").ToPlayer(tgt).Colorized(Color_NegativeBld).Send()
+		Write("%s is DEAD. R.I.P.", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Colorized(Color_NeutralBld).Send()
 	default:
 		if dam > tgt.stats.Get(Stat_MaxHP)/4 {
-			SendToPlayer(tgt, Colorize(Color_NegativeBld, "Ouch, that one stung!"))
+			Write("Ouch, that one stung!").ToPlayer(tgt).Colorized(Color_NegativeBld).Send()
 		}
 		if tgt.stats.Get(Stat_HP) < tgt.stats.Get(Stat_MaxHP)/4 {
-			SendToPlayer(tgt, "You sure are BLEEDING a lot!")
+			Write("You sure are BLEEDING a lot!").ToPlayer(tgt).Send()
 		}
 	}
 }

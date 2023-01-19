@@ -118,8 +118,19 @@
             [x] When picked up
             [x] When given
         [x] Boasts about it
+[x] Color as send option
+[x] Colorize assist msg
+[x] Clear status effects on death
 ----------------------------------------
-[] Clear status effects on death
+[] RRO Stats
+[] RRO Combat
+[] Combat Speed
+[] Spawning + Zones
+    [] Spawning in zones
+    [] Movement is zone-locked
+[] Random Drops
+[] MVP mobs
+[] Equippable Cards
 [] Lua scripting
     [] More bindings
     [] More examples
@@ -139,9 +150,6 @@
 [] Text
     [] Lazy gender resolvers for everything!
     [] Also, handle sleepers!
-[] Spawning + Zones
-    [] Spawning in zones
-    [] Movement is zone-locked
 [] Items
     [] Gold
     [] Equipment

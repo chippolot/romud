@@ -5,10 +5,13 @@ import (
 	"log"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 //goland:noinspection GoSnakeCaseUsage
 const (
+	Color_None ANSIColor = ""
+
 	Color_Black   ANSIColor = "black"
 	Color_Red     ANSIColor = "red"
 	Color_Green   ANSIColor = "green"
@@ -40,7 +43,8 @@ const (
 	Color_Positive      = Color_Green
 	Color_Negative      = Color_Red
 	Color_NegativeBld   = Color_Red
-	Color_Neutral       = Color_BrightWhite
+	Color_Neutral       = Color_Yellow
+	Color_NeutralBld    = Color_BrightYellow
 	Color_PositiveBld   = Color_BrightGreen
 	Color_Header        = Color_BrightCyan
 	Color_SubHeader     = Color_Cyan
@@ -68,67 +72,115 @@ func (m *SendRestrictionsMask) Has(flag SendRestrictionsMask) bool {
 	return *m&flag != 0
 }
 
-func SendToPlayer(e *Entity, format string, a ...any) {
-	sendToPlayer(e, nil, SendRst_None, format, a...)
+type SendDestination interface {
+	Send(b *SendBuilder)
 }
 
-func SendToPlayerRe(e *Entity, subject *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
-	sendToPlayer(e, subject, restrictions, format, a...)
+type SendDestinationPlayer struct {
+	e *Entity
 }
 
-func BroadcastToWorld(w *World, format string, a ...any) {
-	for _, e := range w.entities {
-		sendToPlayer(e, nil, SendRst_None, format, a...)
-	}
+func (d SendDestinationPlayer) Send(b *SendBuilder) {
+	sendToPlayer(d.e, b.subject, b.restrictions, b.format, b.args...)
 }
 
-func BroadcastToWorldRe(w *World, e *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
-	for _, other := range w.entities {
-		if e.id != other.id {
-			sendToPlayer(other, e, restrictions, format, a...)
+type SendDestinationRoom struct {
+	r *Room
+}
+
+func (d SendDestinationRoom) Send(b *SendBuilder) {
+	for _, e := range d.r.entities {
+		if e != b.subject && (b.ignored == nil || !utils.Contains(b.ignored, e)) {
+			sendToPlayer(e, b.subject, b.restrictions, b.format, b.args...)
 		}
 	}
 }
 
-func BroadcastToRoom(r *Room, format string, a ...any) {
-	for _, e := range r.entities {
-		sendToPlayer(e, nil, SendRst_None, format, a...)
+type SendDestinationWorld struct {
+	w *World
+}
+
+func (d SendDestinationWorld) Send(b *SendBuilder) {
+	for _, e := range d.w.entities {
+		if e != b.subject && (b.ignored == nil || !utils.Contains(b.ignored, e)) {
+			sendToPlayer(e, b.subject, b.restrictions, b.format, b.args...)
+		}
 	}
 }
 
-func BroadcastToRoomRe(w *World, subject *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
-	if subject.data.RoomId == InvalidId {
-		log.Println("trying to broadcast to invalid room")
+type SendBuilder struct {
+	format       string
+	args         []any
+	color        ANSIColor
+	dst          SendDestination
+	subject      NamedObservable
+	restrictions SendRestrictionsMask
+	ignored      []*Entity
+}
+
+func (b *SendBuilder) ToPlayer(e *Entity) *SendBuilder {
+	b.dst = SendDestinationPlayer{e}
+	return b
+}
+
+func (b *SendBuilder) ToEntityRoom(w *World, e *Entity) *SendBuilder {
+	r := w.rooms[e.data.RoomId]
+	b.dst = SendDestinationRoom{r}
+	return b
+}
+
+func (b *SendBuilder) ToRoom(r *Room) *SendBuilder {
+	b.dst = SendDestinationRoom{r}
+	return b
+}
+
+func (b *SendBuilder) ToWorld(w *World) *SendBuilder {
+	b.dst = SendDestinationWorld{w}
+	return b
+}
+
+func (b *SendBuilder) Subject(s NamedObservable) *SendBuilder {
+	b.subject = s
+	return b
+}
+
+func (b *SendBuilder) Ignore(e *Entity) *SendBuilder {
+	if b.ignored == nil {
+		b.ignored = []*Entity{e}
+	}
+	return b
+}
+
+func (b *SendBuilder) Restricted(r SendRestrictionsMask) *SendBuilder {
+	b.restrictions = r
+	return b
+}
+
+func (b *SendBuilder) Colorized(c ANSIColor) *SendBuilder {
+	b.color = c
+	return b
+}
+
+func (b *SendBuilder) Send() {
+	if b.dst == nil {
+		log.Println("Trying to send message without destination!")
 		return
 	}
-	r := w.rooms[subject.data.RoomId]
-	for _, other := range r.entities {
-		if subject.id == other.id {
-			continue
-		}
-		sendToPlayer(other, subject, restrictions, format, a...)
+	if b.color != Color_None {
+		b.format = fmt.Sprintf("<c %s>%s</c>", b.color, b.format)
 	}
+	b.dst.Send(b)
 }
 
-func BroadcastToRoomRe2(w *World, subject *Entity, other *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
-	if subject.data.RoomId == InvalidId {
-		log.Println("trying to broadcast to invalid room")
-		return
-	}
-	r := w.rooms[subject.data.RoomId]
-	for _, e := range r.entities {
-		if subject.id == e.id || other.id == e.id {
-			continue
-		}
-		sendToPlayer(e, subject, restrictions, format, a...)
-	}
+func Write(format string, args ...any) *SendBuilder {
+	return &SendBuilder{format, args, Color_None, nil, nil, SendRst_None, nil}
 }
 
 func Colorize(color ANSIColor, a any) string {
 	return fmt.Sprintf("<c %s>%v</c>", color, a)
 }
 
-func sendToPlayer(e *Entity, subject *Entity, restrictions SendRestrictionsMask, format string, a ...any) {
+func sendToPlayer(e *Entity, subject NamedObservable, restrictions SendRestrictionsMask, format string, a ...any) {
 	if e == nil || e.player == nil {
 		return
 	}

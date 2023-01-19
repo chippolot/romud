@@ -377,7 +377,7 @@ func (s *Stats) ConditionShortString() string {
 	} else if hp <= 0 {
 		return Colorize(Color_Cnd_Hurt, "awful condition")
 	} else {
-		pct := float32(hp) / float32(s.data[Stat_MaxHP])
+		pct := float32(hp) / float32(s.Get(Stat_MaxHP))
 		if pct >= 0.95 {
 			return Colorize(Color_Cnd_Healthy, "excellent condition")
 		} else if pct >= 0.85 {
@@ -428,8 +428,8 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 }
 
 func (s *Stats) clamp() {
-	s.data[Stat_HP] = utils.MinInts(s.Get(Stat_MaxHP), s.data[Stat_HP])
-	s.data[Stat_Mov] = utils.MinInts(s.Get(Stat_MaxMov), s.data[Stat_Mov])
+	s.data[Stat_HP] = utils.MinInts(s.Get(Stat_MaxHP), s.Get(Stat_HP))
+	s.data[Stat_Mov] = utils.MinInts(s.Get(Stat_MaxMov), s.Get(Stat_Mov))
 }
 
 func (s *Stats) getRollMods(roll RollType) *RollMods {

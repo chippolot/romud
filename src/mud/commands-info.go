@@ -12,13 +12,13 @@ func DoLook(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	if e.entityFlags.Has(EFlag_Blind) {
-		SendToPlayer(e, "You can't see a thing!")
+		Write("You can't see a thing!").ToPlayer(e).Send()
 		return
 	}
 
 	numtoks := len(tokens)
 	if numtoks == 0 || numtoks == 1 {
-		SendToPlayer(e, fmt.Sprintf("%s%s", r.Describe(e), utils.NewLine))
+		Write(fmt.Sprintf("%s%s", r.Describe(e), utils.NewLine)).ToPlayer(e).Send()
 		return
 	}
 
@@ -26,42 +26,42 @@ func DoLook(e *Entity, w *World, tokens []string) {
 	if tokens[1] == "in" {
 		containerQuery, ok, _ := parseSearchQuery(tokens[2:], false)
 		if !ok {
-			SendToPlayer(e, "What do you want to look in?")
+			Write("What do you want to look in?").ToPlayer(e).Send()
 			return
 		}
 		if containers := SearchItems(containerQuery, e, r); len(containers) > 0 {
-			SendToPlayer(e, containers[0].DescribeContents())
+			Write(containers[0].DescribeContents()).ToPlayer(e).Send()
 			return
 		}
-		SendToPlayer(e, "You don't see that here.")
+		Write("You don't see that here.").ToPlayer(e).Send()
 		return
 	}
 
 	// Looking at entity or item?
 	query, ok, _ := parseSearchQuery(tokens[1:], false)
 	if !ok {
-		SendToPlayer(e, "You don't see that here.")
+		Write("You don't see that here.").ToPlayer(e).Send()
 		return
 	}
 	if ents := SearchEntities(query, e, r); len(ents) > 0 {
-		SendToPlayer(e, ents[0].Describe())
+		Write(ents[0].Describe()).ToPlayer(e).Send()
 	} else if itms := SearchItems(query, r, e); len(itms) > 0 {
-		SendToPlayer(e, itms[0].Describe())
+		Write(itms[0].Describe()).ToPlayer(e).Send()
 	} else {
-		SendToPlayer(e, "You don't see that here.")
+		Write("You don't see that here.").ToPlayer(e).Send()
 	}
 }
 
 func DoInventory(e *Entity, _ *World, _ []string) {
-	SendToPlayer(e, e.DescribeInventory())
+	Write(e.DescribeInventory()).ToPlayer(e).Send()
 }
 
 func DoEquipment(e *Entity, _ *World, _ []string) {
-	SendToPlayer(e, e.DescribeEquipment())
+	Write(e.DescribeEquipment()).ToPlayer(e).Send()
 }
 
 func DoStatus(e *Entity, _ *World, _ []string) {
-	SendToPlayer(e, e.DescribeStatus())
+	Write(e.DescribeStatus()).ToPlayer(e).Send()
 }
 
 func DoWho(e *Entity, w *World, _ []string) {
@@ -74,7 +74,7 @@ func DoWho(e *Entity, w *World, _ []string) {
 			sb.WriteLinef("  %s", e2.Name())
 		}
 	}
-	SendToPlayer(e, sb.String())
+	Write(sb.String()).ToPlayer(e).Send()
 }
 
 func DoListCommands(e *Entity, _ *World, _ []string) {
@@ -92,7 +92,7 @@ func DoListCommands(e *Entity, _ *World, _ []string) {
 			}
 		}
 	}
-	SendToPlayer(e, sb.String())
+	Write(sb.String()).ToPlayer(e).Send()
 }
 
 func DoAlias(e *Entity, _ *World, tokens []string) {
@@ -109,16 +109,16 @@ func DoAlias(e *Entity, _ *World, tokens []string) {
 		for _, aKey := range aliasKeys {
 			sb.WriteLinef("  %s -> %s", aKey, e.player.data.Aliases[aKey])
 		}
-		SendToPlayer(e, sb.String())
+		Write(sb.String()).ToPlayer(e).Send()
 	case 2:
-		SendToPlayer(e, "What do you want %s to expand to?", tokens[1])
+		Write("What do you want %s to expand to?", tokens[1]).ToPlayer(e).Send()
 	default:
 		if _, ok := CommandsLookup[tokens[1]]; ok {
-			SendToPlayer(e, "Cannot add alias %s -- command already exists", tokens[1])
+			Write("Cannot add alias %s -- command already exists", tokens[1]).ToPlayer(e).Send()
 			return
 		}
 		e.player.data.Aliases[tokens[1]] = strings.Join(tokens[2:], " ")
-		SendToPlayer(e, "Added alias for %s", tokens[1])
+		Write("Added alias for %s", tokens[1]).ToPlayer(e).Send()
 	}
 }
 
@@ -128,21 +128,21 @@ func DoUnalias(e *Entity, _ *World, tokens []string) {
 	}
 	switch len(tokens) {
 	case 0, 1:
-		SendToPlayer(e, "What do you want to unalias?")
+		Write("What do you want to unalias?").ToPlayer(e).Send()
 	default:
 		aliasKey := tokens[1]
 		if _, ok := e.player.data.Aliases[aliasKey]; !ok {
-			SendToPlayer(e, "You don't have an alias for %s", tokens[1])
+			Write("You don't have an alias for %s", tokens[1]).ToPlayer(e).Send()
 		} else {
 			delete(e.player.data.Aliases, aliasKey)
-			SendToPlayer(e, "Removed alias for %s", tokens[1])
+			Write("Removed alias for %s", tokens[1]).ToPlayer(e).Send()
 		}
 	}
 }
 
 func DoSave(e *Entity, w *World, _ []string) {
 	w.SavePlayerCharacter(e.player.id)
-	SendToPlayer(e, "Saved game.")
+	Write("Saved game.").ToPlayer(e).Send()
 }
 
 func DoQuit(e *Entity, w *World, _ []string) {

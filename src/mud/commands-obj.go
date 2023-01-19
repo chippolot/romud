@@ -6,7 +6,7 @@ import (
 
 func DoAdvance(e *Entity, w *World, _ []string) {
 	if !IsReadyForLevelUp(e) {
-		SendToPlayer(e, "You need more experience to advance to the next level")
+		Write("You need more experience to advance to the next level").ToPlayer(e).Send()
 		return
 	}
 
@@ -17,9 +17,9 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 	hpGain := D8.Roll() + GetAbilityModifier(e.stats.Get(Stat_Con))
 	e.stats.Add(Stat_MaxHP, utils.MaxInts(1, hpGain))
 
-	SendToPlayer(e, "You advance to level %d!", e.stats.Get(Stat_Level))
-	SendToPlayer(e, "  You gain %d hp", hpGain)
-	BroadcastToWorldRe(w, e, SendRst_None, "Hooray! %s is now level %d", ObservableName(e), e.stats.Get(Stat_Level))
+	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Send()
+	Write("  You gain %d hp", hpGain).ToPlayer(e).Send()
+	Write("Hooray! %s is now level %d", ObservableName(e), e.stats.Get(Stat_Level)).ToWorld(w).Send()
 
 	if e.player != nil {
 		w.SavePlayerCharacter(e.player.id)
@@ -29,7 +29,7 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 func DoGet(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {
-		SendToPlayer(e, "What do you want to get?")
+		Write("What do you want to get?").ToPlayer(e).Send()
 		return
 	}
 
@@ -40,21 +40,21 @@ func DoGet(e *Entity, w *World, tokens []string) {
 	if ok {
 		contianers := SearchItems(containerQuery, e, r)
 		if len(contianers) == 0 {
-			SendToPlayer(e, "You don't see '%s' here", containerQuery.Keyword)
+			Write("You don't see '%s' here", containerQuery.Keyword).ToPlayer(e).Send()
 			return
 		}
 
 		// Make sure it's a container
 		containerItem := contianers[0]
 		if !containerItem.cfg.Flags.Has(IFlag_Container) {
-			SendToPlayer(e, "The %s is not a container", ObservableName(containerItem))
+			Write("The %s is not a container", ObservableName(containerItem)).ToPlayer(e).Send()
 			return
 		}
 
 		// Get the items
 		items := containerItem.SearchItems(itemQuery)
 		if len(items) == 0 {
-			SendToPlayer(e, "The %s is empty", ObservableName(containerItem))
+			Write("The %s is empty", ObservableName(containerItem)).ToPlayer(e).Send()
 		} else {
 			performGet(e, w, containerItem, items...)
 		}
@@ -62,7 +62,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 		// Find item in room
 		items := r.SearchItems(itemQuery)
 		if len(items) == 0 {
-			SendToPlayer(e, "You don't see that here...")
+			Write("You don't see that here...").ToPlayer(e).Send()
 			return
 		}
 		performGet(e, w, r, items...)
@@ -72,7 +72,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 func DoGive(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {
-		SendToPlayer(e, "What do you want to give and to whom?")
+		Write("What do you want to give and to whom?").ToPlayer(e).Send()
 		return
 	}
 
@@ -81,18 +81,18 @@ func DoGive(e *Entity, w *World, tokens []string) {
 	// Find the target
 	targetQuery, ok, tokens := parseSearchQuery(tokens, false)
 	if !ok {
-		SendToPlayer(e, "Who do you want to give that to?")
+		Write("Who do you want to give that to?").ToPlayer(e).Send()
 		return
 	}
 
 	if e.entityFlags.Has(EFlag_Blind) {
-		SendToPlayer(e, "You can't see a thing!")
+		Write("You can't see a thing!").ToPlayer(e).Send()
 		return
 	}
 
 	targets := SearchEntities(targetQuery, e, r)
 	if len(targets) == 0 {
-		SendToPlayer(e, "They don't seem to be here")
+		Write("They don't seem to be here").ToPlayer(e).Send()
 		return
 	}
 	target := targets[0]
@@ -100,7 +100,7 @@ func DoGive(e *Entity, w *World, tokens []string) {
 	// Find the item
 	items := e.SearchItems(itemQuery)
 	if len(items) == 0 {
-		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+		Write("You're not carrying '%s'", itemQuery.Keyword).ToPlayer(e).Send()
 		return
 	}
 	for _, item := range items {
@@ -111,34 +111,34 @@ func DoGive(e *Entity, w *World, tokens []string) {
 func DoPut(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {
-		SendToPlayer(e, "What do you want to put and in where?")
+		Write("What do you want to put and in where?").ToPlayer(e).Send()
 		return
 	}
 
 	// Find the container
 	containerQuery, ok, tokens := parseSearchQuery(tokens, false)
 	if !ok {
-		SendToPlayer(e, "What do you want to put that in?")
+		Write("What do you want to put that in?").ToPlayer(e).Send()
 		return
 	}
 	containers := e.SearchItems(containerQuery)
 	if len(containers) == 0 {
-		SendToPlayer(e, "You don't seem to be holding '%s'", containerQuery.Keyword)
+		Write("You don't seem to be holding '%s'", containerQuery.Keyword).ToPlayer(e).Send()
 		return
 	}
 	container := containers[0]
 	if container.cfg.Flags.Has(IFlag_NoStorage) {
-		SendToPlayer(e, "You can't store things in that!")
+		Write("You can't store things in that!").ToPlayer(e).Send()
 		return
 	}
 
 	// Find the item
 	items := e.SearchItems(itemQuery)
 	if len(items) == 0 {
-		SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+		Write("You're not carrying '%s'", itemQuery.Keyword).ToPlayer(e).Send()
 		return
 	} else if len(items) == 1 && items[0] == container {
-		SendToPlayer(e, "You can't put that in itself!")
+		Write("You can't put that in itself!").ToPlayer(e).Send()
 		return
 	}
 	for _, item := range items {
@@ -152,7 +152,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 func DoDrop(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {
-		SendToPlayer(e, "What do you want to drop?")
+		Write("What do you want to drop?").ToPlayer(e).Send()
 		return
 	}
 
@@ -160,9 +160,9 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 
 	if items := e.SearchItems(itemQuery); len(items) == 0 {
 		if itemQuery.Keyword == "all" {
-			SendToPlayer(e, "You have nothing to drop!")
+			Write("You have nothing to drop!").ToPlayer(e).Send()
 		} else {
-			SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+			Write("You're not carrying '%s'", itemQuery.Keyword).ToPlayer(e).Send()
 		}
 	} else {
 		for _, item := range items {
@@ -174,15 +174,15 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 func DoEquip(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {
-		SendToPlayer(e, "What do you want to equip?")
+		Write("What do you want to equip?").ToPlayer(e).Send()
 		return
 	}
 
 	if items := e.SearchItems(itemQuery); len(items) == 0 {
 		if itemQuery.Keyword == "all" {
-			SendToPlayer(e, "You don't have anything to equip")
+			Write("You don't have anything to equip").ToPlayer(e).Send()
 		} else {
-			SendToPlayer(e, "You're not carrying '%s'", itemQuery.Keyword)
+			Write("You're not carrying '%s'", itemQuery.Keyword).ToPlayer(e).Send()
 		}
 	} else {
 		for _, item := range items {
@@ -194,15 +194,15 @@ func DoEquip(e *Entity, w *World, tokens []string) {
 func DoUnequip(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {
-		SendToPlayer(e, "What do you want to equip?")
+		Write("What do you want to equip?").ToPlayer(e).Send()
 		return
 	}
 
 	if items := SearchMap(itemQuery, e.equipped, nil); len(items) == 0 {
 		if itemQuery.Keyword == "all" {
-			SendToPlayer(e, "You don't have anything equipped")
+			Write("You don't have anything equipped").ToPlayer(e).Send()
 		} else {
-			SendToPlayer(e, "You don't have '%s' equipped", itemQuery.Keyword)
+			Write("You don't have '%s' equipped", itemQuery.Keyword).ToPlayer(e).Send()
 		}
 	} else {
 		for _, item := range items {
@@ -217,7 +217,7 @@ func performGet(e *Entity, w *World, from ItemContainer, items ...*Item) {
 		if named, ok := from.(Named); ok {
 			containerName = named.Name()
 		}
-		SendToPlayer(e, "The %s is empty", containerName)
+		Write("The %s is empty", containerName).ToPlayer(e).Send()
 		return
 	}
 
@@ -231,13 +231,13 @@ func performTransferItem(w *World, src ItemContainer, dst ItemContainer, item *I
 
 	// Can't transfer environmental items
 	if item.cfg.Flags.Has(IFlag_Environmental) {
-		SendToPlayer(dstE, "You can't pick that up!")
+		Write("You can't pick that up!").ToPlayer(dstE).Send()
 		return
 	}
 
 	// Check destination's item capacity
 	if dstE != nil && dst.ItemWeight()+item.ItemWeight() > dstE.stats.CarryingCapacity() {
-		SendToPlayer(dstE, "You can't hold the weight of %s", ObservableName(item))
+		Write("You can't hold the weight of %s", ObservableName(item)).ToPlayer(dstE).Send()
 		return
 	}
 
@@ -247,8 +247,8 @@ func performTransferItem(w *World, src ItemContainer, dst ItemContainer, item *I
 	// Some items crumble!
 	if item.cfg.Flags.Has(IFlag_Crumbles) {
 		if dstE != nil {
-			SendToPlayer(dstE, "%s crumbles to dust as you touch it", ObservableNameCap(item))
-			BroadcastToRoomRe(w, dstE, SendRst_None, "%s crumbles to dust as %s touches it", ObservableNameCap(item), ObservableName(dstE))
+			Write("%s crumbles to dust as you touch it", ObservableNameCap(item)).ToPlayer(dstE).Send()
+			Write("%s crumbles to dust as %s touches it", ObservableNameCap(item), ObservableName(dstE)).ToEntityRoom(w, dstE).Subject(dstE).Send()
 		}
 
 		// Drop all items in parent container
@@ -272,18 +272,18 @@ func onItemTransferred(w *World, src ItemContainer, dst ItemContainer, item *Ite
 		switch fromObj := src.(type) {
 		// Item picked up
 		case *Room:
-			SendToPlayer(dstE, "You pick up %s", ObservableName(item))
-			BroadcastToRoomRe(w, dstE, SendRst_CanSee, "%s picks up %s", ObservableNameCap(dstE), ObservableName(item))
+			Write("You pick up %s", ObservableName(item)).ToPlayer(dstE).Send()
+			Write("%s picks up %s", ObservableNameCap(dstE), ObservableName(item)).ToRoom(fromObj).Subject(dstE).Restricted(SendRst_CanSee).Send()
 		// Item given
 		case *Entity:
-			SendToPlayer(fromObj, "You give %s to %s", ObservableName(item), ObservableName(dstE))
-			SendToPlayerRe(dstE, fromObj, SendRst_CanSee, "%s give %s to you", ObservableNameCap(fromObj), ObservableName(item))
-			BroadcastToRoomRe2(w, fromObj, dstE, SendRst_CanSee, "%s gives %s to %s", ObservableNameCap(fromObj), ObservableName(item), ObservableName(dstE))
+			Write("You give %s to %s", ObservableName(item), ObservableName(dstE)).ToPlayer(fromObj).Send()
+			Write("%s give %s to you", ObservableNameCap(fromObj), ObservableName(item)).ToPlayer(dstE).Subject(fromObj).Restricted(SendRst_CanSee).Send()
+			Write("%s gives %s to %s", ObservableNameCap(fromObj), ObservableName(item), ObservableName(dstE)).ToEntityRoom(w, dstE).Subject(fromObj).Ignore(dstE).Restricted(SendRst_CanSee).Send()
 			triggerGivenItemScript(dstE, fromObj, item)
 		// Item otherwise received
 		case NamedObservable:
-			SendToPlayer(dstE, "You get %s from %s", ObservableName(item), ObservableName(fromObj))
-			BroadcastToRoomRe(w, dstE, SendRst_CanSee, "%s gets %s from %s", ObservableNameCap(dstE), ObservableName(item), ObservableName(fromObj))
+			Write("You get %s from %s", ObservableName(item), ObservableName(fromObj)).ToPlayer(dstE).Send()
+			Write("%s gets %s from %s", ObservableNameCap(dstE), ObservableName(item), ObservableName(fromObj)).ToEntityRoom(w, dstE).Subject(dstE).Restricted(SendRst_CanSee).Send()
 		}
 		triggerReceivedItemScript(dstE, item)
 		return
@@ -294,12 +294,12 @@ func onItemTransferred(w *World, src ItemContainer, dst ItemContainer, item *Ite
 		switch fromObj := src.(type) {
 		// Item dropped
 		case *Entity:
-			SendToPlayer(fromObj, "You drop %s", ObservableName(item))
-			BroadcastToRoomRe(w, fromObj, SendRst_CanSee, "%s drops %s", ObservableNameCap(fromObj), ObservableName(item))
+			Write("You drop %s", ObservableName(item)).ToPlayer(fromObj).Send()
+			Write("%s drops %s", ObservableNameCap(fromObj), ObservableName(item)).ToRoom(dstR).Subject(fromObj).Restricted(SendRst_CanSee).Send()
 			triggerItemDroppedScript(item, dstR)
 		// Item fell
 		default:
-			BroadcastToRoom(dstR, "%s falls to the floor", ObservableName(item))
+			Write("%s falls to the floor", ObservableName(item)).ToRoom(dstR).Send()
 		}
 	}
 }

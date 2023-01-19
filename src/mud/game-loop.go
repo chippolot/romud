@@ -128,7 +128,7 @@ func restoreStats(w *World, t GameTime) {
 
 		// Force a new prompt if something changed
 		if message != "" {
-			SendToPlayer(e, message)
+			Write(message).ToPlayer(e).Send()
 		}
 	}
 }
@@ -188,7 +188,7 @@ func aggroNPCs(w *World, t GameTime) {
 			continue
 		}
 
-		if D4.Roll() != 1 {
+		if D6.Roll() != 1 {
 			continue
 		}
 
@@ -222,7 +222,7 @@ func assistNPCs(w *World, t GameTime) {
 			continue
 		}
 
-		if D4.Roll() != 1 {
+		if D6.Roll() != 1 {
 			continue
 		}
 

@@ -86,15 +86,15 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 	if cmdDesc, ok := CommandsLookup[cmd]; ok {
 		// TODO Check if command can be performed in current state
 		if e.combat != nil && !cmdDesc.allowDuringCombat {
-			SendToPlayer(e, "Things are a little too chaotic for that!")
+			Write("Things are a little too chaotic for that!").ToPlayer(e).Send()
 			return false
 		}
 		if e.position < cmdDesc.minPosition {
-			SendToPlayer(e, e.position.InactionString())
+			Write(e.position.InactionString()).ToPlayer(e).Send()
 			return false
 		}
 		if e.stats.Condition() < cmdDesc.minCondition {
-			SendToPlayer(e, e.stats.Condition().InactionString())
+			Write(e.stats.Condition().InactionString()).ToPlayer(e).Send()
 			return false
 		}
 
@@ -104,7 +104,7 @@ func ProcessCommand(e *Entity, w *World, tokens []string) bool {
 		}
 	}
 
-	SendToPlayer(e, "Huh??")
+	Write("Huh??").ToPlayer(e).Send()
 	return false
 }
 

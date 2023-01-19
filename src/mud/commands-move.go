@@ -6,7 +6,7 @@ func DoMove(e *Entity, w *World, tokens []string) {
 	cmd := tokens[0]
 	dir, err := ParseDirection(cmd)
 	if err != nil {
-		SendToPlayer(e, "%s isn't a direction!", cmd)
+		Write("%s isn't a direction!", cmd).ToPlayer(e).Send()
 	}
 
 	_ = performMoveDirection(e, w, dir)
@@ -14,7 +14,7 @@ func DoMove(e *Entity, w *World, tokens []string) {
 
 func DoSit(e *Entity, w *World, _ []string) {
 	if e.position == Pos_Sitting {
-		SendToPlayer(e, "But you're already sitting!")
+		Write("But you're already sitting!").ToPlayer(e).Send()
 		return
 	}
 
@@ -22,61 +22,61 @@ func DoSit(e *Entity, w *World, _ []string) {
 	e.position = Pos_Sitting
 
 	if oldPos == Pos_Prone {
-		SendToPlayer(e, "You sit up")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits up", ObservableNameCap(e))
+		Write("You sit up").ToPlayer(e).Send()
+		Write("%s sits up", ObservableNameCap(e)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 	} else {
-		SendToPlayer(e, "You sit down")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s sits down", ObservableNameCap(e))
+		Write("You sit down").ToPlayer(e).Send()
+		Write("%s sits down", ObservableNameCap(e)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 	}
 }
 
 func DoSleep(e *Entity, w *World, _ []string) {
 	if e.position == Pos_Sleeping {
-		SendToPlayer(e, "But you're already sleeping!")
+		Write("But you're already sleeping!").ToPlayer(e).Send()
 		return
 	}
 	e.position = Pos_Sleeping
-	SendToPlayer(e, "You lie down and doze off...")
-	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s lies down and falls asleep", ObservableNameCap(e))
+	Write("You lie down and doze off...").ToPlayer(e).Send()
+	Write("%s lies down and falls asleep", ObservableNameCap(e)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 }
 
 func DoWake(e *Entity, w *World, _ []string) {
 	if e.position != Pos_Sleeping {
-		SendToPlayer(e, "But you're not sleeping!")
+		Write("But you're not sleeping!").ToPlayer(e).Send()
 		return
 	}
 	e.position = Pos_Prone
-	SendToPlayer(e, "You open your eyes and wake up")
-	BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wakes up", ObservableNameCap(e))
+	Write("You open your eyes and wake up").ToPlayer(e).Send()
+	Write("%s wakes up", ObservableNameCap(e)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 }
 
 func DoStand(e *Entity, w *World, _ []string) {
 	if e.position == Pos_Standing {
-		SendToPlayer(e, "But you're already standing!")
+		Write("But you're already standing!").ToPlayer(e).Send()
 		return
 	}
 	e.position = Pos_Standing
 
 	if e.combat != nil {
-		SendToPlayer(e, "You scramble back to your feet!")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s scrambles back to their feet", ObservableNameCap(e))
+		Write("You scramble back to your feet!").ToPlayer(e).Send()
+		Write("%s scrambles back to their feet", ObservableNameCap(e)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 	} else {
-		SendToPlayer(e, "You stand up")
-		BroadcastToRoomRe(w, e, SendRst_CanSee, "%s stands up", ObservableNameCap(e))
+		Write("You stand up").ToPlayer(e).Send()
+		Write("%s stands up", ObservableNameCap(e)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 	}
 }
 
 func performMoveDirection(e *Entity, w *World, dir Direction) bool {
 	if e.stats.Get(Stat_Mov) <= 0 {
-		SendToPlayer(e, "You're way too tired...")
+		Write("You're way too tired...").ToPlayer(e).Send()
 		return false
 	}
 	if e.combat != nil {
-		SendToPlayer(e, "You can't do that while you're fighting!")
+		Write("You can't do that while you're fighting!").ToPlayer(e).Send()
 		return false
 	}
 	if e.stats.Condition() < Cnd_Healthy {
-		SendToPlayer(e, "You're not feeling up for that!")
+		Write("You're not feeling up for that!").ToPlayer(e).Send()
 		return false
 	}
 
@@ -84,22 +84,22 @@ func performMoveDirection(e *Entity, w *World, dir Direction) bool {
 
 	nextRoomId, ok := srcRoom.cfg.Exits[dir]
 	if !ok {
-		SendToPlayer(e, "Can't go that way!")
+		Write("Can't go that way!").ToPlayer(e).Send()
 		return false
 	}
 
 	dstRoom, ok := w.rooms[nextRoomId]
 	if !ok {
 		log.Printf("Tried to move to invalid room id: %d", nextRoomId)
-		SendToPlayer(e, "An unseen force blocks you from going there!")
+		Write("An unseen force blocks you from going there!").ToPlayer(e).Send()
 		return false
 	}
 
 	performMove(e, w, dstRoom, func() {
 		if e.player != nil {
-			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s leaves %s", ObservableNameCap(e), dir.String())
+			Write("%s leaves %s", ObservableNameCap(e), dir.String()).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 		} else {
-			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders %s", ObservableNameCap(e), dir.String())
+			Write("%s wanders %s", ObservableNameCap(e), dir.String()).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 		}
 	}, func() {
 		fromDirStr := ""
@@ -111,9 +111,9 @@ func performMoveDirection(e *Entity, w *World, dir Direction) bool {
 		}
 
 		if e.player != nil {
-			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s enters from the %s", ObservableNameCap(e), fromDirStr)
+			Write("%s enters from the %s", ObservableNameCap(e), fromDirStr).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 		} else {
-			BroadcastToRoomRe(w, e, SendRst_CanSee, "%s wanders in from the %s", ObservableNameCap(e), fromDirStr)
+			Write("%s wanders in from the %s", ObservableNameCap(e), fromDirStr).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 		}
 	})
 

@@ -4,7 +4,7 @@ import "strconv"
 
 func DoAdmin(e *Entity, w *World, tokens []string) {
 	if len(tokens) < 2 {
-		SendToPlayer(e, "What command do you want to run?")
+		Write("What command do you want to run?").ToPlayer(e).Send()
 		return
 	}
 
@@ -13,67 +13,67 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 	switch tokens[1] {
 	case "pkill":
 		dam := 9999
-		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
+		Write("Admin: Damaging Player for %d", dam).ToPlayer(e).Send()
 		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, "hit", "hits")
 	case "pstatus":
 		if len(tokens) <= 2 {
-			SendToPlayer(e, "Admin: Which effect?")
+			Write("Admin: Which effect?").ToPlayer(e).Send()
 			return
 		}
 		statusStr := tokens[2]
 		if status, err := ParseStatusEffectType(statusStr); err == nil {
-			SendToPlayer(e, "Admin: Adding %s effect on Player", status.String())
+			Write("Admin: Adding %s effect on Player", status.String()).ToPlayer(e).Send()
 			performAddStatusEffect(e, w, status, 10)
 		} else {
-			SendToPlayer(e, "Admin: Failed to parse status effect '%s'", statusStr)
+			Write("Admin: Failed to parse status effect '%s'", statusStr).ToPlayer(e).Send()
 		}
 	case "pheal":
 		heal := 9999
-		SendToPlayer(e, "Admin: Healing Player for %d", heal)
+		Write("Admin: Healing Player for %d", heal).ToPlayer(e).Send()
 		e.stats.Add(Stat_HP, heal)
 	case "pdam":
 		if len(tokens) <= 2 {
-			SendToPlayer(e, "Admin: How much damage?")
+			Write("Admin: How much damage?").ToPlayer(e).Send()
 			return
 		}
 		dam, _ := strconv.Atoi(tokens[2])
-		SendToPlayer(e, "Admin: Damaging Player for %d", dam)
+		Write("Admin: Damaging Player for %d", dam).ToPlayer(e).Send()
 		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, "hit", "hits")
 	case "pxp":
 		if len(tokens) <= 2 {
-			SendToPlayer(e, "Admin: How much xp?")
+			Write("Admin: How much xp?").ToPlayer(e).Send()
 			return
 		}
 		xp, _ := strconv.Atoi(tokens[2])
 		applyXp(e, xp)
-		SendToPlayer(e, "Added XP %d", xp)
+		Write("Added XP %d", xp).ToPlayer(e).Send()
 	case "spawne":
 		if len(tokens) <= 2 {
-			SendToPlayer(e, "Admin: Which entity?")
+			Write("Admin: Which entity?").ToPlayer(e).Send()
 			return
 		}
 		key := tokens[2]
 		if cfg, ok := w.TryGetEntityConfig(key); ok {
 			ent := NewEntity(cfg)
 			w.AddEntity(ent, r.cfg.Id)
-			SendToPlayer(e, "Admin: Spawned Entity %s", key)
+			Write("Admin: Spawned Entity %s", key).ToPlayer(e).Send()
 		} else {
-			SendToPlayer(e, "Admin: Failed to load entity %s", key)
+			Write("Admin: Failed to load entity %s", key).ToPlayer(e).Send()
 		}
 	case "spawni":
 		if len(tokens) <= 2 {
-			SendToPlayer(e, "Admin: Which item?")
+			Write("Admin: Which item?").ToPlayer(e).Send()
 			return
 		}
 		key := tokens[2]
 		if cfg, ok := w.TryGetItemConfig(key); ok {
 			itm := NewItem(cfg)
 			w.AddItem(itm, r.cfg.Id)
-			SendToPlayer(e, "Admin: Spawned Item %s", key)
+			Write("Admin: Spawned Item %s", key).ToPlayer(e).Send()
 		} else {
-			SendToPlayer(e, "Admin: Failed to load item %s", key)
+			Write("Admin: Failed to load item %s", key).ToPlayer(e).Send()
 		}
 	default:
-		SendToPlayer(e, "Admin: Unrecognized command: %s", tokens[1])
+		Write("Admin: Unrecognized command: %s", tokens[1]).ToPlayer(e).Send()
 	}
 }

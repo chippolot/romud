@@ -231,34 +231,35 @@ func performRemoveStatusEffect(e *Entity, w *World, statusType StatusEffectMask,
 }
 
 func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask, newFlags StatusEffectMask) {
+	r := w.rooms[e.data.RoomId]
 	for i := 0; i < 64; i++ {
 		var f StatusEffectMask = 1 << i
 		if !oldFlags.Has(f) && newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, Colorize(Color_NegativeBld, "You suddenly don't feel very well..."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s looks a little sick.", ObservableNameCap(e))
+				Write("You suddenly don't feel very well...").ToPlayer(e).Colorized(Color_NegativeBld).Send()
+				Write("%s looks a little sick.", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
 			case StatusType_Blind:
-				SendToPlayer(e, Colorize(Color_NegativeBld, "Your vision fades to black."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s seems to have been blinded!", ObservableNameCap(e))
+				Write("Your vision fades to black.").ToPlayer(e).Colorized(Color_NegativeBld).Send()
+				Write("%s seems to have been blinded!", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
 			case StatusType_Invisible:
-				SendToPlayer(e, Colorize(Color_Neutral, "You vanish."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s seems to flicker out of existence.", ObservableNameCap(e))
+				Write("You vanish.").ToPlayer(e).Colorized(Color_Neutral).Send()
+				Write("%s seems to flicker out of existence.", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
 			case StatusType_Blessed:
-				SendToPlayer(e, Colorize(Color_Neutral, "You feel a tingle as you're bathed in a white light."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s glows white for a moment.", ObservableNameCap(e))
+				Write("You feel a tingle as you're bathed in a white light.").ToPlayer(e).Colorized(Color_Neutral).Send()
+				Write("%s glows white for a moment.", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
 			}
 		} else if oldFlags.Has(f) && !newFlags.Has(f) {
 			switch f {
 			case StatusType_Poison:
-				SendToPlayer(e, Colorize(Color_PositiveBld, "You feel much better."))
+				Write("You feel much better.").ToPlayer(e).Colorized(Color_PositiveBld).Send()
 			case StatusType_Blind:
-				SendToPlayer(e, Colorize(Color_PositiveBld, "Your vision slowly returns"))
+				Write("Your vision slowly returns").ToPlayer(e).Colorized(Color_PositiveBld).Send()
 			case StatusType_Invisible:
-				SendToPlayer(e, Colorize(Color_Neutral, "You blink back into existence."))
-				BroadcastToRoomRe(w, e, SendRst_None, "%s blinks back into existence.", ObservableNameCap(e))
+				Write("You blink back into existence.").ToPlayer(e).Colorized(Color_Neutral).Send()
+				Write("%s blinks back into existence.", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
 			case StatusType_Blessed:
-				SendToPlayer(e, Colorize(Color_Neutral, "You feel the warm cozy feeling fade."))
+				Write("You feel the warm cozy feeling fade.").ToPlayer(e).Colorized(Color_Neutral).Send()
 			}
 		}
 	}

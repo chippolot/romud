@@ -51,7 +51,7 @@ func init() {
 		{DoUnalias, []string{"unalias"}, "Removes an existing alias", "unalias", true, 0, 0},
 		{DoUnequip, []string{"unequip", "remove"}, "Unequips an equipped item", "unequip sword", false, Cnd_Healthy, Pos_Sitting},
 		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
-		{DoWhisper, []string{"whisper", "wh"}, "Whisper something to a specific player", "whisper lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
+		{DoTell, []string{"tell"}, "Say something to a specific player", "tell lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
 		{DoWho, []string{"who"}, "Lists all online players", "who", true, 0, 0},
 		{DoYell, []string{"yell", "y"}, "Yell something to the whole world!", "yell hello everyone!", true, Cnd_Healthy, Pos_Prone},
 	}

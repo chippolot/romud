@@ -39,7 +39,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	actTbl.RawSetString("MoveDir", luar.New(L, func(e *Entity, dir Direction) { lua_ActMoveDir(w, e, dir) }))
 	actTbl.RawSetString("MoveTo", luar.New(L, func(e *Entity, r *Room) { lua_ActMoveRoom(w, e, r) }))
 	actTbl.RawSetString("Say", luar.New(L, func(e *Entity, text string) { lua_ActSay(w, e, text) }))
-	actTbl.RawSetString("Whisper", luar.New(L, func(e *Entity, e2 *Entity, text string) { lua_ActWhisper(w, e, e2, text) }))
+	actTbl.RawSetString("Tell", luar.New(L, func(e *Entity, e2 *Entity, text string) { lua_ActTell(w, e, e2, text) }))
 	actTbl.RawSetString("Yell", luar.New(L, func(e *Entity, text string) { lua_ActYell(w, e, text) }))
 	L.SetGlobal("Act", actTbl)
 
@@ -100,8 +100,8 @@ func lua_ActSay(w *World, self *Entity, msg string) {
 	performSay(self, w, msg)
 }
 
-func lua_ActWhisper(w *World, self *Entity, target *Entity, msg string) {
-	performWhisper(self, w, target, msg)
+func lua_ActTell(w *World, self *Entity, target *Entity, msg string) {
+	performTell(self, w, target, msg)
 }
 
 func lua_ActYell(w *World, self *Entity, msg string) {

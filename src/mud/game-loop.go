@@ -31,6 +31,7 @@ func GameLoop(w *World) {
 		{scavengerNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{wanderNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{aggroNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
+		{assistNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{runCombat, time.Second * 1, time.Now().UTC().Add(randSec())},
 		{logoutTheDead, time.Millisecond, time.Now().UTC().Add(randSec())},
 		{flushPlayerOuput, time.Millisecond, time.Now().UTC().Add(randSec())},
@@ -187,6 +188,41 @@ func aggroNPCs(w *World) {
 				continue
 			}
 			performAttack(e, w, other)
+			break
+		}
+	}
+}
+
+func assistNPCs(w *World) {
+	for _, e := range w.entities {
+		if e.player != nil {
+			continue
+		}
+
+		// Only process aggro mobs
+		assistAll := e.entityFlags.Has(EFlag_AssistAll)
+		assistSame := e.entityFlags.Has(EFlag_AssistSame)
+		if !assistAll && !assistSame {
+			continue
+		}
+
+		// Mob already fighting
+		if e.combat != nil {
+			continue
+		}
+
+		// Find ally in combat
+		r := w.rooms[e.data.RoomId]
+		for _, other := range r.entities {
+			if other == e || other.player != nil || other.combat == nil || other.combat.target == nil {
+				continue
+			}
+
+			// Assist in attack
+			if assistAll ||
+				(assistSame && other.cfg == e.cfg) {
+				performAssist(e, w, other)
+			}
 			break
 		}
 	}

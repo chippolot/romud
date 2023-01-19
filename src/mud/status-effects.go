@@ -22,6 +22,8 @@ const (
 )
 
 var StatusEffectConfigs = map[StatusEffectMask]*StatusEffectConfig{
+	StatusType_Poison: NewStatusEffectConfigBuilder().
+		Build(),
 	StatusType_Blind: NewStatusEffectConfigBuilder().
 		WithEntityFlag(EFlag_Blind).
 		Build(),
@@ -182,7 +184,7 @@ type StatusEffect struct {
 func newStatusEffect(statusType StatusEffectMask, duration utils.Seconds) *StatusEffect {
 	cfg := StatusEffectConfigs[statusType]
 	if cfg == nil {
-		log.Printf("status effect `%v` is missing config", statusType)
+		log.Printf("status effect `%v` is missing config", statusType.String())
 		return nil
 	}
 

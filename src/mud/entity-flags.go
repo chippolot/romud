@@ -17,6 +17,8 @@ const (
 	EFlag_Blind                                     // Cannot see
 	EFlag_Invisible                                 // Cannot be seen
 	EFlag_Aggro                                     // Attacks enemies on sight
+	EFlag_AssistAll                                 // Assist all mobs who are being fought by players
+	EFlag_AssistSame                                // Assist mobs of the same type who are being fought by players
 )
 
 func ParseEntityFlag(str string) (EntityFlagMask, error) {
@@ -35,6 +37,10 @@ func ParseEntityFlag(str string) (EntityFlagMask, error) {
 		return EFlag_Invisible, nil
 	case "aggro":
 		return EFlag_Aggro, nil
+	case "assistall":
+		return EFlag_AssistAll, nil
+	case "assistsame":
+		return EFlag_AssistSame, nil
 	default:
 		return 0, fmt.Errorf("unknown entity flag: %s", str)
 	}

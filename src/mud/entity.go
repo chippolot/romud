@@ -331,6 +331,11 @@ func (e *Entity) AddStatusEffect(statusType StatusEffectMask, duration utils.Sec
 	if duration == StatusEffectDuration_Permanent {
 		statusEffect.permanentCount = 1
 	} else {
+		log.Println("1: ", e)
+		log.Println("2: ", e.data)
+		log.Println("3: ", e.data.Statuses)
+		log.Println("4: ", statusEffect)
+		log.Println("5: ", statusEffect.data)
 		e.data.Statuses[statusType] = statusEffect.data
 	}
 	e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)

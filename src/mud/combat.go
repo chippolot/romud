@@ -207,6 +207,15 @@ func validateAttack(e *Entity, tgt *Entity) bool {
 	return true
 }
 
+func performAssist(e *Entity, w *World, ally *Entity) {
+	if ally.combat == nil || ally.combat.target == nil {
+		return
+	}
+	SendToPlayerRe(e, ally, SendRst_CanSee, "%s leaps to your aid!")
+	BroadcastToRoomRe2(w, e, ally, SendRst_CanSee, "%s joins in the fight with %s", ObservableNameCap(e), ObservableName(ally))
+	performAttack(e, w, ally.combat.target)
+}
+
 func performAttack(e *Entity, w *World, tgt *Entity) {
 	if !validateAttack(e, tgt) {
 		return

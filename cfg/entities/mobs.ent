@@ -44,7 +44,7 @@
             "VerbSingular": "bite",
             "VerbPlural": "bites",
             "Effect": {
-                "Type": "blind",
+                "Type": "poisoned",
                 "Duration": 10,
                 "Save": {
                     "Stat": "Con",
@@ -52,7 +52,7 @@
                 }
             }
         }],
-        "Flags": ["scavenger"],
+        "Flags": ["scavenger", "assistsame"],
         "Stats": {
             "HP": "2d6",
             "AC": 12,

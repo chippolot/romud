@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -116,7 +115,6 @@ type CombatSkill int
 
 type CombatData struct {
 	target         *Entity
-	nextAttack     time.Time
 	requestedSkill CombatSkill
 }
 
@@ -126,10 +124,6 @@ func (c *CombatData) Valid(e *Entity) bool {
 		e.data.RoomId == c.target.data.RoomId &&
 		e.stats.Condition() > Cnd_Stunned &&
 		c.target.stats.Condition() != Cnd_Dead
-}
-
-func (c *CombatData) AttackCooldown() time.Duration {
-	return time.Second * 2
 }
 
 type CombatList struct {
@@ -149,7 +143,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 	if e.combat != nil {
 		e.combat.target = tgt
 	} else if !c.Contains(e) {
-		e.combat = &CombatData{tgt, time.Now().UTC(), CombatSkill_None}
+		e.combat = &CombatData{tgt, CombatSkill_None}
 		c.Add(e)
 	}
 	return true
@@ -270,7 +264,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	}
 
 	// Not ready to attack
-	if e.combat == nil || e.combat.nextAttack.After(time.Now().UTC()) {
+	if e.combat == nil {
 		return
 	}
 

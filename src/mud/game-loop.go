@@ -32,7 +32,7 @@ func GameLoop(w *World) {
 		{wanderNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{aggroNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{assistNPCs, time.Second * 3, time.Now().UTC().Add(randSec())},
-		{runCombat, time.Second * 1, time.Now().UTC().Add(randSec())},
+		{runCombat, time.Second * 3, time.Now().UTC().Add(randSec())},
 		{logoutTheDead, time.Millisecond, time.Now().UTC().Add(randSec())},
 		{flushPlayerOuput, time.Millisecond, time.Now().UTC().Add(randSec())},
 	}
@@ -86,9 +86,6 @@ func restoreStats(w *World) {
 			continue
 		}
 
-		oldHP := e.stats.Get(Stat_HP)
-		oldMov := e.stats.Get(Stat_Mov)
-
 		var hpGain, movGain int
 		var message string
 
@@ -120,7 +117,7 @@ func restoreStats(w *World) {
 		e.stats.Add(Stat_Mov, movGain)
 
 		// Force a new prompt if something changed
-		if oldHP != e.stats.Get(Stat_HP) || oldMov != e.stats.Get(Stat_Mov) {
+		if message != "" {
 			SendToPlayer(e, message)
 		}
 	}
@@ -277,7 +274,6 @@ func scavengerNPCs(w *World) {
 }
 
 func runCombat(w *World) {
-	now := time.Now().UTC()
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
@@ -289,11 +285,7 @@ func runCombat(w *World) {
 		}
 
 		// Handle attack
-		nextAttack := e.combat.nextAttack
-		if now.After(nextAttack) {
-			runCombatLogic(e, w, e.combat.target)
-			e.combat.nextAttack = e.combat.nextAttack.Add(e.combat.AttackCooldown())
-		}
+		runCombatLogic(e, w, e.combat.target)
 		i = i.Next
 
 		// Post attack cleanup

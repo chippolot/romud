@@ -13,6 +13,8 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
+var sb strings.Builder
+
 func main() {
 	if len(os.Args) != 3 {
 		log.Println("Must call with input and output parameters. Ex: convert inpath outpath")
@@ -49,6 +51,18 @@ func main() {
 		id++
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
 			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%d%s", id, mud.RoomsFileExtension)))
+		} else {
+			log.Panic(err)
+			os.Exit(1)
+		}
+	}
+
+	for _, path := range utils.FindFilePathsWithExtension(inPath, ".mob") {
+		log.Println("Parsing:", path)
+		id, _ := strconv.Atoi(trimExtension(filepath.Base(path)))
+		id++
+		if bytes, err := utils.LoadFileBytes(path); err == nil {
+			parseEntities(bytes, filepath.Join(outPath, "entities", fmt.Sprintf("%d%s", id, mud.EntitiesFileExtension)))
 		} else {
 			log.Panic(err)
 			os.Exit(1)
@@ -93,7 +107,6 @@ func parseZone(data []byte, outPath string) {
 
 func parseRooms(data []byte, outPath string) {
 	var line string
-	var sb strings.Builder
 	lines := strings.Split(string(data), "\n")
 	if len(lines) > 0 {
 		line = lines[0]
@@ -105,28 +118,19 @@ func parseRooms(data []byte, outPath string) {
 			line, lines = nextLine(lines)
 			continue
 		}
-		room := &mud.RoomConfig{}
-		room.Exits = make(mud.RoomExitsConfig)
+		cfg := &mud.RoomConfig{}
+		cfg.Exits = make(mud.RoomExitsConfig)
 
 		// Parse Id
 		rid, _ := strconv.Atoi(line[1:])
-		room.Id = mud.RoomId(rid + 1)
+		cfg.Id = mud.RoomId(rid + 1)
 
 		// Parse Name
 		line, lines = nextLine(lines)
-		room.Name = line[:len(line)-1]
+		cfg.Name = line[:len(line)-1]
 
 		// Parse Description
-		sb.Reset()
-		line, lines = nextLine(lines)
-		for line != "~" {
-			if sb.Len() != 0 {
-				sb.WriteString("\n")
-			}
-			sb.WriteString(line)
-			line, lines = nextLine(lines)
-		}
-		room.Desc = sb.String()
+		cfg.Desc, lines = parseMultilineString(lines)
 
 		line, lines = nextLine(lines)
 		for line != "S" {
@@ -142,15 +146,52 @@ func parseRooms(data []byte, outPath string) {
 				line, lines = nextLine(lines)
 				toks := strings.Split(line, " ")
 				toRid, _ := strconv.Atoi(toks[2])
-				room.Exits[dir] = mud.RoomId(toRid + 1)
+				cfg.Exits[dir] = mud.RoomId(toRid + 1)
 			}
 			line, lines = nextLine(lines)
 		}
 
-		rooms = append(rooms, room)
+		rooms = append(rooms, cfg)
 		line, lines = nextLine(lines)
 	}
 	save(outPath, &rooms)
+}
+
+func parseEntities(data []byte, outPath string) {
+	var line string
+	lines := strings.Split(string(data), "\n")
+	if len(lines) > 0 {
+		line = lines[0]
+	}
+
+	entities := make(mud.EntityConfigList, 0)
+	for len(lines) > 0 {
+		if len(line) == 0 || line[0] != '#' {
+			line, lines = nextLine(lines)
+			continue
+		}
+		cfg := &mud.EntityConfig{}
+
+		// Parse Key
+		cfg.Key = "mob" + line[1:]
+
+		// Skip short name
+		line, lines = nextLine(lines)
+
+		// Parse Name
+		line, lines = nextLine(lines)
+		cfg.Name = line[:len(line)-1]
+
+		// Parse Room Desc
+		cfg.RoomDesc, lines = parseMultilineString(lines)
+
+		// Parse Full Desc
+		cfg.FullDesc, lines = parseMultilineString(lines)
+
+		entities = append(entities, cfg)
+		line, lines = nextLine(lines)
+	}
+	save(outPath, &entities)
 }
 
 func nextLine(lines []string) (string, []string) {
@@ -168,6 +209,19 @@ func nextLineUntil(lines []string, char byte) []string {
 		line, lines = nextLine(lines)
 	}
 	return lines
+}
+
+func parseMultilineString(lines []string) (string, []string) {
+	sb.Reset()
+	line, lines := nextLine(lines)
+	for line != "~" {
+		if sb.Len() != 0 {
+			sb.WriteString("\n")
+		}
+		sb.WriteString(line)
+		line, lines = nextLine(lines)
+	}
+	return sb.String(), lines
 }
 
 func save[T any](path string, data T) error {

@@ -123,7 +123,9 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "invisible",
+   "stayzone"
   ]
  },
  {

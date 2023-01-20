@@ -5,16 +5,16 @@
   "Desc": "   You stand at the beginning of the actual King's Road.  The road is wide\nenough for several horses to ride along side by side with room to spare.\nThe stones which make up the road have been put into place with such skill\nthat the road seems to be perfectly smooth and perfectly straight.\n   You spot a small trail leading to the south through the undergrowth which\nsurrounds the road at this point.\nA traveller passes by and waves cheerfully at you.",
   "Exits": [
    {
+    "RoomId": 15002,
+    "Verb": "east"
+   },
+   {
     "RoomId": 15062,
     "Verb": "south"
    },
    {
     "RoomId": 3503,
     "Verb": "west"
-   },
-   {
-    "RoomId": 15002,
-    "Verb": "east"
    }
   ]
  },
@@ -39,12 +39,12 @@
   "Desc": "   You stand on the King's Road, which leads east and west.  The\nskill of the builders is apparent, since it is impossible to notice\nany turn or irregularity in the road.",
   "Exits": [
    {
-    "RoomId": 15002,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15004,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15002,
+    "Verb": "west"
    }
   ]
  },
@@ -84,12 +84,12 @@
   "Desc": "   You are in the Kitchen.  Lots of helpers hurry to do the Chief Cook's\nbidding, and there is a wonderful smell that makes you feel very hungry.\nAll around the room, there are shelves with different kinds of cooking \ngear stacked on them.  There is an exit to the north, and one to the east;\nboth leading to small passages.",
   "Exits": [
    {
-    "RoomId": 15011,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15007,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15011,
+    "Verb": "north"
    }
   ]
  },
@@ -148,12 +148,12 @@
   "Desc": "   You are below one the three mighty towers of the Castle.  There are\nno guards here, and you sense that this part of the Castle is largely\nunused.  There are stairs going up to the tower, and there is also an\nexit to the north.",
   "Exits": [
    {
-    "RoomId": 15035,
-    "Verb": "up"
-   },
-   {
     "RoomId": 15015,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15035,
+    "Verb": "up"
    }
   ]
  },
@@ -193,6 +193,10 @@
   "Desc": "   You are standing in the southern end of the Great Hall.  It\nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\nnorth, you see King Welmar's great throne, and to the south is the\nCastle Entrance.",
   "Exits": [
    {
+    "RoomId": 15008,
+    "Verb": "south"
+   },
+   {
     "RoomId": 15012,
     "Verb": "west"
    },
@@ -203,10 +207,6 @@
    {
     "RoomId": 15014,
     "Verb": "east"
-   },
-   {
-    "RoomId": 15008,
-    "Verb": "south"
    }
   ]
  },
@@ -246,16 +246,16 @@
   "Desc": "   You are in a passage, that leads north and south. To the east there\nis an exit to the Great Hall.",
   "Exits": [
    {
-    "RoomId": 15011,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15021,
     "Verb": "north"
    },
    {
     "RoomId": 15017,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15011,
+    "Verb": "south"
    }
   ]
  },
@@ -265,16 +265,16 @@
   "Desc": "   You are standing in the north-west end of the Great Hall.  It \nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\neast, you see King Welmar's great throne, and to the west there is\nan exit to a passage.",
   "Exits": [
    {
+    "RoomId": 15016,
+    "Verb": "west"
+   },
+   {
     "RoomId": 15018,
     "Verb": "east"
    },
    {
     "RoomId": 15012,
     "Verb": "south"
-   },
-   {
-    "RoomId": 15016,
-    "Verb": "west"
    }
   ]
  },
@@ -303,16 +303,16 @@
   "Desc": "   You are standing in the north-east end of the Great Hall.  It\nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\nwest, you see King Welmar's great throne, and to the east there is\nan exit to a small passage.",
   "Exits": [
    {
-    "RoomId": 15020,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15014,
     "Verb": "south"
    },
    {
     "RoomId": 15018,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15020,
+    "Verb": "east"
    }
   ]
  },
@@ -547,12 +547,12 @@
   "Desc": "   This part of the tower is fairly uninteresting, but it leads further\nupwards...",
   "Exits": [
    {
-    "RoomId": 15053,
-    "Verb": "up"
-   },
-   {
     "RoomId": 15010,
     "Verb": "down"
+   },
+   {
+    "RoomId": 15053,
+    "Verb": "up"
    }
   ]
  },
@@ -562,16 +562,16 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads north and south.  There\nis also an exit to the east here.",
   "Exits": [
    {
+    "RoomId": 15031,
+    "Verb": "south"
+   },
+   {
     "RoomId": 15041,
     "Verb": "north"
    },
    {
     "RoomId": 15037,
     "Verb": "east"
-   },
-   {
-    "RoomId": 15031,
-    "Verb": "south"
    }
   ]
  },
@@ -708,16 +708,16 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads north and south.  There\nis an exit to the east, that leads to a large room.",
   "Exits": [
    {
+    "RoomId": 15050,
+    "Verb": "north"
+   },
+   {
     "RoomId": 15047,
     "Verb": "east"
    },
    {
     "RoomId": 15041,
     "Verb": "south"
-   },
-   {
-    "RoomId": 15050,
-    "Verb": "north"
    }
   ]
  },
@@ -780,10 +780,6 @@
   "Desc": "   You are standing on a great staircase, that leads up and down.  To \nthe east, there is a large oak door, and a corridor leads south.",
   "Exits": [
    {
-    "RoomId": 15026,
-    "Verb": "down"
-   },
-   {
     "RoomId": 15051,
     "Verb": "east"
    },
@@ -794,6 +790,10 @@
    {
     "RoomId": 15054,
     "Verb": "up"
+   },
+   {
+    "RoomId": 15026,
+    "Verb": "down"
    }
   ]
  },
@@ -964,12 +964,12 @@
   "Desc": "   Moving off of the King's Road, you find yourself on a small\nfading trail which appears to have been so little used that it\nhas almost completely grown over with vegitation from the woods\nhere.  Sounds of the forest can be heard all round and you feel\na peaceful feeling come over you as you realize that mankind\nhas not passed this way for some time.\n   The faded trail appears to lead north and south.",
   "Exits": [
    {
-    "RoomId": 15001,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15063,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15001,
+    "Verb": "north"
    }
   ]
  },
@@ -979,12 +979,12 @@
   "Desc": "   Continuing through the heavy undergrowth, you find yourself\nin the middle of the forest.  The sounds of the forest can be\nheard all round and you feel a peaceful feeling come over you\nas you realize that mankind has not passed this way for some\ntime.\n   The fading trail you are on appears to have been so little\nused that it has almost completely grown over with vegitation\nfrom the woods here.  \n   The faded trail appears to lead north and east.",
   "Exits": [
    {
-    "RoomId": 15062,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15064,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15062,
+    "Verb": "north"
    }
   ]
  },
@@ -1009,16 +1009,16 @@
   "Desc": "   As you leave the forest to the north, you find yourself at\nwhat appears to be the beginning of a dirt road and a small\nvillage.  Upon first laying eyes on this place you realize\nthat there is something funny about this settlement... there\nis no sound other that the whistling wind here.  You would have\nexpected to hear people going about their regular business, but\nthe village is silent.  You cannot see any movement around the\nvillage either.  It is almost as still and silent as the woods\nto the north.\nThere is a small sign lying by the side of the road here.",
   "Exits": [
    {
-    "RoomId": 15069,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15064,
     "Verb": "north"
    },
    {
     "RoomId": 15066,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15069,
+    "Verb": "west"
    }
   ]
  },
@@ -1027,6 +1027,10 @@
   "Name": "A Small Intersection",
   "Desc": "   Continuing along the dirt road, you find yourself at a place where\na small path splits away from the main road and leads off to the west.\nThe woods around the village seem to be pressing inwards towards you\nas if the village hides a secret which they do not want to be spread\nabout.\n   There is another house standing on the east side of the road.  ",
   "Exits": [
+   {
+    "RoomId": 15073,
+    "Verb": "west"
+   },
    {
     "RoomId": 15065,
     "Verb": "north"
@@ -1038,10 +1042,6 @@
    {
     "RoomId": 15067,
     "Verb": "south"
-   },
-   {
-    "RoomId": 15073,
-    "Verb": "west"
    }
   ]
  },

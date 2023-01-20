@@ -20,12 +20,12 @@
   "Desc": "   You stand here in spiritual emptiness, beginning a long and dangerous\npath.  Your honest submission has already been made, but the truth of your\nheart has yet to be told.  Leave here now, and do not come back until\nyou have grown.",
   "Exits": [
    {
-    "RoomId": 1503,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1501,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1503,
+    "Verb": "north"
    }
   ]
  },
@@ -35,12 +35,12 @@
   "Desc": "   You stop for a moment, screaming in frustration.  Surely it was that one\nsin that was avoidable, of all that you regret.  The hitting and the hurting\nflash briefly before you.  Moments later the pain passes, and the straight\npath reveals itself before you.",
   "Exits": [
    {
-    "RoomId": 1502,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1504,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1502,
+    "Verb": "south"
    }
   ]
  },
@@ -65,12 +65,12 @@
   "Desc": "   Looking ahead, you can see that the path you have been following will\nsoon come to an end, but something in the cold and the breeze tells you\nthat that will be only the beginning of the journey.",
   "Exits": [
    {
-    "RoomId": 1504,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1506,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1504,
+    "Verb": "south"
    }
   ]
  },
@@ -133,12 +133,12 @@
   "Desc": "   Whatever it carries, that rage converts into a weapon.  Wrath supplies\nall with arms.  When an angry man thirsts for blood anything will serve\nhim for a spear.  Fury turns a stick into a cudgel.",
   "Exits": [
    {
-    "RoomId": 1507,
-    "Verb": "east"
-   },
-   {
     "RoomId": 1510,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1507,
+    "Verb": "east"
    }
   ]
  },
@@ -148,12 +148,12 @@
   "Desc": "   Some have been brought here not for what they did, but what they\nfailed to do.  It is these, the poor souls that were presented the\nfair evidence and rejected it with an honest mind, that deserve our\npity the most of all.",
   "Exits": [
    {
-    "RoomId": 1509,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1511,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1509,
+    "Verb": "south"
    }
   ]
  },
@@ -238,12 +238,12 @@
   "Desc": "   Temptation is the IF, the wondering, the second-guessing, the \"I will\nbe a better man... if...\"  And that if is usually taken, sitting alone,\nlistening to that voice, calling you, offering such an easy way, but such\na crooked one.",
   "Exits": [
    {
-    "RoomId": 1515,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1517,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1515,
+    "Verb": "south"
    }
   ]
  },
@@ -298,12 +298,12 @@
   "Desc": "   Many believed that the Prophet would never die, but when the stark\nevidence of his body confronted them, it soon became necessary to provide\nfor the future.  The four that came after are called the Rashidun, the\nrightly-guided Caliphs that would spread the word and the light, and with\nit forge one of history's greatest empires.",
   "Exits": [
    {
-    "RoomId": 1519,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1521,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1519,
+    "Verb": "south"
    }
   ]
  },
@@ -343,12 +343,12 @@
   "Desc": "   The end of the Rashidun was the beginning of Schism.  The memories\nof the Prophet and the living example of the Caliphs proved to be\ninsufficient example to the faithful.  Ali died, and some say that\nwith him the Caliphate died too, a martyr, his blood still flowing in\nthe nameless river.",
   "Exits": [
    {
-    "RoomId": 1532,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1522,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1532,
+    "Verb": "north"
    }
   ]
  },
@@ -452,16 +452,16 @@
   "Desc": "   It is incumbent upon all Muslims to make the pilgrimage to Mecca once\nin their lifetime, if they are able, and for those unfortunate enough to\nfollow the lives of the lower evils, such a pilgrimage with an open and\ncontrite heart shall absolve them of all.",
   "Exits": [
    {
+    "RoomId": 1529,
+    "Verb": "west"
+   },
+   {
     "RoomId": 1536,
     "Verb": "up"
    },
    {
     "RoomId": 1531,
     "Verb": "east"
-   },
-   {
-    "RoomId": 1529,
-    "Verb": "west"
    }
   ]
  },
@@ -471,16 +471,16 @@
   "Desc": "   It is written that no one may intercede with God on behalf of another.\nNo prayers from another may save the soul of a doomed man; his only hope\nis prayers of his own.",
   "Exits": [
    {
-    "RoomId": 1537,
-    "Verb": "up"
-   },
-   {
     "RoomId": 1518,
     "Verb": "south"
    },
    {
     "RoomId": 1530,
     "Verb": "west"
+   },
+   {
+    "RoomId": 1537,
+    "Verb": "up"
    }
   ]
  },
@@ -566,6 +566,10 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
+    "RoomId": 1530,
+    "Verb": "down"
+   },
+   {
     "RoomId": 1538,
     "Verb": "north"
    },
@@ -580,10 +584,6 @@
    {
     "RoomId": 1533,
     "Verb": "up"
-   },
-   {
-    "RoomId": 1530,
-    "Verb": "down"
    }
   ]
  },
@@ -612,12 +612,12 @@
   "Desc": "   The Compassionate, the Merciful, Sovereign of the Day of Judgment!\nYou alone we worship, and to You alone we turn for help.  Guide us to\nthe Straight Path, the path of those whom You have favored, not of\nthose who have gone astray.",
   "Exits": [
    {
-    "RoomId": 1536,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1539,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1536,
+    "Verb": "south"
    }
   ]
  },
@@ -642,12 +642,12 @@
   "Desc": "   Undoubtedly the shortest path is the straightest one.  Only one more\nstep awaits before a final decision is made and a home given to you for\nall eternity.",
   "Exits": [
    {
-    "RoomId": 1541,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1539,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1541,
+    "Verb": "north"
    }
   ]
  },

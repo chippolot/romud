@@ -10,7 +10,10 @@
   "RoomDesc": "A horrifying Mudmonster is slowly evolving from the mud...",
   "FullDesc": "It sure looks like something out of a horror movie.  It strongly resembles\na huge figure made up from mud alone, and it sure looks like it had human \nflesh for breakfast and is strongly intent on having the same for dinner\n- Perhaps you?",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob7001",
@@ -25,7 +28,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {

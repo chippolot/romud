@@ -16,6 +16,10 @@
   "Desc": "   You are in the southern end of the temple hall in the Temple of Midgaard.\nThe temple has been constructed from giant marble blocks, eternal in\nappearance, and most of the walls are covered by ancient wall paintings\npicturing Gods, Giants and peasants.\n   Large steps lead down through the grand temple gate, descending the huge\nmound upon which the temple is built and ends on the temple square below.\nTo the west, you see the Reading Room.  The donation room is in a small\nalcove to your east.",
   "Exits": [
    {
+    "RoomId": 3006,
+    "Verb": "down"
+   },
+   {
     "RoomId": 3055,
     "Verb": "north"
    },
@@ -30,10 +34,6 @@
    {
     "RoomId": 3001,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3006,
-    "Verb": "down"
    }
   ]
  },
@@ -88,10 +88,6 @@
   "Desc": "   You are standing on the temple square.  Huge marble steps lead up to the\ntemple gate.  The entrance to the Clerics' Guild is to the west, and the old\nGrunting Boar Inn, is to the east.  Just south of here you see the market\nsquare, the center of Midgaard.",
   "Exits": [
    {
-    "RoomId": 3015,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3005,
     "Verb": "west"
    },
@@ -102,6 +98,10 @@
    {
     "RoomId": 3007,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3015,
+    "Verb": "south"
    }
   ]
  },
@@ -111,20 +111,20 @@
   "Desc": "   You are standing in the entrance hall of the Grunting Boar Inn.  The hall\nhas been wisely decorated with simple, functional furniture.  The heavy smell\nof dust and aging paper drifts in from the Post Office to the north.  A small\nstaircase leads up to the reception and the bar is to the east.",
   "Exits": [
    {
-    "RoomId": 3063,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3008,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3006,
     "Verb": "west"
    },
    {
     "RoomId": 3009,
     "Verb": "up"
+   },
+   {
+    "RoomId": 3063,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3008,
+    "Verb": "east"
    }
   ]
  },
@@ -145,12 +145,12 @@
   "Desc": "   You are standing in the reception.  The staircase leads down to the\nentrance hall.  An exit to the north leads to the Cryogenic Center.\nThere is a small sign on the counter.",
   "Exits": [
    {
-    "RoomId": 3065,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3007,
     "Verb": "down"
+   },
+   {
+    "RoomId": 3065,
+    "Verb": "north"
    }
   ]
  },
@@ -193,20 +193,20 @@
   "Desc": "   You are at the end of the main street of Midgaard.  South of here is the\nentrance to the Guild of Magic Users.  The street continues east towards the\nmarket square.  The magic shop is to the north and to the west is the city\ngate.",
   "Exits": [
    {
-    "RoomId": 3018,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3041,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3034,
     "Verb": "north"
    },
    {
     "RoomId": 3014,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3018,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3041,
+    "Verb": "west"
    }
   ]
  },
@@ -216,20 +216,20 @@
   "Desc": "   You are on the main street passing through the City of Midgaard.  South of\nhere is the entrance to the Armory, and the bakery is to the north.  East of\nhere is the market square.",
   "Exits": [
    {
-    "RoomId": 3010,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3015,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3021,
     "Verb": "south"
    },
    {
     "RoomId": 3013,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3010,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3015,
+    "Verb": "east"
    }
   ]
  },
@@ -239,20 +239,20 @@
   "Desc": "   You are standing on the market square, the famous Square of Midgaard.\nA large, peculiar looking statue is standing in the middle of the square.\nRoads lead in every direction, north to the temple square, south to the\ncommon square, east and westbound is the main street.",
   "Exits": [
    {
-    "RoomId": 3026,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3014,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3006,
     "Verb": "north"
    },
    {
     "RoomId": 3016,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3026,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3014,
+    "Verb": "west"
    }
   ]
  },
@@ -261,10 +261,6 @@
   "Name": "Main Street",
   "Desc": "   You are on the main street crossing through town.  To the north is the\ngeneral store, and the main street continues east.  To the west you see and\nhear the market place, to the south a small door leads into the Pet Shop.",
   "Exits": [
-   {
-    "RoomId": 3015,
-    "Verb": "west"
-   },
    {
     "RoomId": 3011,
     "Verb": "north"
@@ -276,6 +272,10 @@
    {
     "RoomId": 3032,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3015,
+    "Verb": "west"
    }
   ]
  },
@@ -285,20 +285,20 @@
   "Desc": "   The main street, to the north is the weapon shop and to the south is the\nGuild of Swordsmen.  To the east you leave town and to the west the street\nleads to the market square.",
   "Exits": [
    {
-    "RoomId": 3012,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3042,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3022,
     "Verb": "south"
    },
    {
     "RoomId": 3016,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3012,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3042,
+    "Verb": "east"
    }
   ]
  },
@@ -308,12 +308,12 @@
   "Desc": "   The entrance hall to this guild is a small, poor lighted room.",
   "Exits": [
    {
-    "RoomId": 3013,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3019,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3013,
+    "Verb": "north"
    }
   ]
  },
@@ -338,12 +338,12 @@
   "Desc": "   This is the Magical Experiments Laboratory.  Dark smoke-stained stones\narch over numerous huge oaken tables, most of these cluttered with strange-\nlooking pipes and flasks.  The floor is covered with half-erased pentagrams\nand even weirder symbols, and a blackboard in a dark corner has only been\npartially cleaned, some painful-looking letters faintly visible.  A well in\nthe middle of the floor leads down into darkness.  Vile smells waft from the\ndepths.",
   "Exits": [
    {
-    "RoomId": 3019,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7018,
     "Verb": "down"
+   },
+   {
+    "RoomId": 3019,
+    "Verb": "west"
    }
   ]
  },
@@ -428,20 +428,20 @@
   "Desc": "   The common square, people pass you, talking to each other.  To the west is\nthe poor alley and to the east is the dark alley.  To the north, this square\nis connected to the market square.  From the south you notice a nasty smell.",
   "Exits": [
    {
-    "RoomId": 3015,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3027,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3031,
     "Verb": "south"
    },
    {
     "RoomId": 3025,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3015,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3027,
+    "Verb": "east"
    }
   ]
  },
@@ -451,16 +451,16 @@
   "Desc": "   The dark alley, to the west is the common square and to the south is the\nGuild of Thieves.  The alley continues east.",
   "Exits": [
    {
+    "RoomId": 3026,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3046,
     "Verb": "east"
    },
    {
     "RoomId": 3028,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3026,
-    "Verb": "west"
    }
   ]
  },
@@ -558,16 +558,16 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  Main Street leads\neast and Wall Road leads south from here.",
   "Exits": [
    {
+    "RoomId": 3053,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3013,
     "Verb": "east"
    },
    {
     "RoomId": 3043,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3053,
-    "Verb": "west"
    }
   ]
  },
@@ -577,16 +577,16 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  Main Street leads\nwest from here.  To the south you see the Water Shop.",
   "Exits": [
    {
-    "RoomId": 3017,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3054,
     "Verb": "east"
    },
    {
     "RoomId": 3059,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3017,
+    "Verb": "west"
    }
   ]
  },
@@ -645,16 +645,16 @@
   "Desc": "   You are standing in the alley which continues east and west.  South of\nhere you see the levee.",
   "Exits": [
    {
+    "RoomId": 3027,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3047,
     "Verb": "east"
    },
    {
     "RoomId": 3050,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3027,
-    "Verb": "west"
    }
   ]
  },
@@ -664,12 +664,12 @@
   "Desc": "   You are standing at the eastern end of the alley, the city wall is just\neast, blocking any further movement.  A small warehouse is directly south of\nhere.",
   "Exits": [
    {
-    "RoomId": 3046,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3051,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3046,
+    "Verb": "west"
    }
   ]
  },
@@ -731,12 +731,12 @@
   "Desc": "   You are standing on the stone bridge crosses the river.  The bridge is\nbuilt out from the western city wall and the river flows west through an\nopening in the wall ten feet below the bridge.",
   "Exits": [
    {
-    "RoomId": 3101,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3048,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3101,
+    "Verb": "south"
    }
   ]
  },
@@ -746,12 +746,12 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  To the west you\ncan see the edge of a big forest.",
   "Exits": [
    {
-    "RoomId": 6093,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3041,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6093,
+    "Verb": "west"
    }
   ]
  },
@@ -761,12 +761,12 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  To the east the\nplains stretch out in the distance.",
   "Exits": [
    {
-    "RoomId": 3504,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3042,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3504,
+    "Verb": "east"
    }
   ]
  },

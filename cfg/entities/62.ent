@@ -11,7 +11,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -26,7 +27,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -41,7 +43,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -56,7 +59,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -69,7 +73,10 @@
   "RoomDesc": "A huge, ancient tree towers above you.",
   "FullDesc": "Its roots are extremely big and large parts of them are above ground.\nSomething about it makes you think that this is not a normal oak tree.\n\nThe enormous grey trunk shivers slightly, as if sighing deeply.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6111",
@@ -81,7 +88,10 @@
   "RoomDesc": "A huge, ancient tree towers above you.",
   "FullDesc": "Its roots are extremely big and large parts of them are above ground.\nSomething about it makes you think that this is not a normal oak tree.\n\nThe enormous grey trunk emits a deep, moaning sound.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6112",
@@ -95,7 +105,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -111,7 +122,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -126,7 +138,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -142,7 +155,9 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "invisible",
+   "stayzone"
   ]
  },
  {
@@ -172,7 +187,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall"
   ]
  }
 ]

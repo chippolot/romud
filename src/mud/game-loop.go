@@ -170,10 +170,12 @@ func wanderNPCs(w *World, t GameTime) {
 		}
 
 		// Stay in same zone
-		rid2 := r.cfg.Exits[dir]
-		r2 := w.rooms[rid2]
-		if r.zone != r2.zone {
-			continue
+		if e.entityFlags.Has(EFlag_StayZone) {
+			rid2 := r.cfg.Exits[dir]
+			r2 := w.rooms[rid2]
+			if r.zone != r2.zone {
+				continue
+			}
 		}
 
 		performMoveDirection(e, w, dir)

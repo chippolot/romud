@@ -56,7 +56,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -72,7 +73,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -88,7 +90,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -105,7 +108,8 @@
    "stationary",
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -121,7 +125,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -136,7 +141,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -180,7 +186,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -196,7 +203,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -211,7 +219,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -224,7 +233,10 @@
   "RoomDesc": "A hill giant is here, tossing some rocks around.",
   "FullDesc": "The hill giant looks like he's about 9 feet tall.  By his actions you \nquickly come to the conclusion that he isn't very intelligent.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob4100",
@@ -289,7 +301,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -306,7 +319,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -336,7 +350,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -352,7 +367,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  }
 ]

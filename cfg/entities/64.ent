@@ -12,7 +12,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -92,7 +93,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -108,7 +110,9 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "invisible",
+   "stayzone"
   ]
  },
  {
@@ -124,7 +128,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -139,7 +144,9 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "invisible",
+   "stayzone"
   ]
  },
  {
@@ -202,7 +209,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {

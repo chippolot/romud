@@ -14,7 +14,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -31,7 +32,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "assistall"
   ]
  },
  {
@@ -48,7 +50,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "assistall"
   ]
  },
  {
@@ -64,7 +67,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {

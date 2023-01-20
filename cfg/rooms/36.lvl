@@ -39,10 +39,6 @@
   "Desc": "   The trees stand close here, and the tall, bushy undergrowth prevents you\nfrom seeing far in any direction save east, where a broad lane continues off\ninto the distance; and west, where the same lane continues towards what looks\nlike a fairly large city.  The muted sounds of city commotion reach your ears\nfrom a distance; stray dogs barking, children crying, and street salesmen\nshouting.\n   A steep path leads down from here to the northeast towards the Dwarven\nVillage, and a small trail leads through the trees towards the hills to the\nnorth.",
   "Exits": [
    {
-    "RoomId": 6501,
-    "Verb": "down"
-   },
-   {
     "RoomId": 3502,
     "Verb": "north"
    },
@@ -53,6 +49,10 @@
    {
     "RoomId": 3504,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6501,
+    "Verb": "down"
    }
   ]
  },
@@ -62,12 +62,12 @@
   "Desc": "   You stand on the outskirts of a large city - Midgaard; the capital of\nthis land.  The road leads east into the peace and quiet - and dangers -\nof the forest; and to the west it becomes the main street of the town;\nsurrounded by a confusion of shops, bars, and market places.",
   "Exits": [
    {
-    "RoomId": 3054,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3503,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3054,
+    "Verb": "west"
    }
   ]
  },
@@ -92,6 +92,10 @@
   "Desc": "   You are in a light forest.  A path leads south, but the passage to\nthe east is easy enough.  To the west, smoke can be seen rising above\nthe treetops.  The sprawl of Midgaard lies north of here.",
   "Exits": [
    {
+    "RoomId": 3571,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3505,
     "Verb": "north"
    },
@@ -102,10 +106,6 @@
    {
     "RoomId": 3508,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3571,
-    "Verb": "west"
    }
   ]
  },
@@ -168,16 +168,16 @@
   "Desc": "   The trees of Miden'nir are lush and green, hiding the evil that lurks\nin these woods.  The trees become too thick to the west, but you may go\nnorth, south or travel toward the mountains that lie east of here.",
   "Exits": [
    {
-    "RoomId": 3507,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3513,
     "Verb": "east"
    },
    {
     "RoomId": 3515,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3507,
+    "Verb": "north"
    }
   ]
  },
@@ -206,12 +206,12 @@
   "Desc": "   You are on a north-south trail through the woods.  To the west,\nimpassable mountains glare at you, and the thick woods and undergrowth\nprevent any movement westward.",
   "Exits": [
    {
-    "RoomId": 3516,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3509,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3516,
+    "Verb": "south"
    }
   ]
  },
@@ -255,20 +255,20 @@
   "Desc": "   It is quite dark here, forest surrounds you.  With each step, the\nforest seems to close around you, and get darker and more foreboding.\nIt might just be time to head back to somewhere safe.",
   "Exits": [
    {
-    "RoomId": 3514,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3518,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3511,
     "Verb": "west"
    },
    {
     "RoomId": 3510,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3514,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3518,
+    "Verb": "south"
    }
   ]
  },
@@ -297,20 +297,20 @@
   "Desc": "   The ground is quite muddy here and puddles are all around.  Your\nboots make a disgusting SQUISH as you walk here.  You can go in any\nof the four cardinal directions from here.  Hopefully, it will be\ndryer.",
   "Exits": [
    {
-    "RoomId": 3511,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3518,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3520,
     "Verb": "south"
    },
    {
     "RoomId": 3516,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3511,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3518,
+    "Verb": "east"
    }
   ]
  },
@@ -335,16 +335,16 @@
   "Desc": "   The trail becomes nearly unpassable here.  You can go north\nas the forest is relatively light.  To the south, you can see a\npath.",
   "Exits": [
    {
-    "RoomId": 3523,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3516,
     "Verb": "north"
    },
    {
     "RoomId": 0,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3523,
+    "Verb": "south"
    }
   ]
  },
@@ -426,16 +426,16 @@
   "Desc": "   The branches above you block out all direct sunlight, making the forest\nin this area rather dark.  The forest continues east, where it meets the\nmountains.  The air is still and stuffy - a stench comes from the west and\nan ugly feeling causes the hair to rise on the back of your neck!",
   "Exits": [
    {
-    "RoomId": 3522,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3521,
     "Verb": "north"
    },
    {
     "RoomId": 3552,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3522,
+    "Verb": "west"
    }
   ]
  },
@@ -445,12 +445,12 @@
   "Desc": "   You find yourself at the foot of the mountains, where it is much\nto steep to continue north or east.  You see the lush, green forest\nof Miden'nir to the south and west.",
   "Exits": [
    {
-    "RoomId": 3513,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3507,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3513,
+    "Verb": "south"
    }
   ]
  },
@@ -614,10 +614,6 @@
   "Desc": "   You are in the common room of the Woodsman Inn.  A thin haze of smoke\nsits in the air here.  The Inn is often empty, as the forest has become\noverrun by goblins as of late, and it is no longer safe in these parts.\nThe bar is just north of here.  If you'd rather have your own table, one\nis empty to the south.",
   "Exits": [
    {
-    "RoomId": 3577,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3571,
     "Verb": "east"
    },
@@ -628,6 +624,10 @@
    {
     "RoomId": 3578,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3577,
+    "Verb": "north"
    }
   ]
  },
@@ -637,12 +637,12 @@
   "Desc": "   This is a overgrown foot-trail south of the Inn.  It leads west, but you\nwould be hard pressed to follow it far.  A number of bushes are trampled on\nand some medium sized branches have been knocked down.  Obviously there has\nbeen a battle here rather recently.",
   "Exits": [
    {
-    "RoomId": 3582,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3573,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3582,
+    "Verb": "west"
    }
   ]
  },
@@ -711,12 +711,12 @@
   "Desc": "   The path continues east and south.  You notice fresh tracks in the\nsoft ground that show the horsemen turned, and fled south.",
   "Exits": [
    {
-    "RoomId": 3582,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3584,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3582,
+    "Verb": "east"
    }
   ]
  },
@@ -726,12 +726,12 @@
   "Desc": "   The trail of the horsemen continues east and north along this path\nthrough the forest.  The tracks are still fresh, so they must be near.",
   "Exits": [
    {
-    "RoomId": 3585,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3583,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3585,
+    "Verb": "west"
    }
   ]
  },

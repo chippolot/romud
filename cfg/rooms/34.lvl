@@ -50,12 +50,12 @@
   "Desc": "   The path you are on leads from the front door of the\ncottage to your east, to the edge of the small valley\nto the west.  The building seems quiet...almost too\nquiet.  A small voice in the back of your head, the\nsame voice that has saved your life on countless\noccasions, seems to be telling you that something is\nvery, very wrong here.",
   "Exits": [
    {
-    "RoomId": 3305,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3303,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3305,
+    "Verb": "east"
    }
   ]
  },
@@ -125,20 +125,20 @@
   "Desc": "   You are standing on a small plateau in the mountains, \njust south of a ridge that leads northwards through the \nrocky area.  To the east, south, and west are gentle \nslopes leading down into different areas of the mountains.\n   A giant, dark peak looks down over you to the west, \nlooking quite spooky indeed!",
   "Exits": [
    {
-    "RoomId": 3310,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3360,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3308,
     "Verb": "north"
    },
    {
     "RoomId": 3342,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3310,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3360,
+    "Verb": "west"
    }
   ]
  },
@@ -201,12 +201,12 @@
   "Desc": "   This slope is fairly treacherous, but looks to be \nsomewhat safer to the north.  East the slope leads down \nto a small plateau that also looks considerably safer \nthan your other choices.  The shale under your feet \nslips badly, and you are almost thrown off balance; \nthis is no place to be without mountaineering equipment.",
   "Exits": [
    {
-    "RoomId": 3314,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3312,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3314,
+    "Verb": "north"
    }
   ]
  },
@@ -287,16 +287,16 @@
   "Desc": "   You are near the entrance of the cave.  The outside \nlight streams in from the west, accompanied by a slight \nbreeze, making the flames in the sconces flutter a bit\nand throw stange shadows upon the walls.  This passageway \nheads north and south from here, each way seeming dark and\nstuffy compared to outdoors.  From the tracks in the \nfloor, you guess that the north is the more used.",
   "Exits": [
    {
-    "RoomId": 3320,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3332,
     "Verb": "south"
    },
    {
     "RoomId": 3318,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3320,
+    "Verb": "north"
    }
   ]
  },
@@ -381,12 +381,12 @@
   "Desc": "   The passageway you are in leads south and west from \nhere.  Many large stones and rocks are on the floor of the\ncave, making walking difficult in the dim light from the \nsconces on the walls.  You hear the continued echo of \nvoices, seemingly fainter now.  Must be the strange \nacoustics of this place...",
   "Exits": [
    {
-    "RoomId": 3326,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3323,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3326,
+    "Verb": "south"
    }
   ]
  },
@@ -426,12 +426,12 @@
   "Desc": "   The echoes are growing louder, and seem to be coming \nfrom the northern end of this corridor.  Southwards you \nsee the tunnel continue right before yet another bend in \nthe passagway.  You spot a small piece of red cloth torn \nagainst a sharp rock jutting out from the passage's side.  \nIt looks like silk, very nice in fact.",
   "Exits": [
    {
-    "RoomId": 3329,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3327,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3329,
+    "Verb": "north"
    }
   ]
  },
@@ -703,16 +703,16 @@
   "Desc": "   Nothing is going on in this section of village either.  To the\neast is an actual road intersection, and to the west you see one\nof the ends of this road.  A large grassy area to the south is\nfenced off for a horse corral.",
   "Exits": [
    {
+    "RoomId": 3344,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3349,
     "Verb": "east"
    },
    {
     "RoomId": 3348,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3344,
-    "Verb": "west"
    }
   ]
  },
@@ -733,20 +733,20 @@
   "Desc": "   You are standing in an intersection deep in the heart\nof Stanneg by the Mountains.  In fact, this is the ONLY\nintersection anywhere in Stanneg by the Mountain it \nappears.\n   There are some buildings to the north, and south, and\neast, and west.  None particularly stand out from the \nothers.",
   "Exits": [
    {
-    "RoomId": 3356,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3354,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3347,
     "Verb": "west"
    },
    {
     "RoomId": 3350,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3356,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3354,
+    "Verb": "south"
    }
   ]
  },
@@ -756,16 +756,16 @@
   "Desc": "   This road runs north through Stanneg by the Mountains, \nif through would be the operative word for such a motley \ncollection of buildings.  Westwards is a small, open-roofed\nbuilding that appears to be a farmer's market.  The road \nyou are on continues north, and comes to an intersection \njust south of here.",
   "Exits": [
    {
-    "RoomId": 3352,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3349,
     "Verb": "south"
    },
    {
     "RoomId": 3351,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3352,
+    "Verb": "north"
    }
   ]
  },
@@ -838,12 +838,12 @@
   "Desc": "   The main road through Stanneg ends here at a large well\nthat leads deep, deep into the earth.  To the north of the \nwell is a large building, with a large WELCOME mat outside \nits front door.  Westwards you see the a road intersection \nin the center of the tiny village.  Around you is a rocky \nterrain in the middle of this mountain range...not very \nmany places else to go.",
   "Exits": [
    {
-    "RoomId": 3357,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3349,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3357,
+    "Verb": "north"
    }
   ]
  },
@@ -894,12 +894,12 @@
   "Desc": "   This slope is fairly shallow and easy to walk on, \ndespite the loose shale and gravel.  To the east is a high \nridge you could stand on, and to the west is a flat area \nnear two trails leading up and down into the mountains.  \nHigh above you, to your west, is that ominous, dark peak, \nwhich seems to radiating a sense of hopelessness...",
   "Exits": [
    {
-    "RoomId": 3361,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3309,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3361,
+    "Verb": "west"
    }
   ]
  },
@@ -984,12 +984,12 @@
   "Desc": "   The trail leads up the side of the tallest mountain in \nthe range -- the one that sticks up into the dark sky like\na monument to death and futility.  The trail leads back to \nsafety to the east, and goes even higher to the west.",
   "Exits": [
    {
-    "RoomId": 3367,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3365,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3367,
+    "Verb": "west"
    }
   ]
  },
@@ -1078,12 +1078,12 @@
   "Desc": "   The tunnel continues its slope upwards, and the wind \nblows at you even stronger yet.  The claw tracks in the \nstone stop abruptly here, where there seems to be a lot\nof unearthed dirt and stone around, heaped upon the floor.  \nYou feel uneasy about this place.",
   "Exits": [
    {
-    "RoomId": 3371,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3373,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3371,
+    "Verb": "south"
    }
   ]
  },
@@ -1104,12 +1104,12 @@
   "Desc": "   This tunnel slopes deep, down into the mountain's heart.\nThe air feels still and uncomfortably warm, despite the \ncloseness of the cave's entrance above you.  There's a \ndeep, musky odor in the air, and the giant claw marks \ncontinue downwards.",
   "Exits": [
    {
-    "RoomId": 3370,
-    "Verb": "up"
-   },
-   {
     "RoomId": 3375,
     "Verb": "down"
+   },
+   {
+    "RoomId": 3370,
+    "Verb": "up"
    }
   ]
  },

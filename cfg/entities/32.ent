@@ -139,7 +139,10 @@
   "RoomDesc": "A sparrow is flapping around on the ground.",
   "FullDesc": "The sparrow looks like it is enjoying life.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob3123",
@@ -150,6 +153,9 @@
   "RoomDesc": "A duck is here, quacking happily.",
   "FullDesc": "The duck is quite fat.  It looks like it is enjoying life.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  }
 ]

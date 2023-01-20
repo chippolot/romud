@@ -12,7 +12,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -59,7 +60,10 @@
   "RoomDesc": "Jim the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Jim wears the chain mail required of\nthem as uniform.  He seems very well trained, and moves like an\nexperienced fighter.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15004",
@@ -74,7 +78,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -90,7 +95,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -104,7 +110,10 @@
   "RoomDesc": "Matt the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Matt wears the chain mail required of\nthem as uniform.  He seems very well trained, and moves like an\nexperienced fighter.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15007",
@@ -117,7 +126,10 @@
   "RoomDesc": "Jochem the Royal Guard sits here, off duty.",
   "FullDesc": "As all members of the Guard, Jochem wears the chain mail required of\nthem as uniform.  He seems very well trained, and moves like a fighter\nwho has seen more than one battle, and longs to see the next!",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15008",
@@ -130,7 +142,10 @@
   "RoomDesc": "Anne the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Anne wears the chain mail required of\nthem as uniform.  She seems very well trained, and moves like a fighter\nwho has seen more than one battle, and longs to see the next!",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15009",
@@ -143,7 +158,10 @@
   "RoomDesc": "Andrew the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Andrew wears the chain mail required of\nthem as uniform.  He seems very well trained, and moves like a fighter\nwho has seen more than one battle, and longs to see the next!",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15010",
@@ -157,7 +175,10 @@
   "RoomDesc": "Bertram the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Bertram wears the chain mail required of\nthem as uniform.  He seems very well trained, and carries his scars\nwith pride.  This guy seems tough...",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15011",
@@ -170,7 +191,10 @@
   "RoomDesc": "Jeanette the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Jeanette wears the chain mail required of\nthem as uniform.  She seems very well trained, and carries her scars\nwith pride.  This girl could be nasty if she wanted to...",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15012",
@@ -184,7 +208,10 @@
   "RoomDesc": "Peter, the Captain of the Royal Guard, walks around inspecting.",
   "FullDesc": "As all members of the Guard, Peter wears the chain mail required of\nthem as uniform.  Even though all the other guards seem well trained,\nyou realise none of them would stand a chance against this man in a\nfight.  He stands at least two metres tall, but still moves with an\nalmost feline grace.  He actually radiates strength and confidence,\nand you have to fight a sudden urge to come to attention as you see\nhim.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15013",
@@ -198,7 +225,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -240,7 +268,10 @@
   "RoomDesc": "James the Butler is standing here, looking pompous.",
   "FullDesc": "The typical perfect butler: upper middle age, a bit bald and with \nan impressive belly.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15017",
@@ -252,7 +283,10 @@
   "RoomDesc": "There is a Cleaning Woman here, trying not be noticed.",
   "FullDesc": "Although she has a menial job, she seems to like it.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15018",
@@ -384,7 +418,10 @@
   "RoomDesc": "Jerry the Royal Guard is here off duty, playing dice.",
   "FullDesc": "As all members of the Guard, Jerry wears the chain mail required\nof them as uniform.  He seems very well trained, and moves like\nan experienced fighter.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15027",
@@ -397,7 +434,10 @@
   "RoomDesc": "Michael the Royal Guard is here off duty, playing dice.",
   "FullDesc": "As all members of the Guard, Michael wears the chain mail required\nof them as uniform.  He seems very well trained, and moves like an\nexperienced fighter.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15028",
@@ -410,7 +450,10 @@
   "RoomDesc": "Hans the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Hans wears the chain mail required\nof them as uniform.  He seems very well trained, and moves like\na fighter who has seen more than one battle, and longs to see\nthe next!",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15029",
@@ -423,7 +466,10 @@
   "RoomDesc": "Boris the Royal Guard is here on duty.",
   "FullDesc": "As all members of the Guard, Boris wears the chain mail required of\nthem as uniform.  He seems very well trained, and carries his scars\nwith pride.  This guy seems tough...",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob15030",

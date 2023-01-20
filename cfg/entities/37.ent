@@ -13,7 +13,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -30,7 +31,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {

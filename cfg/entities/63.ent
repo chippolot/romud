@@ -44,7 +44,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -60,7 +61,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {

@@ -24,16 +24,16 @@
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues further east and to the west you see the city wall.  Park Road\nleads south from here.",
   "Exits": [
    {
-    "RoomId": 3101,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3103,
     "Verb": "east"
    },
    {
     "RoomId": 3132,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3101,
+    "Verb": "west"
    }
   ]
  },
@@ -62,16 +62,16 @@
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  A small path leads south.  Looking across\nthe river you see the levee.",
   "Exits": [
    {
-    "RoomId": 3103,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3105,
     "Verb": "east"
    },
    {
     "RoomId": 3133,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3103,
+    "Verb": "west"
    }
   ]
  },
@@ -96,16 +96,16 @@
   "Desc": "   You are standing just inside the small park of Midgaard.  To the north is\nthe promenade and a small path leads south into the park.  To your east is\nthe famous Park Cafe.",
   "Exits": [
    {
-    "RoomId": 3103,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3107,
     "Verb": "east"
    },
    {
     "RoomId": 3109,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3103,
+    "Verb": "north"
    }
   ]
  },
@@ -292,20 +292,20 @@
   "Desc": "   You are standing on the north end of Emerald Avenue.  To the north is the\npromenade and to the west is the park entrance.  To the east is the not very\nbig Town Hall of Midgaard.",
   "Exits": [
    {
-    "RoomId": 3138,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3120,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3117,
     "Verb": "west"
    },
    {
     "RoomId": 3133,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3138,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3120,
+    "Verb": "south"
    }
   ]
  },
@@ -345,6 +345,10 @@
   "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
   "Exits": [
    {
+    "RoomId": 3134,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3137,
     "Verb": "east"
    },
@@ -359,10 +363,6 @@
    {
     "RoomId": 7915,
     "Verb": "up"
-   },
-   {
-    "RoomId": 3134,
-    "Verb": "north"
    }
   ]
  },
@@ -387,16 +387,16 @@
   "Desc": "   You are on Park Road which leads south and north.  Elm Street is east of\nhere.",
   "Exits": [
    {
+    "RoomId": 3127,
+    "Verb": "south"
+   },
+   {
     "RoomId": 3137,
     "Verb": "north"
    },
    {
     "RoomId": 3124,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3127,
-    "Verb": "south"
    }
   ]
  },
@@ -462,16 +462,16 @@
   "Desc": "   You are at the southwest corner of the city wall.  The Concourse leads\nboth north and east.",
   "Exits": [
    {
+    "RoomId": 3505,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3101,
     "Verb": "north"
    },
    {
     "RoomId": 3129,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3505,
-    "Verb": "west"
    }
   ]
  },
@@ -500,20 +500,20 @@
   "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
   "Exits": [
    {
-    "RoomId": 3127,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3131,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3151,
     "Verb": "south"
    },
    {
     "RoomId": 3129,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3127,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3131,
+    "Verb": "east"
    }
   ]
  },
@@ -523,12 +523,12 @@
   "Desc": "   You are at the southeast corner of the city wall.  The Concourse leads\nboth north and west.",
   "Exits": [
    {
-    "RoomId": 3130,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3105,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3130,
+    "Verb": "west"
    }
   ]
  },
@@ -572,12 +572,12 @@
   "Desc": "   You are standing at a bend on Emerald Avenue.  To the east the road goes on\nand to the south is the Road Crossing.",
   "Exits": [
    {
-    "RoomId": 3121,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3120,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3121,
+    "Verb": "south"
    }
   ]
  },
@@ -632,12 +632,12 @@
   "Desc": "   You are standing in the waiting room at the town hall.  Wooden chairs stand\nalong the walls and a long desk with a typewriter is placed in the middle of\nthe room.",
   "Exits": [
    {
-    "RoomId": 3118,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3139,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3118,
+    "Verb": "west"
    }
   ]
  },

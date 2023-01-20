@@ -12,7 +12,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall"
   ]
  },
  {
@@ -26,7 +27,11 @@
   "RoomDesc": "A dwarven mining worker is here.",
   "FullDesc": "He is very dirty, and looks extremely over-worked.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "assistall",
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6502",
@@ -54,7 +59,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall"
   ]
  },
  {
@@ -70,7 +76,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall"
   ]
  },
  {
@@ -83,7 +90,10 @@
   "RoomDesc": "A giant lizard is foraging for food along the cavern floor here.",
   "FullDesc": "This scaly creature looks like it is well adapted to its underground\nhabitat.  He looks very powerful.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6506",
@@ -94,7 +104,10 @@
   "RoomDesc": "A giant is wandering around the mountainside here.",
   "FullDesc": "The giant is about 18 feet tall, with arms of steel, and looks in\nexcellent physical condition.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6507",
@@ -160,7 +173,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall"
   ]
  },
  {
@@ -189,7 +203,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall"
   ]
  },
  {

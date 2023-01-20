@@ -11,7 +11,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "invisible",
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -26,7 +28,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -42,7 +45,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -58,7 +62,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -75,7 +80,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -91,7 +97,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -107,7 +114,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -124,7 +132,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -139,7 +148,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -154,7 +164,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -169,7 +180,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {

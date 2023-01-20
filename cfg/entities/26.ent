@@ -13,7 +13,9 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -54,7 +56,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -67,7 +70,10 @@
   "RoomDesc": "A young mage wanders about, oblivious to all.",
   "FullDesc": "He seems to be contemplating life, love and the mysteries of the universe.\nThen again, he may just have a headache.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob2505",
@@ -127,7 +133,9 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -141,7 +149,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -171,7 +180,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -187,7 +197,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -203,7 +214,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -220,7 +232,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -237,7 +250,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -254,7 +268,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -271,7 +286,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -288,7 +304,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -304,7 +321,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -320,7 +338,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -353,7 +372,9 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "invisible",
+   "stayzone"
   ]
  },
  {
@@ -385,7 +406,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -403,7 +425,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -420,7 +443,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -451,7 +475,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -465,7 +490,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -482,7 +508,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -499,7 +526,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -515,7 +543,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -531,7 +560,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -579,7 +609,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -595,7 +626,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -627,7 +659,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -643,7 +677,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -675,7 +710,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -691,7 +728,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -707,7 +746,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -723,7 +764,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -739,7 +782,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -755,7 +800,9 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -774,7 +821,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -790,7 +838,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -823,7 +872,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -840,7 +890,8 @@
   "Flags": [
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -856,7 +907,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -873,7 +925,8 @@
    "stationary",
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -889,7 +942,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -907,7 +961,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -925,7 +980,8 @@
    "stationary",
    "scavenger",
    "trashcollector",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -941,7 +997,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -959,7 +1016,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -993,7 +1051,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -1011,7 +1070,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -1027,7 +1087,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -1045,7 +1106,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  }
 ]

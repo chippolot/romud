@@ -27,7 +27,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -149,7 +150,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  }
 ]

@@ -28,12 +28,12 @@
   "Desc": "   The mighty pyramid towers above you out of the hot desert sands, made\nfrom huge blocks of stone that have been coated over with a rough sandy\nplaster-like substance.  The face of the pyramid is steep, but you think\nyou might be able to climb it.",
   "Exits": [
    {
-    "RoomId": 5301,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5303,
     "Verb": "up"
+   },
+   {
+    "RoomId": 5301,
+    "Verb": "south"
    }
   ]
  },
@@ -42,6 +42,10 @@
   "Name": "Climbing The Great Pyramid",
   "Desc": "   Hot air rises off the sides of the pyramid, and the wind chokes you with\na flurry of sand and dust.  So far you have made it halfway up the side.  The\nwalls of the pyramid are quite steep.",
   "Exits": [
+   {
+    "RoomId": 5304,
+    "Verb": "north"
+   },
    {
     "RoomId": 5305,
     "Verb": "south"
@@ -53,10 +57,6 @@
    {
     "RoomId": 5302,
     "Verb": "down"
-   },
-   {
-    "RoomId": 5304,
-    "Verb": "north"
    }
   ]
  },
@@ -112,6 +112,10 @@
   "Desc": "   Here on the eastern side of the pyramid there is a little more shelter\nfrom the heat and wind.  The stone side is not nearly so slippery smooth\nfrom the ravages of time, and you think you may be able to even reach the\ntop from here.",
   "Exits": [
    {
+    "RoomId": 5304,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5305,
     "Verb": "south"
    },
@@ -122,10 +126,6 @@
    {
     "RoomId": 5308,
     "Verb": "down"
-   },
-   {
-    "RoomId": 5304,
-    "Verb": "north"
    }
   ]
  },
@@ -330,12 +330,12 @@
   "Desc": "   You are in a small chamber underneath the slippery hole, far below\nthe pyramid now.   The floor is strewn with bones.  To the south is a\nsmall rocky crevasse.",
   "Exits": [
    {
-    "RoomId": 5320,
-    "Verb": "south"
-   },
-   {
     "RoomId": 0,
     "Verb": "up"
+   },
+   {
+    "RoomId": 5320,
+    "Verb": "south"
    }
   ]
  },
@@ -345,16 +345,16 @@
   "Desc": "   You are now exploring deep within a strange rocky crevasse that plunges\ndown into the rock on which the pyramid was constructed.  To the south you\nsee the flickering light of a fire, and the crevasse proceeds downward.",
   "Exits": [
    {
-    "RoomId": 5319,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5321,
     "Verb": "south"
    },
    {
     "RoomId": 5322,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5319,
+    "Verb": "north"
    }
   ]
  },
@@ -416,12 +416,12 @@
   "Desc": "   You exhale, and squeeze yourself into the narrow crack in the wall.\nDust fills your eyes as you disturb it, and chunks of mortar and stone\nmixed with a touch of sand fall on you as you scrape your way through.",
   "Exits": [
    {
-    "RoomId": 5310,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5326,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5310,
+    "Verb": "north"
    }
   ]
  },
@@ -431,16 +431,16 @@
   "Desc": "  The floor of this small tomb is littered with the lids of \nsmashed sarcophagi, bits of treasure dropped by thieves and\nlooters, and corpses pulled from their resting places.",
   "Exits": [
    {
+    "RoomId": 5327,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5325,
     "Verb": "north"
    },
    {
     "RoomId": 5334,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5327,
-    "Verb": "west"
    }
   ]
  },
@@ -450,12 +450,12 @@
   "Desc": "  This tomb has been utterly destroyed by thieves and looters in search of\nthe treasures of the pharoahs.  Nothing of interest remains in this room,\nexcept a large stone coffin that leans against the western wall.",
   "Exits": [
    {
-    "RoomId": 5328,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5326,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5328,
+    "Verb": "west"
    }
   ]
  },
@@ -480,12 +480,12 @@
   "Desc": "   You are on a stairway that disappears into darkness in both directions.\nThe smooth, uneven steps of the stairway have not been travelled in what\nappears to be centuries.",
   "Exits": [
    {
-    "RoomId": 5330,
-    "Verb": "down"
-   },
-   {
     "RoomId": 5328,
     "Verb": "up"
+   },
+   {
+    "RoomId": 5330,
+    "Verb": "down"
    }
   ]
  },
@@ -495,12 +495,12 @@
   "Desc": "   You stand now at the base of the uneven stairway.  The walls, floor,\nand ceiling of this small landing are covered with strange hieroglyphics.",
   "Exits": [
    {
-    "RoomId": 5331,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5329,
     "Verb": "up"
+   },
+   {
+    "RoomId": 5331,
+    "Verb": "south"
    }
   ]
  },
@@ -581,10 +581,6 @@
   "Desc": "   Here the tunnel forks off through a gaping hole down in the\nsouthern wall, continuing onward to the east and west as well.",
   "Exits": [
    {
-    "RoomId": 5347,
-    "Verb": "down"
-   },
-   {
     "RoomId": 5337,
     "Verb": "east"
    },
@@ -595,6 +591,10 @@
    {
     "RoomId": 5335,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5347,
+    "Verb": "down"
    }
   ]
  },
@@ -619,12 +619,12 @@
   "Desc": "   This chamber has a dank, dusty, musty smell to it.  Small footprints\nin the dust betray the recent passage of some sort of creatures.  A hole \nin the floor lies to the west and a stairway is to the east.",
   "Exits": [
    {
-    "RoomId": 5339,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5313,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5339,
+    "Verb": "east"
    }
   ]
  },
@@ -717,12 +717,12 @@
   "Desc": "   The dust-covered hallway has come to an abrupt end at a stony,\nfeatureless wall.  Here and there are signs of the recent passage\nof others in the dust.",
   "Exits": [
    {
-    "RoomId": 5343,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5345,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5343,
+    "Verb": "south"
    }
   ]
  },
@@ -758,12 +758,12 @@
   "Desc": "   This hallway formerly had a beautiful arch to the ceiling, now\ncollapsed under the weight of the slowly settling stones of the\npyramid.  Now, a massive pile of rubble leads up into a hole high \nin the northern portion of the hallway.  To the south, through the \nrubble and fallen stones you see a sandstone crypt.",
   "Exits": [
    {
-    "RoomId": 5336,
-    "Verb": "up"
-   },
-   {
     "RoomId": 5348,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5336,
+    "Verb": "up"
    }
   ]
  },
@@ -773,16 +773,16 @@
   "Desc": "   This small crypt is lit by a hole in the wall to the south, through\nwhich sand pours from the desert outside.  A hot wind blows in from the\ndesert, drying your skin instantly.  To the east and north the arched\nhallway continues.",
   "Exits": [
    {
+    "RoomId": 5347,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5349,
     "Verb": "east"
    },
    {
     "RoomId": 5354,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5347,
-    "Verb": "north"
    }
   ]
  },
@@ -878,10 +878,6 @@
   "Desc": "   You are caught in the midst of a massive sandstorm.  Howling winds\nbuffet you from all sides, and the sand tears at your skin, blinding\nyou and choking you.  You have lost all sense of direction.",
   "Exits": [
    {
-    "RoomId": 5354,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5355,
     "Verb": "east"
    },
@@ -892,6 +888,10 @@
    {
     "RoomId": 5355,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5354,
+    "Verb": "north"
    }
   ]
  },
@@ -902,19 +902,19 @@
   "Exits": [
    {
     "RoomId": 5356,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 5357,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5356,
     "Verb": "west"
    },
    {
     "RoomId": 5355,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5356,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 5357,
+    "Verb": "south"
    }
   ]
  },

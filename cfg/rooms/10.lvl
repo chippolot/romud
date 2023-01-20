@@ -69,10 +69,6 @@
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
    {
-    "RoomId": 906,
-    "Verb": "west"
-   },
-   {
     "RoomId": 912,
     "Verb": "north"
    },
@@ -83,6 +79,10 @@
    {
     "RoomId": 907,
     "Verb": "south"
+   },
+   {
+    "RoomId": 906,
+    "Verb": "west"
    }
   ]
  },
@@ -210,15 +210,15 @@
   "Exits": [
    {
     "RoomId": 912,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 912,
     "Verb": "south"
    },
    {
     "RoomId": 914,
     "Verb": "west"
+   },
+   {
+    "RoomId": 912,
+    "Verb": "east"
    }
   ]
  },
@@ -243,12 +243,12 @@
   "Desc": "   Bodies lie everywhere.  Commoner, peasant, duke, duchess.  The Gods\nwill not hear you call here.  Hence they will not answer you.  To the\nsouth the path ends at a dark cave entrance.\nA sign has been posted beside the entrance.",
   "Exits": [
    {
-    "RoomId": 916,
-    "Verb": "south"
-   },
-   {
     "RoomId": 914,
     "Verb": "north"
+   },
+   {
+    "RoomId": 916,
+    "Verb": "south"
    }
   ]
  },

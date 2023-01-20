@@ -10,7 +10,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -25,7 +26,9 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -38,7 +41,11 @@
   "RoomDesc": "A goblin lieutenant stands here, attempting to get his men in order.",
   "FullDesc": "The goblin lieutenant is rather angry, and looking for one of his men to\nbeat up upon, but maybe you will do just fine...",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "assistall",
+   "stayzone"
+  ]
  },
  {
   "Key": "mob3503",
@@ -54,7 +61,8 @@
   "Flags": [
    "stationary",
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "assistall"
   ]
  },
  {
@@ -83,7 +91,9 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -97,7 +107,9 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -110,6 +122,10 @@
   "RoomDesc": "A dark horseman is here, mounted on his black steed.",
   "FullDesc": "The man is obviously an outlaw, and has no qualms about slashing you into\nlittle bits.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "assistall",
+   "stayzone"
+  ]
  }
 ]

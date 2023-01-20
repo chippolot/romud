@@ -201,6 +201,21 @@ func parseEntities(data []byte, outPath string) {
 				cfg.Flags |= mud.EFlag_Scavenger | mud.EFlag_TrashCollector
 			case 'f':
 				cfg.Flags |= mud.EFlag_Aggro
+			case 'g':
+				cfg.Flags |= mud.EFlag_StayZone
+			case 'm':
+				cfg.Flags |= mud.EFlag_AssistAll
+			}
+		}
+
+		// Parse affectations
+		eflags = toks[1]
+		for _, v := range eflags {
+			switch v {
+			case 'a':
+				cfg.Flags |= mud.EFlag_Blind
+			case 'b':
+				cfg.Flags |= mud.EFlag_Invisible
 			}
 		}
 

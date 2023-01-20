@@ -105,7 +105,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -120,7 +121,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -135,7 +137,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -150,7 +153,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -295,7 +299,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -310,7 +315,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -444,7 +450,10 @@
   "RoomDesc": "Aziz the Human Canon stands here.",
   "FullDesc": "This big and burly man grins at you as he draws his sword.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5430",
@@ -457,7 +466,10 @@
   "RoomDesc": "Mustafah the Human Robber stands here.",
   "FullDesc": "This man is lithe and has an evil smirk upon his face.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5431",
@@ -470,7 +482,10 @@
   "RoomDesc": "Fatima the Elven Invoker stands here.",
   "FullDesc": "This female elf has dusky skin and black hair.  A combination you don't\nsee very often on elves.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5432",
@@ -483,7 +498,10 @@
   "RoomDesc": "Kareem the Dwarven Mercenary stands here.",
   "FullDesc": "This short stocky fellow has a chest the girth of a barrel.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5433",
@@ -498,7 +516,9 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -514,7 +534,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -542,7 +563,10 @@
   "RoomDesc": "A strong dockworker walks by moving crates.",
   "FullDesc": "Although seemingly dull witted, this hulking mass carries the huge\ncrates from the boats like it was a box of lilies.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5437",
@@ -554,7 +578,10 @@
   "RoomDesc": "A small man walks around scribbling in a notebook.",
   "FullDesc": "The city's taxcollextor walks from store to store collecting the\nSultan's fee for living in his grand city.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5438",
@@ -584,7 +611,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "assistall"
   ]
  },
  {
@@ -596,7 +624,10 @@
   "RoomDesc": "Daghdha the Arch-Magi stands here.",
   "FullDesc": "This man is dressed in long brown robes and has a penetrating gaze.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5441",
@@ -648,7 +679,10 @@
   "RoomDesc": "A vulture circles above you.",
   "FullDesc": "As you look up at this bird, you see the only thing it wants is a corpse.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5445",
@@ -722,7 +756,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -887,7 +922,10 @@
   "RoomDesc": "A servant boy is here running errands.",
   "FullDesc": "You see a small boy running around the halls of the palace.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5461",
@@ -899,7 +937,10 @@
   "RoomDesc": "A guard stands here, protecting the innocent.",
   "FullDesc": "You see a trained fighter, ready to help those in need.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5462",
@@ -913,7 +954,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -927,7 +969,10 @@
   "RoomDesc": "The Chief of the Sultan's Guard stands here.",
   "FullDesc": "You see a large man skilled in hunting and killing.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5464",
@@ -938,7 +983,10 @@
   "RoomDesc": "A mercenary stands here waiting for a job.",
   "FullDesc": "You see an assassin down on his luck looking to be freelanced out.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5465",
@@ -980,7 +1028,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -995,7 +1044,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -1025,7 +1075,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -1040,7 +1091,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -1055,7 +1107,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -1070,7 +1123,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -1084,7 +1138,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -1143,7 +1198,9 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -1186,7 +1243,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -1202,7 +1260,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall"
   ]
  },
  {
@@ -1306,7 +1365,10 @@
   "RoomDesc": "The Mayor of New Thalos stands here.",
   "FullDesc": "You see a chubby rabbit dressed in his best suit.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5490",

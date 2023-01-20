@@ -387,7 +387,11 @@
   "RoomDesc": "A Peacekeeper is standing here, ready to jump in at the first sign of trouble.",
   "FullDesc": "He looks very strong and wise.  Looks like he doesn't answer to ANYONE.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "assistall",
+   "stayzone"
+  ]
  },
  {
   "Key": "mob3060",
@@ -399,7 +403,11 @@
   "RoomDesc": "A cityguard stands here.",
   "FullDesc": "A big, strong, helpful, trustworthy guard.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "assistall",
+   "stayzone"
+  ]
  },
  {
   "Key": "mob3061",
@@ -410,7 +418,10 @@
   "RoomDesc": "A janitor is walking around, cleaning up.",
   "FullDesc": "What a tough job he has.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob3062",
@@ -424,7 +435,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -481,7 +493,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -496,7 +509,9 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -510,7 +525,10 @@
   "RoomDesc": "An oozing green gelatinous blob is here, sucking in bits of debris.",
   "FullDesc": "A horrid looking thing; it is huge, greenish, and looks like the blob.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob3089",

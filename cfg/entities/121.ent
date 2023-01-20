@@ -171,7 +171,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -225,7 +226,10 @@
   "RoomDesc": "A stadium vendor is walking here, selling overpriced hotdogs and beer.",
   "FullDesc": "The vendor is a scruffy looking man who isn't afraid of a fight and looks\nlike he has had just about enough of smart-mouthed spectators.  ",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob12017",
@@ -236,7 +240,10 @@
   "RoomDesc": "A citizen of Rome is standing here.",
   "FullDesc": "It appears to be your ordinary citizen going about his business.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob12018",
@@ -264,7 +271,10 @@
   "RoomDesc": "A soldier on leave is walking around looking for entertainment.",
   "FullDesc": "You see a member of one of the Emperor's elite legions.  He looks VERY strong.\nYou have this vague feeling that his entertainment isn't going to be a very\nwholesome activity.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob12020",

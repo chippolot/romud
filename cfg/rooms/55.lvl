@@ -76,20 +76,20 @@
   "Desc": "   The large square of markets fills your vision.  Strange sights and\nsounds, those known only to the New Thalos market, barrage your senses.\nThe only hope of making any sense of what is going on here is to wander\naround.  Market Square continues north, west, and east, with the Medina\ntrailing off th the south.",
   "Exits": [
    {
-    "RoomId": 5409,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 5407,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5408,
     "Verb": "east"
    },
    {
     "RoomId": 5405,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5409,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 5407,
+    "Verb": "north"
    }
   ]
  },
@@ -122,20 +122,20 @@
   "Desc": "   In this corner of the market some of the largest warriors in the land\ntower over you.  It is easy to understand why they hang out here once you\nnotice the weapon shop and the armoury close by.  Perhaps you might stop\nin and take a look at the wares these shops have to offer.",
   "Exits": [
    {
-    "RoomId": 5406,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 5418,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5530,
     "Verb": "east"
    },
    {
     "RoomId": 5537,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5406,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 5418,
+    "Verb": "north"
    }
   ]
  },
@@ -168,20 +168,20 @@
   "Desc": "   This area of the square seems a bit more subdued than the rest.\nYou notice that most of the outland adventurers mill around the\nsouthern end of the market, while the townfolk seem to keep their\nbusiness in the northern end.\n   West Main street begins here and heads for the gate, the market's \nexpanse fills the other directions.",
   "Exits": [
    {
-    "RoomId": 5415,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5407,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5409,
     "Verb": "south"
    },
    {
     "RoomId": 5427,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5415,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5407,
+    "Verb": "east"
    }
   ]
  },
@@ -190,6 +190,10 @@
   "Name": "The Common Square",
   "Desc": "   People pass by talking to each other, or rest their weary bones on this\ngrassy field.  You can hear faint sounds of the river to the south of you\nas it passes through the city.  Ishtar drive heads east and west from here\nand the Medina is to the north.  South lies the River Ishtar Bridge and the\nsouthern gate.",
   "Exits": [
+   {
+    "RoomId": 5437,
+    "Verb": "west"
+   },
    {
     "RoomId": 5404,
     "Verb": "north"
@@ -201,10 +205,6 @@
    {
     "RoomId": 5413,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5437,
-    "Verb": "west"
    }
   ]
  },
@@ -214,12 +214,12 @@
   "Desc": "   You see before you the expanse of the Great Eastern Desert.\nYou have heard many tales of the Great Pyramid, the lost city\nof Old Thalos and the friendly brass dragon that lies under the\ndesert.\n   To the south lies the desert and the city of New Thalos is\nto the north.",
   "Exits": [
    {
-    "RoomId": 5040,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5414,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5040,
+    "Verb": "south"
    }
   ]
  },
@@ -229,16 +229,16 @@
   "Desc": "   Walking over the bridge you see the rushing waters of the River\nIshtar.  To the south you see the Southern Gate of New Thalos and\nthe Common Square stretches out to the north",
   "Exits": [
    {
-    "RoomId": 5486,
-    "Verb": "down"
-   },
-   {
     "RoomId": 5411,
     "Verb": "north"
    },
    {
     "RoomId": 5414,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5486,
+    "Verb": "down"
    }
   ]
  },
@@ -248,12 +248,12 @@
   "Desc": "   Two large stone towers rise up to greet you with the massive iron\ngate swinging on ornately crafted hinges and emblazoned with the crest\nof New Thalos.  The makers of the city spared no expense in rebuilding\nthe defenses or their home.  The River Ishtar bridge lies to the north\nand the desert to the south.",
   "Exits": [
    {
-    "RoomId": 5412,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5413,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5412,
+    "Verb": "south"
    }
   ]
  },
@@ -262,6 +262,10 @@
   "Name": "Northwestern Market Square",
   "Desc": "   This corner of the market contains some of the most civilized folk\nin New Thalos.  To the north lies the humble store of the merchant\nAhkeem, his weavings known to be the best in the city.  West of here\nis the entrance to the First Royal Bank of New Thalos.",
   "Exits": [
+   {
+    "RoomId": 5515,
+    "Verb": "north"
+   },
    {
     "RoomId": 5416,
     "Verb": "east"
@@ -273,10 +277,6 @@
    {
     "RoomId": 5522,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5515,
-    "Verb": "north"
    }
   ]
  },
@@ -285,6 +285,10 @@
   "Name": "Northern Market Square",
   "Desc": "   You stand in one of the most heavily used parts of town.  To the north\nlies the Palace of New Thalos and the Casbah, east west and south of here\nthe busy market thrives with life.",
   "Exits": [
+   {
+    "RoomId": 5415,
+    "Verb": "west"
+   },
    {
     "RoomId": 5419,
     "Verb": "north"
@@ -296,10 +300,6 @@
    {
     "RoomId": 5407,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5415,
-    "Verb": "west"
    }
   ]
  },
@@ -308,6 +308,10 @@
   "Name": "Northeastern Market Square",
   "Desc": "   Pandemonium.  Chaos.  Madness.  A few other choice words come to mind\nas you gaze into this corner of the market.  The vegetable stand seems\nquiet enough so you have to assume the noise comes from the Butchery.\nYou have to think for a while before you muster the will to enter this\nshop.  The market continues to the south and west.",
   "Exits": [
+   {
+    "RoomId": 5416,
+    "Verb": "west"
+   },
    {
     "RoomId": 5516,
     "Verb": "north"
@@ -319,10 +323,6 @@
    {
     "RoomId": 5418,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5416,
-    "Verb": "west"
    }
   ]
  },
@@ -331,10 +331,6 @@
   "Name": "Eastern Market Square",
   "Desc": "   You stand in the market of New Thalos, the gem of the desert.  The\nmarket is the hub of the city, all trade and commerce of any significance\nis carried on here.  The market spreads out in all directions save east,\nhere Main Street heads for the easter gate.",
   "Exits": [
-   {
-    "RoomId": 5417,
-    "Verb": "north"
-   },
    {
     "RoomId": 5428,
     "Verb": "east"
@@ -346,6 +342,10 @@
    {
     "RoomId": 5407,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5417,
+    "Verb": "north"
    }
   ]
  },
@@ -355,12 +355,12 @@
   "Desc": "   This cobblestone road aides your journey through town.  Traveling north\nwill take you by the Palace and the Dancing Daemon Inn, and south will put\nyou on Market Square.",
   "Exits": [
    {
-    "RoomId": 5420,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5416,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5420,
+    "Verb": "north"
    }
   ]
  },
@@ -370,12 +370,12 @@
   "Desc": "   This part of the road travels between one of the sturdy walls of\nthe Palace and the Dancing Daemon.  To the east you peer through a\nsmall window into the Daemon, seeing many people dancing and drinking.\nAfter you tend to your other chores you plan on visiting the Daemon.\n   The walk continues north and south from here.",
   "Exits": [
    {
-    "RoomId": 5421,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5419,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5421,
+    "Verb": "north"
    }
   ]
  },
@@ -385,20 +385,20 @@
   "Desc": "   The road here between the Palace and the Dancing Daemon Inn seems well\nworn by the travel of horses, carts, and leather boots.  From the west you\nhear the faint sound of trumpets announcing the arrival of some duke or\nduchess to the Palace.  Safe haven awaits you to the east in the halls\nof the Daemon, and Sultan's Walk continues north and south.",
   "Exits": [
    {
-    "RoomId": 5420,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5559,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5422,
     "Verb": "north"
    },
    {
     "RoomId": 5401,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5420,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5559,
+    "Verb": "west"
    }
   ]
  },
@@ -408,12 +408,12 @@
   "Desc": "   The main road north from the square continues here, surrounded\nby the walls of the Palace and the Daemon.  To the north you see\nthe heavily guarded gate and can make out faint sounds of trade\nto the south.",
   "Exits": [
    {
-    "RoomId": 5421,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5423,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5421,
+    "Verb": "south"
    }
   ]
  },
@@ -422,6 +422,10 @@
   "Name": "Inside The Northern Gate Of New Thalos",
   "Desc": "   Two large stone towers rise up to greet you with a massive iron\ngate swinging between on ornately crafted hinges and emblazend with\nthe crest of New Thalos.  The makers of this city spared no costs\nin rebuilding the defenses of their home.\n   Sultan's Walk runs to the south and the Casbah stretches out east\nand west.  To the north is wilderness.",
   "Exits": [
+   {
+    "RoomId": 5568,
+    "Verb": "north"
+   },
    {
     "RoomId": 5450,
     "Verb": "east"
@@ -433,10 +437,6 @@
    {
     "RoomId": 5449,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5568,
-    "Verb": "north"
    }
   ]
  },
@@ -446,16 +446,16 @@
   "Desc": "   Two large stone towers embedded in the wall loom over you.  The\nmassive iron gate, emblazoned with the crest of New Thalos, swings\neasily on four ornately crafted hinges.  It is obvious the makers\nof this city spared no expense in protecting their home.\n   Main street heads towards the market eastward and the wilderness\nbeckons from the west.  To the south lies the entrance the Warriors'\nGuild.",
   "Exits": [
    {
+    "RoomId": 5570,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5425,
     "Verb": "east"
    },
    {
     "RoomId": 5527,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5570,
-    "Verb": "west"
    }
   ]
  },
@@ -465,20 +465,20 @@
   "Desc": "   This is the main road traveling though the city.  To the south you\nhear the hammering of the repair shop and to the north is the grassy\nfield known as Temple Square.  Main street continues east and west.",
   "Exits": [
    {
-    "RoomId": 5521,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5426,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5528,
     "Verb": "south"
    },
    {
     "RoomId": 5424,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5521,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5426,
+    "Verb": "east"
    }
   ]
  },
@@ -541,20 +541,20 @@
   "Desc": "   You are on East Main Street.  To the North is the beginning\nof Guildsman Row.  To the South is a dark alley.  The road also\ncontinues to the East.\nThere is a small sign on a wire hanging across the junction.",
   "Exits": [
    {
-    "RoomId": 5465,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5430,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5466,
     "Verb": "south"
    },
    {
     "RoomId": 5428,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5465,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5430,
+    "Verb": "east"
    }
   ]
  },
@@ -587,16 +587,16 @@
   "Desc": "   The Main street through eastern New Thalos begins here and heads\nwestward towards the marketplace.  One of the main gates can be seen\nto the east and Braheem's Magic Shop awaits your business to the north.",
   "Exits": [
    {
+    "RoomId": 5525,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5432,
     "Verb": "east"
    },
    {
     "RoomId": 5430,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5525,
-    "Verb": "north"
    }
   ]
  },
@@ -670,10 +670,6 @@
   "Desc": "   The cobblestone road is moist here, the trail of water heading down to\nthe boat ramp.  Catching your balance as you start to slide on the slick\npavement you grab on to the handrail someone has conveniently placed here.\n   To the north is the Shipwright and Ishtar Drive continues east and west.",
   "Exits": [
    {
-    "RoomId": 5543,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5437,
     "Verb": "east"
    },
@@ -684,6 +680,10 @@
    {
     "RoomId": 5435,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5543,
+    "Verb": "north"
    }
   ]
  },
@@ -727,12 +727,12 @@
   "Desc": "   The wide road bordering the south of town continues to the east west\nhere, bordered only by the hay-loft to the north and the River Ishtar to\nthe south.",
   "Exits": [
    {
-    "RoomId": 5440,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5441,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5440,
+    "Verb": "west"
    }
   ]
  },
@@ -761,16 +761,16 @@
   "Desc": "   Even in broad daylight, you can hardly see into the back alley\nthat begins here and heads north.  Sounds of loud drunken folk and\nthe occasional screaming cat emenate from the direction.  Luckily\nyou have the choice of going east or west down the drive as well.",
   "Exits": [
    {
+    "RoomId": 5439,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5469,
     "Verb": "north"
    },
    {
     "RoomId": 5442,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5439,
-    "Verb": "west"
    }
   ]
  },
@@ -814,12 +814,12 @@
   "Desc": "   This sloped slab of stone allows easy passage to and from the River\nIshtar.  Boats are moored to the docks here awaiting their masters to\nreturn from the warehouses and the pubs.  The waters of the River Ishtar\nlap at your feet to the south and Ishtar Drive is to the north.",
   "Exits": [
    {
-    "RoomId": 5436,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5487,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5436,
+    "Verb": "north"
    }
   ]
  },
@@ -901,12 +901,12 @@
   "Desc": "   The cobblestone pavement runs along the north wall here.  South of you\nstand the great walls of the Palace and the Avenue goes east and west.",
   "Exits": [
    {
-    "RoomId": 5423,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5448,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5423,
+    "Verb": "east"
    }
   ]
  },
@@ -931,12 +931,12 @@
   "Desc": "   Walking along the cobblestone path you feel secure with the walls of\nthe city towering over you.  You hear the scraping sounds of metal on\nstone and look up to see a large, strong guard looking out to the north.\n   To the east lies the intersection on Guildsman's Row and the northern\ngate is a short walk to the west.",
   "Exits": [
    {
-    "RoomId": 5450,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5452,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5450,
+    "Verb": "west"
    }
   ]
  },
@@ -1033,12 +1033,12 @@
   "Desc": "   The short Row ends abruptly here at the entrance to the dance\nhall of New Thalos.\n   The entrance to the hall is to the west and the Row continues\nnorthward.",
   "Exits": [
    {
-    "RoomId": 5553,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5456,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5553,
+    "Verb": "west"
    }
   ]
  },
@@ -1063,12 +1063,12 @@
   "Desc": "   This is a dark alley running between the Palace and City Hall.  Not a\nlot here, unless you're partial to spiders and rats.",
   "Exits": [
    {
-    "RoomId": 5447,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5460,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5447,
+    "Verb": "north"
    }
   ]
  },
@@ -1116,6 +1116,10 @@
   "Desc": "   The guilds continue here, to the west is the Weavers' Guild, and\nto the east stands the Craftsmans' Guild.  The row of guilds continues\nnorth and south from here.",
   "Exits": [
    {
+    "RoomId": 5508,
+    "Verb": "east"
+   },
+   {
     "RoomId": 5463,
     "Verb": "south"
    },
@@ -1126,10 +1130,6 @@
    {
     "RoomId": 5461,
     "Verb": "north"
-   },
-   {
-    "RoomId": 5508,
-    "Verb": "east"
    }
   ]
  },
@@ -1138,6 +1138,10 @@
   "Name": "Guildsman's Row",
   "Desc": "   Only one guild offers its door to this stretch of the Row, the Tanners'\nGuild, to the west.  To the east is a beautifully sculpted marble door\nallowing entrance to the Museum of the Greater Gods.\n   The Row of Guilds leads north and south.",
   "Exits": [
+   {
+    "RoomId": 5565,
+    "Verb": "west"
+   },
    {
     "RoomId": 5462,
     "Verb": "north"
@@ -1149,10 +1153,6 @@
    {
     "RoomId": 5464,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5565,
-    "Verb": "west"
    }
   ]
  },
@@ -1162,16 +1162,16 @@
   "Desc": "   After the guilds were built the people of the city used some of the\nextra space to erect a shrine to their patron saints.  The result of\nthis labor became the Museum of the Greater Gods.\n   You may enter the sacred hall to the east.",
   "Exits": [
    {
+    "RoomId": 5463,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5517,
     "Verb": "east"
    },
    {
     "RoomId": 5465,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5463,
-    "Verb": "north"
    }
   ]
  },
@@ -1211,16 +1211,16 @@
   "Desc": "   Even with your light you cannot seem to penetrate the magical cloak of\ndarkness covering this alley.",
   "Exits": [
    {
-    "RoomId": 5466,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5468,
     "Verb": "east"
    },
    {
     "RoomId": 5538,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5466,
+    "Verb": "north"
    }
   ]
  },
@@ -1324,12 +1324,12 @@
   "Desc": "   This is a small corner in the alley behind the warehouses and the guild\nof warriors.  You notice some small scrapings to the west.",
   "Exits": [
    {
-    "RoomId": 5475,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5473,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5475,
+    "Verb": "east"
    }
   ]
  },
@@ -1384,16 +1384,16 @@
   "Desc": "   The tunnel branches here going north, east, and west.",
   "Exits": [
    {
-    "RoomId": 5477,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5479,
     "Verb": "east"
    },
    {
     "RoomId": 5480,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5477,
+    "Verb": "north"
    }
   ]
  },
@@ -1403,16 +1403,16 @@
   "Desc": "   The alley turns again here and heads south and west.  You notice a\nsmall glint of light from above.",
   "Exits": [
    {
-    "RoomId": 5458,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5478,
     "Verb": "west"
    },
    {
     "RoomId": 5471,
     "Verb": "up"
+   },
+   {
+    "RoomId": 5458,
+    "Verb": "south"
    }
   ]
  },
@@ -1433,12 +1433,12 @@
   "Desc": "   The small passage continues north and south from here.",
   "Exits": [
    {
-    "RoomId": 5482,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5458,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5482,
+    "Verb": "south"
    }
   ]
  },
@@ -1512,16 +1512,16 @@
   "Desc": "   You hear your voice echo as you float under the bridge above.  The\ncity construction crews have just recently finished the small ladder\ngiving common-folk easy access to the river.  To the west and east you\nsee the river flowing by the city.",
   "Exits": [
    {
+    "RoomId": 5485,
+    "Verb": "east"
+   },
+   {
     "RoomId": 5487,
     "Verb": "west"
    },
    {
     "RoomId": 5413,
     "Verb": "up"
-   },
-   {
-    "RoomId": 5485,
-    "Verb": "east"
    }
   ]
  },
@@ -1681,12 +1681,12 @@
   "Desc": "   The small passage continues west and east.",
   "Exits": [
    {
-    "RoomId": 5489,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5502,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5489,
+    "Verb": "east"
    }
   ]
  },
@@ -1755,16 +1755,16 @@
   "Desc": "   The temple continues here, but not on such a grand scale.  The place\nstill looks immaculate.  To the north you see the chamber of the High\nPriest and a sign on the door in BIG letters thats reads 'DO NOT DISTURB'\nTo the south is the entrance to the Clerics' Guild.",
   "Exits": [
    {
+    "RoomId": 5513,
+    "Verb": "south"
+   },
+   {
     "RoomId": 5505,
     "Verb": "north"
    },
    {
     "RoomId": 5510,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5513,
-    "Verb": "south"
    }
   ]
  },
@@ -1774,20 +1774,20 @@
   "Desc": "   Huge marble pillars rise on either side of you and grab hold of\nthe ceiling.  Between each of these, fine softstone frescoes have\nbeen carved depicting scenes from the religous history of New Thalos.\nRows of pews face forward giving their full attention to the pulpit\nrising high above the ground.  The deep red carpeting underfoot shows\nnot a speck of wear or dirt.  It is obvious that New Thalonians take\nreligion seriously.",
   "Exits": [
    {
-    "RoomId": 5514,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5509,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5506,
     "Verb": "north"
    },
    {
     "RoomId": 5511,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5514,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5509,
+    "Verb": "west"
    }
   ]
  },
@@ -1808,12 +1808,12 @@
   "Desc": "   Four large stone statues reside in the museum.  They were constructed\nby the people of New Thalos to pay homage to the saints they believe to \nhave saved all their lives.\n   The museum continues to the south.",
   "Exits": [
    {
-    "RoomId": 5463,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5517,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5463,
+    "Verb": "west"
    }
   ]
  },
@@ -1894,16 +1894,16 @@
   "Desc": "   You walk into a cold room whose only feature is an old wooden\nstaircase spirling up along the wall to a higher level.  Up these\nstairs you are told awaits the old mage who may be able to help\nyou advance in your studies.",
   "Exits": [
    {
+    "RoomId": 5519,
+    "Verb": "east"
+   },
+   {
     "RoomId": 5525,
     "Verb": "south"
    },
    {
     "RoomId": 5549,
     "Verb": "up"
-   },
-   {
-    "RoomId": 5519,
-    "Verb": "east"
    }
   ]
  },
@@ -1943,16 +1943,16 @@
   "Desc": "   You are standing on the meeting grounds of those with holy\nintentions.  Monks, bards, paladins and clerics mill around\neither preaching or listening to their fellows preach.  Huge\nmarble steps lead up to the gates of the temple and Main Street\nlies to the south.",
   "Exits": [
    {
-    "RoomId": 5425,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5514,
     "Verb": "up"
    },
    {
     "RoomId": 5514,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5425,
+    "Verb": "south"
    }
   ]
  },
@@ -2120,12 +2120,12 @@
   "Desc": "   This is a wide expanse of grass filled with dummies, punching bags\nand swordpupils.  To the north you see a man dressed in black robes,\nunlike his iron clad comrades, who you assume to be your master.",
   "Exits": [
    {
-    "RoomId": 5534,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5474,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5534,
+    "Verb": "west"
    }
   ]
  },
@@ -2224,12 +2224,12 @@
   "Desc": "   The wood under you feet creaks from years of being soaked in saltwater.\nAn old man with a curly, grey beard stand behind a small counter waiting\nto take your order.  Behind him are mounted various model sailboats and\nlarge fish.",
   "Exits": [
    {
-    "RoomId": 5544,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5436,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5544,
+    "Verb": "east"
    }
   ]
  },
@@ -2324,6 +2324,10 @@
   "Desc": "   Nowhere have you seen such an obscene display of wealth then in this \ncorridor.  The shaggy carpeting under your feet makes it seem as if you\nare walking on a cloud.  Platinum candelabras hang delicately from the\nceiling casting light on the ancient tapestries adorning the walls.  The\ncrick in your neck tells you that it is time to stop staring.  To the west\nthe numerous halls of the palace being and the gate lies to the east.",
   "Exits": [
    {
+    "RoomId": 5561,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5559,
     "Verb": "east"
    },
@@ -2334,10 +2338,6 @@
    {
     "RoomId": 5606,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5561,
-    "Verb": "north"
    }
   ]
  },
@@ -2539,12 +2539,12 @@
   "Desc": "   You stand outside the gate of New Thalos.  The city lies to the south,\nand wilderness to the north.",
   "Exits": [
    {
-    "RoomId": 5423,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5682,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5423,
+    "Verb": "south"
    }
   ]
  },
@@ -2573,12 +2573,12 @@
   "Desc": "   You stand outside the city walls, the iron gate to the east.  The city\nlies in that direction and the road to Midgaard lies west.",
   "Exits": [
    {
-    "RoomId": 5424,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5619,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5424,
+    "Verb": "east"
    }
   ]
  },
@@ -2599,12 +2599,12 @@
   "Desc": "   A long oaken table, coverd with silverware, plates, and a table cloth\nwith gold trim, dominates the room.  Although no diners occupy the room\nas of yet, servants sprint about setting the table and placing condiments.\n   The kitchen entrance is to the east, and two huge double doors open\ninto the hallway north.",
   "Exits": [
    {
-    "RoomId": 5562,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5573,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5562,
+    "Verb": "east"
    }
   ]
  },
@@ -2614,20 +2614,20 @@
   "Desc": "   You stand at a T-crossing in the long hallways.  There are two large\ndouble doors to the south.",
   "Exits": [
    {
-    "RoomId": 5574,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5564,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5572,
     "Verb": "south"
    },
    {
     "RoomId": 5578,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5574,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5564,
+    "Verb": "east"
    }
   ]
  },
@@ -2637,20 +2637,20 @@
   "Desc": "   You stand at an intersection of the hallways.  Wooden corridors\nlead off in all directions except west, the garden of the palace\ncan be entered there.",
   "Exits": [
    {
-    "RoomId": 5573,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5579,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5575,
     "Verb": "north"
    },
    {
     "RoomId": 5606,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5573,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5579,
+    "Verb": "west"
    }
   ]
  },
@@ -2659,10 +2659,6 @@
   "Name": "A Hall",
   "Desc": "   You have come to a T-crossing on the hallways.  The wooden corridors\ncontinue east, west and south.  There is a large iron door to the north.",
   "Exits": [
-   {
-    "RoomId": 5580,
-    "Verb": "west"
-   },
    {
     "RoomId": 5576,
     "Verb": "north"
@@ -2674,6 +2670,10 @@
    {
     "RoomId": 5574,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5580,
+    "Verb": "west"
    }
   ]
  },
@@ -2728,12 +2728,12 @@
   "Desc": "   You have entered the Sultan's private gardens.  A light sweat breaks\nout on your skin from the humidity here.  All around you are thousands of\nexotic plants and flowers.  The sweet smell of jasmine and honeysuckle\nreminds you of happier days at home.  Off to the north, through the palm\ntrees, you see a delicate white gazebo.\n   A path leads out into the hallway and west towards the gazebo.\nTo your right stands a gold sign.",
   "Exits": [
    {
-    "RoomId": 5574,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5584,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5574,
+    "Verb": "east"
    }
   ]
  },
@@ -2784,16 +2784,16 @@
   "Desc": "   You have reached the western end of the southern hallway.  The only\nexit is east except for the doors in the southern and western walls.",
   "Exits": [
    {
+    "RoomId": 5578,
+    "Verb": "east"
+   },
+   {
     "RoomId": 5582,
     "Verb": "south"
    },
    {
     "RoomId": 5588,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5578,
-    "Verb": "east"
    }
   ]
  },
@@ -2814,16 +2814,16 @@
   "Desc": "   This is the western end of the northern hallway.  Two doors are set\nin the walls here, one to the north, another to the west.",
   "Exits": [
    {
+    "RoomId": 5586,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5580,
     "Verb": "east"
    },
    {
     "RoomId": 5590,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5586,
-    "Verb": "north"
    }
   ]
  },
@@ -2889,16 +2889,16 @@
   "Desc": "   You stand in the throne room of the mighty Sultan of New Thalos.  Guards\nstand at attention near his side ready to make the ultimate sacrifice for\ntheir beloved leader.  The gold inlaid throne studded with jewels stands\nupon a mable dias.  The Sultan is not a man to be trifled with.",
   "Exits": [
    {
-    "RoomId": 5591,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5585,
     "Verb": "east"
    },
    {
     "RoomId": 5589,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5591,
+    "Verb": "north"
    }
   ]
  },
@@ -3003,20 +3003,20 @@
   "Desc": "   You stand in a roughly hewn stone tunnel with cells to the north and\nsouth.  The tunnel continues west and you notice a small crack in the\nstone to the east.",
   "Exits": [
    {
-    "RoomId": 5601,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5597,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5605,
     "Verb": "south"
    },
    {
     "RoomId": 5595,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5601,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5597,
+    "Verb": "east"
    }
   ]
  },
@@ -3275,16 +3275,16 @@
   "Desc": "   The faint sound of a flowing river reaches your ears from the south and \nthrough the trees you can see water.  The path you are on continues north\nand east from here.",
   "Exits": [
    {
-    "RoomId": 5615,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5631,
     "Verb": "east"
    },
    {
     "RoomId": 5646,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5615,
+    "Verb": "north"
    }
   ]
  },
@@ -3294,12 +3294,12 @@
   "Desc": "   This long road continues to the east and south.",
   "Exits": [
    {
-    "RoomId": 5634,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5618,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5634,
+    "Verb": "south"
    }
   ]
  },
@@ -3324,12 +3324,12 @@
   "Desc": "   You stand on a well maintained road leading east towards New Thalos\nand west towards the Eastern Mountains.  To the north you can see wide\nplains stretching out as far as the eye can see.  South of you begins\na dark green forest.",
   "Exits": [
    {
-    "RoomId": 5570,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5618,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5570,
+    "Verb": "east"
    }
   ]
  },
@@ -3572,12 +3572,12 @@
   "Desc": "   The river flows south through a valley in the mountains.  You can see\na small village to the west.",
   "Exits": [
    {
-    "RoomId": 5620,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5636,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5620,
+    "Verb": "north"
    }
   ]
  },
@@ -3632,12 +3632,12 @@
   "Desc": "   The river seems to calm a bit as the crevase widens lessens\nits stranglehold on the waters.  The river continues to the north \nthrough a crack and flows to the south.",
   "Exits": [
    {
-    "RoomId": 5640,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5638,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5640,
+    "Verb": "south"
    }
   ]
  },
@@ -3741,16 +3741,16 @@
   "Desc": "   The river continues here east to east.  There is a landing area to\nthe north where you can gain access to the shore.",
   "Exits": [
    {
-    "RoomId": 5645,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5616,
     "Verb": "north"
    },
    {
     "RoomId": 5647,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5645,
+    "Verb": "west"
    }
   ]
  },
@@ -3824,10 +3824,6 @@
   "Desc": "   You are walking over rocks and stones through the mountains between \nthe Ishtar and Dark rivers.\n   It is funny how all the rocks look alike.",
   "Exits": [
    {
-    "RoomId": 5653,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5657,
     "Verb": "east"
    },
@@ -3838,6 +3834,10 @@
    {
     "RoomId": 5658,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5653,
+    "Verb": "north"
    }
   ]
  },
@@ -3846,10 +3846,6 @@
   "Name": "In The Mountains",
   "Desc": "   You are walking over rocks and stones through the mountains between \nthe Ishtar and Dark rivers.\n   It is funny how all the rocks look alike.",
   "Exits": [
-   {
-    "RoomId": 5652,
-    "Verb": "west"
-   },
    {
     "RoomId": 5653,
     "Verb": "north"
@@ -3861,6 +3857,10 @@
    {
     "RoomId": 5653,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5652,
+    "Verb": "west"
    }
   ]
  },
@@ -3870,20 +3870,20 @@
   "Desc": "   You are walking over rocks and stones through the mountains between \nthe Ishtar and Dark rivers.\n   It is funny how all the rocks look alike.",
   "Exits": [
    {
-    "RoomId": 5657,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5658,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5655,
     "Verb": "north"
    },
    {
     "RoomId": 5640,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5657,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5658,
+    "Verb": "west"
    }
   ]
  },
@@ -4008,10 +4008,6 @@
   "Desc": "   You are walking over rocks and stones through the mountains between \nthe Ishtar and Dark rivers.\n   It is funny how all the rocks look alike.",
   "Exits": [
    {
-    "RoomId": 5659,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5653,
     "Verb": "north"
    },
@@ -4022,6 +4018,10 @@
    {
     "RoomId": 5655,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5659,
+    "Verb": "west"
    }
   ]
  },
@@ -4046,12 +4046,12 @@
   "Desc": "   The river flows down the mountain through a large crevasse to the west\nand up into the mountains east.",
   "Exits": [
    {
-    "RoomId": 5663,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5661,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5663,
+    "Verb": "west"
    }
   ]
  },
@@ -4106,12 +4106,12 @@
   "Desc": "   The river, following a low spot in the foothills, bends and twists.\nTall mountains can be seen off to the south and east.",
   "Exits": [
    {
-    "RoomId": 5667,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5665,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5667,
+    "Verb": "south"
    }
   ]
  },
@@ -4291,12 +4291,12 @@
   "Desc": "   The river broadens even more here and the waters become murky.\nThe smell of saltwater has reached you from the east.  The Dragon\nSea cannot be far away.  To the east you can see the faint outline\nof a city and to the north you see a large expanse of grass.",
   "Exits": [
    {
-    "RoomId": 5686,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5627,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5686,
+    "Verb": "east"
    }
   ]
  },
@@ -4409,12 +4409,12 @@
   "Desc": "   The people of New Thalos take great pride in the services their\ncity may provide.  One of these services is the construction crews\nthe go to great lengths to keep all the roads in order.  Although\nthe taxes in New Thalos are higher then other cities in the realm\nmost of the money is used for the good of the people.",
   "Exits": [
    {
-    "RoomId": 5692,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5569,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5692,
+    "Verb": "east"
    }
   ]
  },
@@ -4439,12 +4439,12 @@
   "Desc": "   The Dragon Sea can be seen to the east now spreading out to unknown\nlands.  The road continues east and west.  To the south you hear the\nsounds of boats traveling the River Ishtar delivering goods.",
   "Exits": [
    {
-    "RoomId": 5692,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5694,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5692,
+    "Verb": "west"
    }
   ]
  },
@@ -4484,6 +4484,10 @@
   "Desc": "   You stand on a simple wooden dock that acts as an extension of the\nroad to the west.  The dock seems to have been here for quite a long\ntime but is still sturdy.  A small ladder has been built on the eastern\nend to allow easy access to and from ships.",
   "Exits": [
    {
+    "RoomId": 5689,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5690,
     "Verb": "east"
    },
@@ -4494,10 +4498,6 @@
    {
     "RoomId": 5695,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5689,
-    "Verb": "north"
    }
   ]
  },

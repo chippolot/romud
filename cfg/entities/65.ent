@@ -9,7 +9,10 @@
   "RoomDesc": "A mountain goat nibbles at a piece of grass here.",
   "FullDesc": "This goat is acclimated to the rugged terrain of the \nmountains.  It looks at you and shies away a little.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6401",
@@ -24,7 +27,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -41,7 +45,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -57,7 +62,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -72,7 +78,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  },
  {
@@ -87,7 +94,8 @@
   "Attacks": null,
   "Flags": [
    "stationary",
-   "aggro"
+   "aggro",
+   "assistall"
   ]
  }
 ]

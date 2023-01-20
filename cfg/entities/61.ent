@@ -12,7 +12,9 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "assistall",
+   "stayzone"
   ]
  },
  {
@@ -25,7 +27,10 @@
   "RoomDesc": "A small rabbit is foraging in the bushes here.",
   "FullDesc": "It is a small, furry creature with long ears and big feet.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6002",
@@ -39,7 +44,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -54,7 +60,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -67,7 +74,10 @@
   "RoomDesc": "A fallow deer is grazing peacefully here.",
   "FullDesc": "She is a graceful creature on long, slender legs, and with large, brown eyes\nlooking back at you with an air of watchful interest.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6005",
@@ -79,7 +89,10 @@
   "RoomDesc": "A brown fox is stalking rabbits through the underbrush here.",
   "FullDesc": "It is a large fox with beautiful, red-brown fur and a long, thick bushy tail.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6006",
@@ -121,7 +134,10 @@
   "RoomDesc": "A sparrow is flapping around by the ground.",
   "FullDesc": "The sparrow looks like it is enjoying life.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6009",
@@ -132,7 +148,10 @@
   "RoomDesc": "A robin is hopping around looking for bugs to eat.",
   "FullDesc": "The robin looks quite intent on finding a bug or worm to eat.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6010",
@@ -172,7 +191,10 @@
   "RoomDesc": "A grey squirrel with a bushy tail is foraging for nuts here.",
   "FullDesc": "This happy creature seems to pay you no heed as it goes about its search for\nnuts among the leaves and twigs on the ground here.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6013",
@@ -183,7 +205,10 @@
   "RoomDesc": "A small brown-red chipmunk dashes from tree to tree here.",
   "FullDesc": "The absolute zenith of hyperactivity, this small rodent seems to never tire\nof running up, down, and around the trees in this area.  If you could ever\ncatch it, you imagine it would make an easy meal.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob6014",
@@ -233,7 +258,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "stationary"
+   "stationary",
+   "stayzone"
   ]
  },
  {
@@ -273,6 +299,9 @@
   "RoomDesc": "A duck is here, quacking happily.",
   "FullDesc": "The duck is quite fat.  It looks like it is enjoying life.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  }
 ]

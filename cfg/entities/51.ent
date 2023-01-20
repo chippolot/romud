@@ -12,7 +12,8 @@
   "Attacks": null,
   "Flags": [
    "scavenger",
-   "trashcollector"
+   "trashcollector",
+   "stayzone"
   ]
  },
  {
@@ -27,7 +28,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -40,7 +42,10 @@
   "RoomDesc": "A brightly colored snake slithers along the sands.",
   "FullDesc": "This relatively harmless snake has bright alternating bands of red, yellow\nand black.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5003",
@@ -52,7 +57,10 @@
   "RoomDesc": "A small, red scorpion scuttles away at your approach.",
   "FullDesc": "The little tail is mighty dangerous for such a small creature.",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5004",
@@ -160,6 +168,7 @@
   "Attacks": null,
   "Flags": [
    "stationary",
+   "invisible",
    "aggro"
   ]
  },
@@ -174,7 +183,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -190,7 +200,8 @@
   "Stats": null,
   "Attacks": null,
   "Flags": [
-   "aggro"
+   "aggro",
+   "stayzone"
   ]
  },
  {
@@ -202,7 +213,10 @@
   "RoomDesc": "A myconoid lumbers along peacefully.",
   "FullDesc": "The myconoid looks something like a giant mushroom (and probably has the\nsame effect).",
   "Stats": null,
-  "Attacks": null
+  "Attacks": null,
+  "Flags": [
+   "stayzone"
+  ]
  },
  {
   "Key": "mob5014",

@@ -20,6 +20,7 @@ const (
 	EFlag_Aggro                                     // Attacks enemies on sight
 	EFlag_AssistAll                                 // Assist all mobs who are being fought by players
 	EFlag_AssistSame                                // Assist mobs of the same type who are being fought by players
+	EFlag_StayZone                                  // Will not wander out of initial zone
 )
 
 var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
@@ -32,6 +33,7 @@ var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
 	EFlag_Aggro:          "aggro",
 	EFlag_AssistAll:      "assistall",
 	EFlag_AssistSame:     "assistsame",
+	EFlag_StayZone:       "stayzone",
 })
 
 func ParseEntityFlag(str string) (EntityFlagMask, error) {

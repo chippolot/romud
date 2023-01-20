@@ -99,12 +99,12 @@
   "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as cats, wolves, and humans.  ",
   "Exits": [
    {
-    "RoomId": 6307,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6309,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6307,
+    "Verb": "north"
    }
   ]
  },
@@ -156,12 +156,12 @@
   "Desc": "   You are on a 'fuzzy' tree limb.  Interesting, since the branches\nseem to have 'hairs' sprouting from its bark.  As you look closer\nyou see millions of aphids covering each limb.",
   "Exits": [
    {
-    "RoomId": 6312,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6310,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6312,
+    "Verb": "west"
    }
   ]
  },
@@ -227,10 +227,6 @@
   "Desc": "   Stranger still.  Your feet get a real firm grip on the spiderline.\nYou are above a deep ravine.  This line connects you between two trees.\nBelow you can see a prismatic web with lots of animal bones caught in it:\nsome bear and small deer bones in fact.  No human skeletons are visible \n(yet).",
   "Exits": [
    {
-    "RoomId": 6322,
-    "Verb": "up"
-   },
-   {
     "RoomId": 6321,
     "Verb": "east"
    },
@@ -241,6 +237,10 @@
    {
     "RoomId": 6323,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6322,
+    "Verb": "up"
    }
   ]
  },
@@ -464,16 +464,16 @@
   "Desc": "   Once again the web crosses another tree limb.  To the side you\nsee the possible entrance to another creature's lair.",
   "Exits": [
    {
+    "RoomId": 6346,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6343,
     "Verb": "east"
    },
    {
     "RoomId": 6335,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6346,
-    "Verb": "west"
    }
   ]
  },
@@ -494,16 +494,16 @@
   "Desc": "   This is another link in the ethereal web.  Various creatures\nseem to get caught (or hypnotized) by its sticky strands.",
   "Exits": [
    {
+    "RoomId": 6346,
+    "Verb": "up"
+   },
+   {
     "RoomId": 6351,
     "Verb": "south"
    },
    {
     "RoomId": 6347,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6346,
-    "Verb": "up"
    }
   ]
  },
@@ -513,20 +513,20 @@
   "Desc": "   This is a quiet tree top.  Downwards you can see a familiar path\nthat may lead back to Midgaard.",
   "Exits": [
    {
-    "RoomId": 6347,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 6348,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6332,
     "Verb": "down"
    },
    {
     "RoomId": 6356,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6347,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6348,
+    "Verb": "west"
    }
   ]
  },
@@ -573,6 +573,10 @@
   "Desc": "   This is another link in the ethereal web.  Various creatures\nseem to get caught (or hypnotized) by its sticky strands.  A\nsingle spider line lies to the north, while ghastly seemings are\ndue southward.  The grim entrance of Arachnos' Lair is downward.",
   "Exits": [
    {
+    "RoomId": 6391,
+    "Verb": "down"
+   },
+   {
     "RoomId": 6372,
     "Verb": "north"
    },
@@ -583,10 +587,6 @@
    {
     "RoomId": 6367,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6391,
-    "Verb": "down"
    }
   ]
  },

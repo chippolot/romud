@@ -1,0 +1,227 @@
+[
+ {
+  "Key": "mob6500",
+  "Name": "the dwarf guard",
+  "Keywords": [
+   "guard",
+   "dwarf",
+   "dwarven"
+  ],
+  "RoomDesc": "A dwarven guard is here.",
+  "FullDesc": "The guard looks very tough and mean.  He wears his beard long, and he\nsmells like he hasn't bathed in over a month.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6501",
+  "Name": "the dwarf worker",
+  "Keywords": [
+   "worker",
+   "dwarf",
+   "dwarven"
+  ],
+  "RoomDesc": "A dwarven mining worker is here.",
+  "FullDesc": "He is very dirty, and looks extremely over-worked.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6502",
+  "Name": "the wraith",
+  "Keywords": [
+   "wraith"
+  ],
+  "RoomDesc": "A wraith is awaiting your first move here.",
+  "FullDesc": "A black, almost transparent wraith.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6503",
+  "Name": "the Hide \u0026 Tooth storekeeper",
+  "Keywords": [
+   "storekeeper"
+  ],
+  "RoomDesc": "The Hide \u0026 Tooth storekeeper is standing here, waiting patiently.",
+  "FullDesc": "The storekeeper is very rotund, but looks in excellent condition.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6504",
+  "Name": "Granite Head the baker",
+  "Keywords": [
+   "baker",
+   "granite",
+   "head"
+  ],
+  "RoomDesc": "Granite Head, the baker, is waiting for a customer here.",
+  "FullDesc": "Granite Head is covered with flour and grains.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6505",
+  "Name": "the giant lizard",
+  "Keywords": [
+   "lizard",
+   "giant"
+  ],
+  "RoomDesc": "A giant lizard is foraging for food along the cavern floor here.",
+  "FullDesc": "This scaly creature looks like it is well adapted to its underground\nhabitat.  He looks very powerful.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6506",
+  "Name": "the giant",
+  "Keywords": [
+   "giant"
+  ],
+  "RoomDesc": "A giant is wandering around the mountainside here.",
+  "FullDesc": "The giant is about 18 feet tall, with arms of steel, and looks in\nexcellent physical condition.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6507",
+  "Name": "the dwarven mineworker",
+  "Keywords": [
+   "mineworker",
+   "dwarven",
+   "dwarf",
+   "miner",
+   "worker"
+  ],
+  "RoomDesc": "A dwarven mineworker is here.",
+  "FullDesc": "The mineworker is very tired, and very dirty, and he has bulging muscles.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6508",
+  "Name": "the mine leader",
+  "Keywords": [
+   "mineleader",
+   "dwarven",
+   "dwarf",
+   "mine",
+   "leader"
+  ],
+  "RoomDesc": "A dwarven mine leader is here, supervising the work.",
+  "FullDesc": "The mine leader is very big and very strong, though he must be fairly\nbright also, to have gotten this job.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6509",
+  "Name": "the dwarven doctor",
+  "Keywords": [
+   "doctor",
+   "dwarven",
+   "healer"
+  ],
+  "RoomDesc": "The dwarven doctor is here, aiding the sick of his people.",
+  "FullDesc": "He is a very skilled healer, and extremely faithful to his god.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6510",
+  "Name": "the dwarven peon",
+  "Keywords": [
+   "peon",
+   "dwarven"
+  ],
+  "RoomDesc": "A dwarven peon is awaiting help here.",
+  "FullDesc": "",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6511",
+  "Name": "the Dwarf",
+  "Keywords": [
+   "dwarf"
+  ],
+  "RoomDesc": "A dwarf is here.",
+  "FullDesc": "",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6514",
+  "Name": "the barrack guard",
+  "Keywords": [
+   "guard",
+   "barrack"
+  ],
+  "RoomDesc": "A barrack guard is here, lounging around while off duty.",
+  "FullDesc": "",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6516",
+  "Name": "the mazekeeper",
+  "Keywords": [
+   "mazekeeper",
+   "keeper"
+  ],
+  "RoomDesc": "A mazekeeper is here.",
+  "FullDesc": "He looks VERY tough.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6517",
+  "Name": "the giant snake",
+  "Keywords": [
+   "snake",
+   "giant"
+  ],
+  "RoomDesc": "There is a giant snake here.",
+  "FullDesc": "",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ }
+]

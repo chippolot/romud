@@ -5,12 +5,12 @@
   "Desc": "   You find yourself on a small road leading away from the edge\nof the River of Lost Souls.  The dark waters of the River can\nbe seen and heard just south of here.  Looking to the east and\nwest, you see only the walls of the rocky cliffs.  Off to the\nnorth a strange path seems to lead straight into the depths of\nthe mountain.",
   "Exits": [
    {
-    "RoomId": 5620,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1502,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5620,
+    "Verb": "south"
    }
   ]
  },
@@ -50,12 +50,12 @@
   "Desc": "   The road clears, the fog and pain of the first few steps left behind\nyou.  Despite the sudden clarity, your mind is still haunted, images of\nan old woman kneeling in prayer, eyes closing, smiling and crying.",
   "Exits": [
    {
-    "RoomId": 1503,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1505,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1503,
+    "Verb": "south"
    }
   ]
  },
@@ -65,12 +65,12 @@
   "Desc": "   Looking ahead, you can see that the path you have been following will\nsoon come to an end, but something in the cold and the breeze tells you\nthat that will be only the beginning of the journey.",
   "Exits": [
    {
-    "RoomId": 1506,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1504,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1506,
+    "Verb": "north"
    }
   ]
  },
@@ -133,12 +133,12 @@
   "Desc": "   Whatever it carries, that rage converts into a weapon.  Wrath supplies\nall with arms.  When an angry man thirsts for blood anything will serve\nhim for a spear.  Fury turns a stick into a cudgel.",
   "Exits": [
    {
-    "RoomId": 1510,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1507,
     "Verb": "east"
+   },
+   {
+    "RoomId": 1510,
+    "Verb": "north"
    }
   ]
  },
@@ -148,12 +148,12 @@
   "Desc": "   Some have been brought here not for what they did, but what they\nfailed to do.  It is these, the poor souls that were presented the\nfair evidence and rejected it with an honest mind, that deserve our\npity the most of all.",
   "Exits": [
    {
-    "RoomId": 1511,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1509,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1511,
+    "Verb": "north"
    }
   ]
  },
@@ -238,12 +238,12 @@
   "Desc": "   Temptation is the IF, the wondering, the second-guessing, the \"I will\nbe a better man... if...\"  And that if is usually taken, sitting alone,\nlistening to that voice, calling you, offering such an easy way, but such\na crooked one.",
   "Exits": [
    {
-    "RoomId": 1517,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1515,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1517,
+    "Verb": "north"
    }
   ]
  },
@@ -298,12 +298,12 @@
   "Desc": "   Many believed that the Prophet would never die, but when the stark\nevidence of his body confronted them, it soon became necessary to provide\nfor the future.  The four that came after are called the Rashidun, the\nrightly-guided Caliphs that would spread the word and the light, and with\nit forge one of history's greatest empires.",
   "Exits": [
    {
-    "RoomId": 1521,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1519,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1521,
+    "Verb": "north"
    }
   ]
  },
@@ -403,12 +403,12 @@
   "Desc": "   Unbelievers, I do not worship what you worship, nor do you worship\nwhat I worship.  I shall never worship what you worship, nor will you\never worship what I worship.  You have your own religion, and I have\nmine.",
   "Exits": [
    {
-    "RoomId": 1526,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1528,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1526,
+    "Verb": "south"
    }
   ]
  },
@@ -452,16 +452,16 @@
   "Desc": "   It is incumbent upon all Muslims to make the pilgrimage to Mecca once\nin their lifetime, if they are able, and for those unfortunate enough to\nfollow the lives of the lower evils, such a pilgrimage with an open and\ncontrite heart shall absolve them of all.",
   "Exits": [
    {
+    "RoomId": 1536,
+    "Verb": "up"
+   },
+   {
     "RoomId": 1531,
     "Verb": "east"
    },
    {
     "RoomId": 1529,
     "Verb": "west"
-   },
-   {
-    "RoomId": 1536,
-    "Verb": "up"
    }
   ]
  },
@@ -509,16 +509,16 @@
   "Desc": "   When the records of men's deeds are laid open, and heaven is stripped\nbare; when Hell burns fiercely and Paradise is brought near: then each\nsoul shall know what it has done.",
   "Exits": [
    {
-    "RoomId": 1534,
-    "Verb": "east"
-   },
-   {
     "RoomId": 1532,
     "Verb": "west"
    },
    {
     "RoomId": 1536,
     "Verb": "down"
+   },
+   {
+    "RoomId": 1534,
+    "Verb": "east"
    }
   ]
  },

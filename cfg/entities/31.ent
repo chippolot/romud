@@ -1,0 +1,626 @@
+[
+ {
+  "Key": "mob3000",
+  "Name": "the wizard",
+  "Keywords": [
+   "wizard"
+  ],
+  "RoomDesc": "A wizard walks around behind the counter, talking to himself.",
+  "FullDesc": "The wizard looks old and senile, and yet he looks like a very powerful\nwizard.  He is equipped with fine clothing, and is wearing many fine\nrings and bracelets.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3001",
+  "Name": "the baker",
+  "Keywords": [
+   "baker"
+  ],
+  "RoomDesc": "The baker looks at you calmly, wiping flour from his face with one hand.",
+  "FullDesc": "A fat, nice looking baker.  But you can see that he has many scars on his\nbody.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3002",
+  "Name": "the grocer",
+  "Keywords": [
+   "grocer"
+  ],
+  "RoomDesc": "A grocer stands at the counter, with a slightly impatient look on his face.",
+  "FullDesc": "A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3003",
+  "Name": "the weaponsmith",
+  "Keywords": [
+   "weaponsmith"
+  ],
+  "RoomDesc": "A weaponsmith is standing here.",
+  "FullDesc": "He is a young weaponsmith, who still has lots to learn but he is still\neager to sell you his latest implements of carnage and destruction.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3004",
+  "Name": "the armourer",
+  "Keywords": [
+   "armourer"
+  ],
+  "RoomDesc": "An armourer stands here displaying his new (and previously owned) armours.",
+  "FullDesc": "An old but very strong armourer.  He has made more suits of armour in his\nlife than you have ever seen.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3005",
+  "Name": "the receptionist",
+  "Keywords": [
+   "receptionist"
+  ],
+  "RoomDesc": "A receptionist is standing behind the counter here, smiling at you.",
+  "FullDesc": "You notice a tired look in her face.  She looks like she isn't paid well\nenough to put up with any crap from mud players with attitudes.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3006",
+  "Name": "Captain Stolar",
+  "Keywords": [
+   "captain",
+   "stolar"
+  ],
+  "RoomDesc": "A retired captain stands here, selling boats.",
+  "FullDesc": "This captain has eaten more sharks than you have killed peas.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3007",
+  "Name": "the sailor",
+  "Keywords": [
+   "sailor"
+  ],
+  "RoomDesc": "A sailor stands here, waiting to help you.",
+  "FullDesc": "He looks like a strong, fit sailor.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3008",
+  "Name": "Uncle Juan",
+  "Keywords": [
+   "uncle",
+   "juan"
+  ],
+  "RoomDesc": "Uncle Juan is here ready to take your order.",
+  "FullDesc": "He looks like he may or may not have a green card.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3009",
+  "Name": "Wally the Watermaster",
+  "Keywords": [
+   "wally",
+   "watermaster"
+  ],
+  "RoomDesc": "Wally the Watermaster is standing behind the counter.",
+  "FullDesc": "Wally is a bit pudgy but looks very strong.  He has a glass of Midgaard\nNatural Spring Water in his hand.  When he notices you, he proudly\ndisplays his fine collection of contemporary waters.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3010",
+  "Name": "the postmaster",
+  "Keywords": [
+   "postmaster",
+   "post",
+   "master"
+  ],
+  "RoomDesc": "The head postmaster is standing here, waiting to help you with your mail.",
+  "FullDesc": "The Postmaster seems like a happy old man, though a bit sluggish.  He\nworries about the reputation of the MMS (Midgaard Mail Service), as many\npeople seem to think that it is slow.  Perhaps if he were to brush the\ncobwebs from his uniform it would help to make a better impression.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3020",
+  "Name": "the mages' guildmaster",
+  "Keywords": [
+   "guildmaster",
+   "master",
+   "mage"
+  ],
+  "RoomDesc": "Your guildmaster is studying a spellbook while preparing to cast a spell.",
+  "FullDesc": "Even though your guildmaster looks old and tired, you can clearly see the\nvast amount of knowledge she possesses.  She is wearing fine magic clothing,\nand you notice that she is surrounded by a blue shimmering aura.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3021",
+  "Name": "the priests' guildmaster",
+  "Keywords": [
+   "guildmaster",
+   "master",
+   "priest"
+  ],
+  "RoomDesc": "Your guildmaster is prayer to your God here.",
+  "FullDesc": "You are in no doubt that this guildmaster is truly close to your God; he\nhas a peaceful, loving look.  You notice that he is surrounded by a white\naura.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3022",
+  "Name": "the thieves' guildmaster",
+  "Keywords": [
+   "guildmaster",
+   "master",
+   "beggar",
+   "thief"
+  ],
+  "RoomDesc": "A beggar is sitting here, could she be a guildmaster?",
+  "FullDesc": "You realize that whenever your guildmaster moves, you fail to notice it -\nthe way of the true thief.  She is to be dressed in poor clothing, having\nthe appearance of a beggar.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3023",
+  "Name": "the fighters' guildmaster",
+  "Keywords": [
+   "guildmaster",
+   "master"
+  ],
+  "RoomDesc": "Your guildmaster is standing here sharpening an axe.",
+  "FullDesc": "This is your master. Big and strong with bulging muscles. Several scars\nacross his body proves that he was using arms before you were born. He\nhas a calm look on his face.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3024",
+  "Name": "the sorcerer",
+  "Keywords": [
+   "sorcerer"
+  ],
+  "RoomDesc": "A sorcerer is guarding the entrance.",
+  "FullDesc": "He is an experienced mage who has specialized in the field of Combat Magic.\nHe is here to guard the Mage's Guild and his superior knowledge of offensive\nas well as defensive spells make him a deadly opponent.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3025",
+  "Name": "the knight templar",
+  "Keywords": [
+   "knight",
+   "templar"
+  ],
+  "RoomDesc": "A knight templar is guarding the entrance.",
+  "FullDesc": "He is a specially trained warrior belonging to the military order of the\nFaith.  His duty is to protect the faithful from persecution and infidel\nattacks and his religious devotion combined with his superior skill makes\nhim a deadly opponent.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3026",
+  "Name": "the assassin",
+  "Keywords": [
+   "assassin"
+  ],
+  "RoomDesc": "An assassin is guarding the entrance.",
+  "FullDesc": "He is a thief who has specialized in killing others as effectively as\npossible, using all sorts of weapons.  His superior knowledge of how\nand where to use them combined with his extraordinary stealth makes\nhim a deadly opponent.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3027",
+  "Name": "the knight",
+  "Keywords": [
+   "knight"
+  ],
+  "RoomDesc": "A knight is guarding the entrance.",
+  "FullDesc": "He is an expert warrior who has attained knighthood through countless\nchivalrous deeds.  His duty is to protect the Guild of Swordsmen and his\nextreme skill combined with his experience in warfare makes him a deadly\nopponent.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3040",
+  "Name": "the bartender",
+  "Keywords": [
+   "bartender"
+  ],
+  "RoomDesc": "A bartender watches you calmly, while he skillfully mixes a drink.",
+  "FullDesc": "A tired looking Bartender who hates trouble in his bar.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3041",
+  "Name": "the waiter",
+  "Keywords": [
+   "waiter"
+  ],
+  "RoomDesc": "A waiter is going around from one place to another.",
+  "FullDesc": "A tired looking waiter.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3042",
+  "Name": "the waiter",
+  "Keywords": [
+   "waiter"
+  ],
+  "RoomDesc": "A man now leads a quiet, peaceful life as a waiter is standing here.",
+  "FullDesc": "This man was obviously a famous sorcerer in his younger days as you\ninstantly recognize his face.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3043",
+  "Name": "the waiter",
+  "Keywords": [
+   "waiter"
+  ],
+  "RoomDesc": "A waiter who seems to have reached contact with his God is standing here.",
+  "FullDesc": "This waiter almost makes you feel like you should drop to your knees\nand begin to worship your God.  Naaah.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3044",
+  "Name": "the waiter",
+  "Keywords": [
+   "waiter"
+  ],
+  "RoomDesc": "A waiter who knows where all his customers keep their money is standing here.",
+  "FullDesc": "Hmmm... wonder where he got that coin he is playing with.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3045",
+  "Name": "the waiter",
+  "Keywords": [
+   "waiter"
+  ],
+  "RoomDesc": "A waiter is here.",
+  "FullDesc": "This guy looks like he could easily kill you while still carrying\nquite a few firebreathers.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3046",
+  "Name": "Filthy",
+  "Keywords": [
+   "filthy"
+  ],
+  "RoomDesc": "Filthy is standing here, eager to serve you a special drink.",
+  "FullDesc": "Filthy looks real, ehm, dirty.  He likes to keep his customers happy,\nbut do not mess with him or else he'll get upset.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3059",
+  "Name": "the Peacekeeper",
+  "Keywords": [
+   "keeper",
+   "peacekeeper"
+  ],
+  "RoomDesc": "A Peacekeeper is standing here, ready to jump in at the first sign of trouble.",
+  "FullDesc": "He looks very strong and wise.  Looks like he doesn't answer to ANYONE.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob3060",
+  "Name": "the cityguard",
+  "Keywords": [
+   "cityguard",
+   "guard"
+  ],
+  "RoomDesc": "A cityguard stands here.",
+  "FullDesc": "A big, strong, helpful, trustworthy guard.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob3061",
+  "Name": "the janitor",
+  "Keywords": [
+   "janitor"
+  ],
+  "RoomDesc": "A janitor is walking around, cleaning up.",
+  "FullDesc": "What a tough job he has.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob3062",
+  "Name": "the beastly fido",
+  "Keywords": [
+   "fido",
+   "dog"
+  ],
+  "RoomDesc": "A beastly fido is mucking through the garbage looking for food here.",
+  "FullDesc": "The fido is a small dog that has a foul smell and pieces of rotted meat\nhanging around his teeth.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3063",
+  "Name": "the mercenary",
+  "Keywords": [
+   "mercenary"
+  ],
+  "RoomDesc": "A mercenary is waiting for a job here.",
+  "FullDesc": "He looks pretty mean, and you imagine he'd do anything for money.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3064",
+  "Name": "the drunk",
+  "Keywords": [
+   "drunk"
+  ],
+  "RoomDesc": "A singing, happy Drunk.",
+  "FullDesc": "A drunk who seems to be too happy, and to carry too much money.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3065",
+  "Name": "the beggar",
+  "Keywords": [
+   "beggar"
+  ],
+  "RoomDesc": "A beggar is here, asking for a few coins.",
+  "FullDesc": "The beggar looks like she is fed up with life.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3066",
+  "Name": "the odif yltsaeb",
+  "Keywords": [
+   "odif",
+   "yltsaeb"
+  ],
+  "RoomDesc": "An odif yltsaeb is here, walking backwards.",
+  "FullDesc": "The odif is a small god that has been reversed by some dog.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3067",
+  "Name": "the cityguard",
+  "Keywords": [
+   "cityguard",
+   "guard"
+  ],
+  "RoomDesc": "A cityguard is here, guarding the gate.",
+  "FullDesc": "A big, strong, helpful, trustworthy guard.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3068",
+  "Name": "the green gelatinous blob",
+  "Keywords": [
+   "green",
+   "gelatinous",
+   "blob"
+  ],
+  "RoomDesc": "An oozing green gelatinous blob is here, sucking in bits of debris.",
+  "FullDesc": "A horrid looking thing; it is huge, greenish, and looks like the blob.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob3089",
+  "Name": "the Pet Shop Boy",
+  "Keywords": [
+   "pet",
+   "shop",
+   "boy"
+  ],
+  "RoomDesc": "There is a Pet Shop Boy standing here cuddleing something furry in his hands.",
+  "FullDesc": "As you look at him, he opens his hands to reveal a rat!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3090",
+  "Name": "the kitten",
+  "Keywords": [
+   "kitten"
+  ],
+  "RoomDesc": "A small loyal kitten is here.",
+  "FullDesc": "The kitten looks like a cute, little, fierce fighter.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob3091",
+  "Name": "the puppy",
+  "Keywords": [
+   "puppy"
+  ],
+  "RoomDesc": "A small loyal puppy is here.",
+  "FullDesc": "The puppy looks like a cute, little, fierce fighter.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob3092",
+  "Name": "the beagle",
+  "Keywords": [
+   "beagle"
+  ],
+  "RoomDesc": "A small, quick, loyal beagle is here.",
+  "FullDesc": "The beagle looks like a fierce fighter.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob3093",
+  "Name": "the rottweiler",
+  "Keywords": [
+   "rottweiler"
+  ],
+  "RoomDesc": "A large, loyal rottweiler is here.",
+  "FullDesc": "The rottweiler looks like a strong, fierce fighter.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob3094",
+  "Name": "the wolf",
+  "Keywords": [
+   "wolf"
+  ],
+  "RoomDesc": "A large, trained wolf is here.",
+  "FullDesc": "The wolf looks like a strong, fearless fighter.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob3095",
+  "Name": "the cryogenicist",
+  "Keywords": [
+   "cryogenicist",
+   "cryo"
+  ],
+  "RoomDesc": "The cryogenicist is here, playing with a canister of liquid nitrogen.",
+  "FullDesc": "You notice a tired look in her face.  She looks like she isn't paid well\nenough to put up with any crap from mud players with attitudes.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ }
+]

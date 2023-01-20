@@ -84,12 +84,12 @@
   "Desc": "   Here is an entrance to the mountain.  The door looks very well built,\nand you can hear noise coming from within.",
   "Exits": [
    {
-    "RoomId": 6504,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6514,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6504,
+    "Verb": "east"
    }
   ]
  },
@@ -114,12 +114,12 @@
   "Desc": "   This path is very narrow, and it continues to the north and west.",
   "Exits": [
    {
-    "RoomId": 6509,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6507,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6509,
+    "Verb": "north"
    }
   ]
  },
@@ -129,12 +129,12 @@
   "Desc": "   This path leads to the north and south.  To the north you can see a\ndoor, and to the south the path continues.",
   "Exits": [
    {
-    "RoomId": 6510,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6508,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6510,
+    "Verb": "north"
    }
   ]
  },
@@ -144,16 +144,16 @@
   "Desc": "   Here the path turns to the west.  You can see a door in front of you,\nand the path continues to the west and south.",
   "Exits": [
    {
-    "RoomId": 6523,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6511,
     "Verb": "north"
    },
    {
     "RoomId": 6509,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6523,
+    "Verb": "west"
    }
   ]
  },
@@ -193,12 +193,12 @@
   "Desc": "   Here there is a door to the castle to the east.  The castle is \nelegantly designed, and looks much like a roll of toilet paper\nstanding  on its end.  There is a sign which says:\n\n              ******************************************\n              *  WELCOME TO THE CASTLE OF STRANGELOVE  *\n              *      Here, celibacy is uninvited       *\n              ******************************************\n",
   "Exits": [
    {
-    "RoomId": 6526,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6512,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6526,
+    "Verb": "east"
    }
   ]
  },
@@ -208,16 +208,16 @@
   "Desc": "   Everything here is covered in soot and very grimy.  The path continues\nto the east and north, and there is a door to the west.",
   "Exits": [
    {
+    "RoomId": 6527,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6515,
     "Verb": "north"
    },
    {
     "RoomId": 6506,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6527,
-    "Verb": "west"
    }
   ]
  },
@@ -227,12 +227,12 @@
   "Desc": "   You are on a path in the dwarven village which leads north to the shops\nand south to the corner of the area.",
   "Exits": [
    {
-    "RoomId": 6516,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6514,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6516,
+    "Verb": "north"
    }
   ]
  },
@@ -272,16 +272,16 @@
   "Desc": "   You are on a path to the north of the Hide \u0026 Tooth shop.  The path \ncontinues to the north, and there is Granite Head's bakery to the west.",
   "Exits": [
    {
-    "RoomId": 6536,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6519,
     "Verb": "north"
    },
    {
     "RoomId": 6517,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6536,
+    "Verb": "west"
    }
   ]
  },
@@ -493,16 +493,16 @@
   "Desc": "   This is the Queen's bedroom.  The bed is all ruffled, and there\nis a stack of dirty sheets piled in the corner.  There is a ladder\nthat leads down, out of the castle, and you can leave the room\nto the south.  There is also a small wooden door to the west.\nThere is a sign that says:\n\n      -------------------------\n      |  I'm busy right now,  |\n      |  and don't know when  |\n      |  Ill be back, but if  |\n      |  there is a key here  |\n      |  take it and PLEASE,  |\n      |  try to get my birth  |\n      |  control pills back!  |\n      |  I've heard they can  |\n      |  be found somewhere,  |\n      |  deep in the mines..  |\n      -------------------------\n",
   "Exits": [
    {
-    "RoomId": 6534,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6532,
     "Verb": "south"
    },
    {
     "RoomId": 6555,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6534,
+    "Verb": "down"
    }
   ]
  },
@@ -545,16 +545,16 @@
   "Desc": "   This path is very well worn, and there is an entrance to the mines to the\neast, while the path continues to the north and west.",
   "Exits": [
    {
-    "RoomId": 6504,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6505,
     "Verb": "north"
    },
    {
     "RoomId": 6542,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6504,
+    "Verb": "west"
    }
   ]
  },
@@ -677,16 +677,16 @@
   "Desc": "   You are in a maze.",
   "Exits": [
    {
-    "RoomId": 6549,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6550,
     "Verb": "north"
    },
    {
     "RoomId": 6548,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6549,
+    "Verb": "west"
    }
   ]
  },
@@ -716,6 +716,10 @@
   "Exits": [
    {
     "RoomId": 6550,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6550,
     "Verb": "east"
    },
    {
@@ -725,10 +729,6 @@
    {
     "RoomId": 6549,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6550,
-    "Verb": "north"
    }
   ]
  },

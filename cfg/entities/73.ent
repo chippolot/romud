@@ -1,0 +1,86 @@
+[
+ {
+  "Key": "mob7200",
+  "Name": "the master mindflayer",
+  "Keywords": [
+   "mindflayer",
+   "master",
+   "mind"
+  ],
+  "RoomDesc": "The master mindflayer is here, looking at you with an evil look.",
+  "FullDesc": "It is a seven foot tall humanoid dressed in a purple cloak, and swinging a\nblack and purple rod above its head as if it was going to attack you any\nmoment now.  In the middle of its head are four tentacles with sharp points.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob7201",
+  "Name": "the senior mindflayer",
+  "Keywords": [
+   "mindflayer",
+   "senior",
+   "mind"
+  ],
+  "RoomDesc": "The senior mindflayer walks around here, looking for something useful.",
+  "FullDesc": "This is a horrifying monster indeed, 6'6\" high.  Dressed in purple and black,\nand carrying a large mace in its hand.  In the center of its head are four\nlarge tentacles with very sharp points.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob7202",
+  "Name": "the junior mindflayer",
+  "Keywords": [
+   "mindflayer",
+   "junior",
+   "mind"
+  ],
+  "RoomDesc": "The junior mindflayer is here, watching you carefully from the corner.",
+  "FullDesc": "This mindflayer is six feet high.  It has a small mace in its belt, and is\ndressed in purple and black cloth.  It has four small tentacles in the center\nof its head.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob7203",
+  "Name": "the ugly wererat",
+  "Keywords": [
+   "wererat",
+   "rat"
+  ],
+  "RoomDesc": "An ugly wererat is here, looking at you with a strange flick in his eyes.",
+  "FullDesc": "The wererat is about four feet tall.  It looks very much like rat, except\nthat it is standing.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob7204",
+  "Name": "the gigantic rat",
+  "Keywords": [
+   "rat",
+   "gigantic"
+  ],
+  "RoomDesc": "There is a gigantic rat here, looking at you with a hungry look.",
+  "FullDesc": "The gigantic rat is about ten feet long from head to tail and has claws the\nsize of your head, looking very nasty.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ }
+]

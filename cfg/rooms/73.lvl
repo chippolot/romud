@@ -103,16 +103,16 @@
   "Desc": "   On the floor you see a lot of human decay, like bones and skulls.  You\nalso see a lot of slime.  On the wall is a torch sitting in its sconce.",
   "Exits": [
    {
-    "RoomId": 7204,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7206,
     "Verb": "north"
    },
    {
     "RoomId": 7208,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7204,
+    "Verb": "west"
    }
   ]
  },
@@ -137,12 +137,12 @@
   "Desc": "   You are in a dry part of the sewer.  To the north is a wooden door,\nyou can see some slime at the lower part of the door.  You also see\nsome skulls and some broken bones.",
   "Exits": [
    {
-    "RoomId": 7210,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7205,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7210,
+    "Verb": "east"
    }
   ]
  },
@@ -167,12 +167,12 @@
   "Desc": "   You are in a sewer junction.  To the north is a small hole, to the west\nis a narrow crawlway and to the east and south the sewer continues.",
   "Exits": [
    {
-    "RoomId": 7210,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7216,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7210,
+    "Verb": "west"
    }
   ]
  },
@@ -305,12 +305,12 @@
   "Desc": "   You are in yet another sewer drain.",
   "Exits": [
    {
-    "RoomId": 7222,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7220,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7222,
+    "Verb": "east"
    }
   ]
  },
@@ -455,12 +455,12 @@
   "Desc": "   You stand in a sewer drain, you are able to see some kind of cave-like\nroom.  You see some odd scratches on the drain wall, as if from a gigantic\nrat.  The sewer leads south.",
   "Exits": [
    {
-    "RoomId": 7233,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7235,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7233,
+    "Verb": "south"
    }
   ]
  },
@@ -481,12 +481,12 @@
   "Desc": "   You hang onto some steps leading down into utter darkness.  There is an\nexit leading up as well, though you'll have to open the tiny rock again to\ndo so.",
   "Exits": [
    {
-    "RoomId": 7300,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7112,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7300,
+    "Verb": "down"
    }
   ]
  },
@@ -701,12 +701,12 @@
   "Desc": "   You are standing in a lot of mud.  The mud goes to your chest.  You feel\nthe presence of something IN the mud.  The only obvious exit is to the west.",
   "Exits": [
    {
-    "RoomId": 7306,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7308,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7306,
+    "Verb": "north"
    }
   ]
  },
@@ -1033,20 +1033,20 @@
   "Desc": "   You are standing in a crossing of hallways.  You can leave this place\nin every direction, except up and down.  In the dust you notice strange\nfootprints.",
   "Exits": [
    {
-    "RoomId": 7328,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 7326,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7332,
     "Verb": "north"
    },
    {
     "RoomId": 7331,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7328,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 7326,
+    "Verb": "west"
    }
   ]
  },
@@ -1056,12 +1056,12 @@
   "Desc": "   You are standing in a L-shaped room.  You can hear noises from the long\ntunnel to the east.  You feel very afraid!\nA sign is hanging on the wall.",
   "Exits": [
    {
-    "RoomId": 7329,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7327,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7329,
+    "Verb": "east"
    }
   ]
  },
@@ -1172,12 +1172,12 @@
   "Desc": "   You are standing in a dark tunnel.  It continues to the north and to the\nsouth.  Bones are spread on the floor.",
   "Exits": [
    {
-    "RoomId": 7335,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7337,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7335,
+    "Verb": "north"
    }
   ]
  },
@@ -1187,16 +1187,16 @@
   "Desc": "   The smell here is awful.  To the south you can see some smoke.  A tunnel\nleads north and east.",
   "Exits": [
    {
+    "RoomId": 7336,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7338,
     "Verb": "south"
    },
    {
     "RoomId": 7323,
     "Verb": "east"
-   },
-   {
-    "RoomId": 7336,
-    "Verb": "north"
    }
   ]
  },
@@ -1285,16 +1285,16 @@
   "Desc": "   You have wet feet, you are standing in water.  The water looks calm.  You\ncan see that it is a big lake.  Light seeps from the water.",
   "Exits": [
    {
-    "RoomId": 7342,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7344,
     "Verb": "east"
    },
    {
     "RoomId": 7345,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7342,
+    "Verb": "north"
    }
   ]
  },

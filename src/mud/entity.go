@@ -21,14 +21,14 @@ type EntityConfigList []*EntityConfig
 type EntityConfig struct {
 	Key        string
 	Name       string
-	Gender     Gender
+	Gender     Gender `json:",omitempty"`
 	Keywords   []string
 	RoomDesc   string
 	FullDesc   string
 	Stats      *StatsConfig
 	Attacks    []*AttackConfig
-	Flags      EntityFlagMask
-	ScriptFile string
+	Flags      EntityFlagMask `json:",omitempty"`
+	ScriptFile string         `json:",omitempty"`
 
 	scripts *EntityScripts
 	lookup  map[string]bool

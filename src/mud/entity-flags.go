@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type EntityFlagMask bits.Bits
@@ -21,33 +22,45 @@ const (
 	EFlag_AssistSame                                // Assist mobs of the same type who are being fought by players
 )
 
+var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
+	EFlag_Stationary:     "stationary",
+	EFlag_Scavenger:      "scavenger",
+	EFlag_TrashCollector: "trashcollector",
+	EFlag_UsesEquipment:  "usesequipment",
+	EFlag_Blind:          "blind",
+	EFlag_Invisible:      "invisible",
+	EFlag_Aggro:          "aggro",
+	EFlag_AssistAll:      "assistall",
+	EFlag_AssistSame:     "assistsame",
+})
+
 func ParseEntityFlag(str string) (EntityFlagMask, error) {
-	switch str {
-	case "stationary":
-		return EFlag_Stationary, nil
-	case "scavenger":
-		return EFlag_Scavenger, nil
-	case "trashcollector":
-		return EFlag_TrashCollector, nil
-	case "usesequipment":
-		return EFlag_UsesEquipment, nil
-	case "blind":
-		return EFlag_Blind, nil
-	case "invisible":
-		return EFlag_Invisible, nil
-	case "aggro":
-		return EFlag_Aggro, nil
-	case "assistall":
-		return EFlag_AssistAll, nil
-	case "assistsame":
-		return EFlag_AssistSame, nil
-	default:
-		return 0, fmt.Errorf("unknown entity flag: %s", str)
+	if val, ok := entityFlagStringMapping.ToValue[str]; ok {
+		return val, nil
 	}
+	return 0, fmt.Errorf("unknown entity flag: %s", str)
+}
+
+func (m *EntityFlagMask) String() string {
+	if str, ok := entityFlagStringMapping.ToString[*m]; ok {
+		return str
+	}
+	return "unknown"
 }
 
 func (m *EntityFlagMask) Has(flag EntityFlagMask) bool {
 	return *m&flag != 0
+}
+
+func (m *EntityFlagMask) MarshalJSON() ([]byte, error) {
+	strs := make([]string, 0)
+	for i := 0; i < 64; i++ {
+		f := EntityFlagMask(1 << i)
+		if m.Has(f) {
+			strs = append(strs, f.String())
+		}
+	}
+	return json.Marshal(strs)
 }
 
 func (m *EntityFlagMask) UnmarshalJSON(data []byte) (err error) {

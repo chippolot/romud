@@ -1,0 +1,358 @@
+[
+ {
+  "Key": "mob4000",
+  "Name": "the snake",
+  "Keywords": [
+   "snake",
+   "large"
+  ],
+  "RoomDesc": "A large dreadful snake is at your feet, hissing at you.",
+  "FullDesc": "It looks hungry.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4001",
+  "Name": "the green snake",
+  "Keywords": [
+   "snake",
+   "green"
+  ],
+  "RoomDesc": "A small green snake is here, and it doesn't look too friendly...",
+  "FullDesc": "It looks harmless.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob4002",
+  "Name": "the centipede",
+  "Keywords": [
+   "centipede"
+  ],
+  "RoomDesc": "A small centipede is here, making its way across the floor.",
+  "FullDesc": "It looks completely harmless.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob4003",
+  "Name": "the kobold",
+  "Keywords": [
+   "kobold"
+  ],
+  "RoomDesc": "An ugly kobold is here, searching for dinner.",
+  "FullDesc": "It looks ugly.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob4004",
+  "Name": "the orc",
+  "Keywords": [
+   "orc"
+  ],
+  "RoomDesc": "The orc walks around, looking for someone to kill.",
+  "FullDesc": "You notice an evil look in its eyes...",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4005",
+  "Name": "the orc",
+  "Keywords": [
+   "orc",
+   "large"
+  ],
+  "RoomDesc": "A large orc is here, looking really mean.",
+  "FullDesc": "He looks dreadful.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob4050",
+  "Name": "the warrior",
+  "Keywords": [
+   "warrior"
+  ],
+  "RoomDesc": "A tall warrior is here.  He has more scars than anyone you have ever seen.",
+  "FullDesc": "He seems to be a strong, brainless fighter.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4051",
+  "Name": "the warrior",
+  "Keywords": [
+   "warrior"
+  ],
+  "RoomDesc": "A tall warrior is here.",
+  "FullDesc": "He seems to know his way with weapons.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4052",
+  "Name": "the hobgoblin",
+  "Keywords": [
+   "hobgoblin"
+  ],
+  "RoomDesc": "A small hobgoblin stands here.",
+  "FullDesc": "The hobgoblin looks quite lost.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob4053",
+  "Name": "the snake",
+  "Keywords": [
+   "snake"
+  ],
+  "RoomDesc": "A brown snake watches you.",
+  "FullDesc": "The snake looks quite mean.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4054",
+  "Name": "the centipede",
+  "Keywords": [
+   "centipede"
+  ],
+  "RoomDesc": "A white centipede is here.",
+  "FullDesc": "The centipede doesn't really seem to notice you.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob4055",
+  "Name": "the hobgoblin",
+  "Keywords": [
+   "hobgoblin"
+  ],
+  "RoomDesc": "A large hobgoblin is here.",
+  "FullDesc": "The hobgoblin looks quite dangerous.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob4056",
+  "Name": "the orc",
+  "Keywords": [
+   "orc"
+  ],
+  "RoomDesc": "An orc is here, looking for something (or perhaps someone?) to eat.",
+  "FullDesc": "Well, he doesn't seem to be friendly.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4057",
+  "Name": "the mountain lion",
+  "Keywords": [
+   "lion",
+   "mountain"
+  ],
+  "RoomDesc": "A mountain lion is here, growling at you viciously.",
+  "FullDesc": "The lion looks very nasty with huge claws and big teeth.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4058",
+  "Name": "the hill giant",
+  "Keywords": [
+   "giant",
+   "hill"
+  ],
+  "RoomDesc": "A hill giant is here, tossing some rocks around.",
+  "FullDesc": "The hill giant looks like he's about 9 feet tall.  By his actions you \nquickly come to the conclusion that he isn't very intelligent.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob4100",
+  "Name": "the mage",
+  "Keywords": [
+   "mage"
+  ],
+  "RoomDesc": "A small intelligent looking mage is standing here.",
+  "FullDesc": "His IQ makes almost any normal person look stupid...\nIt looks like he knows his way with magic. ",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4101",
+  "Name": "the troll",
+  "Keywords": [
+   "troll"
+  ],
+  "RoomDesc": "A large mean-looking troll is here.",
+  "FullDesc": "Well, it looks dangerous!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4102",
+  "Name": "the snake",
+  "Keywords": [
+   "snake"
+  ],
+  "RoomDesc": "A large green snake is here, looks like a guardian for an evil force.",
+  "FullDesc": "You see a evil creature.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4103",
+  "Name": "the thief",
+  "Keywords": [
+   "thief"
+  ],
+  "RoomDesc": "A thief is here, all dressed in black.",
+  "FullDesc": "He seems to be counting a handful of coins.  Maybe you ought to count YOUR\ngold too...",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob4104",
+  "Name": "the orc",
+  "Keywords": [
+   "orc",
+   "ugly"
+  ],
+  "RoomDesc": "A ugly orc is standing here.",
+  "FullDesc": "It is quite disgusting to look at.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4105",
+  "Name": "the centipede",
+  "Keywords": [
+   "centipede"
+  ],
+  "RoomDesc": "A small harmless centipede is here.",
+  "FullDesc": "Well it doesn't seem to pay any attention to you.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob4106",
+  "Name": "the warrior",
+  "Keywords": [
+   "warrior"
+  ],
+  "RoomDesc": "A human warrior is here.  He has a evil grin in his face.",
+  "FullDesc": "He doesn't look friendly at all...",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob4107",
+  "Name": "the kobold",
+  "Keywords": [
+   "kobold"
+  ],
+  "RoomDesc": "A green kobold is here.",
+  "FullDesc": "It looks slimy..",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ }
+]

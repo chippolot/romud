@@ -1,0 +1,192 @@
+[
+ {
+  "Key": "mob5100",
+  "Name": "the goblin slave",
+  "Keywords": [
+   "goblin",
+   "slave"
+  ],
+  "RoomDesc": "A goblin slave lies here asleep.",
+  "FullDesc": "The defenseless goblin begs for mercy.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob5101",
+  "Name": "the Drow commoner",
+  "Keywords": [
+   "drow",
+   "commoner"
+  ],
+  "RoomDesc": "A drow commoner is here, walking around on guard duty.",
+  "FullDesc": "I doubt he is the type to give directions.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5102",
+  "Name": "the drow warrior",
+  "Keywords": [
+   "drow",
+   "noble",
+   "warrior"
+  ],
+  "RoomDesc": "A drow warrior stands here guarding his home.",
+  "FullDesc": "He looks kind of annoyed!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5103",
+  "Name": "the drow mage",
+  "Keywords": [
+   "drow",
+   "noble",
+   "mage"
+  ],
+  "RoomDesc": "A drow mage is here protecting his home.",
+  "FullDesc": "The mage prepares to cast a spell... at you!!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5104",
+  "Name": "the drow priestess",
+  "Keywords": [
+   "drow",
+   "priestess"
+  ],
+  "RoomDesc": "A drow priestess is here shouting orders.",
+  "FullDesc": "I wouldn't want go get on her bad side!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5105",
+  "Name": "the drow master",
+  "Keywords": [
+   "drow",
+   "master"
+  ],
+  "RoomDesc": "A drow master stares at you angrily.",
+  "FullDesc": "The drow master is ALWAYS ready for a fight.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5106",
+  "Name": "the weaponsmaster",
+  "Keywords": [
+   "drow",
+   "weaponsmaster"
+  ],
+  "RoomDesc": "A drow weaponsmaster is here shadow boxing.",
+  "FullDesc": "He definitely know his way around in combat.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5107",
+  "Name": "the Matron Mother",
+  "Keywords": [
+   "drow",
+   "matron",
+   "mother"
+  ],
+  "RoomDesc": "The Matron Mother of the house is standing here.",
+  "FullDesc": "She looks really and truly annoyed that you have found your way here.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5108",
+  "Name": "the Matron Mother",
+  "Keywords": [
+   "drow",
+   "matron",
+   "mother"
+  ],
+  "RoomDesc": "The Matron Mother of the first house is waiting for you.",
+  "FullDesc": "She looks like she is about to rip your head of and eat it.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5109",
+  "Name": "the drider",
+  "Keywords": [
+   "drider"
+  ],
+  "RoomDesc": "The drider looks at you viciously while it draws its sword.",
+  "FullDesc": "This half-spider, half-drow creature is a formidable opponent.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5110",
+  "Name": "the drider",
+  "Keywords": [
+   "drider"
+  ],
+  "RoomDesc": "The drider looks at you viciously while it draws its sword.",
+  "FullDesc": "This half-spider, half-drow creature is a formidable opponent.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5111",
+  "Name": "the yochlol",
+  "Keywords": [
+   "yochlol"
+  ],
+  "RoomDesc": "A yochlol forms out of a swirling mist...",
+  "FullDesc": "The yochlol is not in a good mood.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ }
+]

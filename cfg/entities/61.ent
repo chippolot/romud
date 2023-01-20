@@ -1,0 +1,278 @@
+[
+ {
+  "Key": "mob6000",
+  "Name": "John the Lumberjack",
+  "Keywords": [
+   "john",
+   "lumberjack"
+  ],
+  "RoomDesc": "John the Lumberjack is here, looking for some trees to chop down.",
+  "FullDesc": "He is six feet tall and looks quite strong, muscles bulging under his heavy,\nchequered shirt.  His features are worn with hard work and his expression is\none of a peaceful man leading a simple life.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6001",
+  "Name": "the rabbit",
+  "Keywords": [
+   "rabbit",
+   "small"
+  ],
+  "RoomDesc": "A small rabbit is foraging in the bushes here.",
+  "FullDesc": "It is a small, furry creature with long ears and big feet.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6002",
+  "Name": "the brown bear",
+  "Keywords": [
+   "bear",
+   "brown"
+  ],
+  "RoomDesc": "A big, brown, angry-looking bear is here.",
+  "FullDesc": "The bear is a big, brown, furry animal with very large claws and very sharp\nteeth.  It doesn't resemble those cute little dolls from toy shops at all.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6003",
+  "Name": "the ferocious rabbit",
+  "Keywords": [
+   "rabbit",
+   "ferocious"
+  ],
+  "RoomDesc": "A ferocious rabbit is here, glaring hungrily at you.",
+  "FullDesc": "This small, furry creature with long ears and big feet has been attacked\nby the dreaded rabbit rabies, a horrible disease that turns helpless and\ninnocent rabbits into ferocious and bloodthirsty monsters.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6004",
+  "Name": "the fallow deer",
+  "Keywords": [
+   "deer",
+   "fallow"
+  ],
+  "RoomDesc": "A fallow deer is grazing peacefully here.",
+  "FullDesc": "She is a graceful creature on long, slender legs, and with large, brown eyes\nlooking back at you with an air of watchful interest.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6005",
+  "Name": "the brown fox",
+  "Keywords": [
+   "fox",
+   "brown"
+  ],
+  "RoomDesc": "A brown fox is stalking rabbits through the underbrush here.",
+  "FullDesc": "It is a large fox with beautiful, red-brown fur and a long, thick bushy tail.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6006",
+  "Name": "the bird",
+  "Keywords": [
+   "bird",
+   "large"
+  ],
+  "RoomDesc": "A large bird with a broken wing has been cornered here.",
+  "FullDesc": "The bird isn't going to live much longer, by the looks of it.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6007",
+  "Name": "the bobcat",
+  "Keywords": [
+   "bobcat",
+   "cat"
+  ],
+  "RoomDesc": "A medium sized bobcat is stalking a bird here.",
+  "FullDesc": "The bobcat has sharp claws and teeth, and will probably eat you instead of\nthe bird if you give it the chance.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6008",
+  "Name": "the sparrow",
+  "Keywords": [
+   "sparrow"
+  ],
+  "RoomDesc": "A sparrow is flapping around by the ground.",
+  "FullDesc": "The sparrow looks like it is enjoying life.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6009",
+  "Name": "the robin",
+  "Keywords": [
+   "robin"
+  ],
+  "RoomDesc": "A robin is hopping around looking for bugs to eat.",
+  "FullDesc": "The robin looks quite intent on finding a bug or worm to eat.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6010",
+  "Name": "the squirrel",
+  "Keywords": [
+   "squirrel"
+  ],
+  "RoomDesc": "A squirrel is here seeking refuge in its nest.",
+  "FullDesc": "It peers out of its nest at you anxiously, seeming to plead silently with\nyou to leave it alone.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6011",
+  "Name": "the sleepy badger",
+  "Keywords": [
+   "badger"
+  ],
+  "RoomDesc": "A furry brown badger is curled up under a log here.",
+  "FullDesc": "The badger is slowly awakening and peering up at you from its burrow. You\nknow that it won't be moving this slow for long.  Its sharp claws and teeth\ncatch your attention when you consider killing it.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6012",
+  "Name": "the grey squirrel",
+  "Keywords": [
+   "grey",
+   "squirrel"
+  ],
+  "RoomDesc": "A grey squirrel with a bushy tail is foraging for nuts here.",
+  "FullDesc": "This happy creature seems to pay you no heed as it goes about its search for\nnuts among the leaves and twigs on the ground here.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6013",
+  "Name": "the small chipmunk",
+  "Keywords": [
+   "chipmunk"
+  ],
+  "RoomDesc": "A small brown-red chipmunk dashes from tree to tree here.",
+  "FullDesc": "The absolute zenith of hyperactivity, this small rodent seems to never tire\nof running up, down, and around the trees in this area.  If you could ever\ncatch it, you imagine it would make an easy meal.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6014",
+  "Name": "the large black crow",
+  "Keywords": [
+   "crow",
+   "black",
+   "bird"
+  ],
+  "RoomDesc": "A large black bird flits about here, picking at bits of carrion.",
+  "FullDesc": "The bird eyes you warily, but continues with its meal.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6015",
+  "Name": "the grotesque vulture",
+  "Keywords": [
+   "grotesque",
+   "vulture"
+  ],
+  "RoomDesc": "A grotesque vulture covered in blood and gore is here feeding madly.",
+  "FullDesc": "It sickens you to even look at this foul bird.  Bits of dried gore stick to\nits beak, and unidentifiable organs hang from its talons and feathers.  \nIt sees you and attacks, protecting its horrible feast!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6016",
+  "Name": "the young buck",
+  "Keywords": [
+   "buck",
+   "deer"
+  ],
+  "RoomDesc": "A young 5-point buck is drinking from the lake here.",
+  "FullDesc": "This young male deer is drinking from the edge of the lake and watching you\nwarily.  His antlers are not full size yet, and will no doubt be quite \nimpressive in a few years.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6017",
+  "Name": "the fish",
+  "Keywords": [
+   "fish"
+  ],
+  "RoomDesc": "A fish is swimming about here.",
+  "FullDesc": "The fish looks about the right size for a meal.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6018",
+  "Name": "the duckling",
+  "Keywords": [
+   "duckling"
+  ],
+  "RoomDesc": "A duckling is swimming around in the pond.",
+  "FullDesc": "The duckling is adorable, it looks most of all like a tiny furball.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6019 ",
+  "Name": "the duck",
+  "Keywords": [
+   "duck"
+  ],
+  "RoomDesc": "A duck is here, quacking happily.",
+  "FullDesc": "The duck is quite fat.  It looks like it is enjoying life.",
+  "Stats": null,
+  "Attacks": null
+ }
+]

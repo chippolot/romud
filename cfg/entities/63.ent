@@ -1,0 +1,196 @@
+[
+ {
+  "Key": "mob6200",
+  "Name": "the deer",
+  "Keywords": [
+   "deer"
+  ],
+  "RoomDesc": "A deer looks at you with fear in its eyes.",
+  "FullDesc": "That is one nice looking deer!",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6201",
+  "Name": "the rabbit",
+  "Keywords": [
+   "rabbit"
+  ],
+  "RoomDesc": "A small rabbit nibbles at a leaf here.",
+  "FullDesc": "It is a small, furry rodent with big ears.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6202",
+  "Name": "the squirrel",
+  "Keywords": [
+   "squirrel"
+  ],
+  "RoomDesc": "A squirrel spots you and runs around a tree!",
+  "FullDesc": "It is a small, brown squirrel.  Kind of like a\nfuzzy high-tension spring.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6203",
+  "Name": "the orc hunter",
+  "Keywords": [
+   "orc",
+   "hunter"
+  ],
+  "RoomDesc": "An orc hunter looks at you with hateful eyes.",
+  "FullDesc": "He looks angry, desperate, and maybe a little sick.\nHis green skin is definitely mottled, and he seems to\nlimp a little bit...",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6204",
+  "Name": "the orc chief",
+  "Keywords": [
+   "orc",
+   "chief"
+  ],
+  "RoomDesc": "An orc chief growls at you!",
+  "FullDesc": "He wears a crown of oak leaves to show he is a leader.  He\ncarries a club to show he is a warrior.  You wonder how good\nhe is at both.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6205",
+  "Name": "the orc woman",
+  "Keywords": [
+   "orc",
+   "woman"
+  ],
+  "RoomDesc": "An orc woman stands here, frightened of you.",
+  "FullDesc": "As you stare her down, she raises her hands slowly, as if to\nsay, 'Don't kill me'.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6206",
+  "Name": "the orc child",
+  "Keywords": [
+   "orc",
+   "child"
+  ],
+  "RoomDesc": "An orc child frantically searches for her mother.",
+  "FullDesc": "She is raggedy, and seems to be covered with sores.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6207",
+  "Name": "the orc woman",
+  "Keywords": [
+   "orc",
+   "woman"
+  ],
+  "RoomDesc": "A pregnant orc woman tries to stand to flee from you.",
+  "FullDesc": "She is too far gone to move very quickly.  You could\nkill her easily.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6208",
+  "Name": "the mutant orc",
+  "Keywords": [
+   "orc",
+   "mutant",
+   "mutated"
+  ],
+  "RoomDesc": "A mutant orc lies here, barely alive.",
+  "FullDesc": "Its body has been twisted beyond all hope.  It is dying, and\nnothing will stop that.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6209",
+  "Name": "the mutant orc",
+  "Keywords": [
+   "orc",
+   "mutant",
+   "mutated"
+  ],
+  "RoomDesc": "A horribly mutated orc stands here, gibbering.",
+  "FullDesc": "It doesn't even appear to have registered your arrival... it is\njust talking to itself.  Its body is a twisted wreck of orc, man,\nbeast, and what-not.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob6210",
+  "Name": "Elstar",
+  "Keywords": [
+   "wizard",
+   "elf",
+   "elven",
+   "Elstar"
+  ],
+  "RoomDesc": "An elven wizard is here.  He looks angry.",
+  "FullDesc": "He looks at you archly as he wonders why you have\ninvaded his domain.  No matter... it shouldn't be\ntoo hard for him to destroy you, no?",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6211",
+  "Name": "the elven child",
+  "Keywords": [
+   "child",
+   "elf",
+   "elven",
+   "apprentice"
+  ],
+  "RoomDesc": "An elven child casts his fishing pole into the river.",
+  "FullDesc": "He looks young and innocent.  You wonder what he is doing here.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6212",
+  "Name": "the mutant thing",
+  "Keywords": [
+   "mutant",
+   "thing"
+  ],
+  "RoomDesc": "A mutant... thing rushes at you!",
+  "FullDesc": "It might've been an orc, once.  Now it is a living terror,\npushing everything out of its way to get at you.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6213",
+  "Name": "the mutant thing",
+  "Keywords": [
+   "mutant",
+   "thing"
+  ],
+  "RoomDesc": "A mutant... thing tries to get you, but cannot move into range!",
+  "FullDesc": "It might have been an orc, once.  Now it is a living terror,\npushing everything out of its way to get at you.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ }
+]

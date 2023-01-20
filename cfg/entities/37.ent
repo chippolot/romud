@@ -1,0 +1,204 @@
+[
+ {
+  "Key": "mob3600",
+  "Name": "the Pawn of the Black Court",
+  "Keywords": [
+   "black",
+   "pawn"
+  ],
+  "RoomDesc": "You see a pawn standing here waiting for orders.",
+  "FullDesc": "The Black Pawn looks quite like a small knight without his powerful steed.\nHis armor is shiny and black.  He stands ready to give his life for the\nCrown.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob3601",
+  "Name": "the Pawn of the White Court",
+  "Keywords": [
+   "white",
+   "pawn"
+  ],
+  "RoomDesc": "You see a pawn standing here waiting for orders.",
+  "FullDesc": "The White Pawn looks quite like a small knight without his powerful steed.\nHis armor is spotless and white.  He stands ready to give his life for the\nCrown.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob3602",
+  "Name": "the Black Rook",
+  "Keywords": [
+   "black",
+   "rook",
+   "castle"
+  ],
+  "RoomDesc": "In the corner you see a large, black, stone castle on wheels.",
+  "FullDesc": "The Black Rook is a very large man-made tomb on wheels.  Just\nfrom the looks of it, it will probably be YOUR tomb.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3603",
+  "Name": "the White Rook",
+  "Keywords": [
+   "white",
+   "rook",
+   "castle"
+  ],
+  "RoomDesc": "In the corner you see a large, white, stone castle on wheels.",
+  "FullDesc": "The White Rook is a very large man-made tomb on wheels.  Just\nfrom the looks of it, it will probably be YOUR tomb.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3604",
+  "Name": "the Black Knight",
+  "Keywords": [
+   "black",
+   "knight"
+  ],
+  "RoomDesc": "Here stands a magnificent knight of the dark realm.",
+  "FullDesc": "The Black Knight is here, riding his ebony black war horse.  His eyes\nflash behind his visor in vengence.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3605",
+  "Name": "the White Knight",
+  "Keywords": [
+   "white",
+   "knight"
+  ],
+  "RoomDesc": "Here stands a magnificent knight of the light realm.",
+  "FullDesc": "The White Knight is here, riding his ivory white war horse.  His eyes\ngleam behind his visor in joy.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3606",
+  "Name": "the Black Bishop",
+  "Keywords": [
+   "black",
+   "bishop",
+   "priest"
+  ],
+  "RoomDesc": "A dark priest stands here.",
+  "FullDesc": "The Black Bishop seems willing to help you straight into your grave so\nhe can bless you properly.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3607",
+  "Name": "the White Bishop",
+  "Keywords": [
+   "white",
+   "bishop",
+   "priest"
+  ],
+  "RoomDesc": "A light priest stands here.",
+  "FullDesc": "The White Bishop seems willing to help you in any possible so that he can\nattain a higher spirituality.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3608",
+  "Name": "the Black Queen",
+  "Keywords": [
+   "black",
+   "queen"
+  ],
+  "RoomDesc": "The Black Queen stands here.",
+  "FullDesc": "The Black Queen is a strikingly beautiful woman with pale skin and a\nmass of dark hair that crowns her head like a black cloud.  If looks\ncould kill, you would already be dead.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3609",
+  "Name": "the White Queen",
+  "Keywords": [
+   "white",
+   "queen"
+  ],
+  "RoomDesc": "The White Queen stands here.",
+  "FullDesc": "The White Queen is a stunningly beautiful woman with dark skin and a mass\nof light hair that frames her head like the sun.  This is surely love at\nfirst sight for you.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3610",
+  "Name": "the Black King",
+  "Keywords": [
+   "black",
+   "king"
+  ],
+  "RoomDesc": "The Black King stands here.",
+  "FullDesc": "The Black King is a menacing figure.  You can easily understand why he\nis the king and you are not.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3611",
+  "Name": "the White King",
+  "Keywords": [
+   "white",
+   "king"
+  ],
+  "RoomDesc": "The White King stands here.",
+  "FullDesc": "The White King is a stately figure.  You can easily understand why he\nis the king and you are not.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ }
+]

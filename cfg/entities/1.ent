@@ -1,0 +1,75 @@
+[
+ {
+  "Key": "mob1",
+  "Name": "Puff",
+  "Keywords": [
+   "Puff",
+   "dragon",
+   "fractal"
+  ],
+  "RoomDesc": "Puff the Fractal Dragon is here, contemplating a higher reality.",
+  "FullDesc": "Is that some type of differential curve involving some strange, and\nunknown calculus that she seems to be made out of?",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob10",
+  "Name": "the clone",
+  "Keywords": [
+   "clone"
+  ],
+  "RoomDesc": "A boring old clone is standing here.",
+  "FullDesc": "This clone is nothing to look at.  No, really, it is quite boring.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob11",
+  "Name": "the zombie",
+  "Keywords": [
+   "zombie",
+   "undead",
+   "humanoid"
+  ],
+  "RoomDesc": "A strange humanoid is here.  How odd, its flesh seems to be falling off!",
+  "FullDesc": "This strange humanoid is moving rather slowly, and appears to be\na corpse, a walking corpse!  It must be a zombie or something of\nthe sort.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob19",
+  "Name": "the aerial servant",
+  "Keywords": [
+   "aerial",
+   "servant",
+   "shape"
+  ],
+  "RoomDesc": "An amorphous shape is floating in the air.",
+  "FullDesc": "As you stare at this amorphous shape, it begins to appear to take\nthe shape of a cloud-like humanoid.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob20",
+  "Name": "the elemental",
+  "Keywords": [
+   "elemental"
+  ],
+  "RoomDesc": "An elemental is standing patiently here.",
+  "FullDesc": "This creature is the essence of the elements, and appears to be\nwaiting patiently for something to occur.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ }
+]

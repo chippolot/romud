@@ -103,16 +103,16 @@
   "Desc": "   Hmmm... this is an interesting little room.  Ack, and there is\nan interesting little creature staring at you too.  He looks a bit\nsurprised at your intrusion.  You can leave via the doors north or\neast, or you can stay and annoy him a bit more.  There also appears\nto be some type of well down here also, but it has a rather secure\ngrate covering it.",
   "Exits": [
    {
+    "RoomId": 18606,
+    "Verb": "down"
+   },
+   {
     "RoomId": 18603,
     "Verb": "north"
    },
    {
     "RoomId": 18608,
     "Verb": "east"
-   },
-   {
-    "RoomId": 18606,
-    "Verb": "down"
    }
   ]
  },
@@ -205,16 +205,16 @@
   "Desc": "   Lots of bottles and flasks lie about this room, but it all looks like\nworthless clutter.  It appears whatever alchemist has been working here\nis really very adept at his art.  There are a lot of formulae and spells\nwritten on the walls too... couldn't he buy some paper?  There is a door\nto the north, and also a dark stairway in the corner leading down, with a\nlarge sign next to it that you probably should read...",
   "Exits": [
    {
+    "RoomId": 18612,
+    "Verb": "west"
+   },
+   {
     "RoomId": 18633,
     "Verb": "down"
    },
    {
     "RoomId": 18605,
     "Verb": "north"
-   },
-   {
-    "RoomId": 18612,
-    "Verb": "west"
    }
   ]
  },
@@ -224,12 +224,12 @@
   "Desc": "   This corner is much like all the others... except you see a strange\nglow coming from the south.  Could be an exit... you hope.",
   "Exits": [
    {
-    "RoomId": 18630,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18622,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18630,
+    "Verb": "south"
    }
   ]
  },
@@ -239,16 +239,16 @@
   "Desc": "   This is an intersection of a long east-west passage with a corridor\nleading south.  The air seems a bit clearer here though, as if you were\napproaching an exit.",
   "Exits": [
    {
+    "RoomId": 18621,
+    "Verb": "west"
+   },
+   {
     "RoomId": 18623,
     "Verb": "east"
    },
    {
     "RoomId": 18634,
     "Verb": "south"
-   },
-   {
-    "RoomId": 18621,
-    "Verb": "west"
    }
   ]
  },
@@ -273,12 +273,12 @@
   "Desc": "   You can hear creatures moving all around you... and it is not\na comforting sound at all.  The furnishing is nothing to speak of\neither, plain grey brick walls with green fungus (or something)\ngrowing on them.",
   "Exits": [
    {
-    "RoomId": 18625,
-    "Verb": "east"
-   },
-   {
     "RoomId": 18628,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18625,
+    "Verb": "east"
    }
   ]
  },
@@ -333,10 +333,6 @@
   "Desc": "   Here a narrow east-west passage crosses with a wider passage to the\nnorth and south.  The air is dank, and has an odor of decay and debris.\nNot a nice place at all really...",
   "Exits": [
    {
-    "RoomId": 18624,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18629,
     "Verb": "east"
    },
@@ -347,6 +343,10 @@
    {
     "RoomId": 18627,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18624,
+    "Verb": "north"
    }
   ]
  },
@@ -390,16 +390,16 @@
   "Desc": "   The north-south passage branches to the east here.  There is a queer red\nglow coming from that way as well, along with a faint breeze.",
   "Exits": [
    {
-    "RoomId": 18625,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18635,
     "Verb": "south"
    },
    {
     "RoomId": 18630,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18625,
+    "Verb": "north"
    }
   ]
  },
@@ -451,12 +451,12 @@
   "Desc": "   Well... what is there to say.  More fungus, more weird sounds, and a\nslight breeze from the north.  Bet you want to sign a lease, don't ya...",
   "Exits": [
    {
-    "RoomId": 18622,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18635,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18622,
+    "Verb": "north"
    }
   ]
  },
@@ -466,16 +466,16 @@
   "Desc": "   Cold, smelly, and coated with green fungus... just like last week's\nleft-overs.  Furthermore you want nothing to do with either, you just\nwant out right now.",
   "Exits": [
    {
-    "RoomId": 18631,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18638,
     "Verb": "south"
    },
    {
     "RoomId": 18634,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18631,
+    "Verb": "north"
    }
   ]
  },
@@ -549,12 +549,12 @@
   "Desc": "   As you enter, you light glints of the wall to the east.  There appears\nto be words scrawled on the wall, and a crude picture.  To the west the\nroom extends beyond the reach of your light, and the dark shadows make you\nparanoid... anything could be hiding there.  You are painfully aware of\nhow exposed you are without walls around you.",
   "Exits": [
    {
-    "RoomId": 18639,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18637,
     "Verb": "north"
+   },
+   {
+    "RoomId": 18639,
+    "Verb": "west"
    }
   ]
  },
@@ -564,12 +564,12 @@
   "Desc": "   Here, the passage enters a small room.  Exits lead to the east and south,\nand you notice a wonderful, large (and tastefully done) statue to the north.",
   "Exits": [
    {
-    "RoomId": 18645,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18642,
     "Verb": "east"
+   },
+   {
+    "RoomId": 18645,
+    "Verb": "south"
    }
   ]
  },
@@ -594,16 +594,16 @@
   "Desc": "   Here, the hall opens into a wide room, with a high domed roof.  Now that\nthat you have come clear of the enclosed passage, you can see that the stair\nleads upward to an open air balcony overlooking the area.  To the south the\nroom continues, and another stair is visible matching the one in front of\nyou.",
   "Exits": [
    {
-    "RoomId": 18648,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18642,
     "Verb": "west"
    },
    {
     "RoomId": 18644,
     "Verb": "up"
+   },
+   {
+    "RoomId": 18648,
+    "Verb": "south"
    }
   ]
  },
@@ -628,12 +628,12 @@
   "Desc": "   Wow!  What a change from the dismal passage to the south.  Whoever\nkeeps this room up must really like newbies.  The walls and floor are\nclean, and tastefully decorated.  You also notice an interesting design\non the floor.",
   "Exits": [
    {
-    "RoomId": 18604,
-    "Verb": "south"
-   },
-   {
     "RoomId": 18641,
     "Verb": "north"
+   },
+   {
+    "RoomId": 18604,
+    "Verb": "south"
    }
   ]
  },
@@ -673,10 +673,6 @@
   "Desc": "   Here, the hall opens into a wide room, with a high domed roof.  Now that\nthat you have come clear of the enclosed passage, you can see that the stair\nleads upward to an open air balcony overlooking the area.  to the north the\nroom continues, and another stair is visible matching the one in front of\nyou.",
   "Exits": [
    {
-    "RoomId": 18646,
-    "Verb": "up"
-   },
-   {
     "RoomId": 18643,
     "Verb": "north"
    },
@@ -687,6 +683,10 @@
    {
     "RoomId": 18647,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18646,
+    "Verb": "up"
    }
   ]
  }

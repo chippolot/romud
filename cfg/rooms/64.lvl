@@ -99,12 +99,12 @@
   "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as cats, wolves, and humans.  ",
   "Exits": [
    {
-    "RoomId": 6309,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6307,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6309,
+    "Verb": "east"
    }
   ]
  },
@@ -156,12 +156,12 @@
   "Desc": "   You are on a 'fuzzy' tree limb.  Interesting, since the branches\nseem to have 'hairs' sprouting from its bark.  As you look closer\nyou see millions of aphids covering each limb.",
   "Exits": [
    {
-    "RoomId": 6310,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6312,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6310,
+    "Verb": "south"
    }
   ]
  },
@@ -171,12 +171,12 @@
   "Desc": "   You feel that you can rest here safely.  There is evidence of\nwebbing here, but it is of a finer quality.",
   "Exits": [
    {
-    "RoomId": 6313,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6311,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6313,
+    "Verb": "south"
    }
   ]
  },
@@ -347,6 +347,10 @@
   "Desc": "   Large strands connect at this point.  The node shimmers and\nflickers within the ether.  You see many flying creatures --\ninsects, pegasi, and dragon wormkins -- navigate the dangerous\npassages of the web.  Exits go in many directions.",
   "Exits": [
    {
+    "RoomId": 6331,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6333,
     "Verb": "east"
    },
@@ -357,10 +361,6 @@
    {
     "RoomId": 6335,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6331,
-    "Verb": "north"
    }
   ]
  },
@@ -434,16 +434,16 @@
   "Desc": "   Very windy here since it goes up into the sky somewhat.  Still, it\nis safe enough to move around.",
   "Exits": [
    {
+    "RoomId": 6332,
+    "Verb": "down"
+   },
+   {
     "RoomId": 6341,
     "Verb": "south"
    },
    {
     "RoomId": 6342,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6332,
-    "Verb": "down"
    }
   ]
  },
@@ -629,12 +629,12 @@
   "Desc": "   Here you see many misguided souls who think they still live.\nThey search for those who killed them without warrant, and seek\nthe free souls of living beings to inhabit and perhaps adventure\nonce more.",
   "Exits": [
    {
-    "RoomId": 6371,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6369,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6371,
+    "Verb": "south"
    }
   ]
  },
@@ -732,12 +732,12 @@
   "Desc": "   Before you you see a large, web-like door.  Various designs\nof ancient runes and names of Midgaard heroes are etched into\nthe webwork.  Perhaps lists of victims?  You can't tell.  ",
   "Exits": [
    {
-    "RoomId": 6392,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6400,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6392,
+    "Verb": "west"
    }
   ]
  },

@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type ItemFlagMask bits.Bits
@@ -18,25 +19,42 @@ const (
 	IFlag_HeavyArmor                             // Heavy armor does not receive DEX bonus
 )
 
+var itemFlagStringMapping = utils.NewStringMapping(map[ItemFlagMask]string{
+	IFlag_Container:     "container",
+	IFlag_NoStorage:     "nostorage",
+	IFlag_Light:         "light",
+	IFlag_Environmental: "environmental",
+	IFlag_Crumbles:      "crumbles",
+	IFlag_HeavyArmor:    "heavyarmor",
+})
+
 func ParseItemFlag(str string) (ItemFlagMask, error) {
-	switch str {
-	case "container":
-		return IFlag_Container, nil
-	case "nostorage":
-		return IFlag_NoStorage, nil
-	case "scavenger":
-		return IFlag_Light, nil
-	case "environmental":
-		return IFlag_Environmental, nil
-	case "crumbles":
-		return IFlag_Crumbles, nil
-	default:
-		return 0, fmt.Errorf("unknown item flag: %s", str)
+	if val, ok := itemFlagStringMapping.ToValue[str]; ok {
+		return val, nil
 	}
+	return 0, fmt.Errorf("unknown item flag: %s", str)
+}
+
+func (m *ItemFlagMask) String() string {
+	if str, ok := itemFlagStringMapping.ToString[*m]; ok {
+		return str
+	}
+	return "unknown"
 }
 
 func (m *ItemFlagMask) Has(flag ItemFlagMask) bool {
 	return *m&flag != 0
+}
+
+func (m *ItemFlagMask) MarshalJSON() ([]byte, error) {
+	strs := make([]string, 0)
+	for i := 0; i < 64; i++ {
+		f := ItemFlagMask(1 << i)
+		if m.Has(f) {
+			strs = append(strs, f.String())
+		}
+	}
+	return json.Marshal(strs)
 }
 
 func (m *ItemFlagMask) UnmarshalJSON(data []byte) (err error) {

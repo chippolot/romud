@@ -1,0 +1,274 @@
+[
+ {
+  "Key": "mob6301",
+  "Name": "the young spider",
+  "Keywords": [
+   "spider",
+   "young"
+  ],
+  "RoomDesc": "The young spider is ballooning by you.",
+  "FullDesc": "He looks freshly hatched and sprightly.  His young fangs are just\ngrowing in as of late.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6302",
+  "Name": "Yevaud",
+  "Keywords": [
+   "yevaud",
+   "dragon",
+   "usurper"
+  ],
+  "RoomDesc": "Yevaud, the Usurper of Midgaard is here, grinning evilly at you.",
+  "FullDesc": "Old, scaly, but still with a lot of bite in him left.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6303",
+  "Name": "the wolf spider",
+  "Keywords": [
+   "spider",
+   "wolf"
+  ],
+  "RoomDesc": "The wolf spider is here, licking its bloody fangs.",
+  "FullDesc": "The wolf spider is hairy, very hairy.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6304",
+  "Name": "the orc",
+  "Keywords": [
+   "orc"
+  ],
+  "RoomDesc": "The orc is stuck in the web and he can't get out.",
+  "FullDesc": "You notice an evil look in his eyes, but he seems quite drained of life,\nand all he can do is glare at you while he's stuck in this web.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6305",
+  "Name": "the queen wasp",
+  "Keywords": [
+   "wasp",
+   "queen"
+  ],
+  "RoomDesc": "The queen wasp is here, thinking how tasty you look.",
+  "FullDesc": "You notice a glazed look in her eyes.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6306",
+  "Name": "the drone spider",
+  "Keywords": [
+   "spider",
+   "drone"
+  ],
+  "RoomDesc": "A drone spider walks around doing its master's bidding.",
+  "FullDesc": "An ordinary drone spider.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6307",
+  "Name": "the ethereal spider",
+  "Keywords": [
+   "spider",
+   "ethereal"
+  ],
+  "RoomDesc": "An ethereal spider strides here, traveling to different worlds.",
+  "FullDesc": "She winks in and out of reality.  It looks like it'd be difficult to hit her\nwithout a magical weapon.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6308",
+  "Name": "the slave",
+  "Keywords": [
+   "slave",
+   "human"
+  ],
+  "RoomDesc": "A human slave of Arachnos works here relentlessly.",
+  "FullDesc": "The slave does not mind you, but will fight like a warrior if attacked.\nHe serves the spider Empress, Arachnos, though whether it is by choice\nor because he was beguiled, you are not fully certain.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6309",
+  "Name": "the quasit",
+  "Keywords": [
+   "quasit"
+  ],
+  "RoomDesc": "A quasit blinks in and out, grinning at you.",
+  "FullDesc": "Demoniac in nature, but more mischievous.  He twiddles his thumbs\nand creates a magical treasure!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6310",
+  "Name": "the bird spider",
+  "Keywords": [
+   "spider",
+   "bird"
+  ],
+  "RoomDesc": "The bird spider snaps its powerful jaws.",
+  "FullDesc": "The Bird Spider has very powerful jaws.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6311",
+  "Name": "the hermit",
+  "Keywords": [
+   "hermit"
+  ],
+  "RoomDesc": "The hermit sits here and warns, 'Go back before it is too late!'",
+  "FullDesc": "A dishevelled veteran warrior in disguise is what he is, but he\nmeans well.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6312",
+  "Name": "the Donjonkeeper",
+  "Keywords": [
+   "donjonkeeper",
+   "keeper"
+  ],
+  "RoomDesc": "The Donjonkeeper eyes you and wonders how pure your soul is.",
+  "FullDesc": "He delves deeper into you as you stare at him.  Only those free of taint\nwill be allowed to remain here safely.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6313",
+  "Name": "the guardian",
+  "Keywords": [
+   "guardian"
+  ],
+  "RoomDesc": "The guardian is obviously not doing his job.",
+  "FullDesc": "He looks like a lazy bum who sleeps half the time.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob6314",
+  "Name": "Arachnos",
+  "Keywords": [
+   "arachnos",
+   "spider",
+   "empress"
+  ],
+  "RoomDesc": "Arachnos the Empress of Spiders welcomes you with an evil smile.",
+  "FullDesc": "She is a very attractive spider with an ornate gown.  She tempts you\ninto being one of her many slaves.  She does not possess the venomous\nfangs of normal spiders, but then, as you realize, she does not need\nthem.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6315",
+  "Name": "the Ki-Rin",
+  "Keywords": [
+   "ki-rin"
+  ],
+  "RoomDesc": "The Ki-Rin smiles good-naturedly to you.",
+  "FullDesc": "She is the last bastion of good in this realm.  Her mission is to\nsomeday free the slaves of the Empress.  She has been trapped here for\ntime eternal, and now the evil power of Arachnos feeds upon her intense\nmagical energies.  She will never give up here fight against evil,\nthough, and will continue her work in whatever manner presents itself.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob6316",
+  "Name": "the young wormkin",
+  "Keywords": [
+   "dragon",
+   "wormkin",
+   "young"
+  ],
+  "RoomDesc": "A wormkin with no teeth plays here.",
+  "FullDesc": "It is a rather small dragon, and you almost feel sad about killing it.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob6317",
+  "Name": "the elder wormkin",
+  "Keywords": [
+   "dragon",
+   "wormkin",
+   "elder"
+  ],
+  "RoomDesc": "A wormkin that has grown a bit stares at you inquisitively.",
+  "FullDesc": "A medium-sized dragon -- seems it hasn't killed anything yet by itself, \nthough there is a first time for everything...",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ }
+]

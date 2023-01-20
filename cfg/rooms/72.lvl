@@ -31,12 +31,12 @@
   "Desc": "   Nice place you found yourself in.  You stand in the middle of a room\nwith only two exits, up and east.  A tall ladder has been left here so\nthat you can climb up through the pit without the use of a rope.",
   "Exits": [
    {
-    "RoomId": 7301,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7105,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7301,
+    "Verb": "down"
    }
   ]
  },
@@ -46,12 +46,12 @@
   "Desc": "   You are standing in what looks like a bend in the pipe system of the\nsewer.  The 'floor' is covered completely by mud!  This includes covering\nyour legs up to your knees as well.  The pipe leads west and south.",
   "Exits": [
    {
-    "RoomId": 7102,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7105,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7102,
+    "Verb": "west"
    }
   ]
  },
@@ -110,16 +110,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
+    "RoomId": 7191,
+    "Verb": "east"
+   },
+   {
     "RoomId": 7109,
     "Verb": "south"
    },
    {
     "RoomId": 7107,
     "Verb": "north"
-   },
-   {
-    "RoomId": 7191,
-    "Verb": "east"
    }
   ]
  },
@@ -129,12 +129,12 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
-    "RoomId": 7191,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7108,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7191,
+    "Verb": "east"
    }
   ]
  },
@@ -144,16 +144,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
-    "RoomId": 7111,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7109,
     "Verb": "north"
    },
    {
     "RoomId": 7191,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7111,
+    "Verb": "south"
    }
   ]
  },
@@ -182,6 +182,10 @@
   "Desc": "   This seems like a ledge that is a little broader than the one just to\nthe north of here.  The ledge seems to lead around some sort of Abyss of\ntotal darkness.  The ledge seems to have an odd-looking edge here.",
   "Exits": [
    {
+    "RoomId": 7116,
+    "Verb": "east"
+   },
+   {
     "RoomId": 7113,
     "Verb": "south"
    },
@@ -192,10 +196,6 @@
    {
     "RoomId": 7111,
     "Verb": "north"
-   },
-   {
-    "RoomId": 7116,
-    "Verb": "east"
    }
   ]
  },
@@ -235,6 +235,10 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
+    "RoomId": 7116,
+    "Verb": "up"
+   },
+   {
     "RoomId": 7120,
     "Verb": "north"
    },
@@ -249,10 +253,6 @@
    {
     "RoomId": 7118,
     "Verb": "west"
-   },
-   {
-    "RoomId": 7116,
-    "Verb": "up"
    }
   ]
  },
@@ -315,12 +315,12 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.  And THAT is west of here\nso watch your step.",
   "Exits": [
    {
-    "RoomId": 7115,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7120,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7115,
+    "Verb": "west"
    }
   ]
  },
@@ -345,16 +345,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.  And THAT is west of here\nso watch your step.  You also see a small opening to the east.",
   "Exits": [
    {
+    "RoomId": 7124,
+    "Verb": "east"
+   },
+   {
     "RoomId": 7122,
     "Verb": "south"
    },
    {
     "RoomId": 7115,
     "Verb": "west"
-   },
-   {
-    "RoomId": 7124,
-    "Verb": "east"
    }
   ]
  },
@@ -364,16 +364,16 @@
   "Desc": "   This seems like a ledge that is a little broader than the one just to the\nnorth of here.  The ledge seems to lead around some sort of abyss of total\ndarkness.",
   "Exits": [
    {
-    "RoomId": 7121,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7116,
     "Verb": "west"
    },
    {
     "RoomId": 7280,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7121,
+    "Verb": "north"
    }
   ]
  },
@@ -394,12 +394,12 @@
   "Desc": "   A ladder leads up from here to the Shaft.  A small opening leads west\nfrom here.",
   "Exits": [
    {
-    "RoomId": 7121,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7042,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7121,
+    "Verb": "west"
    }
   ]
  },
@@ -424,14 +424,6 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
-    "RoomId": 7110,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 7109,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7111,
     "Verb": "south"
    },
@@ -442,6 +434,14 @@
    {
     "RoomId": 7114,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7110,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7109,
+    "Verb": "east"
    }
   ]
  }

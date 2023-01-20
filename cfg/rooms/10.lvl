@@ -54,12 +54,12 @@
   "Desc": "   The dark forest of Haon-Dor recedes behind you to the northeast.\nThe river continues in a westerly direction toward the river delta,\nwhere you can just make out a large island.",
   "Exits": [
    {
-    "RoomId": 905,
-    "Verb": "west"
-   },
-   {
     "RoomId": 903,
     "Verb": "east"
+   },
+   {
+    "RoomId": 905,
+    "Verb": "west"
    }
   ]
  },
@@ -68,6 +68,10 @@
   "Name": "The Swift River Delta",
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
+   {
+    "RoomId": 906,
+    "Verb": "west"
+   },
    {
     "RoomId": 912,
     "Verb": "north"
@@ -79,10 +83,6 @@
    {
     "RoomId": 907,
     "Verb": "south"
-   },
-   {
-    "RoomId": 906,
-    "Verb": "west"
    }
   ]
  },
@@ -92,12 +92,12 @@
   "Desc": "   You bob up and down in the waves comming dangerously close to some\nlarge, jagged rocks on the eastern shore of an unusual looking island.\nThere is no way you could possibly land there without getting killed.",
   "Exits": [
    {
-    "RoomId": 907,
-    "Verb": "south"
-   },
-   {
     "RoomId": 905,
     "Verb": "east"
+   },
+   {
+    "RoomId": 907,
+    "Verb": "south"
    }
   ]
  },
@@ -243,12 +243,12 @@
   "Desc": "   Bodies lie everywhere.  Commoner, peasant, duke, duchess.  The Gods\nwill not hear you call here.  Hence they will not answer you.  To the\nsouth the path ends at a dark cave entrance.\nA sign has been posted beside the entrance.",
   "Exits": [
    {
-    "RoomId": 914,
-    "Verb": "north"
-   },
-   {
     "RoomId": 916,
     "Verb": "south"
+   },
+   {
+    "RoomId": 914,
+    "Verb": "north"
    }
   ]
  },

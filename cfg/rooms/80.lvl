@@ -20,10 +20,6 @@
   "Desc": "   You are standing in a vast hall that is dimly lit, but wherever the\nlight comes from, is a mystery.  The walls seem to radiate warmth and\ngive the pleasent feeling of being welcome here.  A large portrait is\nhanging on one of the walls.  A large wooden staircase leads up into\nthe tower.  To the east there is a high passage away from the hall.\nThis ends shortly after by a tall oak door.  The enormous hall extends\nfurther north from here.  To the south you can see a huge, and VERY \nheavy-looking iron-wrought door.  It looks like this is the only exit\nfrom this magnificent old house.",
   "Exits": [
    {
-    "RoomId": 7901,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7903,
     "Verb": "west"
    },
@@ -38,6 +34,10 @@
    {
     "RoomId": 7911,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7901,
+    "Verb": "south"
    }
   ]
  },
@@ -69,20 +69,20 @@
   "Desc": "   You are standing in the northern end of the huge hall.  This part is\nunder the grand wooden staircase so the light seems to be a little less\nbright here, but this doesn't affect your sight at all.  To the north\nlies the kitchen.  To the south lies the southern end of the hall.  To\nthe east there is a huge metal door.  To the west there is a large\naspenwood door.",
   "Exits": [
    {
-    "RoomId": 7907,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 7914,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7902,
     "Verb": "south"
    },
    {
     "RoomId": 7906,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7907,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7914,
+    "Verb": "east"
    }
   ]
  },
@@ -159,12 +159,12 @@
   "Desc": "   This place is gloomy.  A HUGE safe is cemented into the west wall.  The\nonly visible exit is west, through the oak door.",
   "Exits": [
    {
-    "RoomId": 7904,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7902,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7904,
+    "Verb": "east"
    }
   ]
  },

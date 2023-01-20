@@ -1,0 +1,155 @@
+[
+ {
+  "Key": "mob3100",
+  "Name": "the Maid",
+  "Keywords": [
+   "maid"
+  ],
+  "RoomDesc": "The Maid is waiting for your order.",
+  "FullDesc": "She is very beautiful with golden hair, and deep blue eyes.  A good reason\nfor coming here more often, you think to yourself.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3101",
+  "Name": "the Sexton",
+  "Keywords": [
+   "sexton"
+  ],
+  "RoomDesc": "A Sexton is sitting here, drinking hot tea.",
+  "FullDesc": "The Sexton looks like he is relaxing after another gravedigging job.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3102",
+  "Name": "the Chief Guard",
+  "Keywords": [
+   "chief",
+   "guard"
+  ],
+  "RoomDesc": "The Chief Guard is looking very upset.",
+  "FullDesc": "A very angry chief.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3103",
+  "Name": "the upset cityguard",
+  "Keywords": [
+   "cityguard",
+   "guard"
+  ],
+  "RoomDesc": "A cityguard stands here, looking very upset.",
+  "FullDesc": "A big, strong, angry guard.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob3104",
+  "Name": "the Secretary",
+  "Keywords": [
+   "secretary"
+  ],
+  "RoomDesc": "A secretary is sitting at the desk, typing away on the typewriter.",
+  "FullDesc": "She looks very busy.\n\nThe Secretary says 'Sorry, but the Mayor is extremely busy today.'\nThe Secretary says 'Please sit down and have a seat in the meantime.'",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3105",
+  "Name": "the Mayor",
+  "Keywords": [
+   "mayor"
+  ],
+  "RoomDesc": "The Mayor is sitting in his huge chair, snoring loudly.",
+  "FullDesc": "He is a stocky, middle-aged man with thin, grey hair.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3106",
+  "Name": "the Town Crier",
+  "Keywords": [
+   "crier"
+  ],
+  "RoomDesc": "The Town Crier is here, weeping quietly.",
+  "FullDesc": "He is very good at his job - completely dissolved in tears.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob3120",
+  "Name": "the swan",
+  "Keywords": [
+   "swan"
+  ],
+  "RoomDesc": "A swan is swimming around in the pond.",
+  "FullDesc": "The white swan is very elegant.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3121",
+  "Name": "the duckling",
+  "Keywords": [
+   "duckling"
+  ],
+  "RoomDesc": "A duckling is swimming around in the pond.",
+  "FullDesc": "The duckling is adorable, it looks most of all like a tiny furball.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob3122",
+  "Name": "the sparrow",
+  "Keywords": [
+   "sparrow"
+  ],
+  "RoomDesc": "A sparrow is flapping around on the ground.",
+  "FullDesc": "The sparrow looks like it is enjoying life.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob3123",
+  "Name": "the duck",
+  "Keywords": [
+   "duck"
+  ],
+  "RoomDesc": "A duck is here, quacking happily.",
+  "FullDesc": "The duck is quite fat.  It looks like it is enjoying life.",
+  "Stats": null,
+  "Attacks": null
+ }
+]

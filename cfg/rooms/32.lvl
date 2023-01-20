@@ -24,16 +24,16 @@
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues further east and to the west you see the city wall.  Park Road\nleads south from here.",
   "Exits": [
    {
+    "RoomId": 3101,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3103,
     "Verb": "east"
    },
    {
     "RoomId": 3132,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3101,
-    "Verb": "west"
    }
   ]
  },
@@ -62,16 +62,16 @@
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  A small path leads south.  Looking across\nthe river you see the levee.",
   "Exits": [
    {
-    "RoomId": 3133,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3103,
     "Verb": "west"
    },
    {
     "RoomId": 3105,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3133,
+    "Verb": "south"
    }
   ]
  },
@@ -96,16 +96,16 @@
   "Desc": "   You are standing just inside the small park of Midgaard.  To the north is\nthe promenade and a small path leads south into the park.  To your east is\nthe famous Park Cafe.",
   "Exits": [
    {
-    "RoomId": 3109,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3103,
     "Verb": "north"
    },
    {
     "RoomId": 3107,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3109,
+    "Verb": "south"
    }
   ]
  },
@@ -141,16 +141,16 @@
   "Desc": "   You are standing on a small path inside the park.  The park entrance is\njust north of here, and Park Cafe is just east of the entrance.  The path\nleads further east and west.",
   "Exits": [
    {
+    "RoomId": 3106,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3110,
     "Verb": "east"
    },
    {
     "RoomId": 3108,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3106,
-    "Verb": "north"
    }
   ]
  },
@@ -160,12 +160,12 @@
   "Desc": "   You are on a small path running through the park.  It continues west and\nsouth and just north of here you see the southern wall of Park Cafe.",
   "Exits": [
    {
-    "RoomId": 3109,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3116,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3109,
+    "Verb": "west"
    }
   ]
  },
@@ -186,6 +186,10 @@
   "Desc": "   The road continues north and south.  A building is just west of here, you\nnotice a sign on the door.  The park entrance is to the east.",
   "Exits": [
    {
+    "RoomId": 3132,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3113,
     "Verb": "east"
    },
@@ -196,10 +200,6 @@
    {
     "RoomId": 3111,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3132,
-    "Verb": "north"
    }
   ]
  },
@@ -345,6 +345,10 @@
   "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
   "Exits": [
    {
+    "RoomId": 3137,
+    "Verb": "east"
+   },
+   {
     "RoomId": 3135,
     "Verb": "south"
    },
@@ -359,10 +363,6 @@
    {
     "RoomId": 3134,
     "Verb": "north"
-   },
-   {
-    "RoomId": 3137,
-    "Verb": "east"
    }
   ]
  },
@@ -481,16 +481,16 @@
   "Desc": "   The Concourse continues both east and west.  Emerald Avenue is north of\nhere.",
   "Exits": [
    {
-    "RoomId": 3128,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3126,
     "Verb": "north"
    },
    {
     "RoomId": 3130,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3128,
+    "Verb": "west"
    }
   ]
  },
@@ -523,12 +523,12 @@
   "Desc": "   You are at the southeast corner of the city wall.  The Concourse leads\nboth north and west.",
   "Exits": [
    {
-    "RoomId": 3105,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3130,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3105,
+    "Verb": "north"
    }
   ]
  },
@@ -572,12 +572,12 @@
   "Desc": "   You are standing at a bend on Emerald Avenue.  To the east the road goes on\nand to the south is the Road Crossing.",
   "Exits": [
    {
-    "RoomId": 3120,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3121,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3120,
+    "Verb": "east"
    }
   ]
  },
@@ -658,12 +658,12 @@
   "Desc": "   You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane\ncontinues in eastward direction.",
   "Exits": [
    {
-    "RoomId": 3133,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3141,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3133,
+    "Verb": "west"
    }
   ]
  },
@@ -785,12 +785,12 @@
   "Desc": "   The arch under the bridge is covered by seaweed about a foot above the\nsurface of the river.  The water gently flows through an opening in the lower\npart of the city wall.",
   "Exits": [
    {
-    "RoomId": 901,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3202,
     "Verb": "east"
+   },
+   {
+    "RoomId": 901,
+    "Verb": "west"
    }
   ]
  },
@@ -830,16 +830,16 @@
   "Desc": "   The levee is directly north of here.  The river flows in an east west\ndirection.",
   "Exits": [
    {
-    "RoomId": 3203,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3050,
     "Verb": "north"
    },
    {
     "RoomId": 3205,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3203,
+    "Verb": "west"
    }
   ]
  },

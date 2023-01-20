@@ -1,0 +1,256 @@
+[
+ {
+  "Key": "mob5000",
+  "Name": "the dervish",
+  "Keywords": [
+   "dervish",
+   "raggity"
+  ],
+  "RoomDesc": "A raggity dervish walks on aimlessly.",
+  "FullDesc": "Dressed in loose fitting rags, this man looks like he could use some rest.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob5001",
+  "Name": "the dervish",
+  "Keywords": [
+   "dervish",
+   "large"
+  ],
+  "RoomDesc": "A large dervish watches for signs of trouble.",
+  "FullDesc": "Dressed in loose fitting rags, this man looks like he could use LOTS of\nrest.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5002",
+  "Name": "the coral snake",
+  "Keywords": [
+   "snake",
+   "coral"
+  ],
+  "RoomDesc": "A brightly colored snake slithers along the sands.",
+  "FullDesc": "This relatively harmless snake has bright alternating bands of red, yellow\nand black.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob5003",
+  "Name": "the small scorpion",
+  "Keywords": [
+   "scorpion",
+   "small"
+  ],
+  "RoomDesc": "A small, red scorpion scuttles away at your approach.",
+  "FullDesc": "The little tail is mighty dangerous for such a small creature.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob5004",
+  "Name": "the sand worm",
+  "Keywords": [
+   "worm",
+   "giant",
+   "purple"
+  ],
+  "RoomDesc": "A giant, purple sand worm thrusts up out of the sand and attacks!",
+  "FullDesc": "He's big, mean, and purple.  Watch out!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5005",
+  "Name": "the brass dragon",
+  "Keywords": [
+   "dragon",
+   "brass"
+  ],
+  "RoomDesc": "A very large brass dragon steps out of the darkness and says 'Hello.'",
+  "FullDesc": "Then adds to it, 'Prepare to die, have a nice day!'",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5006",
+  "Name": "the nomad leader",
+  "Keywords": [
+   "nomad",
+   "leader"
+  ],
+  "RoomDesc": "The nomad leader sits silently in prayer.",
+  "FullDesc": "He is clad in silk robes lined with gold thread. At his side is a large,\nengraved cutlass.  He has an especially haughty air about him.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob5007",
+  "Name": "the nomad commander",
+  "Keywords": [
+   "nomad",
+   "commander"
+  ],
+  "RoomDesc": "The nomad commander stands here staring at you suspiciously.",
+  "FullDesc": "This is the nomad leader's second in command.  His clothes are richly woven\nof silk and gold thread.  A nasty cutlass hangs at his side.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob5008",
+  "Name": "the nomad warrior",
+  "Keywords": [
+   "nomad",
+   "warrior"
+  ],
+  "RoomDesc": "A proud nomad warrior stands here.",
+  "FullDesc": "This warrior is dressed in typical nomad clothing and looks quite mean.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob5009",
+  "Name": "the slave",
+  "Keywords": [
+   "slave",
+   "young"
+  ],
+  "RoomDesc": "A young slave sits here staring at you with pleading eyes.",
+  "FullDesc": "She looks quite thin and weak.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob5010",
+  "Name": "the dracolich",
+  "Keywords": [
+   "dracolich",
+   "lich"
+  ],
+  "RoomDesc": "A pile of bones rises up to form a skeletal dracolich.",
+  "FullDesc": "The dracolich is now only bone with pieces of flesh hanging from it.\nObviously it no longer fears death.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5011",
+  "Name": "the drider",
+  "Keywords": [
+   "drider"
+  ],
+  "RoomDesc": "The drider looks at you viciously while it draws its sword.",
+  "FullDesc": "This half-spider, half-drow creature is a formidable opponent.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5012",
+  "Name": "the dark dwarf",
+  "Keywords": [
+   "duergar",
+   "dark",
+   "dwarf"
+  ],
+  "RoomDesc": "A duergar is here mining precious stones with his pick.",
+  "FullDesc": "The duergar could probably crush your head as easily as he does those\nrocks.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5013",
+  "Name": "the myconoid",
+  "Keywords": [
+   "myconoid"
+  ],
+  "RoomDesc": "A myconoid lumbers along peacefully.",
+  "FullDesc": "The myconoid looks something like a giant mushroom (and probably has the\nsame effect).",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob5014",
+  "Name": "the myconoid shaman",
+  "Keywords": [
+   "myconoid",
+   "shaman"
+  ],
+  "RoomDesc": "A rather large myconoid stands here chanting in a strange tongue.",
+  "FullDesc": "The shaman shoots spores into the air.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob5015",
+  "Name": "the dustdigger",
+  "Keywords": [
+   "dustdigger",
+   "oasis"
+  ],
+  "RoomDesc": "A small oasis invites you to dive in.",
+  "FullDesc": "Looking a little closer at this oasis, you begin to wonder why\nit seems to be moving about...",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob5017",
+  "Name": "the camel",
+  "Keywords": [
+   "camel"
+  ],
+  "RoomDesc": "A very dangerous creature, a camel, snorts at you.",
+  "FullDesc": "It is advisable not to mess with this creature.  After all, you\nhave heard many a horror story about experiences with camels.\nBad experiences.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ }
+]

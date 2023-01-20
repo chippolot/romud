@@ -175,8 +175,9 @@ func parseEntities(data []byte, outPath string) {
 		// Parse Key
 		cfg.Key = "mob" + line[1:]
 
-		// Skip short name
+		// Parse Keywords
 		line, lines = nextLine(lines)
+		cfg.Keywords = strings.Split(line[:len(line)-1], " ")
 
 		// Parse Name
 		line, lines = nextLine(lines)
@@ -187,6 +188,21 @@ func parseEntities(data []byte, outPath string) {
 
 		// Parse Full Desc
 		cfg.FullDesc, lines = parseMultilineString(lines)
+
+		toks, lines := parseLineTokens(lines)
+
+		// Parse flags
+		eflags := toks[0]
+		for _, v := range eflags {
+			switch v {
+			case 'b':
+				cfg.Flags |= mud.EFlag_Stationary
+			case 'c':
+				cfg.Flags |= mud.EFlag_Scavenger | mud.EFlag_TrashCollector
+			case 'f':
+				cfg.Flags |= mud.EFlag_Aggro
+			}
+		}
 
 		entities = append(entities, cfg)
 		line, lines = nextLine(lines)
@@ -222,6 +238,11 @@ func parseMultilineString(lines []string) (string, []string) {
 		line, lines = nextLine(lines)
 	}
 	return sb.String(), lines
+}
+
+func parseLineTokens(lines []string) ([]string, []string) {
+	line, lines := nextLine(lines)
+	return strings.Split(line, " "), lines
 }
 
 func save[T any](path string, data T) error {

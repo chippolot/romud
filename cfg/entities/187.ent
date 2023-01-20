@@ -1,0 +1,187 @@
+[
+ {
+  "Key": "mob18601",
+  "Name": "the pit beast",
+  "Keywords": [
+   "pitbeast",
+   "pit-beast"
+  ],
+  "RoomDesc": "The big, ugly pit-beast is standing here sizing you up.",
+  "FullDesc": "Ick... what a disgusting creature!  It is black and green and slimy\nand it is drooling everywhere... looks mean too.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18602",
+  "Name": "the newbie monster",
+  "Keywords": [
+   "newbie",
+   "monster"
+  ],
+  "RoomDesc": "The newbie monster stands here looking confused.  Kill him!  Kill him!",
+  "FullDesc": "What an odd looking little beast.  He looks harmless, but you never can\ntell.  He is only about 4 feet tall, but he pretty muscular looking...\nmaybe you should ask if he needs help?  Nah... kill him.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18603",
+  "Name": "the baby dragon",
+  "Keywords": [
+   "dragon",
+   "baby"
+  ],
+  "RoomDesc": "Someone's little pet dragon has gotten loose, and is sniffing about here.",
+  "FullDesc": "Awwww... how cute!  A little baby dragon.  He's about 3 feet long and you\njust want to cuddle him to death... no, you really want to kill him to tell\nthe truth.  But, remember, even a little dragon can be a big problem.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18604",
+  "Name": "the Newbie Guard",
+  "Keywords": [
+   "keeper",
+   "guard",
+   "monster"
+  ],
+  "RoomDesc": "The Newbie Guard is here wondering where that dragon went.",
+  "FullDesc": "The Guard also had the job of taking care of the Alchemist's pet dragon,\nbut he doesn't seem to be doing a good job of it.  He looks at you and\nsays, 'Have you seen that dragon?  Master will have my head if I don't find\nhim.'",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18605",
+  "Name": "the Newbie Alchemist",
+  "Keywords": [
+   "alchemist",
+   "newbie"
+  ],
+  "RoomDesc": "The Newbie Alchemist is here trying to make something.",
+  "FullDesc": "He is a funny looking, furry little dude.  He looks really busy trying to\nmix up a batch of something or other.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18606",
+  "Name": "the creepy crawler",
+  "Keywords": [
+   "crawler",
+   "creepy",
+   "bug",
+   "thing"
+  ],
+  "RoomDesc": "A creepy little crawling thing is scuttling along the floor at your feet.",
+  "FullDesc": "Yuck!  If they'd ever clean this place maybe it wouldn't attract vermin\nlike this disgusting, little, six-legged, brown bug.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18607",
+  "Name": "the zombiefied newbie",
+  "Keywords": [
+   "newbie",
+   "zombie"
+  ],
+  "RoomDesc": "A VERY gaunt looking newbie... it looks like a zombie!",
+  "FullDesc": "This guy has been lost in here too long... it is more zombie than man\nnow.  You would feel sorry for it, but it is moving in to attack!",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18608",
+  "Name": "the quasit",
+  "Keywords": [
+   "quasit",
+   "imp",
+   "thing"
+  ],
+  "RoomDesc": "A funny little imp-like thing (a quasit perhaps?) is sneaking about here.",
+  "FullDesc": "Little green, vaguely humoniod shaped creature, with a long pointed tail.\nIt is hard to say because before you ever get a good look at it, it darts\nback into the shadows.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18609",
+  "Name": "the massive Minotaur",
+  "Keywords": [
+   "minotaur"
+  ],
+  "RoomDesc": "The Great Minotaur is wondering just what you'll taste like.",
+  "FullDesc": "A massive man, with the head of a bull.  He looks as strong as bull too,\nbut not nearly as smart.  Actually, now that you consider it... he looks\na heck of a lot meaner than any bull you have ever seen... and he is\ncoming this way!",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18610",
+  "Name": "the dark spectre",
+  "Keywords": [
+   "spectre",
+   "ghost"
+  ],
+  "RoomDesc": "The dark spectre is lurking in the shadows.",
+  "FullDesc": "The soul of a long since passed on adventurer... it lurks here waiting for\na chance to bring death to any who cross its path.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18611",
+  "Name": "the annoying newbie",
+  "Keywords": [
+   "newbie",
+   "annoying",
+   "jerk"
+  ],
+  "RoomDesc": "A newbie is here annoying the hell out of you.",
+  "FullDesc": "What a jerk!  He won't shut up, and he keeps making the most irritating\ncomments about everything.  Better silence him with cold, tempered steel\nMUHAHAHAHAHAHAHAHAHAHA!",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18612",
+  "Name": "the clueless newbie",
+  "Keywords": [
+   "newbie",
+   "clueless",
+   "moron"
+  ],
+  "RoomDesc": "A newbie is here looking terribly confused.",
+  "FullDesc": "What a moron!  Every question that is answered in the help files, he will\nask and he will probably ask 2 or 3 times too.  This guy just doesn't get\nit, best put him out of his misery.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18613",
+  "Name": "the talkative newbie",
+  "Keywords": [
+   "newbie",
+   "talkative"
+  ],
+  "RoomDesc": "A newbie is here talking a lot.",
+  "FullDesc": "Well, at least this gal seems pretty cool.  Talks a lot, but she's a\nfriendly, interesting sort.  Seems to have a clue what she's doing also,\nunlike some others you might see.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18614",
+  "Name": "the lost newbie",
+  "Keywords": [
+   "newbie",
+   "lost"
+  ],
+  "RoomDesc": "A newbie is here wandering about aimlessly.",
+  "FullDesc": "Hmmm... looks like he has been around a while, but he wandered a little\ntoo far from home this time.  Don't think he knows quite where he is,\nmaybe you should help him out?",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob18615",
+  "Name": "the smart newbie",
+  "Keywords": [
+   "newbie",
+   "smart"
+  ],
+  "RoomDesc": "A newbie is here, and he looks quite sure of himself.",
+  "FullDesc": "Here is a guy who has it all together.  Nice equipment too, must have read\nthe help files, Eh?",
+  "Stats": null,
+  "Attacks": null
+ }
+]

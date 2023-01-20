@@ -1,0 +1,545 @@
+[
+ {
+  "Key": "mob12000",
+  "Name": "the adjudicator",
+  "Keywords": [
+   "judge",
+   "adjudicator"
+  ],
+  "RoomDesc": "An adjudicator is watching the games intently.",
+  "FullDesc": "The adjudicator is a retired gladiator and scars cover all exposed parts of\nhis body.  Although he is getting on in years, he remains healthy and fit.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12001",
+  "Name": "the scorekeeper",
+  "Keywords": [
+   "scorekeeper"
+  ],
+  "RoomDesc": "A scorekeeper has one eye on his stopwatch and the other on a clipboard.",
+  "FullDesc": "The scorekeeper is a young man of about 25 years of age and is very intently\nstudying his clipboard.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12003",
+  "Name": "the spectator",
+  "Keywords": [
+   "spectator",
+   "fan"
+  ],
+  "RoomDesc": "A spectator is here watching the games.",
+  "FullDesc": "The spectator is filthy, half drunk and screaming his head off.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12004",
+  "Name": "the nobleman",
+  "Keywords": [
+   "noble",
+   "nobleman"
+  ],
+  "RoomDesc": "A nobleman stands here looking aloof.",
+  "FullDesc": "The nobleman is dressed in fine clothes and jewelry and has a very snobbish\nattitude.  While he is getting old and his hair and beard are streaked with\ngray, he is by no means an easy target.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12005",
+  "Name": "the slave",
+  "Keywords": [
+   "slave"
+  ],
+  "RoomDesc": "A slave stands here, wishing that she was free.",
+  "FullDesc": "A very pretty young woman who was captured instead of being killed when\nthe Roman legions subjugated her land.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12006",
+  "Name": "the gladiator",
+  "Keywords": [
+   "gladiator"
+  ],
+  "RoomDesc": "There is a gladiator standing here.",
+  "FullDesc": "A well muscled man who is very heavily armored and armed to the teeth.  He\nlives for combat.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12007",
+  "Name": "the chariot driver",
+  "Keywords": [
+   "driver"
+  ],
+  "RoomDesc": "There is a chariot driver here.",
+  "FullDesc": "You see a very slight and small individual whose whole life is centered around\nnothing but horses and speed.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12008",
+  "Name": "the coach",
+  "Keywords": [
+   "coach",
+   "trainer"
+  ],
+  "RoomDesc": "There is a coach standing here, going over last minute strategy.",
+  "FullDesc": "As you try to look over his shoulder and listen in on his mumbling,\nhe looks up at you and gives you a glare that chills you to the\nbone.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12009",
+  "Name": "the healer",
+  "Keywords": [
+   "healer"
+  ],
+  "RoomDesc": "A healer is standing here.",
+  "FullDesc": "You see a young man, still learning about magical healing, wearing a white \ncoat and using a stethoscope.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12010",
+  "Name": "the herbalist",
+  "Keywords": [
+   "herbalist",
+   "young",
+   "lady",
+   "beautiful"
+  ],
+  "RoomDesc": "There is a beautiful young lady here, carrying herbs to help the healer with.",
+  "FullDesc": "The herbalist is a very beautiful young lady who is about 22 years old.  She \nhas deep brown eyes and shoulder-length chestnut hair.  Her body is perfectly \nproportioned and she stands about 5' 5\" tall.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12011",
+  "Name": "Titus' shopkeeper",
+  "Keywords": [
+   "shopkeeper"
+  ],
+  "RoomDesc": "Titus' shopkeeper is here, minding the store.",
+  "FullDesc": "The shopkeeper is an older man in his middle to late fifties and looks like\nhe enjoys the quiet life.  There is a long scar running from the edge of his\nmouth to his right ear, making it look like he is always smiling.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12012",
+  "Name": "the peddler",
+  "Keywords": [
+   "peddler"
+  ],
+  "RoomDesc": "A poor peddler is standing here, trying to support his meager existence.",
+  "FullDesc": "You see a small, dirty man who doesn't look very healthy.  ",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12013",
+  "Name": "the page",
+  "Keywords": [
+   "page"
+  ],
+  "RoomDesc": "A page stands here, waiting to run an errand.",
+  "FullDesc": "You see a young boy who looks very strong and very fast.  He has the look of\na scholar about him.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12014",
+  "Name": "the plaintiff",
+  "Keywords": [
+   "plaintiff"
+  ],
+  "RoomDesc": "The plaintiff stands here, pleading his case.",
+  "FullDesc": "He looks pitiful.  Absolutely pitiful.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12015",
+  "Name": "the ticket master",
+  "Keywords": [
+   "master"
+  ],
+  "RoomDesc": "A ticket master is here, looking at you expectantly.",
+  "FullDesc": "He seems to be waiting for you to either buy a ticket or to get out\nof his way so that he can sell tickets to people that actually want\nthem.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12016",
+  "Name": "the stadium vendor",
+  "Keywords": [
+   "vendor"
+  ],
+  "RoomDesc": "A stadium vendor is walking here, selling overpriced hotdogs and beer.",
+  "FullDesc": "The vendor is a scruffy looking man who isn't afraid of a fight and looks\nlike he has had just about enough of smart-mouthed spectators.  ",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob12017",
+  "Name": "the citizen",
+  "Keywords": [
+   "citizen"
+  ],
+  "RoomDesc": "A citizen of Rome is standing here.",
+  "FullDesc": "It appears to be your ordinary citizen going about his business.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob12018",
+  "Name": "the gateguard",
+  "Keywords": [
+   "gateguard",
+   "guard"
+  ],
+  "RoomDesc": "A gateguard stands here, tending the gate.",
+  "FullDesc": "You see a strong, loyal public defender.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector"
+  ]
+ },
+ {
+  "Key": "mob12019",
+  "Name": "the soldier",
+  "Keywords": [
+   "soldier"
+  ],
+  "RoomDesc": "A soldier on leave is walking around looking for entertainment.",
+  "FullDesc": "You see a member of one of the Emperor's elite legions.  He looks VERY strong.\nYou have this vague feeling that his entertainment isn't going to be a very\nwholesome activity.",
+  "Stats": null,
+  "Attacks": null
+ },
+ {
+  "Key": "mob12020",
+  "Name": "Julius Caesar",
+  "Keywords": [
+   "emperor",
+   "julius",
+   "caesar"
+  ],
+  "RoomDesc": "Julius Caesar, the Emperor of Rome, is sitting here.",
+  "FullDesc": "You see a man who is dressed in the finest of clothes, has eaten the best of\nfoods and lived in the most opulent palace that Rome has ever known. ",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12021",
+  "Name": "the royal bodyguard",
+  "Keywords": [
+   "guard",
+   "royal",
+   "bodyguard"
+  ],
+  "RoomDesc": "There is a royal bodyguard here, ready to die for the Emperor, if necessary.",
+  "FullDesc": "The bodyguard is dressed in the finest of armor and wields only the\ndeadliest of weapons.  He is very strong and would put up one hell\nof a fight.  He has been trained to be suspicious of all but the\nmost innocent visitors, and likely to take offense of anyone with\nless than pure intentions.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12022",
+  "Name": "the judge",
+  "Keywords": [
+   "judge",
+   "justice"
+  ],
+  "RoomDesc": "A judge is standing here, reading a case.",
+  "FullDesc": "He seems to be quite interested in the case, perhaps you shouldn't\ndisturb him now, later would probably be a better time.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12023",
+  "Name": "the master scheduler",
+  "Keywords": [
+   "master",
+   "scheduler"
+  ],
+  "RoomDesc": "The master scheduler is here, writing in an appointment book.",
+  "FullDesc": "As you look at him, he looks up at you and asks, 'Do you have an\nappointment?'  He waits for a few seconds and then asks, 'Would\nyou like one?'",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12024",
+  "Name": "the slimeball",
+  "Keywords": [
+   "slimeball",
+   "slime",
+   "ball",
+   "green"
+  ],
+  "RoomDesc": "A green ball of slime is hanging over you, oozing downward.",
+  "FullDesc": "There is a green 'ball' of slime oozing from the coating on the walls.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob12025",
+  "Name": "Froboz",
+  "Keywords": [
+   "froboz",
+   "wizard"
+  ],
+  "RoomDesc": "Froboz the wizard is standing here, working on a new spell.",
+  "FullDesc": "You see a middle-aged man whose knowledge of magic, both offensive and \ndefensive, is legendary.  He literally glows with a pink aura.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12026",
+  "Name": "Titus Andronicus",
+  "Keywords": [
+   "titus",
+   "andronicus"
+  ],
+  "RoomDesc": "Titus Andronicus is standing here, polishing a few swords.",
+  "FullDesc": "As you look at him, he suddenly swings a newly sharpened sword\nat you!  Watch out!",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob12027",
+  "Name": "the senator",
+  "Keywords": [
+   "senator"
+  ],
+  "RoomDesc": "A senator is here, waiting for debate to begin.",
+  "FullDesc": "He seems to be quite bored and is playing with the edge of his toga.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12028",
+  "Name": "the bailiff",
+  "Keywords": [
+   "bailiff"
+  ],
+  "RoomDesc": "The bailiff stands here, keeping order in the courtroom.",
+  "FullDesc": "He is a very stern man and insists on absolute quiet in his courtroom\nunless the judge has given someone permisson to speak.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12029",
+  "Name": "the defendant",
+  "Keywords": [
+   "defendant"
+  ],
+  "RoomDesc": "The defendant stands here, pleading her case.",
+  "FullDesc": "She looks to be well organized and full of confidence.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12030",
+  "Name": "Jupiter",
+  "Keywords": [
+   "jupiter",
+   "king",
+   "god"
+  ],
+  "RoomDesc": "Jupiter, King of the Gods, is watching over his realm here.",
+  "FullDesc": "He is the strongest of the Gods, and certainly no easy mark!  His powers\ntranscend the plane of the physical, and could easily kill an unprepared\nmortal.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12031",
+  "Name": "Venus",
+  "Keywords": [
+   "venus",
+   "goddess"
+  ],
+  "RoomDesc": "Venus, the Goddess of Beauty and Knowledge, is resting here.",
+  "FullDesc": "Venus is probably one of the most beautiful women you have ever seen\nif not THE most beautiful.  She is very powerful and tough under that\nouter image of beauty.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12032",
+  "Name": "Mars",
+  "Keywords": [
+   "mars",
+   "god"
+  ],
+  "RoomDesc": "Mars, the God of War and State, is sitting down here.",
+  "FullDesc": "Mars is a tall God with burning, hateful eyes and a large scowl on\nhis face.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12033",
+  "Name": "Mercury",
+  "Keywords": [
+   "mercury",
+   "messenger",
+   "god"
+  ],
+  "RoomDesc": "Mercury, the messenger of the Gods, is standing here.",
+  "FullDesc": "Mercury is a handsome, youthful God and wears a large grin on his face.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12034",
+  "Name": "Froboz' shopkeeper",
+  "Keywords": [
+   "shopkeeper"
+  ],
+  "RoomDesc": "Froboz' shopkeeper is here, minding the store.",
+  "FullDesc": "The shopkeeper is an older man in his middle to late fifties and looks like\nhe enjoys the quiet life.  There is a long scar running from the edge of his\nmouth to his right ear, making it look like he is always smiling.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12035",
+  "Name": "the executioner",
+  "Keywords": [
+   "executioner"
+  ],
+  "RoomDesc": "The executioner stands here, waiting to torture some sorry soul.",
+  "FullDesc": "You see a burly man who is wearing a black hood that obscures his face.  He\nhas a very sadistic attitude and clearly loves his work.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary",
+   "scavenger",
+   "trashcollector",
+   "aggro"
+  ]
+ },
+ {
+  "Key": "mob12036",
+  "Name": "the baker",
+  "Keywords": [
+   "baker"
+  ],
+  "RoomDesc": "The baker looks at you calmly, wiping flour from his face with one hand.",
+  "FullDesc": "A fat, nice looking baker.  But you can see that he has many scars on his\nbody.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ },
+ {
+  "Key": "mob12037",
+  "Name": "the grocer",
+  "Keywords": [
+   "grocer"
+  ],
+  "RoomDesc": "A grocer stands at the counter, with a slightly impatient look on his face.",
+  "FullDesc": "A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.",
+  "Stats": null,
+  "Attacks": null,
+  "Flags": [
+   "stationary"
+  ]
+ }
+]

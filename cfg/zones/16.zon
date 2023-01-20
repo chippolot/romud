@@ -1,0 +1,7 @@
+{
+ "Id": 16,
+ "Name": "The Straight Path",
+ "MinRoomId": 1501,
+ "MaxRoomId": 1600,
+ "ResetFreq": 600
+}

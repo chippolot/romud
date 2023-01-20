@@ -31,16 +31,64 @@ func main() {
 		os.Exit(1)
 	}
 
-	for _, path := range utils.FindFilePathsWithExtension(inPath, ".wld") {
+	for _, path := range utils.FindFilePathsWithExtension(inPath, ".zon") {
 		log.Println("Parsing:", path)
-		id := trimExtension(filepath.Base(path))
+		id, _ := strconv.Atoi(trimExtension(filepath.Base(path)))
+		id++
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
-			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%s%s", id, mud.RoomsFileExtension)))
+			parseZone(bytes, filepath.Join(outPath, "zones", fmt.Sprintf("%d%s", id, mud.ZoneFileExtension)))
 		} else {
 			log.Panic(err)
 			os.Exit(1)
 		}
 	}
+
+	for _, path := range utils.FindFilePathsWithExtension(inPath, ".wld") {
+		log.Println("Parsing:", path)
+		id, _ := strconv.Atoi(trimExtension(filepath.Base(path)))
+		id++
+		if bytes, err := utils.LoadFileBytes(path); err == nil {
+			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%d%s", id, mud.RoomsFileExtension)))
+		} else {
+			log.Panic(err)
+			os.Exit(1)
+		}
+	}
+}
+
+func parseZone(data []byte, outPath string) {
+	cfg := &mud.ZoneConfig{}
+
+	var line string
+	lines := strings.Split(string(data), "\n")
+	if len(lines) > 0 {
+		line = lines[0]
+	}
+	for len(lines) > 0 {
+		if len(line) == 0 || line[0] != '#' {
+			line, lines = nextLine(lines)
+			continue
+		}
+
+		// Parse Id
+		zid, _ := strconv.Atoi(line[1:])
+		cfg.Id = mud.ZoneId(zid + 1)
+
+		// Parse Name
+		line, lines = nextLine(lines)
+		cfg.Name = line[:len(line)-1]
+
+		// Parse values
+		line, lines = nextLine(lines)
+		toks := strings.Split(line, " ")
+		i, _ := strconv.Atoi(toks[0])
+		cfg.MinRoomId = mud.RoomId(i) + 1
+		i, _ = strconv.Atoi(toks[1])
+		cfg.MaxRoomId = mud.RoomId(i) + 1
+		i, _ = strconv.Atoi(toks[2])
+		cfg.ResetFreq = utils.Seconds(i * 60)
+	}
+	save(outPath, cfg)
 }
 
 func parseRooms(data []byte, outPath string) {

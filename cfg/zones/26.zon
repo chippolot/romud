@@ -1,0 +1,7 @@
+{
+ "Id": 26,
+ "Name": "The High Tower Of Magic",
+ "MinRoomId": 2501,
+ "MaxRoomId": 2700,
+ "ResetFreq": 1200
+}

@@ -1,0 +1,7 @@
+{
+ "Id": 121,
+ "Name": "Rome",
+ "MinRoomId": 12001,
+ "MaxRoomId": 12100,
+ "ResetFreq": 2700
+}

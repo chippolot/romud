@@ -1,0 +1,7 @@
+{
+ "Id": 37,
+ "Name": "The Chessboard of Midgaard",
+ "MinRoomId": 3601,
+ "MaxRoomId": 3700,
+ "ResetFreq": 600
+}

@@ -1,0 +1,7 @@
+{
+ "Id": 34,
+ "Name": "The Three Of Swords",
+ "MinRoomId": 3301,
+ "MaxRoomId": 3400,
+ "ResetFreq": 1800
+}

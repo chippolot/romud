@@ -1,0 +1,7 @@
+{
+ "Id": 41,
+ "Name": "Mines of Moria",
+ "MinRoomId": 4001,
+ "MaxRoomId": 4199,
+ "ResetFreq": 1200
+}

@@ -1,0 +1,7 @@
+{
+ "Id": 187,
+ "Name": "Newbie Zone",
+ "MinRoomId": 18601,
+ "MaxRoomId": 18700,
+ "ResetFreq": 600
+}

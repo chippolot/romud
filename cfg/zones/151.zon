@@ -1,0 +1,7 @@
+{
+ "Id": 151,
+ "Name": "King Welmar's Castle",
+ "MinRoomId": 15001,
+ "MaxRoomId": 15100,
+ "ResetFreq": 7200
+}

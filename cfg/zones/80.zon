@@ -1,0 +1,7 @@
+{
+ "Id": 80,
+ "Name": "Redferne's Residence",
+ "MinRoomId": 7901,
+ "MaxRoomId": 8000,
+ "ResetFreq": 3000
+}

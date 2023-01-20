@@ -155,16 +155,24 @@ func wanderNPCs(w *World, t GameTime) {
 		// Pick a random open exit to take
 		r := w.rooms[e.data.RoomId]
 		numExits := len(r.cfg.Exits)
-		rndExit := rand.Intn(numExits)
+		rnd := rand.Intn(numExits)
 		var dir Direction
 		i := 0
 		for dir = range r.cfg.Exits {
-			if i == rndExit {
+			if i == rnd {
 				break
 			}
+
 			i++
 		}
 		if !r.IsExitOpen(dir) {
+			continue
+		}
+
+		// Stay in same zone
+		rid2 := r.cfg.Exits[dir]
+		r2 := w.rooms[rid2]
+		if r.zone != r2.zone {
 			continue
 		}
 

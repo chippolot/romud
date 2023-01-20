@@ -1,0 +1,7 @@
+{
+ "Id": 36,
+ "Name": "Miden'Nir",
+ "MinRoomId": 3501,
+ "MaxRoomId": 3600,
+ "ResetFreq": 3600
+}

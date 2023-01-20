@@ -1,0 +1,7 @@
+{
+ "Id": 66,
+ "Name": "The Dwarven Kingdom",
+ "MinRoomId": 6501,
+ "MaxRoomId": 6600,
+ "ResetFreq": 2400
+}

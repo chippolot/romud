@@ -1,0 +1,7 @@
+{
+ "Id": 74,
+ "Name": "The Tunnels In The Sewer",
+ "MinRoomId": 7301,
+ "MaxRoomId": 7400,
+ "ResetFreq": 1500
+}

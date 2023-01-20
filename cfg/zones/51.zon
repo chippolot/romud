@@ -1,0 +1,7 @@
+{
+ "Id": 51,
+ "Name": "The Great Eastern Desert",
+ "MinRoomId": 5001,
+ "MaxRoomId": 5100,
+ "ResetFreq": 1800
+}

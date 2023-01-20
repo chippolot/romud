@@ -1,1394 +1,748 @@
 [
  {
-  "Id": 3601,
-  "Name": "The Great Chessboard Of Midgaard",
-  "Desc": "   You stand in the archway of the Chessboard of Midgaard.  The giant\nwooden gate is rusted open.\n   A narrow dirt path leads eastwards into the thick grass and the\nchessboard opens up to the west.",
+  "Id": 3501,
+  "Name": "The Plains",
+  "Desc": "   You are standing on the plains.  This is a vast desolate place where\nthe wind can howl undisturbed since nothing but you bars its way.  However\nyou are not the first to wander here.  Before you somebody has left a small\npath.  The path looks rather bewildered and is not the kind of path to lead\nto anywhere significant or important but it seems to have made up its mind\nto enter the hills far away north.  A narrow trail scars its way off to the\neast as it leads up towards a hillside.",
   "Exits": [
    {
-    "RoomId": 3067,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3633,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3602,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the Black Queen's Rook.",
-  "Exits": [
-   {
-    "RoomId": 3603,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3610,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3603,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the Black Queen's Knight.",
-  "Exits": [
-   {
-    "RoomId": 3604,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3611,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3602,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3604,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the Black Queen's Bishop.",
-  "Exits": [
-   {
-    "RoomId": 3603,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3605,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3612,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3605,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the Black Queen.",
-  "Exits": [
-   {
-    "RoomId": 3606,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3613,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3604,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3666,
-    "Verb": "down"
-   }
-  ]
- },
- {
-  "Id": 3606,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the Black King.",
-  "Exits": [
-   {
-    "RoomId": 3607,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3614,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3605,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3607,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the Black King's Bishop.",
-  "Exits": [
-   {
-    "RoomId": 3606,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3608,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3615,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3608,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the Black King's Knight.",
-  "Exits": [
-   {
-    "RoomId": 3609,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3616,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3607,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3609,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the Black King's Rook.",
-  "Exits": [
-   {
-    "RoomId": 3617,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3608,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3610,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the Black Queen's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3602,
+    "RoomId": 4001,
     "Verb": "north"
    },
    {
-    "RoomId": 3611,
+    "RoomId": 3301,
     "Verb": "east"
    },
    {
-    "RoomId": 3618,
+    "RoomId": 3502,
     "Verb": "south"
    }
   ]
  },
  {
-  "Id": 3611,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the Black Queen's Pawns.",
+  "Id": 3502,
+  "Name": "The Lane",
+  "Desc": "   You are strolling along a pleasant, shady lane.  The road is lined on both\nsides by tall, stately trees which lend the scene with a sense of quiet\nserenity.\n   You can follow the road north or south.",
   "Exits": [
    {
-    "RoomId": 3610,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3603,
+    "RoomId": 3501,
     "Verb": "north"
    },
    {
-    "RoomId": 3612,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3619,
+    "RoomId": 3503,
     "Verb": "south"
    }
   ]
  },
  {
-  "Id": 3612,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the Black Queen's Pawns.",
+  "Id": 3503,
+  "Name": "The Laneway",
+  "Desc": "   The trees stand close here, and the tall, bushy undergrowth prevents you\nfrom seeing far in any direction save east, where a broad lane continues off\ninto the distance; and west, where the same lane continues towards what looks\nlike a fairly large city.  The muted sounds of city commotion reach your ears\nfrom a distance; stray dogs barking, children crying, and street salesmen\nshouting.\n   A steep path leads down from here to the northeast towards the Dwarven\nVillage, and a small trail leads through the trees towards the hills to the\nnorth.",
   "Exits": [
    {
-    "RoomId": 3604,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3613,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3620,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3611,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3613,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the Black Queen's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3614,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3621,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3612,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3605,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3614,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the Black King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3606,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3615,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3622,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3613,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3615,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the Black King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3607,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3616,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3623,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3614,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3616,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the Black King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3608,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3617,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3624,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3615,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3617,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the Black King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3625,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3616,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3609,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3618,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3619,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3626,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3610,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3619,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3611,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3620,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3627,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3618,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3620,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3612,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3621,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3628,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3619,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3621,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3629,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3620,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3613,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3622,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3622,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3623,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3630,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3621,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3614,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3623,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3615,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3624,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3631,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3622,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3624,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3632,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3623,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3616,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3625,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3625,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  You can see a rusty gate\nto the south.",
-  "Exits": [
-   {
-    "RoomId": 3617,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3633,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3624,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3626,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3618,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3627,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3634,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3627,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3628,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3635,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3626,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3619,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3628,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3620,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3629,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3636,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3627,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3629,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3621,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3630,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3637,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3628,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3630,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3622,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3631,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3638,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3629,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3631,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3623,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3632,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3639,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3630,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3632,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  There is a rusty gate\na short distance to the east.",
-  "Exits": [
-   {
-    "RoomId": 3624,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3633,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3640,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3631,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3633,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  There is a large rusty\ngate to the east.",
-  "Exits": [
-   {
-    "RoomId": 3625,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3601,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3641,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3632,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3634,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3626,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3635,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3642,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3635,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3627,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3636,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3643,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3634,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3636,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3628,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3637,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3644,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3635,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3637,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3629,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3638,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3645,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3636,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3638,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3646,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3637,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3630,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3639,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3639,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3631,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3640,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3647,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3638,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3640,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3632,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3641,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3648,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3639,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3641,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  There is a rusty gate\nto the north.",
-  "Exits": [
-   {
-    "RoomId": 3633,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3649,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3640,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3642,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3634,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3643,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3650,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3643,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3635,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3644,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3651,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3642,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3644,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3636,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3645,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3652,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3643,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3645,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3637,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3646,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3653,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3644,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3646,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3638,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3647,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3654,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3645,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3647,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3648,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3655,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3646,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3639,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3648,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.",
-  "Exits": [
-   {
-    "RoomId": 3640,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3649,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3656,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3647,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3649,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.",
-  "Exits": [
-   {
-    "RoomId": 3641,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3657,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3648,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3650,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the White Queen's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3642,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3651,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3658,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3651,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the White Queen's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3659,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3650,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3643,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3652,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3652,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the White Queen's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3660,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3651,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3644,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3653,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3653,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the White Queen's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3645,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3654,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3661,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3652,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3654,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the White King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3646,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3655,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3662,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3653,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3655,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the White King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3647,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3656,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3663,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3654,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3656,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the White King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3648,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3657,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3664,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3655,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3657,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the White King's Pawns.",
-  "Exits": [
-   {
-    "RoomId": 3649,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3665,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3656,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3658,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the White Queen's Rook.",
-  "Exits": [
-   {
-    "RoomId": 3659,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3650,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3659,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the White Queen's Knight.",
-  "Exits": [
-   {
-    "RoomId": 3651,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3660,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3658,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3660,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the White Queen's Bishop.",
-  "Exits": [
-   {
-    "RoomId": 3659,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3652,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3661,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3661,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the White Queen.",
-  "Exits": [
-   {
-    "RoomId": 3660,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3667,
+    "RoomId": 6501,
     "Verb": "down"
    },
    {
-    "RoomId": 3653,
+    "RoomId": 3502,
     "Verb": "north"
    },
    {
-    "RoomId": 3662,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3662,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the White King.",
-  "Exits": [
-   {
-    "RoomId": 3654,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3663,
+    "RoomId": 15001,
     "Verb": "east"
    },
    {
-    "RoomId": 3661,
+    "RoomId": 3504,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3663,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the White King's Bishop.",
+  "Id": 3504,
+  "Name": "The City Entrance",
+  "Desc": "   You stand on the outskirts of a large city - Midgaard; the capital of\nthis land.  The road leads east into the peace and quiet - and dangers -\nof the forest; and to the west it becomes the main street of the town;\nsurrounded by a confusion of shops, bars, and market places.",
   "Exits": [
    {
-    "RoomId": 3664,
+    "RoomId": 3503,
     "Verb": "east"
    },
    {
-    "RoomId": 3662,
+    "RoomId": 3054,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3655,
-    "Verb": "north"
    }
   ]
  },
  {
-  "Id": 3664,
-  "Name": "A Black Square",
-  "Desc": "   You are standing on a black marble square.  This is usually the home\nof the White King's Knight.",
+  "Id": 3505,
+  "Name": "The South Gate",
+  "Desc": "   You are standing on a small, dusty path leading away from the south\ngate of Midgaard, to the forest of Miden'Nir (Goblinic for 'Green Blood').\nYou can still see the city to the east, but if you go south, there is\nfresh air and greenery.",
   "Exits": [
    {
-    "RoomId": 3663,
-    "Verb": "west"
+    "RoomId": 3506,
+    "Verb": "south"
    },
    {
-    "RoomId": 3656,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3665,
+    "RoomId": 3128,
     "Verb": "east"
    }
   ]
  },
  {
-  "Id": 3665,
-  "Name": "A White Square",
-  "Desc": "   You are standing on a white marble square.  This is usually the home\nof the White King's Rook.",
+  "Id": 3506,
+  "Name": "The Trail To Miden'Nir",
+  "Desc": "   You are in a light forest.  A path leads south, but the passage to\nthe east is easy enough.  To the west, smoke can be seen rising above\nthe treetops.  The sprawl of Midgaard lies north of here.",
   "Exits": [
    {
-    "RoomId": 3657,
+    "RoomId": 3505,
     "Verb": "north"
    },
    {
-    "RoomId": 3664,
+    "RoomId": 3507,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3508,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3571,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3666,
-  "Name": "The Black Treasury",
-  "Desc": "   You are standing in the treasury of the Black Court.  Hopefully no one \nhas looted the Crown's treasure.",
+  "Id": 3507,
+  "Name": "The Miden'nir",
+  "Desc": "   You are in a dark forest.  To the east, mountains block passage.  From\nhere, only the lighter forest to the west or south offer a way to travel.",
   "Exits": [
    {
-    "RoomId": 3605,
-    "Verb": "up"
+    "RoomId": 3551,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3510,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3506,
+    "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3667,
-  "Name": "The White Treasury",
-  "Desc": "   You are standing in the treasury of the White Court.  Hopefully no one \nhas looted the Crown's treasure.",
+  "Id": 3508,
+  "Name": "The Miden'nir",
+  "Desc": "   The forest is deep here and the wind blows through the trees and\nthrough your hair.  To the north, the forest gets lighter.  However,\nthe southern and western paths place you even deeper in the wood.",
   "Exits": [
    {
-    "RoomId": 3661,
-    "Verb": "up"
+    "RoomId": 3506,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3511,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3509,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3509,
+  "Name": "On a Small Path",
+  "Desc": "   A path is here, leading east and south through the dark woods of\nMiden'nir.  Mountains slash the scenery to the west of here.",
+  "Exits": [
+   {
+    "RoomId": 3508,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3512,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3510,
+  "Name": "The Miden'nir",
+  "Desc": "   The trees of Miden'nir are lush and green, hiding the evil that lurks\nin these woods.  The trees become too thick to the west, but you may go\nnorth, south or travel toward the mountains that lie east of here.",
+  "Exits": [
+   {
+    "RoomId": 3507,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3513,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3515,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3511,
+  "Name": "A Crossroads",
+  "Desc": "   Here footworn paths meet leading north, south and east.  The trees\nseem to be closing in on you at this point, and you can barely see\nthe sky through the thick branches above your head.",
+  "Exits": [
+   {
+    "RoomId": 3515,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3517,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3508,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3512,
+  "Name": "The Trail",
+  "Desc": "   You are on a north-south trail through the woods.  To the west,\nimpassable mountains glare at you, and the thick woods and undergrowth\nprevent any movement westward.",
+  "Exits": [
+   {
+    "RoomId": 3509,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3516,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3513,
+  "Name": "The Miden'nir",
+  "Desc": "   The trees of Miden'nir are lush and green, hiding the evil that lurks\nin these woods.  You can go north toward the mountains, or west to the\nforest, but the steep mountains prevent any movement east.",
+  "Exits": [
+   {
+    "RoomId": 3551,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3514,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3510,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3514,
+  "Name": "The Miden'nir",
+  "Desc": "   The forest is dark, and becomes even darker west.  You sense\nthat there is something evil hidden in these woods.  The forest\ngets lighter to the north.  The wind kicks up as you ponder your\noptions.",
+  "Exits": [
+   {
+    "RoomId": 3513,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3515,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3515,
+  "Name": "The Deep Forest",
+  "Desc": "   It is quite dark here, forest surrounds you.  With each step, the\nforest seems to close around you, and get darker and more foreboding.\nIt might just be time to head back to somewhere safe.",
+  "Exits": [
+   {
+    "RoomId": 3510,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3514,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3518,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3511,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3516,
+  "Name": "The Light Forest",
+  "Desc": "   The forest is light here and you can easily pick your way through the \ntrail.  To the east, the forest becomes thick and darker.  South, the\ntrail continues.",
+  "Exits": [
+   {
+    "RoomId": 3512,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3517,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3519,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3517,
+  "Name": "Some Muddy Ground",
+  "Desc": "   The ground is quite muddy here and puddles are all around.  Your\nboots make a disgusting SQUISH as you walk here.  You can go in any\nof the four cardinal directions from here.  Hopefully, it will be\ndryer.",
+  "Exits": [
+   {
+    "RoomId": 3518,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3520,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3516,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3511,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3518,
+  "Name": "Near The Mountains",
+  "Desc": "   The most prominent feature here is the mountains that lie to the\neast.  You can only go north and west from here as the rocks stop all\nother movement.",
+  "Exits": [
+   {
+    "RoomId": 3515,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3517,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3519,
+  "Name": "The Fading Trail",
+  "Desc": "   The trail becomes nearly unpassable here.  You can go north\nas the forest is relatively light.  To the south, you can see a\npath.",
+  "Exits": [
+   {
+    "RoomId": 3516,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3523,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3520,
+  "Name": "The Dark Path",
+  "Desc": "   You are hemmed in by trees on either side of you.  The path\ncontinues north and south, and while is much to thick to explore\nwest, you can head off into the woods to the west.",
+  "Exits": [
+   {
+    "RoomId": 3517,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3521,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3522,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3521,
+  "Name": "The Dark Forest",
+  "Desc": "   You stomp your way through the underbrush.  The dark forest of\nMiden'nir get pretty thick here, and the branches high above your\nhead are so thick that they block out all direct sunlight.  While\nit is much too thick to go further east, you might be able to make\nyour way though the forest to the south and west.",
+  "Exits": [
+   {
+    "RoomId": 3524,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3520,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3522,
+  "Name": "The Carnage",
+  "Desc": "   Here, you see a gruesome sight.  Blood is everywhere... on the trees and\nsoaked into the ground.  Two carcasses lie in front of you, seeming to look\nup at you.  The forest is impassible to the south, but the other directions\nlook ok.",
+  "Exits": [
+   {
+    "RoomId": 3520,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3524,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3523,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3523,
+  "Name": "Deep In The Forest Of Miden'nir",
+  "Desc": "   There is a sickening stench here.  It smells of blood and death.\nTo the north, you catch glimpses of daylight.  To the east, you\nsimply cannot see.  The trees are close and stifling.",
+  "Exits": [
+   {
+    "RoomId": 3519,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3522,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3524,
+  "Name": "The Dark Forest",
+  "Desc": "   The branches above you block out all direct sunlight, making the forest\nin this area rather dark.  The forest continues east, where it meets the\nmountains.  The air is still and stuffy - a stench comes from the west and\nan ugly feeling causes the hair to rise on the back of your neck!",
+  "Exits": [
+   {
+    "RoomId": 3521,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3552,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3522,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3551,
+  "Name": "At The Foot Of The Mountains",
+  "Desc": "   You find yourself at the foot of the mountains, where it is much\nto steep to continue north or east.  You see the lush, green forest\nof Miden'nir to the south and west.",
+  "Exits": [
+   {
+    "RoomId": 3513,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3507,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3552,
+  "Name": "Deep In The Forest Of Miden'nir",
+  "Desc": "   The branches above you block out all direct sunlight, making\nthe forest in this area very dark.  The forest continues west,\nbut mountains block further exploration in all other directions,\nexcept south, where you notice a small tunnel dug into the\nmountainside.",
+  "Exits": [
+   {
+    "RoomId": 3553,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3524,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3553,
+  "Name": "A Tunnel In The Mountains",
+  "Desc": "   The walls of this tunnel were carved out many years ago by the goblins\nof this forest.  The floor is well worn, and continues south, into the\nmountain, or back north out into the forest.",
+  "Exits": [
+   {
+    "RoomId": 3552,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3554,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3554,
+  "Name": "A Tunnel In The Mountains",
+  "Desc": "   The tunnel gets lighter to the north, presumably leading out, while to\nthe south the passage gets smaller and smaller.  A small alcove has been\ncarved into the east wall.",
+  "Exits": [
+   {
+    "RoomId": 3553,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3555,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3556,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3555,
+  "Name": "A Small Alcove",
+  "Desc": "   A small alcove has been carved out here.  There are a bunch of twigs\nand leaves thrown into a pile here, probably serving as a bed.",
+  "Exits": [
+   {
+    "RoomId": 3554,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3556,
+  "Name": "A Tunnel In The Mountains",
+  "Desc": "   As you explore further into the mountainside, the tunnel gets smaller\nand smaller to the south.  You almost have to hunch over to make your way\nthrough this area.  A small archway to the south leads into a large chamber.",
+  "Exits": [
+   {
+    "RoomId": 3554,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3557,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3557,
+  "Name": "The Goblin HeadQuarters",
+  "Desc": "   The tunnel widens into a large (well, large for goblins) cavern that\nserves as the living quarters for the goblins of Miden'nir.  The bones of\nnumbers woodland creatures are strewn about the room, the remanents of a\nrecent meal.",
+  "Exits": [
+   {
+    "RoomId": 3556,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3571,
+  "Name": "The Front Of The Inn",
+  "Desc": "   You are standing on a well-worn path which opens into a clearing.\nAn old, wooden building is here with smoke billowing from its\nchimney.  A painted sign is visible on the porch to the west.  You\ncould go north or south around the building or leave this place and\nreturn to the forest.",
+  "Exits": [
+   {
+    "RoomId": 3572,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3506,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3573,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3575,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3572,
+  "Name": "North Of The Inn",
+  "Desc": "   You are standing north of the Inn.  Things don't look much different\nfrom this angle.  The air here is filled with smells of smoke and cooking.\nSouth, the front porch is waiting for you... or you can see if there is\na back door.",
+  "Exits": [
+   {
+    "RoomId": 3571,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3573,
+  "Name": "South Of The Inn",
+  "Desc": "   You are standing south of the Inn.  You could easily go north and enter\nthrough the front door, or west and to the rear of the establishment.  You\nhere some muffled cries from a tiny trail leading south of here.",
+  "Exits": [
+   {
+    "RoomId": 3571,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3576,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3574,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3574,
+  "Name": "Behind The Inn",
+  "Desc": "   You now stand behind the Inn.  The smell here is not so pleasant as\nthe keeper and his help throw a good deal of garbage here.  A couple of\npiles of rubbish are to the west, but you will smell the worse for\nmeddling there.  As a clean alternative, you can go north or east around\nthe Inn.",
+  "Exits": [
+   {
+    "RoomId": 3573,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3579,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3575,
+  "Name": "The Woodsman Inn",
+  "Desc": "   You are in the common room of the Woodsman Inn.  A thin haze of smoke\nsits in the air here.  The Inn is often empty, as the forest has become\noverrun by goblins as of late, and it is no longer safe in these parts.\nThe bar is just north of here.  If you'd rather have your own table, one\nis empty to the south.",
+  "Exits": [
+   {
+    "RoomId": 3578,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3577,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3571,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3580,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3576,
+  "Name": "The Ambush Point",
+  "Desc": "   This is a overgrown foot-trail south of the Inn.  It leads west, but you\nwould be hard pressed to follow it far.  A number of bushes are trampled on\nand some medium sized branches have been knocked down.  Obviously there has\nbeen a battle here rather recently.",
+  "Exits": [
+   {
+    "RoomId": 3573,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3582,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3577,
+  "Name": "The Bar",
+  "Desc": "   This is where people use to come and enjoy the food, drink and\nhospitality of the Innkeeper, but as of late, he only serves the\nfew adventurers that manage to survive a trip through the forest.\nYou can leave south and return to the common room.",
+  "Exits": [
+   {
+    "RoomId": 3575,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3578,
+  "Name": "The Bard's Table",
+  "Desc": "   You are in a darker corner in the Inn.  A large round table with a few\nwooden chairs sits here.  There is a large stain on the table, the remnants\nof a spilled drink.",
+  "Exits": [
+   {
+    "RoomId": 3575,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3579,
+  "Name": "The Garbage Dump",
+  "Desc": "You stand knee deep in garbage.  YECCH!!!  It smells terrible and who knows\nwhat vermin live in these piles of filth...",
+  "Exits": [
+   {
+    "RoomId": 3574,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3580,
+  "Name": "A Quieter Section Of The Inn",
+  "Desc": "There seems to be no one in this end of the Woodsman, probably a safe place\nto rest and lick your wounds...",
+  "Exits": [
+   {
+    "RoomId": 3575,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3582,
+  "Name": "On The Trail Of The Horsemen",
+  "Desc": "   The path continues east and west of here.  You notice fresh tracks in\nthe soft ground that show the horsemen fled to the west.",
+  "Exits": [
+   {
+    "RoomId": 3576,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3583,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3583,
+  "Name": "On The Trail Of The Horsemen",
+  "Desc": "   The path continues east and south.  You notice fresh tracks in the\nsoft ground that show the horsemen turned, and fled south.",
+  "Exits": [
+   {
+    "RoomId": 3582,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3584,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3584,
+  "Name": "On The Trail Of The Horsemen",
+  "Desc": "   The trail of the horsemen continues east and north along this path\nthrough the forest.  The tracks are still fresh, so they must be near.",
+  "Exits": [
+   {
+    "RoomId": 3583,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3585,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3585,
+  "Name": "A Dead End Trail",
+  "Desc": "   The path comes to an abrupt end here, as the trees close around you and\nmake any further exploration impossible.  Fresh tracks cover the ground, and\nend right here.  The horsemen must be nearby.",
+  "Exits": [
+   {
+    "RoomId": 3584,
+    "Verb": "east"
    }
   ]
  }

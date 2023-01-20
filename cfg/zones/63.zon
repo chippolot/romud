@@ -1,0 +1,7 @@
+{
+ "Id": 63,
+ "Name": "The Orc Enclave",
+ "MinRoomId": 6201,
+ "MaxRoomId": 6300,
+ "ResetFreq": 1200
+}

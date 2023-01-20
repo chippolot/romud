@@ -1,0 +1,7 @@
+{
+ "Id": 54,
+ "Name": "The Great Pyramid",
+ "MinRoomId": 5301,
+ "MaxRoomId": 5400,
+ "ResetFreq": 1200
+}

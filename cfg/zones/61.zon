@@ -1,0 +1,7 @@
+{
+ "Id": 61,
+ "Name": "Haon-Dor, Light Forest",
+ "MinRoomId": 6001,
+ "MaxRoomId": 6100,
+ "ResetFreq": 780
+}

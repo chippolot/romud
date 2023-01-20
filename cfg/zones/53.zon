@@ -1,0 +1,7 @@
+{
+ "Id": 53,
+ "Name": "The City Of Thalos",
+ "MinRoomId": 5201,
+ "MaxRoomId": 5300,
+ "ResetFreq": 900
+}

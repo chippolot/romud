@@ -1,0 +1,7 @@
+{
+ "Id": 55,
+ "Name": "New Thalos",
+ "MinRoomId": 5401,
+ "MaxRoomId": 5700,
+ "ResetFreq": 1200
+}

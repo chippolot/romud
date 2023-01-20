@@ -1,0 +1,7 @@
+{
+ "Id": 52,
+ "Name": "Drow City",
+ "MinRoomId": 5101,
+ "MaxRoomId": 5200,
+ "ResetFreq": 1800
+}

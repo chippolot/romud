@@ -59,12 +59,13 @@ type RoomConfig struct {
 
 type Room struct {
 	cfg      *RoomConfig
+	zone     ZoneId
 	entities map[EntityId]*Entity
 	items    map[ItemId]*Item
 }
 
-func NewRoom(cfg *RoomConfig) (*Room, error) {
-	r := &Room{cfg, make(map[EntityId]*Entity), make(map[ItemId]*Item)}
+func NewRoom(cfg *RoomConfig, zoneId ZoneId) (*Room, error) {
+	r := &Room{cfg, zoneId, make(map[EntityId]*Entity), make(map[ItemId]*Item)}
 	return r, nil
 }
 

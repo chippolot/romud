@@ -10,9 +10,30 @@ import (
 	lua "github.com/yuin/gopher-lua"
 )
 
-const EntitiesFileExtension = ".ent"
-const RoomsFileExtension = ".lvl"
-const ItemsFileExtension = ".itm"
+const (
+	EntitiesFileExtension = ".ent"
+	RoomsFileExtension    = ".lvl"
+	ItemsFileExtension    = ".itm"
+	ZoneFileExtension     = ".zon"
+)
+
+func LoadZone(w *World, filePath string) error {
+	bytes, err := utils.LoadFileBytes(filePath)
+	if err != nil {
+		return err
+	}
+
+	cfg := &ZoneConfig{}
+	err = json.Unmarshal(bytes, &cfg)
+	if err != nil {
+		return err
+	}
+
+	w.zones[cfg.Id] = cfg
+	log.Printf("loaded zone %d from %s", cfg.Id, filePath)
+
+	return nil
+}
 
 func LoadRooms(w *World, filePath string) error {
 	bytes, err := utils.LoadFileBytes(filePath)
@@ -27,9 +48,22 @@ func LoadRooms(w *World, filePath string) error {
 	}
 
 	for _, cfg := range cfgList {
-		r, err := NewRoom(cfg)
+		// Find zone id for room
+		rid := cfg.Id
+		zoneId := ZoneId(-1)
+		for _, z := range w.zones {
+			if rid >= z.MinRoomId && rid <= z.MaxRoomId {
+				zoneId = z.Id
+				break
+			}
+		}
+		if zoneId == -1 {
+			log.Fatalf("cannot find zone for room id %d", rid)
+		}
+
+		r, err := NewRoom(cfg, zoneId)
 		if err != nil {
-			log.Fatalf("Failed to parse room with error: %v", err)
+			log.Fatalf("failed to parse room with error: %v", err)
 		}
 		w.AddRoom(r)
 	}
@@ -59,7 +93,7 @@ func LoadEntities(w *World, filePath string) error {
 			fileDir := path.Dir(filePath)
 			scriptPath := path.Join(fileDir, cfg.ScriptFile)
 			if scriptsTable, err := LoadScript(w, scriptPath); err != nil {
-				log.Fatalf("Failed to load script file %s -- %v", scriptPath, err)
+				log.Fatalf("failed to load script file %s -- %v", scriptPath, err)
 			} else {
 				cfg.scripts = NewEntityScripts(w.L, scriptsTable)
 			}
@@ -110,24 +144,30 @@ func LoadScript(w *World, filePath string) (*lua.LTable, error) {
 }
 
 func LoadAssets(w *World, root string) {
+	// Load zones
+	for _, path := range utils.FindFilePathsWithExtension(root, ZoneFileExtension) {
+		if err := LoadZone(w, path); err != nil {
+			log.Fatalf("failed to load zone file %s -- %v", path, err)
+		}
+	}
 	// Load rooms
 	for _, path := range utils.FindFilePathsWithExtension(root, RoomsFileExtension) {
 		if err := LoadRooms(w, path); err != nil {
-			log.Fatalf("Failed to load room file %s -- %v", path, err)
+			log.Fatalf("failed to load room file %s -- %v", path, err)
 		}
 	}
 
 	// Load mobs
 	for _, path := range utils.FindFilePathsWithExtension(root, EntitiesFileExtension) {
 		if err := LoadEntities(w, path); err != nil {
-			log.Fatalf("Failed to load entities file %s -- %v", path, err)
+			log.Fatalf("failed to load entities file %s -- %v", path, err)
 		}
 	}
 
 	// Loat items
 	for _, path := range utils.FindFilePathsWithExtension(root, ItemsFileExtension) {
 		if err := LoadItems(w, path); err != nil {
-			log.Fatalf("Failed to load items file %s -- %v", path, err)
+			log.Fatalf("failed to load items file %s -- %v", path, err)
 		}
 	}
 }

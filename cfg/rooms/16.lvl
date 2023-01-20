@@ -1,0 +1,665 @@
+[
+ {
+  "Id": 1501,
+  "Name": "A Road Leading From The Bank",
+  "Desc": "   You find yourself on a small road leading away from the edge\nof the River of Lost Souls.  The dark waters of the River can\nbe seen and heard just south of here.  Looking to the east and\nwest, you see only the walls of the rocky cliffs.  Off to the\nnorth a strange path seems to lead straight into the depths of\nthe mountain.",
+  "Exits": [
+   {
+    "RoomId": 5620,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1502,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1502,
+  "Name": "A Long Road",
+  "Desc": "   You stand here in spiritual emptiness, beginning a long and dangerous\npath.  Your honest submission has already been made, but the truth of your\nheart has yet to be told.  Leave here now, and do not come back until\nyou have grown.",
+  "Exits": [
+   {
+    "RoomId": 1503,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1501,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1503,
+  "Name": "A Long Road",
+  "Desc": "   You stop for a moment, screaming in frustration.  Surely it was that one\nsin that was avoidable, of all that you regret.  The hitting and the hurting\nflash briefly before you.  Moments later the pain passes, and the straight\npath reveals itself before you.",
+  "Exits": [
+   {
+    "RoomId": 1502,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1504,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1504,
+  "Name": "A Long Road",
+  "Desc": "   The road clears, the fog and pain of the first few steps left behind\nyou.  Despite the sudden clarity, your mind is still haunted, images of\nan old woman kneeling in prayer, eyes closing, smiling and crying.",
+  "Exits": [
+   {
+    "RoomId": 1503,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1505,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1505,
+  "Name": "A Long Road",
+  "Desc": "   Looking ahead, you can see that the path you have been following will\nsoon come to an end, but something in the cold and the breeze tells you\nthat that will be only the beginning of the journey.",
+  "Exits": [
+   {
+    "RoomId": 1506,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1504,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1506,
+  "Name": "A Test for the Faithful",
+  "Desc": "   It is here finally that decisions must be made.  The first one that\nconfronts you is simple enough, to walk in the darkness, or to walk in\nthe light.  Only the depths of your soul can decide, but remember this\nmuch: the same truth lies at the end of both paths.",
+  "Exits": [
+   {
+    "RoomId": 1508,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 1507,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1507,
+  "Name": "Halls of the Forgotten",
+  "Desc": "   Even the darkest have a place on the road to the truth.  It is in this\nplace, so empty and forgotten, that God has chosen the worst, and brought\nthem close to Him for one last time.",
+  "Exits": [
+   {
+    "RoomId": 1514,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1509,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 1506,
+    "Verb": "up"
+   }
+  ]
+ },
+ {
+  "Id": 1508,
+  "Name": "Shahadah",
+  "Desc": "   It was written once, on an ancient parchment in a curious and flowing\nscript, that there is in fact no god but Allah, and that Muhammad was\nthe last of His Prophets.  With this recognition, all else became empty\nand meaningless.",
+  "Exits": [
+   {
+    "RoomId": 1524,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1519,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 1506,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1509,
+  "Name": "Earthly Evil",
+  "Desc": "   Whatever it carries, that rage converts into a weapon.  Wrath supplies\nall with arms.  When an angry man thirsts for blood anything will serve\nhim for a spear.  Fury turns a stick into a cudgel.",
+  "Exits": [
+   {
+    "RoomId": 1510,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1507,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 1510,
+  "Name": "Misguidance",
+  "Desc": "   Some have been brought here not for what they did, but what they\nfailed to do.  It is these, the poor souls that were presented the\nfair evidence and rejected it with an honest mind, that deserve our\npity the most of all.",
+  "Exits": [
+   {
+    "RoomId": 1511,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1509,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1511,
+  "Name": "Temptation",
+  "Desc": "   Old tales tell of a conversation between the devil and the Prophet\nJesus: the devil offered him a kingdom, vast riches, the temptation of\na glorious near-death saved by his angels.  Even this Messenger of God\nwas forced to stop and think.  Imagine how hard it could be for the rest.",
+  "Exits": [
+   {
+    "RoomId": 1512,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1510,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1512,
+  "Name": "Hypocrisy",
+  "Desc": "   He called the populace to strict religious purity, rigidly enforcing\nthe times of prayer and the most correct forms of the words of the Muezzin.\nAll of this he strengthened by his most impeccable example, shunning all\nriches and riding in tattered rags through his capital on the back of a\ndonkey.  Despite all this, remember.  Behind closed doors, all men are\nhypocrites.",
+  "Exits": [
+   {
+    "RoomId": 1513,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1511,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1513,
+  "Name": "Hate",
+  "Desc": "   There is little in life much easier, and truthfully, little that is a\nquicker ticket to damnation.  You give brief thanks that you have come to\nthe end of these trials, but your words are drowned out by something\nmuch louder, a mechanical preaching that drowns your ears in anger.  You\nhear a steady, repetitive litany of the same phrase, over and over again:\n\"I go the way history dictates with the blind assurance of a sleep-walker.\"",
+  "Exits": [
+   {
+    "RoomId": 1512,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1529,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1514,
+  "Name": "Spiritual Danger",
+  "Desc": "   Some evils are tangible, solid, so evident that they spit you right in\nthe face.  Others are more clever, more subtle, and it is these that present\nthe greatest danger.  Looking down the hall before you, a great fear fills\nyour heart, and a great, heavy longing.",
+  "Exits": [
+   {
+    "RoomId": 1515,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1507,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 1515,
+  "Name": "The Fall",
+  "Desc": "   In the beginning, he was the best, the most beautiful of all the angels,\nand God's most loved creation.  Look at your own beauty, human, and do what\nhe could not.  Look at your beauty, and learn to kneel!",
+  "Exits": [
+   {
+    "RoomId": 1514,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1516,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1516,
+  "Name": "Temptation",
+  "Desc": "   Temptation is the IF, the wondering, the second-guessing, the \"I will\nbe a better man... if...\"  And that if is usually taken, sitting alone,\nlistening to that voice, calling you, offering such an easy way, but such\na crooked one.",
+  "Exits": [
+   {
+    "RoomId": 1517,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1515,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1517,
+  "Name": "The Last Day",
+  "Desc": "   The din of a great battle shakes these halls, the moans of the earth\nerupting at the shakings of the End Time.  Be ready for that day, be very\nready, for if you are not, he will claim you for one of his own.",
+  "Exits": [
+   {
+    "RoomId": 1516,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1518,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1518,
+  "Name": "Flame",
+  "Desc": "   Undescribable horror and pain, a blackness drowned out only by the\nburning anguish, the inextinguishable fire coming not from some burning\nwood or molten lava but from the brightness and pain of the horrible,\ntortured souls that surround, everywhere you turn.",
+  "Exits": [
+   {
+    "RoomId": 1531,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1517,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1519,
+  "Name": "Earthly Light",
+  "Desc": "   To slip into evil is easy, but walking this path is the hardest of\nall.  Even the four you will find here today have strayed from the line\nat least once in their lives, and there are still some living who curse\nthe very sound of their names.  Despite all this, confront them now, and\nlet their actions serve as your example.",
+  "Exits": [
+   {
+    "RoomId": 1520,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1508,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 1520,
+  "Name": "The Light of the Rashidun",
+  "Desc": "   Many believed that the Prophet would never die, but when the stark\nevidence of his body confronted them, it soon became necessary to provide\nfor the future.  The four that came after are called the Rashidun, the\nrightly-guided Caliphs that would spread the word and the light, and with\nit forge one of history's greatest empires.",
+  "Exits": [
+   {
+    "RoomId": 1521,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1519,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1521,
+  "Name": "The Light of the Rashidun",
+  "Desc": "   The first Caliphs were chosen by consultation with a noble council\nof elders, each of whom, hoping to lead the world of Islam alone, voted\nto elect the one amongst them they thought was the weakest.  Each time,\nthey were wrong.  Each one was more noble, more upright than the one\nbefore.",
+  "Exits": [
+   {
+    "RoomId": 1522,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1520,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1522,
+  "Name": "The Light of the Rashidun",
+  "Desc": "   Every majestic and happy tale must end, usually all too soon, and thus\nit was with the golden age of the Caliphate.  The Rashidun were pure men,\ngood men, true to the path, but their followers soon began to bicker, and\ncivil war was on the horizon.",
+  "Exits": [
+   {
+    "RoomId": 1521,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1523,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1523,
+  "Name": "The Light of the Rashidun",
+  "Desc": "   The end of the Rashidun was the beginning of Schism.  The memories\nof the Prophet and the living example of the Caliphs proved to be\ninsufficient example to the faithful.  Ali died, and some say that\nwith him the Caliphate died too, a martyr, his blood still flowing in\nthe nameless river.",
+  "Exits": [
+   {
+    "RoomId": 1532,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1522,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1524,
+  "Name": "Spritual Reward",
+  "Desc": "   Behold, Allah is the Provider, the most Generous.  He would not suffer\nhis believers to walk the path of light without guidance.  He provided the\nProphets, may peace be upon them, and in the examples of their own growth,\nwe shall find the truth of our own.",
+  "Exits": [
+   {
+    "RoomId": 1525,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1508,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 1525,
+  "Name": "Creation",
+  "Desc": "   In the creation of the heavens and the earth, and in the alternation of\nnight and day, there are signs for men of sense; those that remember Allah\nsay: \"Lord, You have not created this in vain!\"",
+  "Exits": [
+   {
+    "RoomId": 1526,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1524,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1526,
+  "Name": "Revelation",
+  "Desc": "   The Angel Gabriel came to him and said: \"Read!\"  He replied: \"But I\ncannot!\"  The order was repeated three times, until the Angel himself\nsaid: \"Read, in the name of your Lord who created man from clots of blood.\nPraise be to God, Lord of the Universe.\"",
+  "Exits": [
+   {
+    "RoomId": 1525,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1527,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1527,
+  "Name": "Conversion",
+  "Desc": "   Unbelievers, I do not worship what you worship, nor do you worship\nwhat I worship.  I shall never worship what you worship, nor will you\never worship what I worship.  You have your own religion, and I have\nmine.",
+  "Exits": [
+   {
+    "RoomId": 1526,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1528,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1528,
+  "Name": "Deliverance",
+  "Desc": "   The balance had been made, the soul placed in readiness, and the final\nmeasurement taken.  For those that have come this far, surely this is the\nday of immortality!",
+  "Exits": [
+   {
+    "RoomId": 1534,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1527,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1529,
+  "Name": "Repentance",
+  "Desc": "   God forgives those who commit evil in ignorance, for He is all-knowing\nand wise.  But He will not forgive those who do evil, and when death comes\nto them, say: \"Now we repent!\"  For those We have prepared a woeful scourge.",
+  "Exits": [
+   {
+    "RoomId": 1535,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 1530,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1513,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1530,
+  "Name": "Pilgrimage",
+  "Desc": "   It is incumbent upon all Muslims to make the pilgrimage to Mecca once\nin their lifetime, if they are able, and for those unfortunate enough to\nfollow the lives of the lower evils, such a pilgrimage with an open and\ncontrite heart shall absolve them of all.",
+  "Exits": [
+   {
+    "RoomId": 1531,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1529,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 1536,
+    "Verb": "up"
+   }
+  ]
+ },
+ {
+  "Id": 1531,
+  "Name": "Intercession",
+  "Desc": "   It is written that no one may intercede with God on behalf of another.\nNo prayers from another may save the soul of a doomed man; his only hope\nis prayers of his own.",
+  "Exits": [
+   {
+    "RoomId": 1537,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 1518,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1530,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 1532,
+  "Name": "The Upper Reaches",
+  "Desc": "   You have traveled the righteous path, and you have faced the examples\nof the true models of the Prophet.  Only the final journey awaits you;\nlive like this and you shall live forever.",
+  "Exits": [
+   {
+    "RoomId": 1523,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1533,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1535,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1533,
+  "Name": "The Upper Reaches",
+  "Desc": "   When the records of men's deeds are laid open, and heaven is stripped\nbare; when Hell burns fiercely and Paradise is brought near: then each\nsoul shall know what it has done.",
+  "Exits": [
+   {
+    "RoomId": 1534,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1532,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 1536,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1534,
+  "Name": "The Upper Reaches",
+  "Desc": "   You have traveled the righteous path, and your own journey has\nimitated the evolution of the most perfect soul.  Only one final\npath awaits you; die as the one in the room before, and your death\nwill mean nothing.",
+  "Exits": [
+   {
+    "RoomId": 1528,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1533,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 1537,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1535,
+  "Name": "The Final Facing",
+  "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
+  "Exits": [
+   {
+    "RoomId": 1536,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1532,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 1529,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1536,
+  "Name": "The Final Facing",
+  "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
+  "Exits": [
+   {
+    "RoomId": 1538,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1535,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 1537,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 1533,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 1530,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1537,
+  "Name": "The Final Facing",
+  "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
+  "Exits": [
+   {
+    "RoomId": 1536,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 1534,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 1531,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 1538,
+  "Name": "A Straight Path",
+  "Desc": "   The Compassionate, the Merciful, Sovereign of the Day of Judgment!\nYou alone we worship, and to You alone we turn for help.  Guide us to\nthe Straight Path, the path of those whom You have favored, not of\nthose who have gone astray.",
+  "Exits": [
+   {
+    "RoomId": 1536,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 1539,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 1539,
+  "Name": "Progression",
+  "Desc": "   Were We worn out by the First Creation?  Yet they are in doubt about\na new creation.  WE created man.  We know the promptings of his soul,\nand are closer to him than his jugular vein.",
+  "Exits": [
+   {
+    "RoomId": 1540,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1538,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1540,
+  "Name": "Judgment",
+  "Desc": "   Undoubtedly the shortest path is the straightest one.  Only one more\nstep awaits before a final decision is made and a home given to you for\nall eternity.",
+  "Exits": [
+   {
+    "RoomId": 1541,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1539,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 1541,
+  "Name": "The Utmost Throne",
+  "Desc": "   You have come at last to the resting place of the most holy.  Startling\ncrystal clarity of vision has been granted to you; seven guardians rim\nthe periphery of the throne and all is bathed in a warm and clean light.\nIt is here that the final choice is to be made, and no defiance of yours\ncan change the outcome.",
+  "Exits": [
+   {
+    "RoomId": 1540,
+    "Verb": "south"
+   }
+  ]
+ }
+]

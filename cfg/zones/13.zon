@@ -1,0 +1,7 @@
+{
+ "Id": 13,
+ "Name": "God Simplex",
+ "MinRoomId": 1201,
+ "MaxRoomId": 1300,
+ "ResetFreq": 600
+}

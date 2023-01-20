@@ -1,0 +1,7 @@
+{
+ "Id": 73,
+ "Name": "The Sewer Maze",
+ "MinRoomId": 7201,
+ "MaxRoomId": 7300,
+ "ResetFreq": 1500
+}

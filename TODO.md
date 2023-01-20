@@ -121,13 +121,20 @@
 [x] Color as send option
 [x] Colorize assist msg
 [x] Clear status effects on death
+[x] Zones
+    [x] Movement is zone-locked
+[x] Circle Data
+    [x] Zones
 ----------------------------------------
+[] Circle Data
+    [] Mobs
+    [] Spawn Commands
+    [] Items
 [] RRO Stats
 [] RRO Combat
 [] Combat Speed
-[] Spawning + Zones
+[] Zones
     [] Spawning in zones
-    [] Movement is zone-locked
 [] Random Drops
 [] MVP mobs
 [] Equippable Cards

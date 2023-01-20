@@ -1,0 +1,7 @@
+{
+ "Id": 32,
+ "Name": "Southern part of Midgaard",
+ "MinRoomId": 3101,
+ "MaxRoomId": 3300,
+ "ResetFreq": 2400
+}

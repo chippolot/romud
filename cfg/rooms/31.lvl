@@ -1,875 +1,920 @@
 [
  {
-  "Id": 3101,
-  "Name": "The Northwest End Of The Concourse",
-  "Desc": "   You are at the concourse, the city wall is just west.  A small promenade\ngoes east, and the bridge is just north of here.  The concourse continues\nsouth along the city wall.",
+  "Id": 3001,
+  "Name": "The Reading Room",
+  "Desc": "   You are in a small, simple room which is mostly empty, save a few\nwooden desks and benches.  To the east you hear the bustle of the Temple\nof Midgaard, a sharp contrast to the relative quiet of this peaceful\nroom.",
   "Exits": [
    {
-    "RoomId": 3052,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3102,
+    "RoomId": 3002,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3128,
-    "Verb": "south"
    }
   ]
  },
  {
-  "Id": 3102,
-  "Name": "The Promenade",
-  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues further east and to the west you see the city wall.  Park Road\nleads south from here.",
+  "Id": 3002,
+  "Name": "The Temple Of Midgaard",
+  "Desc": "   You are in the southern end of the temple hall in the Temple of Midgaard.\nThe temple has been constructed from giant marble blocks, eternal in\nappearance, and most of the walls are covered by ancient wall paintings\npicturing Gods, Giants and peasants.\n   Large steps lead down through the grand temple gate, descending the huge\nmound upon which the temple is built and ends on the temple square below.\nTo the west, you see the Reading Room.  The donation room is in a small\nalcove to your east.",
   "Exits": [
    {
-    "RoomId": 3101,
+    "RoomId": 3064,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3006,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3001,
     "Verb": "west"
    },
    {
-    "RoomId": 3103,
-    "Verb": "east"
+    "RoomId": 3006,
+    "Verb": "down"
    },
    {
-    "RoomId": 3132,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3103,
-  "Name": "The Promenade",
-  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  South of here you see the entrance to\nthe park, and a small building seems to be just west of the entrance.",
-  "Exits": [
-   {
-    "RoomId": 3104,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3106,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3102,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3104,
-  "Name": "The Promenade",
-  "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  A small path leads south.  Looking across\nthe river you see the levee.",
-  "Exits": [
-   {
-    "RoomId": 3103,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3105,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3133,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3105,
-  "Name": "The Northeast End Of The Concourse",
-  "Desc": "   You are at the Concourse.  The city wall is just east and a small\npromenade goes west.  Looking across the river you see a building that\nresembles a warehouse.  The Concourse continues south along the city\nwall.",
-  "Exits": [
-   {
-    "RoomId": 3131,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3104,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3106,
-  "Name": "The Park Entrance",
-  "Desc": "   You are standing just inside the small park of Midgaard.  To the north is\nthe promenade and a small path leads south into the park.  To your east is\nthe famous Park Cafe.",
-  "Exits": [
-   {
-    "RoomId": 3107,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3109,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3103,
+    "RoomId": 3055,
     "Verb": "north"
    }
   ]
  },
  {
-  "Id": 3107,
-  "Name": "Park Cafe",
-  "Desc": "   You are inside Park Cafe, a very cozy place with many tables and\nseats where you can relax and enjoy the view.  To the east you can\nsee the entrance to the park.",
+  "Id": 3003,
+  "Name": "The Clerics' Inner Sanctum",
+  "Desc": "   This is the inner sanctum.  A picture of the mighty Thor, is hanging on\nthe wall, just above the altar which is set against the western wall.  A well\nin the middle of the floor leads down into darkness.  Vile smells waft from\nthe depths.",
   "Exits": [
    {
-    "RoomId": 3106,
-    "Verb": "west"
+    "RoomId": 3004,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7027,
+    "Verb": "down"
    }
   ]
  },
  {
-  "Id": 3108,
-  "Name": "A Small Path In The Park",
-  "Desc": "   You are walking along a small path through the park.  The path continues\nsouth and east.",
+  "Id": 3004,
+  "Name": "The Bar Of Divination",
+  "Desc": "   The bar is one of the finest in the land, lucky it is members only.  Fine\nfurniture is set all around the room.  A small sign is hanging on the wall.",
   "Exits": [
    {
-    "RoomId": 3114,
+    "RoomId": 3005,
     "Verb": "south"
    },
    {
-    "RoomId": 3109,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3109,
-  "Name": "A Small Path In The Park",
-  "Desc": "   You are standing on a small path inside the park.  The park entrance is\njust north of here, and Park Cafe is just east of the entrance.  The path\nleads further east and west.",
-  "Exits": [
-   {
-    "RoomId": 3106,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3110,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3108,
+    "RoomId": 3003,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3110,
-  "Name": "A Small Path In The Park",
-  "Desc": "   You are on a small path running through the park.  It continues west and\nsouth and just north of here you see the southern wall of Park Cafe.",
+  "Id": 3005,
+  "Name": "The Entrance To The Clerics' Guild",
+  "Desc": "   The entrance hall is a small modest room, reflecting the true nature of\nthe Clerics.  The exit leads east to the temple square.  A small entrance to\nthe bar is in the northern wall.",
   "Exits": [
    {
-    "RoomId": 3116,
+    "RoomId": 3004,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3006,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3006,
+  "Name": "The Temple Square",
+  "Desc": "   You are standing on the temple square.  Huge marble steps lead up to the\ntemple gate.  The entrance to the Clerics' Guild is to the west, and the old\nGrunting Boar Inn, is to the east.  Just south of here you see the market\nsquare, the center of Midgaard.",
+  "Exits": [
+   {
+    "RoomId": 3002,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3007,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3015,
     "Verb": "south"
    },
    {
-    "RoomId": 3109,
+    "RoomId": 3005,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3111,
-  "Name": "Cityguard HeadQuarters",
-  "Desc": "   You are inside a tidy office.",
+  "Id": 3007,
+  "Name": "The Entrance Hall Of The Grunting Boar Inn",
+  "Desc": "   You are standing in the entrance hall of the Grunting Boar Inn.  The hall\nhas been wisely decorated with simple, functional furniture.  The heavy smell\nof dust and aging paper drifts in from the Post Office to the north.  A small\nstaircase leads up to the reception and the bar is to the east.",
   "Exits": [
    {
-    "RoomId": 3112,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3112,
-  "Name": "Park Road",
-  "Desc": "   The road continues north and south.  A building is just west of here, you\nnotice a sign on the door.  The park entrance is to the east.",
-  "Exits": [
-   {
-    "RoomId": 3132,
+    "RoomId": 3063,
     "Verb": "north"
    },
    {
-    "RoomId": 3113,
+    "RoomId": 3008,
     "Verb": "east"
    },
    {
-    "RoomId": 3119,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3111,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3113,
-  "Name": "The Western Park Entrance",
-  "Desc": "   You are standing at the western end of the park.  A small path leads east\ninto the park and going west through the entrance you will reach Park Road.",
-  "Exits": [
-   {
-    "RoomId": 3114,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3112,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3114,
-  "Name": "A Path In The Park",
-  "Desc": "   You are in the park.  The paths lead north and west.  Westward is the\npark entrance and to the east you see a small pond.",
-  "Exits": [
-   {
-    "RoomId": 3113,
+    "RoomId": 3006,
     "Verb": "west"
    },
    {
-    "RoomId": 3108,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3115,
-    "Verb": "east"
-   }
-  ]
- },
- {
-  "Id": 3115,
-  "Name": "The Pond",
-  "Desc": "   You are swimming around in the pond, feeling rather stupid.  You can get\nback on the path from the eastern and western end of the pond.",
-  "Exits": [
-   {
-    "RoomId": 3116,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3114,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3116,
-  "Name": "A Path In The Park",
-  "Desc": "   You are in the park.  The paths lead north and east.  Eastward is the\npark entrance and to the west you see a small pond.",
-  "Exits": [
-   {
-    "RoomId": 3110,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3117,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3115,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3117,
-  "Name": "The Eastern Park Entrance",
-  "Desc": "   You are standing at the eastern end of the park.  A small path leads west\ninto the park.  Going east through the entrance you will reach Emerald\nAvenue.",
-  "Exits": [
-   {
-    "RoomId": 3118,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3116,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3118,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing on the north end of Emerald Avenue.  To the north is the\npromenade and to the west is the park entrance.  To the east is the not very\nbig Town Hall of Midgaard.",
-  "Exits": [
-   {
-    "RoomId": 3133,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3138,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3120,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3117,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3119,
-  "Name": "Park Road",
-  "Desc": "   You are on Park Road which leads north and south.",
-  "Exits": [
-   {
-    "RoomId": 3112,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3136,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3120,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  The road leads north and\nwest.",
-  "Exits": [
-   {
-    "RoomId": 3134,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3118,
-    "Verb": "north"
-   }
-  ]
- },
- {
-  "Id": 3121,
-  "Name": "The Road Crossing",
-  "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
-  "Exits": [
-   {
-    "RoomId": 3134,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3137,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3135,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3136,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 7915,
+    "RoomId": 3009,
     "Verb": "up"
    }
   ]
  },
  {
-  "Id": 3122,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  The road leads south and\neast.",
+  "Id": 3008,
+  "Name": "The Grunting Boar",
+  "Desc": "   You are standing in the bar.  The bar is set against the northern wall, old\narchaic writing, carvings and symbols cover its top.  A fireplace is built into\nthe western wall, and through the southeastern windows you can see the temple\nsquare.  This place makes you feel like home.\nA small sign with big letters is fastened to the bar.",
   "Exits": [
    {
-    "RoomId": 3135,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3126,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3123,
-  "Name": "Park Road",
-  "Desc": "   You are on Park Road which leads south and north.  Elm Street is east of\nhere.",
-  "Exits": [
-   {
-    "RoomId": 3137,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3124,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3127,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3124,
-  "Name": "Elm Street",
-  "Desc": "   You are on Elm street.  Park Road is to the west and Elm Street continues\nin eastward direction.",
-  "Exits": [
-   {
-    "RoomId": 3125,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3123,
+    "RoomId": 3007,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3125,
-  "Name": "The End Of Elm Street",
-  "Desc": "   You are at the end of Elm Street.",
+  "Id": 3009,
+  "Name": "The Reception",
+  "Desc": "   You are standing in the reception.  The staircase leads down to the\nentrance hall.  An exit to the north leads to the Cryogenic Center.\nThere is a small sign on the counter.",
   "Exits": [
    {
-    "RoomId": 3124,
-    "Verb": "west"
+    "RoomId": 3065,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3007,
+    "Verb": "down"
    }
   ]
  },
  {
-  "Id": 3126,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are on Emerald Avenue which continues north.  The Concourse is south\nof here.",
+  "Id": 3010,
+  "Name": "The Bakery",
+  "Desc": "   You are standing inside the small bakery.  A sweet scent of Danish and\nfine bread fills the room.  The bread and Danish are arranged in fine order\non the shelves, and seem to be of the finest quality.\nA small sign is on the counter.",
   "Exits": [
    {
-    "RoomId": 3122,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3129,
+    "RoomId": 3014,
     "Verb": "south"
    }
   ]
  },
  {
-  "Id": 3127,
-  "Name": "Park Road",
-  "Desc": "   You are on Park Road which continues north.  The Concourse is south of\nhere.",
+  "Id": 3011,
+  "Name": "The General Store",
+  "Desc": "   You are inside the general store.  All sorts of items are stacked on shelves\nbehind the counter, safely out of your reach.\nA small note hangs on the wall.",
   "Exits": [
    {
-    "RoomId": 3123,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3130,
+    "RoomId": 3016,
     "Verb": "south"
    }
   ]
  },
  {
-  "Id": 3128,
-  "Name": "On The Concourse",
-  "Desc": "   You are at the southwest corner of the city wall.  The Concourse leads\nboth north and east.",
+  "Id": 3012,
+  "Name": "The Weapon Shop",
+  "Desc": "   You are inside the weapon shop.  There is a small note on the counter.",
   "Exits": [
    {
-    "RoomId": 3101,
+    "RoomId": 3017,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3013,
+  "Name": "Main Street",
+  "Desc": "   You are at the end of the main street of Midgaard.  South of here is the\nentrance to the Guild of Magic Users.  The street continues east towards the\nmarket square.  The magic shop is to the north and to the west is the city\ngate.",
+  "Exits": [
+   {
+    "RoomId": 3034,
     "Verb": "north"
    },
    {
-    "RoomId": 3129,
+    "RoomId": 3014,
     "Verb": "east"
    },
    {
-    "RoomId": 3505,
+    "RoomId": 3018,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3041,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3129,
-  "Name": "On The Concourse",
-  "Desc": "   The Concourse continues both east and west.  Emerald Avenue is north of\nhere.",
+  "Id": 3014,
+  "Name": "Main Street",
+  "Desc": "   You are on the main street passing through the City of Midgaard.  South of\nhere is the entrance to the Armory, and the bakery is to the north.  East of\nhere is the market square.",
   "Exits": [
    {
-    "RoomId": 3128,
+    "RoomId": 3021,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3013,
     "Verb": "west"
    },
    {
-    "RoomId": 3126,
+    "RoomId": 3010,
     "Verb": "north"
    },
    {
-    "RoomId": 3130,
+    "RoomId": 3015,
     "Verb": "east"
    }
   ]
  },
  {
-  "Id": 3130,
-  "Name": "On The Concourse",
-  "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
+  "Id": 3015,
+  "Name": "Market Square",
+  "Desc": "   You are standing on the market square, the famous Square of Midgaard.\nA large, peculiar looking statue is standing in the middle of the square.\nRoads lead in every direction, north to the temple square, south to the\ncommon square, east and westbound is the main street.",
   "Exits": [
    {
-    "RoomId": 3151,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3129,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3127,
+    "RoomId": 3006,
     "Verb": "north"
    },
    {
-    "RoomId": 3131,
+    "RoomId": 3016,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3026,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3014,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3016,
+  "Name": "Main Street",
+  "Desc": "   You are on the main street crossing through town.  To the north is the\ngeneral store, and the main street continues east.  To the west you see and\nhear the market place, to the south a small door leads into the Pet Shop.",
+  "Exits": [
+   {
+    "RoomId": 3011,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3017,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3032,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3015,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3017,
+  "Name": "Main Street",
+  "Desc": "   The main street, to the north is the weapon shop and to the south is the\nGuild of Swordsmen.  To the east you leave town and to the west the street\nleads to the market square.",
+  "Exits": [
+   {
+    "RoomId": 3022,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3016,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3012,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3042,
     "Verb": "east"
    }
   ]
  },
  {
-  "Id": 3131,
-  "Name": "On The Concourse",
-  "Desc": "   You are at the southeast corner of the city wall.  The Concourse leads\nboth north and west.",
+  "Id": 3018,
+  "Name": "The Entrance To The Mages' Guild",
+  "Desc": "   The entrance hall to this guild is a small, poor lighted room.",
   "Exits": [
    {
-    "RoomId": 3105,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3130,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3132,
-  "Name": "Park Road",
-  "Desc": "   You are at Park Road which continues north and south.",
-  "Exits": [
-   {
-    "RoomId": 3102,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3112,
+    "RoomId": 3019,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3013,
+    "Verb": "north"
    }
   ]
  },
  {
-  "Id": 3133,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are at Emerald Avenue which continues north and south.  Penny Lane leads\neast from here.",
+  "Id": 3019,
+  "Name": "The Mages' Bar",
+  "Desc": "   The bar is one of the weirdest in the land.  Mystical images float around\nthe air.  Illusions of fine furniture appear all around the room.",
   "Exits": [
    {
-    "RoomId": 3104,
+    "RoomId": 3018,
     "Verb": "north"
    },
    {
-    "RoomId": 3140,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3118,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3134,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  To the east the road goes on\nand to the south is the Road Crossing.",
-  "Exits": [
-   {
-    "RoomId": 3120,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3121,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3135,
-  "Name": "Emerald Avenue",
-  "Desc": "   You are standing at a bend on Emerald Avenue.  To the west the road goes on\nand to the north is the Road Crossing.",
-  "Exits": [
-   {
-    "RoomId": 3121,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3122,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3136,
-  "Name": "Park Road",
-  "Desc": "   You are at a bend on Park Road.  To the north the road goes on and to the\neast is the Road Crossing.",
-  "Exits": [
-   {
-    "RoomId": 3119,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3121,
+    "RoomId": 3020,
     "Verb": "east"
    }
   ]
  },
  {
-  "Id": 3137,
-  "Name": "Park Road",
-  "Desc": "   You are at a bend on Park Road.  To the south the road goes on and to the\nwest is the Road Crossing.",
+  "Id": 3020,
+  "Name": "The Mages' Laboratory",
+  "Desc": "   This is the Magical Experiments Laboratory.  Dark smoke-stained stones\narch over numerous huge oaken tables, most of these cluttered with strange-\nlooking pipes and flasks.  The floor is covered with half-erased pentagrams\nand even weirder symbols, and a blackboard in a dark corner has only been\npartially cleaned, some painful-looking letters faintly visible.  A well in\nthe middle of the floor leads down into darkness.  Vile smells waft from the\ndepths.",
   "Exits": [
    {
-    "RoomId": 3123,
-    "Verb": "south"
+    "RoomId": 7018,
+    "Verb": "down"
    },
    {
-    "RoomId": 3121,
+    "RoomId": 3019,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3138,
-  "Name": "The Waiting Room",
-  "Desc": "   You are standing in the waiting room at the town hall.  Wooden chairs stand\nalong the walls and a long desk with a typewriter is placed in the middle of\nthe room.",
+  "Id": 3021,
+  "Name": "The Armory",
+  "Desc": "   The armory with all kinds of armors on the walls and in the window.  You\nsee helmets, shields and chain mails.  To the north is the main street.\nOn the wall is a small note.",
   "Exits": [
    {
-    "RoomId": 3139,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3118,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3139,
-  "Name": "The Mayor's Office",
-  "Desc": "   You are in the not very big office of the Mayor of Midgaard.  A large and\npolished but completely empty desk is standing in front of an armchair that\nlooks so comfortable that it most of all resembles a bed with the head end\nraised slightly.",
-  "Exits": [
-   {
-    "RoomId": 3138,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3140,
-  "Name": "Penny Lane",
-  "Desc": "   You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane\ncontinues in eastward direction.",
-  "Exits": [
-   {
-    "RoomId": 3141,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3133,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3141,
-  "Name": "Penny Lane",
-  "Desc": "   You are on Penny Lane.  The narrow road continues north and west.",
-  "Exits": [
-   {
-    "RoomId": 3142,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3140,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3142,
-  "Name": "The End Of Penny Lane",
-  "Desc": "   You are at the end of Penny Lane.  The only exit appears to be south.",
-  "Exits": [
-   {
-    "RoomId": 3141,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3151,
-  "Name": "A Gravel Road In The Graveyard",
-  "Desc": "   You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.  An iron\ngrate is to the north.",
-  "Exits": [
-   {
-    "RoomId": 3130,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3152,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3152,
-  "Name": "A Gravel Road In The Graveyard",
-  "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
-  "Exits": [
-   {
-    "RoomId": 3151,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3153,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3153,
-  "Name": "A Gravel Road In The Graveyard",
-  "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
-  "Exits": [
-   {
-    "RoomId": 3152,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3154,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3154,
-  "Name": "A Gravel Road In The Graveyard",
-  "Desc": "  You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.",
-  "Exits": [
-   {
-    "RoomId": 3153,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3155,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3155,
-  "Name": "In Front Of The Chapel",
-  "Desc": "   You are on an open space before a small chapel.  A gravel road leads north\nthrough the graveyard and the chapel entrance is to the south.",
-  "Exits": [
-   {
-    "RoomId": 3154,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3156,
-    "Verb": "south"
-   }
-  ]
- },
- {
-  "Id": 3156,
-  "Name": "Inside The Chapel",
-  "Desc": "   You are in a small, dark chapel.  The dark brown glass in the tiny windows\ndo not let much light through.  A few rows of worn wooden benches stand here\nand an ancient altar sits in the middle of the floor.",
-  "Exits": [
-   {
-    "RoomId": 3155,
+    "RoomId": 3014,
     "Verb": "north"
    }
   ]
  },
  {
-  "Id": 3201,
-  "Name": "Under The Bridge",
-  "Desc": "   The arch under the bridge is covered by seaweed about a foot above the\nsurface of the river.  The water gently flows through an opening in the lower\npart of the city wall.",
+  "Id": 3022,
+  "Name": "The Entrance Hall To The Guild Of Swordsmen",
+  "Desc": "   The entrance hall to the Guild of Swordsmen.  A place where one has to be\ncareful not to say something wrong (or right).  To the east is the bar and to\nthe north is the main street.",
   "Exits": [
    {
-    "RoomId": 3202,
-    "Verb": "east"
+    "RoomId": 3017,
+    "Verb": "north"
    },
    {
-    "RoomId": 901,
-    "Verb": "west"
-   }
-  ]
- },
- {
-  "Id": 3202,
-  "Name": "On The River",
-  "Desc": "   North of here you see the miserable buildings of Poor Alley.  The\nriver flows west towards the bridge.  The riverbanks are too steep to\nclimb.",
-  "Exits": [
-   {
-    "RoomId": 3201,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 3203,
+    "RoomId": 3023,
     "Verb": "east"
    }
   ]
  },
  {
-  "Id": 3203,
-  "Name": "On The River",
-  "Desc": "   North of here you see the dump.  The river flows from east to west.  The\nriverbanks are too steep to climb.",
+  "Id": 3023,
+  "Name": "The Bar Of Swordsmen",
+  "Desc": "   The bar of swordsmen, once upon a time beautifully furnished.  But now the\nfurniture is all around you in small pieces.  To the south is the yard, and\nto the west is the entrance hall.",
   "Exits": [
    {
-    "RoomId": 3202,
+    "RoomId": 3024,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3022,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3024,
+  "Name": "The Tournament And Practice Yard",
+  "Desc": "   This is the practice yard of the fighters.  To the north is the bar.\nA well leads down into darkness.",
+  "Exits": [
+   {
+    "RoomId": 7049,
+    "Verb": "down"
+   },
+   {
+    "RoomId": 3023,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3025,
+  "Name": "The Eastern End Of Poor Alley",
+  "Desc": "   You are at the poor alley.  South of here is the Grubby Inn and to the\neast you see common square.  The alley continues further west.",
+  "Exits": [
+   {
+    "RoomId": 3045,
     "Verb": "west"
    },
    {
-    "RoomId": 3204,
+    "RoomId": 3026,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3049,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3026,
+  "Name": "The Common Square",
+  "Desc": "   The common square, people pass you, talking to each other.  To the west is\nthe poor alley and to the east is the dark alley.  To the north, this square\nis connected to the market square.  From the south you notice a nasty smell.",
+  "Exits": [
+   {
+    "RoomId": 3015,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3027,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3031,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3025,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3027,
+  "Name": "The Dark Alley",
+  "Desc": "   The dark alley, to the west is the common square and to the south is the\nGuild of Thieves.  The alley continues east.",
+  "Exits": [
+   {
+    "RoomId": 3046,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3028,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3026,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3028,
+  "Name": "The Entrance Hall To The Guild Of Thieves",
+  "Desc": "   The entrance hall to the thieves' and assassins' guild.  A place where you\ncan lose both your life and your money, if you are not careful.  To the north\nis the dark alley and to the east is the thieves' bar.",
+  "Exits": [
+   {
+    "RoomId": 3027,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3029,
     "Verb": "east"
    }
   ]
  },
  {
-  "Id": 3204,
-  "Name": "On The River",
-  "Desc": "   The levee is directly north of here.  The river flows in an east west\ndirection.",
+  "Id": 3029,
+  "Name": "The Thieves' Bar",
+  "Desc": "   The bar of the thieves.  Once upon a time this place was beautifully\nfurnished, but now it seems almost empty.  To the south is the yard, and to\nthe west is the entrance hall.\n   (Maybe the furniture has been stolen?!)",
   "Exits": [
+   {
+    "RoomId": 3030,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3028,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3030,
+  "Name": "The Secret Yard",
+  "Desc": "   The secret practice yard of thieves and assassins.  To the north is the\nbar.  A well leads down into darkness.",
+  "Exits": [
+   {
+    "RoomId": 3029,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7044,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 3031,
+  "Name": "The Dump",
+  "Desc": "   The dump, where the people from the city drop their garbage.  Through the\ngarbage you can see a large junction of pipes, looks like the entrance to the\nsewer system.  North of here you see the common square.",
+  "Exits": [
+   {
+    "RoomId": 3026,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7031,
+    "Verb": "down"
+   }
+  ]
+ },
+ {
+  "Id": 3032,
+  "Name": "The Pet Shop",
+  "Desc": "   The Pet Shop is a small crowded store, full of cages and animals of\nvarious sizes.  There is a sign on the wall.",
+  "Exits": [
+   {
+    "RoomId": 3016,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3033,
+  "Name": "Pet Shop Store",
+  "Desc": "   This  is the small dark room in which the Pet shop keeps his pets.\nIt is vital that this room's virtual number is exactly one larger\nthan the Pet Shop number.",
+  "Exits": []
+ },
+ {
+  "Id": 3034,
+  "Name": "The Magic Shop",
+  "Desc": "   Behind the counter you see various items, neatly placed in racks,\npresumably most of them are magic.",
+  "Exits": [
+   {
+    "RoomId": 3013,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3041,
+  "Name": "Inside The West Gate Of Midgaard",
+  "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  Main Street leads\neast and Wall Road leads south from here.",
+  "Exits": [
+   {
+    "RoomId": 3043,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3053,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 3013,
+    "Verb": "east"
+   }
+  ]
+ },
+ {
+  "Id": 3042,
+  "Name": "Inside The East Gate Of Midgaard",
+  "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  Main Street leads\nwest from here.  To the south you see the Water Shop.",
+  "Exits": [
+   {
+    "RoomId": 3054,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3059,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3017,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3043,
+  "Name": "Wall Road",
+  "Desc": "   You are walking next to the western city wall.  The road continues further\nsouth and the city gate is just north of here.",
+  "Exits": [
+   {
+    "RoomId": 3041,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3044,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3044,
+  "Name": "Wall Road",
+  "Desc": "   You are walking next to the western city wall.  Wall Road continues further\nnorth and south.  A small, poor alley leads east.\nSome letters have been written on the wall here.",
+  "Exits": [
+   {
+    "RoomId": 3043,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3045,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3048,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3045,
+  "Name": "Poor Alley",
+  "Desc": "   You are on Poor Alley, which continues further east.  You see the\ncity wall to the west.",
+  "Exits": [
+   {
+    "RoomId": 3025,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3044,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3046,
+  "Name": "The Dark Alley At The Levee",
+  "Desc": "   You are standing in the alley which continues east and west.  South of\nhere you see the levee.",
+  "Exits": [
+   {
+    "RoomId": 3047,
+    "Verb": "east"
+   },
    {
     "RoomId": 3050,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3027,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3047,
+  "Name": "The Eastern End Of The Alley",
+  "Desc": "   You are standing at the eastern end of the alley, the city wall is just\neast, blocking any further movement.  A small warehouse is directly south of\nhere.",
+  "Exits": [
+   {
+    "RoomId": 3051,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3046,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3048,
+  "Name": "Wall Road",
+  "Desc": "   You are standing on the road next to the western city wall, which\ncontinues north.  South of here is a bridge across the river.",
+  "Exits": [
+   {
+    "RoomId": 3044,
     "Verb": "north"
    },
    {
-    "RoomId": 3205,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3203,
-    "Verb": "west"
+    "RoomId": 3052,
+    "Verb": "south"
    }
   ]
  },
  {
-  "Id": 3205,
-  "Name": "On The River",
-  "Desc": "   You see the warehouse on the northern riverbank.  East of here you see the\ncity wall.  The river flows west towards the levee.",
+  "Id": 3049,
+  "Name": "Grubby Inn",
+  "Desc": "   You are inside the old Grubby Inn.  This place has not been cleaned for\nseveral decades; vile smells make you dizzy.",
   "Exits": [
    {
-    "RoomId": 3206,
-    "Verb": "east"
+    "RoomId": 3025,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3050,
+  "Name": "The Levee",
+  "Desc": "   You are at the levee.  South of here you see the river gently flowing west.\nThe river bank is very low making it possible to enter the river.",
+  "Exits": [
+   {
+    "RoomId": 3046,
+    "Verb": "north"
    },
    {
     "RoomId": 3204,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3051,
+  "Name": "The Deserted Warehouse",
+  "Desc": "   You are inside the warehouse.  The room is decorated with various old\nitems from ships.",
+  "Exits": [
+   {
+    "RoomId": 3047,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3052,
+  "Name": "On The Bridge",
+  "Desc": "   You are standing on the stone bridge crosses the river.  The bridge is\nbuilt out from the western city wall and the river flows west through an\nopening in the wall ten feet below the bridge.",
+  "Exits": [
+   {
+    "RoomId": 3048,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3101,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3053,
+  "Name": "Outside The West Gate Of Midgaard",
+  "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  To the west you\ncan see the edge of a big forest.",
+  "Exits": [
+   {
+    "RoomId": 3041,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 6093,
     "Verb": "west"
    }
   ]
  },
  {
-  "Id": 3206,
-  "Name": "On The River",
-  "Desc": "   The river enters from a hole in the eastern city wall.  The hole has been\nblocked by several vertically positioned iron bars set into the wall.",
+  "Id": 3054,
+  "Name": "Outside The East Gate Of Midgaard",
+  "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  To the east the\nplains stretch out in the distance.",
   "Exits": [
    {
-    "RoomId": 3205,
-    "Verb": "west"
+    "RoomId": 3504,
+    "Verb": "east"
    },
    {
-    "RoomId": 5002,
+    "RoomId": 3042,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3055,
+  "Name": "By The Temple Altar",
+  "Desc": "   You are by the temple altar in the northern end of the Temple of\nMidgaard.  A huge altar made from white polished marble is standing\nin front of you and behind it is a ten foot tall sitting statue of\nOdin, the King of the Gods.\n   To the north, steps lead out the back of the temple towards the\ncountryside.",
+  "Exits": [
+   {
+    "RoomId": 3060,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3002,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3056,
+  "Name": "Odin's Store",
+  "Desc": "   This is the small dark room in which Odin keeps the player items that he\ntakes care of.  It is vital that this room's virtual number is exactly one\nlarger than the room by the temple altar.",
+  "Exits": []
+ },
+ {
+  "Id": 3059,
+  "Name": "Ye Olde Water Shoppe",
+  "Desc": "   You are standing in the center of a small wooden shop whose walls are\ncovered with racks upon racks of water jugs.  Several large barrels with\nspigots are stacked in the corner.",
+  "Exits": [
+   {
+    "RoomId": 3042,
+    "Verb": "north"
+   }
+  ]
+ },
+ {
+  "Id": 3060,
+  "Name": "Behind The Temple Altar",
+  "Desc": "   You are on a dirt path leading away from the Temple Altar which is south\nof here.  To the north, the path continues through the lush contryside of\nMidgaard towards the Dragonhelm Mountains far off to the north.",
+  "Exits": [
+   {
+    "RoomId": 3061,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3055,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3061,
+  "Name": "The Great Field Of Midgaard",
+  "Desc": "   You are walking on a wide dirt path through the lush, green, fresh\nMidgaard countryside.  You can see to the horizon to the north, east,\nand west; the busy city of Midgaard lies to the south.  All around you\nis healthy green grass and an occasional large oak tree.  The sun feels\nwonderful on your face and a pleasant wind blows through your hair.  Birds\nchirp quietly to themselves and you can smell the faint scent of flowers\nand freshly cut grass.  You feel like you could lie down in the grass and\nstay here forever, surrounded by powerful beauty in all directions.\n   The path you are on continues north through the field and south back\nto Midgaard.",
+  "Exits": [
+   {
+    "RoomId": 3062,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3060,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3062,
+  "Name": "The Great Field Of Midgaard",
+  "Desc": "   You are walking on a wide dirt path through the lush, green, fresh\nMidgaard countryside.  You can see to the horizon to the north, east,\nand west; the busy city of Midgaard lies to the south.  All around you\nis healthy green grass and an occasional large oak tree.  The sun feels\nwonderful on your face and a pleasant wind blows through your hair.  Birds\nchirp quietly to themselves and you can smell the faint scent of flowers\nand freshly cut grass.  You feel like you could lie down in the grass and\nstay here forever, surrounded by powerful beauty in all directions.\n   There is a strange structure on the eastern side of the path.  A small\ndirt path splits off of the main path and leads off to the west.",
+  "Exits": [
+   {
+    "RoomId": 3066,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 18601,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3061,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3067,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3063,
+  "Name": "The Post Office",
+  "Desc": "   You are in the central post office for Midgaard.  Piles of assorted mail\nlay untouched in the corners, collecting cobwebs.  Several large crates have\nbeen pried open by curious customs agents, and are now stacked along the west\nwall, hiding plenty of 'WANTED' posters.\nThere is a sign posted on the wall here.",
+  "Exits": [
+   {
+    "RoomId": 3007,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3064,
+  "Name": "The Midgaard Donation Room",
+  "Desc": "   You are in a small, undecorated room just off of the main temple.  There\nare a couple of small wooden benches here where people occasionally sit\nwhile they wait for items to appear.  The temple is to the west.",
+  "Exits": [
+   {
+    "RoomId": 3002,
+    "Verb": "west"
+   }
+  ]
+ },
+ {
+  "Id": 3065,
+  "Name": "The Cryogenic Center",
+  "Desc": "   You are standing in an impossible white sterile room with cylindrical\nbody-length canisters lined up against the walls.  The Reception is to the\nsouth.",
+  "Exits": [
+   {
+    "RoomId": 3009,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3066,
+  "Name": "The Great Field Of Midgaard",
+  "Desc": "   You are walking on a wide dirt path through the lush, green, fresh\nMidgaard countryside.  You can see to the horizon to the north, east,\nand west; the busy city of Midgaard lies to the south.  All around you\nis healthy green grass and an occasional large oak tree.  The sun feels\nwonderful on your face and a pleasant wind blows through your hair.  Birds\nchirp quietly to themselves and you can smell the faint scent of flowers\nand freshly cut grass.  You feel like you could lie down in the grass and\nstay here forever, surrounded by powerful beauty in all directions.\n   The way north appears to be blocked by a large plot device and you cannot\nsee any way around it.",
+  "Exits": [
+   {
+    "RoomId": 0,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3062,
+    "Verb": "south"
+   }
+  ]
+ },
+ {
+  "Id": 3067,
+  "Name": "The Dirt Path",
+  "Desc": "   You are walking along a narrow dirt path through the lush, green,\nfresh Midgaard countryside.  You can see to the horizon to the north\nand east; the busy city of Midgaard lies to the south.  All around\nyou is healthy green grass and an occasional large oak tree.  The sun\nfeels wonderful on your face and a pleasant wind blows through your\nhair.  Birds chirp quietly to themselves and you can smell the faint\nscent of flowers and freshly cut grass.  You feel like you could lie\ndown in the grass and stay here forever, surrounded by powerful beauty\nin all directions.\n   There is a large rusty gate sitting in a stone archway just to the\nwest.",
+  "Exits": [
+   {
+    "RoomId": 3062,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3601,
+    "Verb": "west"
    }
   ]
  }

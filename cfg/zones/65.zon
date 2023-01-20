@@ -1,0 +1,7 @@
+{
+ "Id": 65,
+ "Name": "Rand's Tower",
+ "MinRoomId": 6401,
+ "MaxRoomId": 6500,
+ "ResetFreq": 1200
+}

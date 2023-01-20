@@ -1,0 +1,7 @@
+{
+ "Id": 64,
+ "Name": "Arachnos",
+ "MinRoomId": 6301,
+ "MaxRoomId": 6400,
+ "ResetFreq": 2040
+}

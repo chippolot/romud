@@ -18,6 +18,7 @@ type World struct {
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
 	rooms         map[RoomId]*Room
+	zones         map[ZoneId]*ZoneConfig
 	entryRoomId   RoomId
 	inCombat      *CombatList
 	loggingOut    map[PlayerId]bool
@@ -34,6 +35,7 @@ func NewWorld(db Database, l *lua.LState, events chan<- server.SessionEvent) *Wo
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
 		make(map[RoomId]*Room),
+		make(map[ZoneId]*ZoneConfig),
 		0,
 		&CombatList{},
 		make(map[PlayerId]bool),

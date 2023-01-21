@@ -8,8 +8,30 @@
   ],
   "RoomDesc": "A large dreadful snake is at your feet, hissing at you.",
   "FullDesc": "It looks hungry.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d10+50",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 11,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 13,
+    "Damage": "3d6+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -24,8 +46,30 @@
   ],
   "RoomDesc": "A small green snake is here, and it doesn't look too friendly...",
   "FullDesc": "It looks harmless.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+30",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 2500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d6+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -38,8 +82,30 @@
   ],
   "RoomDesc": "A small centipede is here, making its way across the floor.",
   "FullDesc": "It looks completely harmless.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d10+20",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 400
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 0,
+    "Damage": "1d6+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -52,8 +118,30 @@
   ],
   "RoomDesc": "An ugly kobold is here, searching for dinner.",
   "FullDesc": "It looks ugly.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d10+40",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 800
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "1d8+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -68,8 +156,30 @@
   ],
   "RoomDesc": "The orc walks around, looking for someone to kill.",
   "FullDesc": "You notice an evil look in its eyes...",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d10+60",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 900
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 5,
+    "Damage": "2d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -80,14 +190,37 @@
  {
   "Key": "mob4005",
   "Name": "the orc",
+  "Gender": 1,
   "Keywords": [
    "orc",
    "large"
   ],
   "RoomDesc": "A large orc is here, looking really mean.",
   "FullDesc": "He looks dreadful.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d20+75",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 3000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 9,
+    "Damage": "2d6+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -97,13 +230,36 @@
  {
   "Key": "mob4050",
   "Name": "the warrior",
+  "Gender": 1,
   "Keywords": [
    "warrior"
   ],
   "RoomDesc": "A tall warrior is here.  He has more scars than anyone you have ever seen.",
   "FullDesc": "He seems to be a strong, brainless fighter.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d10+50",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "2d8+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "scavenger",
@@ -115,13 +271,36 @@
  {
   "Key": "mob4051",
   "Name": "the warrior",
+  "Gender": 1,
   "Keywords": [
    "warrior"
   ],
   "RoomDesc": "A tall warrior is here.",
   "FullDesc": "He seems to know his way with weapons.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+80",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 2500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d5+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -132,13 +311,36 @@
  {
   "Key": "mob4052",
   "Name": "the hobgoblin",
+  "Gender": 1,
   "Keywords": [
    "hobgoblin"
   ],
   "RoomDesc": "A small hobgoblin stands here.",
   "FullDesc": "The hobgoblin looks quite lost.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d8+70",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 6,
+   "XPValue": 1500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -153,8 +355,30 @@
   ],
   "RoomDesc": "A brown snake watches you.",
   "FullDesc": "The snake looks quite mean.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d10+60",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "3d5+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -168,8 +392,30 @@
   ],
   "RoomDesc": "A white centipede is here.",
   "FullDesc": "The centipede doesn't really seem to notice you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d10+50",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 3,
+    "Damage": "1d7+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -177,13 +423,36 @@
  {
   "Key": "mob4055",
   "Name": "the hobgoblin",
+  "Gender": 1,
   "Keywords": [
    "hobgoblin"
   ],
   "RoomDesc": "A large hobgoblin is here.",
   "FullDesc": "The hobgoblin looks quite dangerous.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d16+120",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 10000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "2d6+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -193,13 +462,36 @@
  {
   "Key": "mob4056",
   "Name": "the orc",
+  "Gender": 1,
   "Keywords": [
    "orc"
   ],
   "RoomDesc": "An orc is here, looking for something (or perhaps someone?) to eat.",
   "FullDesc": "Well, he doesn't seem to be friendly.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+100",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 4000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -210,14 +502,37 @@
  {
   "Key": "mob4057",
   "Name": "the mountain lion",
+  "Gender": 1,
   "Keywords": [
    "lion",
    "mountain"
   ],
   "RoomDesc": "A mountain lion is here, growling at you viciously.",
   "FullDesc": "The lion looks very nasty with huge claws and big teeth.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d10+60",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 900
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "2d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -226,14 +541,37 @@
  {
   "Key": "mob4058",
   "Name": "the hill giant",
+  "Gender": 1,
   "Keywords": [
    "giant",
    "hill"
   ],
   "RoomDesc": "A hill giant is here, tossing some rocks around.",
   "FullDesc": "The hill giant looks like he's about 9 feet tall.  By his actions you \nquickly come to the conclusion that he isn't very intelligent.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d10+160",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 13,
+   "XPValue": 16500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "2d10+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -241,13 +579,36 @@
  {
   "Key": "mob4100",
   "Name": "the mage",
+  "Gender": 1,
   "Keywords": [
    "mage"
   ],
   "RoomDesc": "A small intelligent looking mage is standing here.",
   "FullDesc": "His IQ makes almost any normal person look stupid...\nIt looks like he knows his way with magic. ",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d20+100",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 13,
+   "XPValue": 21000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d6+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "scavenger",
@@ -258,13 +619,36 @@
  {
   "Key": "mob4101",
   "Name": "the troll",
+  "Gender": 1,
   "Keywords": [
    "troll"
   ],
   "RoomDesc": "A large mean-looking troll is here.",
   "FullDesc": "Well, it looks dangerous!",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d10+100",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 13000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "2d7+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "scavenger",
@@ -275,13 +659,36 @@
  {
   "Key": "mob4102",
   "Name": "the snake",
+  "Gender": 1,
   "Keywords": [
    "snake"
   ],
   "RoomDesc": "A large green snake is here, looks like a guardian for an evil force.",
   "FullDesc": "You see a evil creature.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "6d10+50",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 9000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "3d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "scavenger",
@@ -292,13 +699,36 @@
  {
   "Key": "mob4103",
   "Name": "the thief",
+  "Gender": 1,
   "Keywords": [
    "thief"
   ],
   "RoomDesc": "A thief is here, all dressed in black.",
   "FullDesc": "He seems to be counting a handful of coins.  Maybe you ought to count YOUR\ngold too...",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d10+100",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 4000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -308,14 +738,37 @@
  {
   "Key": "mob4104",
   "Name": "the orc",
+  "Gender": 1,
   "Keywords": [
    "orc",
    "ugly"
   ],
   "RoomDesc": "A ugly orc is standing here.",
   "FullDesc": "It is quite disgusting to look at.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d5+90",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 2250
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 6,
+    "Damage": "2d4+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -331,8 +784,30 @@
   ],
   "RoomDesc": "A small harmless centipede is here.",
   "FullDesc": "Well it doesn't seem to pay any attention to you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+50",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 6,
+   "XPValue": 1500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 5,
+    "Damage": "1d8+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -340,13 +815,36 @@
  {
   "Key": "mob4106",
   "Name": "the warrior",
+  "Gender": 1,
   "Keywords": [
    "warrior"
   ],
   "RoomDesc": "A human warrior is here.  He has a evil grin in his face.",
   "FullDesc": "He doesn't look friendly at all...",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+100",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 9,
+   "XPValue": 9000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d6+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -357,13 +855,36 @@
  {
   "Key": "mob4107",
   "Name": "the kobold",
+  "Gender": 1,
   "Keywords": [
    "kobold"
   ],
   "RoomDesc": "A green kobold is here.",
   "FullDesc": "It looks slimy..",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d10+25",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 3000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 6,
+    "Damage": "1d9+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",

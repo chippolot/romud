@@ -8,8 +8,30 @@
   ],
   "RoomDesc": "A small, poisonous asp slithers over your feet.",
   "FullDesc": "The asp is a small, smooth-scaled snake the color of worn pottery.\nThe poison bite of this snake has felled many a mighty pharoah.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d5+50",
+   "AC": 11,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 6,
+    "Damage": "1d6+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -24,8 +46,30 @@
   ],
   "RoomDesc": "A cobra snake rears up and opens its fearsome hood.",
   "FullDesc": "The cobra snake waves back and forth before you, its hood displaying brilliant\ncolors designed to serve notice to its prey that it is about to strike.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "7d7+70",
+   "AC": 12,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d4+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -34,13 +78,36 @@
  {
   "Key": "mob5302",
   "Name": "the wily little mongoose",
+  "Gender": 2,
   "Keywords": [
    "mongoose"
   ],
   "RoomDesc": "A small mongoose slinks along the ground, hunting snakes.",
   "FullDesc": "The mongoose is a wily rodent, a quick hunter of nasty poisonous snakes.\nShe sniffs you and appears to be looking for food in your hand.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "11d11+110",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 11,
+   "XPValue": 10000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "3d5+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -49,14 +116,37 @@
  {
   "Key": "mob5303",
   "Name": "the pyramid watcher",
+  "Gender": 1,
   "Keywords": [
    "pyramid",
    "watcher"
   ],
   "RoomDesc": "The pyramid watcher protects the tombs from intruders.",
   "FullDesc": "The pyramid watcher has made a pledge to destroy any would-be looters of\nthe tombs of the pharoahs.  He is clad from head to foot in utilitarian\nsand-colored clothing.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "8d8+80",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 3750
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d6+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "assistall"
@@ -65,14 +155,37 @@
  {
   "Key": "mob5304",
   "Name": "the tomb thief",
+  "Gender": 1,
   "Keywords": [
    "thief",
    "tomb"
   ],
   "RoomDesc": "A sneaky tomb thief moves about in search of treasure.",
   "FullDesc": "The thief brushes against you briefly, then slinks back into the shadows.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d10+100",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 9000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d6+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -80,6 +193,7 @@
  {
   "Key": "mob5305",
   "Name": "Ali Baba",
+  "Gender": 1,
   "Keywords": [
    "ali",
    "baba",
@@ -87,8 +201,30 @@
   ],
   "RoomDesc": "Ali Baba is here, hunting for the pharoah's tomb.",
   "FullDesc": "You see a tall, full-bearded man with a mischevious glint in his eye.  Ali Baba\nhas made his life from stealing things from others, including many items stolen\nrecently from under the nose of the hapless guardians of this pyramid.  Someday\nhe might get caught, but not today...",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "18d18+180",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 18,
+   "XPValue": 30000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 18,
+    "Damage": "3d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -104,8 +240,30 @@
   ],
   "RoomDesc": "A small woven carpet lies under your feet.",
   "FullDesc": "The carpet is simply beautiful, made from intricately woven silken material.  \nIt seems to rise up at the touch of your feet.  Wait, it is rising, a few feet\nabove the ground!  In fact, it seems to be ALIVE!",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "9d9+90",
+   "AC": 12,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 9,
+   "XPValue": 6000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 9,
+    "Damage": "2d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -119,8 +277,30 @@
   ],
   "RoomDesc": "A mummy reaches for you, disturbed by your presence.",
   "FullDesc": "You only see the disfigured, rotting features of decaying human flesh,\nanimated by the distempered spirit of a long-deceased person.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "12d12+120",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 15000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "1d6+6",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -129,6 +309,7 @@
  {
   "Key": "mob5308",
   "Name": "the sandman",
+  "Gender": 1,
   "Keywords": [
    "sand",
    "man",
@@ -136,8 +317,30 @@
   ],
   "RoomDesc": "A sandman rises up from the desert floor.",
   "FullDesc": "The sandman is exactly that -- some sort of strange being formed from the sands\nof the desert floor.  It seems quite large and strong and at home in the heat\nand sandy winds.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "14d14+140",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 14,
+   "XPValue": 18000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 14,
+    "Damage": "2d7+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -146,14 +349,37 @@
  {
   "Key": "mob5309",
   "Name": "the efreeti",
+  "Gender": 1,
   "Keywords": [
    "efreeti",
    "efreet"
   ],
   "RoomDesc": "The efreeti stands here, sheathed in a column of fire.",
   "FullDesc": "The efreeti is a mighty being formed from living fire.  He gazes down at\nyou with disdain and scorn, arms folded across his mighty chest.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "20d20+200",
+   "AC": 20,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 20,
+   "XPValue": 40000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "4d6+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -162,14 +388,37 @@
  {
   "Key": "mob5310",
   "Name": "the caryatid",
+  "Gender": 2,
   "Keywords": [
    "caryatid",
    "column"
   ],
   "RoomDesc": "A sandstone column stands here, carved into a feminine figure.",
   "FullDesc": "The column has been carved into a set of four shapely women, each facing\noutward into the room.  The sandstone of the caryatid is smooth with age,\nbut you can still make out a deadly stone sword in the hands of each figure.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "24d24+240",
+   "AC": 22,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 24,
+   "XPValue": 100000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 24,
+    "Damage": "4d6+8",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "assistall"
@@ -178,14 +427,37 @@
  {
   "Key": "mob5311",
   "Name": "the djinn",
+  "Gender": 1,
   "Keywords": [
    "djinn",
    "genie"
   ],
   "RoomDesc": "The djinn issues forth from the confines of a small lamp.",
   "FullDesc": "The djinn is a mighty being formed from the air itself and frequently\nimprisoned in a small lamp, used to do the bidding of those who find him.\nHe smiles down at you congenially, arms folded across his blue-tinged \nskin, and strokes his goatee.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "28d28+280",
+   "AC": 25,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 28,
+   "XPValue": 310000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 28,
+    "Damage": "6d6+12",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -199,8 +471,30 @@
   ],
   "RoomDesc": "A hieracosphinx looks at you cunningly.",
   "FullDesc": "The hieracosphinx are cunning, small, but nasty creatures, having the heads\nof birds, mighty wingspans, and a full set of four paws to rend their victims\nto pieces.  They tend to be quite jealous of the sharper wits of their older\ncousins.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "15d15+150",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 21000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 15,
+    "Damage": "1d10+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -209,14 +503,37 @@
  {
   "Key": "mob5313",
   "Name": "the gynosphinx",
+  "Gender": 2,
   "Keywords": [
    "gynosphinx",
    "sphinx"
   ],
   "RoomDesc": "A gynosphinx sits here, befuddled by a riddle.",
   "FullDesc": "The gynosphinx is a crafty but gentle creature, having the body of a\nbeautiful dark-skinned woman from the waist up, a feathery set of wings\nand the hind legs of a mighty cat.  Right now she is confused, having \njust heard a puzzling riddle from a cousin criosphinx.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "19d19+190",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 19,
+   "XPValue": 35000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 19,
+    "Damage": "2d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -224,14 +541,37 @@
  {
   "Key": "mob5314",
   "Name": "the criosphinx",
+  "Gender": 1,
   "Keywords": [
    "criosphinx",
    "sphinx"
   ],
   "RoomDesc": "A criosphinx calmly watches you.",
   "FullDesc": "The criosphinx is a calm and friendly creature, having the head of a ram atop\nthe body of a well-furred feline with eagle-like wings.  He delights in riddles,\nand in poking occasional fun at his easily confused lesser cousins.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "23d23+230",
+   "AC": 21,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 23,
+   "XPValue": 80000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 23,
+    "Damage": "3d10+15",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -245,8 +585,30 @@
   ],
   "RoomDesc": "A mighty androsphinx tosses its lion-like mane.",
   "FullDesc": "The mighty androsphinx is a huge creature, with the body of a lion whose\nface  is quite man-like, perhaps even handsome, and a massive pair of feathered\nwings.  Tales are told of pharoahs that were rendered permanently deaf by the \nmighty roar of this sphinx.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "27d27+270",
+   "AC": 25,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 27,
+   "XPValue": 200000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 27,
+    "Damage": "4d10+20",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -260,8 +622,30 @@
   ],
   "RoomDesc": "A mighty sphinx rests here in the sand, dormant now for centuries.",
   "FullDesc": "The great sphinx towers tens of feet above you, resting here in a state of \ndormancy.  It has become almost indistinguishable from the sand that surrounds\nit, although you can still make out the features of the handsome face that once\nadvised many rulers.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "41d41+410",
+   "AC": 39,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 41,
+   "XPValue": 1500000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 41,
+    "Damage": "5d10+25",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -269,14 +653,37 @@
  {
   "Key": "mob5317",
   "Name": "Ramses the Damned",
+  "Gender": 1,
   "Keywords": [
    "ramses",
    "mummy"
   ],
   "RoomDesc": "You have awakened the mighty servant to the pharoahs, Ramses.",
   "FullDesc": "As your light spills over his face and body, you can see his features\nbegin to fill out, swell, and harden, until an apparently healthy man \nstands before you, clad only in the raiments he was left in when he last \nslept.  His hair is a soft black, his skin a deep chocolate, and his \ntall frame is totally still, his chest not even moving to breathe.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "38d38+380",
+   "AC": 37,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 38,
+   "XPValue": 1000000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 38,
+    "Damage": "8d5+40",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]

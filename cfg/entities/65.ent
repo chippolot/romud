@@ -2,14 +2,37 @@
  {
   "Key": "mob6400",
   "Name": "the mountain goat",
+  "Gender": 1,
   "Keywords": [
    "goat",
    "mountain"
   ],
   "RoomDesc": "A mountain goat nibbles at a piece of grass here.",
   "FullDesc": "This goat is acclimated to the rugged terrain of the \nmountains.  It looks at you and shies away a little.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+95",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 4000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d5+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -23,8 +46,30 @@
   ],
   "RoomDesc": "A cloaked and clawed demon of decay comes at you viciously!",
   "FullDesc": "This demon has pure malevolence for anything living.  \nOops!  You're living!  I guess that means you!",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+145",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 10000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "2d7+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -41,8 +86,30 @@
   ],
   "RoomDesc": "A mound of books rise up into a human shape and tries to hit you!",
   "FullDesc": "Ironically enough, the book-monster's head is War and\nPeace.  Hmm.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+199",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 14,
+   "XPValue": 18000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 13,
+    "Damage": "2d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -58,8 +125,30 @@
   ],
   "RoomDesc": "A bad feeling chokes your throat.",
   "FullDesc": "It resembles a lot of other bad feelings you've had,\nbut a lot more tangible... magic?",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+249",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 18,
+   "XPValue": 40000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 17,
+    "Damage": "3d8+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -74,8 +163,30 @@
   ],
   "RoomDesc": "Your worst nightmare coalesces in front of you and attacks!",
   "FullDesc": "It looks like you deepest, darkest fears personified.\nWait a minute!  It IS your deepest, darkest fears\npersonified!",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+299",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 19,
+   "XPValue": 45000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 18,
+    "Damage": "3d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -90,8 +201,30 @@
   ],
   "RoomDesc": "A guardian guards the door.  It looks at you and attacks!",
   "FullDesc": "The guardian guards the door.  That's about all its\nbrain can handle: guarding.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+249",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 18,
+   "XPValue": 35000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 17,
+    "Damage": "3d6+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",

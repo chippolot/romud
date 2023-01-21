@@ -65,16 +65,16 @@
   "Desc": "   This used to be a gateway to and from western Rome.  There is an iron gate\nblocking your way and judging by the amount of rust and foliage growing on the\nbars, it hasn't been open for years.  Looking through the gate at the barren\nlandscape that lies beyond, you can see why.  A dirt road leads off to the \neast, and a store is directly south.",
   "Exits": [
    {
-    "RoomId": 0,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12013,
     "Verb": "east"
    },
    {
     "RoomId": 12007,
     "Verb": "south"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "west"
    }
   ]
  },
@@ -121,12 +121,12 @@
   "Desc": "   There are many gladiators, chariot drivers and their coaches here, warming\nup in preparation for the games.  The dust rising from the parched earth makes\nyou want to sneeze.  A short tunnel leads east and the thunder of pounding\nhooves and the clash of weapons can be heard coming from the south.",
   "Exits": [
    {
-    "RoomId": 12017,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12011,
     "Verb": "south"
+   },
+   {
+    "RoomId": 12017,
+    "Verb": "east"
    }
   ]
  },
@@ -279,16 +279,16 @@
   "Desc": "   This is a well built and heavily traveled road running from east to west\nand there is a large structure built entirely of stone to the north.",
   "Exits": [
    {
+    "RoomId": 12013,
+    "Verb": "west"
+   },
+   {
     "RoomId": 12019,
     "Verb": "north"
    },
    {
     "RoomId": 12027,
     "Verb": "east"
-   },
-   {
-    "RoomId": 12013,
-    "Verb": "west"
    }
   ]
  },
@@ -467,16 +467,16 @@
   "Desc": "   You are walking on a great paved road that runs north and south through\nthe city.  People are hurrying from one place to another, but always stop\nto say hello.  Most of the people are either coming from or going to the\ntown square.  Nero Drive continues to the north, and you can see a large\nopen area to the south.",
   "Exits": [
    {
-    "RoomId": 12025,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12031,
     "Verb": "north"
    },
    {
     "RoomId": 12033,
     "Verb": "south"
+   },
+   {
+    "RoomId": 12025,
+    "Verb": "west"
    }
   ]
  },
@@ -505,6 +505,10 @@
   "Desc": "   You are walking on a paved road that runs north and south through the\ncity of Rome.  There are many people here, as polite as always.  Most of\nthem are either coming from or going to the town square which lies to the\nnorth.  Nero Drive continues to the south.  There is an observation area\noverlooking the aqueduct to the east and a paved road leads west.",
   "Exits": [
    {
+    "RoomId": 12033,
+    "Verb": "north"
+   },
+   {
     "RoomId": 12041,
     "Verb": "east"
    },
@@ -515,10 +519,6 @@
    {
     "RoomId": 12027,
     "Verb": "west"
-   },
-   {
-    "RoomId": 12033,
-    "Verb": "north"
    }
   ]
  },
@@ -581,16 +581,16 @@
   "Desc": "   This is the working room where elected senators from all over the empire\ngather to advise the Emperor.  An official seal of the Emperor is hanging on\nthe far wall.  There is a wooden door to the north and a bronze door to the\neast and doublehung door to the south.",
   "Exits": [
    {
+    "RoomId": 12037,
+    "Verb": "north"
+   },
+   {
     "RoomId": 12045,
     "Verb": "east"
    },
    {
     "RoomId": 12039,
     "Verb": "south"
-   },
-   {
-    "RoomId": 12037,
-    "Verb": "north"
    }
   ]
  },
@@ -728,6 +728,10 @@
   "Desc": "  You are standing on a wide, heavily traveled road that runs east and\nwest through the heart of the city.  There are marble steps leading up.\nTo the south, off in the distance, you can see a large stone structure\nand a mountain that is partially obscured by the haze.  There is a\ngeneral store to the north.",
   "Exits": [
    {
+    "RoomId": 12064,
+    "Verb": "north"
+   },
+   {
     "RoomId": 12052,
     "Verb": "east"
    },
@@ -738,10 +742,6 @@
    {
     "RoomId": 12046,
     "Verb": "up"
-   },
-   {
-    "RoomId": 12064,
-    "Verb": "north"
    }
   ]
  },
@@ -762,10 +762,6 @@
   "Desc": "   You are in a massive stone structure that has been designed to channel\nwater into the city of Rome.  Due to the recent drought, the water level\nis low, allowing passage without a boat.  The walls and floor are covered\nwith algae and slime, producing treacherous footing conditions.  There are\nexits in all four cardinal directions.",
   "Exits": [
    {
-    "RoomId": 12058,
-    "Verb": "north"
-   },
-   {
     "RoomId": 12042,
     "Verb": "east"
    },
@@ -776,6 +772,10 @@
    {
     "RoomId": 12049,
     "Verb": "west"
+   },
+   {
+    "RoomId": 12058,
+    "Verb": "north"
    }
   ]
  },
@@ -796,16 +796,16 @@
   "Desc": "   You stand inside of a large courtroom in which common civil disputes and \ncriminal matters are decided.  There is a judge's bench and a witness stand\non the far side of the room and a jury's box along side.  The Emperor's seal\nis prominently displayed on the wall behind the judge's stand, reminding all\nwho enter that he is an extension of his highness.  There is a door, possibly \nleading to the judge's chambers, to the east and the waiting room is to the \nwest.",
   "Exits": [
    {
-    "RoomId": 12056,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12061,
     "Verb": "south"
    },
    {
     "RoomId": 12044,
     "Verb": "west"
+   },
+   {
+    "RoomId": 12056,
+    "Verb": "east"
    }
   ]
  },
@@ -845,6 +845,10 @@
   "Desc": "   You are in a massive stone structure that has been designed to channel\nwater into the city of Rome.  Due to the recent drought, the water level\nis low, allowing passage without a boat.  The walls and floor are covered\nwith algae and slime, producing treacherous footing conditions.  There are\nexits in all four cardinal directions.",
   "Exits": [
    {
+    "RoomId": 12049,
+    "Verb": "west"
+   },
+   {
     "RoomId": 12042,
     "Verb": "north"
    },
@@ -855,10 +859,6 @@
    {
     "RoomId": 12058,
     "Verb": "south"
-   },
-   {
-    "RoomId": 12049,
-    "Verb": "west"
    }
   ]
  },
@@ -879,12 +879,12 @@
   "Desc": "   You are standing on a small trail that leads through a grove of trees.\nEvery thing is lush and green here and it appears to have been raining\nrecently.  'This would be an ideal place for a picnic.' , you think to\nyourself.",
   "Exits": [
    {
-    "RoomId": 12053,
-    "Verb": "up"
-   },
-   {
     "RoomId": 12060,
     "Verb": "down"
+   },
+   {
+    "RoomId": 12053,
+    "Verb": "up"
    }
   ]
  },
@@ -990,12 +990,12 @@
   "Desc": "   You travel upon an East-West road wide enough for 30 men to march\nabreast.  It is packed hard through heavy use.  To the west stands the\nGates of Rome inviting you to enter and partake of all the glory and\nsplendor that is Rome.",
   "Exits": [
    {
-    "RoomId": 12052,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12066,
     "Verb": "east"
+   },
+   {
+    "RoomId": 12052,
+    "Verb": "west"
    }
   ]
  },
@@ -1005,12 +1005,12 @@
   "Desc": "   You travel upon an East-West road wide enough for 30 men to march\nabreast.  It is packed hard through heavy use.  To the west, your eyes\ncatch the splendors of a mighty city.",
   "Exits": [
    {
-    "RoomId": 12065,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12067,
     "Verb": "east"
+   },
+   {
+    "RoomId": 12065,
+    "Verb": "west"
    }
   ]
  },
@@ -1050,12 +1050,12 @@
   "Desc": "   This small dirt path seems to be a joint between a large clay road\nlocated a short distance to the west and the expanse of sand which opens\nup before you to the east.  The clay road appears to lead through the\nfoothills towards the snowcapped mountain chain to the west.  Perhaps\nthere is a city or settlement in that direction.\n   You cannot see any breaks in the horizon of the sand which fills your\nvision as you look to the east, it seems to stretch forever.",
   "Exits": [
    {
-    "RoomId": 5029,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12068,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5029,
+    "Verb": "east"
    }
   ]
  }

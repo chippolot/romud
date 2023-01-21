@@ -24,16 +24,16 @@
   "Desc": "   You are on a dusty trail winding its way east-west between huge,\nancient trees whose grey trunks remind you of ancient pillars in a\nenormous, deserted hall.  To the south, a frail path leads away from\nthe trail.",
   "Exits": [
    {
-    "RoomId": 6105,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6103,
     "Verb": "west"
    },
    {
     "RoomId": 6101,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6105,
+    "Verb": "south"
    }
   ]
  },
@@ -58,16 +58,16 @@
   "Desc": "   You are where the dusty trail bends, as to avoid conflict with a\ncolossal trunk to the west.  Not a sound is to be heard - everything\nis ominously quiet.  The trail leads east and south and there is a\nsmall path leading off the trail to the north.",
   "Exits": [
    {
-    "RoomId": 6109,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6151,
     "Verb": "north"
    },
    {
     "RoomId": 6103,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6109,
+    "Verb": "south"
    }
   ]
  },
@@ -228,12 +228,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  Ancient\ngrey trees loom in all directions.  The path continues south and west.",
   "Exits": [
    {
-    "RoomId": 6115,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6113,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6115,
+    "Verb": "south"
    }
   ]
  },
@@ -292,16 +292,16 @@
   "Desc": "   You are by a junction where three paths meet.  Ancient, grey trees seem\nto observe you silently you from all sides.  Paths lead north, east and west.",
   "Exits": [
    {
-    "RoomId": 6107,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6119,
     "Verb": "east"
    },
    {
     "RoomId": 6117,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6107,
+    "Verb": "north"
    }
   ]
  },
@@ -341,16 +341,16 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  To the\nsouth a fast river is flowing westward through the forest.  Ancient grey\ntrees loom on both banks.  The path continues north and west.",
   "Exits": [
    {
+    "RoomId": 6120,
+    "Verb": "north"
+   },
+   {
     "RoomId": 902,
     "Verb": "south"
    },
    {
     "RoomId": 6122,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6120,
-    "Verb": "north"
    }
   ]
  },
@@ -371,12 +371,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  Giant,\ngrey trees loom ominously all around.  The path continues east and south.",
   "Exits": [
    {
-    "RoomId": 6115,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6124,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6115,
+    "Verb": "east"
    }
   ]
  },
@@ -450,12 +450,12 @@
   "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads east and south.",
   "Exits": [
    {
-    "RoomId": 6113,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6127,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6113,
+    "Verb": "east"
    }
   ]
  },
@@ -612,12 +612,12 @@
   "Desc": "   You are on a dusty trail leading through the deep, dark forest.  Ancient\ngrey trees loom all around you.  A small trail leads northwards and the only\nother exit is east, along the main trail.",
   "Exits": [
    {
-    "RoomId": 6137,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6139,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6137,
+    "Verb": "east"
    }
   ]
  },
@@ -642,12 +642,12 @@
   "Desc": "   The trail continues to the north and south as it leads through\nthe heavy underbrush of this part of the Haon-Dor Forest.  The\ntrail looks surprisingly well trodden along this part.  The brush\nseems to be bending closely over the path in a somewhat ominous\nmanner, but you easily shrug it off.",
   "Exits": [
    {
-    "RoomId": 6139,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6204,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6139,
+    "Verb": "south"
    }
   ]
  },
@@ -728,12 +728,12 @@
   "Desc": "   You have stepped inside of this hollowed tree.  From here steps lead down\ninto darkness or you can exit the tree by going west.",
   "Exits": [
    {
-    "RoomId": 6155,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6153,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6155,
+    "Verb": "down"
    }
   ]
  },

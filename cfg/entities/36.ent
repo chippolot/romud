@@ -7,8 +7,30 @@
   ],
   "RoomDesc": "A monstrous wyvern slowly circles just above your head.",
   "FullDesc": "This huge winged creature looks really menacing as it circles only inches\nabove your head, flapping its wings and squawking very loudly.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d10+90",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 3575
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d6+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -17,14 +39,37 @@
  {
   "Key": "mob3501",
   "Name": "the goblin",
+  "Gender": 1,
   "Keywords": [
    "goblin",
    "mountain"
   ],
   "RoomDesc": "A mountain goblin is wandering around mumbling to himself...",
   "FullDesc": "You see before you a small and twisted creature with knotted muscles and\ndisgustingly green skin.  Doesn't look like the type you'd invite to dinner.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+55",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 600
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 3,
+    "Damage": "1d8+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "assistall",
@@ -34,14 +79,37 @@
  {
   "Key": "mob3502",
   "Name": "the goblin lieutenant",
+  "Gender": 1,
   "Keywords": [
    "goblin",
    "lieutenant"
   ],
   "RoomDesc": "A goblin lieutenant stands here, attempting to get his men in order.",
   "FullDesc": "The goblin lieutenant is rather angry, and looking for one of his men to\nbeat up upon, but maybe you will do just fine...",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+100",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 5,
+    "Damage": "2d5+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "assistall",
    "stayzone"
@@ -50,14 +118,37 @@
  {
   "Key": "mob3503",
   "Name": "the goblin leader",
+  "Gender": 1,
   "Keywords": [
    "goblin",
    "leader"
   ],
   "RoomDesc": "The goblin leader surveys the room.",
   "FullDesc": "The leader doesn't look too happy that you have found him here.  He grabs\nfor his shortsword and lunges for your neck.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+120",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 9,
+   "XPValue": 8000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d5+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "scavenger",
@@ -68,14 +159,37 @@
  {
   "Key": "mob3504",
   "Name": "the small boy",
+  "Gender": 1,
   "Keywords": [
    "boy",
    "small"
   ],
   "RoomDesc": "A small boy sits here, licking his wounds.",
   "FullDesc": "The poor boy has numerous cuts and scratches, but appears to be all right.\nHe is apparently the only survivor of the ambush.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+47",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 600
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 3,
+    "Damage": "1d8+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -83,13 +197,36 @@
  {
   "Key": "mob3505",
   "Name": "the Innkeeper",
+  "Gender": 1,
   "Keywords": [
    "innkeeper"
   ],
   "RoomDesc": "The Innkeeper stands here, cleaning glasses.",
   "FullDesc": "The Innkeeper now spends most of his days waiting for customers, while the\nnights are spent watching out for goblins.  His inn is no longer the happy\nplace that is used to be in days past.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+200",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 7000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "2d8+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "assistall",
@@ -99,13 +236,36 @@
  {
   "Key": "mob3506",
   "Name": "the bard",
+  "Gender": 1,
   "Keywords": [
    "bard"
   ],
   "RoomDesc": "A sullen bard is here, drinking away his problems.",
   "FullDesc": "You can smell the alcohol on his breath from across the room.  This poor\nbard has been sitting here quite a while, drinking himself into oblivion.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+110",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 3750
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d6+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "assistall",
@@ -115,14 +275,37 @@
  {
   "Key": "mob3507",
   "Name": "the dark horseman",
+  "Gender": 1,
   "Keywords": [
    "horseman",
    "dark"
   ],
   "RoomDesc": "A dark horseman is here, mounted on his black steed.",
   "FullDesc": "The man is obviously an outlaw, and has no qualms about slashing you into\nlittle bits.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+97",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 4000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "1d5+7",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "assistall",
    "stayzone"

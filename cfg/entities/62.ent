@@ -8,8 +8,30 @@
   ],
   "RoomDesc": "A vicious warg is here, snarling angrily at you.",
   "FullDesc": "It is an exceptionally large wolf with thick, black fur.  Saliva is dripping\nquickly from its long, white fangs.  It looks quite dangerous and very angry.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+60",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "2d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -24,8 +46,30 @@
   ],
   "RoomDesc": "A ferocious warg is here, snarling angrily at you.",
   "FullDesc": "It is an exceptionally large wolf with thick, black fur.  Saliva is dripping\nquickly from its long, white fangs.  It looks quite dangerous and very angry.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+80",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "2d4+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -40,8 +84,30 @@
   ],
   "RoomDesc": "A large, grey wolf is here, glaring hungrily at you.",
   "FullDesc": "The large, grey wolf eyes you with interest while licking its lips.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+35",
+   "AC": 12,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 450
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "1d7+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -56,8 +122,30 @@
   ],
   "RoomDesc": "A large, black wolf is here, glaring hungrily at you.",
   "FullDesc": "The large, black wolf eyes you with interest while licking its lips.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+45",
+   "AC": 12,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 450
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "1d7+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -72,8 +160,30 @@
   ],
   "RoomDesc": "A huge, ancient tree towers above you.",
   "FullDesc": "Its roots are extremely big and large parts of them are above ground.\nSomething about it makes you think that this is not a normal oak tree.\n\nThe enormous grey trunk shivers slightly, as if sighing deeply.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1299",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 30,
+   "XPValue": 500000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "4d4+22",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -87,8 +197,30 @@
   ],
   "RoomDesc": "A huge, ancient tree towers above you.",
   "FullDesc": "Its roots are extremely big and large parts of them are above ground.\nSomething about it makes you think that this is not a normal oak tree.\n\nThe enormous grey trunk emits a deep, moaning sound.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+999",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 30,
+   "XPValue": 400000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "4d4+18",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -102,8 +234,30 @@
   ],
   "RoomDesc": "A huge green dragon is here, its narrow yellow eyes glowing with rage.",
   "FullDesc": "This enormous winged serpent has dark green scales covering most of its\ncolossal body.  Numerous holes in its heavy wings tell of many fights as\ndoes the nicks in the horns on its head.  It smells as disgusting as only\ndragons do.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+248",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 20,
+   "XPValue": 40000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 19,
+    "Damage": "2d6+9",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -118,8 +272,30 @@
   ],
   "RoomDesc": "A huge, poisonous spider is here.",
   "FullDesc": "This disgusting creature is at the size of a human crawling on all four.  It\nhas eight hairy legs that gives it a tremendous speed on almost any surface\nand sharp poisonous fangs to paralyze or kill its prey.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+98",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 4000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 7,
+    "Damage": "2d5+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -129,14 +305,37 @@
  {
   "Key": "mob6114",
   "Name": "the Queen spider",
+  "Gender": 2,
   "Keywords": [
    "queen",
    "spider"
   ],
   "RoomDesc": "The huge, bulky Queen spider is here.",
   "FullDesc": "This disgusting creature is at the size of a small elephant.  It has eight\nhuge, hairy legs that would give it a tremendous speed on almost any surface\nif it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+185",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 31000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 14,
+    "Damage": "2d8+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -145,14 +344,37 @@
  {
   "Key": "mob6115",
   "Name": "Shargugh",
+  "Gender": 1,
   "Keywords": [
    "shargugh",
    "brownie"
   ],
   "RoomDesc": "Shargugh the Forest Brownie is here, grinning broadly at you.",
   "FullDesc": "This little fellow is only three foot tall with wild matted brown hair and\nlong tangled brown beard.  He wears ragged brown and green clothing and looks\nas if he is having great fun.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+47",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 11000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 19,
+    "Damage": "1d8+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -163,14 +385,37 @@
  {
   "Key": "mob6116",
   "Name": "the Elder druid",
+  "Gender": 1,
   "Keywords": [
    "elder",
    "druid"
   ],
   "RoomDesc": "The Elder druid is here.  He looks very upset about your presence in his home.",
   "FullDesc": "The druid looks quite old.  You would think of him as venerable but yet you\nknow he would be a tough foe.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+236",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 19,
+   "XPValue": 45000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 18,
+    "Damage": "3d6+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -178,14 +423,37 @@
  {
   "Key": "mob6117",
   "Name": "Isha the Dark Elf",
+  "Gender": 2,
   "Keywords": [
    "isha",
    "elf"
   ],
   "RoomDesc": "Isha the Dark Elf is here, observing you silently.",
   "FullDesc": "She is no less than beautiful, skin as dark as the night and hair\nshining like silver in the moonlight.  Her slender body is adorned\nwith a sleeveless shirt and a short skirt made from black scales\njoined with silver threads.  Her back is covered by a large, hooded\ncloak as black as her skin and in her broad silver belt hangs a long,\nslender sword in a silver scabbard.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d12+245",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 20,
+   "XPValue": 40000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 19,
+    "Damage": "3d6+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "assistall"

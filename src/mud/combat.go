@@ -82,7 +82,6 @@ func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
 	}
 }
 
-// TODO Consider renaming
 type AttackData struct {
 	ToHit                    int
 	Damage                   Dice

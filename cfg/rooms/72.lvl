@@ -182,20 +182,20 @@
   "Desc": "   This seems like a ledge that is a little broader than the one just to\nthe north of here.  The ledge seems to lead around some sort of Abyss of\ntotal darkness.  The ledge seems to have an odd-looking edge here.",
   "Exits": [
    {
-    "RoomId": 7111,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 7116,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7113,
     "Verb": "south"
    },
    {
     "RoomId": 7280,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7111,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7116,
+    "Verb": "east"
    }
   ]
  },
@@ -235,6 +235,10 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
+    "RoomId": 7119,
+    "Verb": "east"
+   },
+   {
     "RoomId": 7121,
     "Verb": "south"
    },
@@ -249,10 +253,6 @@
    {
     "RoomId": 7120,
     "Verb": "north"
-   },
-   {
-    "RoomId": 7119,
-    "Verb": "east"
    }
   ]
  },
@@ -262,16 +262,16 @@
   "Desc": "   You are standing on a ledge that seems quite a lot larger than the\nrest of the ledges.  This one leads to the west and the east, plus it\nhas an exit going to the south.  Though you could jump into mid-air,\nbut it probably wouldn't be such a good idea.  The way south is in\nutter darkness.",
   "Exits": [
    {
-    "RoomId": 7122,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7130,
     "Verb": "south"
    },
    {
     "RoomId": 7112,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7122,
+    "Verb": "east"
    }
   ]
  },
@@ -281,16 +281,16 @@
   "Desc": "   You stand, swaying out from the ledge, with only a couple of inches of\nsafe, solid ledge under your feet.  The ledge continues to the west and\nleads south from here into darkness.",
   "Exits": [
    {
+    "RoomId": 7118,
+    "Verb": "south"
+   },
+   {
     "RoomId": 7114,
     "Verb": "west"
    },
    {
     "RoomId": 7281,
     "Verb": "down"
-   },
-   {
-    "RoomId": 7118,
-    "Verb": "south"
    }
   ]
  },
@@ -424,10 +424,6 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
-    "RoomId": 7114,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7110,
     "Verb": "north"
    },
@@ -442,6 +438,10 @@
    {
     "RoomId": 7108,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7114,
+    "Verb": "up"
    }
   ]
  }

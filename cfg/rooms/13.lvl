@@ -44,10 +44,6 @@
   "Desc": "   The main hang out of the Gods, the Immortal Board Room is the place to\nbe.  Gods exchange messages here most every day.  The mortal board room is\nto the east and the meeting room for the gods is to the south.  To the north\nis the Gods' Inn and to the west is a post office for Gods.  There is a large\nstaircase leading down to the main temple in the city of Midgaard.  In the\nnortheast corner you spot a small staircase leading upwards.",
   "Exits": [
    {
-    "RoomId": 3002,
-    "Verb": "down"
-   },
-   {
     "RoomId": 1202,
     "Verb": "north"
    },
@@ -66,6 +62,10 @@
    {
     "RoomId": 1207,
     "Verb": "up"
+   },
+   {
+    "RoomId": 3002,
+    "Verb": "down"
    }
   ]
  },

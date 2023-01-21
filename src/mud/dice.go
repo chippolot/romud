@@ -121,6 +121,10 @@ func (d *Dice) StringColorized(color ANSIColor) string {
 	}
 }
 
+func (d *Dice) MarshalJSON() ([]byte, error) {
+	return json.Marshal(d.String())
+}
+
 func (d *Dice) UnmarshalJSON(data []byte) (err error) {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {

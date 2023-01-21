@@ -35,7 +35,7 @@ func main() {
 
 	for _, path := range utils.FindFilePathsWithExtension(inPath, ".zon") {
 		log.Println("Parsing:", path)
-		id, _ := strconv.Atoi(trimExtension(filepath.Base(path)))
+		id := parseInt(trimExtension(filepath.Base(path)))
 		id++
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
 			parseZone(bytes, filepath.Join(outPath, "zones", fmt.Sprintf("%d%s", id, mud.ZoneFileExtension)))
@@ -47,7 +47,7 @@ func main() {
 
 	for _, path := range utils.FindFilePathsWithExtension(inPath, ".wld") {
 		log.Println("Parsing:", path)
-		id, _ := strconv.Atoi(trimExtension(filepath.Base(path)))
+		id := parseInt(trimExtension(filepath.Base(path)))
 		id++
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
 			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%d%s", id, mud.RoomsFileExtension)))
@@ -58,9 +58,9 @@ func main() {
 	}
 
 	for _, path := range utils.FindFilePathsWithExtension(inPath, ".mob") {
-		log.Println("Parsing:", path)
-		id, _ := strconv.Atoi(trimExtension(filepath.Base(path)))
+		id := parseInt(trimExtension(filepath.Base(path)))
 		id++
+		log.Println("Parsing:", path)
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
 			parseEntities(bytes, filepath.Join(outPath, "entities", fmt.Sprintf("%d%s", id, mud.EntitiesFileExtension)))
 		} else {
@@ -85,8 +85,7 @@ func parseZone(data []byte, outPath string) {
 		}
 
 		// Parse Id
-		zid, _ := strconv.Atoi(line[1:])
-		cfg.Id = mud.ZoneId(zid + 1)
+		cfg.Id = mud.ZoneId(parseInt(line[1:]) + 1)
 
 		// Parse Name
 		line, lines = nextLine(lines)
@@ -95,12 +94,9 @@ func parseZone(data []byte, outPath string) {
 		// Parse values
 		line, lines = nextLine(lines)
 		toks := strings.Split(line, " ")
-		i, _ := strconv.Atoi(toks[0])
-		cfg.MinRoomId = mud.RoomId(i) + 1
-		i, _ = strconv.Atoi(toks[1])
-		cfg.MaxRoomId = mud.RoomId(i) + 1
-		i, _ = strconv.Atoi(toks[2])
-		cfg.ResetFreq = utils.Seconds(i * 60)
+		cfg.MinRoomId = mud.RoomId(parseInt(toks[0])) + 1
+		cfg.MaxRoomId = mud.RoomId(parseInt(toks[1])) + 1
+		cfg.ResetFreq = utils.Seconds(parseInt(toks[2]) * 60)
 	}
 	save(outPath, cfg)
 }
@@ -122,7 +118,7 @@ func parseRooms(data []byte, outPath string) {
 		cfg.Exits = make(mud.RoomExitsConfig)
 
 		// Parse Id
-		rid, _ := strconv.Atoi(line[1:])
+		rid := parseInt(line[1:])
 		cfg.Id = mud.RoomId(rid + 1)
 
 		// Parse Name
@@ -152,7 +148,6 @@ func parseRooms(data []byte, outPath string) {
 		}
 
 		rooms = append(rooms, cfg)
-		line, lines = nextLine(lines)
 	}
 	save(outPath, &rooms)
 }
@@ -219,8 +214,46 @@ func parseEntities(data []byte, outPath string) {
 			}
 		}
 
+		// Parse entity type (CircleMUD specific)
+		_ = toks[3]
+
+		// Parse stats
+		toks, lines = parseLineTokens(lines)
+		cfg.Stats = &mud.StatsConfig{}
+
+		// Parse level
+		cfg.Stats.Level = parseInt(toks[0])
+
+		// Parse THACO and convert to hit bonus
+		toHit := 20 - parseInt(toks[1])
+
+		// Parse AC
+		cfg.Stats.AC = 19 - parseInt(toks[2])
+
+		// Parse Hit Die
+		cfg.Stats.HP, _ = mud.ParseDice(toks[3])
+
+		// Parse Attack
+		dam, _ := mud.ParseDice(toks[4])
+		cfg.Attacks = make([]*mud.AttackConfig, 1)
+		cfg.Attacks[0] = &mud.AttackConfig{
+			Name:         "Hit",
+			ToHit:        toHit,
+			Damage:       dam,
+			DamageType:   mud.Dam_Bludgeoning,
+			VerbSingular: "hit",
+			VerbPlural:   "hits",
+		}
+
+		// Parse XP
+		toks, lines = parseLineTokens(lines)
+		cfg.Stats.XPValue = parseInt(toks[1])
+
+		// Parse Gender
+		toks, lines = parseLineTokens(lines)
+		cfg.Gender = mud.Gender(parseInt(toks[2]))
+
 		entities = append(entities, cfg)
-		line, lines = nextLine(lines)
 	}
 	save(outPath, &entities)
 }
@@ -258,6 +291,11 @@ func parseMultilineString(lines []string) (string, []string) {
 func parseLineTokens(lines []string) ([]string, []string) {
 	line, lines := nextLine(lines)
 	return strings.Split(line, " "), lines
+}
+
+func parseInt(str string) int {
+	i, _ := strconv.Atoi(str)
+	return i
 }
 
 func save[T any](path string, data T) error {

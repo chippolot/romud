@@ -107,10 +107,6 @@
   "Desc": "   You are making your way along a channel in the river delta between\nthe island to the west and the shore to the south and east.  To the\nsouth an aging broken down looking pier juts out from land and toward\nthe west the channel works it way close to the island as it moves around\nits southern tip.",
   "Exits": [
    {
-    "RoomId": 906,
-    "Verb": "north"
-   },
-   {
     "RoomId": 905,
     "Verb": "east"
    },
@@ -121,6 +117,10 @@
    {
     "RoomId": 909,
     "Verb": "west"
+   },
+   {
+    "RoomId": 906,
+    "Verb": "north"
    }
   ]
  },
@@ -190,16 +190,16 @@
   "Desc": "   The river splits as runs up against the island and a navigatble\nchannel slips off to the north and west.",
   "Exits": [
    {
-    "RoomId": 913,
-    "Verb": "north"
-   },
-   {
     "RoomId": 905,
     "Verb": "south"
    },
    {
     "RoomId": 913,
     "Verb": "west"
+   },
+   {
+    "RoomId": 913,
+    "Verb": "north"
    }
   ]
  },

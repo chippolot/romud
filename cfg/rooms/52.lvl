@@ -20,6 +20,10 @@
   "Desc": "   You walk along a highly ornate street going north-south.  A large gate\nlies to the east while a building lies to the west.",
   "Exits": [
    {
+    "RoomId": 5103,
+    "Verb": "south"
+   },
+   {
     "RoomId": 5123,
     "Verb": "west"
    },
@@ -30,10 +34,6 @@
    {
     "RoomId": 5101,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5103,
-    "Verb": "south"
    }
   ]
  },
@@ -103,16 +103,16 @@
   "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a large building.",
   "Exits": [
    {
+    "RoomId": 5119,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5104,
     "Verb": "east"
    },
    {
     "RoomId": 5108,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5119,
-    "Verb": "north"
    }
   ]
  },
@@ -122,16 +122,16 @@
   "Desc": "   You walk along a highly ornate city street leading north and east.  To the\nsouth is an extremely large house.",
   "Exits": [
    {
+    "RoomId": 5111,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5107,
     "Verb": "east"
    },
    {
     "RoomId": 5109,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5111,
-    "Verb": "north"
    }
   ]
  },
@@ -186,12 +186,12 @@
   "Desc": "   You stand in the inner courtyard of the 1st and largest house in the city.\nThe room is extremely large and decorative.  Mural and paintings hang on the \nwalls depicting some battles and a spider queen.",
   "Exits": [
    {
-    "RoomId": 5113,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5111,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5113,
+    "Verb": "west"
    }
   ]
  },
@@ -201,12 +201,12 @@
   "Desc": "   The throne room of the 1st house is in one word...awesome.  It is so\nhorrifying it is almost beautiful.",
   "Exits": [
    {
-    "RoomId": 5114,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5112,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5114,
+    "Verb": "north"
    }
   ]
  },
@@ -272,16 +272,16 @@
   "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a giant temple.",
   "Exits": [
    {
-    "RoomId": 5115,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5120,
     "Verb": "north"
    },
    {
     "RoomId": 5122,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5115,
+    "Verb": "west"
    }
   ]
  },
@@ -328,16 +328,16 @@
   "Desc": "   You walk along a highly ornate city street going eastward.  To the north\nis a building.",
   "Exits": [
    {
-    "RoomId": 5118,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5121,
     "Verb": "north"
    },
    {
     "RoomId": 5124,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5118,
+    "Verb": "west"
    }
   ]
  },
@@ -358,16 +358,16 @@
   "Desc": "   You walk along a highly ornate city street leading west and south.  To\nthe north is a relatively small house.",
   "Exits": [
    {
-    "RoomId": 5125,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5102,
     "Verb": "south"
    },
    {
     "RoomId": 5122,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5125,
+    "Verb": "north"
    }
   ]
  },
@@ -418,10 +418,6 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.\nTo the north is a obsidian stairway.",
   "Exits": [
    {
-    "RoomId": 5127,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5129,
     "Verb": "east"
    },
@@ -432,6 +428,10 @@
    {
     "RoomId": 5136,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5127,
+    "Verb": "south"
    }
   ]
  },
@@ -595,16 +595,16 @@
   "Desc": "   You are walking down a grand hallway, heavily decorated with adamantite\nand gold.  To the north the hall goes down a flight of stairs while a door is \nto the west.",
   "Exits": [
    {
+    "RoomId": 5141,
+    "Verb": "down"
+   },
+   {
     "RoomId": 5137,
     "Verb": "south"
    },
    {
     "RoomId": 5140,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5141,
-    "Verb": "down"
    }
   ]
  },
@@ -640,16 +640,16 @@
   "Desc": "   This is the south side of a large auditorium used for services by the\ndrow priestesses.  In the center is a large sacrificial pit and beyond that\nis an altar.",
   "Exits": [
    {
+    "RoomId": 5145,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5143,
     "Verb": "east"
    },
    {
     "RoomId": 5141,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5145,
-    "Verb": "west"
    }
   ]
  },
@@ -659,16 +659,16 @@
   "Desc": "   You are on the eastern side of the chamber overlooking the pit.  To the\neast is a door while to the north is an altar.",
   "Exits": [
    {
+    "RoomId": 5142,
+    "Verb": "south"
+   },
+   {
     "RoomId": 5146,
     "Verb": "north"
    },
    {
     "RoomId": 5147,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5142,
-    "Verb": "south"
    }
   ]
  },
@@ -699,10 +699,6 @@
   "Desc": "   You are standing in front of a highly and freshly bloodstained altar.  \nEngraved on the top of the altar is a giant spider with a human head.  Looking \ndown from the altar you see a large sacrificial pit with thousands of swarming\nspiders looking for their next meal!",
   "Exits": [
    {
-    "RoomId": 5149,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5143,
     "Verb": "east"
    },
@@ -713,6 +709,10 @@
    {
     "RoomId": 5144,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5149,
+    "Verb": "north"
    }
   ]
  },
@@ -722,12 +722,12 @@
   "Desc": "   This is the main room to the cell chambers for the slaves to be \nsacrificed.  You notice there are no guards around.",
   "Exits": [
    {
-    "RoomId": 5148,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5143,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5148,
+    "Verb": "north"
    }
   ]
  },

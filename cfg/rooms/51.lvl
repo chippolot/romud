@@ -20,16 +20,16 @@
   "Desc": "   The tunnel branches off north.",
   "Exits": [
    {
+    "RoomId": 5002,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5009,
     "Verb": "north"
    },
    {
     "RoomId": 5004,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5002,
-    "Verb": "west"
    }
   ]
  },
@@ -81,6 +81,10 @@
   "Desc": "   You are floating on a jet-black underground lake fed by dripping\nwater and lime from above.  The tunnel continues to the east and the\nriver leads back west.  Leading upwards to the northwest is a roughly\nhewn hallway.",
   "Exits": [
    {
+    "RoomId": 5007,
+    "Verb": "east"
+   },
+   {
     "RoomId": 5024,
     "Verb": "south"
    },
@@ -91,10 +95,6 @@
    {
     "RoomId": 5672,
     "Verb": "north"
-   },
-   {
-    "RoomId": 5007,
-    "Verb": "east"
    }
   ]
  },
@@ -104,16 +104,16 @@
   "Desc": "   The tunnel rises sharply to the east.  Another narrow tunnel\nleads away to the north.",
   "Exits": [
    {
+    "RoomId": 5006,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5017,
     "Verb": "north"
    },
    {
     "RoomId": 5008,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5006,
-    "Verb": "west"
    }
   ]
  },
@@ -123,12 +123,12 @@
   "Desc": "   The tunnel continues east and west.  To the east the tunnel dives\ndown into a bright light.  A small passage way opens to the north.",
   "Exits": [
    {
-    "RoomId": 5007,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5027,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5007,
+    "Verb": "west"
    }
   ]
  },
@@ -138,12 +138,12 @@
   "Desc": "   You stand at the edge of a large pile of rubble created from the last\nrockslide.",
   "Exits": [
    {
-    "RoomId": 5003,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5010,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5003,
+    "Verb": "south"
    }
   ]
  },
@@ -153,16 +153,16 @@
   "Desc": "   You are at the bottom of a large pile of rubble.  A tunnel branches\noff to the north and east.",
   "Exits": [
    {
-    "RoomId": 5011,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5013,
     "Verb": "east"
    },
    {
     "RoomId": 5009,
     "Verb": "up"
+   },
+   {
+    "RoomId": 5011,
+    "Verb": "north"
    }
   ]
  },
@@ -172,12 +172,12 @@
   "Desc": "   You stand in the middle of a large and beautiful cave.  A path leads\ndeeper into the darkness.",
   "Exits": [
    {
-    "RoomId": 5012,
-    "Verb": "down"
-   },
-   {
     "RoomId": 5010,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5012,
+    "Verb": "down"
    }
   ]
  },
@@ -187,12 +187,12 @@
   "Desc": "   This cavern overwhelms you.  The walls and ceiling seem miles away.\nBones of previous adventurers lie strewn on the cavern floor.  There is\na passage that spirals downwards in the northeast corner of the cavern.",
   "Exits": [
    {
-    "RoomId": 5011,
-    "Verb": "up"
-   },
-   {
     "RoomId": 5101,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5011,
+    "Verb": "up"
    }
   ]
  },
@@ -247,12 +247,12 @@
   "Desc": "   You are wading in a knee deep pool of lime-water.",
   "Exits": [
    {
-    "RoomId": 5015,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5017,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5015,
+    "Verb": "west"
    }
   ]
  },
@@ -277,16 +277,16 @@
   "Desc": "   This crawlway is just big enough for a human to crawl through or a\nhalfling to walk through.",
   "Exits": [
    {
-    "RoomId": 5020,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5004,
     "Verb": "north"
    },
    {
     "RoomId": 5019,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5020,
+    "Verb": "south"
    }
   ]
  },
@@ -296,12 +296,12 @@
   "Desc": "   You have entered a very large cavern.  The rock formations would amaze\nalmost any dwarf.",
   "Exits": [
    {
-    "RoomId": 5005,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5018,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5005,
+    "Verb": "north"
    }
   ]
  },
@@ -311,12 +311,12 @@
   "Desc": "   As you walk through the fungus patch, you are shot at by many millions of\nspores.  You can hardly breathe.",
   "Exits": [
    {
-    "RoomId": 5018,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5021,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5018,
+    "Verb": "north"
    }
   ]
  },
@@ -341,12 +341,12 @@
   "Desc": "   You find yourself standing inside of a giant mushroom.  The inside\nis decorated in the fashion of a temple.",
   "Exits": [
    {
-    "RoomId": 5023,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5021,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5023,
+    "Verb": "east"
    }
   ]
  },
@@ -356,12 +356,12 @@
   "Desc": "   You follow a path sloping down from the fungus temple.",
   "Exits": [
    {
-    "RoomId": 5024,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5022,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5024,
+    "Verb": "north"
    }
   ]
  },
@@ -405,16 +405,16 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the east and a snow-capped mountain range to the \nwest.",
   "Exits": [
    {
-    "RoomId": 5027,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5025,
     "Verb": "north"
    },
    {
     "RoomId": 5032,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5027,
+    "Verb": "south"
    }
   ]
  },
@@ -458,6 +458,10 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the north-east and a snow-capped mountain range to\nthe west.  You spy a narrow dirt trail leading away to the west into the\nfoothills.",
   "Exits": [
    {
+    "RoomId": 5030,
+    "Verb": "south"
+   },
+   {
     "RoomId": 12069,
     "Verb": "west"
    },
@@ -468,10 +472,6 @@
    {
     "RoomId": 5034,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5030,
-    "Verb": "south"
    }
   ]
  },
@@ -500,20 +500,20 @@
   "Desc": "   You stand beside a small pool of crystal-blue water bathed in the\nshade of a few scarce palm trees.  To the north you see a small\nencampment stopped for the day.",
   "Exits": [
    {
-    "RoomId": 5057,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5037,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5033,
     "Verb": "south"
    },
    {
     "RoomId": 5026,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5057,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5037,
+    "Verb": "east"
    }
   ]
  },
@@ -570,6 +570,10 @@
   "Exits": [
    {
     "RoomId": 5038,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5038,
     "Verb": "east"
    },
    {
@@ -579,10 +583,6 @@
    {
     "RoomId": 5029,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5038,
-    "Verb": "north"
    }
   ]
  },
@@ -615,20 +615,20 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the east, it looks enormous, even from this distance.",
   "Exits": [
    {
-    "RoomId": 5040,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5301,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5033,
     "Verb": "south"
    },
    {
     "RoomId": 5035,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5040,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5301,
+    "Verb": "east"
    }
   ]
  },
@@ -661,6 +661,10 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the north-east.",
   "Exits": [
    {
+    "RoomId": 5043,
+    "Verb": "south"
+   },
+   {
     "RoomId": 5034,
     "Verb": "west"
    },
@@ -671,10 +675,6 @@
    {
     "RoomId": 5034,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5043,
-    "Verb": "south"
    }
   ]
  },
@@ -684,20 +684,20 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the south.",
   "Exits": [
    {
-    "RoomId": 5041,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5035,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5047,
     "Verb": "north"
    },
    {
     "RoomId": 5046,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5041,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5035,
+    "Verb": "west"
    }
   ]
  },
@@ -730,6 +730,10 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  You are standing near a gigantic pyramid located a couple hundred\nmeters west of you.  From here you can sense the great evil which resides\nwithin the massive structure.",
   "Exits": [
    {
+    "RoomId": 5301,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5037,
     "Verb": "north"
    },
@@ -740,10 +744,6 @@
    {
     "RoomId": 5042,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5301,
-    "Verb": "west"
    }
   ]
  },
@@ -753,20 +753,20 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the north.",
   "Exits": [
    {
-    "RoomId": 5042,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5038,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5041,
     "Verb": "north"
    },
    {
     "RoomId": 5049,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5042,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5038,
+    "Verb": "west"
    }
   ]
  },
@@ -799,20 +799,20 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the north.",
   "Exits": [
    {
-    "RoomId": 5034,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 5043,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5056,
     "Verb": "east"
    },
    {
     "RoomId": 5045,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5034,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 5043,
+    "Verb": "north"
    }
   ]
  },
@@ -845,6 +845,10 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the south.",
   "Exits": [
    {
+    "RoomId": 5039,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5046,
     "Verb": "north"
    },
@@ -855,10 +859,6 @@
    {
     "RoomId": 5046,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5039,
-    "Verb": "west"
    }
   ]
  },
@@ -914,20 +914,20 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the west.",
   "Exits": [
    {
-    "RoomId": 5040,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 5049,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5054,
     "Verb": "south"
    },
    {
     "RoomId": 5042,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5040,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 5049,
+    "Verb": "east"
    }
   ]
  },
@@ -936,6 +936,10 @@
   "Name": "The Great Eastern Desert",
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the north-west.",
   "Exits": [
+   {
+    "RoomId": 5054,
+    "Verb": "north"
+   },
    {
     "RoomId": 5055,
     "Verb": "east"
@@ -947,10 +951,6 @@
    {
     "RoomId": 5043,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5054,
-    "Verb": "north"
    }
   ]
  },
@@ -959,6 +959,10 @@
   "Name": "The Great Eastern Desert",
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the north.",
   "Exits": [
+   {
+    "RoomId": 5301,
+    "Verb": "north"
+   },
    {
     "RoomId": 5055,
     "Verb": "east"
@@ -970,10 +974,6 @@
    {
     "RoomId": 5043,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5301,
-    "Verb": "north"
    }
   ]
  },
@@ -1025,10 +1025,6 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the west and a deep canyon to the east.",
   "Exits": [
    {
-    "RoomId": 5053,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5063,
     "Verb": "east"
    },
@@ -1039,6 +1035,10 @@
    {
     "RoomId": 5050,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5053,
+    "Verb": "north"
    }
   ]
  },
@@ -1067,16 +1067,16 @@
   "Desc": "   A vast desert stretches for miles, the sands constantly shifting around  \nyou.  A pyramid lies to the north-west and a deep canyon to the east.",
   "Exits": [
    {
+    "RoomId": 5055,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5056,
     "Verb": "south"
    },
    {
     "RoomId": 5044,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5055,
-    "Verb": "north"
    }
   ]
  },
@@ -1221,12 +1221,12 @@
   "Desc": "   You have stumbled upon the home of something.  From the treasure\nhaphazardly strewn about and the rotting carcasses, you would guess\nthat this is a dragon's lair.  As to what type, you can't really say.\nThe cave narrows out into a tunnel to the west.",
   "Exits": [
    {
-    "RoomId": 5065,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5067,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5065,
+    "Verb": "east"
    }
   ]
  },
@@ -1281,12 +1281,12 @@
   "Desc": "   It is dark and damp and bats hang from the ceiling.  A narrow crack is\nin the east wall.  The floor now slopes upwards.",
   "Exits": [
    {
-    "RoomId": 5071,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5069,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5071,
+    "Verb": "west"
    }
   ]
  },

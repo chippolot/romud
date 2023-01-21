@@ -7,8 +7,30 @@
   ],
   "RoomDesc": "A deer looks at you with fear in its eyes.",
   "FullDesc": "That is one nice looking deer!",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "3d5+33",
+   "AC": 9,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 350
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "1d7+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob6201",
@@ -18,8 +40,30 @@
   ],
   "RoomDesc": "A small rabbit nibbles at a leaf here.",
   "FullDesc": "It is a small, furry rodent with big ears.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "1d5+3",
+   "AC": -11,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 0,
+   "XPValue": 25
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 0,
+    "Damage": "1d3+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob6202",
@@ -29,20 +73,65 @@
   ],
   "RoomDesc": "A squirrel spots you and runs around a tree!",
   "FullDesc": "It is a small, brown squirrel.  Kind of like a\nfuzzy high-tension spring.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "1d3+0",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 0,
+   "XPValue": 10
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 0,
+    "Damage": "1d1+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob6203",
   "Name": "the orc hunter",
+  "Gender": 1,
   "Keywords": [
    "orc",
    "hunter"
   ],
   "RoomDesc": "An orc hunter looks at you with hateful eyes.",
   "FullDesc": "He looks angry, desperate, and maybe a little sick.\nHis green skin is definitely mottled, and he seems to\nlimp a little bit...",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+83",
+   "AC": -31,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 2250
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 6,
+    "Damage": "2d3+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "assistall"
@@ -51,14 +140,37 @@
  {
   "Key": "mob6204",
   "Name": "the orc chief",
+  "Gender": 1,
   "Keywords": [
    "orc",
    "chief"
   ],
   "RoomDesc": "An orc chief growls at you!",
   "FullDesc": "He wears a crown of oak leaves to show he is a leader.  He\ncarries a club to show he is a warrior.  You wonder how good\nhe is at both.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+120",
+   "AC": -1,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 9000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 9,
+    "Damage": "2d7+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -68,38 +180,107 @@
  {
   "Key": "mob6205",
   "Name": "the orc woman",
+  "Gender": 2,
   "Keywords": [
    "orc",
    "woman"
   ],
   "RoomDesc": "An orc woman stands here, frightened of you.",
   "FullDesc": "As you stare her down, she raises her hands slowly, as if to\nsay, 'Don't kill me'.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "3d5+58",
+   "AC": -51,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 900
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "2d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob6206",
   "Name": "the orc child",
+  "Gender": 2,
   "Keywords": [
    "orc",
    "child"
   ],
   "RoomDesc": "An orc child frantically searches for her mother.",
   "FullDesc": "She is raggedy, and seems to be covered with sores.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "3d5+30",
+   "AC": -71,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 350
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "1d7+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob6207",
   "Name": "the orc woman",
+  "Gender": 2,
   "Keywords": [
    "orc",
    "woman"
   ],
   "RoomDesc": "A pregnant orc woman tries to stand to flee from you.",
   "FullDesc": "She is too far gone to move very quickly.  You could\nkill her easily.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+58",
+   "AC": -81,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 750
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "1d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -114,8 +295,30 @@
   ],
   "RoomDesc": "A mutant orc lies here, barely alive.",
   "FullDesc": "Its body has been twisted beyond all hope.  It is dying, and\nnothing will stop that.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "1d1+0",
+   "AC": -81,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 6,
+   "XPValue": 1
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 0,
+    "Damage": "1d1+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob6209",
@@ -127,12 +330,35 @@
   ],
   "RoomDesc": "A horribly mutated orc stands here, gibbering.",
   "FullDesc": "It doesn't even appear to have registered your arrival... it is\njust talking to itself.  Its body is a twisted wreck of orc, man,\nbeast, and what-not.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "3d5+60",
+   "AC": -81,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 6,
+   "XPValue": 10
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 0,
+    "Damage": "1d1+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob6210",
   "Name": "Elstar",
+  "Gender": 1,
   "Keywords": [
    "wizard",
    "elf",
@@ -141,8 +367,30 @@
   ],
   "RoomDesc": "An elven wizard is here.  He looks angry.",
   "FullDesc": "He looks at you archly as he wonders why you have\ninvaded his domain.  No matter... it shouldn't be\ntoo hard for him to destroy you, no?",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+183",
+   "AC": 94,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 21000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 14,
+    "Damage": "2d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -151,6 +399,7 @@
  {
   "Key": "mob6211",
   "Name": "the elven child",
+  "Gender": 1,
   "Keywords": [
    "child",
    "elf",
@@ -159,8 +408,30 @@
   ],
   "RoomDesc": "An elven child casts his fishing pole into the river.",
   "FullDesc": "He looks young and innocent.  You wonder what he is doing here.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+35",
+   "AC": -41,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 400
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "2d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -174,8 +445,30 @@
   ],
   "RoomDesc": "A mutant... thing rushes at you!",
   "FullDesc": "It might've been an orc, once.  Now it is a living terror,\npushing everything out of its way to get at you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+170",
+   "AC": 39,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 15000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "2d7+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro"
   ]
@@ -189,8 +482,30 @@
   ],
   "RoomDesc": "A mutant... thing tries to get you, but cannot move into range!",
   "FullDesc": "It might have been an orc, once.  Now it is a living terror,\npushing everything out of its way to get at you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+170",
+   "AC": 39,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 15000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "2d7+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]

@@ -2,14 +2,37 @@
  {
   "Key": "mob5400",
   "Name": "the guildmaster",
+  "Gender": 1,
   "Keywords": [
    "mage",
    "guildmaster"
   ],
   "RoomDesc": "Your guildmaster stands here.",
   "FullDesc": "An old man peering through ancient tomes rests here.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+10000",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 16,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "5d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -17,14 +40,37 @@
  {
   "Key": "mob5401",
   "Name": "the guildmaster",
+  "Gender": 1,
   "Keywords": [
    "cleric",
    "guildmaster"
   ],
   "RoomDesc": "Your guildmaster stands here.",
   "FullDesc": "An older man wrapped in purple, long-flowing robes meditates here.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+10000",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 16,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "5d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -32,14 +78,37 @@
  {
   "Key": "mob5402",
   "Name": "the guildmaster",
+  "Gender": 1,
   "Keywords": [
    "warrior",
    "guildmaster"
   ],
   "RoomDesc": "Your guildmaster stands here.",
   "FullDesc": "A smaller man dressed in black robes stands here waiting to train you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+10000",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 16,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "5d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -47,14 +116,37 @@
  {
   "Key": "mob5403",
   "Name": "the guildmaster",
+  "Gender": 1,
   "Keywords": [
    "thief",
    "guildmaster"
   ],
   "RoomDesc": "Your guildmaster stands here.",
   "FullDesc": "A small human dressed in black rests in the corner.  As you enter he grabs\na knife and throws it at you.  It lands in the wall next to your left ear.\n'We will now begin', is all he says.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+10000",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 16,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "5d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -62,14 +154,37 @@
  {
   "Key": "mob5404",
   "Name": "the receptionist",
+  "Gender": 2,
   "Keywords": [
    "receptionist",
    "woman"
   ],
   "RoomDesc": "A dark skinned, veiled woman greets you from behind the desk.",
   "FullDesc": "This Arabian beauty is obviously the daughter of some high ranking\nofficial.  As you attempt to sneak a peek under her veil you notice\na small moon-shaped birthmark on her left cheek.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1871",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 5000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "10d20+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -77,6 +192,7 @@
  {
   "Key": "mob5405",
   "Name": "the old withered man",
+  "Gender": 1,
   "Keywords": [
    "bartender",
    "man",
@@ -85,8 +201,30 @@
   ],
   "RoomDesc": "An old withered man leans against the bar.",
   "FullDesc": "He looks distracted as he pours five drinks at once without error.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+12000",
+   "AC": 20,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "1d5+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -94,6 +232,7 @@
  {
   "Key": "mob5406",
   "Name": "Brother John",
+  "Gender": 1,
   "Keywords": [
    "john",
    "brother",
@@ -102,8 +241,30 @@
   ],
   "RoomDesc": "Brother John, lead singer for the Lokettes stands on stage.",
   "FullDesc": "You see the lead singer of the Lokettes lip synching to an old Zochan\ntune.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+150",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 1350
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 16,
+    "Damage": "2d5+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -112,13 +273,36 @@
  {
   "Key": "mob5407",
   "Name": "the panhandler",
+  "Gender": 1,
   "Keywords": [
    "panhandler"
   ],
   "RoomDesc": "A panhandler rests here.",
   "FullDesc": "A small skinny man rests here hoping to find a warm heart.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d1+1",
+   "AC": 9,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 2,
+   "XPValue": 5
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 1,
+    "Damage": "1d4+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -128,13 +312,36 @@
  {
   "Key": "mob5408",
   "Name": "the panhandler",
+  "Gender": 1,
   "Keywords": [
    "panhandler"
   ],
   "RoomDesc": "A panhandler rests here.",
   "FullDesc": "A small skinny man rests here staring at your clothes.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d1+1",
+   "AC": 9,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 5
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 1,
+    "Damage": "1d3+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -144,13 +351,36 @@
  {
   "Key": "mob5409",
   "Name": "the beggar",
+  "Gender": 1,
   "Keywords": [
    "beggar"
   ],
   "RoomDesc": "A grubby beggar sits here in the filth.",
   "FullDesc": "This poor soul seems down on his luck, perhaps you might spare a dime?",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d1+1",
+   "AC": 9,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 1,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 1,
+    "Damage": "1d2+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -160,13 +390,36 @@
  {
   "Key": "mob5410",
   "Name": "the baker",
+  "Gender": 1,
   "Keywords": [
    "baker"
   ],
   "RoomDesc": "The baker stands here playing solitaire.",
   "FullDesc": "You see a large man in a white apron covered in flour from head to toe.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "2d10+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -174,13 +427,36 @@
  {
   "Key": "mob5411",
   "Name": "the shopkeeper",
+  "Gender": 1,
   "Keywords": [
    "shopkeeper"
   ],
   "RoomDesc": "The shopkeeper stands here.",
   "FullDesc": "You see a half-elf sitting on a stool behind his counter.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "2d10+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -188,13 +464,36 @@
  {
   "Key": "mob5412",
   "Name": "the banker",
+  "Gender": 1,
   "Keywords": [
    "banker"
   ],
   "RoomDesc": "A banker stands here waiting to help you.",
   "FullDesc": "This small halfling seems adept at counting money.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 19,
+    "Damage": "3d6+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -202,14 +501,37 @@
  {
   "Key": "mob5413",
   "Name": "Ahkeem the tailor",
+  "Gender": 1,
   "Keywords": [
    "ahkeem",
    "tailor"
   ],
   "RoomDesc": "Ahkeem the tailor welcomes you to his store.",
   "FullDesc": "This middle-aged man looks over you with disdain and quickly suggests a\nnew wardrobe.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 200
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -217,14 +539,37 @@
  {
   "Key": "mob5414",
   "Name": "Vera the veggie lady",
+  "Gender": 2,
   "Keywords": [
    "vera",
    "lady"
   ],
   "RoomDesc": "Vera the veggie lady beems as you look over her stand.",
   "FullDesc": "A tall slender woman stands before you smiling broadly.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -232,13 +577,36 @@
  {
   "Key": "mob5415",
   "Name": "Butch the meatcutter",
+  "Gender": 1,
   "Keywords": [
    "butch"
   ],
   "RoomDesc": "Butch the meatcutter stands here in his bloodied apron.",
   "FullDesc": "This stocky dwarf has a mad glint in his eye as he twirls his clever\ncarelessly into the air.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -246,14 +614,37 @@
  {
   "Key": "mob5416",
   "Name": "Abdul the armorer",
+  "Gender": 1,
   "Keywords": [
    "abdul",
    "armorer"
   ],
   "RoomDesc": "Abdul stands here, waiting to help you.",
   "FullDesc": "Abdul returns your gaze with a steady eye.  You quickly glance away\nunder his cold stare and place your order.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -261,14 +652,37 @@
  {
   "Key": "mob5417",
   "Name": "Igor the weaponsmith",
+  "Gender": 1,
   "Keywords": [
    "igor",
    "weaponsmith"
   ],
   "RoomDesc": "Igor stands here doing... something.",
   "FullDesc": "You see a small dwarf with a large hump on his left shoulder.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -276,13 +690,36 @@
  {
   "Key": "mob5418",
   "Name": "Cassandra",
+  "Gender": 2,
   "Keywords": [
    "cassandra"
   ],
   "RoomDesc": "Cassandra stands proudly over her selection.",
   "FullDesc": "You see a happy weather-worn face whose lines suggest many years on\nthe open sea.  It is only through years of fishing that she is able\nto withstand the smell that permeates the air.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "1d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -290,14 +727,37 @@
  {
   "Key": "mob5419",
   "Name": "the foreman",
+  "Gender": 1,
   "Keywords": [
    "foreman",
    "man"
   ],
   "RoomDesc": "The foreman stands here screaming at the workers.",
   "FullDesc": "A worried working dwarf stands here constantly making notes in his\nbook and looking at his watch.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+40",
+   "AC": 21,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 100
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 14,
+    "Damage": "1d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -306,14 +766,37 @@
  {
   "Key": "mob5420",
   "Name": "the construction worker",
+  "Gender": 1,
   "Keywords": [
    "construction",
    "worker"
   ],
   "RoomDesc": "A construction worker steadily works here.",
   "FullDesc": "A large sweaty looking man doesn't even return your glance.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d8+35",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 50
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -328,8 +811,30 @@
   ],
   "RoomDesc": "The statue of Brahman stands here.",
   "FullDesc": "The statue made of solid marble depicts the mighty God defeating Siva\nin magical combat.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -343,8 +848,30 @@
   ],
   "RoomDesc": "The statue of Siva stands here.",
   "FullDesc": "The statue of the High Lord of Destruction stands here beings attacked\nby Brahman in magical combat.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -358,8 +885,30 @@
   ],
   "RoomDesc": "The statue of Indra stands here.",
   "FullDesc": "This statue looks like an enormous elephant.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -373,8 +922,30 @@
   ],
   "RoomDesc": "The statue of Yama stands here.",
   "FullDesc": "This is a statue of the God of Death.  It is covered with odd runes.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -388,8 +959,30 @@
   ],
   "RoomDesc": "The statue of Surya stands here.",
   "FullDesc": "The statue of Surya, the God in charge of the Sun, almost glows\nwith a firey aura.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -403,8 +996,30 @@
   ],
   "RoomDesc": "The statue of Kali stands here.",
   "FullDesc": "The statue of the Black Mother, Kali, is made of black marble and\nis covered with silver runes.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -418,8 +1033,30 @@
   ],
   "RoomDesc": "The statue of Brihaspati stands here.",
   "FullDesc": "The statue of Brihaspati, the God of Scholars and Knowledge is made\nof a weathered marble.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -433,8 +1070,30 @@
   ],
   "RoomDesc": "The statue of Puchan stands here.",
   "FullDesc": "The statue of Puchan, God of Travellers, is covered with dust and worn\nas if it had been dragged a long way down a dusty road.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1200",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 12000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "6d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -442,6 +1101,7 @@
  {
   "Key": "mob5429",
   "Name": "Aziz",
+  "Gender": 1,
   "Keywords": [
    "aziz",
    "human",
@@ -449,8 +1109,30 @@
   ],
   "RoomDesc": "Aziz the Human Canon stands here.",
   "FullDesc": "This big and burly man grins at you as he draws his sword.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d11+40",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 11,
+   "XPValue": 384
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 6,
+    "Damage": "2d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -458,6 +1140,7 @@
  {
   "Key": "mob5430",
   "Name": "Mustafah",
+  "Gender": 1,
   "Keywords": [
    "mustafah",
    "human",
@@ -465,8 +1148,30 @@
   ],
   "RoomDesc": "Mustafah the Human Robber stands here.",
   "FullDesc": "This man is lithe and has an evil smirk upon his face.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d8+41",
+   "AC": -11,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 99
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 3,
+    "Damage": "2d4+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -474,6 +1179,7 @@
  {
   "Key": "mob5431",
   "Name": "Fatima",
+  "Gender": 2,
   "Keywords": [
    "fatima",
    "elf",
@@ -481,8 +1187,30 @@
   ],
   "RoomDesc": "Fatima the Elven Invoker stands here.",
   "FullDesc": "This female elf has dusky skin and black hair.  A combination you don't\nsee very often on elves.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d6+25",
+   "AC": -31,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 9,
+   "XPValue": 93
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "3d3+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -490,6 +1218,7 @@
  {
   "Key": "mob5432",
   "Name": "Kareem",
+  "Gender": 1,
   "Keywords": [
    "kareem",
    "dwarf",
@@ -497,8 +1226,30 @@
   ],
   "RoomDesc": "Kareem the Dwarven Mercenary stands here.",
   "FullDesc": "This short stocky fellow has a chest the girth of a barrel.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d4+50",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 939
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "2d6+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -506,14 +1257,37 @@
  {
   "Key": "mob5433",
   "Name": "the nomad merchant",
+  "Gender": 1,
   "Keywords": [
    "nomad",
    "merchant"
   ],
   "RoomDesc": "A nomad merchant looks you over.",
   "FullDesc": "This robust fellow returns your gaze with a smile, but something inside\ntells you not to trust him very far.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1500",
+   "AC": -1,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 800
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 9,
+    "Damage": "1d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -524,14 +1298,37 @@
  {
   "Key": "mob5434",
   "Name": "the Sultan's Bodyguard",
+  "Gender": 1,
   "Keywords": [
    "bodyguard",
    "guard"
   ],
   "RoomDesc": "A bodyguard sizes you up.",
   "FullDesc": "The large half-orc quickly glances you over and returns to his duties.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+100",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 400
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d6+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -541,14 +1338,37 @@
  {
   "Key": "mob5435",
   "Name": "the skinny kid",
+  "Gender": 1,
   "Keywords": [
    "kid",
    "thief"
   ],
   "RoomDesc": "A skinny kid wanders around.",
   "FullDesc": "This small child sees you looking at him and quickly looks away.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "14d1+1",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 100
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d5+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector"
@@ -557,13 +1377,36 @@
  {
   "Key": "mob5436",
   "Name": "the dockworker",
+  "Gender": 1,
   "Keywords": [
    "dockworker"
   ],
   "RoomDesc": "A strong dockworker walks by moving crates.",
   "FullDesc": "Although seemingly dull witted, this hulking mass carries the huge\ncrates from the boats like it was a box of lilies.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+65",
+   "AC": -1,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 550
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "1d8+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -571,14 +1414,37 @@
  {
   "Key": "mob5437",
   "Name": "the taxcollector",
+  "Gender": 1,
   "Keywords": [
    "man",
    "taxcollector"
   ],
   "RoomDesc": "A small man walks around scribbling in a notebook.",
   "FullDesc": "The city's taxcollextor walks from store to store collecting the\nSultan's fee for living in his grand city.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d2+45",
+   "AC": -31,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 431
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "2d3+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -586,13 +1452,36 @@
  {
   "Key": "mob5438",
   "Name": "Gord",
+  "Gender": 1,
   "Keywords": [
    "gord"
   ],
   "RoomDesc": "Gord the Rogue stand here.",
   "FullDesc": "",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d3+105",
+   "AC": 22,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "2d6+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector"
@@ -601,14 +1490,37 @@
  {
   "Key": "mob5439",
   "Name": "Chulainn",
+  "Gender": 1,
   "Keywords": [
    "chulainn",
    "knight"
   ],
   "RoomDesc": "Chulainn the Knight stands here.",
   "FullDesc": "This large man does not seem to be surprised at your approach and\nlooks at you quizically.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d1+231",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 8700
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "2d8+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -618,13 +1530,36 @@
  {
   "Key": "mob5440",
   "Name": "Daghdha",
+  "Gender": 1,
   "Keywords": [
    "daghdha"
   ],
   "RoomDesc": "Daghdha the Arch-Magi stands here.",
   "FullDesc": "This man is dressed in long brown robes and has a penetrating gaze.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d2+180",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 8700
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 15,
+    "Damage": "1d6+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -632,14 +1567,37 @@
  {
   "Key": "mob5441",
   "Name": "Curley GreenLeaf",
+  "Gender": 1,
   "Keywords": [
    "curley",
    "greenleaf"
   ],
   "RoomDesc": "Curley GreenLeaf stands here.",
   "FullDesc": "",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d5+120",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "3d4+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector"
@@ -648,6 +1606,7 @@
  {
   "Key": "mob5442",
   "Name": "the wandering prophet",
+  "Gender": 1,
   "Keywords": [
    "man",
    "wandering",
@@ -655,31 +1614,99 @@
   ],
   "RoomDesc": "A small grey-haired man walks around spouting gospel.",
   "FullDesc": "This sad case may have been an evangelist in another lifetime. He is known\nto stand on corners and accost passers-by with his doomsday preaching.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "1d1+1",
+   "AC": -31,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 10
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "1d5+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob5443",
   "Name": "the alley cat",
+  "Gender": 1,
   "Keywords": [
    "alley",
    "cat"
   ],
   "RoomDesc": "A small harmless feline searches for food.",
   "FullDesc": "You see a small starved cat.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "1d2+5",
+   "AC": -51,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 2,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "2d2+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob5444",
   "Name": "the vulture",
+  "Gender": 1,
   "Keywords": [
    "vulture"
   ],
   "RoomDesc": "A vulture circles above you.",
   "FullDesc": "As you look up at this bird, you see the only thing it wants is a corpse.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d3+1",
+   "AC": 12,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 2,
+   "XPValue": 10
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "1d6+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -687,26 +1714,72 @@
  {
   "Key": "mob5445",
   "Name": "the old man",
+  "Gender": 1,
   "Keywords": [
    "old",
    "man"
   ],
   "RoomDesc": "An old man sits here playing chess.",
   "FullDesc": "He seems intent on winning.",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "2d3+1",
+   "AC": -61,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 20
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 3,
+    "Damage": "1d3+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob5446",
   "Name": "Lugh the Librarian",
+  "Gender": 1,
   "Keywords": [
    "lugh",
    "librarian"
   ],
   "RoomDesc": "Lugh the Librarian sits behind a desk.",
   "FullDesc": "The huge hulking mass rises as someone asks him a question.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d10+430",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 23000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 19,
+    "Damage": "3d6+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -714,6 +1787,7 @@
  {
   "Key": "mob5447",
   "Name": "the dirt devil",
+  "Gender": 1,
   "Keywords": [
    "dirt",
    "dust",
@@ -721,8 +1795,30 @@
   ],
   "RoomDesc": "The wind kicks up some dust.",
   "FullDesc": "What you see before you is really a baby air elemental.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d2+1",
+   "AC": -71,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 1,
+   "XPValue": 10
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 1,
+    "Damage": "2d3+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -732,14 +1828,37 @@
  {
   "Key": "mob5448",
   "Name": "the lamia",
+  "Gender": 2,
   "Keywords": [
    "lamia",
    "beast"
   ],
   "RoomDesc": "A strange lamia stands here waiting for her next meal. ",
   "FullDesc": "This is a creature with the upper torso of a beautiful woman, but the\nlower body of a four-legged beast.  She licks her lips as she looks at\nyou greedily.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d10+120",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 10500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d5+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector"
@@ -748,13 +1867,36 @@
  {
   "Key": "mob5449",
   "Name": "the raggety dervish",
+  "Gender": 1,
   "Keywords": [
    "dervish"
   ],
   "RoomDesc": "A raggety dervish stands here.",
   "FullDesc": "This man looks like he could use a lot of rest.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d4+20",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 105
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d6+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -763,13 +1905,36 @@
  {
   "Key": "mob5450",
   "Name": "the Sultan",
+  "Gender": 1,
   "Keywords": [
    "sultan"
   ],
   "RoomDesc": "The Sultan rests here on his throne.",
   "FullDesc": "You see a large wealthy man in red robes smiling at you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "6d6+830",
+   "AC": 23,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 25000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 15,
+    "Damage": "1d6+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -777,14 +1942,37 @@
  {
   "Key": "mob5451",
   "Name": "a harem girl",
+  "Gender": 2,
   "Keywords": [
    "harem",
    "girl"
   ],
   "RoomDesc": "A lovely, veiled harem girl stands here.",
   "FullDesc": "You see a dark skinned beauty, wearing almost transparent silks and \nlight blue veil.  Her loyalty to the Sultan is unwavering.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+15",
+   "AC": 12,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 3,
+   "XPValue": 40
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 3,
+    "Damage": "1d6+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -792,13 +1980,36 @@
  {
   "Key": "mob5452",
   "Name": "the jailer",
+  "Gender": 1,
   "Keywords": [
    "jailer"
   ],
   "RoomDesc": "The Jailer sleeps here, snoring loudly.",
   "FullDesc": "You see a pathetic soul lying here.  Probably some ex-nobleman that has\nfallen out of grace with the Sultan.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d4+100",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 18,
+   "XPValue": 1200
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 16,
+    "Damage": "1d6+6",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "scavenger",
@@ -813,8 +2024,30 @@
   ],
   "RoomDesc": "A eunich stands here watching over the girls.",
   "FullDesc": "You see a large man whose only duty is to protect the harem.  He has been\ncastrated for the ladies' safety.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d1+130",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 1300
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "2d4+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -823,6 +2056,7 @@
  {
   "Key": "mob5454",
   "Name": "Nichole, the Sultan's favorite",
+  "Gender": 2,
   "Keywords": [
    "sultans",
    "favorite",
@@ -831,8 +2065,30 @@
   ],
   "RoomDesc": "Nichole, the Sultan's favorite girl rests on a mound of pillows.",
   "FullDesc": "You see the most beautiful Arabian girl that has ever meet your eyes.\nToo bad she is about to kill you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+54",
+   "AC": 21,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 150
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 17,
+    "Damage": "2d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -846,8 +2102,30 @@
   ],
   "RoomDesc": "Allah is here.",
   "FullDesc": "You see the all-knowing Allah.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d3+2300",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 11,
+   "XPValue": 45000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "2d20+20",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -855,14 +2133,37 @@
  {
   "Key": "mob5456",
   "Name": "the guildguard",
+  "Gender": 1,
   "Keywords": [
    "mage",
    "guildguard"
   ],
   "RoomDesc": "The Guard for the Guild of Mages stand here.",
   "FullDesc": "This man looks like a mage/warrior, I wouldn't mess with him.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d5+500",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 21,
+    "Damage": "3d8+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -870,14 +2171,37 @@
  {
   "Key": "mob5457",
   "Name": "the guildguard",
+  "Gender": 1,
   "Keywords": [
    "cleric",
    "guildguard"
   ],
   "RoomDesc": "The Guard for the Guild of Clerics stands here.",
   "FullDesc": "This man looks like a cleric/warrior, I wouldn't mess with him.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d5+500",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 21,
+    "Damage": "3d8+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -885,14 +2209,37 @@
  {
   "Key": "mob5458",
   "Name": "the guildguard",
+  "Gender": 1,
   "Keywords": [
    "warrior",
    "guildguard"
   ],
   "RoomDesc": "The Guard for the Guild of Warriors stands here.",
   "FullDesc": "The man looks like Conan's cousin, I wouldn't mess with him.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d5+500",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 21,
+    "Damage": "3d8+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -900,14 +2247,37 @@
  {
   "Key": "mob5459",
   "Name": "the guildguard",
+  "Gender": 1,
   "Keywords": [
    "thief",
    "guildguard"
   ],
   "RoomDesc": "The Guard for the Guild of theives stands here.",
   "FullDesc": "You see a thief dressed all in black, he quickly stands as you\nenter and steps to bar your way.  You notice his hands resting\non two sheathes.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d5+500",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 21,
+    "Damage": "3d8+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -915,14 +2285,37 @@
  {
   "Key": "mob5460",
   "Name": "the servant boy",
+  "Gender": 1,
   "Keywords": [
    "servant",
    "boy"
   ],
   "RoomDesc": "A servant boy is here running errands.",
   "FullDesc": "You see a small boy running around the halls of the palace.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d1+1",
+   "AC": -71,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 2,
+   "XPValue": 10
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 1,
+    "Damage": "1d4+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -930,14 +2323,37 @@
  {
   "Key": "mob5461",
   "Name": "the Sultan's Guard",
+  "Gender": 1,
   "Keywords": [
    "sultans",
    "guard"
   ],
   "RoomDesc": "A guard stands here, protecting the innocent.",
   "FullDesc": "You see a trained fighter, ready to help those in need.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d4+120",
+   "AC": 10,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 2500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d8+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -945,14 +2361,37 @@
  {
   "Key": "mob5462",
   "Name": "the Sultan's Guard",
+  "Gender": 1,
   "Keywords": [
    "sultans",
    "guard"
   ],
   "RoomDesc": "A guard stands here, watching the gate.",
   "FullDesc": "You see a trained fighter, ready to defend the city.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d4+120",
+   "AC": 11,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 2500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d8+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -961,6 +2400,7 @@
  {
   "Key": "mob5463",
   "Name": "the Chief Guard",
+  "Gender": 1,
   "Keywords": [
    "sultans",
    "guard",
@@ -968,8 +2408,30 @@
   ],
   "RoomDesc": "The Chief of the Sultan's Guard stands here.",
   "FullDesc": "You see a large man skilled in hunting and killing.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d5+251",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 5000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "2d8+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -977,13 +2439,36 @@
  {
   "Key": "mob5464",
   "Name": "the mercenary",
+  "Gender": 1,
   "Keywords": [
    "mercenary"
   ],
   "RoomDesc": "A mercenary stands here waiting for a job.",
   "FullDesc": "You see an assassin down on his luck looking to be freelanced out.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d8+14",
+   "AC": 10,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 50
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 5,
+    "Damage": "1d4+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -991,14 +2476,37 @@
  {
   "Key": "mob5465",
   "Name": "the shipwright",
+  "Gender": 1,
   "Keywords": [
    "shipwright",
    "captain"
   ],
   "RoomDesc": "An old captain rests here carving on a stick.",
   "FullDesc": "You see the shipwright of New Thalos, waiting to make someone a boat.  He\nbeams a smile at you through his beard as you walk in.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "5d5+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1006,13 +2514,36 @@
  {
   "Key": "mob5466",
   "Name": "the blacksmith",
+  "Gender": 1,
   "Keywords": [
    "blacksmith"
   ],
   "RoomDesc": "The blacksmith stands here pumping air into his fire.",
   "FullDesc": "You see a large human, dripping in sweat, standing before you.  He takes\na break from his swealtering work to bid you welcome.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "4d4+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1020,13 +2551,36 @@
  {
   "Key": "mob5467",
   "Name": "the horse",
+  "Gender": 1,
   "Keywords": [
    "horse"
   ],
   "RoomDesc": "A horse stands here.",
   "FullDesc": "You see one of the fine Arabian beasts known about the land.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d1+1",
+   "AC": -31,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 10
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 0,
+    "Damage": "2d4+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -1035,13 +2589,36 @@
  {
   "Key": "mob5468",
   "Name": "the tourist",
+  "Gender": 1,
   "Keywords": [
    "tourist"
   ],
   "RoomDesc": "A tourist stands here looking lost.",
   "FullDesc": "You see a small, rotund man, with a strange object around his neck and\na nose guard.  He is looking at a small map that he seems to be holding\nupside down.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d10+15",
+   "AC": -61,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 650
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "1d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "scavenger",
    "trashcollector",
@@ -1057,8 +2634,30 @@
   ],
   "RoomDesc": "A very large ray with a wicked looking tail swims here.",
   "FullDesc": "You see a large ray with sharp fangs and a barbed tail.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d3+120",
+   "AC": 24,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "3d4+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -1067,13 +2666,36 @@
  {
   "Key": "mob5470",
   "Name": "the cryohydra",
+  "Gender": 1,
   "Keywords": [
    "cryohydra"
   ],
   "RoomDesc": "The cryohydra stands here.",
   "FullDesc": "A grey-brown reptillian creature with amber eyes stands before you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d1+1",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 100
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "1d10+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -1082,14 +2704,37 @@
  {
   "Key": "mob5471",
   "Name": "the minotaur lizard",
+  "Gender": 1,
   "Keywords": [
    "minotaur",
    "lizard"
   ],
   "RoomDesc": "the minotaur lizard stands here.",
   "FullDesc": "A huge lizard like reptile with horns like a minotaur.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d10+55",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 100
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 12,
+    "Damage": "3d5+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -1104,8 +2749,30 @@
   ],
   "RoomDesc": "The death dog stands here.",
   "FullDesc": "A large two-headed hound barks at you vicously.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d15+76",
+   "AC": 12,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 900
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 1,
+    "Damage": "1d10+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -1114,14 +2781,37 @@
  {
   "Key": "mob5473",
   "Name": "the spotted lion",
+  "Gender": 1,
   "Keywords": [
    "lion",
    "spotted"
   ],
   "RoomDesc": "The spotted lion stands here.",
   "FullDesc": "A large fierce dapple skinned lion glares at you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d5+45",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 1500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 3,
+    "Damage": "1d8+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -1135,8 +2825,30 @@
   ],
   "RoomDesc": "A behir slithers on the ground.",
   "FullDesc": "You see a large snake-like reptile with more than a dozen legs.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d3+146",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 11,
+    "Damage": "2d8+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -1154,8 +2866,30 @@
   ],
   "RoomDesc": "A creature with three heads: lion, goat, and dragon stands here.",
   "FullDesc": "The chimera is still a mystery, better left unexplored.  This creature\nhas the hindquarters of a goat, the forepaws of a lion and the body of\na red dragon.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d5+261",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 9,
+   "XPValue": 3500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 15,
+    "Damage": "3d4+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -1169,8 +2903,30 @@
   ],
   "RoomDesc": "A couatl hovers here.",
   "FullDesc": "A beautiful creature with the body of a serpent and feathered wings the\ncolour of the rainbow.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d5+130",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 2400
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d4+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1184,8 +2940,30 @@
   ],
   "RoomDesc": "The giant hornet hovers here.",
   "FullDesc": "It is a hornet, what else can be said?",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "1d1+5",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 45
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 5,
+    "Damage": "1d4+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob5478",
@@ -1195,8 +2973,30 @@
   ],
   "RoomDesc": "The pegasus stands here, flexing its wings.",
   "FullDesc": "A magnificant winged steed, this horse looks much like the Arabian\nthoroughbreds you have seen in stables.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d5+700",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 6500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 16,
+    "Damage": "2d10+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "assistall",
@@ -1206,13 +3006,36 @@
  {
   "Key": "mob5479",
   "Name": "Elriva",
+  "Gender": 2,
   "Keywords": [
    "elriva"
   ],
   "RoomDesc": "Elriva stands here mixing a love potion.",
   "FullDesc": "You see a very healthy female dressed in black, with long flowing\nhair to match her outfit.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "1d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1220,13 +3043,36 @@
  {
   "Key": "mob5480",
   "Name": "Braheem",
+  "Gender": 1,
   "Keywords": [
    "braheem"
   ],
   "RoomDesc": "Braheem stands here talking to the walls.",
   "FullDesc": "You see a powerful but slighty insane mage.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "10d10+40",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1234,14 +3080,37 @@
  {
   "Key": "mob5481",
   "Name": "the high priest",
+  "Gender": 1,
   "Keywords": [
    "high",
    "priest"
   ],
   "RoomDesc": "The high priest rests here meditating, well he WAS meditating.",
   "FullDesc": "He does NOT look real happy that you have disturbed him.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d5+1200",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 8,
+   "XPValue": 35000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 18,
+    "Damage": "2d8+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "stayzone"
@@ -1250,6 +3119,7 @@
  {
   "Key": "mob5482",
   "Name": "the Royal Guard",
+  "Gender": 1,
   "Keywords": [
    "royal",
    "guard",
@@ -1257,8 +3127,30 @@
   ],
   "RoomDesc": "An Elite Royal Guard stands here smiling happily.",
   "FullDesc": "You see one of the Royal Guards of New Thalos who seems to have undergone\nsome heavy training.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d20+900",
+   "AC": 25,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 25000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "1d10+6",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "assistall"
@@ -1267,14 +3159,37 @@
  {
   "Key": "mob5483",
   "Name": "Patch the bartender",
+  "Gender": 1,
   "Keywords": [
    "patch",
    "bartender"
   ],
   "RoomDesc": "A large half-orc with a patch over one eye pours beer behind the counter.",
   "FullDesc": "You see a really big guy here who seems to have lost an eye in one manner\nor another.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 29,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "3d8+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1282,13 +3197,36 @@
  {
   "Key": "mob5484",
   "Name": "Stitch, the leather dude",
+  "Gender": 1,
   "Keywords": [
    "stitch"
   ],
   "RoomDesc": "Stitch, the leather dude reclines in his chair.",
   "FullDesc": "You see a small hobbit with his feet kicked up on his desk waiting for\nsome sucker, uhm, customer to walk in his store.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+30000",
+   "AC": 24,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 35,
+   "XPValue": 2000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 30,
+    "Damage": "3d6+6",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1296,14 +3234,37 @@
  {
   "Key": "mob5485",
   "Name": "the gardener",
+  "Gender": 1,
   "Keywords": [
    "gardener",
    "elf"
   ],
   "RoomDesc": "A small elf stands here tending the garden.",
   "FullDesc": "A young elf stands here in dirt covered overalls.  He seems to be\nweeding his garden.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d5+100",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 1500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d8+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1318,8 +3279,30 @@
   ],
   "RoomDesc": "A large horse, black as night, stands here.",
   "FullDesc": "You see the largest horse you have ever seen before.  Standing 10'\nat the shoulder it breathes flame from his nostrils and leaps to\nattack you.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d9+300",
+   "AC": 24,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 5500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "3d5+7",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1333,8 +3316,30 @@
   ],
   "RoomDesc": "A large wolf like creature leaps out from the darkness.",
   "FullDesc": "You see a half wolf, half human beast wearing a glove with long thin\nblades on it.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d2+230",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 15,
+   "XPValue": 5000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "2d10+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro"
@@ -1343,14 +3348,37 @@
  {
   "Key": "mob5488",
   "Name": "the mimic",
+  "Gender": 1,
   "Keywords": [
    "mimic",
    "painting"
   ],
   "RoomDesc": "You see an incredibly life-like painting of the Sultan's mother.",
   "FullDesc": "Boy is she ugly.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d8+321",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 6000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d8+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -1358,14 +3386,37 @@
  {
   "Key": "mob5489",
   "Name": "the mayor",
+  "Gender": 1,
   "Keywords": [
    "mayor",
    "rabbit"
   ],
   "RoomDesc": "The Mayor of New Thalos stands here.",
   "FullDesc": "You see a chubby rabbit dressed in his best suit.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d8+600",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 10,
+   "XPValue": 15675
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "3d6+6",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stayzone"
   ]
@@ -1373,13 +3424,36 @@
  {
   "Key": "mob5490",
   "Name": "the chef",
+  "Gender": 1,
   "Keywords": [
    "chef"
   ],
   "RoomDesc": "The chef stands here making dinner.",
   "FullDesc": "You see a very large human who seems to taste everything he makes.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d2+5",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 14,
+   "XPValue": 40
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 14,
+    "Damage": "2d10+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]

@@ -2,6 +2,7 @@
  {
   "Key": "mob1",
   "Name": "Puff",
+  "Gender": 2,
   "Keywords": [
    "Puff",
    "dragon",
@@ -9,8 +10,30 @@
   ],
   "RoomDesc": "Puff the Fractal Dragon is here, contemplating a higher reality.",
   "FullDesc": "Is that some type of differential curve involving some strange, and\nunknown calculus that she seems to be made out of?",
-  "Stats": null,
-  "Attacks": null
+  "Stats": {
+   "HP": "5d10+550",
+   "AC": 20,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 26,
+   "XPValue": 155000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 19,
+    "Damage": "4d6+3",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ]
  },
  {
   "Key": "mob10",
@@ -20,8 +43,30 @@
   ],
   "RoomDesc": "A boring old clone is standing here.",
   "FullDesc": "This clone is nothing to look at.  No, really, it is quite boring.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 1,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "1d1+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -36,8 +81,30 @@
   ],
   "RoomDesc": "A strange humanoid is here.  How odd, its flesh seems to be falling off!",
   "FullDesc": "This strange humanoid is moving rather slowly, and appears to be\na corpse, a walking corpse!  It must be a zombie or something of\nthe sort.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 1,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "1d1+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -52,8 +119,30 @@
   ],
   "RoomDesc": "An amorphous shape is floating in the air.",
   "FullDesc": "As you stare at this amorphous shape, it begins to appear to take\nthe shape of a cloud-like humanoid.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 1,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "1d1+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]
@@ -66,8 +155,30 @@
   ],
   "RoomDesc": "An elemental is standing patiently here.",
   "FullDesc": "This creature is the essence of the elements, and appears to be\nwaiting patiently for something to occur.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "1d1+1",
+   "AC": 19,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 1,
+   "XPValue": 0
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "1d1+1",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary"
   ]

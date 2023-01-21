@@ -35,12 +35,12 @@
   "Desc": "   Standing on the middle of the mountain, you can easily see the city to\nthe south, and the top of the mountain is very near to the north.",
   "Exits": [
    {
-    "RoomId": 6502,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6504,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6502,
+    "Verb": "south"
    }
   ]
  },
@@ -144,16 +144,16 @@
   "Desc": "   Here the path turns to the west.  You can see a door in front of you,\nand the path continues to the west and south.",
   "Exits": [
    {
+    "RoomId": 6523,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6511,
     "Verb": "north"
    },
    {
     "RoomId": 6509,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6523,
-    "Verb": "west"
    }
   ]
  },
@@ -208,16 +208,16 @@
   "Desc": "   Everything here is covered in soot and very grimy.  The path continues\nto the east and north, and there is a door to the west.",
   "Exits": [
    {
+    "RoomId": 6515,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6506,
     "Verb": "east"
    },
    {
     "RoomId": 6527,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6515,
-    "Verb": "north"
    }
   ]
  },
@@ -272,16 +272,16 @@
   "Desc": "   You are on a path to the north of the Hide \u0026 Tooth shop.  The path \ncontinues to the north, and there is Granite Head's bakery to the west.",
   "Exits": [
    {
+    "RoomId": 6519,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6517,
     "Verb": "south"
    },
    {
     "RoomId": 6536,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6519,
-    "Verb": "north"
    }
   ]
  },
@@ -291,12 +291,12 @@
   "Desc": "   Here the path bends to the east towards the barracks. To the south\nyou can see the shops.",
   "Exits": [
    {
-    "RoomId": 6520,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6518,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6520,
+    "Verb": "east"
    }
   ]
  },
@@ -306,16 +306,16 @@
   "Desc": "   Here the path passes by the Hospital to the north.  It continues\nto the east to the barracks, and to the west.",
   "Exits": [
    {
-    "RoomId": 6519,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6535,
     "Verb": "north"
    },
    {
     "RoomId": 6521,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6519,
+    "Verb": "west"
    }
   ]
  },
@@ -325,12 +325,12 @@
   "Desc": "   Here the path continues west, and east to the barracks.",
   "Exits": [
    {
-    "RoomId": 6522,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6520,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6522,
+    "Verb": "east"
    }
   ]
  },
@@ -366,12 +366,12 @@
   "Desc": "   Here is the first of two main rooms of barracks.  The barracks\ncontinue to the south, and you can leave the room to the north.",
   "Exits": [
    {
-    "RoomId": 6525,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6522,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6525,
+    "Verb": "south"
    }
   ]
  },
@@ -463,12 +463,12 @@
   "Desc": "   You are at the top of the stairs in the castle.  There is an exit\nto the east, and the stairs lead down.",
   "Exits": [
    {
-    "RoomId": 6530,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6532,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6530,
+    "Verb": "down"
    }
   ]
  },
@@ -478,12 +478,12 @@
   "Desc": "   This is the Queen's waiting room.  Here the men literally\n'wait' for the queen.  You've heard that the queen really\nlikes to get to 'know' her people, in the biblical sense.\n   The Queen's bedroom is to the north, and you can see stairs\nto the west.",
   "Exits": [
    {
-    "RoomId": 6531,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6533,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6531,
+    "Verb": "west"
    }
   ]
  },
@@ -493,16 +493,16 @@
   "Desc": "   This is the Queen's bedroom.  The bed is all ruffled, and there\nis a stack of dirty sheets piled in the corner.  There is a ladder\nthat leads down, out of the castle, and you can leave the room\nto the south.  There is also a small wooden door to the west.\nThere is a sign that says:\n\n      -------------------------\n      |  I'm busy right now,  |\n      |  and don't know when  |\n      |  Ill be back, but if  |\n      |  there is a key here  |\n      |  take it and PLEASE,  |\n      |  try to get my birth  |\n      |  control pills back!  |\n      |  I've heard they can  |\n      |  be found somewhere,  |\n      |  deep in the mines..  |\n      -------------------------\n",
   "Exits": [
    {
-    "RoomId": 6534,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6532,
     "Verb": "south"
    },
    {
     "RoomId": 6555,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6534,
+    "Verb": "down"
    }
   ]
  },
@@ -545,16 +545,16 @@
   "Desc": "   This path is very well worn, and there is an entrance to the mines to the\neast, while the path continues to the north and west.",
   "Exits": [
    {
+    "RoomId": 6505,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6542,
     "Verb": "east"
    },
    {
     "RoomId": 6504,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6505,
-    "Verb": "north"
    }
   ]
  },
@@ -609,20 +609,20 @@
   "Desc": "   You are at a crossroad in the mine.  There is a door to the north,\nand the path continues to the south, east, and west.",
   "Exits": [
    {
-    "RoomId": 6547,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 6546,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6552,
     "Verb": "south"
    },
    {
     "RoomId": 6544,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6547,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6546,
+    "Verb": "east"
    }
   ]
  },
@@ -658,16 +658,16 @@
   "Desc": "   You are inside the maze, but not far enough in that you could\nget lost.  There is an enscription on the wall which says:\n\n          1    3    2    4\n          N    W    N    S\n\nThis isn't too tough, so don't take it so rough.",
   "Exits": [
    {
+    "RoomId": 6547,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6549,
     "Verb": "north"
    },
    {
     "RoomId": 6545,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6547,
-    "Verb": "west"
    }
   ]
  },
@@ -696,16 +696,16 @@
   "Desc": "   You are in a maze.",
   "Exits": [
    {
+    "RoomId": 6551,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6549,
     "Verb": "north"
    },
    {
     "RoomId": 6549,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6551,
-    "Verb": "west"
    }
   ]
  },

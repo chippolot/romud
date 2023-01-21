@@ -7,8 +7,30 @@
   ],
   "RoomDesc": "The homba flits about.",
   "FullDesc": "Part kestrel, part bear, part wolf.  Parts is parts, and makes an ugly whole.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "2d10+40",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 1500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "1d8+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "invisible",
@@ -19,13 +41,36 @@
  {
   "Key": "mob901",
   "Name": "the swordsman",
+  "Gender": 1,
   "Keywords": [
    "swordsman"
   ],
   "RoomDesc": "The greatest swordsman in the land is standing here with a sneer on his face.",
   "FullDesc": "This is the ultimate swordsman.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "3d10+80",
+   "AC": 16,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 7,
+   "XPValue": 3000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 8,
+    "Damage": "2d5+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -41,8 +86,30 @@
   ],
   "RoomDesc": "The Mummy of Rabscuttle wanders here, hands aloft, walking towards you.",
   "FullDesc": "All bandages, no personality.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "6d3+130",
+   "AC": 18,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 11,
+   "XPValue": 10500
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 10,
+    "Damage": "2d6+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -52,14 +119,37 @@
  {
   "Key": "mob903",
   "Name": "the giant lizard",
+  "Gender": 1,
   "Keywords": [
    "lizard",
    "giant"
   ],
   "RoomDesc": "A giant lizard is here.",
   "FullDesc": "This scaly creature looks like it is well adapted to its underground\nhabitat.  He looks very powerful.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d2+220",
+   "AC": 17,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 16,
+   "XPValue": 26000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 14,
+    "Damage": "3d4+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -69,6 +159,7 @@
  {
   "Key": "mob904",
   "Name": "General Woundwort",
+  "Gender": 1,
   "Keywords": [
    "woundwort",
    "general",
@@ -76,8 +167,30 @@
   ],
   "RoomDesc": "General Woundwort, the dark demon of Minos, awaits to maul you to shreds.",
   "FullDesc": "He looks vaguely like a rabbit, but sure doesn't act like one.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "10d8+520",
+   "AC": 20,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 25,
+   "XPValue": 120000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "3d5+12",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -87,14 +200,37 @@
  {
   "Key": "mob905",
   "Name": "Franz the Henchman",
+  "Gender": 1,
   "Keywords": [
    "franz",
    "henchman"
   ],
   "RoomDesc": "Franz, Minos' henchman, is here ready to pump you up.",
   "FullDesc": "Franz is no girlie man.  He is very muscular and looks as if he could\nsqueeze your head like a grapefruit.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d10+120",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 14000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 13,
+    "Damage": "2d8+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -104,14 +240,37 @@
  {
   "Key": "mob906",
   "Name": "Hanz the Henchman",
+  "Gender": 1,
   "Keywords": [
    "hanz",
    "henchman"
   ],
   "RoomDesc": "Hanz is here flexing his muscles and squeezing grapefruits.",
   "FullDesc": "Hanz is no girlie man.  He is very muscular and looks as if he could\nlift a large dragon.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d10+120",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 12,
+   "XPValue": 14000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 13,
+    "Damage": "2d8+4",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -121,6 +280,7 @@
  {
   "Key": "mob907",
   "Name": "King Minos the Minotaur",
+  "Gender": 1,
   "Keywords": [
    "minos",
    "king",
@@ -128,8 +288,30 @@
   ],
   "RoomDesc": "King Minos the Minotaur is ready and waiting to gore you to death.",
   "FullDesc": "He smells something awful.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "12d8+590",
+   "AC": 21,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 26,
+   "XPValue": 160000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 20,
+    "Damage": "4d6+10",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -139,14 +321,37 @@
  {
   "Key": "mob908",
   "Name": "the dragon turtle",
+  "Gender": 1,
   "Keywords": [
    "turtle",
    "dragon"
   ],
   "RoomDesc": "A large dragon turtle breaks the surface churning the water into huge waves.",
   "FullDesc": "The turtle's shell is the size of a small house and looks as hard as rock.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "12d6+350",
+   "AC": 24,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 22,
+   "XPValue": 80000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 16,
+    "Damage": "1d20+5",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -155,14 +360,37 @@
  {
   "Key": "mob909",
   "Name": "the sea hag",
+  "Gender": 2,
   "Keywords": [
    "hag",
    "sea"
   ],
   "RoomDesc": "You notice the face of an ugly hag in the sea weeds.",
   "FullDesc": "The sea hag is terribly fightful and has razor sharp teeth.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "4d4+35",
+   "AC": 13,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 4,
+   "XPValue": 750
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 4,
+    "Damage": "2d5+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro",
    "stayzone"
@@ -171,13 +399,36 @@
  {
   "Key": "mob910",
   "Name": "the merman",
+  "Gender": 1,
   "Keywords": [
    "merman"
   ],
   "RoomDesc": "There is a merman swimming here brandishing his trident at you!",
   "FullDesc": "The merman has a powerful tail fin instead of legs.",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d5+65",
+   "AC": 14,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 5,
+   "XPValue": 1000
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 6,
+    "Damage": "2d4+2",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "stationary",
    "aggro",
@@ -193,8 +444,30 @@
   ],
   "RoomDesc": "A crusty looking crab is crawling around here searching for food.",
   "FullDesc": "It looks like a crab... what more can be said?",
-  "Stats": null,
-  "Attacks": null,
+  "Stats": {
+   "HP": "5d2+25",
+   "AC": 15,
+   "Speed": 0,
+   "Str": 0,
+   "Dex": 0,
+   "Con": 0,
+   "Int": 0,
+   "Wis": 0,
+   "Cha": 0,
+   "Level": 2,
+   "XPValue": 150
+  },
+  "Attacks": [
+   {
+    "Name": "Hit",
+    "ToHit": 2,
+    "Damage": "1d5+0",
+    "DamageType": 1,
+    "VerbSingular": "hit",
+    "VerbPlural": "hits",
+    "Weight": 0
+   }
+  ],
   "Flags": [
    "aggro"
   ]

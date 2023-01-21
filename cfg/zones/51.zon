@@ -3,5 +3,187 @@
  "Name": "The Great Eastern Desert",
  "MinRoomId": 5001,
  "MaxRoomId": 5100,
- "ResetFreq": 1800
+ "ResetFreq": 1800,
+ "ResetCommands": [
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5015",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5015",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5015",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5017",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5000",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5000",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5001",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5002",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5003",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5004",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5005",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5006",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5007",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5008",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5009",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5010",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5011",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5012",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5013",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5014",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  }
+ ]
 }

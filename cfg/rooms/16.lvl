@@ -5,12 +5,12 @@
   "Desc": "   You find yourself on a small road leading away from the edge\nof the River of Lost Souls.  The dark waters of the River can\nbe seen and heard just south of here.  Looking to the east and\nwest, you see only the walls of the rocky cliffs.  Off to the\nnorth a strange path seems to lead straight into the depths of\nthe mountain.",
   "Exits": [
    {
-    "RoomId": 5620,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1502,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5620,
+    "Verb": "south"
    }
   ]
  },
@@ -65,12 +65,12 @@
   "Desc": "   Looking ahead, you can see that the path you have been following will\nsoon come to an end, but something in the cold and the breeze tells you\nthat that will be only the beginning of the journey.",
   "Exits": [
    {
-    "RoomId": 1506,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1504,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1506,
+    "Verb": "north"
    }
   ]
  },
@@ -253,12 +253,12 @@
   "Desc": "   The din of a great battle shakes these halls, the moans of the earth\nerupting at the shakings of the End Time.  Be ready for that day, be very\nready, for if you are not, he will claim you for one of his own.",
   "Exits": [
    {
-    "RoomId": 1518,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1516,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1518,
+    "Verb": "north"
    }
   ]
  },
@@ -298,12 +298,12 @@
   "Desc": "   Many believed that the Prophet would never die, but when the stark\nevidence of his body confronted them, it soon became necessary to provide\nfor the future.  The four that came after are called the Rashidun, the\nrightly-guided Caliphs that would spread the word and the light, and with\nit forge one of history's greatest empires.",
   "Exits": [
    {
-    "RoomId": 1519,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1521,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1519,
+    "Verb": "south"
    }
   ]
  },
@@ -373,12 +373,12 @@
   "Desc": "   In the creation of the heavens and the earth, and in the alternation of\nnight and day, there are signs for men of sense; those that remember Allah\nsay: \"Lord, You have not created this in vain!\"",
   "Exits": [
    {
-    "RoomId": 1526,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1524,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1526,
+    "Verb": "north"
    }
   ]
  },
@@ -403,12 +403,12 @@
   "Desc": "   Unbelievers, I do not worship what you worship, nor do you worship\nwhat I worship.  I shall never worship what you worship, nor will you\never worship what I worship.  You have your own religion, and I have\nmine.",
   "Exits": [
    {
-    "RoomId": 1528,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1526,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1528,
+    "Verb": "north"
    }
   ]
  },
@@ -418,12 +418,12 @@
   "Desc": "   The balance had been made, the soul placed in readiness, and the final\nmeasurement taken.  For those that have come this far, surely this is the\nday of immortality!",
   "Exits": [
    {
-    "RoomId": 1527,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1534,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1527,
+    "Verb": "south"
    }
   ]
  },
@@ -433,16 +433,16 @@
   "Desc": "   God forgives those who commit evil in ignorance, for He is all-knowing\nand wise.  But He will not forgive those who do evil, and when death comes\nto them, say: \"Now we repent!\"  For those We have prepared a woeful scourge.",
   "Exits": [
    {
+    "RoomId": 1535,
+    "Verb": "up"
+   },
+   {
     "RoomId": 1530,
     "Verb": "east"
    },
    {
     "RoomId": 1513,
     "Verb": "south"
-   },
-   {
-    "RoomId": 1535,
-    "Verb": "up"
    }
   ]
  },
@@ -547,16 +547,16 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
-    "RoomId": 1536,
-    "Verb": "east"
-   },
-   {
     "RoomId": 1532,
     "Verb": "up"
    },
    {
     "RoomId": 1529,
     "Verb": "down"
+   },
+   {
+    "RoomId": 1536,
+    "Verb": "east"
    }
   ]
  },
@@ -593,16 +593,16 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
+    "RoomId": 1531,
+    "Verb": "down"
+   },
+   {
     "RoomId": 1536,
     "Verb": "west"
    },
    {
     "RoomId": 1534,
     "Verb": "up"
-   },
-   {
-    "RoomId": 1531,
-    "Verb": "down"
    }
   ]
  },

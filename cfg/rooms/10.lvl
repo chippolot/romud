@@ -5,12 +5,12 @@
   "Desc": "   As the river exits the city of Midgaard it picks up speed and whisks\nyou along high banks flanked by the trees of Haon-Dor.  As the city\nfades in the east, you approach a gloomy forest to the west.",
   "Exits": [
    {
-    "RoomId": 3201,
-    "Verb": "east"
-   },
-   {
     "RoomId": 902,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3201,
+    "Verb": "east"
    }
   ]
  },
@@ -69,10 +69,6 @@
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
    {
-    "RoomId": 912,
-    "Verb": "north"
-   },
-   {
     "RoomId": 904,
     "Verb": "east"
    },
@@ -83,6 +79,10 @@
    {
     "RoomId": 906,
     "Verb": "west"
+   },
+   {
+    "RoomId": 912,
+    "Verb": "north"
    }
   ]
  },
@@ -107,6 +107,10 @@
   "Desc": "   You are making your way along a channel in the river delta between\nthe island to the west and the shore to the south and east.  To the\nsouth an aging broken down looking pier juts out from land and toward\nthe west the channel works it way close to the island as it moves around\nits southern tip.",
   "Exits": [
    {
+    "RoomId": 906,
+    "Verb": "north"
+   },
+   {
     "RoomId": 905,
     "Verb": "east"
    },
@@ -117,10 +121,6 @@
    {
     "RoomId": 909,
     "Verb": "west"
-   },
-   {
-    "RoomId": 906,
-    "Verb": "north"
    }
   ]
  },
@@ -190,16 +190,16 @@
   "Desc": "   The river splits as runs up against the island and a navigatble\nchannel slips off to the north and west.",
   "Exits": [
    {
+    "RoomId": 913,
+    "Verb": "north"
+   },
+   {
     "RoomId": 905,
     "Verb": "south"
    },
    {
     "RoomId": 913,
     "Verb": "west"
-   },
-   {
-    "RoomId": 913,
-    "Verb": "north"
    }
   ]
  },
@@ -209,16 +209,16 @@
   "Desc": "   The river current carries you swiftly westward as the channel\nbegins to narrow as it squeezes past the north end of the island.",
   "Exits": [
    {
-    "RoomId": 912,
-    "Verb": "south"
-   },
-   {
     "RoomId": 914,
     "Verb": "west"
    },
    {
     "RoomId": 912,
     "Verb": "east"
+   },
+   {
+    "RoomId": 912,
+    "Verb": "south"
    }
   ]
  },

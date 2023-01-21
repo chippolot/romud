@@ -5,12 +5,12 @@
   "Desc": "   Sticky, sticky, sticky!  The ground is cluttered with leaves,\ndecayed remains of webbed crickets, beetle, rats, dogs, and even\nhumans.  You begin to wonder about what lies ahead.  The air is\ndamp here, and even the little light that shines through the\ncanopy seems to be absorbed into the webbing.",
   "Exits": [
    {
-    "RoomId": 6133,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6303,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6133,
+    "Verb": "south"
    }
   ]
  },
@@ -20,20 +20,20 @@
   "Desc": "   You find that footing here is very good, almost too good.  The\nlimbs are coated with cobwebs and seem unusually strong for tree\nbranches.  Paths lead in four directions.  The eastward path goes\ndown a bit.",
   "Exits": [
    {
-    "RoomId": 6305,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 6306,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6302,
     "Verb": "south"
    },
    {
     "RoomId": 6304,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6305,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 6306,
+    "Verb": "east"
    }
   ]
  },
@@ -114,10 +114,6 @@
   "Desc": "   Spiders, spiders, everywhere!  It is almost ant-like in efficiency\nwith one big difference.  The spiders here are carrying ant-corpses,\nas well as cats, dogs, and humans.",
   "Exits": [
    {
-    "RoomId": 6308,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6307,
     "Verb": "east"
    },
@@ -128,6 +124,10 @@
    {
     "RoomId": 6310,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6308,
+    "Verb": "north"
    }
   ]
  },
@@ -137,16 +137,16 @@
   "Desc": "   As always, there is a split in the road.  One road is strewn with\ncricket feelers.  The other is well-kept and suitable for smooth\ntravelling.  The webbing that was prevalent in earlier rooms is almost\nnon-existant now.",
   "Exits": [
    {
-    "RoomId": 6311,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6309,
     "Verb": "east"
    },
    {
     "RoomId": 6321,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6311,
+    "Verb": "north"
    }
   ]
  },
@@ -156,12 +156,12 @@
   "Desc": "   You are on a 'fuzzy' tree limb.  Interesting, since the branches\nseem to have 'hairs' sprouting from its bark.  As you look closer\nyou see millions of aphids covering each limb.",
   "Exits": [
    {
-    "RoomId": 6312,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6310,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6312,
+    "Verb": "west"
    }
   ]
  },
@@ -212,12 +212,12 @@
   "Desc": "   Strange.  No webbing here.  In fact, no sounds whatsoever.  \nThe path continues northward, where you find that you may have\nto tightrope your way across a ravine.",
   "Exits": [
    {
-    "RoomId": 6322,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6310,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6322,
+    "Verb": "west"
    }
   ]
  },
@@ -226,6 +226,10 @@
   "Name": "Above The Ravine",
   "Desc": "   Stranger still.  Your feet get a real firm grip on the spiderline.\nYou are above a deep ravine.  This line connects you between two trees.\nBelow you can see a prismatic web with lots of animal bones caught in it:\nsome bear and small deer bones in fact.  No human skeletons are visible \n(yet).",
   "Exits": [
+   {
+    "RoomId": 6323,
+    "Verb": "down"
+   },
    {
     "RoomId": 6322,
     "Verb": "up"
@@ -237,10 +241,6 @@
    {
     "RoomId": 6324,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6323,
-    "Verb": "down"
    }
   ]
  },
@@ -250,12 +250,12 @@
   "Desc": "   The trees here take on a different appearance -- they are not trees\nanymore, but disjointed make-shift silken made shafts, sticky to the\ntouch, and webby in texture.  This is another world it would appear.",
   "Exits": [
    {
-    "RoomId": 6325,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6322,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6325,
+    "Verb": "down"
    }
   ]
  },
@@ -295,12 +295,12 @@
   "Desc": "   Another shifty little strand of webs, almost ethereal in nature.",
   "Exits": [
    {
-    "RoomId": 6326,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6328,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6326,
+    "Verb": "west"
    }
   ]
  },
@@ -347,20 +347,20 @@
   "Desc": "   Large strands connect at this point.  The node shimmers and\nflickers within the ether.  You see many flying creatures --\ninsects, pegasi, and dragon wormkins -- navigate the dangerous\npassages of the web.  Exits go in many directions.",
   "Exits": [
    {
-    "RoomId": 6334,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 6335,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6331,
     "Verb": "north"
    },
    {
     "RoomId": 6333,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6334,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6335,
+    "Verb": "west"
    }
   ]
  },
@@ -389,16 +389,16 @@
   "Desc": "   You can see all of Midgaard in this ethereal web.  Many\nof the larger dragons that do wish to fly seem to fly away\nfrom the sticky strands of the web.",
   "Exits": [
    {
+    "RoomId": 6332,
+    "Verb": "east"
+   },
+   {
     "RoomId": 6335,
     "Verb": "south"
    },
    {
     "RoomId": 6336,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6332,
-    "Verb": "east"
    }
   ]
  },
@@ -494,16 +494,16 @@
   "Desc": "   This is another link in the ethereal web.  Various creatures\nseem to get caught (or hypnotized) by its sticky strands.",
   "Exits": [
    {
-    "RoomId": 6346,
-    "Verb": "up"
-   },
-   {
     "RoomId": 6351,
     "Verb": "south"
    },
    {
     "RoomId": 6347,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6346,
+    "Verb": "up"
    }
   ]
  },
@@ -512,6 +512,10 @@
   "Name": "The Quiet Tree Top",
   "Desc": "   This is a quiet tree top.  Downwards you can see a familiar path\nthat may lead back to Midgaard.",
   "Exits": [
+   {
+    "RoomId": 6347,
+    "Verb": "east"
+   },
    {
     "RoomId": 6348,
     "Verb": "west"
@@ -523,10 +527,6 @@
    {
     "RoomId": 6356,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6347,
-    "Verb": "east"
    }
   ]
  },

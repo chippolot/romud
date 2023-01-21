@@ -3,5 +3,349 @@
  "Name": "Drow City",
  "MinRoomId": 5101,
  "MaxRoomId": 5200,
- "ResetFreq": 1800
+ "ResetFreq": 1800,
+ "ResetCommands": [
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5101",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5101",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5104",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5104",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5104",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5104",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5105",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5105",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5105",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5106",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5106",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5107",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5107",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5107",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5108",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5109",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5109",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5109",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5109",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5110",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5110",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5111",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  }
+ ]
 }

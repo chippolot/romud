@@ -46,12 +46,12 @@
   "Desc": "   You are standing in what looks like a bend in the pipe system of the\nsewer.  The 'floor' is covered completely by mud!  This includes covering\nyour legs up to your knees as well.  The pipe leads west and south.",
   "Exits": [
    {
-    "RoomId": 7105,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7102,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7105,
+    "Verb": "south"
    }
   ]
  },
@@ -76,12 +76,12 @@
   "Desc": "   You are dangling on the slippery sides of the old well leading down and\nup.  The only secure point here is the metal bars that are cemented into the\nsides, the ones that you cling frantically to so that you don't fall.  Who\nknows how deep this well is?  The bars lead down and up and nowhere else.",
   "Exits": [
    {
-    "RoomId": 7016,
-    "Verb": "up"
-   },
-   {
     "RoomId": 0,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7016,
+    "Verb": "up"
    }
   ]
  },
@@ -110,16 +110,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
-    "RoomId": 7107,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7191,
     "Verb": "east"
    },
    {
     "RoomId": 7109,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7107,
+    "Verb": "north"
    }
   ]
  },
@@ -182,10 +182,6 @@
   "Desc": "   This seems like a ledge that is a little broader than the one just to\nthe north of here.  The ledge seems to lead around some sort of Abyss of\ntotal darkness.  The ledge seems to have an odd-looking edge here.",
   "Exits": [
    {
-    "RoomId": 7113,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7280,
     "Verb": "down"
    },
@@ -196,6 +192,10 @@
    {
     "RoomId": 7116,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7113,
+    "Verb": "south"
    }
   ]
  },
@@ -235,6 +235,14 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
+    "RoomId": 7116,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 7120,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7119,
     "Verb": "east"
    },
@@ -245,14 +253,6 @@
    {
     "RoomId": 7118,
     "Verb": "west"
-   },
-   {
-    "RoomId": 7116,
-    "Verb": "up"
-   },
-   {
-    "RoomId": 7120,
-    "Verb": "north"
    }
   ]
  },
@@ -262,16 +262,16 @@
   "Desc": "   You are standing on a ledge that seems quite a lot larger than the\nrest of the ledges.  This one leads to the west and the east, plus it\nhas an exit going to the south.  Though you could jump into mid-air,\nbut it probably wouldn't be such a good idea.  The way south is in\nutter darkness.",
   "Exits": [
    {
-    "RoomId": 7130,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7112,
     "Verb": "west"
    },
    {
     "RoomId": 7122,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7130,
+    "Verb": "south"
    }
   ]
  },

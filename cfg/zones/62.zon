@@ -3,5 +3,223 @@
  "Name": "Haon-Dor, Dark Forest",
  "MinRoomId": 6101,
  "MaxRoomId": 6200,
- "ResetFreq": 1800
+ "ResetFreq": 1800,
+ "ResetCommands": [
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6101",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6101",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6110",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6110",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6111",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6111",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6112",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6113",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6113",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6113",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6114",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6115",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6116",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob6117",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  }
+ ]
 }

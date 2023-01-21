@@ -31,8 +31,6 @@
 [x] Remove Disconnected entities!
 [x] Log Flags
 [x] Self status command
-[x] Circle Data Converter
-    [x] Rooms
 [x] Leveling up
 [x] Items
     [x] Viewing in Room
@@ -123,18 +121,19 @@
 [x] Clear status effects on death
 [x] Zones
     [x] Movement is zone-locked
-[x] Circle Data
+[x] Circle Data Conversion
+    [x] Rooms
     [x] Zones
+    [x] Mobs
 ----------------------------------------
 [] Circle Data
-    [] Mobs
     [] Spawn Commands
     [] Items
+[] Zones
+    [] Spawning in zones
 [] RRO Stats
 [] RRO Combat
 [] Combat Speed
-[] Zones
-    [] Spawning in zones
 [] Random Drops
 [] MVP mobs
 [] Equippable Cards

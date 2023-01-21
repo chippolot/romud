@@ -84,12 +84,12 @@
   "Desc": "   Here is an entrance to the mountain.  The door looks very well built,\nand you can hear noise coming from within.",
   "Exits": [
    {
-    "RoomId": 6504,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6514,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6504,
+    "Verb": "east"
    }
   ]
  },
@@ -144,16 +144,16 @@
   "Desc": "   Here the path turns to the west.  You can see a door in front of you,\nand the path continues to the west and south.",
   "Exits": [
    {
+    "RoomId": 6509,
+    "Verb": "south"
+   },
+   {
     "RoomId": 6523,
     "Verb": "west"
    },
    {
     "RoomId": 6511,
     "Verb": "north"
-   },
-   {
-    "RoomId": 6509,
-    "Verb": "south"
    }
   ]
  },
@@ -291,12 +291,12 @@
   "Desc": "   Here the path bends to the east towards the barracks. To the south\nyou can see the shops.",
   "Exits": [
    {
-    "RoomId": 6518,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6520,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6518,
+    "Verb": "south"
    }
   ]
  },
@@ -325,12 +325,12 @@
   "Desc": "   Here the path continues west, and east to the barracks.",
   "Exits": [
    {
-    "RoomId": 6520,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6522,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6520,
+    "Verb": "west"
    }
   ]
  },
@@ -392,12 +392,12 @@
   "Desc": "   You are just inside the castle.  It is very tubular in shape,\nand it is very featureless.  There is a set of stairs that lead\nup, and the door leads out of the castle to the west.",
   "Exits": [
    {
-    "RoomId": 6513,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6529,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6513,
+    "Verb": "west"
    }
   ]
  },
@@ -463,12 +463,12 @@
   "Desc": "   You are at the top of the stairs in the castle.  There is an exit\nto the east, and the stairs lead down.",
   "Exits": [
    {
-    "RoomId": 6532,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6530,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6532,
+    "Verb": "east"
    }
   ]
  },
@@ -609,20 +609,20 @@
   "Desc": "   You are at a crossroad in the mine.  There is a door to the north,\nand the path continues to the south, east, and west.",
   "Exits": [
    {
-    "RoomId": 6552,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 6544,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6547,
     "Verb": "north"
    },
    {
     "RoomId": 6546,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6552,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 6544,
+    "Verb": "west"
    }
   ]
  },
@@ -643,12 +643,12 @@
   "Desc": "   You have entered the maze of the mines.  To the east you can see\nsome inscriptions, and you can exit to the south.",
   "Exits": [
    {
-    "RoomId": 6548,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6545,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6548,
+    "Verb": "east"
    }
   ]
  },
@@ -658,16 +658,16 @@
   "Desc": "   You are inside the maze, but not far enough in that you could\nget lost.  There is an enscription on the wall which says:\n\n          1    3    2    4\n          N    W    N    S\n\nThis isn't too tough, so don't take it so rough.",
   "Exits": [
    {
-    "RoomId": 6547,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6549,
     "Verb": "north"
    },
    {
     "RoomId": 6545,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6547,
+    "Verb": "west"
    }
   ]
  },
@@ -677,16 +677,16 @@
   "Desc": "   You are in a maze.",
   "Exits": [
    {
+    "RoomId": 6549,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6550,
     "Verb": "north"
    },
    {
     "RoomId": 6548,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6549,
-    "Verb": "west"
    }
   ]
  },
@@ -696,16 +696,16 @@
   "Desc": "   You are in a maze.",
   "Exits": [
    {
-    "RoomId": 6551,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6549,
     "Verb": "north"
    },
    {
     "RoomId": 6549,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6551,
+    "Verb": "west"
    }
   ]
  },

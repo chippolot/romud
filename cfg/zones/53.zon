@@ -3,5 +3,322 @@
  "Name": "The City Of Thalos",
  "MinRoomId": 5201,
  "MaxRoomId": 5300,
- "ResetFreq": 900
+ "ResetFreq": 900,
+ "ResetCommands": [
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5200",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5201",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5209",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5202",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5203",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5204",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5205",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5206",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5207",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5207",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5207",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5207",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5208",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5208",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob5208",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  }
+ ]
 }

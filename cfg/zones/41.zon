@@ -3,5 +3,412 @@
  "Name": "Mines of Moria",
  "MinRoomId": 4001,
  "MaxRoomId": 4199,
- "ResetFreq": 1200
+ "ResetFreq": 1200,
+ "ResetCommands": [
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4000",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4001",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4001",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4002",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4002",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4002",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4003",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4003",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4003",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4003",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4003",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4003",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4004",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4004",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4004",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4005",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4050",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4051",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4051",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4051",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4051",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4052",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4052",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4052",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4053",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4053",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4054",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4054",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4054",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4055",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4055",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4056",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4056",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4100",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4101",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4102",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4103",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4105",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4106",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4107",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4057",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4057",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  },
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob4058",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  }
+ ]
 }

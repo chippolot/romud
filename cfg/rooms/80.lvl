@@ -69,10 +69,6 @@
   "Desc": "   You are standing in the northern end of the huge hall.  This part is\nunder the grand wooden staircase so the light seems to be a little less\nbright here, but this doesn't affect your sight at all.  To the north\nlies the kitchen.  To the south lies the southern end of the hall.  To\nthe east there is a huge metal door.  To the west there is a large\naspenwood door.",
   "Exits": [
    {
-    "RoomId": 7906,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7907,
     "Verb": "north"
    },
@@ -83,6 +79,10 @@
    {
     "RoomId": 7902,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7906,
+    "Verb": "west"
    }
   ]
  },
@@ -103,16 +103,16 @@
   "Desc": "   This must be the place of food and drink.  You can hear the faint noise\nof rats feasting on meat and bread from somewhere undeterminable.  The sound\nmakes you feel the agony of HUNGER.  The only visible exit is south to the\nNorthern end of the hall.",
   "Exits": [
    {
+    "RoomId": 7908,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7909,
     "Verb": "east"
    },
    {
     "RoomId": 7905,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7908,
-    "Verb": "north"
    }
   ]
  },
@@ -144,12 +144,12 @@
   "Desc": "   You can see up and down the stairway.  It seems to take forever, either\ngoing up OR down.  It is just a seemingly insurmountable climb, either way.\nUp is the bedroom of Redferne, and down leads to the southern end of the\nhall.",
   "Exits": [
    {
-    "RoomId": 7912,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7902,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7912,
+    "Verb": "up"
    }
   ]
  },
@@ -159,12 +159,12 @@
   "Desc": "   This place is gloomy.  A HUGE safe is cemented into the west wall.  The\nonly visible exit is west, through the oak door.",
   "Exits": [
    {
-    "RoomId": 7902,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7904,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7902,
+    "Verb": "west"
    }
   ]
  },
@@ -189,12 +189,12 @@
   "Desc": "   You see a splendid of the most of this world.  The valleys stretch as\nfar as the eye reaches to the south from here.  Down below you can see\nthe entrance of this magnificent building.  To the north are the doors\nto Redferne's bedroom.",
   "Exits": [
    {
-    "RoomId": 0,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7912,
     "Verb": "north"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "down"
    }
   ]
  },
@@ -215,12 +215,12 @@
   "Desc": "   This place has quite a good view over Midgaard.  Your possibilities of\nmovement seem to extend only to the up and down directions.  Unless you\nwant to let go of the secure and seemingly unmovable chain, then those are\nthe directions you should take from here.",
   "Exits": [
    {
-    "RoomId": 7916,
-    "Verb": "up"
-   },
-   {
     "RoomId": 3121,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7916,
+    "Verb": "up"
    }
   ]
  },
@@ -290,14 +290,6 @@
   "Desc": "   This is probably the third worst place to be in this entire MUD right\nnow.  You fall\n.  \n.\n.\nand fall\n.\n.\n.\nand fall\n.\n.\n.\nand HIT THE GROUND WITH SUCH A *SPLUTCH* that you die horribly, but instantly.\nGood-bye cruel world.",
   "Exits": [
    {
-    "RoomId": 7916,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 7917,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7918,
     "Verb": "west"
    },
@@ -312,6 +304,14 @@
    {
     "RoomId": 7915,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7916,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7917,
+    "Verb": "south"
    }
   ]
  }

@@ -3,5 +3,16 @@
  "Name": "Limbo - Internal",
  "MinRoomId": 1,
  "MaxRoomId": 100,
- "ResetFreq": 600
+ "ResetFreq": 600,
+ "ResetCommands": [
+  {
+   "Type": 1,
+   "Data": {
+    "Key": "mob1",
+    "Max": 0,
+    "Items": null,
+    "Equipment": null
+   }
+  }
+ ]
 }

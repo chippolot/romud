@@ -13,14 +13,19 @@ type ZoneConfig struct {
 	ResetCommands []interface{} `json:",omitempty"`
 }
 
-type SpawnEntityZoneResetCommand struct {
+type ZoneResetCommand struct {
+	Type int
+	Data any
+}
+
+type SpawnEntityZoneResetCommandData struct {
 	Key       string
 	Max       int
 	Items     []string
 	Equipment []string
 }
 
-type SpawnItemZoneResetCommand struct {
+type SpawnItemZoneResetCommandData struct {
 	Key string
 	Max int
 }

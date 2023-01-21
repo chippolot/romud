@@ -84,12 +84,12 @@
   "Desc": "   You are in the Kitchen.  Lots of helpers hurry to do the Chief Cook's\nbidding, and there is a wonderful smell that makes you feel very hungry.\nAll around the room, there are shelves with different kinds of cooking \ngear stacked on them.  There is an exit to the north, and one to the east;\nboth leading to small passages.",
   "Exits": [
    {
-    "RoomId": 15007,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15011,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15007,
+    "Verb": "east"
    }
   ]
  },
@@ -148,12 +148,12 @@
   "Desc": "   You are below one the three mighty towers of the Castle.  There are\nno guards here, and you sense that this part of the Castle is largely\nunused.  There are stairs going up to the tower, and there is also an\nexit to the north.",
   "Exits": [
    {
-    "RoomId": 15015,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15035,
     "Verb": "up"
+   },
+   {
+    "RoomId": 15015,
+    "Verb": "north"
    }
   ]
  },
@@ -193,10 +193,6 @@
   "Desc": "   You are standing in the southern end of the Great Hall.  It\nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\nnorth, you see King Welmar's great throne, and to the south is the\nCastle Entrance.",
   "Exits": [
    {
-    "RoomId": 15012,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15018,
     "Verb": "north"
    },
@@ -207,6 +203,10 @@
    {
     "RoomId": 15008,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15012,
+    "Verb": "west"
    }
   ]
  },
@@ -265,16 +265,16 @@
   "Desc": "   You are standing in the north-west end of the Great Hall.  It \nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\neast, you see King Welmar's great throne, and to the west there is\nan exit to a passage.",
   "Exits": [
    {
+    "RoomId": 15018,
+    "Verb": "east"
+   },
+   {
     "RoomId": 15012,
     "Verb": "south"
    },
    {
     "RoomId": 15016,
     "Verb": "west"
-   },
-   {
-    "RoomId": 15018,
-    "Verb": "east"
    }
   ]
  },
@@ -341,12 +341,12 @@
   "Desc": "   You are standing in a north-south leading passage.  There is a door\nto the east.",
   "Exits": [
    {
-    "RoomId": 15016,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15022,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15016,
+    "Verb": "south"
    }
   ]
  },
@@ -472,12 +472,12 @@
   "Desc": "   You are standing by a staircase leading down.  As you look down,\nyou notice that for the first time since you entered the castle,\nthings are not aesthetically made.  Instead it looks more functional\nand prison-like.",
   "Exits": [
    {
-    "RoomId": 15025,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15056,
     "Verb": "down"
+   },
+   {
+    "RoomId": 15025,
+    "Verb": "south"
    }
   ]
  },
@@ -517,12 +517,12 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads east and west.",
   "Exits": [
    {
-    "RoomId": 15032,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15034,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15032,
+    "Verb": "west"
    }
   ]
  },
@@ -562,16 +562,16 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads north and south.  There\nis also an exit to the east here.",
   "Exits": [
    {
-    "RoomId": 15037,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15031,
     "Verb": "south"
    },
    {
     "RoomId": 15041,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15037,
+    "Verb": "east"
    }
   ]
  },
@@ -708,16 +708,16 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads north and south.  There\nis an exit to the east, that leads to a large room.",
   "Exits": [
    {
+    "RoomId": 15047,
+    "Verb": "east"
+   },
+   {
     "RoomId": 15041,
     "Verb": "south"
    },
    {
     "RoomId": 15050,
     "Verb": "north"
-   },
-   {
-    "RoomId": 15047,
-    "Verb": "east"
    }
   ]
  },
@@ -780,10 +780,6 @@
   "Desc": "   You are standing on a great staircase, that leads up and down.  To \nthe east, there is a large oak door, and a corridor leads south.",
   "Exits": [
    {
-    "RoomId": 15026,
-    "Verb": "down"
-   },
-   {
     "RoomId": 15051,
     "Verb": "east"
    },
@@ -794,6 +790,10 @@
    {
     "RoomId": 15054,
     "Verb": "up"
+   },
+   {
+    "RoomId": 15026,
+    "Verb": "down"
    }
   ]
  },
@@ -908,10 +908,6 @@
   "Desc": "   This small passage is about thirty feet long and is well lit by the\ntorches on each wall.  The torches have been locked inside small metal\ncages to ensure that they are not removed.  The strangest thing about\nthe torches however, is the manner in which they burn, they have what\nappears to be a constant flame in that it does not flicker whatsoever,\nand does not give off any smoke.  Perhaps they have been magicked to\nburn forever...\n   There are three cells along this passage way, one on each side of\nthe corridor right near the north end and one isolated at the south\nend of the corridor with a small metal plaque located over the door\nin the keystone of the archway.",
   "Exits": [
    {
-    "RoomId": 15059,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15057,
     "Verb": "north"
    },
@@ -922,6 +918,10 @@
    {
     "RoomId": 15060,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15059,
+    "Verb": "west"
    }
   ]
  },
@@ -1051,20 +1051,20 @@
   "Desc": "   This section of the dirt road is quiet, but there is an awful stench\nin the air.  It brings to mind rotting corpses and raw sewage.  The woods\ncontiue to press closely about you, and almost totally surround the small\nbuilding to the west with a thatched roof.  There is a blackened shell of\na building to the east with a small sign hanging out front from a black\nand charred chain.\n   The dirt road continues north and south.",
   "Exits": [
    {
-    "RoomId": 15071,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 15066,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15072,
     "Verb": "east"
    },
    {
     "RoomId": 15068,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15071,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 15066,
+    "Verb": "north"
    }
   ]
  },

@@ -20,12 +20,12 @@
   "Desc": "   You're really high up now.  You can keep going even\nfarther up into the mountains to the east, or go back\ndown to the west.",
   "Exits": [
    {
-    "RoomId": 6403,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6401,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6403,
+    "Verb": "east"
    }
   ]
  },
@@ -95,12 +95,12 @@
   "Desc": "   You come to a small clearing now, after walking for several\nminutes through the silent woods.  An odd block sticks up\nhere and there in   the ground... wait a minute.  These\nstones seem a little too regular, and from the circle \nformation and size you could almost swear that they were...\ncrenellations?  Could some sort of building been buried\nby the lava here?  A rusty ring sticks out of the earth\nin the center... a trapdoor?  This is almost too good to\nbe true!",
   "Exits": [
    {
-    "RoomId": 6408,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6406,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6408,
+    "Verb": "down"
    }
   ]
  },
@@ -109,6 +109,10 @@
   "Name": "A Stairwell",
   "Desc": "   This small room is the top of a stairwell leading down\ndeep into the tower.  A small trapdoor overhead leaks\nthe light of day around its edges.  To the south is a \nwooden door, preserved through the ages by means \nunknown.  To the west is a short hall.",
   "Exits": [
+   {
+    "RoomId": 6414,
+    "Verb": "down"
+   },
    {
     "RoomId": 6409,
     "Verb": "south"
@@ -120,10 +124,6 @@
    {
     "RoomId": 6407,
     "Verb": "up"
-   },
-   {
-    "RoomId": 6414,
-    "Verb": "down"
    }
   ]
  },
@@ -185,12 +185,12 @@
   "Desc": "   A great mages' library is contained on this floor of \nthe tower.  You feel you could learn anything you wanted\nto if you only looked and read long enough.  A door\nopens up back on the stairwell to the east.",
   "Exits": [
    {
-    "RoomId": 6415,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6414,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6415,
+    "Verb": "west"
    }
   ]
  },
@@ -200,16 +200,16 @@
   "Desc": "   This stairwell continues up and down, and there is\na door to the west.",
   "Exits": [
    {
-    "RoomId": 6413,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6408,
     "Verb": "up"
    },
    {
     "RoomId": 6416,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6413,
+    "Verb": "west"
    }
   ]
  },
@@ -219,12 +219,12 @@
   "Desc": "   This is a small hidden hall with a secret entrance to the\nlibrary on the north end of the west wall, and a trapdoor \non the south end.",
   "Exits": [
    {
-    "RoomId": 6413,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6417,
     "Verb": "down"
+   },
+   {
+    "RoomId": 6413,
+    "Verb": "east"
    }
   ]
  },
@@ -264,10 +264,6 @@
   "Desc": "   This hall runs through the tower.  There's more hall to\nthe west, and doors to your north and south.  A door to\nthe east leads back to the stairwell.",
   "Exits": [
    {
-    "RoomId": 6420,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6416,
     "Verb": "east"
    },
@@ -278,6 +274,10 @@
    {
     "RoomId": 6421,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6420,
+    "Verb": "north"
    }
   ]
  },
@@ -335,16 +335,16 @@
   "Desc": "   This stairwell leads up and down, and there is a big\nopen room to your west.",
   "Exits": [
    {
-    "RoomId": 6426,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6424,
     "Verb": "west"
    },
    {
     "RoomId": 6416,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6426,
+    "Verb": "down"
    }
   ]
  },
@@ -399,16 +399,16 @@
   "Desc": "   This area of the tower seems dank and oppressive.  The\nhall runs north-south, and there is an empty cell to your\nwest.  The stairwell is to your east.",
   "Exits": [
    {
+    "RoomId": 6428,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6426,
     "Verb": "east"
    },
    {
     "RoomId": 6429,
     "Verb": "south"
-   },
-   {
-    "RoomId": 6428,
-    "Verb": "north"
    }
   ]
  },
@@ -440,16 +440,16 @@
   "Desc": "   The stairwell continues up and down here.  A large room\nopens up to the west.",
   "Exits": [
    {
+    "RoomId": 6431,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6426,
     "Verb": "up"
    },
    {
     "RoomId": 6432,
     "Verb": "down"
-   },
-   {
-    "RoomId": 6431,
-    "Verb": "west"
    }
   ]
  },
@@ -605,16 +605,16 @@
   "Desc": "   This alcove leads into a huge room to your north, and\nto stairs leading down to the east, and stairs going \nup to your west.",
   "Exits": [
    {
+    "RoomId": 6440,
+    "Verb": "west"
+   },
+   {
     "RoomId": 6442,
     "Verb": "north"
    },
    {
     "RoomId": 6443,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6440,
-    "Verb": "west"
    }
   ]
  },
@@ -635,12 +635,12 @@
   "Desc": "   Stairs lead down here to the second level of the basement,\nor back west to the alcove.",
   "Exits": [
    {
-    "RoomId": 6444,
-    "Verb": "down"
-   },
-   {
     "RoomId": 6441,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6444,
+    "Verb": "down"
    }
   ]
  },

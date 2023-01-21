@@ -37,37 +37,38 @@ const (
 type AdvantageType int
 type DamageType int
 
+var damageTypeStringMapping = utils.NewStringMapping(map[DamageType]string{
+	Dam_Acid:        "acid",
+	Dam_Bludgeoning: "bludgeoning",
+	Dam_Cold:        "cold",
+	Dam_Fire:        "fire",
+	Dam_Force:       "force",
+	Dam_Lightning:   "lightning",
+	Dam_Necrotic:    "necrotic",
+	Dam_Piercing:    "piercing",
+	Dam_Poison:      "poison",
+	Dam_Psychic:     "psychic",
+	Dam_Radiant:     "radiant",
+	Dam_Slashing:    "slashing",
+	Dam_Thunder:     "thunder",
+})
+
 func ParseDamageType(str string) (DamageType, error) {
-	switch str {
-	case "acid":
-		return Dam_Acid, nil
-	case "bludgeoning":
-		return Dam_Bludgeoning, nil
-	case "cold":
-		return Dam_Cold, nil
-	case "fire":
-		return Dam_Fire, nil
-	case "force":
-		return Dam_Force, nil
-	case "lightning":
-		return Dam_Lightning, nil
-	case "necrotic":
-		return Dam_Necrotic, nil
-	case "piercing":
-		return Dam_Piercing, nil
-	case "poison":
-		return Dam_Poison, nil
-	case "psychic":
-		return Dam_Psychic, nil
-	case "radiant":
-		return Dam_Radiant, nil
-	case "slashing":
-		return Dam_Slashing, nil
-	case "thunder":
-		return Dam_Thunder, nil
-	default:
-		return 0, fmt.Errorf("unknown damage type: %s", str)
+	if val, ok := damageTypeStringMapping.ToValue[str]; ok {
+		return val, nil
 	}
+	return 0, fmt.Errorf("unknown damagee type: %s", str)
+}
+
+func (dt *DamageType) String() string {
+	if str, ok := damageTypeStringMapping.ToString[*dt]; ok {
+		return str
+	}
+	return "unknown"
+}
+
+func (dt *DamageType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(dt.String())
 }
 
 func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {

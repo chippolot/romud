@@ -31,16 +31,16 @@
   "Desc": "   On the floor you see a lot of human decay, like bones and skulls.  You\nalso see a lot of slime.  On the wall is a torch sitting in its sconce.  To\nthe north is a wooden door.",
   "Exits": [
    {
+    "RoomId": 7202,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7206,
     "Verb": "east"
    },
    {
     "RoomId": 7204,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7202,
-    "Verb": "north"
    }
   ]
  },
@@ -137,12 +137,12 @@
   "Desc": "   You are in a dry part of the sewer.  To the north is a wooden door,\nyou can see some slime at the lower part of the door.  You also see\nsome skulls and some broken bones.",
   "Exits": [
    {
-    "RoomId": 7210,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7205,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7210,
+    "Verb": "east"
    }
   ]
  },
@@ -290,12 +290,12 @@
   "Desc": "   You are in a dry but dirty sewer drain.  The drain continues east and\nsouth.",
   "Exits": [
    {
-    "RoomId": 7218,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7221,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7218,
+    "Verb": "east"
    }
   ]
  },
@@ -320,16 +320,16 @@
   "Desc": "   You are in a sewer drain, there is nothing special in here, except for a \nloud echo.",
   "Exits": [
    {
+    "RoomId": 7223,
+    "Verb": "east"
+   },
+   {
     "RoomId": 7221,
     "Verb": "west"
    },
    {
     "RoomId": 7130,
     "Verb": "up"
-   },
-   {
-    "RoomId": 7223,
-    "Verb": "east"
    }
   ]
  },
@@ -339,12 +339,12 @@
   "Desc": "   You are in a drain, with some slimy water on the floor.",
   "Exits": [
    {
-    "RoomId": 7224,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7222,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7224,
+    "Verb": "east"
    }
   ]
  },
@@ -455,12 +455,12 @@
   "Desc": "   You stand in a sewer drain, you are able to see some kind of cave-like\nroom.  You see some odd scratches on the drain wall, as if from a gigantic\nrat.  The sewer leads south.",
   "Exits": [
    {
-    "RoomId": 7233,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7235,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7233,
+    "Verb": "south"
    }
   ]
  },
@@ -481,12 +481,12 @@
   "Desc": "   You hang onto some steps leading down into utter darkness.  There is an\nexit leading up as well, though you'll have to open the tiny rock again to\ndo so.",
   "Exits": [
    {
-    "RoomId": 7300,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7112,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7300,
+    "Verb": "down"
    }
   ]
  },
@@ -511,12 +511,12 @@
   "Desc": "   The corridor is glowing oppressively in a red hue.  You can hear wailing\nthrough an open black hole to the east.  To the south there is a round door.",
   "Exits": [
    {
-    "RoomId": 7283,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7281,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7283,
+    "Verb": "east"
    }
   ]
  },
@@ -526,12 +526,12 @@
   "Desc": "   You are standing in nothing.  All around you there are stars.\nSometimes a shadow flies closely by you, wailing very loudly.  To\nthe north there is a small bright hole.  To the west there is a\nsmall red hole.",
   "Exits": [
    {
-    "RoomId": 7284,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7282,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7284,
+    "Verb": "north"
    }
   ]
  },
@@ -541,16 +541,16 @@
   "Desc": "   You are in a small hallway.  There are doors to the east and to\nthe west.  To the south there are a black hole.  There is writing\nin the wall.  Wails can be heard from the south.",
   "Exits": [
    {
+    "RoomId": 7285,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7287,
     "Verb": "east"
    },
    {
     "RoomId": 7283,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7285,
-    "Verb": "west"
    }
   ]
  },
@@ -780,16 +780,16 @@
   "Desc": "   You are standing in a stalagmite cave.  Water is dripping from the walls.\nIt is very cold in here.",
   "Exits": [
    {
+    "RoomId": 7313,
+    "Verb": "south"
+   },
+   {
     "RoomId": 7315,
     "Verb": "north"
    },
    {
     "RoomId": 7311,
     "Verb": "east"
-   },
-   {
-    "RoomId": 7313,
-    "Verb": "south"
    }
   ]
  },
@@ -829,16 +829,16 @@
   "Desc": "   You are standing in a cross.  To the north you can see some light.\nOtherwise it is dark.",
   "Exits": [
    {
-    "RoomId": 7312,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7318,
     "Verb": "north"
    },
    {
     "RoomId": 7316,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7312,
+    "Verb": "south"
    }
   ]
  },
@@ -893,16 +893,16 @@
   "Desc": "   You are standing in the north-east part of the lair.\nYou see a sign on the wall.",
   "Exits": [
    {
+    "RoomId": 7322,
+    "Verb": "east"
+   },
+   {
     "RoomId": 7318,
     "Verb": "south"
    },
    {
     "RoomId": 7320,
     "Verb": "west"
-   },
-   {
-    "RoomId": 7322,
-    "Verb": "east"
    }
   ]
  },
@@ -995,6 +995,10 @@
   "Desc": "   You are standing in round hall.  To the north, east and south you can see\na stone head hanging on the walls.",
   "Exits": [
    {
+    "RoomId": 7324,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7325,
     "Verb": "north"
    },
@@ -1005,10 +1009,6 @@
    {
     "RoomId": 7325,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7324,
-    "Verb": "west"
    }
   ]
  },
@@ -1240,12 +1240,12 @@
   "Desc": "   You can see some hay spread on the floor.  The smell is awful here, and it\nmakes you feel sick.  This place where the Basilisk sleeps.  Watch out...\nmaybe it is not far from here...",
   "Exits": [
    {
-    "RoomId": 7338,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7341,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7338,
+    "Verb": "east"
    }
   ]
  },
@@ -1326,12 +1326,12 @@
   "Desc": "   You are swimming in DARKNESS.  You feel something touching your right leg.",
   "Exits": [
    {
-    "RoomId": 7314,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7345,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7314,
+    "Verb": "east"
    }
   ]
  }

@@ -4,7 +4,7 @@ return {
     end,
     entityEnteredRoom = function(self, other, room)
         if Util.Chance() < 20 then
-            Act.Whisper(self, other, "Hello friend!")
+            Act.Tell(self, other, "Hello friend!")
         end
     end
 }

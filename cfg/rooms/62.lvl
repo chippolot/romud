@@ -24,16 +24,16 @@
   "Desc": "   You are on a dusty trail winding its way east-west between huge,\nancient trees whose grey trunks remind you of ancient pillars in a\nenormous, deserted hall.  To the south, a frail path leads away from\nthe trail.",
   "Exits": [
    {
-    "RoomId": 6103,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6101,
     "Verb": "east"
    },
    {
     "RoomId": 6105,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6103,
+    "Verb": "west"
    }
   ]
  },
@@ -43,12 +43,12 @@
   "Desc": "   You are on a dusty trail winding its way east-west between huge,\nancient trees that stand close on all sides.  Not a sound is to be\nheard - everything is ominously quiet.",
   "Exits": [
    {
-    "RoomId": 6104,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6102,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6104,
+    "Verb": "west"
    }
   ]
  },
@@ -58,16 +58,16 @@
   "Desc": "   You are where the dusty trail bends, as to avoid conflict with a\ncolossal trunk to the west.  Not a sound is to be heard - everything\nis ominously quiet.  The trail leads east and south and there is a\nsmall path leading off the trail to the north.",
   "Exits": [
    {
-    "RoomId": 6109,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6151,
     "Verb": "north"
    },
    {
     "RoomId": 6103,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6109,
+    "Verb": "south"
    }
   ]
  },
@@ -77,12 +77,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  You\nfeel as if the ancient trees observe you in watchful silence.  The path\ncontinues north and south.",
   "Exits": [
    {
-    "RoomId": 6102,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6106,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6102,
+    "Verb": "north"
    }
   ]
  },
@@ -160,12 +160,12 @@
   "Desc": "   You are on a dusty trail winding its way east-west between huge, ancient\ntrees that stand close on all sides.  Not a sound is to be heard - everything\nis ominously quiet.",
   "Exits": [
    {
-    "RoomId": 6111,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6109,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6111,
+    "Verb": "west"
    }
   ]
  },
@@ -228,12 +228,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  Ancient\ngrey trees loom in all directions.  The path continues south and west.",
   "Exits": [
    {
-    "RoomId": 6113,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6115,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6113,
+    "Verb": "west"
    }
   ]
  },
@@ -262,12 +262,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  You feel\nas if the ancient trees observe you in watchful silence.  The path continues\nnorth and west.",
   "Exits": [
    {
-    "RoomId": 6115,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6117,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6115,
+    "Verb": "west"
    }
   ]
  },
@@ -292,16 +292,16 @@
   "Desc": "   You are by a junction where three paths meet.  Ancient, grey trees seem\nto observe you silently you from all sides.  Paths lead north, east and west.",
   "Exits": [
    {
+    "RoomId": 6107,
+    "Verb": "north"
+   },
+   {
     "RoomId": 6119,
     "Verb": "east"
    },
    {
     "RoomId": 6117,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6107,
-    "Verb": "north"
    }
   ]
  },
@@ -326,12 +326,12 @@
   "Desc": "   You are on a narrow path leading through the deep, dark forest.  Huge,\nancient trees are on all sides.  The path continues north and south.",
   "Exits": [
    {
-    "RoomId": 6121,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6119,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6121,
+    "Verb": "south"
    }
   ]
  },
@@ -431,16 +431,16 @@
   "Desc": "   You are on a dusty trail winding its way between huge, ancient trees\nstanding close on all sides.  The trail leads north and west, and to the\nsouth a frail path leads away from the trail.",
   "Exits": [
    {
-    "RoomId": 6128,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6126,
     "Verb": "south"
    },
    {
     "RoomId": 6129,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6128,
+    "Verb": "north"
    }
   ]
  },
@@ -480,12 +480,12 @@
   "Desc": "   You are on a dusty trail winding its way east-west between huge, ancient\ntrees that stand close on all sides.  Not a sound is to be heard - everything\nis ominously quiet.",
   "Exits": [
    {
-    "RoomId": 6136,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6129,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6136,
+    "Verb": "west"
    }
   ]
  },
@@ -514,16 +514,16 @@
   "Desc": "   You are walking along the narrow path, ducking under the sticky ropes\nas you advance...\n\n\u003e\nA huge, poisonous spider drops from above!\nA huge, poisonous spider drops from above!\nA huge, poisonous spider drops from above!\n\n\u003e\nThe huge, poisonous spider stings you!  You resist the poison!\nThe huge, poisonous spider stings you!  You are poisoned!\nThe huge, poisonous spider stings you!  You are poisoned!\n\nYou are dead.",
   "Exits": [
    {
-    "RoomId": 6131,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6135,
     "Verb": "west"
    },
    {
     "RoomId": 6134,
     "Verb": "up"
+   },
+   {
+    "RoomId": 6131,
+    "Verb": "east"
    }
   ]
  },
@@ -593,16 +593,16 @@
   "Desc": "   You are on a dusty trail leading through the deep, dark forest.  Ancient,\ngrey trees loom everywhere.  The trail continues south and west.  A broad\nirregular path leads eastward away from the trail.",
   "Exits": [
    {
+    "RoomId": 6136,
+    "Verb": "south"
+   },
+   {
     "RoomId": 6138,
     "Verb": "west"
    },
    {
     "RoomId": 6143,
     "Verb": "east"
-   },
-   {
-    "RoomId": 6136,
-    "Verb": "south"
    }
   ]
  },
@@ -642,12 +642,12 @@
   "Desc": "   The trail continues to the north and south as it leads through\nthe heavy underbrush of this part of the Haon-Dor Forest.  The\ntrail looks surprisingly well trodden along this part.  The brush\nseems to be bending closely over the path in a somewhat ominous\nmanner, but you easily shrug it off.",
   "Exits": [
    {
-    "RoomId": 6204,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6139,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6204,
+    "Verb": "north"
    }
   ]
  },
@@ -657,12 +657,12 @@
   "Desc": "   You are at the end of a broad, irregular path.  To the north is a very\nlarge ominous-looking cave opening.  The trees here have many marks as if\nsomething with huge claws has been tearing at them in rage.",
   "Exits": [
    {
-    "RoomId": 6144,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6137,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6144,
+    "Verb": "north"
    }
   ]
  },
@@ -698,12 +698,12 @@
   "Desc": "   This area of the trail is also very peculiar.  You can see no signs of\nanimal life what so ever.  The structure of the surrounding trees forces\nthe path to make a sharp turn to the east.",
   "Exits": [
    {
-    "RoomId": 6153,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6151,
     "Verb": "south"
+   },
+   {
+    "RoomId": 6153,
+    "Verb": "east"
    }
   ]
  },
@@ -713,12 +713,12 @@
   "Desc": "   The trees here seem to form a circle around the enormous tree in\nthe center.  You notice a wooden door carved into the huge tree to\nthe east.  The trail that you followed to get here seems to end at\nthe base of the tree.",
   "Exits": [
    {
-    "RoomId": 6152,
-    "Verb": "west"
-   },
-   {
     "RoomId": 6154,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6152,
+    "Verb": "west"
    }
   ]
  },

@@ -4,11 +4,14 @@ import (
 	"math/rand"
 
 	"github.com/chippolot/go-mud/src/utils"
+	"github.com/yuin/gluamapper"
 	lua "github.com/yuin/gopher-lua"
 	luar "layeh.com/gopher-luar"
 )
 
 func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
+	lua_W = w
+
 	entityTbl := L.NewTable()
 	entityTbl.RawSetString("Name", luar.New(L, lua_EntityName))
 	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
@@ -20,7 +23,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	L.SetGlobal("Item", itemTbl)
 
 	roomTbl := L.NewTable()
-	roomTbl.RawSetString("Items", luar.New(L, func(r *Room) *lua.LTable { return lua_RoomItems(w, r) }))
+	roomTbl.RawSetString("Items", luar.New(L, lua_RoomItems))
 	L.SetGlobal("Room", roomTbl)
 
 	dirTbl := L.NewTable()
@@ -33,20 +36,26 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	L.SetGlobal("Dir", dirTbl)
 
 	actTbl := L.NewTable()
-	actTbl.RawSetString("Attack", luar.New(L, func(e *Entity, e2 *Entity) { lua_ActAttack(w, e, e2) }))
-	actTbl.RawSetString("Get", luar.New(L, func(e *Entity, r *Room, i *Item) { lua_ActGet(w, e, r, i) }))
-	actTbl.RawSetString("Equip", luar.New(L, func(e *Entity, i *Item) { lua_ActEquip(w, e, i) }))
-	actTbl.RawSetString("MoveDir", luar.New(L, func(e *Entity, dir Direction) { lua_ActMoveDir(w, e, dir) }))
-	actTbl.RawSetString("MoveTo", luar.New(L, func(e *Entity, r *Room) { lua_ActMoveRoom(w, e, r) }))
-	actTbl.RawSetString("Say", luar.New(L, func(e *Entity, text string) { lua_ActSay(w, e, text) }))
-	actTbl.RawSetString("Tell", luar.New(L, func(e *Entity, e2 *Entity, text string) { lua_ActTell(w, e, e2, text) }))
-	actTbl.RawSetString("Yell", luar.New(L, func(e *Entity, text string) { lua_ActYell(w, e, text) }))
+	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
+	actTbl.RawSetString("Get", luar.New(L, lua_ActGet))
+	actTbl.RawSetString("Equip", luar.New(L, lua_ActEquip))
+	actTbl.RawSetString("MoveDir", luar.New(L, lua_ActMoveDir))
+	actTbl.RawSetString("MoveTo", luar.New(L, lua_ActMoveRoom))
+	actTbl.RawSetString("Say", luar.New(L, lua_ActSay))
+	actTbl.RawSetString("Tell", luar.New(L, lua_ActTell))
+	actTbl.RawSetString("Yell", luar.New(L, lua_ActYell))
 	L.SetGlobal("Act", actTbl)
 
+	configTable := L.NewTable()
+	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
+	L.SetGlobal("Config", configTable)
+
 	utilTbl := L.NewTable()
-	utilTbl.RawSetString("Chance", luar.New(L, func() int { return rand.Intn(100) }))
+	utilTbl.RawSetString("Chance", luar.New(L, lua_UtilChance))
 	L.SetGlobal("Util", utilTbl)
 }
+
+var lua_W *World
 
 func lua_EntityName(e *Entity) string {
 	return e.Name()
@@ -68,42 +77,55 @@ func lua_ItemEquipSlot(i *Item) EquipSlot {
 	return i.cfg.Equipment.Slot
 }
 
-func lua_RoomItems(w *World, r *Room) *lua.LTable {
-	ret := w.L.NewTable()
+func lua_RoomItems(r *Room) *lua.LTable {
+	ret := lua_W.L.NewTable()
 	for _, i := range r.items {
-		ret.Append(utils.ToUserData(w.L, i))
+		ret.Append(utils.ToUserData(lua_W.L, i))
 	}
 	return ret
 }
 
-func lua_ActAttack(w *World, self *Entity, target *Entity) {
-	performAttack(self, w, target)
+func lua_ActAttack(self *Entity, target *Entity) {
+	performAttack(self, lua_W, target)
 }
 
-func lua_ActGet(w *World, self *Entity, r *Room, item *Item) {
-	performGet(self, w, r, item)
+func lua_ActGet(self *Entity, r *Room, item *Item) {
+	performGet(self, lua_W, r, item)
 }
 
-func lua_ActEquip(w *World, self *Entity, item *Item) {
-	performEquip(self, w, item)
+func lua_ActEquip(self *Entity, item *Item) {
+	performEquip(self, lua_W, item)
 }
 
-func lua_ActMoveDir(w *World, self *Entity, dir Direction) {
-	performMoveDirection(self, w, dir)
+func lua_ActMoveDir(self *Entity, dir Direction) {
+	performMoveDirection(self, lua_W, dir)
 }
 
-func lua_ActMoveRoom(w *World, self *Entity, r *Room) {
-	performMoveRoom(self, w, r)
+func lua_ActMoveRoom(self *Entity, r *Room) {
+	performMoveRoom(self, lua_W, r)
 }
 
-func lua_ActSay(w *World, self *Entity, msg string) {
-	performSay(self, w, msg)
+func lua_ActSay(self *Entity, msg string) {
+	performSay(self, lua_W, msg)
 }
 
-func lua_ActTell(w *World, self *Entity, target *Entity, msg string) {
-	performTell(self, w, target, msg)
+func lua_ActTell(self *Entity, target *Entity, msg string) {
+	performTell(self, lua_W, target, msg)
 }
 
-func lua_ActYell(w *World, self *Entity, msg string) {
-	performYell(self, w, msg)
+func lua_ActYell(self *Entity, msg string) {
+	performYell(self, lua_W, msg)
+}
+
+func lua_ConfigNewZone(tbl *lua.LTable) {
+	cfg := &ZoneConfig{}
+	if err := gluamapper.Map(tbl, cfg); err != nil {
+		panic(err)
+	}
+	cfg.ResetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
+	lua_W.zones[cfg.Id] = cfg
+}
+
+func lua_UtilChance() int {
+	return rand.Intn(100)
 }

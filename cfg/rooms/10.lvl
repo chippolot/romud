@@ -5,12 +5,12 @@
   "Desc": "   As the river exits the city of Midgaard it picks up speed and whisks\nyou along high banks flanked by the trees of Haon-Dor.  As the city\nfades in the east, you approach a gloomy forest to the west.",
   "Exits": [
    {
-    "RoomId": 902,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3201,
     "Verb": "east"
+   },
+   {
+    "RoomId": 902,
+    "Verb": "west"
    }
   ]
  },
@@ -69,6 +69,10 @@
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
    {
+    "RoomId": 912,
+    "Verb": "north"
+   },
+   {
     "RoomId": 904,
     "Verb": "east"
    },
@@ -79,10 +83,6 @@
    {
     "RoomId": 906,
     "Verb": "west"
-   },
-   {
-    "RoomId": 912,
-    "Verb": "north"
    }
   ]
  },
@@ -92,12 +92,12 @@
   "Desc": "   You bob up and down in the waves comming dangerously close to some\nlarge, jagged rocks on the eastern shore of an unusual looking island.\nThere is no way you could possibly land there without getting killed.",
   "Exits": [
    {
-    "RoomId": 905,
-    "Verb": "east"
-   },
-   {
     "RoomId": 907,
     "Verb": "south"
+   },
+   {
+    "RoomId": 905,
+    "Verb": "east"
    }
   ]
  },
@@ -130,12 +130,12 @@
   "Desc": "   You float next to a crumbling pier long since neglected.\nTo the west the water gets sluggish and there are many weeds and\nsome seaweed floating about.",
   "Exits": [
    {
-    "RoomId": 907,
-    "Verb": "north"
-   },
-   {
     "RoomId": 909,
     "Verb": "west"
+   },
+   {
+    "RoomId": 907,
+    "Verb": "north"
    }
   ]
  },
@@ -209,16 +209,16 @@
   "Desc": "   The river current carries you swiftly westward as the channel\nbegins to narrow as it squeezes past the north end of the island.",
   "Exits": [
    {
-    "RoomId": 914,
-    "Verb": "west"
-   },
-   {
     "RoomId": 912,
     "Verb": "east"
    },
    {
     "RoomId": 912,
     "Verb": "south"
+   },
+   {
+    "RoomId": 914,
+    "Verb": "west"
    }
   ]
  },
@@ -243,12 +243,12 @@
   "Desc": "   Bodies lie everywhere.  Commoner, peasant, duke, duchess.  The Gods\nwill not hear you call here.  Hence they will not answer you.  To the\nsouth the path ends at a dark cave entrance.\nA sign has been posted beside the entrance.",
   "Exits": [
    {
-    "RoomId": 914,
-    "Verb": "north"
-   },
-   {
     "RoomId": 916,
     "Verb": "south"
+   },
+   {
+    "RoomId": 914,
+    "Verb": "north"
    }
   ]
  },

@@ -27,7 +27,7 @@
     "Name": "Hit",
     "ToHit": 11,
     "Damage": "1d7+4",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -64,7 +64,7 @@
     "Name": "Hit",
     "ToHit": 6,
     "Damage": "1d4+3",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -101,7 +101,7 @@
     "Name": "Hit",
     "ToHit": 4,
     "Damage": "2d4+0",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -139,7 +139,7 @@
     "Name": "Hit",
     "ToHit": 11,
     "Damage": "1d7+5",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -176,7 +176,7 @@
     "Name": "Hit",
     "ToHit": 2,
     "Damage": "1d7+0",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -213,7 +213,7 @@
     "Name": "Hit",
     "ToHit": 15,
     "Damage": "1d8+6",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -250,7 +250,7 @@
     "Name": "Hit",
     "ToHit": 9,
     "Damage": "2d6+1",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -288,7 +288,7 @@
     "Name": "Hit",
     "ToHit": 10,
     "Damage": "2d6+1",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -325,7 +325,7 @@
     "Name": "Hit",
     "ToHit": 13,
     "Damage": "1d7+6",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -365,7 +365,7 @@
     "Name": "Hit",
     "ToHit": 9,
     "Damage": "1d7+4",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -402,7 +402,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "3d8+12",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -439,7 +439,7 @@
     "Name": "Hit",
     "ToHit": 3,
     "Damage": "1d8+0",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -477,7 +477,7 @@
     "Name": "Hit",
     "ToHit": 5,
     "Damage": "2d4+1",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -514,7 +514,7 @@
     "Name": "Hit",
     "ToHit": 10,
     "Damage": "2d6+3",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -551,7 +551,7 @@
     "Name": "Hit",
     "ToHit": 16,
     "Damage": "1d6+11",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -588,7 +588,7 @@
     "Name": "Hit",
     "ToHit": 7,
     "Damage": "2d5+15",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -625,7 +625,7 @@
     "Name": "Hit",
     "ToHit": 4,
     "Damage": "1d8+1",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -663,7 +663,7 @@
     "Name": "Hit",
     "ToHit": 10,
     "Damage": "1d6+5",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -702,7 +702,7 @@
     "Name": "Hit",
     "ToHit": 16,
     "Damage": "1d6+9",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -741,7 +741,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "3d7+15",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -780,7 +780,7 @@
     "Name": "Hit",
     "ToHit": 18,
     "Damage": "1d6+6",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -818,7 +818,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "1d7+11",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -856,7 +856,7 @@
     "Name": "Hit",
     "ToHit": 17,
     "Damage": "1d6+9",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -895,7 +895,7 @@
     "Name": "Hit",
     "ToHit": 11,
     "Damage": "2d6+2",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -936,7 +936,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "1d8+14",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -974,7 +974,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "1d8+14",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1012,7 +1012,7 @@
     "Name": "Hit",
     "ToHit": 9,
     "Damage": "2d6+1",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1049,7 +1049,7 @@
     "Name": "Hit",
     "ToHit": 15,
     "Damage": "2d7+4",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1086,7 +1086,7 @@
     "Name": "Hit",
     "ToHit": 11,
     "Damage": "2d7+1",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1125,7 +1125,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "8d6+50",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1163,7 +1163,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "6d6+12",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1201,7 +1201,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "8d6+14",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1240,7 +1240,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "4d6+8",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1277,7 +1277,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "1d8+14",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1314,7 +1314,7 @@
     "Name": "Hit",
     "ToHit": 19,
     "Damage": "2d2+14",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1354,7 +1354,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "2d8+22",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0
@@ -1391,7 +1391,7 @@
     "Name": "Hit",
     "ToHit": 20,
     "Damage": "2d8+22",
-    "DamageType": 1,
+    "DamageType": "bludgeoning",
     "VerbSingular": "hit",
     "VerbPlural": "hits",
     "Weight": 0

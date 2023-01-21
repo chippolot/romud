@@ -99,23 +99,27 @@ func parseZone(data []byte, outPath string) {
 		cfg.ResetFreq = utils.Seconds(parseInt(toks[2]) * 60)
 
 		// Parse reset commands
-		cfg.ResetCommands = make([]interface{}, 0)
-		for lines[0] != "S" {
-			toks, lines = parseLineTokens(lines)
-			if toks[0][0] == '*' {
-				continue
+		/*
+			cfg.ResetCommands = make([]interface{}, 0)
+			for lines[0] != "S" {
+				toks, lines = parseLineTokens(lines)
+				if toks[0][0] == '*' {
+					continue
+				}
+
+				// TODO Update this to use scripts
+				var cmdData any
+				var cmdType int
+				switch toks[0] {
+				case "M":
+					cmdData = &mud.SpawnEntityZoneResetCommandData{Key: "mob" + toks[2]}
+					cmdType = 1
+				}
+				if cmdData != nil {
+					cfg.ResetCommands = append(cfg.ResetCommands, mud.ZoneResetCommand{cmdType, cmdData})
+				}
 			}
-			var cmdData any
-			var cmdType int
-			switch toks[0] {
-			case "M":
-				cmdData = &mud.SpawnEntityZoneResetCommandData{Key: "mob" + toks[2]}
-				cmdType = 1
-			}
-			if cmdData != nil {
-				cfg.ResetCommands = append(cfg.ResetCommands, mud.ZoneResetCommand{cmdType, cmdData})
-			}
-		}
+		*/
 	}
 	save(outPath, cfg)
 }

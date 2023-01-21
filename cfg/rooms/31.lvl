@@ -111,6 +111,10 @@
   "Desc": "   You are standing in the entrance hall of the Grunting Boar Inn.  The hall\nhas been wisely decorated with simple, functional furniture.  The heavy smell\nof dust and aging paper drifts in from the Post Office to the north.  A small\nstaircase leads up to the reception and the bar is to the east.",
   "Exits": [
    {
+    "RoomId": 3009,
+    "Verb": "up"
+   },
+   {
     "RoomId": 3063,
     "Verb": "north"
    },
@@ -121,10 +125,6 @@
    {
     "RoomId": 3006,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3009,
-    "Verb": "up"
    }
   ]
  },
@@ -239,20 +239,20 @@
   "Desc": "   You are standing on the market square, the famous Square of Midgaard.\nA large, peculiar looking statue is standing in the middle of the square.\nRoads lead in every direction, north to the temple square, south to the\ncommon square, east and westbound is the main street.",
   "Exits": [
    {
-    "RoomId": 3026,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3014,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3006,
     "Verb": "north"
    },
    {
     "RoomId": 3016,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3026,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3014,
+    "Verb": "west"
    }
   ]
  },
@@ -285,6 +285,10 @@
   "Desc": "   The main street, to the north is the weapon shop and to the south is the\nGuild of Swordsmen.  To the east you leave town and to the west the street\nleads to the market square.",
   "Exits": [
    {
+    "RoomId": 3012,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3042,
     "Verb": "east"
    },
@@ -295,10 +299,6 @@
    {
     "RoomId": 3016,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3012,
-    "Verb": "north"
    }
   ]
  },
@@ -308,12 +308,12 @@
   "Desc": "   The entrance hall to this guild is a small, poor lighted room.",
   "Exits": [
    {
-    "RoomId": 3013,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3019,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3013,
+    "Verb": "north"
    }
   ]
  },
@@ -428,10 +428,6 @@
   "Desc": "   The common square, people pass you, talking to each other.  To the west is\nthe poor alley and to the east is the dark alley.  To the north, this square\nis connected to the market square.  From the south you notice a nasty smell.",
   "Exits": [
    {
-    "RoomId": 3027,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3031,
     "Verb": "south"
    },
@@ -442,6 +438,10 @@
    {
     "RoomId": 3015,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3027,
+    "Verb": "east"
    }
   ]
  },
@@ -451,16 +451,16 @@
   "Desc": "   The dark alley, to the west is the common square and to the south is the\nGuild of Thieves.  The alley continues east.",
   "Exits": [
    {
-    "RoomId": 3028,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3026,
     "Verb": "west"
    },
    {
     "RoomId": 3046,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3028,
+    "Verb": "south"
    }
   ]
  },
@@ -515,12 +515,12 @@
   "Desc": "   The dump, where the people from the city drop their garbage.  Through the\ngarbage you can see a large junction of pipes, looks like the entrance to the\nsewer system.  North of here you see the common square.",
   "Exits": [
    {
-    "RoomId": 7031,
-    "Verb": "down"
-   },
-   {
     "RoomId": 3026,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7031,
+    "Verb": "down"
    }
   ]
  },
@@ -558,16 +558,16 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  Main Street leads\neast and Wall Road leads south from here.",
   "Exits": [
    {
-    "RoomId": 3013,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3043,
     "Verb": "south"
    },
    {
     "RoomId": 3053,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3013,
+    "Verb": "east"
    }
   ]
  },
@@ -577,16 +577,16 @@
   "Desc": "   You are by two small towers that have been built into the city wall and\nconnected with a footbridge across the heavy wooden gate.  Main Street leads\nwest from here.  To the south you see the Water Shop.",
   "Exits": [
    {
-    "RoomId": 3054,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3059,
     "Verb": "south"
    },
    {
     "RoomId": 3017,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3054,
+    "Verb": "east"
    }
   ]
  },
@@ -611,16 +611,16 @@
   "Desc": "   You are walking next to the western city wall.  Wall Road continues further\nnorth and south.  A small, poor alley leads east.\nSome letters have been written on the wall here.",
   "Exits": [
    {
-    "RoomId": 3048,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3043,
     "Verb": "north"
    },
    {
     "RoomId": 3045,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3048,
+    "Verb": "south"
    }
   ]
  },
@@ -664,12 +664,12 @@
   "Desc": "   You are standing at the eastern end of the alley, the city wall is just\neast, blocking any further movement.  A small warehouse is directly south of\nhere.",
   "Exits": [
    {
-    "RoomId": 3051,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3046,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3051,
+    "Verb": "south"
    }
   ]
  },
@@ -705,12 +705,12 @@
   "Desc": "   You are at the levee.  South of here you see the river gently flowing west.\nThe river bank is very low making it possible to enter the river.",
   "Exits": [
    {
-    "RoomId": 3046,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3204,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3046,
+    "Verb": "north"
    }
   ]
  },

@@ -80,12 +80,12 @@
   "Desc": "   You are standing in the middle of a bend of the sewer pipe.  It is very\ndark around here and the mud is sticking to your legs, not very pleasant.\nThe pipe leads east and south from here.",
   "Exits": [
    {
-    "RoomId": 7007,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7012,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7007,
+    "Verb": "south"
    }
   ]
  },
@@ -144,10 +144,6 @@
   "Desc": "   You stand in the middle of a huge junction of sewer pipes right under\nwhat you'd think was an air shaft.  The sewer pipes lead to the north,\nsouth, east and west.  It look quite impossible to force your way up.",
   "Exits": [
    {
-    "RoomId": 7005,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7009,
     "Verb": "north"
    },
@@ -158,6 +154,10 @@
    {
     "RoomId": 7011,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7005,
+    "Verb": "west"
    }
   ]
  },
@@ -216,16 +216,16 @@
   "Desc": "   You wouldn't want to know the true feeling of standing in this mud up to\nyour hips.  \u003eBWAADR\u003c.  All that fills your mind right now is the dream of\na hot bath.  This is NOT very clean mud you know, remember you're in the\nsewer!  The pipes leads north, south and east.",
   "Exits": [
    {
-    "RoomId": 7013,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7027,
     "Verb": "east"
    },
    {
     "RoomId": 7015,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7013,
+    "Verb": "north"
    }
   ]
  },
@@ -280,16 +280,16 @@
   "Desc": "   You are in a junction that leads north, west and south.",
   "Exits": [
    {
-    "RoomId": 7017,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7010,
     "Verb": "west"
    },
    {
     "RoomId": 7019,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7017,
+    "Verb": "north"
    }
   ]
  },
@@ -318,16 +318,16 @@
   "Desc": "   This is the kind of place to rest, though the smell could be a LOT\nbetter than this.  The sewer goes east, north and west from here.",
   "Exits": [
    {
-    "RoomId": 7012,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7030,
     "Verb": "east"
    },
    {
     "RoomId": 7017,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7012,
+    "Verb": "north"
    }
   ]
  },
@@ -443,14 +443,6 @@
   "Desc": "   You are standing in something that reminds you of an entry to an ant hive.\nThere are enormous concrete pipes leading north, south, east and west.  \nThere is also a metal ladder built into the concrete wall leading up through\na layer of garbage.  ",
   "Exits": [
    {
-    "RoomId": 7030,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 7037,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7032,
     "Verb": "south"
    },
@@ -461,6 +453,14 @@
    {
     "RoomId": 3031,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7030,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7037,
+    "Verb": "east"
    }
   ]
  },
@@ -541,16 +541,16 @@
   "Desc": "   You are standing in a junction of pipes that lead west, east and south.",
   "Exits": [
    {
+    "RoomId": 7026,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7046,
     "Verb": "east"
    },
    {
     "RoomId": 7040,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7026,
-    "Verb": "west"
    }
   ]
  },
@@ -586,12 +586,12 @@
   "Desc": "   You stand in the middle of a pipe that leads from north to south.  Above\nyou an air shaft leads up into sunlight.  It seems totally impossible to go\nup that way.",
   "Exits": [
    {
-    "RoomId": 7042,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7045,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7042,
+    "Verb": "north"
    }
   ]
  },
@@ -601,16 +601,16 @@
   "Desc": "   You are in a passageway in the pipes of the sewer system leading north,\neast and west.",
   "Exits": [
    {
+    "RoomId": 7032,
+    "Verb": "west"
+   },
+   {
     "RoomId": 7044,
     "Verb": "north"
    },
    {
     "RoomId": 7050,
     "Verb": "east"
-   },
-   {
-    "RoomId": 7032,
-    "Verb": "west"
    }
   ]
  },
@@ -620,12 +620,12 @@
   "Desc": "   You are standing in a large room with chairs set in the walls.  You have\nthe feeling of being watched.  To the south there is an entrance to a\nlarger room.  The room is lit by five torches, also set in the walls.  To\nthe west there is a doorway leading out to the sewers.",
   "Exits": [
    {
-    "RoomId": 7039,
-    "Verb": "west"
-   },
-   {
     "RoomId": 7047,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7039,
+    "Verb": "west"
    }
   ]
  },
@@ -646,12 +646,12 @@
   "Desc": "   You stand in water to your waist.  To the north is the entrance to this\nroom.  A single door leads east.",
   "Exits": [
    {
-    "RoomId": 7047,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7054,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7047,
+    "Verb": "north"
    }
   ]
  },
@@ -672,12 +672,12 @@
   "Desc": "   You stand in a junction leading north, west and east.",
   "Exits": [
    {
-    "RoomId": 7061,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7045,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7061,
+    "Verb": "east"
    }
   ]
  },
@@ -687,12 +687,12 @@
   "Desc": "   The only thing in this room of interest is a chair, and that appears\nto have been bolted to the rock floor.  A doorway leads south and another\nleads east into darkness.",
   "Exits": [
    {
-    "RoomId": 7052,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7056,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7052,
+    "Verb": "south"
    }
   ]
  },
@@ -796,12 +796,12 @@
   "Desc": "   You can't see anything but the ground where you put your feet.  The\npassageway seems to continue south and north.",
   "Exits": [
    {
-    "RoomId": 7060,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7058,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7060,
+    "Verb": "south"
    }
   ]
  },
@@ -811,12 +811,12 @@
   "Desc": "   You can't see anything but the ground where you put your feet.  The\npassageway seems to continue south and north.",
   "Exits": [
    {
-    "RoomId": 7061,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7059,
     "Verb": "north"
+   },
+   {
+    "RoomId": 7061,
+    "Verb": "south"
    }
   ]
  },
@@ -890,16 +890,16 @@
   "Desc": "   You can't see anything but the water you're in up to your hips.  The sewer\nseems to lead into a junction going south, north and east.",
   "Exits": [
    {
+    "RoomId": 7064,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7070,
     "Verb": "east"
    },
    {
     "RoomId": 7066,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7064,
-    "Verb": "north"
    }
   ]
  },
@@ -924,16 +924,16 @@
   "Desc": "   You can't see anything but the water you're in up to your hips.  The sewer\nseems to lead into a junction that goes north, south and east.",
   "Exits": [
    {
-    "RoomId": 7068,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7066,
     "Verb": "north"
    },
    {
     "RoomId": 7071,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7068,
+    "Verb": "south"
    }
   ]
  },
@@ -943,12 +943,12 @@
   "Desc": "   You can't see anything but the water you're in up to your hips.  The sewer\nseems to lead south and north.",
   "Exits": [
    {
-    "RoomId": 7067,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7069,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7067,
+    "Verb": "north"
    }
   ]
  },

@@ -5,12 +5,12 @@
   "Desc": "   You stand in the archway of the Chessboard of Midgaard.  The giant\nwooden gate is rusted open.\n   A narrow dirt path leads eastwards into the thick grass and the\nchessboard opens up to the west.",
   "Exits": [
    {
-    "RoomId": 3633,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3067,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3633,
+    "Verb": "west"
    }
   ]
  },
@@ -20,12 +20,12 @@
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof the Black Queen's Rook.",
   "Exits": [
    {
-    "RoomId": 3603,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3610,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3603,
+    "Verb": "east"
    }
   ]
  },
@@ -96,16 +96,16 @@
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof the Black King.",
   "Exits": [
    {
-    "RoomId": 3605,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3607,
     "Verb": "east"
    },
    {
     "RoomId": 3614,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3605,
+    "Verb": "west"
    }
   ]
  },
@@ -115,16 +115,16 @@
   "Desc": "   You are standing on a black marble square.  This is usually the home\nof the Black King's Bishop.",
   "Exits": [
    {
+    "RoomId": 3608,
+    "Verb": "east"
+   },
+   {
     "RoomId": 3615,
     "Verb": "south"
    },
    {
     "RoomId": 3606,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3608,
-    "Verb": "east"
    }
   ]
  },
@@ -168,16 +168,16 @@
   "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the Black Queen's Pawns.",
   "Exits": [
    {
+    "RoomId": 3602,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3611,
     "Verb": "east"
    },
    {
     "RoomId": 3618,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3602,
-    "Verb": "north"
    }
   ]
  },
@@ -186,6 +186,10 @@
   "Name": "A White Square",
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the Black Queen's Pawns.",
   "Exits": [
+   {
+    "RoomId": 3603,
+    "Verb": "north"
+   },
    {
     "RoomId": 3612,
     "Verb": "east"
@@ -197,10 +201,6 @@
    {
     "RoomId": 3610,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3603,
-    "Verb": "north"
    }
   ]
  },
@@ -233,10 +233,6 @@
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the Black Queen's Pawns.",
   "Exits": [
    {
-    "RoomId": 3605,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3614,
     "Verb": "east"
    },
@@ -247,6 +243,10 @@
    {
     "RoomId": 3612,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3605,
+    "Verb": "north"
    }
   ]
  },
@@ -302,20 +302,20 @@
   "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the Black King's Pawns.",
   "Exits": [
    {
-    "RoomId": 3624,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3615,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3608,
     "Verb": "north"
    },
    {
     "RoomId": 3617,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3624,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3615,
+    "Verb": "west"
    }
   ]
  },
@@ -344,16 +344,16 @@
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
    {
-    "RoomId": 3610,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3619,
     "Verb": "east"
    },
    {
     "RoomId": 3626,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3610,
+    "Verb": "north"
    }
   ]
  },
@@ -362,10 +362,6 @@
   "Name": "A Black Square",
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
-   {
-    "RoomId": 3611,
-    "Verb": "north"
-   },
    {
     "RoomId": 3620,
     "Verb": "east"
@@ -377,6 +373,10 @@
    {
     "RoomId": 3618,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3611,
+    "Verb": "north"
    }
   ]
  },
@@ -385,6 +385,10 @@
   "Name": "A White Square",
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
+   {
+    "RoomId": 3619,
+    "Verb": "west"
+   },
    {
     "RoomId": 3612,
     "Verb": "north"
@@ -396,10 +400,6 @@
    {
     "RoomId": 3628,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3619,
-    "Verb": "west"
    }
   ]
  },
@@ -408,10 +408,6 @@
   "Name": "A Black Square",
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
-   {
-    "RoomId": 3613,
-    "Verb": "north"
-   },
    {
     "RoomId": 3622,
     "Verb": "east"
@@ -423,6 +419,10 @@
    {
     "RoomId": 3620,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3613,
+    "Verb": "north"
    }
   ]
  },
@@ -432,20 +432,20 @@
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
    {
-    "RoomId": 3623,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3630,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3621,
     "Verb": "west"
    },
    {
     "RoomId": 3614,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3623,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3630,
+    "Verb": "south"
    }
   ]
  },
@@ -454,10 +454,6 @@
   "Name": "A Black Square",
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
-   {
-    "RoomId": 3622,
-    "Verb": "west"
-   },
    {
     "RoomId": 3615,
     "Verb": "north"
@@ -469,6 +465,10 @@
    {
     "RoomId": 3631,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3622,
+    "Verb": "west"
    }
   ]
  },
@@ -477,10 +477,6 @@
   "Name": "A White Square",
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
-   {
-    "RoomId": 3623,
-    "Verb": "west"
-   },
    {
     "RoomId": 3616,
     "Verb": "north"
@@ -492,6 +488,10 @@
    {
     "RoomId": 3632,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3623,
+    "Verb": "west"
    }
   ]
  },
@@ -539,20 +539,20 @@
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
    {
-    "RoomId": 3635,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3626,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3619,
     "Verb": "north"
    },
    {
     "RoomId": 3628,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3635,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3626,
+    "Verb": "west"
    }
   ]
  },
@@ -562,20 +562,20 @@
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
    {
-    "RoomId": 3636,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3627,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3620,
     "Verb": "north"
    },
    {
     "RoomId": 3629,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3636,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3627,
+    "Verb": "west"
    }
   ]
  },
@@ -631,10 +631,6 @@
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
    {
-    "RoomId": 3623,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3632,
     "Verb": "east"
    },
@@ -645,6 +641,10 @@
    {
     "RoomId": 3630,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3623,
+    "Verb": "north"
    }
   ]
  },
@@ -653,6 +653,10 @@
   "Name": "A Black Square",
   "Desc": "   You are standing on a black marble square.  There is a rusty gate\na short distance to the east.",
   "Exits": [
+   {
+    "RoomId": 3624,
+    "Verb": "north"
+   },
    {
     "RoomId": 3633,
     "Verb": "east"
@@ -664,10 +668,6 @@
    {
     "RoomId": 3631,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3624,
-    "Verb": "north"
    }
   ]
  },
@@ -719,10 +719,6 @@
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
    {
-    "RoomId": 3627,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3636,
     "Verb": "east"
    },
@@ -733,6 +729,10 @@
    {
     "RoomId": 3634,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3627,
+    "Verb": "north"
    }
   ]
  },
@@ -765,20 +765,20 @@
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
    {
-    "RoomId": 3629,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3638,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3645,
     "Verb": "south"
    },
    {
     "RoomId": 3636,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3629,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3638,
+    "Verb": "east"
    }
   ]
  },
@@ -787,10 +787,6 @@
   "Name": "A White Square",
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
-   {
-    "RoomId": 3646,
-    "Verb": "south"
-   },
    {
     "RoomId": 3637,
     "Verb": "west"
@@ -802,6 +798,10 @@
    {
     "RoomId": 3639,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3646,
+    "Verb": "south"
    }
   ]
  },
@@ -834,20 +834,20 @@
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
    {
-    "RoomId": 3641,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3648,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3639,
     "Verb": "west"
    },
    {
     "RoomId": 3632,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3641,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3648,
+    "Verb": "south"
    }
   ]
  },
@@ -857,16 +857,16 @@
   "Desc": "   You are standing on a black marble square.  There is a rusty gate\nto the north.",
   "Exits": [
    {
+    "RoomId": 3640,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3633,
     "Verb": "north"
    },
    {
     "RoomId": 3649,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3640,
-    "Verb": "west"
    }
   ]
  },
@@ -941,20 +941,20 @@
   "Desc": "   You are standing on a white marble square.",
   "Exits": [
    {
-    "RoomId": 3637,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 3646,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3653,
     "Verb": "south"
    },
    {
     "RoomId": 3644,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3637,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 3646,
+    "Verb": "east"
    }
   ]
  },
@@ -964,20 +964,20 @@
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
    {
-    "RoomId": 3647,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 3654,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3645,
     "Verb": "west"
    },
    {
     "RoomId": 3638,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3647,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 3654,
+    "Verb": "south"
    }
   ]
  },
@@ -1010,6 +1010,10 @@
   "Desc": "   You are standing on a black marble square.",
   "Exits": [
    {
+    "RoomId": 3640,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3649,
     "Verb": "east"
    },
@@ -1020,10 +1024,6 @@
    {
     "RoomId": 3647,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3640,
-    "Verb": "north"
    }
   ]
  },
@@ -1052,16 +1052,16 @@
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the White Queen's Pawns.",
   "Exits": [
    {
-    "RoomId": 3642,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3651,
     "Verb": "east"
    },
    {
     "RoomId": 3658,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3642,
+    "Verb": "north"
    }
   ]
  },
@@ -1071,20 +1071,20 @@
   "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the White Queen's Pawns.",
   "Exits": [
    {
-    "RoomId": 3659,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 3650,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3643,
     "Verb": "north"
    },
    {
     "RoomId": 3652,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3659,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 3650,
+    "Verb": "west"
    }
   ]
  },
@@ -1140,10 +1140,6 @@
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof one of the White King's Pawns.",
   "Exits": [
    {
-    "RoomId": 3653,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3646,
     "Verb": "north"
    },
@@ -1154,6 +1150,10 @@
    {
     "RoomId": 3662,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3653,
+    "Verb": "west"
    }
   ]
  },
@@ -1162,6 +1162,10 @@
   "Name": "A Black Square",
   "Desc": "   You are standing on a black marble square.  This is usually the home\nof one of the White King's Pawns.",
   "Exits": [
+   {
+    "RoomId": 3663,
+    "Verb": "south"
+   },
    {
     "RoomId": 3654,
     "Verb": "west"
@@ -1173,10 +1177,6 @@
    {
     "RoomId": 3656,
     "Verb": "east"
-   },
-   {
-    "RoomId": 3663,
-    "Verb": "south"
    }
   ]
  },
@@ -1281,10 +1281,6 @@
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof the White Queen.",
   "Exits": [
    {
-    "RoomId": 3653,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3662,
     "Verb": "east"
    },
@@ -1295,6 +1291,10 @@
    {
     "RoomId": 3667,
     "Verb": "down"
+   },
+   {
+    "RoomId": 3653,
+    "Verb": "north"
    }
   ]
  },
@@ -1323,16 +1323,16 @@
   "Desc": "   You are standing on a white marble square.  This is usually the home\nof the White King's Bishop.",
   "Exits": [
    {
-    "RoomId": 3655,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3664,
     "Verb": "east"
    },
    {
     "RoomId": 3662,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3655,
+    "Verb": "north"
    }
   ]
  },

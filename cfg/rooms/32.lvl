@@ -43,16 +43,16 @@
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  South of here you see the entrance to\nthe park, and a small building seems to be just west of the entrance.",
   "Exits": [
    {
-    "RoomId": 3102,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3104,
     "Verb": "east"
    },
    {
     "RoomId": 3106,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3102,
+    "Verb": "west"
    }
   ]
  },
@@ -224,16 +224,16 @@
   "Desc": "   You are in the park.  The paths lead north and west.  Westward is the\npark entrance and to the east you see a small pond.",
   "Exits": [
    {
-    "RoomId": 3113,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3108,
     "Verb": "north"
    },
    {
     "RoomId": 3115,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3113,
+    "Verb": "west"
    }
   ]
  },
@@ -292,6 +292,10 @@
   "Desc": "   You are standing on the north end of Emerald Avenue.  To the north is the\npromenade and to the west is the park entrance.  To the east is the not very\nbig Town Hall of Midgaard.",
   "Exits": [
    {
+    "RoomId": 3117,
+    "Verb": "west"
+   },
+   {
     "RoomId": 3133,
     "Verb": "north"
    },
@@ -302,10 +306,6 @@
    {
     "RoomId": 3120,
     "Verb": "south"
-   },
-   {
-    "RoomId": 3117,
-    "Verb": "west"
    }
   ]
  },
@@ -345,14 +345,6 @@
   "Desc": "   You are in the middle of the road cross.  Roads lead in all directions.\nA huge black iron chain as thick as a tree trunk is fastened into the ground\nat the center of the road cross.  Its other end leads directly upwards towards\nthe sky.\nA road sign is here.",
   "Exits": [
    {
-    "RoomId": 3136,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 7915,
-    "Verb": "up"
-   },
-   {
     "RoomId": 3134,
     "Verb": "north"
    },
@@ -363,6 +355,14 @@
    {
     "RoomId": 3135,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3136,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7915,
+    "Verb": "up"
    }
   ]
  },
@@ -462,16 +462,16 @@
   "Desc": "   You are at the southwest corner of the city wall.  The Concourse leads\nboth north and east.",
   "Exits": [
    {
+    "RoomId": 3101,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3129,
     "Verb": "east"
    },
    {
     "RoomId": 3505,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3101,
-    "Verb": "north"
    }
   ]
  },
@@ -500,6 +500,10 @@
   "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
   "Exits": [
    {
+    "RoomId": 3131,
+    "Verb": "east"
+   },
+   {
     "RoomId": 3151,
     "Verb": "south"
    },
@@ -510,10 +514,6 @@
    {
     "RoomId": 3127,
     "Verb": "north"
-   },
-   {
-    "RoomId": 3131,
-    "Verb": "east"
    }
   ]
  },
@@ -673,12 +673,12 @@
   "Desc": "   You are on Penny Lane.  The narrow road continues north and west.",
   "Exits": [
    {
-    "RoomId": 3140,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3142,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3140,
+    "Verb": "west"
    }
   ]
  },

@@ -17,24 +17,6 @@ const (
 	ScriptFileExtension   = ".lua"
 )
 
-func LoadZone(w *World, filePath string) error {
-	bytes, err := utils.LoadFileBytes(filePath)
-	if err != nil {
-		return err
-	}
-
-	cfg := &ZoneConfig{}
-	err = json.Unmarshal(bytes, &cfg)
-	if err != nil {
-		return err
-	}
-
-	w.zones[cfg.Id] = cfg
-	log.Printf("loaded zone %d from %s", cfg.Id, filePath)
-
-	return nil
-}
-
 func LoadRooms(w *World, filePath string) error {
 	bytes, err := utils.LoadFileBytes(filePath)
 	if err != nil {
@@ -68,8 +50,6 @@ func LoadRooms(w *World, filePath string) error {
 		w.AddRoom(r)
 	}
 
-	log.Printf("loaded %d rooms from %s", len(cfgList), filePath)
-
 	return nil
 }
 
@@ -100,8 +80,6 @@ func LoadEntities(w *World, filePath string) error {
 		}
 	}
 
-	log.Printf("loaded %d entities from %s", len(cfgList), filePath)
-
 	return nil
 }
 
@@ -121,8 +99,6 @@ func LoadItems(w *World, filePath string) error {
 		cfg.Init()
 		w.AddItemConfig(cfg)
 	}
-
-	log.Printf("loaded %d items from %s", len(cfgList), filePath)
 
 	return nil
 }
@@ -153,16 +129,19 @@ func RunScript(w *World, filePath string) error {
 func LoadAssets(w *World, root string) {
 	// Load zones
 	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "zones"), ScriptFileExtension) {
-		if err := LoadZone(w, path); err != nil {
+		if err := RunScript(w, path); err != nil {
 			log.Fatalf("failed to load zone file %s -- %v", path, err)
 		}
 	}
+	log.Printf("loaded %d zones", len(w.zones))
+
 	// Load rooms
 	for _, path := range utils.FindFilePathsWithExtension(root, RoomsFileExtension) {
 		if err := LoadRooms(w, path); err != nil {
 			log.Fatalf("failed to load room file %s -- %v", path, err)
 		}
 	}
+	log.Printf("loaded %d rooms", len(w.rooms))
 
 	// Load mobs
 	for _, path := range utils.FindFilePathsWithExtension(root, EntitiesFileExtension) {
@@ -170,6 +149,7 @@ func LoadAssets(w *World, root string) {
 			log.Fatalf("failed to load entities file %s -- %v", path, err)
 		}
 	}
+	log.Printf("loaded %d mobs", len(w.entityConfigs))
 
 	// Loat items
 	for _, path := range utils.FindFilePathsWithExtension(root, ItemsFileExtension) {
@@ -177,4 +157,5 @@ func LoadAssets(w *World, root string) {
 			log.Fatalf("failed to load items file %s -- %v", path, err)
 		}
 	}
+	log.Printf("loaded %d items", len(w.itemConfigs))
 }

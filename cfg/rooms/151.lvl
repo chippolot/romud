@@ -216,12 +216,12 @@
   "Desc": "   You are standing in the south-east end of the Great Hall.  It\nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.",
   "Exits": [
    {
-    "RoomId": 15013,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15019,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15013,
+    "Verb": "west"
    }
   ]
  },
@@ -246,16 +246,16 @@
   "Desc": "   You are in a passage, that leads north and south. To the east there\nis an exit to the Great Hall.",
   "Exits": [
    {
-    "RoomId": 15021,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15017,
     "Verb": "east"
    },
    {
     "RoomId": 15011,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15021,
+    "Verb": "north"
    }
   ]
  },
@@ -303,16 +303,16 @@
   "Desc": "   You are standing in the north-east end of the Great Hall.  It\nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.  To your\nwest, you see King Welmar's great throne, and to the east there is\nan exit to a small passage.",
   "Exits": [
    {
-    "RoomId": 15018,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15020,
     "Verb": "east"
    },
    {
     "RoomId": 15014,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15018,
+    "Verb": "west"
    }
   ]
  },
@@ -487,12 +487,12 @@
   "Desc": "   You are standing at a place where the corridor bends from east to north.",
   "Exits": [
    {
-    "RoomId": 15036,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15032,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15036,
+    "Verb": "north"
    }
   ]
  },
@@ -502,12 +502,12 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads east and west.",
   "Exits": [
    {
-    "RoomId": 15031,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15033,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15031,
+    "Verb": "west"
    }
   ]
  },
@@ -562,16 +562,16 @@
   "Desc": "   You are standing in a long corridor, decorated with tapestries\ndepicting old times and old heroes.  It leads north and south.  There\nis also an exit to the east here.",
   "Exits": [
    {
+    "RoomId": 15037,
+    "Verb": "east"
+   },
+   {
     "RoomId": 15031,
     "Verb": "south"
    },
    {
     "RoomId": 15041,
     "Verb": "north"
-   },
-   {
-    "RoomId": 15037,
-    "Verb": "east"
    }
   ]
  },
@@ -626,12 +626,12 @@
   "Desc": "   This must be where only the most highly regarded guests stay, since\nit is luxurious beyond your wildest imagination.  This is only the living\nroom of the suite, but it is huge and tastefully decorated.  All the\nfurniture is not only beautiful, but also made for comfort.  To the\nnorth, there is an exit to the bedroom, and there is a door to the west.",
   "Exits": [
    {
-    "RoomId": 15045,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15039,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15045,
+    "Verb": "north"
    }
   ]
  },
@@ -671,12 +671,12 @@
   "Desc": "   Before you you see the stage.  It is large enough for some 40 \nmusicians to play on at the same time.  The Ball Room continues\nto the west and north.",
   "Exits": [
    {
-    "RoomId": 15042,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15048,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15042,
+    "Verb": "west"
    }
   ]
  },
@@ -803,12 +803,12 @@
   "Desc": "   You have entered a large, cosy living room.  There is a fireplace\nwith a fire burning, and a few comfortable chairs around a little\ntable.  There is a door to the west, and also an exit to the east.",
   "Exits": [
    {
-    "RoomId": 15052,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15050,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15052,
+    "Verb": "east"
    }
   ]
  },
@@ -852,14 +852,6 @@
   "Exits": [
    {
     "RoomId": 0,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 0,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 0,
     "Verb": "south"
    },
    {
@@ -869,6 +861,14 @@
    {
     "RoomId": 15049,
     "Verb": "down"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "east"
    }
   ]
  },
@@ -908,10 +908,6 @@
   "Desc": "   This small passage is about thirty feet long and is well lit by the\ntorches on each wall.  The torches have been locked inside small metal\ncages to ensure that they are not removed.  The strangest thing about\nthe torches however, is the manner in which they burn, they have what\nappears to be a constant flame in that it does not flicker whatsoever,\nand does not give off any smoke.  Perhaps they have been magicked to\nburn forever...\n   There are three cells along this passage way, one on each side of\nthe corridor right near the north end and one isolated at the south\nend of the corridor with a small metal plaque located over the door\nin the keystone of the archway.",
   "Exits": [
    {
-    "RoomId": 15059,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15057,
     "Verb": "north"
    },
@@ -922,6 +918,10 @@
    {
     "RoomId": 15060,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15059,
+    "Verb": "west"
    }
   ]
  },
@@ -1129,12 +1129,12 @@
   "Desc": "   As you move away form the open air into the darkness of the path\nand the sinister looking woods around you, you get a feeling of awe\nand something almost akin to horror.  The wood around is completely\nsilent, not even the rustling of leaves or the cracking of branches\nbreaks the silence.  The final thing you notice is that the darkness\nall around you seems to be almost contrived, and doesn't seem natural\nfor this kind of vegitation.\n   The path continues west and you can see light to the east.",
   "Exits": [
    {
-    "RoomId": 15066,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15074,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15066,
+    "Verb": "east"
    }
   ]
  },

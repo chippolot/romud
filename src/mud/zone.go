@@ -10,5 +10,5 @@ type ZoneConfig struct {
 	MinRoomId RoomId
 	MaxRoomId RoomId
 	ResetFreq utils.Seconds
-	ResetFunc func()
+	resetFunc func()
 }

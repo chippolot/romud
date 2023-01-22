@@ -1,8 +1,0 @@
-{
-    "Id": 1,
-    "Name": "Limbo - Internal",
-    "MinRoomId": 1,
-    "MaxRoomId": 100,
-    "ResetFreq": 600,
-    "ResetScript": "zone_1.lua"
-}

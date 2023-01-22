@@ -6,6 +6,7 @@ import (
 )
 
 type StringBuilder struct {
+	NewLine string
 	builder strings.Builder
 }
 
@@ -35,7 +36,11 @@ func (sb *StringBuilder) WriteLine(s string) *StringBuilder {
 }
 
 func (sb *StringBuilder) WriteNewLine() *StringBuilder {
-	sb.builder.WriteString(NewLine)
+	newline := sb.NewLine
+	if newline == "" {
+		newline = NewLine
+	}
+	sb.builder.WriteString(newline)
 	return sb
 }
 

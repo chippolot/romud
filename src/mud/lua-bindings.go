@@ -122,7 +122,7 @@ func lua_ConfigNewZone(tbl *lua.LTable) {
 	if err := gluamapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
-	cfg.ResetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
+	cfg.resetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
 	lua_W.zones[cfg.Id] = cfg
 }
 

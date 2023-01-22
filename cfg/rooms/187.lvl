@@ -5,12 +5,12 @@
   "Desc": "   Ahhh... the entrance to the newbie zone!  Just the place you have\nbeen looking for.  Well, when you've readied yourself you can enter\nto the north.",
   "Exits": [
    {
-    "RoomId": 3062,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18602,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3062,
+    "Verb": "west"
    }
   ]
  },
@@ -35,16 +35,16 @@
   "Desc": "   You continue wandering down the hallway.  Nothing much different here,\nbut you are positive you here noises behind the door to the south, and\ncoming from the east.  The walls are a bit slimy and moldy here... yeech,\ncouldn't they hire someone to clean this place?  What will the newbies\nthink?  Oh well, you can continue along the hallway to the east or west.",
   "Exits": [
    {
+    "RoomId": 18604,
+    "Verb": "east"
+   },
+   {
     "RoomId": 18607,
     "Verb": "south"
    },
    {
     "RoomId": 18602,
     "Verb": "west"
-   },
-   {
-    "RoomId": 18604,
-    "Verb": "east"
    }
   ]
  },
@@ -53,10 +53,6 @@
   "Name": "A Nexus",
   "Desc": "   Well... you've reached an intersection of two passages, to the north\nand east, the passage brightens, while the darker hallway continues to\nthe south.",
   "Exits": [
-   {
-    "RoomId": 18603,
-    "Verb": "west"
-   },
    {
     "RoomId": 18645,
     "Verb": "north"
@@ -68,6 +64,10 @@
    {
     "RoomId": 18608,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18603,
+    "Verb": "west"
    }
   ]
  },
@@ -103,16 +103,16 @@
   "Desc": "   Hmmm... this is an interesting little room.  Ack, and there is\nan interesting little creature staring at you too.  He looks a bit\nsurprised at your intrusion.  You can leave via the doors north or\neast, or you can stay and annoy him a bit more.  There also appears\nto be some type of well down here also, but it has a rather secure\ngrate covering it.",
   "Exits": [
    {
-    "RoomId": 18603,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18608,
     "Verb": "east"
    },
    {
     "RoomId": 18606,
     "Verb": "down"
+   },
+   {
+    "RoomId": 18603,
+    "Verb": "north"
    }
   ]
  },
@@ -122,16 +122,16 @@
   "Desc": "   Oh joy!  More of this annoying passage.  Perhaps there is something\nmore exciting through that door to the west?  Or you can keep searching\nthe hallways to the north or south.",
   "Exits": [
    {
+    "RoomId": 18604,
+    "Verb": "north"
+   },
+   {
     "RoomId": 18612,
     "Verb": "south"
    },
    {
     "RoomId": 18607,
     "Verb": "west"
-   },
-   {
-    "RoomId": 18604,
-    "Verb": "north"
    }
   ]
  },
@@ -141,12 +141,12 @@
   "Desc": "   Finally, you are in an open field... it is so nice to breathe fresh air\nagain!  You can return to that dank, smelly place to the east, or take the\nexit to the north which appears to lead into a large field.",
   "Exits": [
    {
-    "RoomId": 18610,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3062,
     "Verb": "north"
+   },
+   {
+    "RoomId": 18610,
+    "Verb": "east"
    }
   ]
  },
@@ -186,16 +186,16 @@
   "Desc": "   Another corner of the passage, and just as untidy as the rest of\nthis place (maybe more so?).  There is a door to the east though...\nwonder where that leads?  Oh, and the hallway continues west and\nnorth.",
   "Exits": [
    {
-    "RoomId": 18608,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18613,
     "Verb": "east"
    },
    {
     "RoomId": 18611,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18608,
+    "Verb": "north"
    }
   ]
  },
@@ -239,16 +239,16 @@
   "Desc": "   This is an intersection of a long east-west passage with a corridor\nleading south.  The air seems a bit clearer here though, as if you were\napproaching an exit.",
   "Exits": [
    {
+    "RoomId": 18623,
+    "Verb": "east"
+   },
+   {
     "RoomId": 18634,
     "Verb": "south"
    },
    {
     "RoomId": 18621,
     "Verb": "west"
-   },
-   {
-    "RoomId": 18623,
-    "Verb": "east"
    }
   ]
  },
@@ -390,16 +390,16 @@
   "Desc": "   The north-south passage branches to the east here.  There is a queer red\nglow coming from that way as well, along with a faint breeze.",
   "Exits": [
    {
+    "RoomId": 18625,
+    "Verb": "north"
+   },
+   {
     "RoomId": 18635,
     "Verb": "south"
    },
    {
     "RoomId": 18630,
     "Verb": "west"
-   },
-   {
-    "RoomId": 18625,
-    "Verb": "north"
    }
   ]
  },
@@ -466,16 +466,16 @@
   "Desc": "   Cold, smelly, and coated with green fungus... just like last week's\nleft-overs.  Furthermore you want nothing to do with either, you just\nwant out right now.",
   "Exits": [
    {
-    "RoomId": 18634,
-    "Verb": "west"
-   },
-   {
     "RoomId": 18631,
     "Verb": "north"
    },
    {
     "RoomId": 18638,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18634,
+    "Verb": "west"
    }
   ]
  },
@@ -579,12 +579,12 @@
   "Desc": "   As you continue wandering down the hallway, you notice banners,\npictures, and other fine decorations adorning the walls all along\nthis passage.  It seems very different from the dismal passage where\nyou entered.",
   "Exits": [
    {
-    "RoomId": 18643,
-    "Verb": "east"
-   },
-   {
     "RoomId": 18641,
     "Verb": "west"
+   },
+   {
+    "RoomId": 18643,
+    "Verb": "east"
    }
   ]
  },
@@ -628,12 +628,12 @@
   "Desc": "   Wow!  What a change from the dismal passage to the south.  Whoever\nkeeps this room up must really like newbies.  The walls and floor are\nclean, and tastefully decorated.  You also notice an interesting design\non the floor.",
   "Exits": [
    {
-    "RoomId": 18641,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18604,
     "Verb": "south"
+   },
+   {
+    "RoomId": 18641,
+    "Verb": "north"
    }
   ]
  },
@@ -643,12 +643,12 @@
   "Desc": "   Here you can look out and observe the world around.  Constructed in a\nsemi-circle around the dome of the room, the balcony allows you to look out\nin almost any direction.  Wandering to the south end, you can see the great\ncity of Midgaard off to the south-west.",
   "Exits": [
    {
-    "RoomId": 18644,
-    "Verb": "north"
-   },
-   {
     "RoomId": 18648,
     "Verb": "down"
+   },
+   {
+    "RoomId": 18644,
+    "Verb": "north"
    }
   ]
  },

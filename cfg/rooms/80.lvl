@@ -20,6 +20,14 @@
   "Desc": "   You are standing in a vast hall that is dimly lit, but wherever the\nlight comes from, is a mystery.  The walls seem to radiate warmth and\ngive the pleasent feeling of being welcome here.  A large portrait is\nhanging on one of the walls.  A large wooden staircase leads up into\nthe tower.  To the east there is a high passage away from the hall.\nThis ends shortly after by a tall oak door.  The enormous hall extends\nfurther north from here.  To the south you can see a huge, and VERY \nheavy-looking iron-wrought door.  It looks like this is the only exit\nfrom this magnificent old house.",
   "Exits": [
    {
+    "RoomId": 7903,
+    "Verb": "west"
+   },
+   {
+    "RoomId": 7910,
+    "Verb": "up"
+   },
+   {
     "RoomId": 7905,
     "Verb": "north"
    },
@@ -30,14 +38,6 @@
    {
     "RoomId": 7901,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7903,
-    "Verb": "west"
-   },
-   {
-    "RoomId": 7910,
-    "Verb": "up"
    }
   ]
  },
@@ -103,16 +103,16 @@
   "Desc": "   This must be the place of food and drink.  You can hear the faint noise\nof rats feasting on meat and bread from somewhere undeterminable.  The sound\nmakes you feel the agony of HUNGER.  The only visible exit is south to the\nNorthern end of the hall.",
   "Exits": [
    {
-    "RoomId": 7905,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7908,
     "Verb": "north"
    },
    {
     "RoomId": 7909,
     "Verb": "east"
+   },
+   {
+    "RoomId": 7905,
+    "Verb": "south"
    }
   ]
  },
@@ -189,12 +189,12 @@
   "Desc": "   You see a splendid of the most of this world.  The valleys stretch as\nfar as the eye reaches to the south from here.  Down below you can see\nthe entrance of this magnificent building.  To the north are the doors\nto Redferne's bedroom.",
   "Exits": [
    {
-    "RoomId": 7912,
-    "Verb": "north"
-   },
-   {
     "RoomId": 0,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7912,
+    "Verb": "north"
    }
   ]
  },
@@ -260,12 +260,12 @@
   "Desc": "   As you descend, the chain seems to absorb all weather around it, making\nit swing less and less in the very powerful wind tearing at it.  The Chain\nseems to chuckle quietly, and as you descend further you hear a soft whisper\noriginating from within the Chain *ITSELF*.  It says 'Welcome back some\nother time, stranger.  Your company is always... hmmm... interesting.  God\nSpeed.'  The chain extends further down through the now spreading clouds.",
   "Exits": [
    {
-    "RoomId": 7915,
-    "Verb": "down"
-   },
-   {
     "RoomId": 0,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7915,
+    "Verb": "down"
    }
   ]
  },
@@ -275,12 +275,12 @@
   "Desc": "   This place truly a splendid view of the WHOLE COUNTRY SIDE!  A magnificent\nlight shines upon you and the way up through the clouds is opened.  Up there\nyou can now see the Mansion of Naris, Residence of the Greater God Redferne.\nThe chain beneath you seems to evaporate in the mustering clouds that\nsurround you by now.",
   "Exits": [
    {
-    "RoomId": 7901,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7918,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7901,
+    "Verb": "up"
    }
   ]
  },

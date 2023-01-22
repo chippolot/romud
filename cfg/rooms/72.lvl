@@ -91,16 +91,16 @@
   "Desc": "   You stand, swaying out from the ledge, with only a couple of inches of\nsafe, solid ledge under your feet.  The ledge continues to the east but not\nback south.  It seems that the ledge is too narrow to turn on so you'll have\nto continue forward.",
   "Exits": [
    {
-    "RoomId": 7280,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7114,
     "Verb": "east"
    },
    {
     "RoomId": 7108,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7280,
+    "Verb": "down"
    }
   ]
  },
@@ -144,16 +144,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
+    "RoomId": 7109,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7191,
     "Verb": "east"
    },
    {
     "RoomId": 7111,
     "Verb": "south"
-   },
-   {
-    "RoomId": 7109,
-    "Verb": "north"
    }
   ]
  },
@@ -262,16 +262,16 @@
   "Desc": "   You are standing on a ledge that seems quite a lot larger than the\nrest of the ledges.  This one leads to the west and the east, plus it\nhas an exit going to the south.  Though you could jump into mid-air,\nbut it probably wouldn't be such a good idea.  The way south is in\nutter darkness.",
   "Exits": [
    {
+    "RoomId": 7130,
+    "Verb": "south"
+   },
+   {
     "RoomId": 7112,
     "Verb": "west"
    },
    {
     "RoomId": 7122,
     "Verb": "east"
-   },
-   {
-    "RoomId": 7130,
-    "Verb": "south"
    }
   ]
  },
@@ -364,16 +364,16 @@
   "Desc": "   This seems like a ledge that is a little broader than the one just to the\nnorth of here.  The ledge seems to lead around some sort of abyss of total\ndarkness.",
   "Exits": [
    {
+    "RoomId": 7121,
+    "Verb": "north"
+   },
+   {
     "RoomId": 7116,
     "Verb": "west"
    },
    {
     "RoomId": 7280,
     "Verb": "down"
-   },
-   {
-    "RoomId": 7121,
-    "Verb": "north"
    }
   ]
  },

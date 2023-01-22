@@ -14,6 +14,7 @@ import (
 )
 
 var sb strings.Builder
+var indent = ""
 
 func main() {
 	if len(os.Args) != 3 {
@@ -38,7 +39,7 @@ func main() {
 		id := parseInt(trimExtension(filepath.Base(path)))
 		id++
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
-			parseZone(bytes, filepath.Join(outPath, "zones", fmt.Sprintf("%d%s", id, mud.ZoneFileExtension)))
+			parseZone(bytes, filepath.Join(outPath, "zones", fmt.Sprintf("zone-%d%s", id, mud.ScriptFileExtension)))
 		} else {
 			log.Panic(err)
 			os.Exit(1)
@@ -71,8 +72,12 @@ func main() {
 }
 
 func parseZone(data []byte, outPath string) {
-	cfg := &mud.ZoneConfig{}
+	var sb utils.StringBuilder
+	sb.NewLine = "\n"
+	indent = ""
 
+	sb.WriteLine("Config.NewZone({")
+	incIndent()
 	var line string
 	lines := strings.Split(string(data), "\n")
 	if len(lines) > 0 {
@@ -85,43 +90,44 @@ func parseZone(data []byte, outPath string) {
 		}
 
 		// Parse Id
-		cfg.Id = mud.ZoneId(parseInt(line[1:]) + 1)
+		id := mud.ZoneId(parseInt(line[1:]) + 1)
+		sb.WriteLinef("%sId = %v,", indent, id)
 
 		// Parse Name
 		line, lines = nextLine(lines)
-		cfg.Name = line[:len(line)-1]
+		name := line[:len(line)-1]
+		sb.WriteLinef("%sName = \"%v\",", indent, name)
 
 		// Parse values
 		line, lines = nextLine(lines)
 		toks := strings.Split(line, " ")
-		cfg.MinRoomId = mud.RoomId(parseInt(toks[0])) + 1
-		cfg.MaxRoomId = mud.RoomId(parseInt(toks[1])) + 1
-		cfg.ResetFreq = utils.Seconds(parseInt(toks[2]) * 60)
+		minRoomId := mud.RoomId(parseInt(toks[0])) + 1
+		sb.WriteLinef("%sMinRoomId = %v,", indent, minRoomId)
+		maxRoomId := mud.RoomId(parseInt(toks[1])) + 1
+		sb.WriteLinef("%sMaxRoomId = %v,", indent, maxRoomId)
+		resetFreq := utils.Seconds(parseInt(toks[2]) * 60)
+		sb.WriteLinef("%sResetFreq = %v,", indent, resetFreq)
 
 		// Parse reset commands
-		/*
-			cfg.ResetCommands = make([]interface{}, 0)
-			for lines[0] != "S" {
-				toks, lines = parseLineTokens(lines)
-				if toks[0][0] == '*' {
-					continue
-				}
-
-				// TODO Update this to use scripts
-				var cmdData any
-				var cmdType int
-				switch toks[0] {
-				case "M":
-					cmdData = &mud.SpawnEntityZoneResetCommandData{Key: "mob" + toks[2]}
-					cmdType = 1
-				}
-				if cmdData != nil {
-					cfg.ResetCommands = append(cfg.ResetCommands, mud.ZoneResetCommand{cmdType, cmdData})
-				}
+		sb.WriteLinef("%sResetFunc = function()", indent)
+		incIndent()
+		for lines[0] != "S" {
+			toks, lines = parseLineTokens(lines)
+			if toks[0][0] == '*' {
+				continue
 			}
-		*/
+			switch toks[0] {
+			case "M":
+				key := "mob" + toks[2]
+				sb.WriteLinef("%sWorld.LoadEntityLimited(\"%s\", %s, %s)", indent, key, toks[4], toks[3])
+			}
+		}
+		decIndent()
+		sb.WriteLinef("%send", indent)
 	}
-	save(outPath, cfg)
+	decIndent()
+	sb.WriteLine("})")
+	saveString(outPath, sb.String())
 }
 
 func parseRooms(data []byte, outPath string) {
@@ -172,7 +178,7 @@ func parseRooms(data []byte, outPath string) {
 
 		rooms = append(rooms, cfg)
 	}
-	save(outPath, &rooms)
+	saveJSON(outPath, &rooms)
 }
 
 func parseEntities(data []byte, outPath string) {
@@ -278,7 +284,7 @@ func parseEntities(data []byte, outPath string) {
 
 		entities = append(entities, cfg)
 	}
-	save(outPath, &entities)
+	saveJSON(outPath, &entities)
 }
 
 func nextLine(lines []string) (string, []string) {
@@ -321,7 +327,16 @@ func parseInt(str string) int {
 	return i
 }
 
-func save[T any](path string, data T) error {
+func saveString(path string, data string) error {
+	log.Println("Saving to:", path)
+	err := os.WriteFile(path, []byte(data), 0644)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func saveJSON[T any](path string, data T) error {
 	log.Println("Saving to:", path)
 	jsonData, err := json.MarshalIndent(data, "", " ")
 	if err != nil {
@@ -337,4 +352,15 @@ func save[T any](path string, data T) error {
 
 func trimExtension(fileName string) string {
 	return fileName[:len(fileName)-len(filepath.Ext(fileName))]
+}
+
+func incIndent() {
+	indent = indent + "\t"
+}
+
+func decIndent() {
+	if indent == "" {
+		return
+	}
+	indent = strings.TrimSuffix(indent, "\t")
 }

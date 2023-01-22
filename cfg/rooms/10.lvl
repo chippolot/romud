@@ -20,16 +20,16 @@
   "Desc": "   The river is deep, and runs swiftly in an east-west direction.  To the\nnorth the river eddies and enters a backwash where a small bank extends\ndown from a dark, thick stand of trees.  It doesn't look particulary\ninviting however.",
   "Exits": [
    {
-    "RoomId": 6121,
-    "Verb": "north"
-   },
-   {
     "RoomId": 901,
     "Verb": "east"
    },
    {
     "RoomId": 903,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6121,
+    "Verb": "north"
    }
   ]
  },
@@ -69,6 +69,10 @@
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
    {
+    "RoomId": 906,
+    "Verb": "west"
+   },
+   {
     "RoomId": 912,
     "Verb": "north"
    },
@@ -79,10 +83,6 @@
    {
     "RoomId": 907,
     "Verb": "south"
-   },
-   {
-    "RoomId": 906,
-    "Verb": "west"
    }
   ]
  },
@@ -92,12 +92,12 @@
   "Desc": "   You bob up and down in the waves comming dangerously close to some\nlarge, jagged rocks on the eastern shore of an unusual looking island.\nThere is no way you could possibly land there without getting killed.",
   "Exits": [
    {
-    "RoomId": 907,
-    "Verb": "south"
-   },
-   {
     "RoomId": 905,
     "Verb": "east"
+   },
+   {
+    "RoomId": 907,
+    "Verb": "south"
    }
   ]
  },
@@ -130,12 +130,12 @@
   "Desc": "   You float next to a crumbling pier long since neglected.\nTo the west the water gets sluggish and there are many weeds and\nsome seaweed floating about.",
   "Exits": [
    {
-    "RoomId": 909,
-    "Verb": "west"
-   },
-   {
     "RoomId": 907,
     "Verb": "north"
+   },
+   {
+    "RoomId": 909,
+    "Verb": "west"
    }
   ]
  },
@@ -228,12 +228,12 @@
   "Desc": "   You are sitting just off a small landing on the island that\nappears to be nothing more than a short path that leads to the\nside of a hill.",
   "Exits": [
    {
-    "RoomId": 913,
-    "Verb": "east"
-   },
-   {
     "RoomId": 915,
     "Verb": "south"
+   },
+   {
+    "RoomId": 913,
+    "Verb": "east"
    }
   ]
  },
@@ -243,12 +243,12 @@
   "Desc": "   Bodies lie everywhere.  Commoner, peasant, duke, duchess.  The Gods\nwill not hear you call here.  Hence they will not answer you.  To the\nsouth the path ends at a dark cave entrance.\nA sign has been posted beside the entrance.",
   "Exits": [
    {
-    "RoomId": 916,
-    "Verb": "south"
-   },
-   {
     "RoomId": 914,
     "Verb": "north"
+   },
+   {
+    "RoomId": 916,
+    "Verb": "south"
    }
   ]
  },

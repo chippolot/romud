@@ -31,16 +31,16 @@
   "Desc": "   This is the western side commoner's seating area.  There are row upon\nrow of rough wooden benches bolted to the floor.  There is stadium garbage\neverywhere and the smell makes you want to puke.  Stairs lead up to Caesar's \nprivate box, a small ramp leads down to the playing field and a hallway \nleads south.",
   "Exits": [
    {
+    "RoomId": 12005,
+    "Verb": "south"
+   },
+   {
     "RoomId": 12003,
     "Verb": "up"
    },
    {
     "RoomId": 12011,
     "Verb": "down"
-   },
-   {
-    "RoomId": 12005,
-    "Verb": "south"
    }
   ]
  },
@@ -50,12 +50,12 @@
   "Desc": "   This is the southeastern part of the common seating areas.  The benches\nhere are made of stone and are probably centuries old.  A few scratches on\none of the benches catch your eye.  An acrid smell is coming from the east\nand a tunnel leads off to the north.",
   "Exits": [
    {
-    "RoomId": 12004,
-    "Verb": "north"
-   },
-   {
     "RoomId": 12012,
     "Verb": "east"
+   },
+   {
+    "RoomId": 12004,
+    "Verb": "north"
    }
   ]
  },
@@ -151,12 +151,12 @@
   "Desc": "   This is the place to come to if one is overcome by the heat and gore.\n(Or if a lion gets loose)  You see a jar of live leeches and other barbaric\nmedical apparati lying about here.  From the west comes the roar of the\ncrowd, and a hall leads east.  The healer will be with you shortly.",
   "Exits": [
    {
-    "RoomId": 12005,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12019,
     "Verb": "east"
+   },
+   {
+    "RoomId": 12005,
+    "Verb": "west"
    }
   ]
  },
@@ -166,16 +166,16 @@
   "Desc": "   You are on a parched and dusty rural road which runs east and west.  There\nis a structure lying to the south.",
   "Exits": [
    {
-    "RoomId": 12006,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12020,
     "Verb": "east"
    },
    {
     "RoomId": 12014,
     "Verb": "south"
+   },
+   {
+    "RoomId": 12006,
+    "Verb": "west"
    }
   ]
  },
@@ -279,16 +279,16 @@
   "Desc": "   This is a well built and heavily traveled road running from east to west\nand there is a large structure built entirely of stone to the north.",
   "Exits": [
    {
+    "RoomId": 12013,
+    "Verb": "west"
+   },
+   {
     "RoomId": 12019,
     "Verb": "north"
    },
    {
     "RoomId": 12027,
     "Verb": "east"
-   },
-   {
-    "RoomId": 12013,
-    "Verb": "west"
    }
   ]
  },
@@ -448,16 +448,16 @@
   "Desc": "   You are walking on a paved road that runs south through the city of Rome.\nA great gate is directly north of here.  The Roman citizens are very friendly\nand tip their hats or say hello as you pass.",
   "Exits": [
    {
+    "RoomId": 12063,
+    "Verb": "west"
+   },
+   {
     "RoomId": 12030,
     "Verb": "north"
    },
    {
     "RoomId": 12032,
     "Verb": "south"
-   },
-   {
-    "RoomId": 12063,
-    "Verb": "west"
    }
   ]
  },
@@ -467,16 +467,16 @@
   "Desc": "   You are walking on a great paved road that runs north and south through\nthe city.  People are hurrying from one place to another, but always stop\nto say hello.  Most of the people are either coming from or going to the\ntown square.  Nero Drive continues to the north, and you can see a large\nopen area to the south.",
   "Exits": [
    {
+    "RoomId": 12025,
+    "Verb": "west"
+   },
+   {
     "RoomId": 12031,
     "Verb": "north"
    },
    {
     "RoomId": 12033,
     "Verb": "south"
-   },
-   {
-    "RoomId": 12025,
-    "Verb": "west"
    }
   ]
  },
@@ -528,16 +528,16 @@
   "Desc": "   This is a busy paved road that runs north through the city.  The people\nof Rome are very friendly and say hello as you pass.  A gate leading out of\nthe city lies to the south and a small path goes west towards a nobleman's\nestate.  To the east, off in the distance, lies the great mountain.  It is\nrumored that the Gods watch over and protect the empire from there.",
   "Exits": [
    {
-    "RoomId": 12028,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12034,
     "Verb": "north"
    },
    {
     "RoomId": 12036,
     "Verb": "south"
+   },
+   {
+    "RoomId": 12028,
+    "Verb": "west"
    }
   ]
  },
@@ -611,16 +611,16 @@
   "Desc": "   You are on a wide well traveled road running east and west through the\nheart of Rome.  There are large crowds of people to the west and the road\ncontinues to the east.  The aqueduct is directly south of here.",
   "Exits": [
    {
+    "RoomId": 12033,
+    "Verb": "west"
+   },
+   {
     "RoomId": 12047,
     "Verb": "east"
    },
    {
     "RoomId": 12042,
     "Verb": "south"
-   },
-   {
-    "RoomId": 12033,
-    "Verb": "west"
    }
   ]
  },
@@ -728,6 +728,10 @@
   "Desc": "  You are standing on a wide, heavily traveled road that runs east and\nwest through the heart of the city.  There are marble steps leading up.\nTo the south, off in the distance, you can see a large stone structure\nand a mountain that is partially obscured by the haze.  There is a\ngeneral store to the north.",
   "Exits": [
    {
+    "RoomId": 12046,
+    "Verb": "up"
+   },
+   {
     "RoomId": 12064,
     "Verb": "north"
    },
@@ -738,10 +742,6 @@
    {
     "RoomId": 12040,
     "Verb": "west"
-   },
-   {
-    "RoomId": 12046,
-    "Verb": "up"
    }
   ]
  },
@@ -796,16 +796,16 @@
   "Desc": "   You stand inside of a large courtroom in which common civil disputes and \ncriminal matters are decided.  There is a judge's bench and a witness stand\non the far side of the room and a jury's box along side.  The Emperor's seal\nis prominently displayed on the wall behind the judge's stand, reminding all\nwho enter that he is an extension of his highness.  There is a door, possibly \nleading to the judge's chambers, to the east and the waiting room is to the \nwest.",
   "Exits": [
    {
-    "RoomId": 12044,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12056,
     "Verb": "east"
    },
    {
     "RoomId": 12061,
     "Verb": "south"
+   },
+   {
+    "RoomId": 12044,
+    "Verb": "west"
    }
   ]
  },
@@ -830,12 +830,12 @@
   "Desc": "   You stand on a small trail that leads up and down.  It has recently been \nraining and there are small puddles everywhere.  You are just below the\nclouds and the view of the surrounding countryside is breathtaking.  ",
   "Exits": [
    {
-    "RoomId": 12048,
-    "Verb": "up"
-   },
-   {
     "RoomId": 12057,
     "Verb": "down"
+   },
+   {
+    "RoomId": 12048,
+    "Verb": "up"
    }
   ]
  },
@@ -879,12 +879,12 @@
   "Desc": "   You are standing on a small trail that leads through a grove of trees.\nEvery thing is lush and green here and it appears to have been raining\nrecently.  'This would be an ideal place for a picnic.' , you think to\nyourself.",
   "Exits": [
    {
-    "RoomId": 12060,
-    "Verb": "down"
-   },
-   {
     "RoomId": 12053,
     "Verb": "up"
+   },
+   {
+    "RoomId": 12060,
+    "Verb": "down"
    }
   ]
  },

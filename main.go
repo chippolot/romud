@@ -38,11 +38,13 @@ func main() {
 
 	// Create world
 	world := mud.NewWorld(db, L, events)
-	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
-	world.SetEntryRoomId(3001)
 
 	// Register global lua funcs
 	mud.RegisterGlobalLuaBindings(L, world)
+
+	// Load assets
+	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
+	world.SetEntryRoomId(3001)
 
 	// Create test entity
 	addEntities(world, "mob", "rat", "rat", "janitor", "equipper")

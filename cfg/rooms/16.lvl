@@ -35,12 +35,12 @@
   "Desc": "   You stop for a moment, screaming in frustration.  Surely it was that one\nsin that was avoidable, of all that you regret.  The hitting and the hurting\nflash briefly before you.  Moments later the pain passes, and the straight\npath reveals itself before you.",
   "Exits": [
    {
-    "RoomId": 1504,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1502,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1504,
+    "Verb": "north"
    }
   ]
  },
@@ -95,16 +95,16 @@
   "Desc": "   Even the darkest have a place on the road to the truth.  It is in this\nplace, so empty and forgotten, that God has chosen the worst, and brought\nthem close to Him for one last time.",
   "Exits": [
    {
-    "RoomId": 1514,
-    "Verb": "east"
-   },
-   {
     "RoomId": 1509,
     "Verb": "west"
    },
    {
     "RoomId": 1506,
     "Verb": "up"
+   },
+   {
+    "RoomId": 1514,
+    "Verb": "east"
    }
   ]
  },
@@ -148,12 +148,12 @@
   "Desc": "   Some have been brought here not for what they did, but what they\nfailed to do.  It is these, the poor souls that were presented the\nfair evidence and rejected it with an honest mind, that deserve our\npity the most of all.",
   "Exits": [
    {
-    "RoomId": 1511,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1509,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1511,
+    "Verb": "north"
    }
   ]
  },
@@ -163,12 +163,12 @@
   "Desc": "   Old tales tell of a conversation between the devil and the Prophet\nJesus: the devil offered him a kingdom, vast riches, the temptation of\na glorious near-death saved by his angels.  Even this Messenger of God\nwas forced to stop and think.  Imagine how hard it could be for the rest.",
   "Exits": [
    {
-    "RoomId": 1512,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1510,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1512,
+    "Verb": "north"
    }
   ]
  },
@@ -358,12 +358,12 @@
   "Desc": "   Behold, Allah is the Provider, the most Generous.  He would not suffer\nhis believers to walk the path of light without guidance.  He provided the\nProphets, may peace be upon them, and in the examples of their own growth,\nwe shall find the truth of our own.",
   "Exits": [
    {
-    "RoomId": 1525,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1508,
     "Verb": "west"
+   },
+   {
+    "RoomId": 1525,
+    "Verb": "north"
    }
   ]
  },
@@ -403,12 +403,12 @@
   "Desc": "   Unbelievers, I do not worship what you worship, nor do you worship\nwhat I worship.  I shall never worship what you worship, nor will you\never worship what I worship.  You have your own religion, and I have\nmine.",
   "Exits": [
    {
-    "RoomId": 1526,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1528,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1526,
+    "Verb": "south"
    }
   ]
  },
@@ -471,16 +471,16 @@
   "Desc": "   It is written that no one may intercede with God on behalf of another.\nNo prayers from another may save the soul of a doomed man; his only hope\nis prayers of his own.",
   "Exits": [
    {
+    "RoomId": 1530,
+    "Verb": "west"
+   },
+   {
     "RoomId": 1537,
     "Verb": "up"
    },
    {
     "RoomId": 1518,
     "Verb": "south"
-   },
-   {
-    "RoomId": 1530,
-    "Verb": "west"
    }
   ]
  },
@@ -547,16 +547,16 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
+    "RoomId": 1529,
+    "Verb": "down"
+   },
+   {
     "RoomId": 1536,
     "Verb": "east"
    },
    {
     "RoomId": 1532,
     "Verb": "up"
-   },
-   {
-    "RoomId": 1529,
-    "Verb": "down"
    }
   ]
  },
@@ -593,16 +593,16 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
+    "RoomId": 1531,
+    "Verb": "down"
+   },
+   {
     "RoomId": 1536,
     "Verb": "west"
    },
    {
     "RoomId": 1534,
     "Verb": "up"
-   },
-   {
-    "RoomId": 1531,
-    "Verb": "down"
    }
   ]
  },
@@ -612,12 +612,12 @@
   "Desc": "   The Compassionate, the Merciful, Sovereign of the Day of Judgment!\nYou alone we worship, and to You alone we turn for help.  Guide us to\nthe Straight Path, the path of those whom You have favored, not of\nthose who have gone astray.",
   "Exits": [
    {
-    "RoomId": 1536,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1539,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1536,
+    "Verb": "south"
    }
   ]
  },
@@ -627,12 +627,12 @@
   "Desc": "   Were We worn out by the First Creation?  Yet they are in doubt about\na new creation.  WE created man.  We know the promptings of his soul,\nand are closer to him than his jugular vein.",
   "Exits": [
    {
-    "RoomId": 1538,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1540,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1538,
+    "Verb": "south"
    }
   ]
  },

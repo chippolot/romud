@@ -14,7 +14,7 @@ const (
 	EntitiesFileExtension = ".ent"
 	RoomsFileExtension    = ".lvl"
 	ItemsFileExtension    = ".itm"
-	ZoneFileExtension     = ".zon"
+	ScriptFileExtension   = ".lua"
 )
 
 func LoadZone(w *World, filePath string) error {
@@ -143,9 +143,16 @@ func LoadScript(w *World, filePath string) (*lua.LTable, error) {
 	}
 }
 
+func RunScript(w *World, filePath string) error {
+	if err := w.L.DoFile(filePath); err != nil {
+		return err
+	}
+	return nil
+}
+
 func LoadAssets(w *World, root string) {
 	// Load zones
-	for _, path := range utils.FindFilePathsWithExtension(root, ZoneFileExtension) {
+	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "zones"), ScriptFileExtension) {
 		if err := LoadZone(w, path); err != nil {
 			log.Fatalf("failed to load zone file %s -- %v", path, err)
 		}

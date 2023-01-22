@@ -126,11 +126,18 @@
     [x] Zones
     [x] Mobs
 ----------------------------------------
+[] Lua-ize Config
+    [x] Zones
+    [] Entities
+    [] Rooms
+    [] Items
 [] Circle Data
     [] Spawn Commands
     [] Items
 [] Zones
     [] Spawning in zones
+        [] Give enemies
+        [] Equip enemies w/ items
 [] RRO Stats
 [] RRO Combat
 [] Combat Speed

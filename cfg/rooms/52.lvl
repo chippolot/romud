@@ -103,16 +103,16 @@
   "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a large building.",
   "Exits": [
    {
-    "RoomId": 5119,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5104,
     "Verb": "east"
    },
    {
     "RoomId": 5108,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5119,
+    "Verb": "north"
    }
   ]
  },
@@ -227,16 +227,16 @@
   "Desc": "   You walk along a highly ornate city street leading north-south and east.",
   "Exits": [
    {
+    "RoomId": 5111,
+    "Verb": "south"
+   },
+   {
     "RoomId": 5116,
     "Verb": "north"
    },
    {
     "RoomId": 5118,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5111,
-    "Verb": "south"
    }
   ]
  },
@@ -272,16 +272,16 @@
   "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a giant temple.",
   "Exits": [
    {
+    "RoomId": 5120,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5122,
     "Verb": "east"
    },
    {
     "RoomId": 5115,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5120,
-    "Verb": "north"
    }
   ]
  },
@@ -328,16 +328,16 @@
   "Desc": "   You walk along a highly ornate city street going eastward.  To the north\nis a building.",
   "Exits": [
    {
-    "RoomId": 5121,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5124,
     "Verb": "east"
    },
    {
     "RoomId": 5118,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5121,
+    "Verb": "north"
    }
   ]
  },
@@ -403,12 +403,12 @@
   "Desc": "   You stand in the entrance way to the temple which opens up to the north\ninto a large hallway going east and west.  Small statues os spiders line the\nentrance way's walls.",
   "Exits": [
    {
-    "RoomId": 5120,
-    "Verb": "up"
-   },
-   {
     "RoomId": 5128,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5120,
+    "Verb": "up"
    }
   ]
  },
@@ -565,16 +565,16 @@
   "Desc": "   You are standing in the middle of a grand hallway.  The walls are \nof the purest adamantite with gold trim.  Mosaics line the walls.",
   "Exits": [
    {
-    "RoomId": 5139,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5138,
     "Verb": "east"
    },
    {
     "RoomId": 5136,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5139,
+    "Verb": "north"
    }
   ]
  },
@@ -625,12 +625,12 @@
   "Desc": "   You are climbing a set of obsidian stairs surrounded by adamantite walls.\nTo the north are a set of large golden doors.",
   "Exits": [
    {
-    "RoomId": 5142,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5139,
     "Verb": "up"
+   },
+   {
+    "RoomId": 5142,
+    "Verb": "north"
    }
   ]
  },
@@ -748,12 +748,12 @@
   "Desc": "   You stand upon a dias behind the altar.  Above you is a enormous illusion\nof a female drow turning into a giant spider and back again.  There is a door \nto the west.",
   "Exits": [
    {
-    "RoomId": 5150,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5146,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5150,
+    "Verb": "west"
    }
   ]
  },

@@ -1,0 +1,41 @@
+Config.NewZone({
+	Id = 37,
+	Name = "The Chessboard of Midgaard",
+	MinRoomId = 3601,
+	MaxRoomId = 3700,
+	ResetFreq = 600,
+	ResetFunc = function()
+		World.LoadEntityLimited("mob3600", 3609, 8)
+		World.LoadEntityLimited("mob3600", 3610, 8)
+		World.LoadEntityLimited("mob3600", 3611, 8)
+		World.LoadEntityLimited("mob3600", 3612, 8)
+		World.LoadEntityLimited("mob3600", 3613, 8)
+		World.LoadEntityLimited("mob3600", 3614, 8)
+		World.LoadEntityLimited("mob3600", 3615, 8)
+		World.LoadEntityLimited("mob3600", 3616, 8)
+		World.LoadEntityLimited("mob3601", 3649, 8)
+		World.LoadEntityLimited("mob3601", 3650, 8)
+		World.LoadEntityLimited("mob3601", 3651, 8)
+		World.LoadEntityLimited("mob3601", 3652, 8)
+		World.LoadEntityLimited("mob3601", 3653, 8)
+		World.LoadEntityLimited("mob3601", 3654, 8)
+		World.LoadEntityLimited("mob3601", 3655, 8)
+		World.LoadEntityLimited("mob3601", 3656, 8)
+		World.LoadEntityLimited("mob3602", 3601, 2)
+		World.LoadEntityLimited("mob3602", 3608, 2)
+		World.LoadEntityLimited("mob3603", 3657, 2)
+		World.LoadEntityLimited("mob3603", 3664, 2)
+		World.LoadEntityLimited("mob3604", 3602, 2)
+		World.LoadEntityLimited("mob3604", 3607, 2)
+		World.LoadEntityLimited("mob3605", 3658, 2)
+		World.LoadEntityLimited("mob3605", 3663, 2)
+		World.LoadEntityLimited("mob3606", 3603, 2)
+		World.LoadEntityLimited("mob3606", 3606, 2)
+		World.LoadEntityLimited("mob3607", 3659, 2)
+		World.LoadEntityLimited("mob3607", 3662, 2)
+		World.LoadEntityLimited("mob3608", 3604, 1)
+		World.LoadEntityLimited("mob3609", 3660, 1)
+		World.LoadEntityLimited("mob3610", 3605, 1)
+		World.LoadEntityLimited("mob3611", 3661, 1)
+	end
+})

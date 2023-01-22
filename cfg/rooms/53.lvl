@@ -16,6 +16,10 @@
   "Desc": "   This was once a magnificent street, but now is in total ruin.  The\nstreets are barren and windswept and the silence is unending.  To the south\nyou see a ruined cottage while north leads into a dark back alley.  Howls\nand screams echo through the deserted city.",
   "Exits": [
    {
+    "RoomId": 5236,
+    "Verb": "south"
+   },
+   {
     "RoomId": 5203,
     "Verb": "west"
    },
@@ -26,10 +30,6 @@
    {
     "RoomId": 5201,
     "Verb": "east"
-   },
-   {
-    "RoomId": 5236,
-    "Verb": "south"
    }
   ]
  },
@@ -62,6 +62,10 @@
   "Desc": "   A circular path surrounds a magnificent domed temple in the center\nof the city.  Flowers have withered away and the once lush trees are bare.\nVines and ivy snake up the sides of the temple and entangle themselves\naround your feet.  A sudden volley of howls pierces the air.",
   "Exits": [
    {
+    "RoomId": 5205,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5203,
     "Verb": "east"
    },
@@ -72,10 +76,6 @@
    {
     "RoomId": 5251,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5205,
-    "Verb": "north"
    }
   ]
  },
@@ -238,10 +238,6 @@
   "Desc": "   This small side street leads away from the garden path to the south.\nAround you stand large piles or rubble where the houses of commoners\nused to be.  A lone howl makes you worry greatly about your safety here.",
   "Exits": [
    {
-    "RoomId": 5228,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5211,
     "Verb": "north"
    },
@@ -252,6 +248,10 @@
    {
     "RoomId": 5205,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5228,
+    "Verb": "west"
    }
   ]
  },
@@ -261,20 +261,20 @@
   "Desc": "   This small side street leads south away from the temple into the\nbusiness section of town.  The destruction that leveled this city was not\nbiased; these important looking buildings have been almost totally\ndestroyed.  There is a hole in the wall of a very large structure to the\neast.",
   "Exits": [
    {
-    "RoomId": 5214,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 5222,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5207,
     "Verb": "north"
    },
    {
     "RoomId": 5233,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5214,
+    "Verb": "south"
+   },
+   {
+    "RoomId": 5222,
+    "Verb": "west"
    }
   ]
  },
@@ -283,10 +283,6 @@
   "Name": "A Side Street",
   "Desc": "   This small side street is lined with the remains of once great\nbuildings.  To the west is a dark, foreboding structure while to the\neast lies the entrance to a small tavern.  The street continues north\nand south.",
   "Exits": [
-   {
-    "RoomId": 5213,
-    "Verb": "north"
-   },
    {
     "RoomId": 5231,
     "Verb": "east"
@@ -298,6 +294,10 @@
    {
     "RoomId": 5220,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5213,
+    "Verb": "north"
    }
   ]
  },
@@ -405,12 +405,12 @@
   "Desc": "   A large cart sits here carrying rotted fruit and vegetables.  Flies \nswarm all about what seems to be the last remaining bits of food left\nin the city.",
   "Exits": [
    {
-    "RoomId": 5218,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5208,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5218,
+    "Verb": "west"
    }
   ]
  },
@@ -465,16 +465,16 @@
   "Desc": "   You stand under one of the city watchtowers built to protect\nthe city from invaders.  Obviously, it failed.",
   "Exits": [
    {
-    "RoomId": 5247,
-    "Verb": "up"
-   },
-   {
     "RoomId": 5229,
     "Verb": "east"
    },
    {
     "RoomId": 5224,
     "Verb": "south"
+   },
+   {
+    "RoomId": 5247,
+    "Verb": "up"
    }
   ]
  },
@@ -708,16 +708,16 @@
   "Desc": "   You stand under a tall watchtower.  Narrow back alleys lead west and\nsouth and a very weak looking ladder leads up into the tower.  Above you,\nyou hear the screams of tens of starving lamias!  Beware!",
   "Exits": [
    {
+    "RoomId": 5249,
+    "Verb": "up"
+   },
+   {
     "RoomId": 5241,
     "Verb": "south"
    },
    {
     "RoomId": 5244,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5249,
-    "Verb": "up"
    }
   ]
  },
@@ -761,12 +761,12 @@
   "Desc": "   This home is practically the only one around that is still standing.\nExcept for the massive hole in the east wall, everything else looks\nintact, including the windows.  Great amounts of steam issue forth from\nthe hole in the east wall.",
   "Exits": [
    {
-    "RoomId": 5211,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5243,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5211,
+    "Verb": "west"
    }
   ]
  },
@@ -821,6 +821,10 @@
   "Desc": "   You stand within one of the most holy places in the realm.  This\nstunning domed temple once housed the city's worshipers en masse.  \nUnfortunately, it succumbed to the destruction brought on this city.\nLong benches lie toppled and the altar desecrated.  Large chunks of stone\nhave fallen from the walls and roof, sending sunlight streaming in on\nyou.  A few books lie about, conveying to you a holy message in a\nstrange tongue.  \n     Wind gusts through the four archways and howls and screams can be\nheard from all parts of the city.",
   "Exits": [
    {
+    "RoomId": 5206,
+    "Verb": "west"
+   },
+   {
     "RoomId": 5205,
     "Verb": "north"
    },
@@ -831,10 +835,6 @@
    {
     "RoomId": 5207,
     "Verb": "south"
-   },
-   {
-    "RoomId": 5206,
-    "Verb": "west"
    }
   ]
  }

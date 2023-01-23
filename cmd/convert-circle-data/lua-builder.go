@@ -120,7 +120,7 @@ func (b *LuaBuilder) Func(scopeFn func()) *LuaBuilder {
 func (b *LuaBuilder) Field(name string, val any) *LuaBuilder {
 	if strVal, ok := val.(string); ok {
 		if strings.Contains(strVal, "\n") {
-			val = fmt.Sprintf("[[%s]]", strVal)
+			val = fmt.Sprintf("[[\n%s\n]]", strVal)
 		} else {
 			val = fmt.Sprintf("\"%s\"", luaEscapeString(strVal))
 		}

@@ -58,6 +58,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
 	configTable.RawSetString("NewRoom", luar.New(L, lua_ConfigNewRoom))
 	configTable.RawSetString("NewEntity", luar.New(L, lua_ConfigNewEntity))
+	configTable.RawSetString("NewItem", luar.New(L, lua_ConfigNewItem))
 	L.SetGlobal("Config", configTable)
 
 	utilTbl := L.NewTable()
@@ -177,6 +178,15 @@ func lua_ConfigNewEntity(tbl *lua.LTable) {
 	*/
 }
 
+func lua_ConfigNewItem(tbl *lua.LTable) {
+	cfg := &ItemConfig{}
+	if err := lua_Mapper.Map(tbl, cfg); err != nil {
+		panic(err)
+	}
+	cfg.Init()
+	lua_W.AddItemConfig(cfg)
+}
+
 func lua_UtilChance() int {
 	return rand.Intn(100)
 }
@@ -185,27 +195,39 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 	var err error
 
 	if to == reflect.TypeOf(Direction(0)) {
-		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseDirection(s) }); err != nil {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseDirection(s) }); err != nil {
 			return nil, err
 		}
 	} else if to == reflect.TypeOf(Dice{}) {
-		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseDice(s) }); err != nil {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseDice(s) }); err != nil {
 			return nil, err
 		}
 	} else if to == reflect.TypeOf(DamageType(0)) {
-		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseDamageType(s) }); err != nil {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseDamageType(s) }); err != nil {
 			return nil, err
 		}
 	} else if to == reflect.TypeOf(StatType(0)) {
-		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseStatType(s) }); err != nil {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseStatType(s) }); err != nil {
 			return nil, err
 		}
 	} else if to == reflect.TypeOf(StatusEffectMask(0)) {
-		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseStatusEffectType(s) }); err != nil {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseStatusEffectType(s) }); err != nil {
 			return nil, err
 		}
 	} else if to == reflect.TypeOf(EntityFlagMask(0)) {
-		if data, err = parseFlagList[EntityFlagMask](data, func(s string) (interface{}, error) { return ParseEntityFlag(s) }); err != nil {
+		if data, err = lua_parseFlagList[EntityFlagMask](data, func(s string) (interface{}, error) { return ParseEntityFlag(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(ItemFlagMask(0)) {
+		if data, err = lua_parseFlagList[ItemFlagMask](data, func(s string) (interface{}, error) { return ParseItemFlag(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(EquipSlot(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseEquipmentSlot(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(RollType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRollType(s) }); err != nil {
 			return nil, err
 		}
 	}
@@ -213,7 +235,7 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 	return data, nil
 }
 
-func parseString(data interface{}, conv func(string) (interface{}, error)) (interface{}, error) {
+func lua_parseString(data interface{}, conv func(string) (interface{}, error)) (interface{}, error) {
 	var err error
 	if sdata, ok := data.(string); !ok {
 		return nil, fmt.Errorf("cannot convert %T to string", data)
@@ -225,7 +247,7 @@ func parseString(data interface{}, conv func(string) (interface{}, error)) (inte
 	return data, nil
 }
 
-func parseFlagList[T ~uint64](data interface{}, conv func(string) (interface{}, error)) (interface{}, error) {
+func lua_parseFlagList[T ~uint64](data interface{}, conv func(string) (interface{}, error)) (interface{}, error) {
 	if slist, ok := data.([]interface{}); !ok {
 		if smap, ok := data.(map[any]any); !ok || len(smap) != 0 {
 			return nil, fmt.Errorf("cannot convert %T to []string", data)
@@ -235,7 +257,7 @@ func parseFlagList[T ~uint64](data interface{}, conv func(string) (interface{}, 
 	} else {
 		var flags T
 		for _, sraw := range slist {
-			if sconv, err := parseString(sraw, conv); err != nil {
+			if sconv, err := lua_parseString(sraw, conv); err != nil {
 				return nil, err
 			} else {
 				if sflag, ok := sconv.(T); !ok {

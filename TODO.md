@@ -133,6 +133,7 @@
         [] Config
         [] Entity Scripts
     [] Items
+    [] Cleanup old JSON
 [] Circle Data
     [] Spawn Commands
     [] Items

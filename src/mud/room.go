@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
 	"unicode"
@@ -21,27 +20,6 @@ const (
 type RoomId int32
 
 type RoomExitsConfig map[Direction]RoomId
-
-func (cfg *RoomExitsConfig) MarshalJSON() ([]byte, error) {
-	arr := make([]RoomExitConfig, 0, len(*cfg))
-	for dir, rid := range *cfg {
-		arr = append(arr, RoomExitConfig{rid, dir})
-	}
-	return json.Marshal(arr)
-}
-
-func (cfg *RoomExitsConfig) UnmarshalJSON(data []byte) (err error) {
-	var arr []RoomExitConfig
-	if err := json.Unmarshal(data, &arr); err != nil {
-		return err
-	}
-	roomExits := make(RoomExitsConfig)
-	for _, re := range arr {
-		roomExits[re.Verb] = re.RoomId
-	}
-	*cfg = roomExits
-	return nil
-}
 
 type RoomExitConfig struct {
 	RoomId RoomId
@@ -256,21 +234,6 @@ func ParseDirection(s string) (Direction, error) {
 	default:
 		return 0, fmt.Errorf("failed to parse Direction: %s", s)
 	}
-}
-
-func (d *Direction) MarshalJSON() ([]byte, error) {
-	return json.Marshal(d.String())
-}
-
-func (d *Direction) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *d, err = ParseDirection(str); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (d *Direction) String() string {

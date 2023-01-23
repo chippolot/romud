@@ -193,28 +193,6 @@ type RollModConfig struct {
 
 type RollModConfigMap map[RollType]*RollModConfig
 
-func (m *RollModConfigMap) MarshalJSON() ([]byte, error) {
-	m2 := make(map[string]*RollModConfig)
-	for stat, mod := range *m {
-		m2[stat.String()] = mod
-	}
-	return json.Marshal(m2)
-}
-
-func (m *RollModConfigMap) UnmarshalJSON(data []byte) (err error) {
-	var m2 map[string]*RollModConfig
-	if err := json.Unmarshal(data, &m2); err != nil {
-		return err
-	}
-	*m = make(RollModConfigMap)
-	for rollStr, mod := range m2 {
-		if roll, err := ParseRollType(rollStr); err == nil {
-			(*m)[roll] = mod
-		}
-	}
-	return nil
-}
-
 type RollMods struct {
 	AdvantageCount    int
 	DisadvantageCount int

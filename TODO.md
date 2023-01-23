@@ -128,8 +128,10 @@
 ----------------------------------------
 [] Lua-ize Config
     [x] Zones
+    [x] Rooms
     [] Entities
-    [] Rooms
+        [] Config
+        [] Entity Scripts
     [] Items
 [] Circle Data
     [] Spawn Commands

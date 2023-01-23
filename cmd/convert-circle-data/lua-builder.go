@@ -143,6 +143,32 @@ func (b *LuaBuilder) FieldScope(name string, scopeFn func()) *LuaBuilder {
 	return b
 }
 
+func (b *LuaBuilder) Item(val any) *LuaBuilder {
+	if strVal, ok := val.(string); ok {
+		if strings.Contains(strVal, "\n") {
+			val = fmt.Sprintf("[[\n%s\n]]", strVal)
+		} else {
+			val = fmt.Sprintf("\"%s\"", luaEscapeString(strVal))
+		}
+	}
+	b.writeLinef("%v", val)
+	return b
+}
+
+func (b *LuaBuilder) ItemScope(scopeFn func()) *LuaBuilder {
+	b.pushScope(&LuaBuilderGeneralScope{}, false)
+	scopeFn()
+	str := b.popScope()
+	for strings.HasPrefix(str, "\t") {
+		str = strings.TrimPrefix(str, "\t")
+	}
+	for strings.HasSuffix(str, "\n") {
+		str = strings.TrimSuffix(str, "\n")
+	}
+	b.writeLine(str)
+	return b
+}
+
 func (b *LuaBuilder) Linef(format string, a ...any) *LuaBuilder {
 	b.writeLine(fmt.Sprintf(format, a...))
 	return b

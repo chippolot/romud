@@ -57,6 +57,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable := L.NewTable()
 	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
 	configTable.RawSetString("NewRoom", luar.New(L, lua_ConfigNewRoom))
+	configTable.RawSetString("NewEntity", luar.New(L, lua_ConfigNewEntity))
 	L.SetGlobal("Config", configTable)
 
 	utilTbl := L.NewTable()
@@ -156,6 +157,26 @@ func lua_ConfigNewRoom(tbl *lua.LTable) {
 	lua_W.AddRoom(r)
 }
 
+func lua_ConfigNewEntity(tbl *lua.LTable) {
+	cfg := &EntityConfig{}
+	if err := lua_Mapper.Map(tbl, cfg); err != nil {
+		panic(err)
+	}
+	cfg.Init()
+	lua_W.AddEntityConfig(cfg)
+	/*
+		if cfg.ScriptFile != "" {
+			fileDir := path.Dir(filePath)
+			scriptPath := path.Join(fileDir, cfg.ScriptFile)
+			if scriptsTable, err := LoadScript(w, scriptPath); err != nil {
+				log.Fatalf("failed to load script file %s -- %v", scriptPath, err)
+			} else {
+				cfg.scripts = NewEntityScripts(w.L, scriptsTable)
+			}
+		}
+	*/
+}
+
 func lua_UtilChance() int {
 	return rand.Intn(100)
 }
@@ -163,16 +184,67 @@ func lua_UtilChance() int {
 func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (interface{}, error) {
 	var err error
 
-	// Handle parsing directions
 	if to == reflect.TypeOf(Direction(0)) {
-		if sdata, ok := data.(string); !ok {
-			return nil, fmt.Errorf("cannot convert % to string", from)
-		} else {
-			if data, err = ParseDirection(sdata); err != nil {
-				return nil, err
-			}
+		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseDirection(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(Dice{}) {
+		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseDice(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(DamageType(0)) {
+		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseDamageType(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(StatType(0)) {
+		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseStatType(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(StatusEffectMask(0)) {
+		if data, err = parseString(data, func(s string) (interface{}, error) { return ParseStatusEffectType(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(EntityFlagMask(0)) {
+		if data, err = parseFlagList[EntityFlagMask](data, func(s string) (interface{}, error) { return ParseEntityFlag(s) }); err != nil {
+			return nil, err
 		}
 	}
 
 	return data, nil
+}
+
+func parseString(data interface{}, conv func(string) (interface{}, error)) (interface{}, error) {
+	var err error
+	if sdata, ok := data.(string); !ok {
+		return nil, fmt.Errorf("cannot convert %T to string", data)
+	} else {
+		if data, err = conv(sdata); err != nil {
+			return nil, err
+		}
+	}
+	return data, nil
+}
+
+func parseFlagList[T ~uint64](data interface{}, conv func(string) (interface{}, error)) (interface{}, error) {
+	if slist, ok := data.([]interface{}); !ok {
+		if smap, ok := data.(map[any]any); !ok || len(smap) != 0 {
+			return nil, fmt.Errorf("cannot convert %T to []string", data)
+		} else {
+			return 0, nil
+		}
+	} else {
+		var flags T
+		for _, sraw := range slist {
+			if sconv, err := parseString(sraw, conv); err != nil {
+				return nil, err
+			} else {
+				if sflag, ok := sconv.(T); !ok {
+					return nil, fmt.Errorf("cannot convert %T to flags", sconv)
+				} else {
+					flags |= sflag
+				}
+			}
+		}
+		return flags, nil
+	}
 }

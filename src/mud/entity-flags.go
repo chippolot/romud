@@ -50,11 +50,7 @@ func (m *EntityFlagMask) String() string {
 	return "unknown"
 }
 
-func (m *EntityFlagMask) Has(flag EntityFlagMask) bool {
-	return *m&flag != 0
-}
-
-func (m *EntityFlagMask) MarshalJSON() ([]byte, error) {
+func (m *EntityFlagMask) Strings() []string {
 	strs := make([]string, 0)
 	for i := 0; i < 64; i++ {
 		f := EntityFlagMask(1 << i)
@@ -62,7 +58,15 @@ func (m *EntityFlagMask) MarshalJSON() ([]byte, error) {
 			strs = append(strs, f.String())
 		}
 	}
-	return json.Marshal(strs)
+	return strs
+}
+
+func (m *EntityFlagMask) Has(flag EntityFlagMask) bool {
+	return *m&flag != 0
+}
+
+func (m *EntityFlagMask) MarshalJSON() ([]byte, error) {
+	return json.Marshal(m.Strings())
 }
 
 func (m *EntityFlagMask) UnmarshalJSON(data []byte) (err error) {

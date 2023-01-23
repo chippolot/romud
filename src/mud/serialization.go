@@ -11,41 +11,9 @@ import (
 )
 
 const (
-	EntitiesFileExtension = ".ent"
-	RoomsFileExtension    = ".lvl"
-	ItemsFileExtension    = ".itm"
-	ScriptFileExtension   = ".lua"
+	ItemsFileExtension  = ".itm"
+	ScriptFileExtension = ".lua"
 )
-
-func LoadEntities(w *World, filePath string) error {
-	bytes, err := utils.LoadFileBytes(filePath)
-	if err != nil {
-		return err
-	}
-
-	cfgList := EntityConfigList{}
-	err = json.Unmarshal(bytes, &cfgList)
-	if err != nil {
-		return err
-	}
-
-	for _, cfg := range cfgList {
-		cfg.Init()
-		w.AddEntityConfig(cfg)
-
-		if cfg.ScriptFile != "" {
-			fileDir := path.Dir(filePath)
-			scriptPath := path.Join(fileDir, cfg.ScriptFile)
-			if scriptsTable, err := LoadScript(w, scriptPath); err != nil {
-				log.Fatalf("failed to load script file %s -- %v", scriptPath, err)
-			} else {
-				cfg.scripts = NewEntityScripts(w.L, scriptsTable)
-			}
-		}
-	}
-
-	return nil
-}
 
 func LoadItems(w *World, filePath string) error {
 	bytes, err := utils.LoadFileBytes(filePath)
@@ -108,8 +76,8 @@ func LoadAssets(w *World, root string) {
 	log.Printf("loaded %d rooms", len(w.rooms))
 
 	// Load mobs
-	for _, path := range utils.FindFilePathsWithExtension(root, EntitiesFileExtension) {
-		if err := LoadEntities(w, path); err != nil {
+	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "entities"), ScriptFileExtension) {
+		if err := RunScript(w, path); err != nil {
 			log.Fatalf("failed to load entities file %s -- %v", path, err)
 		}
 	}

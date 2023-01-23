@@ -14,7 +14,6 @@ import (
 )
 
 var sb strings.Builder
-var indent = ""
 
 func main() {
 	if len(os.Args) != 3 {
@@ -51,7 +50,7 @@ func main() {
 		id := parseInt(trimExtension(filepath.Base(path)))
 		id++
 		if bytes, err := utils.LoadFileBytes(path); err == nil {
-			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("%d%s", id, mud.RoomsFileExtension)))
+			parseRooms(bytes, filepath.Join(outPath, "rooms", fmt.Sprintf("roooms-%d%s", id, mud.ScriptFileExtension)))
 		} else {
 			log.Panic(err)
 			os.Exit(1)
@@ -72,113 +71,112 @@ func main() {
 }
 
 func parseZone(data []byte, outPath string) {
-	var sb utils.StringBuilder
-	sb.NewLine = "\n"
-	indent = ""
+	lb := NewLuaBuilder()
 
-	sb.WriteLine("Config.NewZone({")
-	incIndent()
 	var line string
 	lines := strings.Split(string(data), "\n")
 	if len(lines) > 0 {
 		line = lines[0]
 	}
-	for len(lines) > 0 {
-		if len(line) == 0 || line[0] != '#' {
-			line, lines = nextLine(lines)
-			continue
-		}
 
-		// Parse Id
-		id := mud.ZoneId(parseInt(line[1:]) + 1)
-		sb.WriteLinef("%sId = %v,", indent, id)
+	lb.FuncCall("Config.NewZone", func() {
+		lb.Table(func() {
+			for len(lines) > 0 {
+				if len(line) == 0 || line[0] != '#' {
+					line, lines = nextLine(lines)
+					continue
+				}
 
-		// Parse Name
-		line, lines = nextLine(lines)
-		name := line[:len(line)-1]
-		sb.WriteLinef("%sName = \"%v\",", indent, name)
+				// Parse Id
+				lb.Field("Id", mud.ZoneId(parseInt(line[1:])+1))
 
-		// Parse values
-		line, lines = nextLine(lines)
-		toks := strings.Split(line, " ")
-		minRoomId := mud.RoomId(parseInt(toks[0])) + 1
-		sb.WriteLinef("%sMinRoomId = %v,", indent, minRoomId)
-		maxRoomId := mud.RoomId(parseInt(toks[1])) + 1
-		sb.WriteLinef("%sMaxRoomId = %v,", indent, maxRoomId)
-		resetFreq := utils.Seconds(parseInt(toks[2]) * 60)
-		sb.WriteLinef("%sResetFreq = %v,", indent, resetFreq)
+				// Parse Name
+				line, lines = nextLine(lines)
+				lb.Field("Name", line[:len(line)-1])
 
-		// Parse reset commands
-		sb.WriteLinef("%sResetFunc = function()", indent)
-		incIndent()
-		for lines[0] != "S" {
-			toks, lines = parseLineTokens(lines)
-			if toks[0][0] == '*' {
-				continue
+				// Parse values
+				line, lines = nextLine(lines)
+				toks := strings.Split(line, " ")
+				lb.Field("MinRoomId", mud.RoomId(parseInt(toks[0]))+1)
+				lb.Field("MaxRoomId", mud.RoomId(parseInt(toks[1]))+1)
+				lb.Field("ResetFreq", utils.Seconds(parseInt(toks[2])*60))
+
+				// Parse reset commands
+				lb.FieldScope("ResetFunc", func() {
+					lb.Func(func() {
+						for lines[0] != "S" {
+							toks, lines = parseLineTokens(lines)
+							if toks[0][0] == '*' {
+								continue
+							}
+							switch toks[0] {
+							case "M":
+								key := "mob" + toks[2]
+								lb.Linef("World.LoadEntityLimited(\"%s\", %s, %s)", key, toks[4], toks[3])
+							}
+						}
+					})
+				})
 			}
-			switch toks[0] {
-			case "M":
-				key := "mob" + toks[2]
-				sb.WriteLinef("%sWorld.LoadEntityLimited(\"%s\", %s, %s)", indent, key, toks[4], toks[3])
-			}
-		}
-		decIndent()
-		sb.WriteLinef("%send", indent)
-	}
-	decIndent()
-	sb.WriteLine("})")
-	saveString(outPath, sb.String())
+		})
+	})
+	saveString(outPath, lb.Build())
 }
 
 func parseRooms(data []byte, outPath string) {
+	lb := NewLuaBuilder()
+
 	var line string
 	lines := strings.Split(string(data), "\n")
 	if len(lines) > 0 {
 		line = lines[0]
 	}
-
-	rooms := make(mud.RoomConfigList, 0)
 	for len(lines) > 0 {
 		if len(line) == 0 || line[0] != '#' {
 			line, lines = nextLine(lines)
 			continue
 		}
-		cfg := &mud.RoomConfig{}
-		cfg.Exits = make(mud.RoomExitsConfig)
+		lb.FuncCall("Config.NewRoom", func() {
+			lb.Table(func() {
+				// Parse Id
+				rid := parseInt(line[1:])
+				lb.Field("Id", rid+1)
 
-		// Parse Id
-		rid := parseInt(line[1:])
-		cfg.Id = mud.RoomId(rid + 1)
-
-		// Parse Name
-		line, lines = nextLine(lines)
-		cfg.Name = line[:len(line)-1]
-
-		// Parse Description
-		cfg.Desc, lines = parseMultilineString(lines)
-
-		line, lines = nextLine(lines)
-		for line != "S" {
-			if len(line) == 0 {
+				// Parse Name
 				line, lines = nextLine(lines)
-				continue
-			}
-			if line[0] == 'D' && len(line) == 2 {
-				idir := line[1] - '0'
-				dir := mud.Direction(idir)
-				lines = nextLineUntil(lines, '~')
-				lines = nextLineUntil(lines, '~')
-				line, lines = nextLine(lines)
-				toks := strings.Split(line, " ")
-				toRid, _ := strconv.Atoi(toks[2])
-				cfg.Exits[dir] = mud.RoomId(toRid + 1)
-			}
-			line, lines = nextLine(lines)
-		}
+				lb.Field("Name", line[:len(line)-1])
 
-		rooms = append(rooms, cfg)
+				// Parse Description
+				desc, lines := parseMultilineString(lines)
+				lb.Field("Desc", desc)
+
+				// Parse exits
+				line, lines = nextLine(lines)
+				lb.FieldScope("Exits", func() {
+					lb.Table(func() {
+						for line != "S" {
+							if len(line) == 0 {
+								line, lines = nextLine(lines)
+								continue
+							}
+							if line[0] == 'D' && len(line) == 2 {
+								idir := line[1] - '0'
+								dir := mud.Direction(idir)
+								lines = nextLineUntil(lines, '~')
+								lines = nextLineUntil(lines, '~')
+								line, lines = nextLine(lines)
+								toks := strings.Split(line, " ")
+								toRid, _ := strconv.Atoi(toks[2])
+								lb.Field(dir.String(), mud.RoomId(toRid+1))
+							}
+							line, lines = nextLine(lines)
+						}
+					})
+				})
+			})
+		})
 	}
-	saveJSON(outPath, &rooms)
+	saveString(outPath, lb.Build())
 }
 
 func parseEntities(data []byte, outPath string) {
@@ -352,15 +350,4 @@ func saveJSON[T any](path string, data T) error {
 
 func trimExtension(fileName string) string {
 	return fileName[:len(fileName)-len(filepath.Ext(fileName))]
-}
-
-func incIndent() {
-	indent = indent + "\t"
-}
-
-func decIndent() {
-	if indent == "" {
-		return
-	}
-	indent = strings.TrimSuffix(indent, "\t")
 }

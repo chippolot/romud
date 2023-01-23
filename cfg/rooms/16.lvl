@@ -5,12 +5,12 @@
   "Desc": "   You find yourself on a small road leading away from the edge\nof the River of Lost Souls.  The dark waters of the River can\nbe seen and heard just south of here.  Looking to the east and\nwest, you see only the walls of the rocky cliffs.  Off to the\nnorth a strange path seems to lead straight into the depths of\nthe mountain.",
   "Exits": [
    {
-    "RoomId": 1502,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5620,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1502,
+    "Verb": "north"
    }
   ]
  },
@@ -95,16 +95,16 @@
   "Desc": "   Even the darkest have a place on the road to the truth.  It is in this\nplace, so empty and forgotten, that God has chosen the worst, and brought\nthem close to Him for one last time.",
   "Exits": [
    {
+    "RoomId": 1514,
+    "Verb": "east"
+   },
+   {
     "RoomId": 1509,
     "Verb": "west"
    },
    {
     "RoomId": 1506,
     "Verb": "up"
-   },
-   {
-    "RoomId": 1514,
-    "Verb": "east"
    }
   ]
  },
@@ -163,12 +163,12 @@
   "Desc": "   Old tales tell of a conversation between the devil and the Prophet\nJesus: the devil offered him a kingdom, vast riches, the temptation of\na glorious near-death saved by his angels.  Even this Messenger of God\nwas forced to stop and think.  Imagine how hard it could be for the rest.",
   "Exits": [
    {
-    "RoomId": 1510,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1512,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1510,
+    "Verb": "south"
    }
   ]
  },
@@ -253,12 +253,12 @@
   "Desc": "   The din of a great battle shakes these halls, the moans of the earth\nerupting at the shakings of the End Time.  Be ready for that day, be very\nready, for if you are not, he will claim you for one of his own.",
   "Exits": [
    {
-    "RoomId": 1516,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1518,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1516,
+    "Verb": "south"
    }
   ]
  },
@@ -313,12 +313,12 @@
   "Desc": "   The first Caliphs were chosen by consultation with a noble council\nof elders, each of whom, hoping to lead the world of Islam alone, voted\nto elect the one amongst them they thought was the weakest.  Each time,\nthey were wrong.  Each one was more noble, more upright than the one\nbefore.",
   "Exits": [
    {
-    "RoomId": 1522,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1520,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1522,
+    "Verb": "north"
    }
   ]
  },
@@ -358,12 +358,12 @@
   "Desc": "   Behold, Allah is the Provider, the most Generous.  He would not suffer\nhis believers to walk the path of light without guidance.  He provided the\nProphets, may peace be upon them, and in the examples of their own growth,\nwe shall find the truth of our own.",
   "Exits": [
    {
-    "RoomId": 1508,
-    "Verb": "west"
-   },
-   {
     "RoomId": 1525,
     "Verb": "north"
+   },
+   {
+    "RoomId": 1508,
+    "Verb": "west"
    }
   ]
  },
@@ -373,12 +373,12 @@
   "Desc": "   In the creation of the heavens and the earth, and in the alternation of\nnight and day, there are signs for men of sense; those that remember Allah\nsay: \"Lord, You have not created this in vain!\"",
   "Exits": [
    {
-    "RoomId": 1526,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1524,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1526,
+    "Verb": "north"
    }
   ]
  },
@@ -452,16 +452,16 @@
   "Desc": "   It is incumbent upon all Muslims to make the pilgrimage to Mecca once\nin their lifetime, if they are able, and for those unfortunate enough to\nfollow the lives of the lower evils, such a pilgrimage with an open and\ncontrite heart shall absolve them of all.",
   "Exits": [
    {
+    "RoomId": 1529,
+    "Verb": "west"
+   },
+   {
     "RoomId": 1536,
     "Verb": "up"
    },
    {
     "RoomId": 1531,
     "Verb": "east"
-   },
-   {
-    "RoomId": 1529,
-    "Verb": "west"
    }
   ]
  },
@@ -471,16 +471,16 @@
   "Desc": "   It is written that no one may intercede with God on behalf of another.\nNo prayers from another may save the soul of a doomed man; his only hope\nis prayers of his own.",
   "Exits": [
    {
-    "RoomId": 1530,
-    "Verb": "west"
-   },
-   {
     "RoomId": 1537,
     "Verb": "up"
    },
    {
     "RoomId": 1518,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1530,
+    "Verb": "west"
    }
   ]
  },
@@ -509,16 +509,16 @@
   "Desc": "   When the records of men's deeds are laid open, and heaven is stripped\nbare; when Hell burns fiercely and Paradise is brought near: then each\nsoul shall know what it has done.",
   "Exits": [
    {
+    "RoomId": 1534,
+    "Verb": "east"
+   },
+   {
     "RoomId": 1532,
     "Verb": "west"
    },
    {
     "RoomId": 1536,
     "Verb": "down"
-   },
-   {
-    "RoomId": 1534,
-    "Verb": "east"
    }
   ]
  },
@@ -528,16 +528,16 @@
   "Desc": "   You have traveled the righteous path, and your own journey has\nimitated the evolution of the most perfect soul.  Only one final\npath awaits you; die as the one in the room before, and your death\nwill mean nothing.",
   "Exits": [
    {
-    "RoomId": 1528,
-    "Verb": "south"
-   },
-   {
     "RoomId": 1533,
     "Verb": "west"
    },
    {
     "RoomId": 1537,
     "Verb": "down"
+   },
+   {
+    "RoomId": 1528,
+    "Verb": "south"
    }
   ]
  },
@@ -547,16 +547,16 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
+    "RoomId": 1532,
+    "Verb": "up"
+   },
+   {
     "RoomId": 1529,
     "Verb": "down"
    },
    {
     "RoomId": 1536,
     "Verb": "east"
-   },
-   {
-    "RoomId": 1532,
-    "Verb": "up"
    }
   ]
  },
@@ -565,14 +565,6 @@
   "Name": "The Final Facing",
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
-   {
-    "RoomId": 1538,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 1535,
-    "Verb": "west"
-   },
    {
     "RoomId": 1537,
     "Verb": "east"
@@ -584,6 +576,14 @@
    {
     "RoomId": 1530,
     "Verb": "down"
+   },
+   {
+    "RoomId": 1538,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 1535,
+    "Verb": "west"
    }
   ]
  },
@@ -593,16 +593,16 @@
   "Desc": "   The last of the darkness lies behind you; only the straight path\nremains.  Go forth with a clean heart.  Only the penitent shall find\nwhat they seek.",
   "Exits": [
    {
-    "RoomId": 1531,
-    "Verb": "down"
-   },
-   {
     "RoomId": 1536,
     "Verb": "west"
    },
    {
     "RoomId": 1534,
     "Verb": "up"
+   },
+   {
+    "RoomId": 1531,
+    "Verb": "down"
    }
   ]
  },
@@ -612,12 +612,12 @@
   "Desc": "   The Compassionate, the Merciful, Sovereign of the Day of Judgment!\nYou alone we worship, and to You alone we turn for help.  Guide us to\nthe Straight Path, the path of those whom You have favored, not of\nthose who have gone astray.",
   "Exits": [
    {
-    "RoomId": 1539,
-    "Verb": "north"
-   },
-   {
     "RoomId": 1536,
     "Verb": "south"
+   },
+   {
+    "RoomId": 1539,
+    "Verb": "north"
    }
   ]
  },

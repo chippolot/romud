@@ -46,12 +46,12 @@
   "Desc": "   You are standing in what looks like a bend in the pipe system of the\nsewer.  The 'floor' is covered completely by mud!  This includes covering\nyour legs up to your knees as well.  The pipe leads west and south.",
   "Exits": [
    {
-    "RoomId": 7105,
-    "Verb": "south"
-   },
-   {
     "RoomId": 7102,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7105,
+    "Verb": "south"
    }
   ]
  },
@@ -163,16 +163,16 @@
   "Desc": "   You are in the process of walking all the way around the ledge since\nthere is no way of turning around on this all too narrow path.  There IS\nanother exit from here but that leads right into mid-air and with high\nprobability of a free fall session afterwards.",
   "Exits": [
    {
-    "RoomId": 7108,
-    "Verb": "north"
-   },
-   {
     "RoomId": 7191,
     "Verb": "east"
    },
    {
     "RoomId": 7112,
     "Verb": "south"
+   },
+   {
+    "RoomId": 7108,
+    "Verb": "north"
    }
   ]
  },
@@ -281,16 +281,16 @@
   "Desc": "   You stand, swaying out from the ledge, with only a couple of inches of\nsafe, solid ledge under your feet.  The ledge continues to the west and\nleads south from here into darkness.",
   "Exits": [
    {
-    "RoomId": 7281,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7118,
     "Verb": "south"
    },
    {
     "RoomId": 7114,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7281,
+    "Verb": "down"
    }
   ]
  },
@@ -424,10 +424,6 @@
   "Desc": "   You've just stepped into the most unlucky position in the whole of\nCircleMUD.  The result of such a foolish act should be punished with\ndeath, you know.  With an acceleration of approximately 9.82 meters\nper second squared, you are now descending the Abyss.  What awaits you\nat the bottom will continue to be a mystery.  Good-bye cruel world.",
   "Exits": [
    {
-    "RoomId": 7114,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7110,
     "Verb": "north"
    },
@@ -442,6 +438,10 @@
    {
     "RoomId": 7108,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7114,
+    "Verb": "up"
    }
   ]
  }

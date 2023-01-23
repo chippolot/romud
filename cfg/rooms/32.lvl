@@ -43,16 +43,16 @@
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  South of here you see the entrance to\nthe park, and a small building seems to be just west of the entrance.",
   "Exits": [
    {
+    "RoomId": 3104,
+    "Verb": "east"
+   },
+   {
     "RoomId": 3106,
     "Verb": "south"
    },
    {
     "RoomId": 3102,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3104,
-    "Verb": "east"
    }
   ]
  },
@@ -62,16 +62,16 @@
   "Desc": "   The river gently flows westwards just north of here.  The promenade\ncontinues both east and west.  A small path leads south.  Looking across\nthe river you see the levee.",
   "Exits": [
    {
-    "RoomId": 3105,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3133,
     "Verb": "south"
    },
    {
     "RoomId": 3103,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3105,
+    "Verb": "east"
    }
   ]
  },
@@ -186,6 +186,10 @@
   "Desc": "   The road continues north and south.  A building is just west of here, you\nnotice a sign on the door.  The park entrance is to the east.",
   "Exits": [
    {
+    "RoomId": 3132,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3113,
     "Verb": "east"
    },
@@ -196,10 +200,6 @@
    {
     "RoomId": 3111,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3132,
-    "Verb": "north"
    }
   ]
  },
@@ -432,12 +432,12 @@
   "Desc": "   You are on Emerald Avenue which continues north.  The Concourse is south\nof here.",
   "Exits": [
    {
-    "RoomId": 3129,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3122,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3129,
+    "Verb": "south"
    }
   ]
  },
@@ -447,12 +447,12 @@
   "Desc": "   You are on Park Road which continues north.  The Concourse is south of\nhere.",
   "Exits": [
    {
-    "RoomId": 3123,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3130,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3123,
+    "Verb": "north"
    }
   ]
  },
@@ -500,6 +500,10 @@
   "Desc": "   The Concourse continues both east and west.  Park Road is north of here\nand an iron grate leads south to the graveyard.",
   "Exits": [
    {
+    "RoomId": 3127,
+    "Verb": "north"
+   },
+   {
     "RoomId": 3131,
     "Verb": "east"
    },
@@ -510,10 +514,6 @@
    {
     "RoomId": 3129,
     "Verb": "west"
-   },
-   {
-    "RoomId": 3127,
-    "Verb": "north"
    }
   ]
  },
@@ -538,12 +538,12 @@
   "Desc": "   You are at Park Road which continues north and south.",
   "Exits": [
    {
-    "RoomId": 3112,
-    "Verb": "south"
-   },
-   {
     "RoomId": 3102,
     "Verb": "north"
+   },
+   {
+    "RoomId": 3112,
+    "Verb": "south"
    }
   ]
  },
@@ -617,12 +617,12 @@
   "Desc": "   You are at a bend on Park Road.  To the south the road goes on and to the\nwest is the Road Crossing.",
   "Exits": [
    {
-    "RoomId": 3121,
-    "Verb": "west"
-   },
-   {
     "RoomId": 3123,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3121,
+    "Verb": "west"
    }
   ]
  },
@@ -632,12 +632,12 @@
   "Desc": "   You are standing in the waiting room at the town hall.  Wooden chairs stand\nalong the walls and a long desk with a typewriter is placed in the middle of\nthe room.",
   "Exits": [
    {
-    "RoomId": 3139,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3118,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3139,
+    "Verb": "east"
    }
   ]
  },
@@ -699,12 +699,12 @@
   "Desc": "   You are on a well-kept gravel road that leads north-south through the\ngraveyard.  On both sides of the road grow dark evergreen trees.  An iron\ngrate is to the north.",
   "Exits": [
    {
-    "RoomId": 3130,
-    "Verb": "north"
-   },
-   {
     "RoomId": 3152,
     "Verb": "south"
+   },
+   {
+    "RoomId": 3130,
+    "Verb": "north"
    }
   ]
  },
@@ -800,12 +800,12 @@
   "Desc": "   North of here you see the miserable buildings of Poor Alley.  The\nriver flows west towards the bridge.  The riverbanks are too steep to\nclimb.",
   "Exits": [
    {
-    "RoomId": 3203,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3201,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3203,
+    "Verb": "east"
    }
   ]
  },
@@ -849,12 +849,12 @@
   "Desc": "   You see the warehouse on the northern riverbank.  East of here you see the\ncity wall.  The river flows west towards the levee.",
   "Exits": [
    {
-    "RoomId": 3206,
-    "Verb": "east"
-   },
-   {
     "RoomId": 3204,
     "Verb": "west"
+   },
+   {
+    "RoomId": 3206,
+    "Verb": "east"
    }
   ]
  },
@@ -864,12 +864,12 @@
   "Desc": "   The river enters from a hole in the eastern city wall.  The hole has been\nblocked by several vertically positioned iron bars set into the wall.",
   "Exits": [
    {
-    "RoomId": 3205,
-    "Verb": "west"
-   },
-   {
     "RoomId": 5002,
     "Verb": "east"
+   },
+   {
+    "RoomId": 3205,
+    "Verb": "west"
    }
   ]
  }

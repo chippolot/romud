@@ -185,10 +185,6 @@
   "Desc": "   Several trails in the forest intersect here in a small\nclearing.  The dirt seems matted down, and you see many\nfootprints in the soil.   Nearby you hear a bird's chirp\nabruptly cut off in a loud squawk, and then silence.  The\npaths seem well-traveled, the undergrowth matted down and\nthe foilage hacked away to leave plenty of room or a\ntraveller to pass in every cardinal direction, excepting\nthe west path seems fairly overgrown...\n   You feel watched.",
   "Exits": [
    {
-    "RoomId": 6214,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6212,
     "Verb": "east"
    },
@@ -199,6 +195,10 @@
    {
     "RoomId": 6229,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6214,
+    "Verb": "north"
    }
   ]
  },
@@ -208,12 +208,12 @@
   "Desc": "   The northern trail winds through the trees, heading\nfrom a forest clearings to the south to where there appears\nto be a river's edge to the north.  This trail appears to\nbe well-used and you spot many tracks in the earth.  Again\nthe hairs on the back of your neck stand up, and you wonder\nif you're being spied upon.",
   "Exits": [
    {
-    "RoomId": 6213,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6215,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6213,
+    "Verb": "south"
    }
   ]
  },
@@ -238,12 +238,12 @@
   "Desc": "   The river flows on its course, unhampered by the energy\nbarrier passing right down its center for as far as you\ncan see in both directions.  The path you are on travels\nalong the length of the river to the east and west\ninbetween the water and the forest's edge.  Once again you\nshiver and feel that unmistakeable sense that you are\nbeing watched.  Disturbing.",
   "Exits": [
    {
-    "RoomId": 6215,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6217,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6215,
+    "Verb": "east"
    }
   ]
  },
@@ -414,12 +414,12 @@
   "Desc": "   A bend in the forest trail allows you to go east and\nnorth here.  To the east you spot a small clearing, while\nnorthwards this trail seems to join a much larger one \nleading through the woods.  On the ground is half of a \nbroken knife handle, made of bone and dried leather,\nuseless now.  You wonder if the owner is watching you \nnow -- something certainly is.",
   "Exits": [
    {
-    "RoomId": 6222,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6233,
     "Verb": "north"
+   },
+   {
+    "RoomId": 6222,
+    "Verb": "east"
    }
   ]
  },
@@ -459,16 +459,16 @@
   "Desc": "   Two trails come together here, a large northern path \nheading away from tracks leading to the east and west.  \nThe western path seems to be the most traveled, and the \neast hardly at all.  There seems to be less trees around \nhere... it seems as if many have been cut down by some\nsort of crude tools.  This land clearing appears to be \nespecially true to the east.",
   "Exits": [
    {
+    "RoomId": 6232,
+    "Verb": "east"
+   },
+   {
     "RoomId": 6233,
     "Verb": "west"
    },
    {
     "RoomId": 6230,
     "Verb": "north"
-   },
-   {
-    "RoomId": 6232,
-    "Verb": "east"
    }
   ]
  },
@@ -561,16 +561,16 @@
   "Desc": "   The trail continues here to the east and west, with a \nsmall trail splitting off towards a large clearing to the\nsouth.  Two wooden poles with skulls on top warn you away\nfrom the south, and succeed in making you feel quite\nuncomfortable.  Strange...",
   "Exits": [
    {
-    "RoomId": 6236,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6238,
     "Verb": "south"
    },
    {
     "RoomId": 6239,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6236,
+    "Verb": "east"
    }
   ]
  },
@@ -674,16 +674,16 @@
   "Desc": "   The tunnel forks here, one branch leading north, the \nother west.  Additionally, you can head back outside to \nthe east, which seems like a very good idea to your \ntortured nasal passages.  Your eyes water from the stench,\nand you clench your left hand tightly to keep control of \nyour bile.\n   Forcing your eyes open, you notice the warning signs\npainted around the tunnel to the north.",
   "Exits": [
    {
-    "RoomId": 6256,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6243,
     "Verb": "east"
    },
    {
     "RoomId": 6245,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6256,
+    "Verb": "north"
    }
   ]
  },
@@ -693,12 +693,12 @@
   "Desc": "   The floor is slick with the humidity that boils out of\nthe lower reaches of this cave, bringing that most awful \nsmell with it.  Again, you consider saving your nose the \ntrip west and down the tunnel, and heading back east to \nthe cave entrance.",
   "Exits": [
    {
-    "RoomId": 6244,
-    "Verb": "east"
-   },
-   {
     "RoomId": 6246,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6244,
+    "Verb": "east"
    }
   ]
  },
@@ -772,16 +772,16 @@
   "Desc": "   A few sleeping pallets, made of moldy straw and \nstinking furs are arranged around a small firepit here.  \nA wooden cup, carved by a crude tool and cruder hands \nsits near the ashes filled with water you consider \nundrinkable.  Somewhere to the east you hear an orc \nchild's whining cry, and a voice hushes it urgently.  \nBeware, orcs!  Adventurers are here!  Hide your children!",
   "Exits": [
    {
-    "RoomId": 6253,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6247,
     "Verb": "north"
    },
    {
     "RoomId": 6251,
     "Verb": "east"
+   },
+   {
+    "RoomId": 6253,
+    "Verb": "south"
    }
   ]
  },
@@ -790,10 +790,6 @@
   "Name": "A Cave",
   "Desc": "   Several grass sleeping pallets are here, clustered \naround the remains of an old fire.  The sloping of the \ncave's ceiling allow for smoke ventilation towards the \nsurface in here you note, lucky for the orcs.  A few \nstrings of burnt meat still hang over the fire, untended \nand uneaten.  On the floor near your feet you spy a small, \ntwisted piece of wire... one orc's idea of a treasured ring, \nno doubt.  Kicking the trinket away, you try to push the \npity out of your heart for these wretches.",
   "Exits": [
-   {
-    "RoomId": 6248,
-    "Verb": "north"
-   },
    {
     "RoomId": 6252,
     "Verb": "east"
@@ -805,6 +801,10 @@
    {
     "RoomId": 6250,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6248,
+    "Verb": "north"
    }
   ]
  },
@@ -852,16 +852,16 @@
   "Desc": "   Many sleeping pallets are arranged near the walls, each\nmade of heavy fur padding for comfort and warmth.  Many \nare covered with blood and other, unidentifiable \nsubstances.  Looking around, your only coherent thought \nis, 'Don't want to know... don't want to know...'",
   "Exits": [
    {
-    "RoomId": 6251,
-    "Verb": "north"
-   },
-   {
     "RoomId": 6255,
     "Verb": "east"
    },
    {
     "RoomId": 6253,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6251,
+    "Verb": "north"
    }
   ]
  },
@@ -886,12 +886,12 @@
   "Desc": "   This forking off from the mail tunnel seems odd; the \nwalls are strangely smooth, as if they were carved out by \nforces unknown.  The end is abrupt and short, but there is\na steel door inset in the wall of the west side of the \ntunnel.  The smell from the lower tunnel doesn't seem \nnearly as bad here... this might be a good place to rest\nand catch your breath.",
   "Exits": [
    {
-    "RoomId": 6244,
-    "Verb": "south"
-   },
-   {
     "RoomId": 6257,
     "Verb": "west"
+   },
+   {
+    "RoomId": 6244,
+    "Verb": "south"
    }
   ]
  },

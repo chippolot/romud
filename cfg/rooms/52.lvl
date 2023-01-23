@@ -20,6 +20,10 @@
   "Desc": "   You walk along a highly ornate street going north-south.  A large gate\nlies to the east while a building lies to the west.",
   "Exits": [
    {
+    "RoomId": 5124,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5101,
     "Verb": "east"
    },
@@ -30,10 +34,6 @@
    {
     "RoomId": 5123,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5124,
-    "Verb": "north"
    }
   ]
  },
@@ -103,16 +103,16 @@
   "Desc": "   You walk along a highly ornate city street going east-west.  To the north\nis a large building.",
   "Exits": [
    {
-    "RoomId": 5104,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5108,
     "Verb": "west"
    },
    {
     "RoomId": 5119,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5104,
+    "Verb": "east"
    }
   ]
  },
@@ -186,12 +186,12 @@
   "Desc": "   You stand in the inner courtyard of the 1st and largest house in the city.\nThe room is extremely large and decorative.  Mural and paintings hang on the \nwalls depicting some battles and a spider queen.",
   "Exits": [
    {
-    "RoomId": 5111,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5113,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5111,
+    "Verb": "east"
    }
   ]
  },
@@ -227,16 +227,16 @@
   "Desc": "   You walk along a highly ornate city street leading north-south and east.",
   "Exits": [
    {
-    "RoomId": 5111,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5116,
     "Verb": "north"
    },
    {
     "RoomId": 5118,
     "Verb": "east"
+   },
+   {
+    "RoomId": 5111,
+    "Verb": "south"
    }
   ]
  },
@@ -302,12 +302,12 @@
   "Desc": "   The temple is the largest building in the city.  Even its doors are beyond\nimagination.  Inside of the temple entrance, the walls are made of gold and \nadamantite.",
   "Exits": [
    {
-    "RoomId": 5118,
-    "Verb": "south"
-   },
-   {
     "RoomId": 5127,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5118,
+    "Verb": "south"
    }
   ]
  },
@@ -328,16 +328,16 @@
   "Desc": "   You walk along a highly ornate city street going eastward.  To the north\nis a building.",
   "Exits": [
    {
+    "RoomId": 5121,
+    "Verb": "north"
+   },
+   {
     "RoomId": 5124,
     "Verb": "east"
    },
    {
     "RoomId": 5118,
     "Verb": "west"
-   },
-   {
-    "RoomId": 5121,
-    "Verb": "north"
    }
   ]
  },
@@ -490,12 +490,12 @@
   "Desc": "   You are in a long hallway lined with adamantite.  The walls are engraved\nwith pictures of elves and spiders.  The hallway continues east and west.  As\nyou look down the hallway you can make out one or two figures moving away from\nyou.",
   "Exits": [
    {
-    "RoomId": 5128,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5133,
     "Verb": "west"
+   },
+   {
+    "RoomId": 5128,
+    "Verb": "east"
    }
   ]
  },
@@ -565,16 +565,16 @@
   "Desc": "   You are standing in the middle of a grand hallway.  The walls are \nof the purest adamantite with gold trim.  Mosaics line the walls.",
   "Exits": [
    {
-    "RoomId": 5138,
-    "Verb": "east"
-   },
-   {
     "RoomId": 5136,
     "Verb": "down"
    },
    {
     "RoomId": 5139,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5138,
+    "Verb": "east"
    }
   ]
  },
@@ -625,12 +625,12 @@
   "Desc": "   You are climbing a set of obsidian stairs surrounded by adamantite walls.\nTo the north are a set of large golden doors.",
   "Exits": [
    {
-    "RoomId": 5139,
-    "Verb": "up"
-   },
-   {
     "RoomId": 5142,
     "Verb": "north"
+   },
+   {
+    "RoomId": 5139,
+    "Verb": "up"
    }
   ]
  },
@@ -699,10 +699,6 @@
   "Desc": "   You are standing in front of a highly and freshly bloodstained altar.  \nEngraved on the top of the altar is a giant spider with a human head.  Looking \ndown from the altar you see a large sacrificial pit with thousands of swarming\nspiders looking for their next meal!",
   "Exits": [
    {
-    "RoomId": 5149,
-    "Verb": "north"
-   },
-   {
     "RoomId": 5143,
     "Verb": "east"
    },
@@ -713,6 +709,10 @@
    {
     "RoomId": 5144,
     "Verb": "down"
+   },
+   {
+    "RoomId": 5149,
+    "Verb": "north"
    }
   ]
  },

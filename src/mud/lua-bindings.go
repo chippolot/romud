@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"log"
 	"math/rand"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -48,6 +49,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	configTable := L.NewTable()
 	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
+	configTable.RawSetString("NewRoom", luar.New(L, lua_ConfigNewRoom))
 	L.SetGlobal("Config", configTable)
 
 	utilTbl := L.NewTable()
@@ -124,6 +126,29 @@ func lua_ConfigNewZone(tbl *lua.LTable) {
 	}
 	cfg.resetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
 	lua_W.zones[cfg.Id] = cfg
+}
+
+func lua_ConfigNewRoom(tbl *lua.LTable) {
+	cfg := &RoomConfig{}
+	if err := gluamapper.Map(tbl, cfg); err != nil {
+		panic(err)
+	}
+	zoneId := ZoneId(-1)
+	for _, z := range lua_W.zones {
+		if cfg.Id >= z.MinRoomId && cfg.Id <= z.MaxRoomId {
+			zoneId = z.Id
+			break
+		}
+	}
+	if zoneId == -1 {
+		log.Fatalf("cannot find zone for room id %d", cfg.Id)
+	}
+
+	r, err := NewRoom(cfg, zoneId)
+	if err != nil {
+		log.Fatalf("failed to parse room with error: %v", err)
+	}
+	lua_W.AddRoom(r)
 }
 
 func lua_UtilChance() int {

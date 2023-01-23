@@ -20,16 +20,16 @@
   "Desc": "   The river is deep, and runs swiftly in an east-west direction.  To the\nnorth the river eddies and enters a backwash where a small bank extends\ndown from a dark, thick stand of trees.  It doesn't look particulary\ninviting however.",
   "Exits": [
    {
+    "RoomId": 6121,
+    "Verb": "north"
+   },
+   {
     "RoomId": 901,
     "Verb": "east"
    },
    {
     "RoomId": 903,
     "Verb": "west"
-   },
-   {
-    "RoomId": 6121,
-    "Verb": "north"
    }
   ]
  },
@@ -69,10 +69,6 @@
   "Desc": "   You are at the edge of the river delta, where the river empties\nout on its way to the sea.  The water here is Black.  Deep.  Dark.\nDeadly.  The tidal waves sweep you around and around up and down.",
   "Exits": [
    {
-    "RoomId": 906,
-    "Verb": "west"
-   },
-   {
     "RoomId": 912,
     "Verb": "north"
    },
@@ -83,6 +79,10 @@
    {
     "RoomId": 907,
     "Verb": "south"
+   },
+   {
+    "RoomId": 906,
+    "Verb": "west"
    }
   ]
  },
@@ -107,6 +107,10 @@
   "Desc": "   You are making your way along a channel in the river delta between\nthe island to the west and the shore to the south and east.  To the\nsouth an aging broken down looking pier juts out from land and toward\nthe west the channel works it way close to the island as it moves around\nits southern tip.",
   "Exits": [
    {
+    "RoomId": 909,
+    "Verb": "west"
+   },
+   {
     "RoomId": 906,
     "Verb": "north"
    },
@@ -117,10 +121,6 @@
    {
     "RoomId": 908,
     "Verb": "south"
-   },
-   {
-    "RoomId": 909,
-    "Verb": "west"
    }
   ]
  },
@@ -190,16 +190,16 @@
   "Desc": "   The river splits as runs up against the island and a navigatble\nchannel slips off to the north and west.",
   "Exits": [
    {
-    "RoomId": 913,
-    "Verb": "north"
-   },
-   {
     "RoomId": 905,
     "Verb": "south"
    },
    {
     "RoomId": 913,
     "Verb": "west"
+   },
+   {
+    "RoomId": 913,
+    "Verb": "north"
    }
   ]
  },
@@ -228,12 +228,12 @@
   "Desc": "   You are sitting just off a small landing on the island that\nappears to be nothing more than a short path that leads to the\nside of a hill.",
   "Exits": [
    {
-    "RoomId": 915,
-    "Verb": "south"
-   },
-   {
     "RoomId": 913,
     "Verb": "east"
+   },
+   {
+    "RoomId": 915,
+    "Verb": "south"
    }
   ]
  },
@@ -243,12 +243,12 @@
   "Desc": "   Bodies lie everywhere.  Commoner, peasant, duke, duchess.  The Gods\nwill not hear you call here.  Hence they will not answer you.  To the\nsouth the path ends at a dark cave entrance.\nA sign has been posted beside the entrance.",
   "Exits": [
    {
-    "RoomId": 914,
-    "Verb": "north"
-   },
-   {
     "RoomId": 916,
     "Verb": "south"
+   },
+   {
+    "RoomId": 914,
+    "Verb": "north"
    }
   ]
  },

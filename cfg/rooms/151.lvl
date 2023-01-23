@@ -24,12 +24,12 @@
   "Desc": "   You stand in the center of the great King's Road.  The road is very well\nbuilt, and goes in a straight line due east-west.",
   "Exits": [
    {
-    "RoomId": 15003,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15001,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15003,
+    "Verb": "east"
    }
   ]
  },
@@ -39,12 +39,12 @@
   "Desc": "   You stand on the King's Road, which leads east and west.  The\nskill of the builders is apparent, since it is impossible to notice\nany turn or irregularity in the road.",
   "Exits": [
    {
-    "RoomId": 15004,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15002,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15004,
+    "Verb": "east"
    }
   ]
  },
@@ -84,12 +84,12 @@
   "Desc": "   You are in the Kitchen.  Lots of helpers hurry to do the Chief Cook's\nbidding, and there is a wonderful smell that makes you feel very hungry.\nAll around the room, there are shelves with different kinds of cooking \ngear stacked on them.  There is an exit to the north, and one to the east;\nboth leading to small passages.",
   "Exits": [
    {
-    "RoomId": 15007,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15011,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15007,
+    "Verb": "east"
    }
   ]
  },
@@ -178,12 +178,12 @@
   "Desc": "   You are standing in the south-west end of the Great Hall. It \nis truly vast; the roof is so high above your head, that it seems no\ncloser than the clouds outside.  The roof is beautifully painted, by\nsomeone who must have been a true master.  The hall is very large,\nand could easily seat several hundred people at a banquet.",
   "Exits": [
    {
-    "RoomId": 15017,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15013,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15017,
+    "Verb": "north"
    }
   ]
  },
@@ -231,12 +231,12 @@
   "Desc": "   You are standing in a passage, that leads north and south.  To the south\nit leads towards one of towers.",
   "Exits": [
    {
-    "RoomId": 15020,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15010,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15020,
+    "Verb": "north"
    }
   ]
  },
@@ -356,16 +356,16 @@
   "Desc": "   You are standing in a corridor, that stretches further to the east.\nThere are doors to the north and west.  The corridor itself is mainly\nused by servants, and lacks some of the beauty of the rest of the\ncastle.",
   "Exits": [
    {
+    "RoomId": 15027,
+    "Verb": "north"
+   },
+   {
     "RoomId": 15023,
     "Verb": "east"
    },
    {
     "RoomId": 15021,
     "Verb": "west"
-   },
-   {
-    "RoomId": 15027,
-    "Verb": "north"
    }
   ]
  },
@@ -375,12 +375,12 @@
   "Desc": "   The corridor leads only west from here, but there is a door to\nthe north.",
   "Exits": [
    {
-    "RoomId": 15022,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15028,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15022,
+    "Verb": "west"
    }
   ]
  },
@@ -405,16 +405,16 @@
   "Desc": "   You are standing in a small passage leading north and south.  There\nis also an exit to the west, from which grunts, cheers and heavy blows\ncan be heard.",
   "Exits": [
    {
-    "RoomId": 15030,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15020,
     "Verb": "south"
    },
    {
     "RoomId": 15024,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15030,
+    "Verb": "north"
    }
   ]
  },
@@ -487,12 +487,12 @@
   "Desc": "   You are standing at a place where the corridor bends from east to north.",
   "Exits": [
    {
-    "RoomId": 15032,
-    "Verb": "east"
-   },
-   {
     "RoomId": 15036,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15032,
+    "Verb": "east"
    }
   ]
  },
@@ -607,16 +607,16 @@
   "Desc": "   You have arrived at the part of the Castle where prominent\nguests are housed.  To the east there is a large, ornamented\ndoor, and a somewhat smaller one leads north. ",
   "Exits": [
    {
-    "RoomId": 15044,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15040,
     "Verb": "east"
    },
    {
     "RoomId": 15034,
     "Verb": "south"
+   },
+   {
+    "RoomId": 15044,
+    "Verb": "north"
    }
   ]
  },
@@ -626,12 +626,12 @@
   "Desc": "   This must be where only the most highly regarded guests stay, since\nit is luxurious beyond your wildest imagination.  This is only the living\nroom of the suite, but it is huge and tastefully decorated.  All the\nfurniture is not only beautiful, but also made for comfort.  To the\nnorth, there is an exit to the bedroom, and there is a door to the west.",
   "Exits": [
    {
-    "RoomId": 15039,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15045,
     "Verb": "north"
+   },
+   {
+    "RoomId": 15039,
+    "Verb": "west"
    }
   ]
  },
@@ -780,6 +780,10 @@
   "Desc": "   You are standing on a great staircase, that leads up and down.  To \nthe east, there is a large oak door, and a corridor leads south.",
   "Exits": [
    {
+    "RoomId": 15026,
+    "Verb": "down"
+   },
+   {
     "RoomId": 15051,
     "Verb": "east"
    },
@@ -790,10 +794,6 @@
    {
     "RoomId": 15054,
     "Verb": "up"
-   },
-   {
-    "RoomId": 15026,
-    "Verb": "down"
    }
   ]
  },
@@ -803,12 +803,12 @@
   "Desc": "   You have entered a large, cosy living room.  There is a fireplace\nwith a fire burning, and a few comfortable chairs around a little\ntable.  There is a door to the west, and also an exit to the east.",
   "Exits": [
    {
-    "RoomId": 15050,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15052,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15050,
+    "Verb": "west"
    }
   ]
  },
@@ -852,10 +852,6 @@
   "Exits": [
    {
     "RoomId": 0,
-    "Verb": "south"
-   },
-   {
-    "RoomId": 0,
     "Verb": "west"
    },
    {
@@ -869,6 +865,10 @@
    {
     "RoomId": 0,
     "Verb": "east"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "south"
    }
   ]
  },
@@ -893,12 +893,12 @@
   "Desc": "   You are at a loss to explain why someone would want to spend all\nday down here.  The only explanation that seems even remotely logical\nto you is that there must be an important prisoner kept in one of the\ncells through the south door.\n   The decorations of the room are sparse, merely a table, a chair,\nand a deck of cards.  A stairwell has been built into the western wall\nand it leads upwards. ",
   "Exits": [
    {
-    "RoomId": 15058,
-    "Verb": "south"
-   },
-   {
     "RoomId": 15056,
     "Verb": "west"
+   },
+   {
+    "RoomId": 15058,
+    "Verb": "south"
    }
   ]
  },
@@ -979,12 +979,12 @@
   "Desc": "   Continuing through the heavy undergrowth, you find yourself\nin the middle of the forest.  The sounds of the forest can be\nheard all round and you feel a peaceful feeling come over you\nas you realize that mankind has not passed this way for some\ntime.\n   The fading trail you are on appears to have been so little\nused that it has almost completely grown over with vegitation\nfrom the woods here.  \n   The faded trail appears to lead north and east.",
   "Exits": [
    {
-    "RoomId": 15062,
-    "Verb": "north"
-   },
-   {
     "RoomId": 15064,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15062,
+    "Verb": "north"
    }
   ]
  },
@@ -1129,12 +1129,12 @@
   "Desc": "   As you move away form the open air into the darkness of the path\nand the sinister looking woods around you, you get a feeling of awe\nand something almost akin to horror.  The wood around is completely\nsilent, not even the rustling of leaves or the cracking of branches\nbreaks the silence.  The final thing you notice is that the darkness\nall around you seems to be almost contrived, and doesn't seem natural\nfor this kind of vegitation.\n   The path continues west and you can see light to the east.",
   "Exits": [
    {
-    "RoomId": 15074,
-    "Verb": "west"
-   },
-   {
     "RoomId": 15066,
     "Verb": "east"
+   },
+   {
+    "RoomId": 15074,
+    "Verb": "west"
    }
   ]
  },

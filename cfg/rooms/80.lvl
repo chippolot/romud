@@ -20,6 +20,14 @@
   "Desc": "   You are standing in a vast hall that is dimly lit, but wherever the\nlight comes from, is a mystery.  The walls seem to radiate warmth and\ngive the pleasent feeling of being welcome here.  A large portrait is\nhanging on one of the walls.  A large wooden staircase leads up into\nthe tower.  To the east there is a high passage away from the hall.\nThis ends shortly after by a tall oak door.  The enormous hall extends\nfurther north from here.  To the south you can see a huge, and VERY \nheavy-looking iron-wrought door.  It looks like this is the only exit\nfrom this magnificent old house.",
   "Exits": [
    {
+    "RoomId": 7911,
+    "Verb": "east"
+   },
+   {
+    "RoomId": 7901,
+    "Verb": "south"
+   },
+   {
     "RoomId": 7903,
     "Verb": "west"
    },
@@ -30,14 +38,6 @@
    {
     "RoomId": 7905,
     "Verb": "north"
-   },
-   {
-    "RoomId": 7911,
-    "Verb": "east"
-   },
-   {
-    "RoomId": 7901,
-    "Verb": "south"
    }
   ]
  },
@@ -69,20 +69,20 @@
   "Desc": "   You are standing in the northern end of the huge hall.  This part is\nunder the grand wooden staircase so the light seems to be a little less\nbright here, but this doesn't affect your sight at all.  To the north\nlies the kitchen.  To the south lies the southern end of the hall.  To\nthe east there is a huge metal door.  To the west there is a large\naspenwood door.",
   "Exits": [
    {
-    "RoomId": 7907,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 7914,
-    "Verb": "east"
-   },
-   {
     "RoomId": 7902,
     "Verb": "south"
    },
    {
     "RoomId": 7906,
     "Verb": "west"
+   },
+   {
+    "RoomId": 7907,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 7914,
+    "Verb": "east"
    }
   ]
  },
@@ -189,12 +189,12 @@
   "Desc": "   You see a splendid of the most of this world.  The valleys stretch as\nfar as the eye reaches to the south from here.  Down below you can see\nthe entrance of this magnificent building.  To the north are the doors\nto Redferne's bedroom.",
   "Exits": [
    {
-    "RoomId": 0,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7912,
     "Verb": "north"
+   },
+   {
+    "RoomId": 0,
+    "Verb": "down"
    }
   ]
  },
@@ -245,12 +245,12 @@
   "Desc": "   You are approximately on the middle of the treacherous Chain.  One false\nstep and death will come and collect you quickly.  The chain leads upwards\nand down.  No way are you going to descend now... You've only just begun\nyour climb.  Besides it could cost you your life.  Look down and you'll\nsee why.",
   "Exits": [
    {
-    "RoomId": 7919,
-    "Verb": "up"
-   },
-   {
     "RoomId": 7916,
     "Verb": "down"
+   },
+   {
+    "RoomId": 7919,
+    "Verb": "up"
    }
   ]
  },
@@ -275,12 +275,12 @@
   "Desc": "   This place truly a splendid view of the WHOLE COUNTRY SIDE!  A magnificent\nlight shines upon you and the way up through the clouds is opened.  Up there\nyou can now see the Mansion of Naris, Residence of the Greater God Redferne.\nThe chain beneath you seems to evaporate in the mustering clouds that\nsurround you by now.",
   "Exits": [
    {
-    "RoomId": 7918,
-    "Verb": "down"
-   },
-   {
     "RoomId": 7901,
     "Verb": "up"
+   },
+   {
+    "RoomId": 7918,
+    "Verb": "down"
    }
   ]
  },
@@ -289,6 +289,14 @@
   "Name": "The Free Fall From The Chain",
   "Desc": "   This is probably the third worst place to be in this entire MUD right\nnow.  You fall\n.  \n.\n.\nand fall\n.\n.\n.\nand fall\n.\n.\n.\nand HIT THE GROUND WITH SUCH A *SPLUTCH* that you die horribly, but instantly.\nGood-bye cruel world.",
   "Exits": [
+   {
+    "RoomId": 7919,
+    "Verb": "up"
+   },
+   {
+    "RoomId": 3121,
+    "Verb": "down"
+   },
    {
     "RoomId": 7915,
     "Verb": "north"
@@ -304,14 +312,6 @@
    {
     "RoomId": 7918,
     "Verb": "west"
-   },
-   {
-    "RoomId": 7919,
-    "Verb": "up"
-   },
-   {
-    "RoomId": 3121,
-    "Verb": "down"
    }
   ]
  }

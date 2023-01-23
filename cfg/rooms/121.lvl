@@ -50,12 +50,12 @@
   "Desc": "   This is the southeastern part of the common seating areas.  The benches\nhere are made of stone and are probably centuries old.  A few scratches on\none of the benches catch your eye.  An acrid smell is coming from the east\nand a tunnel leads off to the north.",
   "Exits": [
    {
-    "RoomId": 12012,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12004,
     "Verb": "north"
+   },
+   {
+    "RoomId": 12012,
+    "Verb": "east"
    }
   ]
  },
@@ -136,12 +136,12 @@
   "Desc": "   This is a wide open grassy plane... LOOK OUT!!!!  You are almost\nskewered by a gladiator's lance as he makes his charge.  A practicing\narea is due north.",
   "Exits": [
    {
-    "RoomId": 12010,
-    "Verb": "north"
-   },
-   {
     "RoomId": 12004,
     "Verb": "up"
+   },
+   {
+    "RoomId": 12010,
+    "Verb": "north"
    }
   ]
  },
@@ -215,12 +215,12 @@
   "Desc": "  These are the 'better' seats used primarily by the upper class of Rome.\nThere is a large seating area to the east and a staircase leading up here.\nThe view of the chariot track is pretty good. ",
   "Exits": [
    {
-    "RoomId": 12023,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12009,
     "Verb": "up"
+   },
+   {
+    "RoomId": 12023,
+    "Verb": "east"
    }
   ]
  },
@@ -279,16 +279,16 @@
   "Desc": "   This is a well built and heavily traveled road running from east to west\nand there is a large structure built entirely of stone to the north.",
   "Exits": [
    {
+    "RoomId": 12027,
+    "Verb": "east"
+   },
+   {
     "RoomId": 12013,
     "Verb": "west"
    },
    {
     "RoomId": 12019,
     "Verb": "north"
-   },
-   {
-    "RoomId": 12027,
-    "Verb": "east"
    }
   ]
  },
@@ -448,16 +448,16 @@
   "Desc": "   You are walking on a paved road that runs south through the city of Rome.\nA great gate is directly north of here.  The Roman citizens are very friendly\nand tip their hats or say hello as you pass.",
   "Exits": [
    {
+    "RoomId": 12032,
+    "Verb": "south"
+   },
+   {
     "RoomId": 12063,
     "Verb": "west"
    },
    {
     "RoomId": 12030,
     "Verb": "north"
-   },
-   {
-    "RoomId": 12032,
-    "Verb": "south"
    }
   ]
  },
@@ -467,16 +467,16 @@
   "Desc": "   You are walking on a great paved road that runs north and south through\nthe city.  People are hurrying from one place to another, but always stop\nto say hello.  Most of the people are either coming from or going to the\ntown square.  Nero Drive continues to the north, and you can see a large\nopen area to the south.",
   "Exits": [
    {
-    "RoomId": 12025,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12031,
     "Verb": "north"
    },
    {
     "RoomId": 12033,
     "Verb": "south"
+   },
+   {
+    "RoomId": 12025,
+    "Verb": "west"
    }
   ]
  },
@@ -547,16 +547,16 @@
   "Desc": "   This is the southern gateway to the city of Rome.  The bronze gate is\nclosed and locked.  Looking through the bars, you see a heavily traveled\nroad leading out of the city.  Nero Drive starts here and runs north and\na wizard's shop lies to the east.",
   "Exits": [
    {
+    "RoomId": 0,
+    "Verb": "south"
+   },
+   {
     "RoomId": 12035,
     "Verb": "north"
    },
    {
     "RoomId": 12043,
     "Verb": "east"
-   },
-   {
-    "RoomId": 0,
-    "Verb": "south"
    }
   ]
  },
@@ -581,16 +581,16 @@
   "Desc": "   This is the working room where elected senators from all over the empire\ngather to advise the Emperor.  An official seal of the Emperor is hanging on\nthe far wall.  There is a wooden door to the north and a bronze door to the\neast and doublehung door to the south.",
   "Exits": [
    {
+    "RoomId": 12039,
+    "Verb": "south"
+   },
+   {
     "RoomId": 12037,
     "Verb": "north"
    },
    {
     "RoomId": 12045,
     "Verb": "east"
-   },
-   {
-    "RoomId": 12039,
-    "Verb": "south"
    }
   ]
  },
@@ -611,16 +611,16 @@
   "Desc": "   You are on a wide well traveled road running east and west through the\nheart of Rome.  There are large crowds of people to the west and the road\ncontinues to the east.  The aqueduct is directly south of here.",
   "Exits": [
    {
-    "RoomId": 12033,
-    "Verb": "west"
-   },
-   {
     "RoomId": 12047,
     "Verb": "east"
    },
    {
     "RoomId": 12042,
     "Verb": "south"
+   },
+   {
+    "RoomId": 12033,
+    "Verb": "west"
    }
   ]
  },
@@ -660,12 +660,12 @@
   "Desc": "   You are standing in the mage's shop.  Magical ointments, charms and\npotions are sitting on shelves and behind a glass counter.  There is a\ndense neon blue fog hugging the floor here, making it impossible to see\nbelow your knees.  You suddenly hear mutterings coming from the back\nroom, possibly from...\nKKKKKAAAAAABBBBOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMM!!!!!!\nYou are deafened by the noise from a tremendous explosion and the\nconcussion from the blast staggers you!  The shopkeeper seems to pay\nno heed to this. The door to the back room opens and an older man,\nwearing a pointed hat, whose face is smudged with soot sticks his head\nout.  'Is everyone alright?  Sorry about that.  I was testing a new\nspell.  I'll try to give advance notice next time.', he says.  The door\nthen closes.",
   "Exits": [
    {
-    "RoomId": 12050,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12036,
     "Verb": "west"
+   },
+   {
+    "RoomId": 12050,
+    "Verb": "east"
    }
   ]
  },
@@ -762,20 +762,20 @@
   "Desc": "   You are in a massive stone structure that has been designed to channel\nwater into the city of Rome.  Due to the recent drought, the water level\nis low, allowing passage without a boat.  The walls and floor are covered\nwith algae and slime, producing treacherous footing conditions.  There are\nexits in all four cardinal directions.",
   "Exits": [
    {
-    "RoomId": 12058,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 12042,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12042,
     "Verb": "south"
    },
    {
     "RoomId": 12049,
     "Verb": "west"
+   },
+   {
+    "RoomId": 12058,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 12042,
+    "Verb": "east"
    }
   ]
  },
@@ -894,20 +894,20 @@
   "Desc": "   You are in a massive stone structure that has been designed to channel\nwater into the city of Rome.  Due to a recent drought, the water level is\nlow, allowing passage without a boat.  The walls and floor are covered\nwith algae and slime, producing treacherous footing conditions.  A valley\nlies to the south and the other cardinal directions lead further into the\naqueduct.",
   "Exits": [
    {
-    "RoomId": 12055,
-    "Verb": "north"
-   },
-   {
-    "RoomId": 12055,
-    "Verb": "east"
-   },
-   {
     "RoomId": 12059,
     "Verb": "south"
    },
    {
     "RoomId": 12042,
     "Verb": "west"
+   },
+   {
+    "RoomId": 12055,
+    "Verb": "north"
+   },
+   {
+    "RoomId": 12055,
+    "Verb": "east"
    }
   ]
  },
@@ -917,12 +917,12 @@
   "Desc": "   You stand in a tranquil valley at the base of a large mountain.  A quiet \nstream, with fruit trees growing along its banks, winds its way peacefully\nthrough the valley and enters a large stone structure that lies to the west.\nThere are birds singing and every now and then a ripple breaks the surface\nof the stream.  You can see a path leading through the trees to the up.",
   "Exits": [
    {
-    "RoomId": 12060,
-    "Verb": "up"
-   },
-   {
     "RoomId": 12058,
     "Verb": "north"
+   },
+   {
+    "RoomId": 12060,
+    "Verb": "up"
    }
   ]
  },

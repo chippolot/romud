@@ -1,8 +1,10 @@
 Config.NewRoom({
 	Id = 5301,
 	Name = "The Great Eastern Desert",
-	Desc = [[   A vast desert stretches for miles, the sands constantly shifting around
-you.  Rising out of the sand to the north you see a mighty pyramid.]],
+	Desc = [[
+   A vast desert stretches for miles, the sands constantly shifting around
+you.  Rising out of the sand to the north you see a mighty pyramid.
+]],
 	Exits = {
 		north = 5302,
 		east = 5041,
@@ -13,10 +15,12 @@ you.  Rising out of the sand to the north you see a mighty pyramid.]],
 Config.NewRoom({
 	Id = 5302,
 	Name = "At The Base Of The Pyramid",
-	Desc = [[   The mighty pyramid towers above you out of the hot desert sands, made
+	Desc = [[
+   The mighty pyramid towers above you out of the hot desert sands, made
 from huge blocks of stone that have been coated over with a rough sandy
 plaster-like substance.  The face of the pyramid is steep, but you think
-you might be able to climb it.]],
+you might be able to climb it.
+]],
 	Exits = {
 		south = 5301,
 		up = 5303
@@ -25,9 +29,11 @@ you might be able to climb it.]],
 Config.NewRoom({
 	Id = 5303,
 	Name = "Climbing The Great Pyramid",
-	Desc = [[   Hot air rises off the sides of the pyramid, and the wind chokes you with
+	Desc = [[
+   Hot air rises off the sides of the pyramid, and the wind chokes you with
 a flurry of sand and dust.  So far you have made it halfway up the side.  The
-walls of the pyramid are quite steep.]],
+walls of the pyramid are quite steep.
+]],
 	Exits = {
 		north = 5304,
 		south = 5305,
@@ -38,9 +44,11 @@ walls of the pyramid are quite steep.]],
 Config.NewRoom({
 	Id = 5304,
 	Name = "Climbing The Great Pyramid",
-	Desc = [[   Hot air rises off the sides of the pyramid, and the wind chokes you with
+	Desc = [[
+   Hot air rises off the sides of the pyramid, and the wind chokes you with
 a flurry of sand and dust.  The walls of the pyramid are quite steep, and
-you are having trouble keeping from sliding down into the sands below.]],
+you are having trouble keeping from sliding down into the sands below.
+]],
 	Exits = {
 		east = 5306,
 		west = 5303,
@@ -51,9 +59,11 @@ you are having trouble keeping from sliding down into the sands below.]],
 Config.NewRoom({
 	Id = 5305,
 	Name = "Climbing The Great Pyramid",
-	Desc = [[   Hot air rises off the sides of the pyramid, and the wind chokes you with
+	Desc = [[
+   Hot air rises off the sides of the pyramid, and the wind chokes you with
 a flurry of sand and dust.  The walls of the pyramid are quite steep, and
-you are having trouble keeping from sliding down into the sands below.]],
+you are having trouble keeping from sliding down into the sands below.
+]],
 	Exits = {
 		east = 5306,
 		west = 5303,
@@ -64,10 +74,12 @@ you are having trouble keeping from sliding down into the sands below.]],
 Config.NewRoom({
 	Id = 5306,
 	Name = "Climbing The Great Pyramid",
-	Desc = [[   Here on the eastern side of the pyramid there is a little more shelter
+	Desc = [[
+   Here on the eastern side of the pyramid there is a little more shelter
 from the heat and wind.  The stone side is not nearly so slippery smooth
 from the ravages of time, and you think you may be able to even reach the
-top from here.]],
+top from here.
+]],
 	Exits = {
 		north = 5304,
 		south = 5305,
@@ -78,10 +90,12 @@ top from here.]],
 Config.NewRoom({
 	Id = 5307,
 	Name = "The Apex Of The Great Pyramid",
-	Desc = [[   Bathed in sweat, you have managed to reach the summit of the great
+	Desc = [[
+   Bathed in sweat, you have managed to reach the summit of the great
 pyramid.  The four sides of the pyramid slope sharply down into the
 hot sands in all four cardinal directions.
-A plaque has been set into the sandy stones beneath your feet.]],
+A plaque has been set into the sandy stones beneath your feet.
+]],
 	Exits = {
 		north = 5308,
 		east = 5306,
@@ -93,7 +107,8 @@ A plaque has been set into the sandy stones beneath your feet.]],
 Config.NewRoom({
 	Id = 5308,
 	Name = "On The Dangerous Stones",
-	Desc = [[   Here the elements have carved away at the sides of the pyramid quite a 
+	Desc = [[
+   Here the elements have carved away at the sides of the pyramid quite a 
 bit.  You aren't so sure of your footing anymore...
 
 Suddenly the wind picks up, and you lose your balance!
@@ -101,17 +116,20 @@ You tumble down the side of the pyramid, and fall to your death!
 
 SPLAT.
 
-Ouch.]],
+Ouch.
+]],
 	Exits = {
 	}
 })
 Config.NewRoom({
 	Id = 5309,
 	Name = "A Ladder",
-	Desc = [[   You are climbing an ancient ladder that leads down into the depths of
+	Desc = [[
+   You are climbing an ancient ladder that leads down into the depths of
 the pyramid.  The air around is thick with layers of dust and a strange
 musty smell.  Above you you see tiny beams of light coming through the
-stones of the ceiling.]],
+stones of the ceiling.
+]],
 	Exits = {
 		up = 5307,
 		down = 5310
@@ -120,11 +138,13 @@ stones of the ceiling.]],
 Config.NewRoom({
 	Id = 5310,
 	Name = "A Musty Chamber",
-	Desc = [[   You are standing in a dank, musty chamber just inside the pyramid. 
+	Desc = [[
+   You are standing in a dank, musty chamber just inside the pyramid. 
 Footprints and other strange marks are set into the dusty floor here.
 It would seem that some of the tenants of this monument are still alive.
 Exits lead in all directions.   The door to the west is covered with
-inscriptions.]],
+inscriptions.
+]],
 	Exits = {
 		north = 5313,
 		east = 5340,
@@ -136,10 +156,12 @@ inscriptions.]],
 Config.NewRoom({
 	Id = 5311,
 	Name = "The Fire Pool",
-	Desc = [[   This room is dominated by a massive raised pool that is filled with
+	Desc = [[
+   This room is dominated by a massive raised pool that is filled with
 not water but flames of intense heat.  The multicoloured flames lick out
 at you, searching for things to burn.  The pool proceeds to the east into
-a small chamber.]],
+a small chamber.
+]],
 	Exits = {
 		east = 5310,
 		west = 5312
@@ -148,9 +170,11 @@ a small chamber.]],
 Config.NewRoom({
 	Id = 5312,
 	Name = "The Chamber Of The Efreet",
-	Desc = [[   You make your way across the fire pool, and into a small stone chamber.
+	Desc = [[
+   You make your way across the fire pool, and into a small stone chamber.
 Here the flames are nearly as high as your head, singeing your face and 
-evaporating your sweat instantaneously.]],
+evaporating your sweat instantaneously.
+]],
 	Exits = {
 		east = 5311
 	}
@@ -158,9 +182,11 @@ evaporating your sweat instantaneously.]],
 Config.NewRoom({
 	Id = 5313,
 	Name = "A Tiny Crawlway",
-	Desc = [[   You have to go down onto your hands and knees to fit inside this tiny
+	Desc = [[
+   You have to go down onto your hands and knees to fit inside this tiny
 space.  The crawlway is thick with sand and dust, and markings of the
-passage of other creatures.]],
+passage of other creatures.
+]],
 	Exits = {
 		north = 5314,
 		south = 5310,
@@ -170,9 +196,11 @@ passage of other creatures.]],
 Config.NewRoom({
 	Id = 5314,
 	Name = "A Tiny Crawlway",
-	Desc = [[   You are on your hands and knees, inside a small crawlway that winds
+	Desc = [[
+   You are on your hands and knees, inside a small crawlway that winds
 through the inside of the pyramid.  The crawlway is thick with sand, dust, 
-and markings of the passage of other creatures.]],
+and markings of the passage of other creatures.
+]],
 	Exits = {
 		south = 5313,
 		west = 5315
@@ -181,9 +209,11 @@ and markings of the passage of other creatures.]],
 Config.NewRoom({
 	Id = 5315,
 	Name = "A Tiny Crawlway",
-	Desc = [[   You are on your hands and knees, inside a small crawlway that winds
+	Desc = [[
+   You are on your hands and knees, inside a small crawlway that winds
 through the inside of the pyramid.  The crawlway is thick with sand, dust, 
-and markings of the passage of other creatures.]],
+and markings of the passage of other creatures.
+]],
 	Exits = {
 		east = 5314,
 		west = 5316
@@ -192,10 +222,12 @@ and markings of the passage of other creatures.]],
 Config.NewRoom({
 	Id = 5316,
 	Name = "A Tightening In The Crawlway",
-	Desc = [[   Here you are forced to slide on your belly through a particularly tight
+	Desc = [[
+   Here you are forced to slide on your belly through a particularly tight
 section of the crawlway, as the stones of the pyramid close together about
 you.  Below you is a small, slippery-looking hole that plummets into
-blackness.]],
+blackness.
+]],
 	Exits = {
 		east = 5315,
 		south = 5317,
@@ -205,10 +237,12 @@ blackness.]],
 Config.NewRoom({
 	Id = 5317,
 	Name = "The Crawlway's End",
-	Desc = [[   The crawlway shrinks away to nothing as the sandy stones of the pyramid
+	Desc = [[
+   The crawlway shrinks away to nothing as the sandy stones of the pyramid
 close together into a space through which only a snake could fit.   There is
 barely enough space to turn around and make your way back through the tiny
-crawlway to the north.]],
+crawlway to the north.
+]],
 	Exits = {
 		north = 5316
 	}
@@ -216,7 +250,8 @@ crawlway to the north.]],
 Config.NewRoom({
 	Id = 5318,
 	Name = "A Slippery Hole",
-	Desc = [[   The sides of this hole are slippery-smooth.  You lower yourself in, and 
+	Desc = [[
+   The sides of this hole are slippery-smooth.  You lower yourself in, and 
 proceed to move downward... when suddenly you lose your purchase!
 
 You fall for what seems like an eternity, and smash into the stones below...
@@ -226,7 +261,8 @@ You fall for what seems like an eternity, and smash into the stones below...
 Under The Hole
    You are in a small chamber underneath the slippery hole, far below
 the pyramid now.   The floor is strewn with bones.  To the south is a
-small rocky crevasse.]],
+small rocky crevasse.
+]],
 	Exits = {
 		south = 5320,
 		up = 0
@@ -235,9 +271,11 @@ small rocky crevasse.]],
 Config.NewRoom({
 	Id = 5319,
 	Name = "Under The Hole",
-	Desc = [[   You are in a small chamber underneath the slippery hole, far below
+	Desc = [[
+   You are in a small chamber underneath the slippery hole, far below
 the pyramid now.   The floor is strewn with bones.  To the south is a
-small rocky crevasse.]],
+small rocky crevasse.
+]],
 	Exits = {
 		south = 5320,
 		up = 0
@@ -246,9 +284,11 @@ small rocky crevasse.]],
 Config.NewRoom({
 	Id = 5320,
 	Name = "A Rough Crevasse",
-	Desc = [[   You are now exploring deep within a strange rocky crevasse that plunges
+	Desc = [[
+   You are now exploring deep within a strange rocky crevasse that plunges
 down into the rock on which the pyramid was constructed.  To the south you
-see the flickering light of a fire, and the crevasse proceeds downward.]],
+see the flickering light of a fire, and the crevasse proceeds downward.
+]],
 	Exits = {
 		north = 5319,
 		south = 5321,
@@ -258,9 +298,11 @@ see the flickering light of a fire, and the crevasse proceeds downward.]],
 Config.NewRoom({
 	Id = 5321,
 	Name = "A Small Fire",
-	Desc = [[   Here a small fire burns in a nook in the rocks, providing some warmth and
+	Desc = [[
+   Here a small fire burns in a nook in the rocks, providing some warmth and
 comforting light in the cold, dark, dry air.
-Standing here is a strange-looking old man, who stares at you balefully.]],
+Standing here is a strange-looking old man, who stares at you balefully.
+]],
 	Exits = {
 		north = 5320
 	}
@@ -268,9 +310,11 @@ Standing here is a strange-looking old man, who stares at you balefully.]],
 Config.NewRoom({
 	Id = 5322,
 	Name = "Down The Crevasse",
-	Desc = [[   The crevasse proceeds downward into the dark depths of the earth.
+	Desc = [[
+   The crevasse proceeds downward into the dark depths of the earth.
 The air about you is now cold and quite dry, and your light source
-gutters in a cool breeze that wafts up from below.]],
+gutters in a cool breeze that wafts up from below.
+]],
 	Exits = {
 		up = 5320,
 		down = 5323
@@ -279,9 +323,11 @@ gutters in a cool breeze that wafts up from below.]],
 Config.NewRoom({
 	Id = 5323,
 	Name = "At The Crevasse's End",
-	Desc = [[   Here the crevasse comes to an abrupt end.  A chilling wind howls
+	Desc = [[
+   Here the crevasse comes to an abrupt end.  A chilling wind howls
 at your face from a black shape to the south, but the light from your
-source is too dim to see exactly what it is.]],
+source is too dim to see exactly what it is.
+]],
 	Exits = {
 		south = 5324,
 		up = 5322
@@ -290,11 +336,13 @@ source is too dim to see exactly what it is.]],
 Config.NewRoom({
 	Id = 5324,
 	Name = "The Vault Of The Lamp",
-	Desc = [[   The jaws of the massive stone tiger part wide to reveal a great vault.
+	Desc = [[
+   The jaws of the massive stone tiger part wide to reveal a great vault.
 An arched ceiling lies far above your head... and all about you is a low
 guttural rumbling noise and a chill wind.
 Giant heaps of ancient treasure, gold coins, and valuables surround you
-on all sides.]],
+on all sides.
+]],
 	Exits = {
 		north = 5323
 	}
@@ -302,9 +350,11 @@ on all sides.]],
 Config.NewRoom({
 	Id = 5325,
 	Name = "A Crack In The Wall",
-	Desc = [[   You exhale, and squeeze yourself into the narrow crack in the wall.
+	Desc = [[
+   You exhale, and squeeze yourself into the narrow crack in the wall.
 Dust fills your eyes as you disturb it, and chunks of mortar and stone
-mixed with a touch of sand fall on you as you scrape your way through.]],
+mixed with a touch of sand fall on you as you scrape your way through.
+]],
 	Exits = {
 		north = 5310,
 		south = 5326
@@ -313,9 +363,11 @@ mixed with a touch of sand fall on you as you scrape your way through.]],
 Config.NewRoom({
 	Id = 5326,
 	Name = "A Looted Tomb",
-	Desc = [[  The floor of this small tomb is littered with the lids of 
+	Desc = [[
+  The floor of this small tomb is littered with the lids of 
 smashed sarcophagi, bits of treasure dropped by thieves and
-looters, and corpses pulled from their resting places.]],
+looters, and corpses pulled from their resting places.
+]],
 	Exits = {
 		north = 5325,
 		east = 5334,
@@ -325,9 +377,11 @@ looters, and corpses pulled from their resting places.]],
 Config.NewRoom({
 	Id = 5327,
 	Name = "A Demolished Tomb",
-	Desc = [[  This tomb has been utterly destroyed by thieves and looters in search of
+	Desc = [[
+  This tomb has been utterly destroyed by thieves and looters in search of
 the treasures of the pharoahs.  Nothing of interest remains in this room,
-except a large stone coffin that leans against the western wall.]],
+except a large stone coffin that leans against the western wall.
+]],
 	Exits = {
 		east = 5326,
 		west = 5328
@@ -336,9 +390,11 @@ except a large stone coffin that leans against the western wall.]],
 Config.NewRoom({
 	Id = 5328,
 	Name = "A Stairway",
-	Desc = [[   You stand now at the head of a stairway that goes down into darkness.
+	Desc = [[
+   You stand now at the head of a stairway that goes down into darkness.
 The steps and walls are smooth sandy stone, covered with a thick layer
-of dust.  Some inscriptions are carved into the wall here.]],
+of dust.  Some inscriptions are carved into the wall here.
+]],
 	Exits = {
 		east = 5327,
 		down = 5329
@@ -347,9 +403,11 @@ of dust.  Some inscriptions are carved into the wall here.]],
 Config.NewRoom({
 	Id = 5329,
 	Name = "A Stairway",
-	Desc = [[   You are on a stairway that disappears into darkness in both directions.
+	Desc = [[
+   You are on a stairway that disappears into darkness in both directions.
 The smooth, uneven steps of the stairway have not been travelled in what
-appears to be centuries.]],
+appears to be centuries.
+]],
 	Exits = {
 		up = 5328,
 		down = 5330
@@ -358,8 +416,10 @@ appears to be centuries.]],
 Config.NewRoom({
 	Id = 5330,
 	Name = "A Stairway",
-	Desc = [[   You stand now at the base of the uneven stairway.  The walls, floor,
-and ceiling of this small landing are covered with strange hieroglyphics.]],
+	Desc = [[
+   You stand now at the base of the uneven stairway.  The walls, floor,
+and ceiling of this small landing are covered with strange hieroglyphics.
+]],
 	Exits = {
 		south = 5331,
 		up = 5329
@@ -368,11 +428,13 @@ and ceiling of this small landing are covered with strange hieroglyphics.]],
 Config.NewRoom({
 	Id = 5331,
 	Name = "The Ancient Hall",
-	Desc = [[   Here the air is deathly still, motes of dust thickly obscuring your
+	Desc = [[
+   Here the air is deathly still, motes of dust thickly obscuring your
 vision.  Several stone statues line the walls of the hall, depicting the 
 gods of an ancient society.  Strange glyphs and sigils cover the walls, a 
 peculiar pictorial form of written language that you don't understand.
-   Some steps lead to a raised dais to the south.]],
+   Some steps lead to a raised dais to the south.
+]],
 	Exits = {
 		north = 5330,
 		south = 5332
@@ -381,9 +443,11 @@ peculiar pictorial form of written language that you don't understand.
 Config.NewRoom({
 	Id = 5332,
 	Name = "A Raised Dais",
-	Desc = [[   You are at the southern end of the ancient hall, the dust and darkness
+	Desc = [[
+   You are at the southern end of the ancient hall, the dust and darkness
 absorbing your light so that you cannot see past the steps of the dais.
-A low pedestal rests here.  You see something written into the face of it.]],
+A low pedestal rests here.  You see something written into the face of it.
+]],
 	Exits = {
 		north = 5331,
 		down = 5333
@@ -400,8 +464,10 @@ Config.NewRoom({
 Config.NewRoom({
 	Id = 5334,
 	Name = "A Ransacked Tomb",
-	Desc = [[  This tomb has been completely ransacked and destroyed by the actions
-of pyramid thieves and looters.  The floor is littered with junk.]],
+	Desc = [[
+  This tomb has been completely ransacked and destroyed by the actions
+of pyramid thieves and looters.  The floor is littered with junk.
+]],
 	Exits = {
 		east = 5335,
 		west = 5326
@@ -419,8 +485,10 @@ Config.NewRoom({
 Config.NewRoom({
 	Id = 5336,
 	Name = "A Fork In The Tunnel",
-	Desc = [[   Here the tunnel forks off through a gaping hole down in the
-southern wall, continuing onward to the east and west as well.]],
+	Desc = [[
+   Here the tunnel forks off through a gaping hole down in the
+southern wall, continuing onward to the east and west as well.
+]],
 	Exits = {
 		east = 5337,
 		south = 0,
@@ -431,8 +499,10 @@ southern wall, continuing onward to the east and west as well.]],
 Config.NewRoom({
 	Id = 5337,
 	Name = "A Tunnel",
-	Desc = [[   The low-ceilinged tunnel makes a turn to the west and ends
-to the north as it spills out into a dusty hallway.]],
+	Desc = [[
+   The low-ceilinged tunnel makes a turn to the west and ends
+to the north as it spills out into a dusty hallway.
+]],
 	Exits = {
 		north = 5343,
 		west = 5336
@@ -441,9 +511,11 @@ to the north as it spills out into a dusty hallway.]],
 Config.NewRoom({
 	Id = 5338,
 	Name = "A Dank Chamber",
-	Desc = [[   This chamber has a dank, dusty, musty smell to it.  Small footprints
+	Desc = [[
+   This chamber has a dank, dusty, musty smell to it.  Small footprints
 in the dust betray the recent passage of some sort of creatures.  A hole 
-in the floor lies to the west and a stairway is to the east.]],
+in the floor lies to the west and a stairway is to the east.
+]],
 	Exits = {
 		east = 5339,
 		west = 5313
@@ -452,8 +524,10 @@ in the floor lies to the west and a stairway is to the east.]],
 Config.NewRoom({
 	Id = 5339,
 	Name = "A Spiral Stairway",
-	Desc = [[   Some dusty, broken stone stairs here spiral slowly in a constricted
-space down towards a dusty hallway.]],
+	Desc = [[
+   Some dusty, broken stone stairs here spiral slowly in a constricted
+space down towards a dusty hallway.
+]],
 	Exits = {
 		up = 5338,
 		down = 5342
@@ -462,9 +536,11 @@ space down towards a dusty hallway.]],
 Config.NewRoom({
 	Id = 5340,
 	Name = "A Dust-Covered Hallway",
-	Desc = [[   This hallway is covered with dust that has accumulated over the
+	Desc = [[
+   This hallway is covered with dust that has accumulated over the
 centuries that the pyramid has stood.  Small markings and footprints
-in the dust betray the recent passage of others -- perhaps thieves?]],
+in the dust betray the recent passage of others -- perhaps thieves?
+]],
 	Exits = {
 		east = 5341,
 		west = 5310
@@ -473,9 +549,11 @@ in the dust betray the recent passage of others -- perhaps thieves?]],
 Config.NewRoom({
 	Id = 5341,
 	Name = "A Smelly Chamber",
-	Desc = [[   This small chamber has a sickly putrescent smell to it, the
+	Desc = [[
+   This small chamber has a sickly putrescent smell to it, the
 smell of formaldehyde and other ointments used to preserve the
-corpses of those who died ages ago.]],
+corpses of those who died ages ago.
+]],
 	Exits = {
 		east = 5342,
 		west = 5340
@@ -484,9 +562,11 @@ corpses of those who died ages ago.]],
 Config.NewRoom({
 	Id = 5342,
 	Name = "A Dust-Covered Hallway",
-	Desc = [[   This hallway is covered with a thick, choking dust that rises
+	Desc = [[
+   This hallway is covered with a thick, choking dust that rises
 up to obscure your light source and sting your eyes.  Small marks
-and footprints in the dust betray the recent passage of others.]],
+and footprints in the dust betray the recent passage of others.
+]],
 	Exits = {
 		east = 5343,
 		west = 5341,
@@ -496,10 +576,12 @@ and footprints in the dust betray the recent passage of others.]],
 Config.NewRoom({
 	Id = 5343,
 	Name = "A Turn In The Hallway",
-	Desc = [[   You are standing in an elbow turn in a dust-covered stone hallway,
+	Desc = [[
+   You are standing in an elbow turn in a dust-covered stone hallway,
 that dead ends to the north and continues on to the west.  To the south
 the stones of the pyramid have been torn asunder by thieves, making
-a low-ceilinged tunnel.]],
+a low-ceilinged tunnel.
+]],
 	Exits = {
 		north = 5344,
 		south = 5337,
@@ -509,9 +591,11 @@ a low-ceilinged tunnel.]],
 Config.NewRoom({
 	Id = 5344,
 	Name = "A Dead End",
-	Desc = [[   The dust-covered hallway has come to an abrupt end at a stony,
+	Desc = [[
+   The dust-covered hallway has come to an abrupt end at a stony,
 featureless wall.  Here and there are signs of the recent passage
-of others in the dust.]],
+of others in the dust.
+]],
 	Exits = {
 		south = 5343,
 		down = 5345
@@ -520,10 +604,12 @@ of others in the dust.]],
 Config.NewRoom({
 	Id = 5345,
 	Name = "The Tomb Entrance",
-	Desc = [[   You are in a small, dark chamber that has stood undisturbed for
+	Desc = [[
+   You are in a small, dark chamber that has stood undisturbed for
 many years.  To the north stands a massive stone tomb, which is
 covered in hieroglyphics and gold-lined carvings that mark it as the
-final resting place of the mighty pharoahs of this land.]],
+final resting place of the mighty pharoahs of this land.
+]],
 	Exits = {
 		north = 5346,
 		up = 5344
@@ -532,10 +618,12 @@ final resting place of the mighty pharoahs of this land.]],
 Config.NewRoom({
 	Id = 5346,
 	Name = "The Tomb Of The Pharoahs",
-	Desc = [[   Great golden sarcophogai line the walls of this massive tomb.  It has
+	Desc = [[
+   Great golden sarcophogai line the walls of this massive tomb.  It has
 withstood the passage of time intact, untouched by the hands of thieves
 and looters.  The treasures taken by the pharoahs to their graves still
-lie before your feet.]],
+lie before your feet.
+]],
 	Exits = {
 		south = 5345
 	}
@@ -543,11 +631,13 @@ lie before your feet.]],
 Config.NewRoom({
 	Id = 5347,
 	Name = "A Rubble-Strewn Hallway",
-	Desc = [[   This hallway formerly had a beautiful arch to the ceiling, now
+	Desc = [[
+   This hallway formerly had a beautiful arch to the ceiling, now
 collapsed under the weight of the slowly settling stones of the
 pyramid.  Now, a massive pile of rubble leads up into a hole high 
 in the northern portion of the hallway.  To the south, through the 
-rubble and fallen stones you see a sandstone crypt.]],
+rubble and fallen stones you see a sandstone crypt.
+]],
 	Exits = {
 		south = 5348,
 		up = 5336
@@ -556,10 +646,12 @@ rubble and fallen stones you see a sandstone crypt.]],
 Config.NewRoom({
 	Id = 5348,
 	Name = "A Sandstone Crypt",
-	Desc = [[   This small crypt is lit by a hole in the wall to the south, through
+	Desc = [[
+   This small crypt is lit by a hole in the wall to the south, through
 which sand pours from the desert outside.  A hot wind blows in from the
 desert, drying your skin instantly.  To the east and north the arched
-hallway continues.]],
+hallway continues.
+]],
 	Exits = {
 		north = 5347,
 		east = 5349,
@@ -569,11 +661,13 @@ hallway continues.]],
 Config.NewRoom({
 	Id = 5349,
 	Name = "An Arched Hall",
-	Desc = [[   This hallway has a beautiful arch to it, formed painstakingly and
+	Desc = [[
+   This hallway has a beautiful arch to it, formed painstakingly and
 exquisitely out of the sandy stones of the pyramid.  The dust that
 covers most of the rest of the pyramid interior is not present here,
 scoured away by the blowing of the desert winds that howl about
-your ears.]],
+your ears.
+]],
 	Exits = {
 		east = 5350,
 		west = 5348
@@ -582,10 +676,12 @@ your ears.]],
 Config.NewRoom({
 	Id = 5350,
 	Name = "An Arched Hall",
-	Desc = [[   This hallway has a beautiful arch to it, formed painstakingly and
+	Desc = [[
+   This hallway has a beautiful arch to it, formed painstakingly and
 exquisitely out of the sandy stones of the pyramid.  To the east is
 a small, golden-coloured crypt, and the hall proceeds to the south
-and north.]],
+and north.
+]],
 	Exits = {
 		north = 5349,
 		east = 5351,
@@ -595,10 +691,12 @@ and north.]],
 Config.NewRoom({
 	Id = 5351,
 	Name = "A Golden Crypt",
-	Desc = [[   You stand inside a small crypt with walls and ceiling made of
+	Desc = [[
+   You stand inside a small crypt with walls and ceiling made of
 golden bricks that obscure the large sandy stones of the pyramid.
 Small rugs and tapestries are scattered about the floor here, and
-they appear to have been used recently.]],
+they appear to have been used recently.
+]],
 	Exits = {
 		west = 5350
 	}
@@ -606,9 +704,11 @@ they appear to have been used recently.]],
 Config.NewRoom({
 	Id = 5352,
 	Name = "An Arched Hall",
-	Desc = [[   This hallway has a beautiful arch to it, formed painstakingly and
+	Desc = [[
+   This hallway has a beautiful arch to it, formed painstakingly and
 exquisitely out of the sandy stones of the pyramid.  The arched
-hall proceeds to the north and ends to the south in a small vault.]],
+hall proceeds to the north and ends to the south in a small vault.
+]],
 	Exits = {
 		north = 5350,
 		south = 5353
@@ -617,10 +717,12 @@ hall proceeds to the north and ends to the south in a small vault.]],
 Config.NewRoom({
 	Id = 5353,
 	Name = "A Shining Vault",
-	Desc = [[   The stones of the pyramid here take on a strange, twinkling quality,
+	Desc = [[
+   The stones of the pyramid here take on a strange, twinkling quality,
 almost seeming to shine with an internal light.  As you look closer you
 see tiny glass-like glittery particles within the stones, that reflect
-the light from your light source so perfectly that they seem to shine.]],
+the light from your light source so perfectly that they seem to shine.
+]],
 	Exits = {
 		north = 5352
 	}
@@ -628,11 +730,13 @@ the light from your light source so perfectly that they seem to shine.]],
 Config.NewRoom({
 	Id = 5354,
 	Name = "A Massive Sand Dune",
-	Desc = [[   You stand now on a massive sand dune on the southern side of
+	Desc = [[
+   You stand now on a massive sand dune on the southern side of
 the pyramid.  At the foot of the sand dune to the north you see a
 small hole where the stones of the pyramid have collapsed.  Not
 far to the south is a massive roiling sandstorm; the wind from the
-storm howls and bites at your face even here.]],
+storm howls and bites at your face even here.
+]],
 	Exits = {
 		north = 5348,
 		south = 5355
@@ -641,9 +745,11 @@ storm howls and bites at your face even here.]],
 Config.NewRoom({
 	Id = 5355,
 	Name = "A Swirling Sandstorm",
-	Desc = [[   You are caught in the midst of a massive sandstorm.  Howling winds
+	Desc = [[
+   You are caught in the midst of a massive sandstorm.  Howling winds
 buffet you from all sides, and the sand tears at your skin, blinding
-you and choking you.  You have lost all sense of direction.]],
+you and choking you.  You have lost all sense of direction.
+]],
 	Exits = {
 		north = 5354,
 		east = 5355,
@@ -654,9 +760,11 @@ you and choking you.  You have lost all sense of direction.]],
 Config.NewRoom({
 	Id = 5356,
 	Name = "A Swirling Sandstorm",
-	Desc = [[   You are caught in the midst of a massive sandstorm.  Howling winds
+	Desc = [[
+   You are caught in the midst of a massive sandstorm.  Howling winds
 buffet you from all sides, and the sand tears at your skin, blinding
-you and choking you.  You have lost all sense of direction.]],
+you and choking you.  You have lost all sense of direction.
+]],
 	Exits = {
 		north = 5355,
 		east = 5356,
@@ -667,9 +775,11 @@ you and choking you.  You have lost all sense of direction.]],
 Config.NewRoom({
 	Id = 5357,
 	Name = "A Swirling Sandstorm",
-	Desc = [[   You are caught in the midst of a massive sandstorm.  Howling winds
+	Desc = [[
+   You are caught in the midst of a massive sandstorm.  Howling winds
 buffet you from all sides, and the sand tears at your skin, blinding
-you and choking you.  You have lost all sense of direction.]],
+you and choking you.  You have lost all sense of direction.
+]],
 	Exits = {
 		north = 5356,
 		east = 5357,
@@ -680,9 +790,11 @@ you and choking you.  You have lost all sense of direction.]],
 Config.NewRoom({
 	Id = 5358,
 	Name = "A Swirling Sandstorm",
-	Desc = [[   You are caught in the midst of a massive sandstorm.  Howling winds
+	Desc = [[
+   You are caught in the midst of a massive sandstorm.  Howling winds
 buffet you from all sides, and the sand tears at your skin, blinding
-you and choking you.  You have lost all sense of direction.]],
+you and choking you.  You have lost all sense of direction.
+]],
 	Exits = {
 		north = 5357,
 		east = 5358,
@@ -693,11 +805,13 @@ you and choking you.  You have lost all sense of direction.]],
 Config.NewRoom({
 	Id = 5359,
 	Name = "A Massive Sand Dune",
-	Desc = [[   Somehow you managed to make your way through the howling winds
+	Desc = [[
+   Somehow you managed to make your way through the howling winds
 of the sandstorm, and clamber up on this sand dune.  You can see the
 storm to the north of you, and presumably the pyramid is somewhere
 beyond it.  Nothing but flat, featureless, open dunes of sand lie in
-every other direction.]],
+every other direction.
+]],
 	Exits = {
 		north = 5358,
 		south = 5360
@@ -706,9 +820,11 @@ every other direction.]],
 Config.NewRoom({
 	Id = 5360,
 	Name = "Through The Hole In The Sand",
-	Desc = [[   You squeeze through the small hole in the sand and land in a small
+	Desc = [[
+   You squeeze through the small hole in the sand and land in a small
 white chamber.  Above you is a small hole, reachable by climbing up
-the small sandy slope down which you slid.]],
+the small sandy slope down which you slid.
+]],
 	Exits = {
 		up = 5359
 	}

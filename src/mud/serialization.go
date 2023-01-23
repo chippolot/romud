@@ -17,42 +17,6 @@ const (
 	ScriptFileExtension   = ".lua"
 )
 
-func LoadRooms(w *World, filePath string) error {
-	bytes, err := utils.LoadFileBytes(filePath)
-	if err != nil {
-		return err
-	}
-
-	cfgList := RoomConfigList{}
-	err = json.Unmarshal(bytes, &cfgList)
-	if err != nil {
-		return err
-	}
-
-	for _, cfg := range cfgList {
-		// Find zone id for room
-		rid := cfg.Id
-		zoneId := ZoneId(-1)
-		for _, z := range w.zones {
-			if rid >= z.MinRoomId && rid <= z.MaxRoomId {
-				zoneId = z.Id
-				break
-			}
-		}
-		if zoneId == -1 {
-			log.Fatalf("cannot find zone for room id %d", rid)
-		}
-
-		r, err := NewRoom(cfg, zoneId)
-		if err != nil {
-			log.Fatalf("failed to parse room with error: %v", err)
-		}
-		w.AddRoom(r)
-	}
-
-	return nil
-}
-
 func LoadEntities(w *World, filePath string) error {
 	bytes, err := utils.LoadFileBytes(filePath)
 	if err != nil {
@@ -136,8 +100,8 @@ func LoadAssets(w *World, root string) {
 	log.Printf("loaded %d zones", len(w.zones))
 
 	// Load rooms
-	for _, path := range utils.FindFilePathsWithExtension(root, RoomsFileExtension) {
-		if err := LoadRooms(w, path); err != nil {
+	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "rooms"), ScriptFileExtension) {
+		if err := RunScript(w, path); err != nil {
 			log.Fatalf("failed to load room file %s -- %v", path, err)
 		}
 	}

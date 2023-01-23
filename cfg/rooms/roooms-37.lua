@@ -1,10 +1,12 @@
 Config.NewRoom({
 	Id = 3601,
 	Name = "The Great Chessboard Of Midgaard",
-	Desc = [[   You stand in the archway of the Chessboard of Midgaard.  The giant
+	Desc = [[
+   You stand in the archway of the Chessboard of Midgaard.  The giant
 wooden gate is rusted open.
    A narrow dirt path leads eastwards into the thick grass and the
-chessboard opens up to the west.]],
+chessboard opens up to the west.
+]],
 	Exits = {
 		east = 3067,
 		west = 3633
@@ -13,8 +15,10 @@ chessboard opens up to the west.]],
 Config.NewRoom({
 	Id = 3602,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the Black Queen's Rook.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the Black Queen's Rook.
+]],
 	Exits = {
 		east = 3603,
 		south = 3610
@@ -23,8 +27,10 @@ of the Black Queen's Rook.]],
 Config.NewRoom({
 	Id = 3603,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the Black Queen's Knight.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the Black Queen's Knight.
+]],
 	Exits = {
 		east = 3604,
 		south = 3611,
@@ -34,8 +40,10 @@ of the Black Queen's Knight.]],
 Config.NewRoom({
 	Id = 3604,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the Black Queen's Bishop.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the Black Queen's Bishop.
+]],
 	Exits = {
 		east = 3605,
 		south = 3612,
@@ -45,8 +53,10 @@ of the Black Queen's Bishop.]],
 Config.NewRoom({
 	Id = 3605,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the Black Queen.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the Black Queen.
+]],
 	Exits = {
 		east = 3606,
 		south = 3613,
@@ -57,8 +67,10 @@ of the Black Queen.]],
 Config.NewRoom({
 	Id = 3606,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the Black King.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the Black King.
+]],
 	Exits = {
 		east = 3607,
 		south = 3614,
@@ -68,8 +80,10 @@ of the Black King.]],
 Config.NewRoom({
 	Id = 3607,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the Black King's Bishop.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the Black King's Bishop.
+]],
 	Exits = {
 		east = 3608,
 		south = 3615,
@@ -79,8 +93,10 @@ of the Black King's Bishop.]],
 Config.NewRoom({
 	Id = 3608,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the Black King's Knight.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the Black King's Knight.
+]],
 	Exits = {
 		east = 3609,
 		south = 3616,
@@ -90,8 +106,10 @@ of the Black King's Knight.]],
 Config.NewRoom({
 	Id = 3609,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the Black King's Rook.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the Black King's Rook.
+]],
 	Exits = {
 		south = 3617,
 		west = 3608
@@ -100,8 +118,10 @@ of the Black King's Rook.]],
 Config.NewRoom({
 	Id = 3610,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the Black Queen's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the Black Queen's Pawns.
+]],
 	Exits = {
 		north = 3602,
 		east = 3611,
@@ -111,8 +131,10 @@ of one of the Black Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3611,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the Black Queen's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the Black Queen's Pawns.
+]],
 	Exits = {
 		north = 3603,
 		east = 3612,
@@ -123,8 +145,10 @@ of one of the Black Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3612,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the Black Queen's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the Black Queen's Pawns.
+]],
 	Exits = {
 		north = 3604,
 		east = 3613,
@@ -135,8 +159,10 @@ of one of the Black Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3613,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the Black Queen's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the Black Queen's Pawns.
+]],
 	Exits = {
 		north = 3605,
 		east = 3614,
@@ -147,8 +173,10 @@ of one of the Black Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3614,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the Black King's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the Black King's Pawns.
+]],
 	Exits = {
 		north = 3606,
 		east = 3615,
@@ -159,8 +187,10 @@ of one of the Black King's Pawns.]],
 Config.NewRoom({
 	Id = 3615,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the Black King's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the Black King's Pawns.
+]],
 	Exits = {
 		north = 3607,
 		east = 3616,
@@ -171,8 +201,10 @@ of one of the Black King's Pawns.]],
 Config.NewRoom({
 	Id = 3616,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the Black King's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the Black King's Pawns.
+]],
 	Exits = {
 		north = 3608,
 		east = 3617,
@@ -183,8 +215,10 @@ of one of the Black King's Pawns.]],
 Config.NewRoom({
 	Id = 3617,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the Black King's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the Black King's Pawns.
+]],
 	Exits = {
 		north = 3609,
 		south = 3625,
@@ -270,8 +304,10 @@ Config.NewRoom({
 Config.NewRoom({
 	Id = 3625,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  You can see a rusty gate
-to the south.]],
+	Desc = [[
+   You are standing on a black marble square.  You can see a rusty gate
+to the south.
+]],
 	Exits = {
 		north = 3617,
 		south = 3633,
@@ -346,8 +382,10 @@ Config.NewRoom({
 Config.NewRoom({
 	Id = 3632,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  There is a rusty gate
-a short distance to the east.]],
+	Desc = [[
+   You are standing on a black marble square.  There is a rusty gate
+a short distance to the east.
+]],
 	Exits = {
 		north = 3624,
 		east = 3633,
@@ -358,8 +396,10 @@ a short distance to the east.]],
 Config.NewRoom({
 	Id = 3633,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  There is a large rusty
-gate to the east.]],
+	Desc = [[
+   You are standing on a white marble square.  There is a large rusty
+gate to the east.
+]],
 	Exits = {
 		north = 3625,
 		east = 3601,
@@ -446,8 +486,10 @@ Config.NewRoom({
 Config.NewRoom({
 	Id = 3641,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  There is a rusty gate
-to the north.]],
+	Desc = [[
+   You are standing on a black marble square.  There is a rusty gate
+to the north.
+]],
 	Exits = {
 		north = 3633,
 		south = 3649,
@@ -543,8 +585,10 @@ Config.NewRoom({
 Config.NewRoom({
 	Id = 3650,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the White Queen's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the White Queen's Pawns.
+]],
 	Exits = {
 		north = 3642,
 		east = 3651,
@@ -554,8 +598,10 @@ of one of the White Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3651,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the White Queen's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the White Queen's Pawns.
+]],
 	Exits = {
 		north = 3643,
 		east = 3652,
@@ -566,8 +612,10 @@ of one of the White Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3652,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the White Queen's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the White Queen's Pawns.
+]],
 	Exits = {
 		north = 3644,
 		east = 3653,
@@ -578,8 +626,10 @@ of one of the White Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3653,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the White Queen's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the White Queen's Pawns.
+]],
 	Exits = {
 		north = 3645,
 		east = 3654,
@@ -590,8 +640,10 @@ of one of the White Queen's Pawns.]],
 Config.NewRoom({
 	Id = 3654,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the White King's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the White King's Pawns.
+]],
 	Exits = {
 		north = 3646,
 		east = 3655,
@@ -602,8 +654,10 @@ of one of the White King's Pawns.]],
 Config.NewRoom({
 	Id = 3655,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the White King's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the White King's Pawns.
+]],
 	Exits = {
 		north = 3647,
 		east = 3656,
@@ -614,8 +668,10 @@ of one of the White King's Pawns.]],
 Config.NewRoom({
 	Id = 3656,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of one of the White King's Pawns.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of one of the White King's Pawns.
+]],
 	Exits = {
 		north = 3648,
 		east = 3657,
@@ -626,8 +682,10 @@ of one of the White King's Pawns.]],
 Config.NewRoom({
 	Id = 3657,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of one of the White King's Pawns.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of one of the White King's Pawns.
+]],
 	Exits = {
 		north = 3649,
 		south = 3665,
@@ -637,8 +695,10 @@ of one of the White King's Pawns.]],
 Config.NewRoom({
 	Id = 3658,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the White Queen's Rook.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the White Queen's Rook.
+]],
 	Exits = {
 		north = 3650,
 		east = 3659
@@ -647,8 +707,10 @@ of the White Queen's Rook.]],
 Config.NewRoom({
 	Id = 3659,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the White Queen's Knight.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the White Queen's Knight.
+]],
 	Exits = {
 		north = 3651,
 		east = 3660,
@@ -658,8 +720,10 @@ of the White Queen's Knight.]],
 Config.NewRoom({
 	Id = 3660,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the White Queen's Bishop.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the White Queen's Bishop.
+]],
 	Exits = {
 		north = 3652,
 		east = 3661,
@@ -669,8 +733,10 @@ of the White Queen's Bishop.]],
 Config.NewRoom({
 	Id = 3661,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the White Queen.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the White Queen.
+]],
 	Exits = {
 		north = 3653,
 		east = 3662,
@@ -681,8 +747,10 @@ of the White Queen.]],
 Config.NewRoom({
 	Id = 3662,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the White King.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the White King.
+]],
 	Exits = {
 		north = 3654,
 		east = 3663,
@@ -692,8 +760,10 @@ of the White King.]],
 Config.NewRoom({
 	Id = 3663,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the White King's Bishop.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the White King's Bishop.
+]],
 	Exits = {
 		north = 3655,
 		east = 3664,
@@ -703,8 +773,10 @@ of the White King's Bishop.]],
 Config.NewRoom({
 	Id = 3664,
 	Name = "A Black Square",
-	Desc = [[   You are standing on a black marble square.  This is usually the home
-of the White King's Knight.]],
+	Desc = [[
+   You are standing on a black marble square.  This is usually the home
+of the White King's Knight.
+]],
 	Exits = {
 		north = 3656,
 		east = 3665,
@@ -714,8 +786,10 @@ of the White King's Knight.]],
 Config.NewRoom({
 	Id = 3665,
 	Name = "A White Square",
-	Desc = [[   You are standing on a white marble square.  This is usually the home
-of the White King's Rook.]],
+	Desc = [[
+   You are standing on a white marble square.  This is usually the home
+of the White King's Rook.
+]],
 	Exits = {
 		north = 3657,
 		west = 3664
@@ -724,8 +798,10 @@ of the White King's Rook.]],
 Config.NewRoom({
 	Id = 3666,
 	Name = "The Black Treasury",
-	Desc = [[   You are standing in the treasury of the Black Court.  Hopefully no one 
-has looted the Crown's treasure.]],
+	Desc = [[
+   You are standing in the treasury of the Black Court.  Hopefully no one 
+has looted the Crown's treasure.
+]],
 	Exits = {
 		up = 3605
 	}
@@ -733,8 +809,10 @@ has looted the Crown's treasure.]],
 Config.NewRoom({
 	Id = 3667,
 	Name = "The White Treasury",
-	Desc = [[   You are standing in the treasury of the White Court.  Hopefully no one 
-has looted the Crown's treasure.]],
+	Desc = [[
+   You are standing in the treasury of the White Court.  Hopefully no one 
+has looted the Crown's treasure.
+]],
 	Exits = {
 		up = 3661
 	}

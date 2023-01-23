@@ -1,17 +1,24 @@
 package mud
 
 import (
+	"fmt"
 	"log"
 	"math/rand"
+	"reflect"
 
+	"github.com/benkeatingsmith/gluamapper"
 	"github.com/chippolot/go-mud/src/utils"
-	"github.com/yuin/gluamapper"
 	lua "github.com/yuin/gopher-lua"
 	luar "layeh.com/gopher-luar"
 )
 
+var lua_W *World
+var lua_Mapper *gluamapper.Mapper
+
 func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_W = w
+
+	lua_Mapper = gluamapper.NewMapper(gluamapper.Option{DecodeHook: lua_DecodeHook})
 
 	entityTbl := L.NewTable()
 	entityTbl.RawSetString("Name", luar.New(L, lua_EntityName))
@@ -56,8 +63,6 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	utilTbl.RawSetString("Chance", luar.New(L, lua_UtilChance))
 	L.SetGlobal("Util", utilTbl)
 }
-
-var lua_W *World
 
 func lua_EntityName(e *Entity) string {
 	return e.Name()
@@ -121,7 +126,7 @@ func lua_ActYell(self *Entity, msg string) {
 
 func lua_ConfigNewZone(tbl *lua.LTable) {
 	cfg := &ZoneConfig{}
-	if err := gluamapper.Map(tbl, cfg); err != nil {
+	if err := lua_Mapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
 	cfg.resetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
@@ -130,7 +135,7 @@ func lua_ConfigNewZone(tbl *lua.LTable) {
 
 func lua_ConfigNewRoom(tbl *lua.LTable) {
 	cfg := &RoomConfig{}
-	if err := gluamapper.Map(tbl, cfg); err != nil {
+	if err := lua_Mapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
 	zoneId := ZoneId(-1)
@@ -153,4 +158,21 @@ func lua_ConfigNewRoom(tbl *lua.LTable) {
 
 func lua_UtilChance() int {
 	return rand.Intn(100)
+}
+
+func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (interface{}, error) {
+	var err error
+
+	// Handle parsing directions
+	if to == reflect.TypeOf(Direction(0)) {
+		if sdata, ok := data.(string); !ok {
+			return nil, fmt.Errorf("cannot convert % to string", from)
+		} else {
+			if data, err = ParseDirection(sdata); err != nil {
+				return nil, err
+			}
+		}
+	}
+
+	return data, nil
 }

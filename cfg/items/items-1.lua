@@ -19,6 +19,12 @@ Config.NewItem({
 	Name = "a pair of wings",
 	RoomDesc = "A pair of wings is sitting here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 0,
 	Weight = 0

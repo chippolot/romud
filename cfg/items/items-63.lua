@@ -16,6 +16,12 @@ Config.NewItem({
 	Name = "a set of manacles",
 	RoomDesc = "A set of iron manacles lie here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 100,
 	Weight = 20
@@ -28,6 +34,12 @@ Config.NewItem({
 	Name = "a set of shackles",
 	RoomDesc = "A set of shackles sit here, discarded.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 100,
 	Weight = 20
@@ -52,6 +64,13 @@ Config.NewItem({
 	Name = "a club",
 	RoomDesc = "A crude wooden club sits here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d2+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10,
 	Weight = 12
@@ -67,6 +86,13 @@ Config.NewItem({
 	Name = "Starkblade",
 	RoomDesc = "A knife hums with eternal energy here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 100000,
 	Weight = 1

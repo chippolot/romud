@@ -53,6 +53,13 @@ Config.NewItem({
 	Name = "a dwarven hammer",
 	RoomDesc = "There is a dwarven hammer lying here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 5500,
 	Weight = 13
@@ -67,6 +74,12 @@ Config.NewItem({
 	Name = "the dwarven plate mail",
 	RoomDesc = "There is dwarven plate mail lying here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 4500,
 	Weight = 80
@@ -104,6 +117,13 @@ Config.NewItem({
 	Name = "a dwarven club",
 	RoomDesc = "There is a dwarven club lying here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 3000,
 	Weight = 12
@@ -118,6 +138,13 @@ Config.NewItem({
 	Name = "a two-handed dwarven axe",
 	RoomDesc = "A two-handed dwarven axe is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 5000,
 	Weight = 14
@@ -131,6 +158,12 @@ Config.NewItem({
 	Name = "a dwarven helmet",
 	RoomDesc = "A dwarven helmet is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 2500,
 	Weight = 4
@@ -156,6 +189,12 @@ Config.NewItem({
 	Name = "a pair of dwarven gloves",
 	RoomDesc = "A pair of thick dwarven gloves lay here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "1"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 4000,
 	Weight = 2
@@ -180,6 +219,13 @@ Config.NewItem({
 	Name = "a mining pick",
 	RoomDesc = "There is a mining pick here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 300,
 	Weight = 9

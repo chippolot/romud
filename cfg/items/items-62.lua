@@ -41,6 +41,13 @@ Config.NewItem({
 	Name = "a long, grey branch",
 	RoomDesc = "A long, grey branch rests heavily on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 60,
 	Weight = 18
@@ -121,6 +128,12 @@ Config.NewItem({
 	Name = "a large round shield",
 	RoomDesc = "A large round shield has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 300,
 	Weight = 15
@@ -134,6 +147,12 @@ Config.NewItem({
 	Name = "an iron crown",
 	RoomDesc = "An iron crown rests on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 7000,
 	Weight = 20
@@ -169,6 +188,13 @@ Config.NewItem({
 	Name = "the morning star",
 	RoomDesc = "the morning star is here collecting dust while it lies on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d9+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 15000,
 	Weight = 10
@@ -182,6 +208,12 @@ Config.NewItem({
 	Name = "a black dragon scale shirt",
 	RoomDesc = "A black dragon scale shirt has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 10000,
 	Weight = 10
@@ -195,6 +227,12 @@ Config.NewItem({
 	Name = "a black dragon scale skirt",
 	RoomDesc = "A black dragon scale skirt has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "legs"
 	},
 	Value = 5000,
 	Weight = 8
@@ -219,6 +257,12 @@ Config.NewItem({
 	Name = "a broad silver belt",
 	RoomDesc = "A broad silver belt has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "waist"
 	},
 	Value = 5000,
 	Weight = 4
@@ -233,6 +277,13 @@ Config.NewItem({
 	Name = "a long, slender sword",
 	RoomDesc = "A long, slender sword lies on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 30000,
 	Weight = 4

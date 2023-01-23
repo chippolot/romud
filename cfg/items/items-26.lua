@@ -148,6 +148,13 @@ Config.NewItem({
 	Name = "a mithril hammer",
 	RoomDesc = "a mithril hammer has been left here",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 19
@@ -181,6 +188,13 @@ Config.NewItem({
 	Name = "a long sword",
 	RoomDesc = "A long sword has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 8
@@ -194,6 +208,13 @@ Config.NewItem({
 	Name = "a silver dagger",
 	RoomDesc = "A finely crafted dagger made of silver is on the ground here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 15000,
 	Weight = 5
@@ -206,6 +227,13 @@ Config.NewItem({
 	Name = "a curved scimitar",
 	RoomDesc = "A curved scimitar is here in a jewel-covered sheath.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 17500,
 	Weight = 10
@@ -219,6 +247,13 @@ Config.NewItem({
 	Name = "a wooden staff",
 	RoomDesc = "A wooden staff is against the wall here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10,
 	Weight = 6
@@ -387,6 +422,12 @@ Config.NewItem({
 	Name = "a pair of spectacles",
 	RoomDesc = "A pair of wire-rimmed spectacles has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 10000,
 	Weight = 4
@@ -410,6 +451,12 @@ Config.NewItem({
 	Name = "a heart shaped medallion",
 	RoomDesc = "A heart shaped medallion is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 10000,
 	Weight = 3
@@ -457,6 +504,12 @@ Config.NewItem({
 	Name = "a brown cloak",
 	RoomDesc = "A travel worn cloak has carelessly been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 2000,
 	Weight = 5
@@ -471,6 +524,12 @@ Config.NewItem({
 	Name = "a chameleon poncho",
 	RoomDesc = "Some multicolored cloth is on the ground here",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "shoulders"
 	},
 	Value = 15000,
 	Weight = 4
@@ -484,6 +543,12 @@ Config.NewItem({
 	Name = "a pair of old boots",
 	RoomDesc = "A pair of old boots is here, they look very comfortable.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 3500,
 	Weight = 2
@@ -541,6 +606,13 @@ Config.NewItem({
 	Name = "a meat cleaver",
 	RoomDesc = "A meat cleaver is sticking in the wall here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 600,
 	Weight = 8
@@ -565,6 +637,13 @@ Config.NewItem({
 	Name = "a silvery dagger",
 	RoomDesc = "A long dagger that seems to be made of silver is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1200,
 	Weight = 5
@@ -765,6 +844,13 @@ Config.NewItem({
 	Name = "a runed chisel",
 	RoomDesc = "A runed chisel is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1500,
 	Weight = 6
@@ -800,6 +886,12 @@ Config.NewItem({
 	Name = "a dark cowl",
 	RoomDesc = "A dark cowl is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 1200,
 	Weight = 5
@@ -824,6 +916,13 @@ Config.NewItem({
 	Name = "a huge spiked club",
 	RoomDesc = "A huge spiked club has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 750,
 	Weight = 29
@@ -848,6 +947,12 @@ Config.NewItem({
 	Name = "a glinting silver bracelet",
 	RoomDesc = "A glinting hoop of silvery metal is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "wrists"
 	},
 	Value = 5000,
 	Weight = 5
@@ -861,6 +966,12 @@ Config.NewItem({
 	Name = "a long grey cloak",
 	RoomDesc = "A pile of grey cloth has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 12000,
 	Weight = 7
@@ -873,6 +984,13 @@ Config.NewItem({
 	Name = "an iron shod staff",
 	RoomDesc = "A grey piece of wood shod in iron has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 9000,
 	Weight = 7
@@ -888,6 +1006,12 @@ Config.NewItem({
 	Name = "a ward minor",
 	RoomDesc = "A small clear cube is sitting here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 5000,
 	Weight = 5
@@ -912,6 +1036,12 @@ Config.NewItem({
 	Name = "an onyx bracelet",
 	RoomDesc = "A hoop of black onyx is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "wrists"
 	},
 	Value = 8500,
 	Weight = 6
@@ -926,6 +1056,12 @@ Config.NewItem({
 	Name = "a dark black cloak",
 	RoomDesc = "A pile of black cloth is on the ground here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 9000,
 	Weight = 8
@@ -940,6 +1076,13 @@ Config.NewItem({
 	Name = "a sharp shard of obsidian",
 	RoomDesc = "A piece of black glass is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 12000,
 	Weight = 8
@@ -965,6 +1108,12 @@ Config.NewItem({
 	Name = "a white gold bracelet",
 	RoomDesc = "A hoop of silvery metal is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "wrists"
 	},
 	Value = 5000,
 	Weight = 5
@@ -978,6 +1127,12 @@ Config.NewItem({
 	Name = "a white cloak",
 	RoomDesc = "A pile of white cloth is on the ground here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 9000,
 	Weight = 7
@@ -991,6 +1146,13 @@ Config.NewItem({
 	Name = "an ivory hilted dagger",
 	RoomDesc = "An ivory hilted dagger has been left here",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 12000,
 	Weight = 8
@@ -1004,6 +1166,12 @@ Config.NewItem({
 	Name = "a spiked collar",
 	RoomDesc = "A small spiked collar is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 10000,
 	Weight = 9
@@ -1028,6 +1196,12 @@ Config.NewItem({
 	Name = "a small emerald ring",
 	RoomDesc = "A small ring with a green gemstone is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "fingers"
 	},
 	Value = 50000,
 	Weight = 5
@@ -1041,6 +1215,12 @@ Config.NewItem({
 	Name = "an emerald bracelet",
 	RoomDesc = "A beautifully crafted hoop of emerald is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "wrists"
 	},
 	Value = 30000,
 	Weight = 5
@@ -1056,6 +1236,12 @@ Config.NewItem({
 	Name = "a ward major",
 	RoomDesc = "A large clear crystal cube is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 20000,
 	Weight = 6
@@ -1069,6 +1255,13 @@ Config.NewItem({
 	Name = "the ebony kris",
 	RoomDesc = "A wavy bladed knife made of ebony is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 60000,
 	Weight = 9
@@ -1083,6 +1276,12 @@ Config.NewItem({
 	Name = "a tight fitting green dragon scale shirt",
 	RoomDesc = "Some green dragon scales which have been sewn together are here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "10"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 10000,
 	Weight = 9

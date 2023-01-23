@@ -8,6 +8,12 @@ Config.NewItem({
 	Name = "some Black Pawn Armour",
 	RoomDesc = "A pile of black armour is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "1"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 300,
 	Weight = 13
@@ -22,6 +28,12 @@ Config.NewItem({
 	Name = "some White Pawn Armour",
 	RoomDesc = "A pile of white armour is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "1"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 300,
 	Weight = 13
@@ -36,6 +48,13 @@ Config.NewItem({
 	Name = "a Black Pawn's Sword",
 	RoomDesc = "The sword of a Black Pawn lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 100,
 	Weight = 10
@@ -50,6 +69,13 @@ Config.NewItem({
 	Name = "a White Pawn's Sword",
 	RoomDesc = "The sword of a White Pawn lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 100,
 	Weight = 10
@@ -64,6 +90,12 @@ Config.NewItem({
 	Name = "some Black Rook Armour",
 	RoomDesc = "Some armour made from the remains of a black rook lies heaped on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 17000,
 	Weight = 60
@@ -78,6 +110,12 @@ Config.NewItem({
 	Name = "some White Rook Armour",
 	RoomDesc = "Some armour made from the remains of a white rook lies heaped on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 17000,
 	Weight = 60
@@ -92,6 +130,13 @@ Config.NewItem({
 	Name = "the Lance of the Black Knight",
 	RoomDesc = "The Lance of the Black Knight lies here, waiting to rust.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 18
@@ -106,6 +151,13 @@ Config.NewItem({
 	Name = "the Lance of the White Knight",
 	RoomDesc = "The Lance of the White Knight lies here, waiting to rust.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 18
@@ -144,6 +196,12 @@ Config.NewItem({
 	Name = "the Crown of the Black Queen",
 	RoomDesc = "The Crown of the Black Queen lies here, looking neglected.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 3000,
 	Weight = 4
@@ -158,6 +216,12 @@ Config.NewItem({
 	Name = "the Crown of the White Queen",
 	RoomDesc = "The Crown of the White Queen lies here, looking neglected.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 3000,
 	Weight = 4

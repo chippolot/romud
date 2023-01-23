@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "a commoner's longsword",
 	RoomDesc = "A commoner's longsword made of adamantite has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1000,
 	Weight = 12
@@ -20,6 +27,13 @@ Config.NewItem({
 	Name = "a noble's longsword",
 	RoomDesc = "A drow noble's longsword, made of adamantite, lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1500,
 	Weight = 12
@@ -34,6 +48,13 @@ Config.NewItem({
 	Name = "a two-headed snake whip",
 	RoomDesc = "A whip with two snakes heads lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1750,
 	Weight = 12
@@ -48,6 +69,13 @@ Config.NewItem({
 	Name = "a three-headed snake whip",
 	RoomDesc = "A whip with three snake heads has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 5000,
 	Weight = 12
@@ -62,6 +90,13 @@ Config.NewItem({
 	Name = "a four-headed snake whip",
 	RoomDesc = "A whip with four snake heads has been carelessly left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10250,
 	Weight = 12
@@ -75,6 +110,13 @@ Config.NewItem({
 	Name = "a black longsword",
 	RoomDesc = "A black longsword has been carelessly left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10250,
 	Weight = 12
@@ -89,6 +131,13 @@ Config.NewItem({
 	Name = "a five-headed snake whip",
 	RoomDesc = "A whip with 5 snake heads has been carelessly dropped here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 12000,
 	Weight = 12
@@ -103,6 +152,13 @@ Config.NewItem({
 	Name = "a six-headed snake whip",
 	RoomDesc = "A whip with six snake heads has been dropped here very carelessly.",
 	Equipment = {
+		Weapon = {
+			Damage = "4d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 15000,
 	Weight = 12
@@ -116,6 +172,12 @@ Config.NewItem({
 	Name = "a pair of bracers",
 	RoomDesc = "A pair of iron bracers has been dropped here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "arms"
 	},
 	Value = 2000,
 	Weight = 3
@@ -151,6 +213,12 @@ Config.NewItem({
 	Name = "a small helmet",
 	RoomDesc = "A small helmet lies up against a rock.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "1"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 6000,
 	Weight = 5
@@ -176,6 +244,13 @@ Config.NewItem({
 	Name = "a spider shaped dagger",
 	RoomDesc = "A dagger with spider leg shaped blades lies on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 12000,
 	Weight = 8
@@ -189,6 +264,12 @@ Config.NewItem({
 	Name = "a small bright green hat",
 	RoomDesc = "A small bright green hat lies in the dirt.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "10"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 2000,
 	Weight = 1

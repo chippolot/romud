@@ -7,6 +7,12 @@ Config.NewItem({
 	Name = "a ringmail vest",
 	RoomDesc = "A vest made of iron rings lies heaped on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 12000,
 	Weight = 60
@@ -20,6 +26,12 @@ Config.NewItem({
 	Name = "an iron helm",
 	RoomDesc = "An iron helm has been left on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 5000,
 	Weight = 10
@@ -33,6 +45,12 @@ Config.NewItem({
 	Name = "a pair of iron gauntlets",
 	RoomDesc = "A pair of iron gauntlets rests heavily on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 2200,
 	Weight = 10
@@ -46,6 +64,12 @@ Config.NewItem({
 	Name = "a pair of iron sleeves",
 	RoomDesc = "A set of iron sleeves lies on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "arms"
 	},
 	Value = 2450,
 	Weight = 10
@@ -59,6 +83,12 @@ Config.NewItem({
 	Name = "a pair of iron boots",
 	RoomDesc = "A pair of iron boots has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 800,
 	Weight = 6
@@ -72,6 +102,12 @@ Config.NewItem({
 	Name = "a set of iron greaves",
 	RoomDesc = "A set of iron greaves lie here unattended.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "legs"
 	},
 	Value = 5400,
 	Weight = 10
@@ -85,6 +121,12 @@ Config.NewItem({
 	Name = "an iron girth",
 	RoomDesc = "A small iron girth lies at your feet.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "waist"
 	},
 	Value = 4200,
 	Weight = 6
@@ -99,6 +141,12 @@ Config.NewItem({
 	Name = "a battered iron breast plate",
 	RoomDesc = "A battered iron breast plate lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 13000,
 	Weight = 125
@@ -112,6 +160,12 @@ Config.NewItem({
 	Name = "a sturdy iron shield",
 	RoomDesc = "A small, but sturdy, iron shield has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 500,
 	Weight = 5
@@ -202,6 +256,12 @@ Config.NewItem({
 	Name = "a demon-faced talisman",
 	RoomDesc = "A demon-faced talisman glares at you angrily.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 2500,
 	Weight = 11
@@ -238,6 +298,13 @@ Config.NewItem({
 	Name = "a two-handed sword",
 	RoomDesc = "A nice two-handed sword hangs on a hook in the wall.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 55000,
 	Weight = 22
@@ -252,6 +319,12 @@ Config.NewItem({
 	Name = "a black silk robe",
 	RoomDesc = "A black silk robe lies heaped in one corner.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "1"
+			}
+		},
+		Slot = "shoulders"
 	},
 	Value = 1300,
 	Weight = 6
@@ -265,6 +338,12 @@ Config.NewItem({
 	Name = "a dark green cloak",
 	RoomDesc = "A beautiful dark green cloak has been dropped here by someone.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 14500,
 	Weight = 12

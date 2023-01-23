@@ -8,6 +8,12 @@ Config.NewItem({
 	Name = "a yellow and green ring",
 	RoomDesc = "A ring is here, with yellow and green ornamentation.  It looks very old.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "fingers"
 	},
 	Value = 50,
 	Weight = 1
@@ -53,6 +59,12 @@ Config.NewItem({
 	Name = "a metal helmet",
 	RoomDesc = "A metal helmet in here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "-5"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 3000,
 	Weight = 4
@@ -75,6 +87,13 @@ Config.NewItem({
 	Name = "a thieves' dirk",
 	RoomDesc = "A beautifully crafted dirk is lying here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 850,
 	Weight = 2
@@ -89,6 +108,13 @@ Config.NewItem({
 	Name = "a black demon blade",
 	RoomDesc = "A black demon blade is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 8
@@ -102,6 +128,12 @@ Config.NewItem({
 	Name = "a pair of swordsmans' gloves",
 	RoomDesc = "A pair of finely crafted gloves are lying on the ground here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 3500,
 	Weight = 1

@@ -18,6 +18,13 @@ Config.NewItem({
 	Name = "a very sharp knife",
 	RoomDesc = "A very sharp knife lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "8d1+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1000,
 	Weight = 9
@@ -31,6 +38,12 @@ Config.NewItem({
 	Name = "a wizard's hat",
 	RoomDesc = "A blue wizard's hat lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 20000,
 	Weight = 5
@@ -47,6 +60,12 @@ Config.NewItem({
 	Name = "a pontiff's headress",
 	RoomDesc = "A white cone-shaped head ornament with religious symbols lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 20000,
 	Weight = 5
@@ -61,6 +80,12 @@ Config.NewItem({
 	Name = "a black knight's visor",
 	RoomDesc = "A black visor sits here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 20000,
 	Weight = 5

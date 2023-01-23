@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "a shiny newbie sword",
 	RoomDesc = "A shiny newbie sword is lying here waiting to be possessed.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 0,
 	Weight = 4
@@ -20,6 +27,12 @@ Config.NewItem({
 	Name = "a bright green newbie vest",
 	RoomDesc = "A bright green newbie vest is lying here looking for a body to hug.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 0,
 	Weight = 4
@@ -34,6 +47,12 @@ Config.NewItem({
 	Name = "a bright newbie helm",
 	RoomDesc = "A bright newbie helm is hoping a loose head will wander by.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "3"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 0,
 	Weight = 4
@@ -48,6 +67,12 @@ Config.NewItem({
 	Name = "a dark newbie cloak",
 	RoomDesc = "A dark newbie cloak is lying here hoping to smother you.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "shoulders"
 	},
 	Value = 100,
 	Weight = 2
@@ -62,6 +87,12 @@ Config.NewItem({
 	Name = "a newbie signet ring",
 	RoomDesc = "A newbie signet ring is lying in the dust here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "fingers"
 	},
 	Value = 500,
 	Weight = 1
@@ -75,6 +106,13 @@ Config.NewItem({
 	Name = "a shiny newbie dagger",
 	RoomDesc = "A shiny newbie dagger is lying here looking for a back to stab.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 0,
 	Weight = 1
@@ -88,6 +126,12 @@ Config.NewItem({
 	Name = "a pet dragon collar",
 	RoomDesc = "Someone's pet dragon has escaped and left his collar here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 0,
 	Weight = 1
@@ -123,6 +167,12 @@ Config.NewItem({
 	Name = "the horns of the Minotaur",
 	RoomDesc = "The horns of the great Minotaur lie here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 100,
 	Weight = 8
@@ -147,6 +197,12 @@ Config.NewItem({
 	Name = "some cool newbie leggings",
 	RoomDesc = "A pair of neat looking leggings are here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "legs"
 	},
 	Value = 200,
 	Weight = 4
@@ -160,6 +216,12 @@ Config.NewItem({
 	Name = "some cool newbie sleeves",
 	RoomDesc = "A set of nifty sleeves is here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "arms"
 	},
 	Value = 400,
 	Weight = 3
@@ -173,6 +235,13 @@ Config.NewItem({
 	Name = "a glowing newbie mace",
 	RoomDesc = "A finely crafted newbie mace is waiting for a worthy owner.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 300,
 	Weight = 8

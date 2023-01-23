@@ -151,6 +151,13 @@ Config.NewItem({
 	Name = "a dagger",
 	RoomDesc = "A dagger with a long thin blade is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10,
 	Weight = 1
@@ -164,6 +171,13 @@ Config.NewItem({
 	Name = "a small sword",
 	RoomDesc = "A small sword lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 60,
 	Weight = 3
@@ -177,6 +191,13 @@ Config.NewItem({
 	Name = "a long sword",
 	RoomDesc = "A long sword has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 600,
 	Weight = 8
@@ -190,6 +211,13 @@ Config.NewItem({
 	Name = "a wooden club",
 	RoomDesc = "A simple looking wooden club is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 12,
 	Weight = 3
@@ -203,6 +231,13 @@ Config.NewItem({
 	Name = "a warhammer",
 	RoomDesc = "A medium sized warhammer is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 50,
 	Weight = 6
@@ -216,6 +251,13 @@ Config.NewItem({
 	Name = "a flail",
 	RoomDesc = "A large flail is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 625,
 	Weight = 6
@@ -315,6 +357,13 @@ Config.NewItem({
 	Name = "a nail",
 	RoomDesc = "A penny nail lies in the dust.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d1+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 5,
 	Weight = 1
@@ -338,6 +387,12 @@ Config.NewItem({
 	Name = "a breast plate",
 	RoomDesc = "A breast plate is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 18000,
 	Weight = 100
@@ -352,6 +407,12 @@ Config.NewItem({
 	Name = "a chain mail shirt",
 	RoomDesc = "A chain mail shirt is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 2500,
 	Weight = 60
@@ -365,6 +426,12 @@ Config.NewItem({
 	Name = "a shield",
 	RoomDesc = "A small wooden shield is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 100,
 	Weight = 3
@@ -379,6 +446,12 @@ Config.NewItem({
 	Name = "a leather jacket",
 	RoomDesc = "A soft leather jacket is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 200,
 	Weight = 10
@@ -393,6 +466,12 @@ Config.NewItem({
 	Name = "a studded leather jacket",
 	RoomDesc = "A studded leather jacket is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "3"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 500,
 	Weight = 20
@@ -407,6 +486,12 @@ Config.NewItem({
 	Name = "a scale mail jacket",
 	RoomDesc = "A scale mail jacket is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 1000,
 	Weight = 40
@@ -421,6 +506,12 @@ Config.NewItem({
 	Name = "a bronze breast plate",
 	RoomDesc = "A bronze breast plate is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 7000,
 	Weight = 80
@@ -520,6 +611,12 @@ Config.NewItem({
 	Name = "a pair of bronze gauntlets",
 	RoomDesc = "A pair of bronze gauntlets is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 1750,
 	Weight = 8
@@ -533,6 +630,12 @@ Config.NewItem({
 	Name = "a pair of leather gloves",
 	RoomDesc = "A pair of leather gloves is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "3"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 75,
 	Weight = 3
@@ -546,6 +649,12 @@ Config.NewItem({
 	Name = "a bronze helmet",
 	RoomDesc = "A bronze helmet is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 3500,
 	Weight = 8
@@ -559,6 +668,12 @@ Config.NewItem({
 	Name = "a leather cap",
 	RoomDesc = "A leather cap is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "3"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 150,
 	Weight = 3
@@ -572,6 +687,12 @@ Config.NewItem({
 	Name = "a pair of bronze leggings",
 	RoomDesc = "A pair of bronze leggings is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "legs"
 	},
 	Value = 3500,
 	Weight = 8
@@ -585,6 +706,12 @@ Config.NewItem({
 	Name = "a pair of leather pants",
 	RoomDesc = "A pair of leather pants is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "3"
+			}
+		},
+		Slot = "legs"
 	},
 	Value = 150,
 	Weight = 8
@@ -598,6 +725,12 @@ Config.NewItem({
 	Name = "a pair of bronze sleeves",
 	RoomDesc = "A pair of bronze sleeves is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "arms"
 	},
 	Value = 1750,
 	Weight = 8
@@ -611,6 +744,12 @@ Config.NewItem({
 	Name = "a pair of leather sleeves",
 	RoomDesc = "A pair of leather sleeves is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "arms"
 	},
 	Value = 75,
 	Weight = 4

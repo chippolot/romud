@@ -73,6 +73,13 @@ Config.NewItem({
 	Name = "a plain dagger",
 	RoomDesc = "A long black, but very plain, dagger rests here.",
 	Equipment = {
+		Weapon = {
+			Damage = "5d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 6500,
 	Weight = 3
@@ -120,6 +127,13 @@ Config.NewItem({
 	Name = "a huge bastard sword",
 	RoomDesc = "There is a huge bastard sword here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1700,
 	Weight = 18
@@ -133,6 +147,12 @@ Config.NewItem({
 	Name = "a large helmet",
 	RoomDesc = "There is a large helmet on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 4500,
 	Weight = 5
@@ -146,6 +166,12 @@ Config.NewItem({
 	Name = "a chaos helmet",
 	RoomDesc = "On the floor is a grand evil-looking chaos helmet.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 2300,
 	Weight = 8
@@ -159,6 +185,13 @@ Config.NewItem({
 	Name = "a two-handed sword",
 	RoomDesc = "On the floor rests a enormous two-handed sword.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 3500,
 	Weight = 22
@@ -174,6 +207,12 @@ Config.NewItem({
 	Name = "a silvery breast plate",
 	RoomDesc = "There is a silvery breast plate on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "10"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 20000,
 	Weight = 70
@@ -188,6 +227,12 @@ Config.NewItem({
 	Name = "some silvery leg plates",
 	RoomDesc = "On the floor you see some leg plates.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "legs"
 	},
 	Value = 12500,
 	Weight = 40
@@ -202,6 +247,12 @@ Config.NewItem({
 	Name = "a pair of silvery gloves",
 	RoomDesc = "You can see a pair of gloves on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 2500,
 	Weight = 14
@@ -216,6 +267,12 @@ Config.NewItem({
 	Name = "a silvery helmet",
 	RoomDesc = "The silvery helmet lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 9000,
 	Weight = 35
@@ -229,6 +286,12 @@ Config.NewItem({
 	Name = "the shield of the rose",
 	RoomDesc = "The shield of the rose rests on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "12"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 15000,
 	Weight = 60
@@ -243,6 +306,12 @@ Config.NewItem({
 	Name = "a pair of heavy plated boots",
 	RoomDesc = "A pair of heavy plated boots stand on the floor.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 3500,
 	Weight = 40
@@ -258,6 +327,12 @@ Config.NewItem({
 	Name = "some silvery arm plates",
 	RoomDesc = "On the floor you see some arm plates.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "arms"
 	},
 	Value = 12500,
 	Weight = 40

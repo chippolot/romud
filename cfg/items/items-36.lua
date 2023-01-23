@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "a small sword",
 	RoomDesc = "A small sword lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 60,
 	Weight = 3
@@ -20,6 +27,13 @@ Config.NewItem({
 	Name = "a fine long sword",
 	RoomDesc = "A long sword has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d9+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 600,
 	Weight = 8
@@ -33,6 +47,13 @@ Config.NewItem({
 	Name = "a wooden club",
 	RoomDesc = "A simple looking wooden club is here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 12,
 	Weight = 3
@@ -47,6 +68,12 @@ Config.NewItem({
 	Name = "a studded leather jacket",
 	RoomDesc = "A studded leather jacket is lying on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 500,
 	Weight = 20
@@ -60,6 +87,13 @@ Config.NewItem({
 	Name = "a small spear",
 	RoomDesc = "A small spear lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "5d1+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 500,
 	Weight = 15
@@ -95,6 +129,13 @@ Config.NewItem({
 	Name = "an ornate dagger",
 	RoomDesc = "A beautiful looking dagger is stuck in the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1000,
 	Weight = 4
@@ -108,6 +149,12 @@ Config.NewItem({
 	Name = "the gyroscope",
 	RoomDesc = "A small toy is spinning about on the ground here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "fingers"
 	},
 	Value = 25,
 	Weight = 1

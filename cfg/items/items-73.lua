@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "the devil rod",
 	RoomDesc = "The mysterious devil rod lies on the floor.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 16000,
 	Weight = 6
@@ -20,6 +27,13 @@ Config.NewItem({
 	Name = "the large mace",
 	RoomDesc = "A large mace lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1000,
 	Weight = 10
@@ -33,6 +47,13 @@ Config.NewItem({
 	Name = "the small mace",
 	RoomDesc = "a small mace has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 600,
 	Weight = 6
@@ -80,6 +101,12 @@ Config.NewItem({
 	Name = "a strange white skull",
 	RoomDesc = "A strange white skull lies on the floor looking at you.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "1"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 0,
 	Weight = 30
@@ -93,6 +120,12 @@ Config.NewItem({
 	Name = "a pair of muddy gauntlets",
 	RoomDesc = "A pair of muddy gauntlets have been thrown away here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 6000,
 	Weight = 10
@@ -117,6 +150,12 @@ Config.NewItem({
 	Name = "a pair of muddy boots",
 	RoomDesc = "A pair of muddy boots has been dropped here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 75,
 	Weight = 10
@@ -141,6 +180,13 @@ Config.NewItem({
 	Name = "a short sword",
 	RoomDesc = "A short sword is lying here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 100,
 	Weight = 4

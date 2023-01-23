@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "a glowing dagger",
 	RoomDesc = "A glowing dagger glows here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1000,
 	Weight = 1
@@ -22,6 +29,12 @@ Config.NewItem({
 	Name = "the glowing platemail",
 	RoomDesc = "Some glowing platemail lies in a heap here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "15"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 30000,
 	Weight = 150
@@ -78,6 +91,12 @@ Config.NewItem({
 	Name = "an amulet",
 	RoomDesc = "An odd looking amulet has been discarded here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 20000,
 	Weight = 3
@@ -180,6 +199,12 @@ Config.NewItem({
 	Name = "Rand's staff",
 	RoomDesc = "There is a metal-shod staff here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 100000,
 	Weight = 7

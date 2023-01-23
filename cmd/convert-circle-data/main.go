@@ -370,29 +370,43 @@ func parseItems(data []byte, outPath string) {
 
 				// Parse (type, flags, wear)
 				toks, lines := parseLineTokens(lines)
-				typ, _, _ := toks[0], toks[1], toks[2]
-				isWeapon, isArmor := false, false
-				switch parseInt(typ) {
-				// Weapon
-				case 5:
-					isWeapon = true
-				// Armor
-				case 9:
-					isArmor = true
-				}
+				typ, _, wear := toks[0], toks[1], toks[2]
+				isWeapon, isArmor := typ == "5", typ == "9"
+
+				// Parse Obj Values
+				toks, lines = parseLineTokens(lines)
+				v0, v1, v2, _ := toks[0], toks[1], toks[2], toks[3]
 
 				// Parse equipment
 				if isWeapon || isArmor {
 					lb.FieldScope("Equipment", func() {
 						lb.Table(func() {
-
+							if isWeapon {
+								lb.FieldScope("Weapon", func() {
+									lb.Table(func() {
+										dam := mud.NewDice(uint(parseInt(v1)), uint(parseInt(v2)), 0)
+										lb.Field("Damage", dam.String())
+										lb.Field("DamageType", "slashing")
+										lb.Field("VerbSingular", "slash")
+										lb.Field("VerbPlural", "slashes")
+									})
+								})
+							} else {
+								lb.FieldScope("Armor", func() {
+									lb.Table(func() {
+										lb.FieldScope("Stats", func() {
+											lb.Table(func() {
+												lb.Field("AC", v0)
+											})
+										})
+									})
+								})
+							}
+							slot := toEquipSlot(wear)
+							lb.Field("Slot", slot.String())
 						})
 					})
 				}
-
-				// Parse Obj Values
-				toks, lines = parseLineTokens(lines)
-				_, _, _, _ = toks[0], toks[1], toks[2], toks[3]
 
 				// Parse (weight, cost, rent)
 				toks, lines = parseLineTokens(lines)
@@ -463,4 +477,38 @@ func saveString(path string, data string) error {
 
 func trimExtension(fileName string) string {
 	return fileName[:len(fileName)-len(filepath.Ext(fileName))]
+}
+
+func toEquipSlot(s string) mud.EquipSlot {
+	f := parseInt(s)
+	if f&(1<<1) != 0 {
+		return mud.EqSlot_Fingers
+	} else if f&(1<<2) != 0 {
+		return mud.EqSlot_Neck
+	} else if f&(1<<3) != 0 {
+		return mud.EqSlot_Body
+	} else if f&(1<<4) != 0 {
+		return mud.EqSlot_Head
+	} else if f&(1<<5) != 0 {
+		return mud.EqSlot_Legs
+	} else if f&(1<<6) != 0 {
+		return mud.EqSlot_Feet
+	} else if f&(1<<7) != 0 {
+		return mud.EqSlot_Hands
+	} else if f&(1<<8) != 0 {
+		return mud.EqSlot_Arms
+	} else if f&(1<<9) != 0 {
+		return mud.EqSlot_Held1H
+	} else if f&(1<<10) != 0 {
+		return mud.EqSlot_Shoulders
+	} else if f&(1<<11) != 0 {
+		return mud.EqSlot_Waist
+	} else if f&(1<<12) != 0 {
+		return mud.EqSlot_Wrists
+	} else if f&(1<<13) != 0 {
+		return mud.EqSlot_Held1H
+	} else if f&(1<<14) != 0 {
+		return mud.EqSlot_Held1H
+	}
+	return mud.EqSlot_None
 }

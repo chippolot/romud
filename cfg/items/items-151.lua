@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "Sapowox's Universal Nothingness",
 	RoomDesc = "You are quite unable to perceive Sapowox's Universal Nothingness here.",
 	Equipment = {
+		Weapon = {
+			Damage = "6d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 0,
 	Weight = 40
@@ -43,6 +50,12 @@ Config.NewItem({
 	Name = "a golden crown",
 	RoomDesc = "A magnificently jewelled golden crown has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 12000,
 	Weight = 40
@@ -78,6 +91,13 @@ Config.NewItem({
 	Name = "a training sword",
 	RoomDesc = "A training sword with blunt edges is leaned against a wall.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 300,
 	Weight = 7
@@ -102,6 +122,13 @@ Config.NewItem({
 	Name = "Verminator",
 	RoomDesc = "A strange looking sword is lying upon the ground here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1,
 	Weight = 2
@@ -184,6 +211,12 @@ Config.NewItem({
 	Name = "a guard's chain mail hauberk",
 	RoomDesc = "A chain mail hauberk lies on the floor",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 2000,
 	Weight = 60
@@ -198,6 +231,13 @@ Config.NewItem({
 	Name = "a large broadsword",
 	RoomDesc = "There is a large broadsword lying here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1300,
 	Weight = 14

@@ -58,6 +58,13 @@ Config.NewItem({
 	Name = "a halberd",
 	RoomDesc = "A runed halberd lies on the ground here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d12+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 16
@@ -124,6 +131,13 @@ Config.NewItem({
 	Name = "a knife",
 	RoomDesc = "An exquisitely crafted knife rests here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1000000,
 	Weight = 8
@@ -137,6 +151,13 @@ Config.NewItem({
 	Name = "a long sword",
 	RoomDesc = "A superb long sword sticks in the earth.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 750000,
 	Weight = 15
@@ -150,6 +171,13 @@ Config.NewItem({
 	Name = "a short sword",
 	RoomDesc = "A short sword lies here... a work of art!",
 	Equipment = {
+		Weapon = {
+			Damage = "4d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000000,
 	Weight = 10
@@ -172,6 +200,13 @@ Config.NewItem({
 	Name = "a scimitar",
 	RoomDesc = "A scimitar as long as your arm lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 500,
 	Weight = 10
@@ -195,6 +230,13 @@ Config.NewItem({
 	Name = "a hunting bow",
 	RoomDesc = "A hunting bow lies here, unwanted",
 	Equipment = {
+		Weapon = {
+			Damage = "1d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 400,
 	Weight = 6
@@ -208,6 +250,12 @@ Config.NewItem({
 	Name = "a leather vest",
 	RoomDesc = "A nice leather vest lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "6"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 5000,
 	Weight = 6

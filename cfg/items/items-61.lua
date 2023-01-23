@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "a lumber axe",
 	RoomDesc = "A heavy lumber axe lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 50,
 	Weight = 12
@@ -20,6 +27,12 @@ Config.NewItem({
 	Name = "a chequered shirt",
 	RoomDesc = "A chequered shirt lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "1"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 20,
 	Weight = 2
@@ -33,6 +46,12 @@ Config.NewItem({
 	Name = "a pair of worn leather boots",
 	RoomDesc = "A pair of worn leather boots lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 60,
 	Weight = 4
@@ -167,6 +186,13 @@ Config.NewItem({
 	Name = "an oaken cudgel",
 	RoomDesc = "A limb has fallen here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1,
 	Weight = 16

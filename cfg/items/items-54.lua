@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "an egyptian mace",
 	RoomDesc = "A hierogylph-engraved mace has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 800,
 	Weight = 10
@@ -20,6 +27,12 @@ Config.NewItem({
 	Name = "some sand-colored robes",
 	RoomDesc = "Sand-colored robes lie here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "shoulders"
 	},
 	Value = 500,
 	Weight = 5
@@ -33,6 +46,13 @@ Config.NewItem({
 	Name = "an obsidian dirk",
 	RoomDesc = "A flat dirk made of chipped obsidian lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1000,
 	Weight = 8
@@ -46,6 +66,12 @@ Config.NewItem({
 	Name = "a dirty cloth turban",
 	RoomDesc = "A dirty cloth turban has been forgotten here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 1500,
 	Weight = 10
@@ -59,6 +85,12 @@ Config.NewItem({
 	Name = "some cloth wrappings",
 	RoomDesc = "Long cloth wrappings lie on the ground in a pile.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 1250,
 	Weight = 15
@@ -105,6 +137,13 @@ Config.NewItem({
 	Name = "a stone scimitar",
 	RoomDesc = "A curved scimitar made of stone rests on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "4d3+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 18
@@ -170,6 +209,12 @@ Config.NewItem({
 	Name = "an ankh",
 	RoomDesc = "A small brass ankh has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 9
@@ -194,6 +239,13 @@ Config.NewItem({
 	Name = "a lion's paw",
 	RoomDesc = "The mighty paw of a lion-like creature has been dropped here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d14+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 18000,
 	Weight = 20
@@ -262,6 +314,12 @@ Config.NewItem({
 	Name = "a golden mask",
 	RoomDesc = "A beautiful, intricately detailed mask has been forgotten here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "10"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 15000,
 	Weight = 10
@@ -298,6 +356,12 @@ Config.NewItem({
 	Name = "a sandy-coloured ring",
 	RoomDesc = "A small sandy-coloured ring has been carelessly dropped here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "fingers"
 	},
 	Value = 20000,
 	Weight = 5
@@ -322,6 +386,12 @@ Config.NewItem({
 	Name = "a pair of sphinxian leggings",
 	RoomDesc = "Massive leggings formed from the body of a sphinx stand here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "10"
+			}
+		},
+		Slot = "legs"
 	},
 	Value = 20000,
 	Weight = 20

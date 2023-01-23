@@ -30,6 +30,13 @@ Config.NewItem({
 	Name = "a blazing sword",
 	RoomDesc = "You are startled by the sight of a sword that glows as you approach it.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "none"
 	},
 	Value = 5000,
 	Weight = 10
@@ -44,6 +51,12 @@ Config.NewItem({
 	Name = "the Protector of the Faithful",
 	RoomDesc = "A weighty looking shield has been abandoned by one unworthy to hold it.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "15"
+			}
+		},
+		Slot = "none"
 	},
 	Value = 5000,
 	Weight = 20
@@ -69,6 +82,13 @@ Config.NewItem({
 	Name = "a jeweled scimitar",
 	RoomDesc = "A stunning curved blade glistens on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "7d1+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "none"
 	},
 	Value = 5000,
 	Weight = 5
@@ -138,6 +158,12 @@ Config.NewItem({
 	Name = "the Forge of Unity",
 	RoomDesc = "It is surely the best of men who has left these gloves to aid you.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "none"
 	},
 	Value = 12000,
 	Weight = 5

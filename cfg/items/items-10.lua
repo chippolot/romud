@@ -19,6 +19,12 @@ Config.NewItem({
 	Name = "a dark minotaur shield",
 	RoomDesc = "A dark minotaur shield has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "12"
+			}
+		},
+		Slot = "held1h"
 	},
 	Value = 5000,
 	Weight = 12
@@ -43,6 +49,12 @@ Config.NewItem({
 	Name = "a pair of troll gauntlets",
 	RoomDesc = "A pair of gauntlets made from troll skin lie on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "5"
+			}
+		},
+		Slot = "hands"
 	},
 	Value = 2000,
 	Weight = 8
@@ -66,6 +78,13 @@ Config.NewItem({
 	Name = "a flail",
 	RoomDesc = "A flail has been carelessly left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 5000,
 	Weight = 8
@@ -91,6 +110,13 @@ Config.NewItem({
 	Name = "a heavy spear",
 	RoomDesc = "A heavy spear has been tossed on the ground here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 450,
 	Weight = 8
@@ -103,6 +129,13 @@ Config.NewItem({
 	Name = "a trident",
 	RoomDesc = "There is a warrior's trident here.",
 	Equipment = {
+		Weapon = {
+			Damage = "2d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 350,
 	Weight = 8

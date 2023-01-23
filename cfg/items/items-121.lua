@@ -18,6 +18,12 @@ Config.NewItem({
 	Name = "a bronze belt",
 	RoomDesc = "There is a bronze belt on the ground here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "4"
+			}
+		},
+		Slot = "waist"
 	},
 	Value = 10000,
 	Weight = 5
@@ -32,6 +38,12 @@ Config.NewItem({
 	Name = "a Roman combat helmet",
 	RoomDesc = "A Roman combat helmet has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 12000,
 	Weight = 25
@@ -97,6 +109,12 @@ Config.NewItem({
 	Name = "a pair of leather sandals",
 	RoomDesc = "A pair of leather sandals has been dropped here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "2"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 250,
 	Weight = 2
@@ -167,6 +185,13 @@ Config.NewItem({
 	Name = "a tempered sword",
 	RoomDesc = "A nasty looking tempered sword is lying here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 15000,
 	Weight = 16
@@ -180,6 +205,13 @@ Config.NewItem({
 	Name = "a quenched sword",
 	RoomDesc = "A very bloody, but quenched, sword has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 10000,
 	Weight = 14
@@ -193,6 +225,12 @@ Config.NewItem({
 	Name = "a pair of Moorish bracers",
 	RoomDesc = "A pair of Moorish bracers has been dropped here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "arms"
 	},
 	Value = 25000,
 	Weight = 15
@@ -208,6 +246,12 @@ Config.NewItem({
 	Name = "a Roman combat breast plate",
 	RoomDesc = "A piece of military combat plate has been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 50000,
 	Weight = 135
@@ -221,6 +265,12 @@ Config.NewItem({
 	Name = "a pair of Roman combat boots",
 	RoomDesc = "A pair of combat boots have been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 8750,
 	Weight = 45
@@ -234,6 +284,13 @@ Config.NewItem({
 	Name = "Jupiter's Thunderbolt",
 	RoomDesc = "Jupiter's Thunderbolt has been left here.",
 	Equipment = {
+		Weapon = {
+			Damage = "4d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 100000,
 	Weight = 22
@@ -248,6 +305,12 @@ Config.NewItem({
 	Name = "a red loincloth",
 	RoomDesc = "Mars' red loincloth is resting here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "15"
+			}
+		},
+		Slot = "waist"
 	},
 	Value = 100000,
 	Weight = 30
@@ -274,6 +337,12 @@ Config.NewItem({
 	Name = "a pair of winged sandals",
 	RoomDesc = "Mercury's winged sandals have been left here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "8"
+			}
+		},
+		Slot = "feet"
 	},
 	Value = 75000,
 	Weight = 14
@@ -367,6 +436,13 @@ Config.NewItem({
 	Name = "an executioner's mace",
 	RoomDesc = "An executioner's mace is lying here.",
 	Equipment = {
+		Weapon = {
+			Damage = "5d1+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 3000,
 	Weight = 13

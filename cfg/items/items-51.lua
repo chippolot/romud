@@ -7,6 +7,13 @@ Config.NewItem({
 	Name = "a small mining pick",
 	RoomDesc = "A small mining pick made of what appears to be silver lies on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d9+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 600,
 	Weight = 3
@@ -21,6 +28,12 @@ Config.NewItem({
 	Name = "a glowing suit of banded mail",
 	RoomDesc = "A glowing suit of banded mail lies on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "7"
+			}
+		},
+		Slot = "body"
 	},
 	Value = 75000,
 	Weight = 0
@@ -33,6 +46,13 @@ Config.NewItem({
 	Name = "a halberd",
 	RoomDesc = "A mighty halberd lies against the wall.",
 	Equipment = {
+		Weapon = {
+			Damage = "3d5+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 12000,
 	Weight = 16
@@ -46,6 +66,12 @@ Config.NewItem({
 	Name = "a mushroom amulet",
 	RoomDesc = "A mushroom-shaped amulet lies on the ground.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "neck"
 	},
 	Value = 1500,
 	Weight = 2
@@ -59,6 +85,13 @@ Config.NewItem({
 	Name = "a large leg bone",
 	RoomDesc = "A large leg bone rests on the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d4+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 300,
 	Weight = 5
@@ -144,6 +177,13 @@ Config.NewItem({
 	Name = "a bunch of stakes",
 	RoomDesc = "A small bundle of stakes lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d2+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 250,
 	Weight = 6
@@ -169,6 +209,12 @@ Config.NewItem({
 	Name = "a thick padded turban",
 	RoomDesc = "A thick padded turban lies here.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "0"
+			}
+		},
+		Slot = "head"
 	},
 	Value = 4300,
 	Weight = 15
@@ -194,6 +240,13 @@ Config.NewItem({
 	Name = "a long, curved sabre",
 	RoomDesc = "A long, curved sabre stands upright in the ground.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d8+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 1050,
 	Weight = 7
@@ -207,6 +260,13 @@ Config.NewItem({
 	Name = "a curved scimitar",
 	RoomDesc = "A curved scimitar lies at your feet.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 600,
 	Weight = 6
@@ -221,6 +281,13 @@ Config.NewItem({
 	Name = "a long, pointed cutlass",
 	RoomDesc = "A long, pointed cutlass lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "1d7+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 550,
 	Weight = 5
@@ -256,6 +323,13 @@ Config.NewItem({
 	Name = "a golden bow",
 	RoomDesc = "A powerful golden bow lies here.",
 	Equipment = {
+		Weapon = {
+			Damage = "4d6+0",
+			DamageType = "slashing",
+			VerbSingular = "slash",
+			VerbPlural = "slashes"
+		},
+		Slot = "held1h"
 	},
 	Value = 150000,
 	Weight = 20
@@ -303,6 +377,12 @@ Config.NewItem({
 	Name = "a copper bracelet",
 	RoomDesc = "A tarnished copper bracelet lies at your feet.",
 	Equipment = {
+		Armor = {
+			Stats = {
+				AC = "-5"
+			}
+		},
+		Slot = "wrists"
 	},
 	Value = 23000,
 	Weight = 10

@@ -14,20 +14,20 @@ The poison bite of this snake has felled many a mighty pharoah.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 6,
+			Damage = "1d6+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 11,
 		HP = "5d5+50",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 6,
-				Damage = "1d6+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 0
@@ -48,20 +48,20 @@ colors designed to serve notice to its prey that it is about to strike.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 7,
+			Damage = "2d4+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 7,
 		AC = 12,
 		HP = "7d7+70",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 7,
-				Damage = "2d4+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 2000
 	},
 	Gender = 0
@@ -81,20 +81,20 @@ She sniffs you and appears to be looking for food in your hand.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "3d5+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 13,
 		HP = "11d11+110",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "3d5+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 10000
 	},
 	Gender = 2
@@ -116,20 +116,20 @@ sand-colored clothing.
 		"stationary",
 		"assistall"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 8,
+			Damage = "2d6+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 8,
 		AC = 14,
 		HP = "8d8+80",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 8,
-				Damage = "2d6+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 3750
 	},
 	Gender = 1
@@ -146,20 +146,20 @@ Config.NewEntity({
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "2d6+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 10,
 		AC = 14,
 		HP = "10d10+100",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "2d6+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 9000
 	},
 	Gender = 1
@@ -184,20 +184,20 @@ he might get caught, but not today...
 		"trashcollector",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "3d8+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 18,
 		AC = 19,
 		HP = "18d18+180",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "3d8+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 30000
 	},
 	Gender = 1
@@ -218,20 +218,20 @@ above the ground!  In fact, it seems to be ALIVE!
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "2d5+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 9,
 		AC = 12,
 		HP = "9d9+90",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "2d5+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 6000
 	},
 	Gender = 0
@@ -252,20 +252,20 @@ animated by the distempered spirit of a long-deceased person.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 12,
+			Damage = "1d6+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 12,
 		AC = 15,
 		HP = "12d12+120",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 12,
-				Damage = "1d6+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 15000
 	},
 	Gender = 0
@@ -288,20 +288,20 @@ and sandy winds.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "2d7+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 14,
 		AC = 17,
 		HP = "14d14+140",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "2d7+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 18000
 	},
 	Gender = 1
@@ -322,20 +322,20 @@ you with disdain and scorn, arms folded across his mighty chest.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "4d6+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 20,
 		AC = 20,
 		HP = "20d20+200",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "4d6+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 1
@@ -357,20 +357,20 @@ but you can still make out a deadly stone sword in the hands of each figure.
 		"stationary",
 		"assistall"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d6+8",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 24,
 		AC = 22,
 		HP = "24d24+240",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d6+8",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100000
 	},
 	Gender = 2
@@ -392,20 +392,20 @@ skin, and strokes his goatee.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 28,
+			Damage = "6d6+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 28,
 		AC = 25,
 		HP = "28d28+280",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 28,
-				Damage = "6d6+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 310000
 	},
 	Gender = 1
@@ -428,20 +428,20 @@ cousins.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 15,
+			Damage = "1d10+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 16,
 		HP = "15d15+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 15,
-				Damage = "1d10+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 21000
 	},
 	Gender = 0
@@ -463,20 +463,20 @@ just heard a puzzling riddle from a cousin criosphinx.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "2d10+10",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 19,
 		AC = 19,
 		HP = "19d19+190",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "2d10+10",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 35000
 	},
 	Gender = 2
@@ -497,20 +497,20 @@ and in poking occasional fun at his easily confused lesser cousins.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "3d10+15",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 21,
 		HP = "23d23+230",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "3d10+15",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -532,20 +532,20 @@ mighty roar of this sphinx.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 27,
+			Damage = "4d10+20",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 27,
 		AC = 25,
 		HP = "27d27+270",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 27,
-				Damage = "4d10+20",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 200000
 	},
 	Gender = 0
@@ -567,20 +567,20 @@ advised many rulers.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 41,
+			Damage = "5d10+25",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 41,
 		AC = 39,
 		HP = "41d41+410",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 41,
-				Damage = "5d10+25",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1500000
 	},
 	Gender = 0
@@ -603,20 +603,20 @@ tall frame is totally still, his chest not even moving to breathe.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 38,
+			Damage = "8d5+40",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 38,
 		AC = 37,
 		HP = "38d38+380",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 38,
-				Damage = "8d5+40",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000000
 	},
 	Gender = 1

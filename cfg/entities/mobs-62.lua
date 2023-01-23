@@ -14,20 +14,20 @@ quickly from its long, white fangs.  It looks quite dangerous and very angry.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 4,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 14,
 		HP = "1d12+60",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 4,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 0
@@ -48,20 +48,20 @@ quickly from its long, white fangs.  It looks quite dangerous and very angry.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 4,
+			Damage = "2d4+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 14,
 		HP = "1d12+80",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 4,
-				Damage = "2d4+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 0
@@ -79,20 +79,20 @@ Config.NewEntity({
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 2,
+			Damage = "1d7+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 3,
 		AC = 12,
 		HP = "1d12+35",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 2,
-				Damage = "1d7+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 450
 	},
 	Gender = 0
@@ -110,20 +110,20 @@ Config.NewEntity({
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 2,
+			Damage = "1d7+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 3,
 		AC = 12,
 		HP = "1d12+45",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 2,
-				Damage = "1d7+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 450
 	},
 	Gender = 0
@@ -145,20 +145,20 @@ The enormous grey trunk shivers slightly, as if sighing deeply.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "4d4+22",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 30,
 		AC = 29,
 		HP = "1d1+1299",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "4d4+22",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 500000
 	},
 	Gender = 0
@@ -180,20 +180,20 @@ The enormous grey trunk emits a deep, moaning sound.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "4d4+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 30,
 		AC = 29,
 		HP = "1d1+999",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "4d4+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 400000
 	},
 	Gender = 0
@@ -216,20 +216,20 @@ dragons do.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "2d6+9",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 20,
 		AC = 19,
 		HP = "1d12+248",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "2d6+9",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 0
@@ -252,20 +252,20 @@ and sharp poisonous fangs to paralyze or kill its prey.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 7,
+			Damage = "2d5+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 8,
 		AC = 17,
 		HP = "1d12+98",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 7,
-				Damage = "2d5+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 4000
 	},
 	Gender = 0
@@ -287,20 +287,20 @@ if it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.
 		"stationary",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "2d8+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 18,
 		HP = "1d12+185",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "2d8+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 31000
 	},
 	Gender = 2
@@ -324,20 +324,20 @@ as if he is having great fun.
 		"invisible",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 10,
 		AC = 29,
 		HP = "1d12+47",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -357,20 +357,20 @@ know he would be a tough foe.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "3d6+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 19,
 		AC = 19,
 		HP = "1d12+236",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "3d6+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 45000
 	},
 	Gender = 1
@@ -395,20 +395,20 @@ slender sword in a silver scabbard.
 		"stationary",
 		"assistall"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "3d6+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 20,
 		AC = 19,
 		HP = "1d12+245",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "3d6+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 2

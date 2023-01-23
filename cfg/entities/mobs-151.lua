@@ -16,20 +16,20 @@ experienced fighter.
 		"stationary",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "1d8+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "1d8+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -51,20 +51,20 @@ a reputation as a wise and just ruler.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "4d8+16",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "3d60+1480",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "4d8+16",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000000
 	},
 	Gender = 1
@@ -84,20 +84,20 @@ Config.NewEntity({
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "2d8+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 25,
 		HP = "9d6+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "2d8+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 22000
 	},
 	Gender = 0
@@ -119,20 +119,20 @@ experienced fighter.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "1d8+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "1d8+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -155,20 +155,20 @@ experienced fighter.
 		"stationary",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "1d8+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "1d8+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -191,20 +191,20 @@ experienced fighter.
 		"stationary",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "1d8+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "1d8+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -226,20 +226,20 @@ experienced fighter.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "1d8+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "1d8+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -261,20 +261,20 @@ who has seen more than one battle, and longs to see the next!
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 13,
+			Damage = "1d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 13,
-				Damage = "1d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 16000
 	},
 	Gender = 1
@@ -296,20 +296,20 @@ who has seen more than one battle, and longs to see the next!
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 13,
+			Damage = "1d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 13,
-				Damage = "1d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 16000
 	},
 	Gender = 2
@@ -331,20 +331,20 @@ who has seen more than one battle, and longs to see the next!
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 13,
+			Damage = "1d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 13,
-				Damage = "1d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 16000
 	},
 	Gender = 1
@@ -367,20 +367,20 @@ with pride.  This guy seems tough...
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 15,
+			Damage = "1d8+7",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 18,
 		HP = "3d6+175",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 15,
-				Damage = "1d8+7",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 21000
 	},
 	Gender = 1
@@ -402,20 +402,20 @@ with pride.  This girl could be nasty if she wanted to...
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 15,
+			Damage = "1d8+7",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 18,
 		HP = "3d6+175",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 15,
-				Damage = "1d8+7",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 21000
 	},
 	Gender = 2
@@ -442,20 +442,20 @@ him.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "2d6+8",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 19,
 		AC = 20,
 		HP = "3d6+240",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "2d6+8",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 35000
 	},
 	Gender = 1
@@ -476,20 +476,20 @@ of virtually every weapon type invented by Man.
 		"stationary",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+8",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 18,
 		AC = 18,
 		HP = "2d6+220",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+8",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 30000
 	},
 	Gender = 1
@@ -508,20 +508,20 @@ is to make Royal Announcements.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+9",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 18,
 		AC = 20,
 		HP = "3d6+220",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+9",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 30000
 	},
 	Gender = 1
@@ -546,20 +546,20 @@ with.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 12,
+			Damage = "2d8+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 13,
 		AC = 17,
 		HP = "3d6+155",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 12,
-				Damage = "2d8+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 18000
 	},
 	Gender = 1
@@ -579,20 +579,20 @@ an impressive belly.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 7,
+			Damage = "1d9+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 8,
 		AC = 16,
 		HP = "1d6+100",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 7,
-				Damage = "1d9+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 3750
 	},
 	Gender = 1
@@ -609,20 +609,20 @@ Config.NewEntity({
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d5+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 10,
 		HP = "4d6+1",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d5+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100
 	},
 	Gender = 2
@@ -638,20 +638,20 @@ Config.NewEntity({
 	FullDesc = "Very large indeed, and they say cockroaches are hard to kill...",
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d3+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 4,
 		AC = 16,
 		HP = "2d6+120",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d3+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 750
 	},
 	Gender = 0
@@ -671,20 +671,20 @@ and that astrology is capable of seeing the future.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "3d8+30",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 21,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "3d8+30",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -706,20 +706,20 @@ King, if necessary.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 16,
+			Damage = "1d8+8",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 17,
 		AC = 18,
 		HP = "3d6+205",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 16,
-				Damage = "1d8+8",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 28000
 	},
 	Gender = 1
@@ -741,20 +741,20 @@ King, if necessary.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 16,
+			Damage = "1d8+8",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 17,
 		AC = 18,
 		HP = "3d6+205",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 16,
-				Damage = "1d8+8",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 28000
 	},
 	Gender = 1
@@ -774,20 +774,20 @@ He is, in other words, a bit fat.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 16,
+			Damage = "4d4+14",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 19,
 		AC = 20,
 		HP = "2d6+1283",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 16,
-				Damage = "4d4+14",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 1
@@ -803,20 +803,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 3,
+			Damage = "1d8+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 4,
 		AC = 13,
 		HP = "2d7+46",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 3,
-				Damage = "1d8+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 600
 	},
 	Gender = 1
@@ -837,20 +837,20 @@ to an attempt to get past him.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "1d7+10",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 19,
 		AC = 19,
 		HP = "2d6+235",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "1d7+10",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 35000
 	},
 	Gender = 1
@@ -871,20 +871,20 @@ to an attempt to get past him.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "1d7+10",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 19,
 		AC = 19,
 		HP = "2d6+235",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "1d7+10",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 35000
 	},
 	Gender = 1
@@ -906,20 +906,20 @@ an experienced fighter.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "1d8+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "1d8+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -941,20 +941,20 @@ experienced fighter.
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "1d8+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "1d8+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -977,20 +977,20 @@ the next!
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 13,
+			Damage = "1d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 13,
-				Damage = "1d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 16000
 	},
 	Gender = 1
@@ -1012,20 +1012,20 @@ with pride.  This guy seems tough...
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 15,
+			Damage = "1d8+7",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 18,
 		HP = "3d6+175",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 15,
-				Damage = "1d8+7",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 21000
 	},
 	Gender = 1
@@ -1047,20 +1047,20 @@ desire for revenge.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "2d4+8",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 16,
 		HP = "4d4+95",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "2d4+8",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 10000
 	},
 	Gender = 0
@@ -1082,20 +1082,20 @@ for revenge.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 12,
+			Damage = "2d3+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 10,
 		AC = 16,
 		HP = "4d4+80",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 12,
-				Damage = "2d3+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 8000
 	},
 	Gender = 0
@@ -1118,20 +1118,20 @@ white fangs and its razor-sharp talons.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "4d8+16",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "3d60+1480",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "4d8+16",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000000
 	},
 	Gender = 1

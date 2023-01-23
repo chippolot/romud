@@ -14,20 +14,20 @@ to disintegrate you.  Beholders are not known for their personality.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "6d9+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 19,
 		HP = "1d14+450",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "6d9+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 134000
 	},
 	Gender = 0
@@ -49,20 +49,20 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 		"trashcollector",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 8,
+			Damage = "2d5+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 12,
 		AC = 16,
 		HP = "1d10+120",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 8,
-				Damage = "2d5+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 10500
 	},
 	Gender = 2
@@ -82,20 +82,20 @@ front.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "2d7+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 18,
 		HP = "1d20+130",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "2d7+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 13000
 	},
 	Gender = 0
@@ -119,20 +119,20 @@ attached to them.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 13,
+			Damage = "3d5+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 14,
 		AC = 18,
 		HP = "3d15+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 13,
-				Damage = "3d5+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 20000
 	},
 	Gender = 0
@@ -152,20 +152,20 @@ destruction.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "2d6+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 16,
 		HP = "2d6+110",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "2d6+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 10500
 	},
 	Gender = 0
@@ -186,20 +186,20 @@ probably before the city fell.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 6,
+			Damage = "2d5+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 19,
 		HP = "1d8+100",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 6,
-				Damage = "2d5+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 9800
 	},
 	Gender = 0
@@ -220,20 +220,20 @@ that someone has been here before you...
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "4d3+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 19,
 		HP = "1d12+110",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "4d3+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 12000
 	},
 	Gender = 0
@@ -249,20 +249,20 @@ Config.NewEntity({
 	FullDesc = "A cute little lizard -- that is, if you like reptiles!",
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 3,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 3,
 		AC = 15,
 		HP = "1d14+30",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 3,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 500
 	},
 	Gender = 0
@@ -282,20 +282,20 @@ creature.  He stands here still guarding the city.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "4d7+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 24,
 		HP = "6d6+500",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "4d7+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 0
@@ -317,20 +317,20 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "1d4+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 9,
 		AC = 16,
 		HP = "1d12+120",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "1d4+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 7000
 	},
 	Gender = 2

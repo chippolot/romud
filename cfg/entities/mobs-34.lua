@@ -14,20 +14,20 @@ and as such, is one of the most boring people on earth.
 		"trashcollector",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 6,
+			Damage = "2d4+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 7,
 		AC = 15,
 		HP = "3d5+83",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 6,
-				Damage = "2d4+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 2250
 	},
 	Gender = 1
@@ -46,20 +46,20 @@ waits for you to buy something.  Whee.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "3d6+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 20,
 		AC = 59,
 		HP = "3d5+245",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "3d6+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 1
@@ -79,20 +79,20 @@ she is truly a woman to be reckoned with...
 		"stationary",
 		"assistall"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "3d6+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 20,
 		AC = 79,
 		HP = "3d5+245",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "3d6+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 2
@@ -111,20 +111,20 @@ with soft brown eyes and you want to give it a carrot.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 4,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 14,
 		HP = "1d10+60",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 4,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 1
@@ -144,20 +144,20 @@ vegetables for you to buy.  She looks bored, though.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "3d6+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 20,
 		AC = 59,
 		HP = "3d5+245",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "3d6+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 2
@@ -178,20 +178,20 @@ he is today by letting people steal from his horde!
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "8d5+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 30,
 		AC = 119,
 		HP = "1d1+1499",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "8d5+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000000
 	},
 	Gender = 1
@@ -214,20 +214,20 @@ growls as he misses again!
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 12,
+			Damage = "2d8+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 16,
 		AC = 19,
 		HP = "3d5+295",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 12,
-				Damage = "2d8+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 24000
 	},
 	Gender = 1
@@ -251,20 +251,20 @@ sneer...
 		"stationary",
 		"assistall"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "2d6+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 49,
 		HP = "3d5+200",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "2d6+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 24000
 	},
 	Gender = 2
@@ -288,20 +288,20 @@ dagger sticking out... a tiny weapon for such a large man!
 		"stationary",
 		"assistall"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "3d6+10",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 22,
 		AC = 89,
 		HP = "3d5+400",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "3d6+10",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 70000
 	},
 	Gender = 1
@@ -320,20 +320,20 @@ More power to him!
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 11,
+			Damage = "2d7+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 12,
 		AC = 49,
 		HP = "3d5+140",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 11,
-				Damage = "2d7+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 8000
 	},
 	Gender = 1
@@ -355,20 +355,20 @@ but he doesn't seem too terribly startled.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "2d6+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 10,
 		AC = -1,
 		HP = "3d5+120",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "2d6+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 9000
 	},
 	Gender = 1
@@ -392,20 +392,20 @@ standing out of his way as he walks on by.
 		"assistall",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "2d6+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 39,
 		HP = "3d5+133",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "2d6+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1
@@ -425,20 +425,20 @@ He doesn't even spare you a glance as he passes by.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 4,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = -51,
 		HP = "3d5+60",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 4,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 850
 	},
 	Gender = 1
@@ -458,20 +458,20 @@ even spare you a glance as she passes by.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 4,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = -51,
 		HP = "3d5+60",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 4,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 850
 	},
 	Gender = 2
@@ -492,20 +492,20 @@ Go figure.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "2d8+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 15,
 		AC = 9,
 		HP = "3d5+180",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "2d8+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 21000
 	},
 	Gender = 1
@@ -526,20 +526,20 @@ decay.  His sword is polished and cleaned though...
 		"scavenger",
 		"trashcollector"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 15,
+			Damage = "2d8+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 16,
 		AC = 39,
 		HP = "3d5+195",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 15,
-				Damage = "2d8+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 25000
 	},
 	Gender = 1
@@ -562,20 +562,20 @@ to pull a good guard duty...
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 17,
+			Damage = "3d6+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 18,
 		AC = 49,
 		HP = "3d5+220",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 17,
-				Damage = "3d6+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 32000
 	},
 	Gender = 1
@@ -598,20 +598,20 @@ if you even can.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 5,
+			Damage = "1d8+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 6,
 		AC = -81,
 		HP = "3d5+70",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 5,
-				Damage = "1d8+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1500
 	},
 	Gender = 1
@@ -633,20 +633,20 @@ and as such, is one of the most boring people on earth.
 		"trashcollector",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 6,
+			Damage = "2d4+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 7,
 		AC = 15,
 		HP = "3d5+83",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 6,
-				Damage = "2d4+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 2250
 	},
 	Gender = 1
@@ -671,20 +671,20 @@ standing out of his way as he walks on by.
 		"assistall",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "2d6+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 11,
 		AC = 39,
 		HP = "3d5+133",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "2d6+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 11000
 	},
 	Gender = 1

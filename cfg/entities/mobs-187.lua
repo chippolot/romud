@@ -12,20 +12,20 @@ and it is drooling everywhere... looks mean too.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 3,
+			Damage = "1d5+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 14,
 		HP = "4d6+42",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 3,
-				Damage = "1d5+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1200
 	},
 	Gender = 0
@@ -45,20 +45,20 @@ maybe you should ask if he needs help?  Nah... kill him.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 1,
+			Damage = "1d4+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 2,
 		AC = 10,
 		HP = "2d4+16",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 1,
-				Damage = "1d4+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 400
 	},
 	Gender = 1
@@ -78,20 +78,20 @@ the truth.  But, remember, even a little dragon can be a big problem.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 3,
+			Damage = "1d6+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 4,
 		AC = 13,
 		HP = "1d4+50",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 3,
-				Damage = "1d6+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 1
@@ -113,20 +113,20 @@ him.'
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 2,
+			Damage = "1d7+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 3,
 		AC = 12,
 		HP = "2d6+34",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 2,
-				Damage = "1d7+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 800
 	},
 	Gender = 1
@@ -145,20 +145,20 @@ mix up a batch of something or other.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 4,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 14,
 		HP = "4d6+38",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 4,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1200
 	},
 	Gender = 0
@@ -179,20 +179,20 @@ like this disgusting, little, six-legged, brown bug.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 9,
 		HP = "1d4+8",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100
 	},
 	Gender = 0
@@ -211,20 +211,20 @@ now.  You would feel sorry for it, but it is moving in to attack!
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 3,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 4,
 		AC = 14,
 		HP = "1d8+46",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 3,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 600
 	},
 	Gender = 0
@@ -245,20 +245,20 @@ back into the shadows.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 1,
+			Damage = "1d4+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 3,
 		AC = 12,
 		HP = "1d10+30",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 1,
-				Damage = "1d4+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 300
 	},
 	Gender = 1
@@ -278,20 +278,20 @@ coming this way!
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 5,
+			Damage = "2d4+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 7,
 		AC = 14,
 		HP = "3d5+85",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 5,
-				Damage = "2d4+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 3000
 	},
 	Gender = 1
@@ -310,20 +310,20 @@ a chance to bring death to any who cross its path.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 4,
+			Damage = "2d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 6,
 		AC = 16,
 		HP = "3d5+62",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 4,
-				Damage = "2d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1600
 	},
 	Gender = 0
@@ -344,20 +344,20 @@ MUHAHAHAHAHAHAHAHAHAHA!
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 2,
+			Damage = "1d3+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 2,
 		AC = 9,
 		HP = "2d4+20",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 2,
-				Damage = "1d3+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 500
 	},
 	Gender = 1
@@ -378,20 +378,20 @@ it, best put him out of his misery.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d3+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 9,
 		HP = "1d1+19",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d3+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 220
 	},
 	Gender = 1
@@ -411,20 +411,20 @@ unlike some others you might see.
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 2,
+			Damage = "1d7+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 3,
 		AC = 11,
 		HP = "6d5+22",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 2,
-				Damage = "1d7+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 600
 	},
 	Gender = 2
@@ -444,20 +444,20 @@ maybe you should help him out?
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 3,
+			Damage = "1d6+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 4,
 		AC = 13,
 		HP = "8d5+20",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 3,
-				Damage = "1d6+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 500
 	},
 	Gender = 1
@@ -476,20 +476,20 @@ the help files, Eh?
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 5,
+			Damage = "2d3+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 10,
 		HP = "10d5+20",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 5,
-				Damage = "2d3+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 1

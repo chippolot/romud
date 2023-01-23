@@ -13,20 +13,20 @@ rings and bracelets.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "2d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 17,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "2d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -45,20 +45,20 @@ body.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -74,20 +74,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -106,20 +106,20 @@ eager to sell you his latest implements of carnage and destruction.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -138,20 +138,20 @@ life than you have ever seen.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -170,20 +170,20 @@ enough to put up with any crap from mud players with attitudes.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+32",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+32",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 0
 	},
 	Gender = 2
@@ -200,20 +200,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "2d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 17,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "2d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -229,20 +229,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -259,20 +259,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -293,20 +293,20 @@ displays his fine collection of contemporary waters.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -329,20 +329,20 @@ cobwebs from his uniform it would help to make a better impression.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+18",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+18",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 0
 	},
 	Gender = 1
@@ -364,20 +364,20 @@ and you notice that she is surrounded by a blue shimmering aura.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+24",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 34,
 		AC = 29,
 		HP = "6d10+640",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+24",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100000
 	},
 	Gender = 2
@@ -399,20 +399,20 @@ aura.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+24",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 34,
 		AC = 29,
 		HP = "6d10+640",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+24",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100000
 	},
 	Gender = 1
@@ -435,20 +435,20 @@ the appearance of a beggar.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+34",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 34,
 		AC = 29,
 		HP = "6d10+640",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+34",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100000
 	},
 	Gender = 2
@@ -469,20 +469,20 @@ has a calm look on his face.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+34",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 34,
 		AC = 29,
 		HP = "6d10+740",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+34",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100000
 	},
 	Gender = 1
@@ -502,20 +502,20 @@ as well as defensive spells make him a deadly opponent.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+22",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 24,
 		HP = "6d10+990",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+22",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 60000
 	},
 	Gender = 1
@@ -537,20 +537,20 @@ him a deadly opponent.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+22",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 24,
 		HP = "6d10+990",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+22",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -571,20 +571,20 @@ him a deadly opponent.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+25",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "6d10+990",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+25",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -605,20 +605,20 @@ opponent.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d8+40",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 27,
 		HP = "6d10+990",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d8+40",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 160000
 	},
 	Gender = 1
@@ -634,20 +634,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "1d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 24,
 		AC = 17,
 		HP = "6d10+390",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "1d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -663,20 +663,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "1d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 17,
 		HP = "6d10+390",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "1d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -695,20 +695,20 @@ instantly recognize his face.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 17,
 		HP = "6d10+390",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -727,20 +727,20 @@ and begin to worship your God.  Naaah.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 17,
 		HP = "6d10+390",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -756,20 +756,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 17,
 		HP = "6d10+390",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -788,20 +788,20 @@ quite a few firebreathers.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+12",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 17,
 		HP = "6d10+390",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+12",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -820,20 +820,20 @@ but do not mess with him or else he'll get upset.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "1d8+22",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "1d8+22",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 80000
 	},
 	Gender = 1
@@ -851,20 +851,20 @@ Config.NewEntity({
 		"assistall",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 17,
+			Damage = "3d3+13",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 17,
 		AC = 19,
 		HP = "5d6+225",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 17,
-				Damage = "3d3+13",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 30000
 	},
 	Gender = 1
@@ -882,20 +882,20 @@ Config.NewEntity({
 		"assistall",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "1d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 10,
 		AC = 18,
 		HP = "1d12+123",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "1d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 9000
 	},
 	Gender = 1
@@ -911,20 +911,20 @@ Config.NewEntity({
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d5+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 10,
 		HP = "2d6+10",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d5+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100
 	},
 	Gender = 1
@@ -945,20 +945,20 @@ hanging around his teeth.
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 0,
 		AC = 9,
 		HP = "1d6+4",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 25
 	},
 	Gender = 1
@@ -974,20 +974,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 5,
+			Damage = "1d6+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 5,
 		AC = 14,
 		HP = "2d6+60",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 5,
-				Damage = "1d6+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 900
 	},
 	Gender = 1
@@ -1003,20 +1003,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 1,
+			Damage = "1d6+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 2,
 		AC = 11,
 		HP = "2d6+22",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 1,
-				Damage = "1d6+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 200
 	},
 	Gender = 1
@@ -1032,20 +1032,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d5+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 10,
 		HP = "2d6+10",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d5+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100
 	},
 	Gender = 2
@@ -1063,20 +1063,20 @@ Config.NewEntity({
 		"aggro",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 0,
 		AC = 9,
 		HP = "1d6+4",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 25
 	},
 	Gender = 1
@@ -1095,20 +1095,20 @@ Config.NewEntity({
 		"assistall",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "1d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 10,
 		AC = 18,
 		HP = "1d12+123",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "1d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 9000
 	},
 	Gender = 1
@@ -1126,20 +1126,20 @@ Config.NewEntity({
 	Flags = {
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "3d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 20,
 		AC = 19,
 		HP = "1d11+325",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "3d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 0
@@ -1157,20 +1157,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 10,
+			Damage = "20d4+10",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 10,
 		AC = 18,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 10,
-				Damage = "20d4+10",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 9000
 	},
 	Gender = 1
@@ -1188,20 +1188,20 @@ Config.NewEntity({
 		"scavenger",
 		"trashcollector"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 10,
 		HP = "1d6+11",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 100
 	},
 	Gender = 0
@@ -1219,20 +1219,20 @@ Config.NewEntity({
 		"scavenger",
 		"trashcollector"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 0,
+			Damage = "1d4+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 10,
 		HP = "1d6+13",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 0,
-				Damage = "1d4+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 125
 	},
 	Gender = 0
@@ -1250,20 +1250,20 @@ Config.NewEntity({
 		"scavenger",
 		"trashcollector"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 1,
+			Damage = "1d6+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 2,
 		AC = 11,
 		HP = "1d12+22",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 1,
-				Damage = "1d6+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 200
 	},
 	Gender = 0
@@ -1281,20 +1281,20 @@ Config.NewEntity({
 		"scavenger",
 		"trashcollector"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 2,
+			Damage = "1d7+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 3,
 		AC = 12,
 		HP = "1d12+35",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 2,
-				Damage = "1d7+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 800
 	},
 	Gender = 0
@@ -1312,20 +1312,20 @@ Config.NewEntity({
 		"scavenger",
 		"trashcollector"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 3,
+			Damage = "1d8+0",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 4,
 		AC = 13,
 		HP = "1d12+47",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 3,
-				Damage = "1d8+0",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1600
 	},
 	Gender = 0
@@ -1345,20 +1345,20 @@ enough to put up with any crap from mud players with attitudes.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "2d8+32",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "2d8+32",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 0
 	},
 	Gender = 2

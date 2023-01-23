@@ -13,20 +13,20 @@ unknown calculus that she seems to be made out of?
 ]],
 	Flags = {
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "4d6+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 26,
 		AC = 20,
 		HP = "5d10+550",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "4d6+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 155000
 	},
 	Gender = 2
@@ -42,20 +42,20 @@ Config.NewEntity({
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d1+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d1+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 0
 	},
 	Gender = 0
@@ -77,20 +77,20 @@ the sort.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d1+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d1+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 0
 	},
 	Gender = 0
@@ -111,20 +111,20 @@ the shape of a cloud-like humanoid.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d1+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d1+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 0
 	},
 	Gender = 0
@@ -143,20 +143,20 @@ waiting patiently for something to occur.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "1d1+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "1d1+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 0
 	},
 	Gender = 0

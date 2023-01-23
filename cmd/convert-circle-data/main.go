@@ -264,8 +264,28 @@ func parseEntities(data []byte, outPath string) {
 				// Parse entity type (CircleMUD specific)
 				_ = toks[3]
 
-				// Parse stats
+				// Parse THACO and convert to hit bonus
 				toks, lines = parseLineTokens(lines)
+				toHit := 20 - parseInt(toks[1])
+
+				// Parse Attack
+				dam, _ := mud.ParseDice(toks[4])
+				lb.FieldScope("Attacks", func() {
+					lb.Table(func() {
+						lb.ItemScope(func() {
+							lb.Table(func() {
+								lb.Field("Name", "Hit")
+								lb.Field("ToHit", toHit)
+								lb.Field("Damage", dam.String())
+								lb.Field("DamageType", "bludgeoning")
+								lb.Field("VerbSingular", "hit")
+								lb.Field("VerbPlural", "hits")
+							})
+						})
+					})
+				})
+
+				// Parse stats
 				lb.FieldScope("Stats", func() {
 					lb.Table(func() {
 						// Parse level
@@ -277,26 +297,6 @@ func parseEntities(data []byte, outPath string) {
 						// Parse Hit Die
 						hp, _ := mud.ParseDice(toks[3])
 						lb.Field("HP", hp.String())
-
-						// Parse THACO and convert to hit bonus
-						toHit := 20 - parseInt(toks[1])
-
-						// Parse Attack
-						dam, _ := mud.ParseDice(toks[4])
-						lb.FieldScope("Attacks", func() {
-							lb.Table(func() {
-								lb.ItemScope(func() {
-									lb.Table(func() {
-										lb.Field("Name", "Hit")
-										lb.Field("ToHit", toHit)
-										lb.Field("Damage", dam.String())
-										lb.Field("DamageType", mud.Dam_Bludgeoning)
-										lb.Field("VerbSingular", "hit")
-										lb.Field("VerbPlural", "hits")
-									})
-								})
-							})
-						})
 
 						// Parse XP
 						toks, lines = parseLineTokens(lines)

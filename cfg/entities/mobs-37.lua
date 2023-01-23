@@ -17,20 +17,20 @@ Crown.
 		"trashcollector",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "2d4+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 6,
 		AC = 14,
 		HP = "5d4+50",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "2d4+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 1
@@ -54,20 +54,20 @@ Crown.
 		"trashcollector",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 18,
+			Damage = "2d4+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 6,
 		AC = 14,
 		HP = "5d4+50",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 18,
-				Damage = "2d4+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 1000
 	},
 	Gender = 1
@@ -88,20 +88,20 @@ from the looks of it, it will probably be YOUR tomb.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "3d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 27,
 		AC = 18,
 		HP = "2d6+500",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "3d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 85000
 	},
 	Gender = 0
@@ -122,20 +122,20 @@ from the looks of it, it will probably be YOUR tomb.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "3d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 27,
 		AC = 18,
 		HP = "2d6+500",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "3d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 85000
 	},
 	Gender = 0
@@ -156,20 +156,20 @@ flash behind his visor in vengence.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 12,
+			Damage = "2d8+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 18,
 		AC = 19,
 		HP = "4d8+350",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 12,
-				Damage = "2d8+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 22500
 	},
 	Gender = 0
@@ -190,20 +190,20 @@ gleam behind his visor in joy.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 12,
+			Damage = "2d8+1",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 18,
 		AC = 19,
 		HP = "4d8+350",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 12,
-				Damage = "2d8+1",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 22500
 	},
 	Gender = 0
@@ -224,20 +224,20 @@ he can bless you properly.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "3d6+13",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 24,
 		AC = 18,
 		HP = "2d5+350",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "3d6+13",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 43500
 	},
 	Gender = 0
@@ -258,20 +258,20 @@ attain a higher spirituality.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "3d6+13",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 24,
 		AC = 18,
 		HP = "2d5+350",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "3d6+13",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 43500
 	},
 	Gender = 0
@@ -295,20 +295,20 @@ could kill, you would already be dead.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "4d6+13",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 32,
 		AC = 22,
 		HP = "5d10+900",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "4d6+13",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 200000
 	},
 	Gender = 0
@@ -332,20 +332,20 @@ first sight for you.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 9,
+			Damage = "4d6+13",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 32,
 		AC = 22,
 		HP = "5d10+900",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 9,
-				Damage = "4d6+13",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 200000
 	},
 	Gender = 0
@@ -368,20 +368,20 @@ is the king and you are not.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 6,
+			Damage = "5d8+20",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 36,
 		AC = 25,
 		HP = "10d10+2000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 6,
-				Damage = "5d8+20",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 300000
 	},
 	Gender = 0
@@ -404,20 +404,20 @@ is the king and you are not.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 6,
+			Damage = "5d8+20",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 36,
 		AC = 25,
 		HP = "10d10+2000",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 6,
-				Damage = "5d8+20",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 300000
 	},
 	Gender = 0

@@ -177,6 +177,7 @@ func lua_ConfigNewEntity(tbl *lua.LTable) {
 	if err := lua_Mapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
+
 	cfg.Init()
 
 	lTriggers := tbl.RawGetString("Triggers")

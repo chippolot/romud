@@ -15,20 +15,20 @@ as easily a gentle extended hand, a smile, and gardens... gardens.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 30,
+			Damage = "8d8+9",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 30,
 		AC = 29,
 		HP = "1d1+2999",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 30,
-				Damage = "8d8+9",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 400000
 	},
 	Gender = 1
@@ -50,20 +50,20 @@ that too fades, and you see nothing.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 26,
+			Damage = "6d7+7",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 26,
-				Damage = "6d7+7",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 280000
 	},
 	Gender = 1
@@ -85,20 +85,20 @@ miraculous journey to the holy city of Jerusalem.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 26,
+			Damage = "6d7+7",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 26,
-				Damage = "6d7+7",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 280000
 	},
 	Gender = 1
@@ -120,20 +120,20 @@ attempt to create in your mind.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 26,
+			Damage = "6d7+7",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 26,
-				Damage = "6d7+7",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 280000
 	},
 	Gender = 1
@@ -155,20 +155,20 @@ highest ranks.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 26,
+			Damage = "6d7+7",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 26,
-				Damage = "6d7+7",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 280000
 	},
 	Gender = 1
@@ -191,20 +191,20 @@ the beast grins and cackles, drawing its sword and blocking the way.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 19,
+			Damage = "3d6+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 17,
 		AC = 19,
 		HP = "10d5+260",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 19,
-				Damage = "3d6+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 40000
 	},
 	Gender = 0
@@ -224,20 +224,20 @@ He laughs at you and takes another drink.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 14,
+			Damage = "2d8+2",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 13,
 		AC = 18,
 		HP = "10d2+180",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 14,
-				Damage = "2d8+2",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 21000
 	},
 	Gender = 1
@@ -262,20 +262,20 @@ sprite.
 		"invisible",
 		"stayzone"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 20,
+			Damage = "3d9+3",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 23,
 		AC = 21,
 		HP = "25d2+400",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 20,
-				Damage = "3d9+3",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 70000
 	},
 	Gender = 0
@@ -298,20 +298,20 @@ hand shakes and shakes.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d9+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d9+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 180000
 	},
 	Gender = 1
@@ -334,20 +334,20 @@ so charming.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d9+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d9+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 180000
 	},
 	Gender = 1
@@ -367,20 +367,20 @@ Config.NewEntity({
 		"scavenger",
 		"trashcollector"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -399,20 +399,20 @@ you with nothing more than a smirk of contempt.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -434,20 +434,20 @@ pensive, reliving the memories of a man he never thought would die.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -469,20 +469,20 @@ the Word, then I must."
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -506,20 +506,20 @@ enemies.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d9+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d9+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 180000
 	},
 	Gender = 1
@@ -544,20 +544,20 @@ him now is for you to decide for yourself.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d9+6",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d9+6",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 180000
 	},
 	Gender = 1
@@ -583,20 +583,20 @@ temptations that will be yours if you in turn but follow him.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 23,
 		HP = "10d5+650",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -621,20 +621,20 @@ place, just tormented laughter, moaning, screaming, and begging.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 25,
 		AC = 23,
 		HP = "10d5+650",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -660,20 +660,20 @@ its last victim.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 27,
 		AC = 24,
 		HP = "75d2+825",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 180000
 	},
 	Gender = 1
@@ -696,20 +696,20 @@ lord of the underworld that you fear to be your fate.
 		"trashcollector",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 27,
 		AC = 24,
 		HP = "75d2+825",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 180000
 	},
 	Gender = 1
@@ -729,20 +729,20 @@ contented yawn.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+4",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 22,
 		AC = 23,
 		HP = "5d10+150",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+4",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -763,20 +763,20 @@ moon.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 23,
+			Damage = "4d6+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 24,
 		AC = 23,
 		HP = "5d10+680",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 23,
-				Damage = "4d6+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 145000
 	},
 	Gender = 1
@@ -795,20 +795,20 @@ kneeling, he is the image of perfect contentment.
 	Flags = {
 		"stationary"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 26,
 		AC = 24,
 		HP = "75d2+820",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 180000
 	},
 	Gender = 1
@@ -828,20 +828,20 @@ Nothing can explain or describe this perfection, this utter bliss.
 		"stationary",
 		"aggro"
 	},
+	Attacks = {
+		{
+			Name = "Hit",
+			ToHit = 24,
+			Damage = "4d8+5",
+			DamageType = "bludgeoning",
+			VerbSingular = "hit",
+			VerbPlural = "hits"
+		}
+	},
 	Stats = {
 		Level = 28,
 		AC = 24,
 		HP = "100d2+820",
-		Attacks = {
-			{
-				Name = "Hit",
-				ToHit = 24,
-				Damage = "4d8+5",
-				DamageType = 1,
-				VerbSingular = "hit",
-				VerbPlural = "hits"
-			}
-		},
 		XPValue = 190000
 	},
 	Gender = 1

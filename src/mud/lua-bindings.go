@@ -162,7 +162,7 @@ func lua_ConfigNewZone(tbl *lua.LTable) {
 		panic(err)
 	}
 	cfg.resetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
-	lua_W.zones[cfg.Id] = cfg
+	lua_W.zoneConfigs[cfg.Id] = cfg
 }
 
 func lua_ConfigNewRoom(tbl *lua.LTable) {
@@ -171,7 +171,7 @@ func lua_ConfigNewRoom(tbl *lua.LTable) {
 		panic(err)
 	}
 	zoneId := ZoneId(-1)
-	for _, z := range lua_W.zones {
+	for _, z := range lua_W.zoneConfigs {
 		if cfg.Id >= z.MinRoomId && cfg.Id <= z.MaxRoomId {
 			zoneId = z.Id
 			break

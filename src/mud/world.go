@@ -14,12 +14,12 @@ type World struct {
 	db            Database
 	players       map[PlayerId]*Entity
 	sessions      map[server.SessionId]*server.Session
-	entities      map[EntityId]*Entity
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
+	zoneConfigs   map[ZoneId]*ZoneConfig
 	rooms         map[RoomId]*Room
-	zones         map[ZoneId]*ZoneConfig
 	entryRoomId   RoomId
+	entities      map[EntityId]*Entity
 	inCombat      *CombatList
 	loggingOut    map[PlayerId]bool
 	events        chan<- server.SessionEvent
@@ -31,12 +31,12 @@ func NewWorld(db Database, l *lua.LState, events chan<- server.SessionEvent) *Wo
 		db,
 		make(map[PlayerId]*Entity),
 		make(map[server.SessionId]*server.Session),
-		make(map[EntityId]*Entity),
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
-		make(map[RoomId]*Room),
 		make(map[ZoneId]*ZoneConfig),
+		make(map[RoomId]*Room),
 		0,
+		make(map[EntityId]*Entity),
 		&CombatList{},
 		make(map[PlayerId]bool),
 		events,
@@ -215,14 +215,14 @@ func (w *World) AddRoom(r *Room) *Room {
 }
 
 func (w *World) ResetZone(id ZoneId) {
-	z := w.zones[id]
+	z := w.zoneConfigs[id]
 	if z.resetFunc != nil {
 		z.resetFunc()
 	}
 }
 
 func (w *World) ResetAllZones() {
-	for zid := range w.zones {
+	for zid := range w.zoneConfigs {
 		w.ResetZone(zid)
 	}
 }

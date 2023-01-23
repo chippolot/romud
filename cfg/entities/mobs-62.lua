@@ -11,6 +11,7 @@ It is an exceptionally large wolf with thick, black fur.  Saliva is dripping
 quickly from its long, white fangs.  It looks quite dangerous and very angry.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -28,7 +29,14 @@ quickly from its long, white fangs.  It looks quite dangerous and very angry.
 		Level = 5,
 		AC = 14,
 		HP = "1d12+60",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -45,6 +53,7 @@ It is an exceptionally large wolf with thick, black fur.  Saliva is dripping
 quickly from its long, white fangs.  It looks quite dangerous and very angry.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -62,7 +71,14 @@ quickly from its long, white fangs.  It looks quite dangerous and very angry.
 		Level = 5,
 		AC = 14,
 		HP = "1d12+80",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -76,6 +92,7 @@ Config.NewEntity({
 	RoomDesc = "A large, grey wolf is here, glaring hungrily at you.",
 	FullDesc = "The large, grey wolf eyes you with interest while licking its lips.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -93,7 +110,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 12,
 		HP = "1d12+35",
-		XPValue = 450
+		XPValue = 450,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -107,6 +131,7 @@ Config.NewEntity({
 	RoomDesc = "A large, black wolf is here, glaring hungrily at you.",
 	FullDesc = "The large, black wolf eyes you with interest while licking its lips.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -124,7 +149,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 12,
 		HP = "1d12+45",
-		XPValue = 450
+		XPValue = 450,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -143,6 +175,7 @@ Something about it makes you think that this is not a normal oak tree.
 The enormous grey trunk shivers slightly, as if sighing deeply.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -159,7 +192,14 @@ The enormous grey trunk shivers slightly, as if sighing deeply.
 		Level = 30,
 		AC = 29,
 		HP = "1d1+1299",
-		XPValue = 500000
+		XPValue = 500000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -178,6 +218,7 @@ Something about it makes you think that this is not a normal oak tree.
 The enormous grey trunk emits a deep, moaning sound.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -194,7 +235,14 @@ The enormous grey trunk emits a deep, moaning sound.
 		Level = 30,
 		AC = 29,
 		HP = "1d1+999",
-		XPValue = 400000
+		XPValue = 400000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -213,6 +261,7 @@ does the nicks in the horns on its head.  It smells as disgusting as only
 dragons do.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -230,7 +279,14 @@ dragons do.
 		Level = 20,
 		AC = 19,
 		HP = "1d12+248",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -249,6 +305,7 @@ and sharp poisonous fangs to paralyze or kill its prey.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -266,7 +323,14 @@ and sharp poisonous fangs to paralyze or kill its prey.
 		Level = 8,
 		AC = 17,
 		HP = "1d12+98",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -285,6 +349,7 @@ if it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -301,7 +366,14 @@ if it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.
 		Level = 15,
 		AC = 18,
 		HP = "1d12+185",
-		XPValue = 31000
+		XPValue = 31000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -321,6 +393,7 @@ as if he is having great fun.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"invisible",
 		"stayzone"
 	},
@@ -338,7 +411,14 @@ as if he is having great fun.
 		Level = 10,
 		AC = 29,
 		HP = "1d12+47",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -355,7 +435,8 @@ The druid looks quite old.  You would think of him as venerable but yet you
 know he would be a tough foe.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -371,7 +452,14 @@ know he would be a tough foe.
 		Level = 19,
 		AC = 19,
 		HP = "1d12+236",
-		XPValue = 45000
+		XPValue = 45000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -393,6 +481,7 @@ slender sword in a silver scabbard.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -409,7 +498,14 @@ slender sword in a silver scabbard.
 		Level = 20,
 		AC = 19,
 		HP = "1d12+245",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })

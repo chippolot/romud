@@ -12,6 +12,7 @@ to disintegrate you.  Beholders are not known for their personality.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -28,7 +29,14 @@ to disintegrate you.  Beholders are not known for their personality.
 		Level = 25,
 		AC = 19,
 		HP = "1d14+450",
-		XPValue = 134000
+		XPValue = 134000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -47,6 +55,7 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -63,7 +72,14 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 		Level = 12,
 		AC = 16,
 		HP = "1d10+120",
-		XPValue = 10500
+		XPValue = 10500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -80,7 +96,8 @@ A strong, wooden chest bound with iron straps and a heavy padlock on the
 front.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -96,7 +113,14 @@ front.
 		Level = 11,
 		AC = 18,
 		HP = "1d20+130",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -117,7 +141,8 @@ it are simply that, bones... no rags or anything else appears to be
 attached to them.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -133,7 +158,14 @@ attached to them.
 		Level = 14,
 		AC = 18,
 		HP = "3d15+150",
-		XPValue = 20000
+		XPValue = 20000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -150,7 +182,8 @@ What a mess, you wonder to yourself what could have caused this rampant
 destruction.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -166,7 +199,14 @@ destruction.
 		Level = 11,
 		AC = 16,
 		HP = "2d6+110",
-		XPValue = 10500
+		XPValue = 10500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -184,7 +224,8 @@ The pottery shards appear to have been part of a large vase at one point,
 probably before the city fell.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -200,7 +241,14 @@ probably before the city fell.
 		Level = 11,
 		AC = 19,
 		HP = "1d8+100",
-		XPValue = 9800
+		XPValue = 9800,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -218,7 +266,8 @@ The fact that these planks still rest on this shelf leads you to believe
 that someone has been here before you...
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -234,7 +283,14 @@ that someone has been here before you...
 		Level = 11,
 		AC = 19,
 		HP = "1d12+110",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -248,6 +304,7 @@ Config.NewEntity({
 	RoomDesc = "A small horned lizard flicks his tongue and slithers away.",
 	FullDesc = "A cute little lizard -- that is, if you like reptiles!",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -263,7 +320,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 15,
 		HP = "1d14+30",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -280,7 +344,8 @@ It is a big chunk of rock that has been magically formed into a giant stone
 creature.  He stands here still guarding the city.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -296,7 +361,14 @@ creature.  He stands here still guarding the city.
 		Level = 25,
 		AC = 24,
 		HP = "6d6+500",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -314,6 +386,7 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -331,7 +404,14 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 		Level = 9,
 		AC = 16,
 		HP = "1d12+120",
-		XPValue = 7000
+		XPValue = 7000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })

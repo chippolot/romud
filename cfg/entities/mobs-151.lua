@@ -14,6 +14,7 @@ experienced fighter.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -30,7 +31,14 @@ experienced fighter.
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -49,7 +57,8 @@ Despite that, you know he is well-loved throughout the land, and has
 a reputation as a wise and just ruler.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -65,7 +74,14 @@ a reputation as a wise and just ruler.
 		Level = 33,
 		AC = 29,
 		HP = "3d60+1480",
-		XPValue = 1000000
+		XPValue = 1000000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -82,6 +98,7 @@ Config.NewEntity({
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -98,7 +115,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 25,
 		HP = "9d6+150",
-		XPValue = 22000
+		XPValue = 22000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -117,6 +141,7 @@ them as uniform.  He seems very well trained, and moves like an
 experienced fighter.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -133,7 +158,14 @@ experienced fighter.
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -153,6 +185,7 @@ experienced fighter.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -169,7 +202,14 @@ experienced fighter.
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -189,6 +229,7 @@ experienced fighter.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -205,7 +246,14 @@ experienced fighter.
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -224,6 +272,7 @@ them as uniform.  He seems very well trained, and moves like an
 experienced fighter.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -240,7 +289,14 @@ experienced fighter.
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -259,6 +315,7 @@ them as uniform.  He seems very well trained, and moves like a fighter
 who has seen more than one battle, and longs to see the next!
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -275,7 +332,14 @@ who has seen more than one battle, and longs to see the next!
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		XPValue = 16000
+		XPValue = 16000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -294,6 +358,7 @@ them as uniform.  She seems very well trained, and moves like a fighter
 who has seen more than one battle, and longs to see the next!
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -310,7 +375,14 @@ who has seen more than one battle, and longs to see the next!
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		XPValue = 16000
+		XPValue = 16000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -329,6 +401,7 @@ them as uniform.  He seems very well trained, and moves like a fighter
 who has seen more than one battle, and longs to see the next!
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -345,7 +418,14 @@ who has seen more than one battle, and longs to see the next!
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		XPValue = 16000
+		XPValue = 16000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -365,6 +445,7 @@ them as uniform.  He seems very well trained, and carries his scars
 with pride.  This guy seems tough...
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -381,7 +462,14 @@ with pride.  This guy seems tough...
 		Level = 15,
 		AC = 18,
 		HP = "3d6+175",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -400,6 +488,7 @@ them as uniform.  She seems very well trained, and carries her scars
 with pride.  This girl could be nasty if she wanted to...
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -416,7 +505,14 @@ with pride.  This girl could be nasty if she wanted to...
 		Level = 15,
 		AC = 18,
 		HP = "3d6+175",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -440,6 +536,7 @@ and you have to fight a sudden urge to come to attention as you see
 him.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -456,7 +553,14 @@ him.
 		Level = 19,
 		AC = 20,
 		HP = "3d6+240",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -474,6 +578,7 @@ of virtually every weapon type invented by Man.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -490,7 +595,14 @@ of virtually every weapon type invented by Man.
 		Level = 18,
 		AC = 18,
 		HP = "2d6+220",
-		XPValue = 30000
+		XPValue = 30000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -507,6 +619,7 @@ This is a young, powerfully built man, whose primary function
 is to make Royal Announcements.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -522,7 +635,14 @@ is to make Royal Announcements.
 		Level = 18,
 		AC = 20,
 		HP = "3d6+220",
-		XPValue = 30000
+		XPValue = 30000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -544,6 +664,7 @@ with.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -560,7 +681,14 @@ with.
 		Level = 13,
 		AC = 17,
 		HP = "3d6+155",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -577,6 +705,7 @@ The typical perfect butler: upper middle age, a bit bald and with
 an impressive belly.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -593,7 +722,14 @@ an impressive belly.
 		Level = 8,
 		AC = 16,
 		HP = "1d6+100",
-		XPValue = 3750
+		XPValue = 3750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -607,6 +743,7 @@ Config.NewEntity({
 	RoomDesc = "There is a Cleaning Woman here, trying not be noticed.",
 	FullDesc = "Although she has a menial job, she seems to like it.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -623,7 +760,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 10,
 		HP = "4d6+1",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -637,6 +781,7 @@ Config.NewEntity({
 	RoomDesc = "A large cockroach is crawling by the wall.",
 	FullDesc = "Very large indeed, and they say cockroaches are hard to kill...",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -652,7 +797,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 16,
 		HP = "2d6+120",
-		XPValue = 750
+		XPValue = 750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -669,7 +821,8 @@ you can almost believe the rumours about stars deciding Fate,
 and that astrology is capable of seeing the future.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -685,7 +838,14 @@ and that astrology is capable of seeing the future.
 		Level = 23,
 		AC = 21,
 		HP = "1d1+30000",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -704,7 +864,8 @@ doubt that he is completely prepared to give his life for the
 King, if necessary.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -720,7 +881,14 @@ King, if necessary.
 		Level = 17,
 		AC = 18,
 		HP = "3d6+205",
-		XPValue = 28000
+		XPValue = 28000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -739,7 +907,8 @@ doubt that he is completely prepared to give his life for the
 King, if necessary.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -755,7 +924,14 @@ King, if necessary.
 		Level = 17,
 		AC = 18,
 		HP = "3d6+205",
-		XPValue = 28000
+		XPValue = 28000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -772,7 +948,8 @@ It seems he has been tasting his own food a bit too enthusiastically.
 He is, in other words, a bit fat.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -788,7 +965,14 @@ He is, in other words, a bit fat.
 		Level = 19,
 		AC = 20,
 		HP = "2d6+1283",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -801,7 +985,8 @@ Config.NewEntity({
 	RoomDesc = "There is a cook here, making himself busy with a pot.",
 	FullDesc = "A junior cook, eager to do the Chef's bidding.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -817,7 +1002,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 13,
 		HP = "2d7+46",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -835,7 +1027,8 @@ He really is big, and you get the feeling he wouldn't take kindly
 to an attempt to get past him.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -851,7 +1044,14 @@ to an attempt to get past him.
 		Level = 19,
 		AC = 19,
 		HP = "2d6+235",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -869,7 +1069,8 @@ He really is big, and you get the feeling he wouldn't take kindly
 to an attempt to get past him.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -885,7 +1086,14 @@ to an attempt to get past him.
 		Level = 19,
 		AC = 19,
 		HP = "2d6+235",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -904,6 +1112,7 @@ of them as uniform.  He seems very well trained, and moves like
 an experienced fighter.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -920,7 +1129,14 @@ an experienced fighter.
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -939,6 +1155,7 @@ of them as uniform.  He seems very well trained, and moves like an
 experienced fighter.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -955,7 +1172,14 @@ experienced fighter.
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -975,6 +1199,7 @@ a fighter who has seen more than one battle, and longs to see
 the next!
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -991,7 +1216,14 @@ the next!
 		Level = 13,
 		AC = 17,
 		HP = "3d6+150",
-		XPValue = 16000
+		XPValue = 16000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1010,6 +1242,7 @@ them as uniform.  He seems very well trained, and carries his scars
 with pride.  This guy seems tough...
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1026,7 +1259,14 @@ with pride.  This guy seems tough...
 		Level = 15,
 		AC = 18,
 		HP = "3d6+175",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1045,6 +1285,7 @@ desire for revenge.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -1061,7 +1302,14 @@ desire for revenge.
 		Level = 11,
 		AC = 16,
 		HP = "4d4+95",
-		XPValue = 10000
+		XPValue = 10000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -1080,6 +1328,7 @@ for revenge.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -1096,7 +1345,14 @@ for revenge.
 		Level = 10,
 		AC = 16,
 		HP = "4d4+80",
-		XPValue = 8000
+		XPValue = 8000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -1116,6 +1372,7 @@ white fangs and its razor-sharp talons.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -1132,7 +1389,14 @@ white fangs and its razor-sharp talons.
 		Level = 33,
 		AC = 29,
 		HP = "3d60+1480",
-		XPValue = 1000000
+		XPValue = 1000000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

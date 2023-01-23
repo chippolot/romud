@@ -9,6 +9,7 @@ Config.NewEntity({
 	FullDesc = "It looks hungry.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -25,7 +26,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 15,
 		HP = "5d10+50",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -39,7 +47,8 @@ Config.NewEntity({
 	RoomDesc = "A small green snake is here, and it doesn't look too friendly...",
 	FullDesc = "It looks harmless.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -55,7 +64,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = 15,
 		HP = "3d10+30",
-		XPValue = 2500
+		XPValue = 2500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -68,7 +84,8 @@ Config.NewEntity({
 	RoomDesc = "A small centipede is here, making its way across the floor.",
 	FullDesc = "It looks completely harmless.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -84,7 +101,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 13,
 		HP = "2d10+20",
-		XPValue = 400
+		XPValue = 400,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -99,6 +123,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -115,7 +140,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 14,
 		HP = "2d10+40",
-		XPValue = 800
+		XPValue = 800,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -130,6 +162,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -147,7 +180,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 14,
 		HP = "2d10+60",
-		XPValue = 900
+		XPValue = 900,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -163,6 +203,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -179,7 +220,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = 17,
 		HP = "3d20+75",
-		XPValue = 3000
+		XPValue = 3000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -195,6 +243,7 @@ Config.NewEntity({
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -212,7 +261,14 @@ Config.NewEntity({
 		Level = 12,
 		AC = 15,
 		HP = "10d10+50",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -227,6 +283,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -244,7 +301,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = 14,
 		HP = "3d10+80",
-		XPValue = 2500
+		XPValue = 2500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -259,6 +323,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -275,7 +340,14 @@ Config.NewEntity({
 		Level = 6,
 		AC = 13,
 		HP = "3d8+70",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -289,6 +361,7 @@ Config.NewEntity({
 	FullDesc = "The snake looks quite mean.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -305,7 +378,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 15,
 		HP = "4d10+60",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -318,7 +398,8 @@ Config.NewEntity({
 	RoomDesc = "A white centipede is here.",
 	FullDesc = "The centipede doesn't really seem to notice you.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -334,7 +415,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 14,
 		HP = "1d10+50",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -349,6 +437,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -365,7 +454,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 17,
 		HP = "1d16+120",
-		XPValue = 10000
+		XPValue = 10000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -380,6 +476,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -397,7 +494,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 17,
 		HP = "3d10+100",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -411,6 +515,7 @@ Config.NewEntity({
 	RoomDesc = "A mountain lion is here, growling at you viciously.",
 	FullDesc = "The lion looks very nasty with huge claws and big teeth.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -428,7 +533,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 14,
 		HP = "1d10+60",
-		XPValue = 900
+		XPValue = 900,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -445,6 +557,7 @@ The hill giant looks like he's about 9 feet tall.  By his actions you
 quickly come to the conclusion that he isn't very intelligent.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -461,7 +574,14 @@ quickly come to the conclusion that he isn't very intelligent.
 		Level = 13,
 		AC = 17,
 		HP = "1d10+160",
-		XPValue = 16500
+		XPValue = 16500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -480,6 +600,7 @@ It looks like he knows his way with magic.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -496,7 +617,14 @@ It looks like he knows his way with magic.
 		Level = 13,
 		AC = 17,
 		HP = "3d20+100",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -512,6 +640,7 @@ Config.NewEntity({
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -528,7 +657,14 @@ Config.NewEntity({
 		Level = 12,
 		AC = 18,
 		HP = "2d10+100",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -544,6 +680,7 @@ Config.NewEntity({
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -560,7 +697,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 14,
 		HP = "6d10+50",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -578,6 +722,7 @@ gold too...
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -594,7 +739,14 @@ gold too...
 		Level = 8,
 		AC = 16,
 		HP = "1d10+100",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -610,6 +762,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -627,7 +780,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = 15,
 		HP = "1d5+90",
-		XPValue = 2250
+		XPValue = 2250,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -640,7 +800,8 @@ Config.NewEntity({
 	RoomDesc = "A small harmless centipede is here.",
 	FullDesc = "Well it doesn't seem to pay any attention to you.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -656,7 +817,14 @@ Config.NewEntity({
 		Level = 6,
 		AC = 15,
 		HP = "3d10+50",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -671,6 +839,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -688,7 +857,14 @@ Config.NewEntity({
 		Level = 9,
 		AC = 16,
 		HP = "3d10+100",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -703,6 +879,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -720,7 +897,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = 15,
 		HP = "4d10+25",
-		XPValue = 3000
+		XPValue = 3000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

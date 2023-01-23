@@ -14,6 +14,7 @@ one of a peaceful man leading a simple life.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -31,7 +32,14 @@ one of a peaceful man leading a simple life.
 		Level = 5,
 		AC = 13,
 		HP = "1d12+60",
-		XPValue = 1050
+		XPValue = 1050,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -45,6 +53,7 @@ Config.NewEntity({
 	RoomDesc = "A small rabbit is foraging in the bushes here.",
 	FullDesc = "It is a small, furry creature with long ears and big feet.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -61,7 +70,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 13,
 		HP = "1d4+1",
-		XPValue = 60
+		XPValue = 60,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -78,6 +94,7 @@ The bear is a big, brown, furry animal with very large claws and very sharp
 teeth.  It doesn't resemble those cute little dolls from toy shops at all.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -95,7 +112,14 @@ teeth.  It doesn't resemble those cute little dolls from toy shops at all.
 		Level = 8,
 		AC = 16,
 		HP = "1d12+98",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -113,6 +137,7 @@ by the dreaded rabbit rabies, a horrible disease that turns helpless and
 innocent rabbits into ferocious and bloodthirsty monsters.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -130,7 +155,14 @@ innocent rabbits into ferocious and bloodthirsty monsters.
 		Level = 3,
 		AC = 13,
 		HP = "1d4+26",
-		XPValue = 350
+		XPValue = 350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -147,6 +179,7 @@ She is a graceful creature on long, slender legs, and with large, brown eyes
 looking back at you with an air of watchful interest.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -163,7 +196,14 @@ looking back at you with an air of watchful interest.
 		Level = 2,
 		AC = 14,
 		HP = "2d8+8",
-		XPValue = 230
+		XPValue = 230,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -177,6 +217,7 @@ Config.NewEntity({
 	RoomDesc = "A brown fox is stalking rabbits through the underbrush here.",
 	FullDesc = "It is a large fox with beautiful, red-brown fur and a long, thick bushy tail.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -193,7 +234,14 @@ Config.NewEntity({
 		Level = 2,
 		AC = 13,
 		HP = "1d4+18",
-		XPValue = 225
+		XPValue = 225,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -207,7 +255,8 @@ Config.NewEntity({
 	RoomDesc = "A large bird with a broken wing has been cornered here.",
 	FullDesc = "The bird isn't going to live much longer, by the looks of it.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -223,7 +272,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 9,
 		HP = "2d3+1",
-		XPValue = 25
+		XPValue = 25,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -241,6 +297,7 @@ the bird if you give it the chance.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -257,7 +314,14 @@ the bird if you give it the chance.
 		Level = 5,
 		AC = 14,
 		HP = "1d12+60",
-		XPValue = 1100
+		XPValue = 1100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -270,6 +334,7 @@ Config.NewEntity({
 	RoomDesc = "A sparrow is flapping around by the ground.",
 	FullDesc = "The sparrow looks like it is enjoying life.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -286,7 +351,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 10,
 		HP = "3d3+1",
-		XPValue = 25
+		XPValue = 25,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -299,6 +371,7 @@ Config.NewEntity({
 	RoomDesc = "A robin is hopping around looking for bugs to eat.",
 	FullDesc = "The robin looks quite intent on finding a bug or worm to eat.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -315,7 +388,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 10,
 		HP = "3d3+1",
-		XPValue = 25
+		XPValue = 25,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -331,7 +411,8 @@ It peers out of its nest at you anxiously, seeming to plead silently with
 you to leave it alone.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -347,7 +428,14 @@ you to leave it alone.
 		Level = 1,
 		AC = 11,
 		HP = "1d7+9",
-		XPValue = 120
+		XPValue = 120,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -364,7 +452,8 @@ know that it won't be moving this slow for long.  Its sharp claws and teeth
 catch your attention when you consider killing it.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -380,7 +469,14 @@ catch your attention when you consider killing it.
 		Level = 4,
 		AC = 14,
 		HP = "1d5+48",
-		XPValue = 650
+		XPValue = 650,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -397,6 +493,7 @@ This happy creature seems to pay you no heed as it goes about its search for
 nuts among the leaves and twigs on the ground here.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -413,7 +510,14 @@ nuts among the leaves and twigs on the ground here.
 		Level = 2,
 		AC = 11,
 		HP = "1d12+22",
-		XPValue = 200
+		XPValue = 200,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -430,6 +534,7 @@ of running up, down, and around the trees in this area.  If you could ever
 catch it, you imagine it would make an easy meal.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -446,7 +551,14 @@ catch it, you imagine it would make an easy meal.
 		Level = 0,
 		AC = 14,
 		HP = "2d5+3",
-		XPValue = 40
+		XPValue = 40,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -463,7 +575,8 @@ Config.NewEntity({
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -479,7 +592,14 @@ Config.NewEntity({
 		Level = 2,
 		AC = 11,
 		HP = "1d12+22",
-		XPValue = 200
+		XPValue = 200,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -500,6 +620,7 @@ It sees you and attacks, protecting its horrible feast!
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -516,7 +637,14 @@ It sees you and attacks, protecting its horrible feast!
 		Level = 6,
 		AC = 15,
 		HP = "1d12+68",
-		XPValue = 1750
+		XPValue = 1750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -535,6 +663,7 @@ impressive in a few years.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -551,7 +680,14 @@ impressive in a few years.
 		Level = 4,
 		AC = 15,
 		HP = "1d12+48",
-		XPValue = 750
+		XPValue = 750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -564,7 +700,8 @@ Config.NewEntity({
 	RoomDesc = "A fish is swimming about here.",
 	FullDesc = "The fish looks about the right size for a meal.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -580,7 +717,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 9,
 		HP = "2d5+0",
-		XPValue = 30
+		XPValue = 30,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -593,7 +737,8 @@ Config.NewEntity({
 	RoomDesc = "A duckling is swimming around in the pond.",
 	FullDesc = "The duckling is adorable, it looks most of all like a tiny furball.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -609,7 +754,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 9,
 		HP = "1d1+0",
-		XPValue = 1
+		XPValue = 1,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -622,6 +774,7 @@ Config.NewEntity({
 	RoomDesc = "A duck is here, quacking happily.",
 	FullDesc = "The duck is quite fat.  It looks like it is enjoying life.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -638,7 +791,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 9,
 		HP = "2d6+5",
-		XPValue = 75
+		XPValue = 75,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

@@ -10,6 +10,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -26,7 +27,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 14,
 		HP = "1d10+60",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -43,6 +51,7 @@ Dressed in loose fitting rags, this man looks like he could use LOTS of
 rest.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -60,7 +69,14 @@ rest.
 		Level = 8,
 		AC = 16,
 		HP = "2d6+100",
-		XPValue = 7000
+		XPValue = 7000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -77,6 +93,7 @@ This relatively harmless snake has bright alternating bands of red, yellow
 and black.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -93,7 +110,14 @@ and black.
 		Level = 4,
 		AC = 15,
 		HP = "1d6+40",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -107,6 +131,7 @@ Config.NewEntity({
 	RoomDesc = "A small, red scorpion scuttles away at your approach.",
 	FullDesc = "The little tail is mighty dangerous for such a small creature.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -123,7 +148,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 18,
 		HP = "1d6+40",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -139,6 +171,7 @@ Config.NewEntity({
 	FullDesc = "He's big, mean, and purple.  Watch out!",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -155,7 +188,14 @@ Config.NewEntity({
 		Level = 21,
 		AC = 16,
 		HP = "2d10+320",
-		XPValue = 65000
+		XPValue = 65000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -170,6 +210,7 @@ Config.NewEntity({
 	FullDesc = "Then adds to it, 'Prepare to die, have a nice day!'",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -186,7 +227,14 @@ Config.NewEntity({
 		Level = 20,
 		AC = 19,
 		HP = "2d6+500",
-		XPValue = 45000
+		XPValue = 45000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -203,7 +251,8 @@ He is clad in silk robes lined with gold thread. At his side is a large,
 engraved cutlass.  He has an especially haughty air about him.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -219,7 +268,14 @@ engraved cutlass.  He has an especially haughty air about him.
 		Level = 14,
 		AC = 19,
 		HP = "2d6+170",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -236,7 +292,8 @@ This is the nomad leader's second in command.  His clothes are richly woven
 of silk and gold thread.  A nasty cutlass hangs at his side.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -252,7 +309,14 @@ of silk and gold thread.  A nasty cutlass hangs at his side.
 		Level = 12,
 		AC = 18,
 		HP = "2d6+135",
-		XPValue = 14000
+		XPValue = 14000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -266,7 +330,8 @@ Config.NewEntity({
 	RoomDesc = "A proud nomad warrior stands here.",
 	FullDesc = "This warrior is dressed in typical nomad clothing and looks quite mean.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -282,7 +347,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 17,
 		HP = "1d6+105",
-		XPValue = 7000
+		XPValue = 7000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -296,7 +368,8 @@ Config.NewEntity({
 	RoomDesc = "A young slave sits here staring at you with pleading eyes.",
 	FullDesc = "She looks quite thin and weak.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -312,7 +385,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 10,
 		HP = "1d4+25",
-		XPValue = 300
+		XPValue = 300,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -330,6 +410,7 @@ Obviously it no longer fears death.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"invisible",
 		"aggro"
 	},
@@ -347,7 +428,14 @@ Obviously it no longer fears death.
 		Level = 24,
 		AC = 25,
 		HP = "1d12+520",
-		XPValue = 125000
+		XPValue = 125000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -360,6 +448,7 @@ Config.NewEntity({
 	RoomDesc = "The drider looks at you viciously while it draws its sword.",
 	FullDesc = "This half-spider, half-drow creature is a formidable opponent.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -377,7 +466,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 17,
 		HP = "1d6+95",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -395,6 +491,7 @@ The duergar could probably crush your head as easily as he does those
 rocks.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -412,7 +509,14 @@ rocks.
 		Level = 5,
 		AC = 16,
 		HP = "1d11+60",
-		XPValue = 1250
+		XPValue = 1250,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -428,6 +532,7 @@ The myconoid looks something like a giant mushroom (and probably has the
 same effect).
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -444,7 +549,14 @@ same effect).
 		Level = 6,
 		AC = 15,
 		HP = "1d12+68",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -459,7 +571,8 @@ Config.NewEntity({
 	FullDesc = "The shaman shoots spores into the air.",
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -475,7 +588,14 @@ Config.NewEntity({
 		Level = 14,
 		AC = 18,
 		HP = "1d12+173",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -495,6 +615,7 @@ it seems to be moving about...
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -511,7 +632,14 @@ it seems to be moving about...
 		Level = 7,
 		AC = 18,
 		HP = "1d6+85",
-		XPValue = 2250
+		XPValue = 2250,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -529,6 +657,7 @@ Bad experiences.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -545,7 +674,14 @@ Bad experiences.
 		Level = 5,
 		AC = 13,
 		HP = "1d6+60",
-		XPValue = 900
+		XPValue = 900,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

@@ -13,7 +13,8 @@ each person's body and soul.  At first a proud, bitter old man, but just
 as easily a gentle extended hand, a smile, and gardens... gardens.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -29,7 +30,14 @@ as easily a gentle extended hand, a smile, and gardens... gardens.
 		Level = 30,
 		AC = 29,
 		HP = "1d1+2999",
-		XPValue = 400000
+		XPValue = 400000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -48,7 +56,8 @@ image sharpens suddenly, and you see a face, eyes, hands, but then
 that too fades, and you see nothing.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -64,7 +73,14 @@ that too fades, and you see nothing.
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		XPValue = 280000
+		XPValue = 280000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -83,7 +99,8 @@ to the chosen prophets, and in turn brought the Seal of the Prophets on a
 miraculous journey to the holy city of Jerusalem.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -99,7 +116,14 @@ miraculous journey to the holy city of Jerusalem.
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		XPValue = 280000
+		XPValue = 280000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -118,7 +142,8 @@ that is human, and with a mere whisper, he dispels every image that you
 attempt to create in your mind.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -134,7 +159,14 @@ attempt to create in your mind.
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		XPValue = 280000
+		XPValue = 280000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -153,7 +185,8 @@ service of a fourth, and it was this angel, Uriel, that rose to the
 highest ranks.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -169,7 +202,14 @@ highest ranks.
 		Level = 29,
 		AC = 26,
 		HP = "1d100+1900",
-		XPValue = 280000
+		XPValue = 280000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -189,6 +229,7 @@ the beast grins and cackles, drawing its sword and blocking the way.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -205,7 +246,14 @@ the beast grins and cackles, drawing its sword and blocking the way.
 		Level = 17,
 		AC = 19,
 		HP = "10d5+260",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -222,7 +270,8 @@ something obscure: dragons, the temple, the falling of great empires.
 He laughs at you and takes another drink.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -238,7 +287,14 @@ He laughs at you and takes another drink.
 		Level = 13,
 		AC = 18,
 		HP = "10d2+180",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -259,6 +315,7 @@ sprite.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"invisible",
 		"stayzone"
 	},
@@ -276,7 +333,14 @@ sprite.
 		Level = 23,
 		AC = 21,
 		HP = "25d2+400",
-		XPValue = 70000
+		XPValue = 70000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -296,6 +360,7 @@ hand shakes and shakes.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -312,7 +377,14 @@ hand shakes and shakes.
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		XPValue = 180000
+		XPValue = 180000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -332,6 +404,7 @@ so charming.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -348,7 +421,14 @@ so charming.
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		XPValue = 180000
+		XPValue = 180000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -365,7 +445,8 @@ Config.NewEntity({
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -381,7 +462,14 @@ Config.NewEntity({
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -397,7 +485,8 @@ Richly clothed and postured in arrogance and love of power, he looks at
 you with nothing more than a smirk of contempt.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -413,7 +502,14 @@ you with nothing more than a smirk of contempt.
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -432,7 +528,8 @@ You see a simple man, dressed in dark and unadorned robes, bent over and
 pensive, reliving the memories of a man he never thought would die.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -448,7 +545,14 @@ pensive, reliving the memories of a man he never thought would die.
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -467,7 +571,8 @@ saying: "I do not wish to fight you, but if you refuse the truth of
 the Word, then I must."
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -483,7 +588,14 @@ the Word, then I must."
 		Level = 25,
 		AC = 23,
 		HP = "5d10+650",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -504,6 +616,7 @@ enemies.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -520,7 +633,14 @@ enemies.
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		XPValue = 180000
+		XPValue = 180000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -542,6 +662,7 @@ him now is for you to decide for yourself.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -558,7 +679,14 @@ him now is for you to decide for yourself.
 		Level = 26,
 		AC = 24,
 		HP = "4d10+840",
-		XPValue = 180000
+		XPValue = 180000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -581,6 +709,7 @@ temptations that will be yours if you in turn but follow him.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -597,7 +726,14 @@ temptations that will be yours if you in turn but follow him.
 		Level = 25,
 		AC = 23,
 		HP = "10d5+650",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -619,6 +755,7 @@ place, just tormented laughter, moaning, screaming, and begging.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -635,7 +772,14 @@ place, just tormented laughter, moaning, screaming, and begging.
 		Level = 25,
 		AC = 23,
 		HP = "10d5+650",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -658,6 +802,7 @@ its last victim.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -674,7 +819,14 @@ its last victim.
 		Level = 27,
 		AC = 24,
 		HP = "75d2+825",
-		XPValue = 180000
+		XPValue = 180000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -694,6 +846,7 @@ lord of the underworld that you fear to be your fate.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -710,7 +863,14 @@ lord of the underworld that you fear to be your fate.
 		Level = 27,
 		AC = 24,
 		HP = "75d2+825",
-		XPValue = 180000
+		XPValue = 180000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -727,7 +887,8 @@ The baby is barely aware of your presence, lost in a sleepy and
 contented yawn.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -743,7 +904,14 @@ contented yawn.
 		Level = 22,
 		AC = 23,
 		HP = "5d10+150",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -761,7 +929,8 @@ his gaze and notice that he is gazing in wonderment at the fullness of the
 moon.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -777,7 +946,14 @@ moon.
 		Level = 24,
 		AC = 23,
 		HP = "5d10+680",
-		XPValue = 145000
+		XPValue = 145000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -793,7 +969,8 @@ He is tired, the lines of age marking his face, but in his robe,
 kneeling, he is the image of perfect contentment.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -809,7 +986,14 @@ kneeling, he is the image of perfect contentment.
 		Level = 26,
 		AC = 24,
 		HP = "75d2+820",
-		XPValue = 180000
+		XPValue = 180000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -826,6 +1010,7 @@ Nothing can explain or describe this perfection, this utter bliss.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -842,7 +1027,14 @@ Nothing can explain or describe this perfection, this utter bliss.
 		Level = 28,
 		AC = 24,
 		HP = "100d2+820",
-		XPValue = 190000
+		XPValue = 190000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

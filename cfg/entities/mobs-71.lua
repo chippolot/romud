@@ -14,6 +14,7 @@ flesh for breakfast and is strongly intent on having the same for dinner
 - Perhaps you?
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -30,7 +31,14 @@ flesh for breakfast and is strongly intent on having the same for dinner
 		Level = 12,
 		AC = 17,
 		HP = "4d6+140",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -49,6 +57,7 @@ though it looks rather peaceful, hanging there, sleeping.  The thought of
 arousing this cruel creature doesn't sit well in your bones.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -66,7 +75,14 @@ arousing this cruel creature doesn't sit well in your bones.
 		Level = 1,
 		AC = 14,
 		HP = "5d2+6",
-		XPValue = 150
+		XPValue = 150,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -84,6 +100,7 @@ be called a giant rat.  Sewer water drips off of its grey fur as it
 looks at you with black glistening eyes.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -100,7 +117,14 @@ looks at you with black glistening eyes.
 		Level = 5,
 		AC = 14,
 		HP = "1d12+48",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -118,6 +142,7 @@ This small spider seems to pay you no attention at all as it builds
 its intricately designed web.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -134,7 +159,14 @@ its intricately designed web.
 		Level = 1,
 		AC = 16,
 		HP = "1d12+8",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -153,6 +185,7 @@ perhaps two feet from head to tail.  As it notices you, it waves
 its six legs about and makes some strange skittering noises at you.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -168,7 +201,14 @@ its six legs about and makes some strange skittering noises at you.
 		Level = 8,
 		AC = 16,
 		HP = "2d10+98",
-		XPValue = 3750
+		XPValue = 3750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -185,6 +225,7 @@ This large mound of grotesque flesh is just lying here quivering,
 almost as if it can sense your warm blood nearby.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -200,7 +241,14 @@ almost as if it can sense your warm blood nearby.
 		Level = 3,
 		AC = 10,
 		HP = "2d5+35",
-		XPValue = 350
+		XPValue = 350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -218,6 +266,7 @@ over its head and upper body.  A thin green stripe stretches along
 each side of its body.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -234,7 +283,14 @@ each side of its body.
 		Level = 4,
 		AC = 12,
 		HP = "2d5+40",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -252,7 +308,8 @@ doesn't look like he'd be your first choice as a travelling companion.
 ]],
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -268,7 +325,14 @@ doesn't look like he'd be your first choice as a travelling companion.
 		Level = 10,
 		AC = 17,
 		HP = "4d10+100",
-		XPValue = 9500
+		XPValue = 9500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -286,6 +350,7 @@ has a greenish, reptilian skin, leathery wings, and a batlike mouth,
 with teeth dripping with a greenish sludge.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -301,7 +366,14 @@ with teeth dripping with a greenish sludge.
 		Level = 11,
 		AC = 18,
 		HP = "6d3+130",
-		XPValue = 11500
+		XPValue = 11500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -318,6 +390,7 @@ It is a five foot tall, shadow monster.  This has the shape between
 a human and a rat.  It breaths very heavily while staring at you.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -334,7 +407,14 @@ a human and a rat.  It breaths very heavily while staring at you.
 		Level = 10,
 		AC = 16,
 		HP = "1d20+120",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -352,7 +432,8 @@ glowing eyes.  The lower body is in an orange shading.
 ]],
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -368,7 +449,14 @@ glowing eyes.  The lower body is in an orange shading.
 		Level = 12,
 		AC = 17,
 		HP = "2d26+148",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -387,6 +475,7 @@ It says 'Oh, human YOU woke me up... Hsssss', while it moves closer,
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -403,7 +492,14 @@ It says 'Oh, human YOU woke me up... Hsssss', while it moves closer,
 		Level = 19,
 		AC = 19,
 		HP = "5d4+230",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -421,6 +517,7 @@ yellow eyes and sharp teeth.  Its ears are very big, and it has small
 sharp horns.  This beast is obviously a hater of beauty.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -437,7 +534,14 @@ sharp horns.  This beast is obviously a hater of beauty.
 		Level = 14,
 		AC = 18,
 		HP = "1d8+172",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -456,7 +560,8 @@ that you are staring at her, and she says 'Watch out.  This way leads to
 some evil creatures.'
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -472,7 +577,14 @@ some evil creatures.'
 		Level = 12,
 		AC = 17,
 		HP = "1d18+148",
-		XPValue = 13500
+		XPValue = 13500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -491,7 +603,8 @@ glowing pale green.
 ]],
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -507,7 +620,14 @@ glowing pale green.
 		Level = 13,
 		AC = 19,
 		HP = "1d12+160",
-		XPValue = 16000
+		XPValue = 16000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -526,6 +646,7 @@ in you at all, but it attacks anyway.  It looks like its mind has been
 burned out.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -542,7 +663,14 @@ burned out.
 		Level = 5,
 		AC = 13,
 		HP = "3d5+57",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -562,7 +690,8 @@ Jones really stinks...
 ]],
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -578,7 +707,14 @@ Jones really stinks...
 		Level = 10,
 		AC = 17,
 		HP = "1d5+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -599,7 +735,8 @@ mice and rats.  He does not smell good.
 ]],
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -615,7 +752,14 @@ mice and rats.  He does not smell good.
 		Level = 6,
 		AC = 15,
 		HP = "3d5+70",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

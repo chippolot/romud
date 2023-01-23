@@ -7,7 +7,8 @@ Config.NewEntity({
 	RoomDesc = "The Immortal Innkeeper is organizing her books here.",
 	FullDesc = "She appears to be having no problem tallying things up.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -23,7 +24,14 @@ Config.NewEntity({
 		Level = 30,
 		AC = 29,
 		HP = "1d49+901",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -38,7 +46,8 @@ Config.NewEntity({
 	RoomDesc = "The Immortal Postmaster is hard at work here.",
 	FullDesc = "Scary... a postal worker... working?",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -54,7 +63,14 @@ Config.NewEntity({
 		Level = 30,
 		AC = 29,
 		HP = "1d49+901",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -77,6 +93,7 @@ after the immortals of the land.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -93,7 +110,14 @@ after the immortals of the land.
 		Level = 30,
 		AC = 29,
 		HP = "1d49+901",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

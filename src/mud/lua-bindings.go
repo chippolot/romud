@@ -22,6 +22,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	entityTbl := L.NewTable()
 	entityTbl.RawSetString("Name", luar.New(L, lua_EntityName))
+	entityTbl.RawSetString("RoomId", luar.New(L, lua_EntityRoomId))
 	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
 	L.SetGlobal("Entity", entityTbl)
 
@@ -45,6 +46,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	worldTbl := L.NewTable()
 	worldTbl.RawSetString("LoadEntityLimited", luar.New(L, lua_WorldLoadEntityLimited))
+	worldTbl.RawSetString("LoadItemLimited", luar.New(L, lua_WorldLoadItemLimited))
 	L.SetGlobal("World", worldTbl)
 
 	actTbl := L.NewTable()
@@ -72,6 +74,10 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 func lua_EntityName(e *Entity) string {
 	return e.Name()
+}
+
+func lua_EntityRoomId(e *Entity) RoomId {
+	return e.data.RoomId
 }
 
 func lua_EntityEquipSlotOpen(e *Entity, slot EquipSlot) bool {
@@ -108,12 +114,22 @@ func lua_WorldLoadEntityLimited(entityKey string, roomId RoomId, max int) *lua.L
 	return nil
 }
 
+func lua_WorldLoadItemLimited(itemKey string, roomId RoomId, max int) *lua.LUserData {
+	if cfg, ok := lua_W.TryGetItemConfig(itemKey); ok {
+		ent := NewItem(cfg)
+		lua_W.AddItem(ent, roomId)
+		return utils.ToUserData(lua_W.L, ent)
+	}
+	log.Printf("Failed to load item: %s", itemKey)
+	return nil
+}
+
 func lua_ActAttack(self *Entity, target *Entity) {
 	performAttack(self, lua_W, target)
 }
 
-func lua_ActGet(self *Entity, r *Room, item *Item) {
-	performGet(self, lua_W, r, item)
+func lua_ActGet(self *Entity, item *Item) {
+	performGet(self, lua_W, lua_W.rooms[self.data.RoomId], item)
 }
 
 func lua_ActEquip(self *Entity, item *Item) {

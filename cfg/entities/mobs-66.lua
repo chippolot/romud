@@ -13,6 +13,7 @@ smells like he hasn't bathed in over a month.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -29,7 +30,14 @@ smells like he hasn't bathed in over a month.
 		Level = 21,
 		AC = 20,
 		HP = "4d20+336",
-		XPValue = 60000
+		XPValue = 60000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -44,6 +52,7 @@ Config.NewEntity({
 	RoomDesc = "A dwarven mining worker is here.",
 	FullDesc = "He is very dirty, and looks extremely over-worked.",
 	Flags = {
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -61,7 +70,14 @@ Config.NewEntity({
 		Level = 13,
 		AC = 17,
 		HP = "25d5+170",
-		XPValue = 16000
+		XPValue = 16000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -75,6 +91,7 @@ Config.NewEntity({
 	FullDesc = "A black, almost transparent wraith.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -91,7 +108,14 @@ Config.NewEntity({
 		Level = 25,
 		AC = 25,
 		HP = "9d7+500",
-		XPValue = 125000
+		XPValue = 125000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -105,6 +129,7 @@ Config.NewEntity({
 	FullDesc = "The storekeeper is very rotund, but looks in excellent condition.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -121,7 +146,14 @@ Config.NewEntity({
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		XPValue = 800000
+		XPValue = 800000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -137,6 +169,7 @@ Config.NewEntity({
 	FullDesc = "Granite Head is covered with flour and grains.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -153,7 +186,14 @@ Config.NewEntity({
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		XPValue = 800000
+		XPValue = 800000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -170,6 +210,7 @@ This scaly creature looks like it is well adapted to its underground
 habitat.  He looks very powerful.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -186,7 +227,14 @@ habitat.  He looks very powerful.
 		Level = 21,
 		AC = 18,
 		HP = "4d20+340",
-		XPValue = 55000
+		XPValue = 55000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -202,6 +250,7 @@ The giant is about 18 feet tall, with arms of steel, and looks in
 excellent physical condition.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -218,7 +267,14 @@ excellent physical condition.
 		Level = 19,
 		AC = 19,
 		HP = "4d20+300",
-		XPValue = 45000
+		XPValue = 45000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -235,7 +291,8 @@ Config.NewEntity({
 	RoomDesc = "A dwarven mineworker is here.",
 	FullDesc = "The mineworker is very tired, and very dirty, and he has bulging muscles.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -251,7 +308,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 12,
 		HP = "3d13+40",
-		XPValue = 700
+		XPValue = 700,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -271,7 +335,8 @@ The mine leader is very big and very strong, though he must be fairly
 bright also, to have gotten this job.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -287,7 +352,14 @@ bright also, to have gotten this job.
 		Level = 19,
 		AC = 19,
 		HP = "50d2+270",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -302,7 +374,8 @@ Config.NewEntity({
 	RoomDesc = "The dwarven doctor is here, aiding the sick of his people.",
 	FullDesc = "He is a very skilled healer, and extremely faithful to his god.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -318,7 +391,14 @@ Config.NewEntity({
 		Level = 22,
 		AC = 20,
 		HP = "9d4+375",
-		XPValue = 60000
+		XPValue = 60000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -333,6 +413,7 @@ Config.NewEntity({
 	FullDesc = "",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -349,7 +430,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 12,
 		HP = "10d3+35",
-		XPValue = 350
+		XPValue = 350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -362,7 +450,8 @@ Config.NewEntity({
 	RoomDesc = "A dwarf is here.",
 	FullDesc = "",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -378,7 +467,14 @@ Config.NewEntity({
 		Level = 6,
 		AC = 15,
 		HP = "1d15+70",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -393,6 +489,7 @@ Config.NewEntity({
 	FullDesc = "",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -409,7 +506,14 @@ Config.NewEntity({
 		Level = 14,
 		AC = 18,
 		HP = "5d10+170",
-		XPValue = 20000
+		XPValue = 20000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -424,6 +528,7 @@ Config.NewEntity({
 	FullDesc = "He looks VERY tough.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -440,7 +545,14 @@ Config.NewEntity({
 		Level = 29,
 		AC = 26,
 		HP = "250d4+2000",
-		XPValue = 1700000
+		XPValue = 1700000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -455,6 +567,7 @@ Config.NewEntity({
 	FullDesc = "",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -471,7 +584,14 @@ Config.NewEntity({
 		Level = 33,
 		AC = 29,
 		HP = "0",
-		XPValue = 800000
+		XPValue = 800000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

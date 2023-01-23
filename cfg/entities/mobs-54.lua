@@ -11,6 +11,7 @@ The asp is a small, smooth-scaled snake the color of worn pottery.
 The poison bite of this snake has felled many a mighty pharoah.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -28,7 +29,14 @@ The poison bite of this snake has felled many a mighty pharoah.
 		Level = 5,
 		AC = 11,
 		HP = "5d5+50",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -45,6 +53,7 @@ The cobra snake waves back and forth before you, its hood displaying brilliant
 colors designed to serve notice to its prey that it is about to strike.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -62,7 +71,14 @@ colors designed to serve notice to its prey that it is about to strike.
 		Level = 7,
 		AC = 12,
 		HP = "7d7+70",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -78,6 +94,7 @@ The mongoose is a wily rodent, a quick hunter of nasty poisonous snakes.
 She sniffs you and appears to be looking for food in your hand.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -95,7 +112,14 @@ She sniffs you and appears to be looking for food in your hand.
 		Level = 11,
 		AC = 13,
 		HP = "11d11+110",
-		XPValue = 10000
+		XPValue = 10000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -114,6 +138,7 @@ sand-colored clothing.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -130,7 +155,14 @@ sand-colored clothing.
 		Level = 8,
 		AC = 14,
 		HP = "8d8+80",
-		XPValue = 3750
+		XPValue = 3750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -144,6 +176,7 @@ Config.NewEntity({
 	RoomDesc = "A sneaky tomb thief moves about in search of treasure.",
 	FullDesc = "The thief brushes against you briefly, then slinks back into the shadows.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -160,7 +193,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 14,
 		HP = "10d10+100",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -182,6 +222,7 @@ he might get caught, but not today...
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -198,7 +239,14 @@ he might get caught, but not today...
 		Level = 18,
 		AC = 19,
 		HP = "18d18+180",
-		XPValue = 30000
+		XPValue = 30000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -216,7 +264,8 @@ It seems to rise up at the touch of your feet.  Wait, it is rising, a few feet
 above the ground!  In fact, it seems to be ALIVE!
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -232,7 +281,14 @@ above the ground!  In fact, it seems to be ALIVE!
 		Level = 9,
 		AC = 12,
 		HP = "9d9+90",
-		XPValue = 6000
+		XPValue = 6000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -249,6 +305,7 @@ You only see the disfigured, rotting features of decaying human flesh,
 animated by the distempered spirit of a long-deceased person.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -266,7 +323,14 @@ animated by the distempered spirit of a long-deceased person.
 		Level = 12,
 		AC = 15,
 		HP = "12d12+120",
-		XPValue = 15000
+		XPValue = 15000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -285,6 +349,7 @@ of the desert floor.  It seems quite large and strong and at home in the heat
 and sandy winds.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -302,7 +367,14 @@ and sandy winds.
 		Level = 14,
 		AC = 17,
 		HP = "14d14+140",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -320,6 +392,7 @@ you with disdain and scorn, arms folded across his mighty chest.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -336,7 +409,14 @@ you with disdain and scorn, arms folded across his mighty chest.
 		Level = 20,
 		AC = 20,
 		HP = "20d20+200",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -355,6 +435,7 @@ but you can still make out a deadly stone sword in the hands of each figure.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -371,7 +452,14 @@ but you can still make out a deadly stone sword in the hands of each figure.
 		Level = 24,
 		AC = 22,
 		HP = "24d24+240",
-		XPValue = 100000
+		XPValue = 100000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -390,7 +478,8 @@ He smiles down at you congenially, arms folded across his blue-tinged
 skin, and strokes his goatee.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -406,7 +495,14 @@ skin, and strokes his goatee.
 		Level = 28,
 		AC = 25,
 		HP = "28d28+280",
-		XPValue = 310000
+		XPValue = 310000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -425,6 +521,7 @@ to pieces.  They tend to be quite jealous of the sharper wits of their older
 cousins.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -442,7 +539,14 @@ cousins.
 		Level = 15,
 		AC = 16,
 		HP = "15d15+150",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -461,7 +565,8 @@ and the hind legs of a mighty cat.  Right now she is confused, having
 just heard a puzzling riddle from a cousin criosphinx.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -477,7 +582,14 @@ just heard a puzzling riddle from a cousin criosphinx.
 		Level = 19,
 		AC = 19,
 		HP = "19d19+190",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -495,7 +607,8 @@ the body of a well-furred feline with eagle-like wings.  He delights in riddles,
 and in poking occasional fun at his easily confused lesser cousins.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -511,7 +624,14 @@ and in poking occasional fun at his easily confused lesser cousins.
 		Level = 23,
 		AC = 21,
 		HP = "23d23+230",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -530,7 +650,8 @@ wings.  Tales are told of pharoahs that were rendered permanently deaf by the
 mighty roar of this sphinx.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -546,7 +667,14 @@ mighty roar of this sphinx.
 		Level = 27,
 		AC = 25,
 		HP = "27d27+270",
-		XPValue = 200000
+		XPValue = 200000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -565,7 +693,8 @@ it, although you can still make out the features of the handsome face that once
 advised many rulers.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -581,7 +710,14 @@ advised many rulers.
 		Level = 41,
 		AC = 39,
 		HP = "41d41+410",
-		XPValue = 1500000
+		XPValue = 1500000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -601,7 +737,8 @@ slept.  His hair is a soft black, his skin a deep chocolate, and his
 tall frame is totally still, his chest not even moving to breathe.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -617,7 +754,14 @@ tall frame is totally still, his chest not even moving to breathe.
 		Level = 38,
 		AC = 37,
 		HP = "38d38+380",
-		XPValue = 1000000
+		XPValue = 1000000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

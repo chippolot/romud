@@ -11,6 +11,7 @@ Ick... what a disgusting creature!  It is black and green and slimy
 and it is drooling everywhere... looks mean too.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -26,7 +27,14 @@ and it is drooling everywhere... looks mean too.
 		Level = 5,
 		AC = 14,
 		HP = "4d6+42",
-		XPValue = 1200
+		XPValue = 1200,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -44,6 +52,7 @@ tell.  He is only about 4 feet tall, but he pretty muscular looking...
 maybe you should ask if he needs help?  Nah... kill him.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -59,7 +68,14 @@ maybe you should ask if he needs help?  Nah... kill him.
 		Level = 2,
 		AC = 10,
 		HP = "2d4+16",
-		XPValue = 400
+		XPValue = 400,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -77,6 +93,7 @@ just want to cuddle him to death... no, you really want to kill him to tell
 the truth.  But, remember, even a little dragon can be a big problem.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -92,7 +109,14 @@ the truth.  But, remember, even a little dragon can be a big problem.
 		Level = 4,
 		AC = 13,
 		HP = "1d4+50",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -112,6 +136,7 @@ says, 'Have you seen that dragon?  Master will have my head if I don't find
 him.'
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -127,7 +152,14 @@ him.'
 		Level = 3,
 		AC = 12,
 		HP = "2d6+34",
-		XPValue = 800
+		XPValue = 800,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -144,6 +176,7 @@ He is a funny looking, furry little dude.  He looks really busy trying to
 mix up a batch of something or other.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -159,7 +192,14 @@ mix up a batch of something or other.
 		Level = 5,
 		AC = 14,
 		HP = "4d6+38",
-		XPValue = 1200
+		XPValue = 1200,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -178,6 +218,7 @@ Yuck!  If they'd ever clean this place maybe it wouldn't attract vermin
 like this disgusting, little, six-legged, brown bug.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -193,7 +234,14 @@ like this disgusting, little, six-legged, brown bug.
 		Level = 1,
 		AC = 9,
 		HP = "1d4+8",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -210,6 +258,7 @@ This guy has been lost in here too long... it is more zombie than man
 now.  You would feel sorry for it, but it is moving in to attack!
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -225,7 +274,14 @@ now.  You would feel sorry for it, but it is moving in to attack!
 		Level = 4,
 		AC = 14,
 		HP = "1d8+46",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -244,6 +300,7 @@ It is hard to say because before you ever get a good look at it, it darts
 back into the shadows.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -259,7 +316,14 @@ back into the shadows.
 		Level = 3,
 		AC = 12,
 		HP = "1d10+30",
-		XPValue = 300
+		XPValue = 300,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -277,6 +341,7 @@ a heck of a lot meaner than any bull you have ever seen... and he is
 coming this way!
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -292,7 +357,14 @@ coming this way!
 		Level = 7,
 		AC = 14,
 		HP = "3d5+85",
-		XPValue = 3000
+		XPValue = 3000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -309,6 +381,7 @@ The soul of a long since passed on adventurer... it lurks here waiting for
 a chance to bring death to any who cross its path.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -324,7 +397,14 @@ a chance to bring death to any who cross its path.
 		Level = 6,
 		AC = 16,
 		HP = "3d5+62",
-		XPValue = 1600
+		XPValue = 1600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -343,6 +423,7 @@ comments about everything.  Better silence him with cold, tempered steel
 MUHAHAHAHAHAHAHAHAHAHA!
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -358,7 +439,14 @@ MUHAHAHAHAHAHAHAHAHAHA!
 		Level = 2,
 		AC = 9,
 		HP = "2d4+20",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -377,6 +465,7 @@ ask and he will probably ask 2 or 3 times too.  This guy just doesn't get
 it, best put him out of his misery.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -392,7 +481,14 @@ it, best put him out of his misery.
 		Level = 1,
 		AC = 9,
 		HP = "1d1+19",
-		XPValue = 220
+		XPValue = 220,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -410,6 +506,7 @@ friendly, interesting sort.  Seems to have a clue what she's doing also,
 unlike some others you might see.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -425,7 +522,14 @@ unlike some others you might see.
 		Level = 3,
 		AC = 11,
 		HP = "6d5+22",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -443,6 +547,7 @@ too far from home this time.  Don't think he knows quite where he is,
 maybe you should help him out?
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -458,7 +563,14 @@ maybe you should help him out?
 		Level = 4,
 		AC = 13,
 		HP = "8d5+20",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -475,6 +587,7 @@ Here is a guy who has it all together.  Nice equipment too, must have read
 the help files, Eh?
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -490,7 +603,14 @@ the help files, Eh?
 		Level = 5,
 		AC = 10,
 		HP = "10d5+20",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

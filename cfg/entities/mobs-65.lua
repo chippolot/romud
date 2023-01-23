@@ -11,6 +11,7 @@ This goat is acclimated to the rugged terrain of the
 mountains.  It looks at you and shies away a little.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -27,7 +28,14 @@ mountains.  It looks at you and shies away a little.
 		Level = 8,
 		AC = 16,
 		HP = "3d5+95",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -45,6 +53,7 @@ Oops!  You're living!  I guess that means you!
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -62,7 +71,14 @@ Oops!  You're living!  I guess that means you!
 		Level = 12,
 		AC = 17,
 		HP = "3d5+145",
-		XPValue = 10000
+		XPValue = 10000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -81,6 +97,7 @@ Peace.  Hmm.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -98,7 +115,14 @@ Peace.  Hmm.
 		Level = 14,
 		AC = 18,
 		HP = "1d1+199",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -116,6 +140,7 @@ but a lot more tangible... magic?
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -133,7 +158,14 @@ but a lot more tangible... magic?
 		Level = 18,
 		AC = 19,
 		HP = "1d1+249",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -151,6 +183,7 @@ personified!
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -168,7 +201,14 @@ personified!
 		Level = 19,
 		AC = 19,
 		HP = "1d1+299",
-		XPValue = 45000
+		XPValue = 45000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -185,6 +225,7 @@ brain can handle: guarding.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -202,7 +243,14 @@ brain can handle: guarding.
 		Level = 18,
 		AC = 19,
 		HP = "1d1+249",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

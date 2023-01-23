@@ -123,7 +123,19 @@ func parseZone(data []byte, outPath string) {
 							switch toks[0] {
 							case "M":
 								key := "mob" + toks[2]
-								lb.Linef("World.LoadEntityLimited(\"%s\", %d, %s)", key, parseInt(toks[4])+1, toks[3])
+								lb.Linef("e = World.LoadEntityLimited(\"%s\", %d, %s)", key, parseInt(toks[4])+1, toks[3])
+							case "I":
+								key := "item" + toks[2]
+								lb.Linef("World.LoadItemLimited(\"%s\", %d, %s)", key, parseInt(toks[4])+1, toks[3])
+							case "G":
+								key := "item" + toks[2]
+								lb.Linef("i = World.LoadItemLimited(\"%s\", Entity.RoomId(e), %s)", key, toks[3])
+								lb.Linef("Act.Get(e, i)")
+							case "E":
+								key := "item" + toks[2]
+								lb.Linef("i = World.LoadItemLimited(\"%s\", Entity.RoomId(e), %s)", key, toks[3])
+								lb.Linef("Act.Get(e, i)")
+								lb.Linef("Act.Equip(e, i)")
 							}
 						}
 					})
@@ -237,7 +249,7 @@ func parseEntities(data []byte, outPath string) {
 				toks, lines := parseLineTokens(lines)
 
 				// Parse flags
-				var eflags mud.EntityFlagMask
+				eflags := mud.EFlag_UsesEquipment
 				flagsStr := toks[0]
 				for _, v := range flagsStr {
 					switch v {
@@ -313,6 +325,15 @@ func parseEntities(data []byte, outPath string) {
 						// Parse XP
 						toks, lines = parseLineTokens(lines)
 						lb.Field("XPValue", parseInt(toks[1]))
+
+						// Set some defaults
+						lb.Field("Speed", 30)
+						lb.Field("Str", 10)
+						lb.Field("Dex", 10)
+						lb.Field("Con", 10)
+						lb.Field("Int", 10)
+						lb.Field("Wis", 10)
+						lb.Field("Cha", 10)
 					})
 				})
 

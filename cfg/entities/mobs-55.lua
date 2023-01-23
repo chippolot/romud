@@ -8,7 +8,8 @@ Config.NewEntity({
 	RoomDesc = "Your guildmaster stands here.",
 	FullDesc = "An old man peering through ancient tomes rests here.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -24,7 +25,14 @@ Config.NewEntity({
 		Level = 16,
 		AC = 29,
 		HP = "1d1+10000",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -38,7 +46,8 @@ Config.NewEntity({
 	RoomDesc = "Your guildmaster stands here.",
 	FullDesc = "An older man wrapped in purple, long-flowing robes meditates here.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -54,7 +63,14 @@ Config.NewEntity({
 		Level = 16,
 		AC = 29,
 		HP = "1d1+10000",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -68,7 +84,8 @@ Config.NewEntity({
 	RoomDesc = "Your guildmaster stands here.",
 	FullDesc = "A smaller man dressed in black robes stands here waiting to train you.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -84,7 +101,14 @@ Config.NewEntity({
 		Level = 16,
 		AC = 29,
 		HP = "1d1+10000",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -102,7 +126,8 @@ a knife and throws it at you.  It lands in the wall next to your left ear.
 'We will now begin', is all he says.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -118,7 +143,14 @@ a knife and throws it at you.  It lands in the wall next to your left ear.
 		Level = 16,
 		AC = 29,
 		HP = "1d1+10000",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -136,7 +168,8 @@ official.  As you attempt to sneak a peek under her veil you notice
 a small moon-shaped birthmark on her left cheek.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -152,7 +185,14 @@ a small moon-shaped birthmark on her left cheek.
 		Level = 10,
 		AC = 29,
 		HP = "1d1+1871",
-		XPValue = 5000
+		XPValue = 5000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -168,7 +208,8 @@ Config.NewEntity({
 	RoomDesc = "An old withered man leans against the bar.",
 	FullDesc = "He looks distracted as he pours five drinks at once without error.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -184,7 +225,14 @@ Config.NewEntity({
 		Level = 35,
 		AC = 20,
 		HP = "1d1+12000",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -204,6 +252,7 @@ tune.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -220,7 +269,14 @@ tune.
 		Level = 15,
 		AC = 19,
 		HP = "3d5+150",
-		XPValue = 1350
+		XPValue = 1350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -235,6 +291,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -251,7 +308,14 @@ Config.NewEntity({
 		Level = 2,
 		AC = 9,
 		HP = "10d1+1",
-		XPValue = 5
+		XPValue = 5,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -266,6 +330,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -282,7 +347,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 9,
 		HP = "10d1+1",
-		XPValue = 5
+		XPValue = 5,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -297,6 +369,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -313,7 +386,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 9,
 		HP = "10d1+1",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -326,7 +406,8 @@ Config.NewEntity({
 	RoomDesc = "The baker stands here playing solitaire.",
 	FullDesc = "You see a large man in a white apron covered in flour from head to toe.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -342,7 +423,14 @@ Config.NewEntity({
 		Level = 35,
 		AC = 19,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -355,7 +443,8 @@ Config.NewEntity({
 	RoomDesc = "The shopkeeper stands here.",
 	FullDesc = "You see a half-elf sitting on a stool behind his counter.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -371,7 +460,14 @@ Config.NewEntity({
 		Level = 35,
 		AC = 19,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -384,7 +480,8 @@ Config.NewEntity({
 	RoomDesc = "A banker stands here waiting to help you.",
 	FullDesc = "This small halfling seems adept at counting money.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -400,7 +497,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 19,
 		HP = "1d1+30000",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -417,7 +521,8 @@ This middle-aged man looks over you with disdain and quickly suggests a
 new wardrobe.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -433,7 +538,14 @@ new wardrobe.
 		Level = 35,
 		AC = 14,
 		HP = "1d1+30000",
-		XPValue = 200
+		XPValue = 200,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -447,7 +559,8 @@ Config.NewEntity({
 	RoomDesc = "Vera the veggie lady beems as you look over her stand.",
 	FullDesc = "A tall slender woman stands before you smiling broadly.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -463,7 +576,14 @@ Config.NewEntity({
 		Level = 35,
 		AC = 14,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -479,7 +599,8 @@ This stocky dwarf has a mad glint in his eye as he twirls his clever
 carelessly into the air.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -495,7 +616,14 @@ carelessly into the air.
 		Level = 35,
 		AC = 14,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -512,7 +640,8 @@ Abdul returns your gaze with a steady eye.  You quickly glance away
 under his cold stare and place your order.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -528,7 +657,14 @@ under his cold stare and place your order.
 		Level = 35,
 		AC = 14,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -542,7 +678,8 @@ Config.NewEntity({
 	RoomDesc = "Igor stands here doing... something.",
 	FullDesc = "You see a small dwarf with a large hump on his left shoulder.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -558,7 +695,14 @@ Config.NewEntity({
 		Level = 35,
 		AC = 14,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -575,7 +719,8 @@ the open sea.  It is only through years of fishing that she is able
 to withstand the smell that permeates the air.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -591,7 +736,14 @@ to withstand the smell that permeates the air.
 		Level = 35,
 		AC = 19,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -609,6 +761,7 @@ book and looking at his watch.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -625,7 +778,14 @@ book and looking at his watch.
 		Level = 15,
 		AC = 21,
 		HP = "3d10+40",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -640,6 +800,7 @@ Config.NewEntity({
 	FullDesc = "A large sweaty looking man doesn't even return your glance.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -656,7 +817,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 19,
 		HP = "3d8+35",
-		XPValue = 50
+		XPValue = 50,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -673,7 +841,8 @@ The statue made of solid marble depicts the mighty God defeating Siva
 in magical combat.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -689,7 +858,14 @@ in magical combat.
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -706,7 +882,8 @@ The statue of the High Lord of Destruction stands here beings attacked
 by Brahman in magical combat.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -722,7 +899,14 @@ by Brahman in magical combat.
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -736,7 +920,8 @@ Config.NewEntity({
 	RoomDesc = "The statue of Indra stands here.",
 	FullDesc = "This statue looks like an enormous elephant.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -752,7 +937,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -766,7 +958,8 @@ Config.NewEntity({
 	RoomDesc = "The statue of Yama stands here.",
 	FullDesc = "This is a statue of the God of Death.  It is covered with odd runes.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -782,7 +975,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -799,7 +999,8 @@ The statue of Surya, the God in charge of the Sun, almost glows
 with a firey aura.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -815,7 +1016,14 @@ with a firey aura.
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -832,7 +1040,8 @@ The statue of the Black Mother, Kali, is made of black marble and
 is covered with silver runes.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -848,7 +1057,14 @@ is covered with silver runes.
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -865,7 +1081,8 @@ The statue of Brihaspati, the God of Scholars and Knowledge is made
 of a weathered marble.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -881,7 +1098,14 @@ of a weathered marble.
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -898,7 +1122,8 @@ The statue of Puchan, God of Travellers, is covered with dust and worn
 as if it had been dragged a long way down a dusty road.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -914,7 +1139,14 @@ as if it had been dragged a long way down a dusty road.
 		Level = 15,
 		AC = 29,
 		HP = "1d1+1200",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -929,6 +1161,7 @@ Config.NewEntity({
 	RoomDesc = "Aziz the Human Canon stands here.",
 	FullDesc = "This big and burly man grins at you as he draws his sword.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -945,7 +1178,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 19,
 		HP = "2d11+40",
-		XPValue = 384
+		XPValue = 384,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -960,6 +1200,7 @@ Config.NewEntity({
 	RoomDesc = "Mustafah the Human Robber stands here.",
 	FullDesc = "This man is lithe and has an evil smirk upon his face.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -976,7 +1217,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = -11,
 		HP = "3d8+41",
-		XPValue = 99
+		XPValue = 99,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -994,6 +1242,7 @@ This female elf has dusky skin and black hair.  A combination you don't
 see very often on elves.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1010,7 +1259,14 @@ see very often on elves.
 		Level = 9,
 		AC = -31,
 		HP = "2d6+25",
-		XPValue = 93
+		XPValue = 93,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -1025,6 +1281,7 @@ Config.NewEntity({
 	RoomDesc = "Kareem the Dwarven Mercenary stands here.",
 	FullDesc = "This short stocky fellow has a chest the girth of a barrel.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1041,7 +1298,14 @@ Config.NewEntity({
 		Level = 12,
 		AC = 19,
 		HP = "4d4+50",
-		XPValue = 939
+		XPValue = 939,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1060,6 +1324,7 @@ tells you not to trust him very far.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -1077,7 +1342,14 @@ tells you not to trust him very far.
 		Level = 35,
 		AC = -1,
 		HP = "1d1+1500",
-		XPValue = 800
+		XPValue = 800,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1092,6 +1364,7 @@ Config.NewEntity({
 	FullDesc = "The large half-orc quickly glances you over and returns to his duties.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -1109,7 +1382,14 @@ Config.NewEntity({
 		Level = 12,
 		AC = 16,
 		HP = "3d10+100",
-		XPValue = 400
+		XPValue = 400,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1124,7 +1404,8 @@ Config.NewEntity({
 	FullDesc = "This small child sees you looking at him and quickly looks away.",
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1140,7 +1421,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = 18,
 		HP = "14d1+1",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1156,6 +1444,7 @@ Although seemingly dull witted, this hulking mass carries the huge
 crates from the boats like it was a box of lilies.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1172,7 +1461,14 @@ crates from the boats like it was a box of lilies.
 		Level = 12,
 		AC = -1,
 		HP = "3d5+65",
-		XPValue = 550
+		XPValue = 550,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1189,6 +1485,7 @@ The city's taxcollextor walks from store to store collecting the
 Sultan's fee for living in his grand city.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1205,7 +1502,14 @@ Sultan's fee for living in his grand city.
 		Level = 5,
 		AC = -31,
 		HP = "10d2+45",
-		XPValue = 431
+		XPValue = 431,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1219,7 +1523,8 @@ Config.NewEntity({
 	FullDesc = "",
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1235,7 +1540,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 22,
 		HP = "5d3+105",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1254,6 +1566,7 @@ looks at you quizically.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -1270,7 +1583,14 @@ looks at you quizically.
 		Level = 15,
 		AC = 29,
 		HP = "4d1+231",
-		XPValue = 8700
+		XPValue = 8700,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1283,6 +1603,7 @@ Config.NewEntity({
 	RoomDesc = "Daghdha the Arch-Magi stands here.",
 	FullDesc = "This man is dressed in long brown robes and has a penetrating gaze.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1299,7 +1620,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 16,
 		HP = "5d2+180",
-		XPValue = 8700
+		XPValue = 8700,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1314,7 +1642,8 @@ Config.NewEntity({
 	FullDesc = "",
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1330,7 +1659,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 19,
 		HP = "3d5+120",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1348,6 +1684,7 @@ This sad case may have been an evangelist in another lifetime. He is known
 to stand on corners and accost passers-by with his doomsday preaching.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1363,7 +1700,14 @@ to stand on corners and accost passers-by with his doomsday preaching.
 		Level = 7,
 		AC = -31,
 		HP = "1d1+1",
-		XPValue = 10
+		XPValue = 10,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1377,6 +1721,7 @@ Config.NewEntity({
 	RoomDesc = "A small harmless feline searches for food.",
 	FullDesc = "You see a small starved cat.",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1392,7 +1737,14 @@ Config.NewEntity({
 		Level = 2,
 		AC = -51,
 		HP = "1d2+5",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1405,6 +1757,7 @@ Config.NewEntity({
 	RoomDesc = "A vulture circles above you.",
 	FullDesc = "As you look up at this bird, you see the only thing it wants is a corpse.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1421,7 +1774,14 @@ Config.NewEntity({
 		Level = 2,
 		AC = 12,
 		HP = "1d3+1",
-		XPValue = 10
+		XPValue = 10,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1435,6 +1795,7 @@ Config.NewEntity({
 	RoomDesc = "An old man sits here playing chess.",
 	FullDesc = "He seems intent on winning.",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1450,7 +1811,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = -61,
 		HP = "2d3+1",
-		XPValue = 20
+		XPValue = 20,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1464,7 +1832,8 @@ Config.NewEntity({
 	RoomDesc = "Lugh the Librarian sits behind a desk.",
 	FullDesc = "The huge hulking mass rises as someone asks him a question.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1480,7 +1849,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 19,
 		HP = "10d10+430",
-		XPValue = 23000
+		XPValue = 23000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1497,6 +1873,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -1513,7 +1890,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = -71,
 		HP = "2d2+1",
-		XPValue = 10
+		XPValue = 10,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1532,7 +1916,8 @@ you greedily.
 ]],
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1548,7 +1933,14 @@ you greedily.
 		Level = 12,
 		AC = 16,
 		HP = "1d10+120",
-		XPValue = 10500
+		XPValue = 10500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -1561,6 +1953,7 @@ Config.NewEntity({
 	RoomDesc = "A raggety dervish stands here.",
 	FullDesc = "This man looks like he could use a lot of rest.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -1578,7 +1971,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 16,
 		HP = "4d4+20",
-		XPValue = 105
+		XPValue = 105,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1591,7 +1991,8 @@ Config.NewEntity({
 	RoomDesc = "The Sultan rests here on his throne.",
 	FullDesc = "You see a large wealthy man in red robes smiling at you.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1607,7 +2008,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 23,
 		HP = "6d6+830",
-		XPValue = 25000
+		XPValue = 25000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1624,7 +2032,8 @@ You see a dark skinned beauty, wearing almost transparent silks and
 light blue veil.  Her loyalty to the Sultan is unwavering.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1640,7 +2049,14 @@ light blue veil.  Her loyalty to the Sultan is unwavering.
 		Level = 3,
 		AC = 12,
 		HP = "1d1+15",
-		XPValue = 40
+		XPValue = 40,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -1658,7 +2074,8 @@ fallen out of grace with the Sultan.
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1674,7 +2091,14 @@ fallen out of grace with the Sultan.
 		Level = 18,
 		AC = 19,
 		HP = "3d4+100",
-		XPValue = 1200
+		XPValue = 1200,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1691,6 +2115,7 @@ castrated for the ladies' safety.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -1707,7 +2132,14 @@ castrated for the ladies' safety.
 		Level = 12,
 		AC = 19,
 		HP = "5d1+130",
-		XPValue = 1300
+		XPValue = 1300,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -1727,6 +2159,7 @@ Too bad she is about to kill you.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -1743,7 +2176,14 @@ Too bad she is about to kill you.
 		Level = 10,
 		AC = 21,
 		HP = "1d1+54",
-		XPValue = 150
+		XPValue = 150,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -1756,7 +2196,8 @@ Config.NewEntity({
 	RoomDesc = "Allah is here.",
 	FullDesc = "You see the all-knowing Allah.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1772,7 +2213,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 19,
 		HP = "2d3+2300",
-		XPValue = 45000
+		XPValue = 45000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -1786,7 +2234,8 @@ Config.NewEntity({
 	RoomDesc = "The Guard for the Guild of Mages stand here.",
 	FullDesc = "This man looks like a mage/warrior, I wouldn't mess with him.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1802,7 +2251,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 29,
 		HP = "2d5+500",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1816,7 +2272,8 @@ Config.NewEntity({
 	RoomDesc = "The Guard for the Guild of Clerics stands here.",
 	FullDesc = "This man looks like a cleric/warrior, I wouldn't mess with him.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1832,7 +2289,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 29,
 		HP = "2d5+500",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1846,7 +2310,8 @@ Config.NewEntity({
 	RoomDesc = "The Guard for the Guild of Warriors stands here.",
 	FullDesc = "The man looks like Conan's cousin, I wouldn't mess with him.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1862,7 +2327,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 29,
 		HP = "2d5+500",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1880,7 +2352,8 @@ enter and steps to bar your way.  You notice his hands resting
 on two sheathes.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1896,7 +2369,14 @@ on two sheathes.
 		Level = 8,
 		AC = 29,
 		HP = "2d5+500",
-		XPValue = 500
+		XPValue = 500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1910,6 +2390,7 @@ Config.NewEntity({
 	RoomDesc = "A servant boy is here running errands.",
 	FullDesc = "You see a small boy running around the halls of the palace.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1926,7 +2407,14 @@ Config.NewEntity({
 		Level = 2,
 		AC = -71,
 		HP = "10d1+1",
-		XPValue = 10
+		XPValue = 10,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1940,6 +2428,7 @@ Config.NewEntity({
 	RoomDesc = "A guard stands here, protecting the innocent.",
 	FullDesc = "You see a trained fighter, ready to help those in need.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1956,7 +2445,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 10,
 		HP = "2d4+120",
-		XPValue = 2500
+		XPValue = 2500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1971,6 +2467,7 @@ Config.NewEntity({
 	FullDesc = "You see a trained fighter, ready to defend the city.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -1987,7 +2484,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 11,
 		HP = "2d4+120",
-		XPValue = 2500
+		XPValue = 2500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2002,6 +2506,7 @@ Config.NewEntity({
 	RoomDesc = "The Chief of the Sultan's Guard stands here.",
 	FullDesc = "You see a large man skilled in hunting and killing.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -2018,7 +2523,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 19,
 		HP = "4d5+251",
-		XPValue = 5000
+		XPValue = 5000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2031,6 +2543,7 @@ Config.NewEntity({
 	RoomDesc = "A mercenary stands here waiting for a job.",
 	FullDesc = "You see an assassin down on his luck looking to be freelanced out.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -2047,7 +2560,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 10,
 		HP = "1d8+14",
-		XPValue = 50
+		XPValue = 50,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2064,7 +2584,8 @@ You see the shipwright of New Thalos, waiting to make someone a boat.  He
 beams a smile at you through his beard as you walk in.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2080,7 +2601,14 @@ beams a smile at you through his beard as you walk in.
 		Level = 35,
 		AC = 19,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2096,7 +2624,8 @@ You see a large human, dripping in sweat, standing before you.  He takes
 a break from his swealtering work to bid you welcome.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2112,7 +2641,14 @@ a break from his swealtering work to bid you welcome.
 		Level = 35,
 		AC = 19,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2126,6 +2662,7 @@ Config.NewEntity({
 	FullDesc = "You see one of the fine Arabian beasts known about the land.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -2142,7 +2679,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = -31,
 		HP = "10d1+1",
-		XPValue = 10
+		XPValue = 10,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2161,6 +2705,7 @@ upside down.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -2177,7 +2722,14 @@ upside down.
 		Level = 5,
 		AC = -61,
 		HP = "2d10+15",
-		XPValue = 650
+		XPValue = 650,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2192,6 +2744,7 @@ Config.NewEntity({
 	FullDesc = "You see a large ray with sharp fangs and a barbed tail.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -2208,7 +2761,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 24,
 		HP = "3d3+120",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2221,6 +2781,7 @@ Config.NewEntity({
 	RoomDesc = "The cryohydra stands here.",
 	FullDesc = "A grey-brown reptillian creature with amber eyes stands before you.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -2238,7 +2799,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 14,
 		HP = "10d1+1",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2252,6 +2820,7 @@ Config.NewEntity({
 	RoomDesc = "the minotaur lizard stands here.",
 	FullDesc = "A huge lizard like reptile with horns like a minotaur.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -2269,7 +2838,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 14,
 		HP = "1d10+55",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2283,6 +2859,7 @@ Config.NewEntity({
 	RoomDesc = "The death dog stands here.",
 	FullDesc = "A large two-headed hound barks at you vicously.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -2300,7 +2877,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 12,
 		HP = "1d15+76",
-		XPValue = 900
+		XPValue = 900,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2314,6 +2898,7 @@ Config.NewEntity({
 	RoomDesc = "The spotted lion stands here.",
 	FullDesc = "A large fierce dapple skinned lion glares at you.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -2331,7 +2916,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 13,
 		HP = "5d5+45",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2344,6 +2936,7 @@ Config.NewEntity({
 	RoomDesc = "A behir slithers on the ground.",
 	FullDesc = "You see a large snake-like reptile with more than a dozen legs.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -2361,7 +2954,14 @@ Config.NewEntity({
 		Level = 12,
 		AC = 15,
 		HP = "4d3+146",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2383,6 +2983,7 @@ a red dragon.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -2399,7 +3000,14 @@ a red dragon.
 		Level = 9,
 		AC = 19,
 		HP = "5d5+261",
-		XPValue = 3500
+		XPValue = 3500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2415,7 +3023,8 @@ A beautiful creature with the body of a serpent and feathered wings the
 colour of the rainbow.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2431,7 +3040,14 @@ colour of the rainbow.
 		Level = 15,
 		AC = 18,
 		HP = "10d5+130",
-		XPValue = 2400
+		XPValue = 2400,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2445,6 +3061,7 @@ Config.NewEntity({
 	RoomDesc = "The giant hornet hovers here.",
 	FullDesc = "It is a hornet, what else can be said?",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2460,7 +3077,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 15,
 		HP = "1d1+5",
-		XPValue = 45
+		XPValue = 45,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2477,6 +3101,7 @@ thoroughbreds you have seen in stables.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -2494,7 +3119,14 @@ thoroughbreds you have seen in stables.
 		Level = 10,
 		AC = 19,
 		HP = "1d5+700",
-		XPValue = 6500
+		XPValue = 6500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2510,7 +3142,8 @@ You see a very healthy female dressed in black, with long flowing
 hair to match her outfit.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2526,7 +3159,14 @@ hair to match her outfit.
 		Level = 35,
 		AC = 19,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -2539,7 +3179,8 @@ Config.NewEntity({
 	RoomDesc = "Braheem stands here talking to the walls.",
 	FullDesc = "You see a powerful but slighty insane mage.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2555,7 +3196,14 @@ Config.NewEntity({
 		Level = 35,
 		AC = 29,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2570,6 +3218,7 @@ Config.NewEntity({
 	FullDesc = "He does NOT look real happy that you have disturbed him.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -2586,7 +3235,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 19,
 		HP = "10d5+1200",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2605,6 +3261,7 @@ some heavy training.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -2621,7 +3278,14 @@ some heavy training.
 		Level = 15,
 		AC = 25,
 		HP = "5d20+900",
-		XPValue = 25000
+		XPValue = 25000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2638,7 +3302,8 @@ You see a really big guy here who seems to have lost an eye in one manner
 or another.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2654,7 +3319,14 @@ or another.
 		Level = 35,
 		AC = 29,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2670,7 +3342,8 @@ You see a small hobbit with his feet kicked up on his desk waiting for
 some sucker, uhm, customer to walk in his store.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2686,7 +3359,14 @@ some sucker, uhm, customer to walk in his store.
 		Level = 35,
 		AC = 24,
 		HP = "1d1+30000",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2703,7 +3383,8 @@ A young elf stands here in dirt covered overalls.  He seems to be
 weeding his garden.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2719,7 +3400,14 @@ weeding his garden.
 		Level = 10,
 		AC = 13,
 		HP = "5d5+100",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2738,7 +3426,8 @@ at the shoulder it breathes flame from his nostrils and leaps to
 attack you.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2754,7 +3443,14 @@ attack you.
 		Level = 10,
 		AC = 24,
 		HP = "3d9+300",
-		XPValue = 5500
+		XPValue = 5500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2772,6 +3468,7 @@ blades on it.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -2788,7 +3485,14 @@ blades on it.
 		Level = 15,
 		AC = 19,
 		HP = "10d2+230",
-		XPValue = 5000
+		XPValue = 5000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -2802,7 +3506,8 @@ Config.NewEntity({
 	RoomDesc = "You see an incredibly life-like painting of the Sultan's mother.",
 	FullDesc = "Boy is she ugly.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2818,7 +3523,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 19,
 		HP = "5d8+321",
-		XPValue = 6000
+		XPValue = 6000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2832,6 +3544,7 @@ Config.NewEntity({
 	RoomDesc = "The Mayor of New Thalos stands here.",
 	FullDesc = "You see a chubby rabbit dressed in his best suit.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -2848,7 +3561,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 19,
 		HP = "2d8+600",
-		XPValue = 15675
+		XPValue = 15675,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -2861,7 +3581,8 @@ Config.NewEntity({
 	RoomDesc = "The chef stands here making dinner.",
 	FullDesc = "You see a very large human who seems to taste everything he makes.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -2877,7 +3598,14 @@ Config.NewEntity({
 		Level = 14,
 		AC = 13,
 		HP = "10d2+5",
-		XPValue = 40
+		XPValue = 40,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

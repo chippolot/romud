@@ -12,6 +12,7 @@ and as such, is one of the most boring people on earth.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -28,7 +29,14 @@ and as such, is one of the most boring people on earth.
 		Level = 7,
 		AC = 15,
 		HP = "3d5+83",
-		XPValue = 2250
+		XPValue = 2250,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -44,7 +52,8 @@ The bored storekeeper keeps a lazy eye on you as he
 waits for you to buy something.  Whee.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -60,7 +69,14 @@ waits for you to buy something.  Whee.
 		Level = 20,
 		AC = 59,
 		HP = "3d5+245",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -77,6 +93,7 @@ she is truly a woman to be reckoned with...
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -93,7 +110,14 @@ she is truly a woman to be reckoned with...
 		Level = 20,
 		AC = 79,
 		HP = "3d5+245",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -109,7 +133,8 @@ This horse looks like a nice horse.  It looks at you
 with soft brown eyes and you want to give it a carrot.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -125,7 +150,14 @@ with soft brown eyes and you want to give it a carrot.
 		Level = 5,
 		AC = 14,
 		HP = "1d10+60",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -142,7 +174,8 @@ This woman has many different types of fruits and
 vegetables for you to buy.  She looks bored, though.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -158,7 +191,14 @@ vegetables for you to buy.  She looks bored, though.
 		Level = 20,
 		AC = 59,
 		HP = "3d5+245",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -176,6 +216,7 @@ he is today by letting people steal from his horde!
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -192,7 +233,14 @@ he is today by letting people steal from his horde!
 		Level = 30,
 		AC = 119,
 		HP = "1d1+1499",
-		XPValue = 1000000
+		XPValue = 1000000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -212,6 +260,7 @@ growls as he misses again!
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -228,7 +277,14 @@ growls as he misses again!
 		Level = 16,
 		AC = 19,
 		HP = "3d5+295",
-		XPValue = 24000
+		XPValue = 24000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -249,6 +305,7 @@ sneer...
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -265,7 +322,14 @@ sneer...
 		Level = 15,
 		AC = 49,
 		HP = "3d5+200",
-		XPValue = 24000
+		XPValue = 24000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -286,6 +350,7 @@ dagger sticking out... a tiny weapon for such a large man!
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -302,7 +367,14 @@ dagger sticking out... a tiny weapon for such a large man!
 		Level = 22,
 		AC = 89,
 		HP = "3d5+400",
-		XPValue = 70000
+		XPValue = 70000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -318,7 +390,8 @@ He looks like a retired farmer now making an honest living in an inn.
 More power to him!
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -334,7 +407,14 @@ More power to him!
 		Level = 12,
 		AC = 49,
 		HP = "3d5+140",
-		XPValue = 8000
+		XPValue = 8000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -353,7 +433,8 @@ blue eyes dance with amusement as he notices your weapons,
 but he doesn't seem too terribly startled.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -369,7 +450,14 @@ but he doesn't seem too terribly startled.
 		Level = 10,
 		AC = -1,
 		HP = "3d5+120",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -389,6 +477,7 @@ standing out of his way as he walks on by.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -406,7 +495,14 @@ standing out of his way as he walks on by.
 		Level = 11,
 		AC = 39,
 		HP = "3d5+133",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -423,7 +519,8 @@ rushes in the back to get food, and to the bar for drinks.
 He doesn't even spare you a glance as he passes by.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -439,7 +536,14 @@ He doesn't even spare you a glance as he passes by.
 		Level = 5,
 		AC = -51,
 		HP = "3d5+60",
-		XPValue = 850
+		XPValue = 850,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -456,7 +560,8 @@ in the back to get food, and to the bar for drinks.  She doesn't
 even spare you a glance as she passes by.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -472,7 +577,14 @@ even spare you a glance as she passes by.
 		Level = 5,
 		AC = -51,
 		HP = "3d5+60",
-		XPValue = 850
+		XPValue = 850,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -490,7 +602,8 @@ rag.  The glass is completely clean, but he polishes it anyway.
 Go figure.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -506,7 +619,14 @@ Go figure.
 		Level = 15,
 		AC = 9,
 		HP = "3d5+180",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -524,7 +644,8 @@ decay.  His sword is polished and cleaned though...
 ]],
 	Flags = {
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -540,7 +661,14 @@ decay.  His sword is polished and cleaned though...
 		Level = 16,
 		AC = 39,
 		HP = "3d5+195",
-		XPValue = 25000
+		XPValue = 25000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -560,7 +688,8 @@ to pull a good guard duty...
 (boy is this guy DIRTY!!!)
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -576,7 +705,14 @@ to pull a good guard duty...
 		Level = 18,
 		AC = 49,
 		HP = "3d5+220",
-		XPValue = 32000
+		XPValue = 32000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -596,7 +732,8 @@ tight, and you wonder if you should set him free, and
 if you even can.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -612,7 +749,14 @@ if you even can.
 		Level = 6,
 		AC = -81,
 		HP = "3d5+70",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -631,6 +775,7 @@ and as such, is one of the most boring people on earth.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -647,7 +792,14 @@ and as such, is one of the most boring people on earth.
 		Level = 7,
 		AC = 15,
 		HP = "3d5+83",
-		XPValue = 2250
+		XPValue = 2250,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -668,6 +820,7 @@ standing out of his way as he walks on by.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -685,7 +838,14 @@ standing out of his way as he walks on by.
 		Level = 11,
 		AC = 39,
 		HP = "3d5+133",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

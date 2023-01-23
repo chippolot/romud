@@ -10,7 +10,8 @@ She is very beautiful with golden hair, and deep blue eyes.  A good reason
 for coming here more often, you think to yourself.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -26,7 +27,14 @@ for coming here more often, you think to yourself.
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -39,7 +47,8 @@ Config.NewEntity({
 	RoomDesc = "A Sexton is sitting here, drinking hot tea.",
 	FullDesc = "The Sexton looks like he is relaxing after another gravedigging job.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -55,7 +64,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 12,
 		HP = "2d6+35",
-		XPValue = 300
+		XPValue = 300,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -72,6 +88,7 @@ Config.NewEntity({
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -88,7 +105,14 @@ Config.NewEntity({
 		Level = 17,
 		AC = 18,
 		HP = "1d12+210",
-		XPValue = 28000
+		XPValue = 28000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -105,6 +129,7 @@ Config.NewEntity({
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -121,7 +146,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 17,
 		HP = "1d12+123",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -139,7 +171,8 @@ The Secretary says 'Sorry, but the Mayor is extremely busy today.'
 The Secretary says 'Please sit down and have a seat in the meantime.'
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -155,7 +188,14 @@ The Secretary says 'Please sit down and have a seat in the meantime.'
 		Level = 12,
 		AC = 17,
 		HP = "1d12+148",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -168,7 +208,8 @@ Config.NewEntity({
 	RoomDesc = "The Mayor is sitting in his huge chair, snoring loudly.",
 	FullDesc = "He is a stocky, middle-aged man with thin, grey hair.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -184,7 +225,14 @@ Config.NewEntity({
 		Level = 24,
 		AC = 23,
 		HP = "6d10+790",
-		XPValue = 130000
+		XPValue = 130000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -197,6 +245,7 @@ Config.NewEntity({
 	RoomDesc = "The Town Crier is here, weeping quietly.",
 	FullDesc = "He is very good at his job - completely dissolved in tears.",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -212,7 +261,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 10,
 		HP = "2d6+10",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -225,7 +281,8 @@ Config.NewEntity({
 	RoomDesc = "A swan is swimming around in the pond.",
 	FullDesc = "The white swan is very elegant.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -241,7 +298,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 10,
 		HP = "2d6+10",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -254,7 +318,8 @@ Config.NewEntity({
 	RoomDesc = "A duckling is swimming around in the pond.",
 	FullDesc = "The duckling is adorable, it looks most of all like a tiny furball.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -270,7 +335,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 9,
 		HP = "1d1+0",
-		XPValue = 1
+		XPValue = 1,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -283,6 +355,7 @@ Config.NewEntity({
 	RoomDesc = "A sparrow is flapping around on the ground.",
 	FullDesc = "The sparrow looks like it is enjoying life.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -299,7 +372,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = 9,
 		HP = "2d6+0",
-		XPValue = 25
+		XPValue = 25,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -312,6 +392,7 @@ Config.NewEntity({
 	RoomDesc = "A duck is here, quacking happily.",
 	FullDesc = "The duck is quite fat.  It looks like it is enjoying life.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -328,7 +409,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 9,
 		HP = "2d6+5",
-		XPValue = 75
+		XPValue = 75,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

@@ -15,7 +15,8 @@ the innocent.
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -31,7 +32,14 @@ the innocent.
 		Level = 26,
 		AC = 21,
 		HP = "10d8+550",
-		XPValue = 170000
+		XPValue = 170000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -50,6 +58,7 @@ with all the chewed open foodstuffs lying about the room.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -66,7 +75,14 @@ with all the chewed open foodstuffs lying about the room.
 		Level = 12,
 		AC = 17,
 		HP = "1d10+150",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -83,6 +99,7 @@ spindly arms ending in cleaverlike talons that will surely cut you
 to ribbons.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -100,7 +117,14 @@ to ribbons.
 		Level = 20,
 		AC = 20,
 		HP = "5d8+340",
-		XPValue = 65000
+		XPValue = 65000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

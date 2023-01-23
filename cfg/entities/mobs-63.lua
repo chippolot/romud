@@ -7,6 +7,7 @@ Config.NewEntity({
 	RoomDesc = "A deer looks at you with fear in its eyes.",
 	FullDesc = "That is one nice looking deer!",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -22,7 +23,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = 9,
 		HP = "3d5+33",
-		XPValue = 350
+		XPValue = 350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -35,6 +43,7 @@ Config.NewEntity({
 	RoomDesc = "A small rabbit nibbles at a leaf here.",
 	FullDesc = "It is a small, furry rodent with big ears.",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -50,7 +59,14 @@ Config.NewEntity({
 		Level = 0,
 		AC = -11,
 		HP = "1d5+3",
-		XPValue = 25
+		XPValue = 25,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -66,6 +82,7 @@ It is a small, brown squirrel.  Kind of like a
 fuzzy high-tension spring.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -81,7 +98,14 @@ fuzzy high-tension spring.
 		Level = 0,
 		AC = 29,
 		HP = "1d3+0",
-		XPValue = 10
+		XPValue = 10,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -99,6 +123,7 @@ His green skin is definitely mottled, and he seems to
 limp a little bit...
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -116,7 +141,14 @@ limp a little bit...
 		Level = 7,
 		AC = -31,
 		HP = "3d5+83",
-		XPValue = 2250
+		XPValue = 2250,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -135,6 +167,7 @@ he is at both.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -152,7 +185,14 @@ he is at both.
 		Level = 10,
 		AC = -1,
 		HP = "3d5+120",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -169,6 +209,7 @@ As you stare her down, she raises her hands slowly, as if to
 say, 'Don't kill me'.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -184,7 +225,14 @@ say, 'Don't kill me'.
 		Level = 5,
 		AC = -51,
 		HP = "3d5+58",
-		XPValue = 900
+		XPValue = 900,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -198,6 +246,7 @@ Config.NewEntity({
 	RoomDesc = "An orc child frantically searches for her mother.",
 	FullDesc = "She is raggedy, and seems to be covered with sores.",
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -213,7 +262,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = -71,
 		HP = "3d5+30",
-		XPValue = 350
+		XPValue = 350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -230,7 +286,8 @@ She is too far gone to move very quickly.  You could
 kill her easily.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -246,7 +303,14 @@ kill her easily.
 		Level = 5,
 		AC = -81,
 		HP = "3d5+58",
-		XPValue = 750
+		XPValue = 750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -264,6 +328,7 @@ Its body has been twisted beyond all hope.  It is dying, and
 nothing will stop that.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -279,7 +344,14 @@ nothing will stop that.
 		Level = 6,
 		AC = -81,
 		HP = "1d1+0",
-		XPValue = 1
+		XPValue = 1,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -298,6 +370,7 @@ just talking to itself.  Its body is a twisted wreck of orc, man,
 beast, and what-not.
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -313,7 +386,14 @@ beast, and what-not.
 		Level = 6,
 		AC = -81,
 		HP = "3d5+60",
-		XPValue = 10
+		XPValue = 10,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -334,6 +414,7 @@ too hard for him to destroy you, no?
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -350,7 +431,14 @@ too hard for him to destroy you, no?
 		Level = 15,
 		AC = 94,
 		HP = "3d5+183",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -366,7 +454,8 @@ Config.NewEntity({
 	RoomDesc = "An elven child casts his fishing pole into the river.",
 	FullDesc = "He looks young and innocent.  You wonder what he is doing here.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -382,7 +471,14 @@ Config.NewEntity({
 		Level = 3,
 		AC = -41,
 		HP = "3d5+35",
-		XPValue = 400
+		XPValue = 400,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -399,6 +495,7 @@ It might've been an orc, once.  Now it is a living terror,
 pushing everything out of its way to get at you.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -415,7 +512,14 @@ pushing everything out of its way to get at you.
 		Level = 12,
 		AC = 39,
 		HP = "3d5+170",
-		XPValue = 15000
+		XPValue = 15000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -432,7 +536,8 @@ It might have been an orc, once.  Now it is a living terror,
 pushing everything out of its way to get at you.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -448,7 +553,14 @@ pushing everything out of its way to get at you.
 		Level = 12,
 		AC = 39,
 		HP = "3d5+170",
-		XPValue = 15000
+		XPValue = 15000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

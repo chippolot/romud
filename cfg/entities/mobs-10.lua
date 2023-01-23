@@ -8,6 +8,7 @@ Config.NewEntity({
 	FullDesc = "Part kestrel, part bear, part wolf.  Parts is parts, and makes an ugly whole.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"invisible",
 		"aggro",
 		"assistall"
@@ -26,7 +27,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 14,
 		HP = "2d10+40",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -40,6 +48,7 @@ Config.NewEntity({
 	FullDesc = "This is the ultimate swordsman.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -57,7 +66,14 @@ Config.NewEntity({
 		Level = 7,
 		AC = 16,
 		HP = "3d10+80",
-		XPValue = 3000
+		XPValue = 3000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -72,6 +88,7 @@ Config.NewEntity({
 	FullDesc = "All bandages, no personality.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -89,7 +106,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 18,
 		HP = "6d3+130",
-		XPValue = 10500
+		XPValue = 10500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -107,6 +131,7 @@ habitat.  He looks very powerful.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -124,7 +149,14 @@ habitat.  He looks very powerful.
 		Level = 16,
 		AC = 17,
 		HP = "10d2+220",
-		XPValue = 26000
+		XPValue = 26000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -140,6 +172,7 @@ Config.NewEntity({
 	FullDesc = "He looks vaguely like a rabbit, but sure doesn't act like one.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -157,7 +190,14 @@ Config.NewEntity({
 		Level = 25,
 		AC = 20,
 		HP = "10d8+520",
-		XPValue = 120000
+		XPValue = 120000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -175,6 +215,7 @@ squeeze your head like a grapefruit.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -192,7 +233,14 @@ squeeze your head like a grapefruit.
 		Level = 12,
 		AC = 15,
 		HP = "5d10+120",
-		XPValue = 14000
+		XPValue = 14000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -210,6 +258,7 @@ lift a large dragon.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -227,7 +276,14 @@ lift a large dragon.
 		Level = 12,
 		AC = 15,
 		HP = "5d10+120",
-		XPValue = 14000
+		XPValue = 14000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -243,6 +299,7 @@ Config.NewEntity({
 	FullDesc = "He smells something awful.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -260,7 +317,14 @@ Config.NewEntity({
 		Level = 26,
 		AC = 21,
 		HP = "12d8+590",
-		XPValue = 160000
+		XPValue = 160000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -274,6 +338,7 @@ Config.NewEntity({
 	RoomDesc = "A large dragon turtle breaks the surface churning the water into huge waves.",
 	FullDesc = "The turtle's shell is the size of a small house and looks as hard as rock.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -291,7 +356,14 @@ Config.NewEntity({
 		Level = 22,
 		AC = 24,
 		HP = "12d6+350",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -305,6 +377,7 @@ Config.NewEntity({
 	RoomDesc = "You notice the face of an ugly hag in the sea weeds.",
 	FullDesc = "The sea hag is terribly fightful and has razor sharp teeth.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -322,7 +395,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 13,
 		HP = "4d4+35",
-		XPValue = 750
+		XPValue = 750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -336,6 +416,7 @@ Config.NewEntity({
 	FullDesc = "The merman has a powerful tail fin instead of legs.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -353,7 +434,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 14,
 		HP = "5d5+65",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -367,6 +455,7 @@ Config.NewEntity({
 	RoomDesc = "A crusty looking crab is crawling around here searching for food.",
 	FullDesc = "It looks like a crab... what more can be said?",
 	Flags = {
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -383,7 +472,14 @@ Config.NewEntity({
 		Level = 2,
 		AC = 15,
 		HP = "5d2+25",
-		XPValue = 150
+		XPValue = 150,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

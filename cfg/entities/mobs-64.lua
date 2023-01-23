@@ -13,6 +13,7 @@ growing in as of late.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -29,7 +30,14 @@ growing in as of late.
 		Level = 3,
 		AC = 12,
 		HP = "1d12+40",
-		XPValue = 350
+		XPValue = 350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -46,7 +54,8 @@ Config.NewEntity({
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -62,7 +71,14 @@ Config.NewEntity({
 		Level = 24,
 		AC = 22,
 		HP = "5d4+450",
-		XPValue = 120000
+		XPValue = 120000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -77,6 +93,7 @@ Config.NewEntity({
 	FullDesc = "The wolf spider is hairy, very hairy.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -93,7 +110,14 @@ Config.NewEntity({
 		Level = 6,
 		AC = 13,
 		HP = "3d8+70",
-		XPValue = 6000
+		XPValue = 6000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -109,7 +133,8 @@ You notice an evil look in his eyes, but he seems quite drained of life,
 and all he can do is glare at you while he's stuck in this web.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -125,7 +150,14 @@ and all he can do is glare at you while he's stuck in this web.
 		Level = 2,
 		AC = 11,
 		HP = "2d10+10",
-		XPValue = 300
+		XPValue = 300,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -140,6 +172,7 @@ Config.NewEntity({
 	FullDesc = "You notice a glazed look in her eyes.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -156,7 +189,14 @@ Config.NewEntity({
 		Level = 14,
 		AC = 18,
 		HP = "1d12+172",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -172,6 +212,7 @@ Config.NewEntity({
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -188,7 +229,14 @@ Config.NewEntity({
 		Level = 6,
 		AC = 15,
 		HP = "3d8+70",
-		XPValue = 1600
+		XPValue = 1600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -207,6 +255,7 @@ without a magical weapon.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"invisible",
 		"stayzone"
 	},
@@ -224,7 +273,14 @@ without a magical weapon.
 		Level = 13,
 		AC = 21,
 		HP = "1d12+163",
-		XPValue = 16000
+		XPValue = 16000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -244,6 +300,7 @@ or because he was beguiled, you are not fully certain.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -260,7 +317,14 @@ or because he was beguiled, you are not fully certain.
 		Level = 11,
 		AC = 15,
 		HP = "1d12+130",
-		XPValue = 13500
+		XPValue = 13500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -278,6 +342,7 @@ and creates a magical treasure!
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"invisible",
 		"stayzone"
 	},
@@ -295,7 +360,14 @@ and creates a magical treasure!
 		Level = 10,
 		AC = 29,
 		HP = "1d12+47",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -310,6 +382,7 @@ Config.NewEntity({
 	FullDesc = "The Bird Spider has very powerful jaws.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -326,7 +399,14 @@ Config.NewEntity({
 		Level = 14,
 		AC = 18,
 		HP = "1d8+100",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -344,7 +424,8 @@ means well.
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -360,7 +441,14 @@ means well.
 		Level = 7,
 		AC = 15,
 		HP = "3d10+90",
-		XPValue = 2500
+		XPValue = 2500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -379,7 +467,8 @@ will be allowed to remain here safely.
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -395,7 +484,14 @@ will be allowed to remain here safely.
 		Level = 25,
 		AC = 20,
 		HP = "1d12+600",
-		XPValue = 125000
+		XPValue = 125000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -408,6 +504,7 @@ Config.NewEntity({
 	RoomDesc = "The guardian is obviously not doing his job.",
 	FullDesc = "He looks like a lazy bum who sleeps half the time.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -425,7 +522,14 @@ Config.NewEntity({
 		Level = 17,
 		AC = 18,
 		HP = "1d12+200",
-		XPValue = 24000
+		XPValue = 24000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -447,7 +551,8 @@ them.
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -463,7 +568,14 @@ them.
 		Level = 26,
 		AC = 21,
 		HP = "6d10+650",
-		XPValue = 155000
+		XPValue = 155000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -484,7 +596,8 @@ though, and will continue her work in whatever manner presents itself.
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -500,7 +613,14 @@ though, and will continue her work in whatever manner presents itself.
 		Level = 26,
 		AC = 23,
 		HP = "10d8+2500",
-		XPValue = 170000
+		XPValue = 170000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -515,7 +635,8 @@ Config.NewEntity({
 	RoomDesc = "A wormkin with no teeth plays here.",
 	FullDesc = "It is a rather small dragon, and you almost feel sad about killing it.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -531,7 +652,14 @@ Config.NewEntity({
 		Level = 9,
 		AC = 16,
 		HP = "5d4+110",
-		XPValue = 6500
+		XPValue = 6500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -549,7 +677,8 @@ A medium-sized dragon -- seems it hasn't killed anything yet by itself,
 though there is a first time for everything...
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -565,7 +694,14 @@ though there is a first time for everything...
 		Level = 16,
 		AC = 18,
 		HP = "5d4+210",
-		XPValue = 24000
+		XPValue = 24000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

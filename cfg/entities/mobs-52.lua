@@ -8,7 +8,8 @@ Config.NewEntity({
 	RoomDesc = "A goblin slave lies here asleep.",
 	FullDesc = "The defenseless goblin begs for mercy.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -24,7 +25,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 10,
 		HP = "1d11+11",
-		XPValue = 100
+		XPValue = 100,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -38,6 +46,7 @@ Config.NewEntity({
 	RoomDesc = "A drow commoner is here, walking around on guard duty.",
 	FullDesc = "I doubt he is the type to give directions.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"assistall",
 		"stayzone"
@@ -56,7 +65,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 19,
 		HP = "1d10+130",
-		XPValue = 10750
+		XPValue = 10750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -72,6 +88,7 @@ Config.NewEntity({
 	FullDesc = "He looks kind of annoyed!",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -89,7 +106,14 @@ Config.NewEntity({
 		Level = 12,
 		AC = 19,
 		HP = "1d5+160",
-		XPValue = 15000
+		XPValue = 15000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -105,6 +129,7 @@ Config.NewEntity({
 	FullDesc = "The mage prepares to cast a spell... at you!!",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -122,7 +147,14 @@ Config.NewEntity({
 		Level = 15,
 		AC = 17,
 		HP = "1d12+190",
-		XPValue = 21000
+		XPValue = 21000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -137,6 +169,7 @@ Config.NewEntity({
 	FullDesc = "I wouldn't want go get on her bad side!",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -154,7 +187,14 @@ Config.NewEntity({
 		Level = 17,
 		AC = 19,
 		HP = "1d11+205",
-		XPValue = 28000
+		XPValue = 28000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -169,6 +209,7 @@ Config.NewEntity({
 	FullDesc = "The drow master is ALWAYS ready for a fight.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -186,7 +227,14 @@ Config.NewEntity({
 		Level = 21,
 		AC = 19,
 		HP = "1d12+248",
-		XPValue = 60000
+		XPValue = 60000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -201,6 +249,7 @@ Config.NewEntity({
 	FullDesc = "He definitely know his way around in combat.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -218,7 +267,14 @@ Config.NewEntity({
 		Level = 23,
 		AC = 21,
 		HP = "1d25+405",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -234,6 +290,7 @@ Config.NewEntity({
 	FullDesc = "She looks really and truly annoyed that you have found your way here.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -250,7 +307,14 @@ Config.NewEntity({
 		Level = 24,
 		AC = 22,
 		HP = "1d50+450",
-		XPValue = 130000
+		XPValue = 130000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -266,6 +330,7 @@ Config.NewEntity({
 	FullDesc = "She looks like she is about to rip your head of and eat it.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -282,7 +347,14 @@ Config.NewEntity({
 		Level = 25,
 		AC = 23,
 		HP = "5d10+350",
-		XPValue = 150000
+		XPValue = 150000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -295,6 +367,7 @@ Config.NewEntity({
 	RoomDesc = "The drider looks at you viciously while it draws its sword.",
 	FullDesc = "This half-spider, half-drow creature is a formidable opponent.",
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -312,7 +385,14 @@ Config.NewEntity({
 		Level = 8,
 		AC = 17,
 		HP = "1d6+195",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -326,6 +406,7 @@ Config.NewEntity({
 	FullDesc = "This half-spider, half-drow creature is a formidable opponent.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro",
 		"stayzone"
 	},
@@ -343,7 +424,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 19,
 		HP = "1d6+295",
-		XPValue = 7000
+		XPValue = 7000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -357,6 +445,7 @@ Config.NewEntity({
 	FullDesc = "The yochlol is not in a good mood.",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -373,7 +462,14 @@ Config.NewEntity({
 		Level = 23,
 		AC = 25,
 		HP = "25d2+450",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })

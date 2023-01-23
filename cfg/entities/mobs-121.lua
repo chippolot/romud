@@ -11,7 +11,8 @@ The adjudicator is a retired gladiator and scars cover all exposed parts of
 his body.  Although he is getting on in years, he remains healthy and fit.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -27,7 +28,14 @@ his body.  Although he is getting on in years, he remains healthy and fit.
 		Level = 12,
 		AC = 17,
 		HP = "3d7+140",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -43,7 +51,8 @@ The scorekeeper is a young man of about 25 years of age and is very intently
 studying his clipboard.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -59,7 +68,14 @@ studying his clipboard.
 		Level = 7,
 		AC = 15,
 		HP = "3d5+80",
-		XPValue = 2250
+		XPValue = 2250,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -73,7 +89,8 @@ Config.NewEntity({
 	RoomDesc = "A spectator is here watching the games.",
 	FullDesc = "The spectator is filthy, half drunk and screaming his head off.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -89,7 +106,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 14,
 		HP = "2d6+65",
-		XPValue = 900
+		XPValue = 900,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -107,7 +131,8 @@ attitude.  While he is getting old and his hair and beard are streaked with
 gray, he is by no means an easy target.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -123,7 +148,14 @@ gray, he is by no means an easy target.
 		Level = 12,
 		AC = 17,
 		HP = "4d6+140",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -139,7 +171,8 @@ A very pretty young woman who was captured instead of being killed when
 the Roman legions subjugated her land.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -155,7 +188,14 @@ the Roman legions subjugated her land.
 		Level = 3,
 		AC = 12,
 		HP = "3d6+30",
-		XPValue = 350
+		XPValue = 350,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -171,7 +211,8 @@ A well muscled man who is very heavily armored and armed to the teeth.  He
 lives for combat.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -187,7 +228,14 @@ lives for combat.
 		Level = 14,
 		AC = 19,
 		HP = "4d7+150",
-		XPValue = 19500
+		XPValue = 19500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -203,7 +251,8 @@ You see a very slight and small individual whose whole life is centered around
 nothing but horses and speed.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -219,7 +268,14 @@ nothing but horses and speed.
 		Level = 10,
 		AC = 17,
 		HP = "3d7+120",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -237,7 +293,8 @@ he looks up at you and gives you a glare that chills you to the
 bone.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -253,7 +310,14 @@ bone.
 		Level = 11,
 		AC = 17,
 		HP = "4d5+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -269,7 +333,8 @@ You see a young man, still learning about magical healing, wearing a white
 coat and using a stethoscope.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -285,7 +350,14 @@ coat and using a stethoscope.
 		Level = 14,
 		AC = 18,
 		HP = "2d7+170",
-		XPValue = 18000
+		XPValue = 18000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -305,7 +377,8 @@ has deep brown eyes and shoulder-length chestnut hair.  Her body is perfectly
 proportioned and she stands about 5' 5" tall.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -321,7 +394,14 @@ proportioned and she stands about 5' 5" tall.
 		Level = 10,
 		AC = 17,
 		HP = "3d4+110",
-		XPValue = 8000
+		XPValue = 8000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -338,7 +418,8 @@ he enjoys the quiet life.  There is a long scar running from the edge of his
 mouth to his right ear, making it look like he is always smiling.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -354,7 +435,14 @@ mouth to his right ear, making it look like he is always smiling.
 		Level = 23,
 		AC = 21,
 		HP = "4d10+400",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -368,6 +456,7 @@ Config.NewEntity({
 	FullDesc = "You see a small, dirty man who doesn't look very healthy.  ",
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -384,7 +473,14 @@ Config.NewEntity({
 		Level = 4,
 		AC = 13,
 		HP = "3d4+40",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -400,7 +496,8 @@ You see a young boy who looks very strong and very fast.  He has the look of
 a scholar about him.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -416,7 +513,14 @@ a scholar about him.
 		Level = 6,
 		AC = 15,
 		HP = "3d6+75",
-		XPValue = 1600
+		XPValue = 1600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -429,7 +533,8 @@ Config.NewEntity({
 	RoomDesc = "The plaintiff stands here, pleading his case.",
 	FullDesc = "He looks pitiful.  Absolutely pitiful.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -445,7 +550,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 17,
 		HP = "3d6+140",
-		XPValue = 12000
+		XPValue = 12000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -462,7 +574,8 @@ of his way so that he can sell tickets to people that actually want
 them.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -478,7 +591,14 @@ them.
 		Level = 17,
 		AC = 18,
 		HP = "4d8+210",
-		XPValue = 28000
+		XPValue = 28000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -494,6 +614,7 @@ The vendor is a scruffy looking man who isn't afraid of a fight and looks
 like he has had just about enough of smart-mouthed spectators.  
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -510,7 +631,14 @@ like he has had just about enough of smart-mouthed spectators.
 		Level = 8,
 		AC = 16,
 		HP = "2d4+13000",
-		XPValue = 3700
+		XPValue = 3700,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -523,6 +651,7 @@ Config.NewEntity({
 	RoomDesc = "A citizen of Rome is standing here.",
 	FullDesc = "It appears to be your ordinary citizen going about his business.",
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -539,7 +668,14 @@ Config.NewEntity({
 		Level = 5,
 		AC = 14,
 		HP = "1d4+85",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -555,7 +691,8 @@ Config.NewEntity({
 	Flags = {
 		"stationary",
 		"scavenger",
-		"trashcollector"
+		"trashcollector",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -571,7 +708,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 17,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -588,6 +732,7 @@ You have this vague feeling that his entertainment isn't going to be a very
 wholesome activity.
 ]],
 	Flags = {
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -604,7 +749,14 @@ wholesome activity.
 		Level = 17,
 		AC = 20,
 		HP = "3d5+220",
-		XPValue = 28000
+		XPValue = 28000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -622,7 +774,8 @@ You see a man who is dressed in the finest of clothes, has eaten the best of
 foods and lived in the most opulent palace that Rome has ever known. 
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -638,7 +791,14 @@ foods and lived in the most opulent palace that Rome has ever known.
 		Level = 27,
 		AC = 26,
 		HP = "10d5+650",
-		XPValue = 150000
+		XPValue = 150000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -659,7 +819,8 @@ most innocent visitors, and likely to take offense of anyone with
 less than pure intentions.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -675,7 +836,14 @@ less than pure intentions.
 		Level = 18,
 		AC = 19,
 		HP = "3d6+220",
-		XPValue = 35000
+		XPValue = 35000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -692,7 +860,8 @@ He seems to be quite interested in the case, perhaps you shouldn't
 disturb him now, later would probably be a better time.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -708,7 +877,14 @@ disturb him now, later would probably be a better time.
 		Level = 21,
 		AC = 20,
 		HP = "20d5+260",
-		XPValue = 50000
+		XPValue = 50000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -726,7 +902,8 @@ appointment?'  He waits for a few seconds and then asks, 'Would
 you like one?'
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -742,7 +919,14 @@ you like one?'
 		Level = 17,
 		AC = 19,
 		HP = "4d4+210",
-		XPValue = 28000
+		XPValue = 28000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -761,6 +945,7 @@ Config.NewEntity({
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -777,7 +962,14 @@ Config.NewEntity({
 		Level = 12,
 		AC = 17,
 		HP = "3d4+145",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -794,7 +986,8 @@ You see a middle-aged man whose knowledge of magic, both offensive and
 defensive, is legendary.  He literally glows with a pink aura.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -810,7 +1003,14 @@ defensive, is legendary.  He literally glows with a pink aura.
 		Level = 23,
 		AC = 22,
 		HP = "5d10+425",
-		XPValue = 95000
+		XPValue = 95000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -828,6 +1028,7 @@ at you!  Watch out!
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -844,7 +1045,14 @@ at you!  Watch out!
 		Level = 24,
 		AC = 24,
 		HP = "1d5+450",
-		XPValue = 85000
+		XPValue = 85000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -857,7 +1065,8 @@ Config.NewEntity({
 	RoomDesc = "A senator is here, waiting for debate to begin.",
 	FullDesc = "He seems to be quite bored and is playing with the edge of his toga.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -873,7 +1082,14 @@ Config.NewEntity({
 		Level = 10,
 		AC = 17,
 		HP = "3d5+120",
-		XPValue = 9000
+		XPValue = 9000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -889,7 +1105,8 @@ He is a very stern man and insists on absolute quiet in his courtroom
 unless the judge has given someone permisson to speak.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -905,7 +1122,14 @@ unless the judge has given someone permisson to speak.
 		Level = 16,
 		AC = 18,
 		HP = "1d5+200",
-		XPValue = 24000
+		XPValue = 24000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -918,7 +1142,8 @@ Config.NewEntity({
 	RoomDesc = "The defendant stands here, pleading her case.",
 	FullDesc = "She looks to be well organized and full of confidence.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -934,7 +1159,14 @@ Config.NewEntity({
 		Level = 11,
 		AC = 18,
 		HP = "3d6+130",
-		XPValue = 11000
+		XPValue = 11000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -953,7 +1185,8 @@ transcend the plane of the physical, and could easily kill an unprepared
 mortal.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -969,7 +1202,14 @@ mortal.
 		Level = 34,
 		AC = 29,
 		HP = "20d15+950",
-		XPValue = 550000
+		XPValue = 550000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -987,7 +1227,8 @@ if not THE most beautiful.  She is very powerful and tough under that
 outer image of beauty.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1003,7 +1244,14 @@ outer image of beauty.
 		Level = 28,
 		AC = 25,
 		HP = "5d10+650",
-		XPValue = 310000
+		XPValue = 310000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -1020,7 +1268,8 @@ Mars is a tall God with burning, hateful eyes and a large scowl on
 his face.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1036,7 +1285,14 @@ his face.
 		Level = 27,
 		AC = 28,
 		HP = "15d10+630",
-		XPValue = 200000
+		XPValue = 200000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1051,7 +1307,8 @@ Config.NewEntity({
 	RoomDesc = "Mercury, the messenger of the Gods, is standing here.",
 	FullDesc = "Mercury is a handsome, youthful God and wears a large grin on his face.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1067,7 +1324,14 @@ Config.NewEntity({
 		Level = 26,
 		AC = 29,
 		HP = "5d10+550",
-		XPValue = 155000
+		XPValue = 155000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1084,7 +1348,8 @@ he enjoys the quiet life.  There is a long scar running from the edge of his
 mouth to his right ear, making it look like he is always smiling.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1100,7 +1365,14 @@ mouth to his right ear, making it look like he is always smiling.
 		Level = 23,
 		AC = 21,
 		HP = "4d10+400",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1119,6 +1391,7 @@ has a very sadistic attitude and clearly loves his work.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -1135,7 +1408,14 @@ has a very sadistic attitude and clearly loves his work.
 		Level = 20,
 		AC = 19,
 		HP = "2d6+260",
-		XPValue = 40000
+		XPValue = 40000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1151,7 +1431,8 @@ A fat, nice looking baker.  But you can see that he has many scars on his
 body.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1167,7 +1448,14 @@ body.
 		Level = 33,
 		AC = 29,
 		HP = "6d10+30000",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -1180,7 +1468,8 @@ Config.NewEntity({
 	RoomDesc = "A grocer stands at the counter, with a slightly impatient look on his face.",
 	FullDesc = "A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -1196,7 +1485,14 @@ Config.NewEntity({
 		Level = 33,
 		AC = 29,
 		HP = "1d1+30000",
-		XPValue = 80000
+		XPValue = 80000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

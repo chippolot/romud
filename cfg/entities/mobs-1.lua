@@ -12,6 +12,7 @@ Is that some type of differential curve involving some strange, and
 unknown calculus that she seems to be made out of?
 ]],
 	Flags = {
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -27,7 +28,14 @@ unknown calculus that she seems to be made out of?
 		Level = 26,
 		AC = 20,
 		HP = "5d10+550",
-		XPValue = 155000
+		XPValue = 155000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 2
 })
@@ -40,7 +48,8 @@ Config.NewEntity({
 	RoomDesc = "A boring old clone is standing here.",
 	FullDesc = "This clone is nothing to look at.  No, really, it is quite boring.",
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -56,7 +65,14 @@ Config.NewEntity({
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -75,7 +91,8 @@ a corpse, a walking corpse!  It must be a zombie or something of
 the sort.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -91,7 +108,14 @@ the sort.
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -109,7 +133,8 @@ As you stare at this amorphous shape, it begins to appear to take
 the shape of a cloud-like humanoid.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -125,7 +150,14 @@ the shape of a cloud-like humanoid.
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -141,7 +173,8 @@ This creature is the essence of the elements, and appears to be
 waiting patiently for something to occur.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -157,7 +190,14 @@ waiting patiently for something to occur.
 		Level = 1,
 		AC = 19,
 		HP = "1d1+1",
-		XPValue = 0
+		XPValue = 0,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

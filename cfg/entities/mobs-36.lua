@@ -11,6 +11,7 @@ above your head, flapping its wings and squawking very loudly.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -27,7 +28,14 @@ above your head, flapping its wings and squawking very loudly.
 		Level = 8,
 		AC = 16,
 		HP = "2d10+90",
-		XPValue = 3575
+		XPValue = 3575,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -44,6 +52,7 @@ You see before you a small and twisted creature with knotted muscles and
 disgustingly green skin.  Doesn't look like the type you'd invite to dinner.
 ]],
 	Flags = {
+		"usesequipment",
 		"aggro",
 		"assistall",
 		"stayzone"
@@ -62,7 +71,14 @@ disgustingly green skin.  Doesn't look like the type you'd invite to dinner.
 		Level = 4,
 		AC = 13,
 		HP = "1d1+55",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -79,6 +95,7 @@ The goblin lieutenant is rather angry, and looking for one of his men to
 beat up upon, but maybe you will do just fine...
 ]],
 	Flags = {
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -96,7 +113,14 @@ beat up upon, but maybe you will do just fine...
 		Level = 7,
 		AC = 16,
 		HP = "1d12+100",
-		XPValue = 2000
+		XPValue = 2000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -116,6 +140,7 @@ for his shortsword and lunges for your neck.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -132,7 +157,14 @@ for his shortsword and lunges for your neck.
 		Level = 9,
 		AC = 18,
 		HP = "1d12+120",
-		XPValue = 8000
+		XPValue = 8000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -149,7 +181,8 @@ The poor boy has numerous cuts and scratches, but appears to be all right.
 He is apparently the only survivor of the ambush.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -165,7 +198,14 @@ He is apparently the only survivor of the ambush.
 		Level = 4,
 		AC = 13,
 		HP = "1d12+47",
-		XPValue = 600
+		XPValue = 600,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -183,6 +223,7 @@ place that is used to be in days past.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -200,7 +241,14 @@ place that is used to be in days past.
 		Level = 10,
 		AC = 18,
 		HP = "1d12+200",
-		XPValue = 7000
+		XPValue = 7000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -217,6 +265,7 @@ bard has been sitting here quite a while, drinking himself into oblivion.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -234,7 +283,14 @@ bard has been sitting here quite a while, drinking himself into oblivion.
 		Level = 8,
 		AC = 16,
 		HP = "1d12+110",
-		XPValue = 3750
+		XPValue = 3750,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -251,6 +307,7 @@ The man is obviously an outlaw, and has no qualms about slashing you into
 little bits.
 ]],
 	Flags = {
+		"usesequipment",
 		"assistall",
 		"stayzone"
 	},
@@ -268,7 +325,14 @@ little bits.
 		Level = 8,
 		AC = 15,
 		HP = "1d12+97",
-		XPValue = 4000
+		XPValue = 4000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

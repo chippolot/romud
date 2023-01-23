@@ -1,6 +1,6 @@
 local function pickUpEquippable(self, room, item)
     if Item.Equippable(item) then
-        Act.Get(self, room, item)
+        Act.Get(self, item)
     end
 end
 

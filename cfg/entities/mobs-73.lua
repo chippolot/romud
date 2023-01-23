@@ -15,6 +15,7 @@ moment now.  In the middle of its head are four tentacles with sharp points.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro",
 		"assistall"
 	},
@@ -32,7 +33,14 @@ moment now.  In the middle of its head are four tentacles with sharp points.
 		Level = 14,
 		AC = 19,
 		HP = "1d10+170",
-		XPValue = 20000
+		XPValue = 20000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -53,6 +61,7 @@ large tentacles with very sharp points.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -69,7 +78,14 @@ large tentacles with very sharp points.
 		Level = 8,
 		AC = 17,
 		HP = "1d10+100",
-		XPValue = 4500
+		XPValue = 4500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -90,6 +106,7 @@ of its head.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"assistall"
 	},
 	Attacks = {
@@ -106,7 +123,14 @@ of its head.
 		Level = 6,
 		AC = 15,
 		HP = "1d10+75",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -125,6 +149,7 @@ that it is standing.
 	Flags = {
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -141,7 +166,14 @@ that it is standing.
 		Level = 6,
 		AC = 16,
 		HP = "4d6+69",
-		XPValue = 1500
+		XPValue = 1500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -159,6 +191,7 @@ size of your head, looking very nasty.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -175,7 +208,14 @@ size of your head, looking very nasty.
 		Level = 12,
 		AC = 17,
 		HP = "1d10+150",
-		XPValue = 13000
+		XPValue = 13000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })

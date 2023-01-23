@@ -15,6 +15,7 @@ Crown.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -31,7 +32,14 @@ Crown.
 		Level = 6,
 		AC = 14,
 		HP = "5d4+50",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -52,6 +60,7 @@ Crown.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"stayzone"
 	},
 	Attacks = {
@@ -68,7 +77,14 @@ Crown.
 		Level = 6,
 		AC = 14,
 		HP = "5d4+50",
-		XPValue = 1000
+		XPValue = 1000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 1
 })
@@ -86,7 +102,8 @@ The Black Rook is a very large man-made tomb on wheels.  Just
 from the looks of it, it will probably be YOUR tomb.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -102,7 +119,14 @@ from the looks of it, it will probably be YOUR tomb.
 		Level = 27,
 		AC = 18,
 		HP = "2d6+500",
-		XPValue = 85000
+		XPValue = 85000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -120,7 +144,8 @@ The White Rook is a very large man-made tomb on wheels.  Just
 from the looks of it, it will probably be YOUR tomb.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -136,7 +161,14 @@ from the looks of it, it will probably be YOUR tomb.
 		Level = 27,
 		AC = 18,
 		HP = "2d6+500",
-		XPValue = 85000
+		XPValue = 85000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -154,6 +186,7 @@ flash behind his visor in vengence.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -170,7 +203,14 @@ flash behind his visor in vengence.
 		Level = 18,
 		AC = 19,
 		HP = "4d8+350",
-		XPValue = 22500
+		XPValue = 22500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -188,6 +228,7 @@ gleam behind his visor in joy.
 ]],
 	Flags = {
 		"stationary",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -204,7 +245,14 @@ gleam behind his visor in joy.
 		Level = 18,
 		AC = 19,
 		HP = "4d8+350",
-		XPValue = 22500
+		XPValue = 22500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -222,7 +270,8 @@ The Black Bishop seems willing to help you straight into your grave so
 he can bless you properly.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -238,7 +287,14 @@ he can bless you properly.
 		Level = 24,
 		AC = 18,
 		HP = "2d5+350",
-		XPValue = 43500
+		XPValue = 43500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -256,7 +312,8 @@ The White Bishop seems willing to help you in any possible so that he can
 attain a higher spirituality.
 ]],
 	Flags = {
-		"stationary"
+		"stationary",
+		"usesequipment"
 	},
 	Attacks = {
 		{
@@ -272,7 +329,14 @@ attain a higher spirituality.
 		Level = 24,
 		AC = 18,
 		HP = "2d5+350",
-		XPValue = 43500
+		XPValue = 43500,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -293,6 +357,7 @@ could kill, you would already be dead.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -309,7 +374,14 @@ could kill, you would already be dead.
 		Level = 32,
 		AC = 22,
 		HP = "5d10+900",
-		XPValue = 200000
+		XPValue = 200000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -330,6 +402,7 @@ first sight for you.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -346,7 +419,14 @@ first sight for you.
 		Level = 32,
 		AC = 22,
 		HP = "5d10+900",
-		XPValue = 200000
+		XPValue = 200000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -366,6 +446,7 @@ is the king and you are not.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -382,7 +463,14 @@ is the king and you are not.
 		Level = 36,
 		AC = 25,
 		HP = "10d10+2000",
-		XPValue = 300000
+		XPValue = 300000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })
@@ -402,6 +490,7 @@ is the king and you are not.
 		"stationary",
 		"scavenger",
 		"trashcollector",
+		"usesequipment",
 		"aggro"
 	},
 	Attacks = {
@@ -418,7 +507,14 @@ is the king and you are not.
 		Level = 36,
 		AC = 25,
 		HP = "10d10+2000",
-		XPValue = 300000
+		XPValue = 300000,
+		Speed = 30,
+		Str = 10,
+		Dex = 10,
+		Con = 10,
+		Int = 10,
+		Wis = 10,
+		Cha = 10
 	},
 	Gender = 0
 })

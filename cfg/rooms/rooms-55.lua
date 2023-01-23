@@ -685,11 +685,7 @@ Config.NewRoom({
 	Desc = [[
 S
 #5443
-The Boat Ramp~
-   This sloped slab of stone allows easy passage to and from the River
-Ishtar.  Boats are moored to the docks here awaiting their masters to
-return from the warehouses and the pubs.  The waters of the River Ishtar
-lap at your feet to the south and Ishtar Drive is to the north.
+The Boat Ramp
 ]],
 	Exits = {
 		north = 5436,

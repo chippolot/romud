@@ -348,37 +348,57 @@ func parseItems(data []byte, outPath string) {
 				lb.Field("Key", key)
 
 				// Parse Keywords
-				line, lines = nextLine(lines)
+				line, lines = parseMultilineString(lines)
 				lb.FieldScope("Keywords", func() {
 					lb.Table(func() {
-						for _, k := range strings.Split(line[:len(line)-1], " ") {
+						for _, k := range strings.Split(line, " ") {
 							lb.Item(k)
 						}
 					})
 				})
 
 				// Parse Name
-				line, lines = nextLine(lines)
-				lb.Field("Name", line[:len(line)-1])
+				line, lines = parseMultilineString(lines)
+				lb.Field("Name", line)
 
 				// Parse Room Desc
-				roomDesc, lines := parseMultilineString(lines)
-				lb.Field("RoomDesc", roomDesc)
+				line, lines := parseMultilineString(lines)
+				lb.Field("RoomDesc", line)
 
 				// Skip Action Desc
 				_, lines = parseMultilineString(lines)
 
 				// Parse (type, flags, wear)
 				toks, lines := parseLineTokens(lines)
-				typ, flg, wear := toks[0], toks[1], toks[2]
+				typ, _, _ := toks[0], toks[1], toks[2]
+				isWeapon, isArmor := false, false
+				switch parseInt(typ) {
+				// Weapon
+				case 5:
+					isWeapon = true
+				// Armor
+				case 9:
+					isArmor = true
+				}
+
+				// Parse equipment
+				if isWeapon || isArmor {
+					lb.FieldScope("Equipment", func() {
+						lb.Table(func() {
+
+						})
+					})
+				}
 
 				// Parse Obj Values
 				toks, lines = parseLineTokens(lines)
-				v0, v1, v2, v3 := toks[0], toks[1], toks[2], toks[3]
+				_, _, _, _ = toks[0], toks[1], toks[2], toks[3]
 
 				// Parse (weight, cost, rent)
 				toks, lines = parseLineTokens(lines)
-				weight, _, _ := toks[0], toks[1], toks[2]
+				weight, cost, _ := toks[0], toks[1], toks[2]
+				lb.Field("Value", parseInt(cost))
+				lb.Field("Weight", parseInt(weight))
 
 				// TODO Parse Extras and Affects
 			})
@@ -411,8 +431,13 @@ func parseMultilineString(lines []string) (string, []string) {
 		if sb.Len() != 0 {
 			sb.WriteString("\n")
 		}
-		sb.WriteString(line)
-		line, lines = nextLine(lines)
+		if strings.HasSuffix(line, "~") {
+			sb.WriteString(line[:len(line)-1])
+			break
+		} else {
+			sb.WriteString(line)
+			line, lines = nextLine(lines)
+		}
 	}
 	return sb.String(), lines
 }

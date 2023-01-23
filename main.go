@@ -45,6 +45,7 @@ func main() {
 	// Load assets
 	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
 	world.SetEntryRoomId(3001)
+	world.ResetAllZones()
 
 	// Create test entity
 	addEntities(world, "mob", "rat", "rat", "janitor", "equipper")

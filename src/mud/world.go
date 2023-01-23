@@ -129,7 +129,10 @@ func (w *World) TryGetEntityConfig(key string) (*EntityConfig, bool) {
 func (w *World) AddEntity(e *Entity, roomId RoomId) {
 	w.entities[e.id] = e
 
-	r := w.rooms[roomId]
+	r, ok := w.rooms[roomId]
+	if !ok {
+		log.Panicf("invalid room: %d", roomId)
+	}
 	r.AddEntity(e)
 
 	if e.player != nil {
@@ -209,6 +212,19 @@ func (w *World) AddRoom(r *Room) *Room {
 		w.entryRoomId = r.cfg.Id
 	}
 	return r
+}
+
+func (w *World) ResetZone(id ZoneId) {
+	z := w.zones[id]
+	if z.resetFunc != nil {
+		z.resetFunc()
+	}
+}
+
+func (w *World) ResetAllZones() {
+	for zid := range w.zones {
+		w.ResetZone(zid)
+	}
 }
 
 func (w *World) OnPlayerInput(p *Player, input string) StateId {

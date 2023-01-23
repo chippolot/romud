@@ -614,7 +614,7 @@ Config.NewEntity({
 	Gender = 0
 })
 Config.NewEntity({
-	Key = "mob6019 ",
+	Key = "mob6019",
 	Keywords = {
 		"duck"
 	},

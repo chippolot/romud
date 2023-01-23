@@ -5,6 +5,6 @@ Config.NewZone({
 	MaxRoomId = 100,
 	ResetFreq = 600,
 	ResetFunc = function()
-		World.LoadEntityLimited("mob1", 1, 1)
+		World.LoadEntityLimited("mob1", 2, 1)
 	end
 })

@@ -111,7 +111,7 @@ func parseZone(data []byte, outPath string) {
 							switch toks[0] {
 							case "M":
 								key := "mob" + toks[2]
-								lb.Linef("World.LoadEntityLimited(\"%s\", %s, %s)", key, toks[4], toks[3])
+								lb.Linef("World.LoadEntityLimited(\"%s\", %d, %s)", key, parseInt(toks[4])+1, toks[3])
 							}
 						}
 					})
@@ -197,7 +197,8 @@ func parseEntities(data []byte, outPath string) {
 			lb.Table(func() {
 
 				// Parse Key
-				lb.Field("Key", "mob"+line[1:])
+				key := strings.Trim("mob"+line[1:], " ")
+				lb.Field("Key", key)
 
 				// Parse Keywords
 				line, lines = nextLine(lines)

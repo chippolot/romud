@@ -239,7 +239,7 @@ that someone has been here before you...
 	Gender = 0
 })
 Config.NewEntity({
-	Key = "mob5207 ",
+	Key = "mob5207",
 	Keywords = {
 		"lizard",
 		"horned"

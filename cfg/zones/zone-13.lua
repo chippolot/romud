@@ -5,9 +5,9 @@ Config.NewZone({
 	MaxRoomId = 1300,
 	ResetFreq = 600,
 	ResetFunc = function()
-		World.LoadEntityLimited("mob1201", 1205, 1)
-		World.LoadEntityLimited("mob1200", 1201, 1)
+		World.LoadEntityLimited("mob1201", 1206, 1)
+		World.LoadEntityLimited("mob1200", 1202, 1)
+		World.LoadEntityLimited("mob1202", 1202, 2)
 		World.LoadEntityLimited("mob1202", 1201, 2)
-		World.LoadEntityLimited("mob1202", 1200, 2)
 	end
 })

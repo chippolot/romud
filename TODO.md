@@ -134,12 +134,14 @@
         [x] Entity Scripts
     [x] Cleanup old JSON
 ----------------------------------------
+[] Fix attack config parsing
 [] Zones
     [] Spawning in zones
         [] Give enemies
         [] Equip enemies w/ items
+    [] Respawn on timer
 [] Circle Data
-    [] Spawn Commands
+    [] Finish Spawn Commands
     [] Items
 [] RRO Stats
 [] RRO Combat

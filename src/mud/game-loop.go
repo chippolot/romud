@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"log"
 	"math"
 	"math/rand"
 	"time"
@@ -151,10 +152,13 @@ func wanderNPCs(w *World, t GameTime) {
 			continue
 		}
 
-		// TODO Stay in zone
 		// Pick a random open exit to take
 		r := w.rooms[e.data.RoomId]
 		numExits := len(r.cfg.Exits)
+		if numExits == 0 {
+			continue
+		}
+
 		rnd := rand.Intn(numExits)
 		var dir Direction
 		i := 0
@@ -168,12 +172,16 @@ func wanderNPCs(w *World, t GameTime) {
 		if !r.IsExitOpen(dir) {
 			continue
 		}
+		nextRid := r.cfg.Exits[dir]
+		nextR, ok := w.rooms[nextRid]
+		if !ok {
+			log.Printf("invalid room %d", nextRid)
+			continue
+		}
 
 		// Stay in same zone
 		if e.entityFlags.Has(EFlag_StayZone) {
-			rid2 := r.cfg.Exits[dir]
-			r2 := w.rooms[rid2]
-			if r.zone != r2.zone {
+			if r.zone != nextR.zone {
 				continue
 			}
 		}

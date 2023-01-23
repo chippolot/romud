@@ -43,6 +43,10 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	dirTbl.RawSetString("Down", lua.LNumber(DirDown))
 	L.SetGlobal("Dir", dirTbl)
 
+	worldTbl := L.NewTable()
+	worldTbl.RawSetString("LoadEntityLimited", luar.New(L, lua_WorldLoadEntityLimited))
+	L.SetGlobal("World", worldTbl)
+
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
 	actTbl.RawSetString("Get", luar.New(L, lua_ActGet))
@@ -92,6 +96,16 @@ func lua_RoomItems(r *Room) *lua.LTable {
 		ret.Append(utils.ToUserData(lua_W.L, i))
 	}
 	return ret
+}
+
+func lua_WorldLoadEntityLimited(entityKey string, roomId RoomId, max int) *lua.LUserData {
+	if cfg, ok := lua_W.TryGetEntityConfig(entityKey); ok {
+		ent := NewEntity(cfg)
+		lua_W.AddEntity(ent, roomId)
+		return utils.ToUserData(lua_W.L, ent)
+	}
+	log.Printf("Failed to load entity: %s", entityKey)
+	return nil
 }
 
 func lua_ActAttack(self *Entity, target *Entity) {
@@ -164,13 +178,13 @@ func lua_ConfigNewEntity(tbl *lua.LTable) {
 		panic(err)
 	}
 	cfg.Init()
-	lua_W.AddEntityConfig(cfg)
 
-	// Parse and wrap entity triggers
 	lTriggers := tbl.RawGetString("Triggers")
 	if lTriggerTable, ok := lTriggers.(*lua.LTable); ok {
 		cfg.scripts = NewEntityScripts(lua_W.L, lTriggerTable)
 	}
+
+	lua_W.AddEntityConfig(cfg)
 }
 
 func lua_ConfigNewItem(tbl *lua.LTable) {

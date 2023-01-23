@@ -133,16 +133,17 @@
         [x] Config
         [x] Entity Scripts
     [x] Cleanup old JSON
+[x] Fix attack config parsing
 ----------------------------------------
-[] Fix attack config parsing
+[] Circle Data
+    [] Items
+    [] Finish Spawn Commands
+[] Make LoadEntityLimited actually limited
 [] Zones
     [] Spawning in zones
         [] Give enemies
         [] Equip enemies w/ items
     [] Respawn on timer
-[] Circle Data
-    [] Finish Spawn Commands
-    [] Items
 [] RRO Stats
 [] RRO Combat
 [] Combat Speed

@@ -67,6 +67,18 @@ func main() {
 			os.Exit(1)
 		}
 	}
+
+	for _, path := range utils.FindFilePathsWithExtension(inPath, ".obj") {
+		id := parseInt(trimExtension(filepath.Base(path)))
+		id++
+		log.Println("Parsing:", path)
+		if bytes, err := utils.LoadFileBytes(path); err == nil {
+			parseItems(bytes, filepath.Join(outPath, "items", fmt.Sprintf("items-%d%s", id, mud.ScriptFileExtension)))
+		} else {
+			log.Panic(err)
+			os.Exit(1)
+		}
+	}
 }
 
 func parseZone(data []byte, outPath string) {
@@ -307,6 +319,68 @@ func parseEntities(data []byte, outPath string) {
 				// Parse Gender
 				toks, lines = parseLineTokens(lines)
 				lb.Field("Gender", mud.Gender(parseInt(toks[2])))
+			})
+		})
+	}
+	saveString(outPath, lb.Build())
+}
+
+func parseItems(data []byte, outPath string) {
+	lb := NewLuaBuilder()
+
+	var line string
+	lines := strings.Split(string(data), "\n")
+	if len(lines) > 0 {
+		line = lines[0]
+	}
+
+	for len(lines) > 0 {
+		if len(line) == 0 || line[0] != '#' {
+			line, lines = nextLine(lines)
+			continue
+		}
+
+		lb.FuncCall("Config.NewItem", func() {
+			lb.Table(func() {
+
+				// Parse Key
+				key := strings.Trim("item"+line[1:], " ")
+				lb.Field("Key", key)
+
+				// Parse Keywords
+				line, lines = nextLine(lines)
+				lb.FieldScope("Keywords", func() {
+					lb.Table(func() {
+						for _, k := range strings.Split(line[:len(line)-1], " ") {
+							lb.Item(k)
+						}
+					})
+				})
+
+				// Parse Name
+				line, lines = nextLine(lines)
+				lb.Field("Name", line[:len(line)-1])
+
+				// Parse Room Desc
+				roomDesc, lines := parseMultilineString(lines)
+				lb.Field("RoomDesc", roomDesc)
+
+				// Skip Action Desc
+				_, lines = parseMultilineString(lines)
+
+				// Parse (type, flags, wear)
+				toks, lines := parseLineTokens(lines)
+				typ, flg, wear := toks[0], toks[1], toks[2]
+
+				// Parse Obj Values
+				toks, lines = parseLineTokens(lines)
+				v0, v1, v2, v3 := toks[0], toks[1], toks[2], toks[3]
+
+				// Parse (weight, cost, rent)
+				toks, lines = parseLineTokens(lines)
+				weight, _, _ := toks[0], toks[1], toks[2]
+
+				// TODO Parse Extras and Affects
 			})
 		})
 	}

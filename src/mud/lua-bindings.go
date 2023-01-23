@@ -165,17 +165,12 @@ func lua_ConfigNewEntity(tbl *lua.LTable) {
 	}
 	cfg.Init()
 	lua_W.AddEntityConfig(cfg)
-	/*
-		if cfg.ScriptFile != "" {
-			fileDir := path.Dir(filePath)
-			scriptPath := path.Join(fileDir, cfg.ScriptFile)
-			if scriptsTable, err := LoadScript(w, scriptPath); err != nil {
-				log.Fatalf("failed to load script file %s -- %v", scriptPath, err)
-			} else {
-				cfg.scripts = NewEntityScripts(w.L, scriptsTable)
-			}
-		}
-	*/
+
+	// Parse and wrap entity triggers
+	lTriggers := tbl.RawGetString("Triggers")
+	if lTriggerTable, ok := lTriggers.(*lua.LTable); ok {
+		cfg.scripts = NewEntityScripts(lua_W.L, lTriggerTable)
+	}
 }
 
 func lua_ConfigNewItem(tbl *lua.LTable) {

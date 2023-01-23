@@ -1,3 +1,32 @@
+local function pickUpEquippable(self, room, item)
+    if Item.Equippable(item) then
+        Act.Get(self, room, item)
+    end
+end
+
+local function pickUpEquippables(self, room)
+    for _, item in ipairs(Room.Items(room)) do
+        pickUpEquippable(self, room, item)
+    end
+end
+
+local function equipItem(self, item)
+    if not Item.Equippable(item) then
+        return
+    end
+    slot = Item.EquipSlot(item)
+    if Entity.EquipSlotOpen(self, slot) then
+        Act.Equip(self, item)
+    end
+end
+
+local function thankSender(self, from, item)
+    if not Item.Equippable(item) then
+        return
+    end
+    Act.Say(self, string.format("Ah! Thank you %s!", Entity.Name(from)))
+end
+
 Config.NewEntity({
     Key = "mob",
     Name = "Mr. Mob",
@@ -67,7 +96,16 @@ Config.NewEntity({
         Level = 1,
         XPValue = 25
     },
-    ScriptFile = "scripts/rat.lua"
+    Triggers = {
+        enteredRoom = function(self, room)
+            Act.Say(self, "I have arrived!")
+        end,
+        entityEnteredRoom = function(self, other, room)
+            if Util.Chance() < 20 then
+                Act.Tell(self, other, "Hello friend!")
+            end
+        end
+    }
 })
 Config.NewEntity({
     Key = "janitor",
@@ -124,5 +162,18 @@ Config.NewEntity({
         Level = 1,
         XPValue = 10
     },
-    ScriptFile = "scripts/equipper.lua"
+    Triggers = {
+        enteredRoom = function(self, room)
+            pickUpEquippables(self, room)
+        end,
+        itemDropped = function(self, room, item)
+            pickUpEquippable(self, room, item)
+        end,
+        givenItem = function(self, from, item)
+            thankSender(self, from, item)
+        end,
+        receivedItem = function(self, item)
+            equipItem(self, item)
+        end
+    }
 })

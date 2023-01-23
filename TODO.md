@@ -125,22 +125,22 @@
     [x] Rooms
     [x] Zones
     [x] Mobs
-----------------------------------------
-[] Lua-ize Config
+[x] Lua-ize Config
     [x] Zones
     [x] Rooms
     [x] Items
-    [] Entities
+    [x] Entities
         [x] Config
-        [] Entity Scripts
-    [] Cleanup old JSON
-[] Circle Data
-    [] Spawn Commands
-    [] Items
+        [x] Entity Scripts
+    [x] Cleanup old JSON
+----------------------------------------
 [] Zones
     [] Spawning in zones
         [] Give enemies
         [] Equip enemies w/ items
+[] Circle Data
+    [] Spawn Commands
+    [] Items
 [] RRO Stats
 [] RRO Combat
 [] Combat Speed

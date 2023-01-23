@@ -186,9 +186,9 @@ func (s *RollType) UnmarshalJSON(data []byte) (err error) {
 }
 
 type RollModConfig struct {
-	Advantage    bool  `json:",omitempty"`
-	Disadvantage bool  `json:",omitempty"`
-	Bonus        *Dice `json:",omitempty"`
+	Advantage    bool
+	Disadvantage bool
+	Bonus        *Dice
 }
 
 type RollModConfigMap map[RollType]*RollModConfig

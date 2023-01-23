@@ -11,13 +11,6 @@ const (
 	ScriptFileExtension = ".lua"
 )
 
-func RunScript(w *World, filePath string) error {
-	if err := w.L.DoFile(filePath); err != nil {
-		return err
-	}
-	return nil
-}
-
 func LoadAssets(w *World, root string) {
 	// Load zones
 	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "zones"), ScriptFileExtension) {
@@ -50,4 +43,11 @@ func LoadAssets(w *World, root string) {
 		}
 	}
 	log.Printf("loaded %d items", len(w.itemConfigs))
+}
+
+func RunScript(w *World, filePath string) error {
+	if err := w.L.DoFile(filePath); err != nil {
+		return err
+	}
+	return nil
 }

@@ -129,10 +129,10 @@
 [] Lua-ize Config
     [x] Zones
     [x] Rooms
+    [x] Items
     [] Entities
-        [] Config
+        [x] Config
         [] Entity Scripts
-    [] Items
     [] Cleanup old JSON
 [] Circle Data
     [] Spawn Commands

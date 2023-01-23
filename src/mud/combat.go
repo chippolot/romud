@@ -98,7 +98,7 @@ type AttackConfig struct {
 	ToHit        int
 	Damage       Dice
 	DamageType   DamageType
-	Effect       *ApplyStatusEffectConfig `json:",omitempty"`
+	Effect       *ApplyStatusEffectConfig
 	VerbSingular string
 	VerbPlural   string
 	Weight       float32

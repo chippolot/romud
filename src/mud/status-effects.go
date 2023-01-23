@@ -90,8 +90,8 @@ func (m *StatusEffectMask) UnmarshalJSON(data []byte) (err error) {
 
 type ApplyStatusEffectConfig struct {
 	Type     StatusEffectMask
-	Duration utils.Seconds      `json:",omitempty"`
-	Save     *SavingThrowConfig `json:",omitempty"`
+	Duration utils.Seconds
+	Save     *SavingThrowConfig
 }
 
 type StatusEffectConfig struct {

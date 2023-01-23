@@ -319,11 +319,11 @@ func sendUnequipMessages(e *Entity, r *Room, item *Item) {
 
 type EquipmentConfig struct {
 	Slot         EquipSlot
-	Stats        StatMap          `json:",omitempty"`
-	StatusEffect StatusEffectMask `json:",omitempty"`
-	Rolls        RollModConfigMap `json:",omitempty"`
-	Armor        *ArmorConfig     `json:",omitempty"`
-	Weapon       *WeaponConfig    `json:",omitempty"`
+	Stats        StatMap
+	StatusEffect StatusEffectMask
+	Rolls        RollModConfigMap
+	Armor        *ArmorConfig
+	Weapon       *WeaponConfig
 }
 
 func (cfg *EquipmentConfig) GetRollBonus(roll RollType) Dice {

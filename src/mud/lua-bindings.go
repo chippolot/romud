@@ -96,6 +96,7 @@ func lua_ItemEquipSlot(i *Item) EquipSlot {
 	return i.cfg.Equipment.Slot
 }
 
+// TODO can this be simplified?
 func lua_RoomItems(r *Room) *lua.LTable {
 	ret := lua_W.L.NewTable()
 	for _, i := range r.items {
@@ -104,21 +105,27 @@ func lua_RoomItems(r *Room) *lua.LTable {
 	return ret
 }
 
-func lua_WorldLoadEntityLimited(entityKey string, roomId RoomId, max int) *lua.LUserData {
+func lua_WorldLoadEntityLimited(entityKey string, roomId RoomId, max int) *Entity {
+	if lua_W.EntityCount(entityKey) >= max {
+		return nil
+	}
 	if cfg, ok := lua_W.TryGetEntityConfig(entityKey); ok {
 		ent := NewEntity(cfg)
 		lua_W.AddEntity(ent, roomId)
-		return utils.ToUserData(lua_W.L, ent)
+		return ent
 	}
 	log.Printf("Failed to load entity: %s", entityKey)
 	return nil
 }
 
-func lua_WorldLoadItemLimited(itemKey string, roomId RoomId, max int) *lua.LUserData {
+func lua_WorldLoadItemLimited(itemKey string, roomId RoomId, max int) *Item {
+	if lua_W.ItemCount(itemKey) >= max {
+		return nil
+	}
 	if cfg, ok := lua_W.TryGetItemConfig(itemKey); ok {
-		ent := NewItem(cfg)
-		lua_W.AddItem(ent, roomId)
-		return utils.ToUserData(lua_W.L, ent)
+		itm := NewItem(cfg)
+		lua_W.AddItem(itm, roomId)
+		return itm
 	}
 	log.Printf("Failed to load item: %s", itemKey)
 	return nil

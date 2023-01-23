@@ -137,8 +137,8 @@
 [x] Circle Data
     [x] Items
     [x] Finish Spawn Commands
+    [x] Make LoadEntityLimited/LoadItemLimited actually limited
 ----------------------------------------
-[] Make LoadEntityLimited/LoadItemLimited actually limited
 [] Zones
     [x] Spawning in zones
         [x] Give enemies

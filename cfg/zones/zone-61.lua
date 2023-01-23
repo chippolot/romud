@@ -6,31 +6,40 @@ Config.NewZone({
 	ResetFreq = 780,
 	ResetFunc = function()
 		e = World.LoadEntityLimited("mob6000", 6010, 1)
-		i = World.LoadItemLimited("item6000", Entity.RoomId(e), 2)
-		Act.Get(e, i)
-		Act.Equip(e, i)
-		i = World.LoadItemLimited("item6001", Entity.RoomId(e), 10)
-		Act.Get(e, i)
-		Act.Equip(e, i)
-		i = World.LoadItemLimited("item6002", Entity.RoomId(e), 20)
-		Act.Get(e, i)
-		Act.Equip(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6000", Entity.RoomId(e), 2)
+			if i ~= nil then Act.Get(e, i) ; Act.Equip(e, i) end
+			i = World.LoadItemLimited("item6001", Entity.RoomId(e), 10)
+			if i ~= nil then Act.Get(e, i) ; Act.Equip(e, i) end
+			i = World.LoadItemLimited("item6002", Entity.RoomId(e), 20)
+			if i ~= nil then Act.Get(e, i) ; Act.Equip(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6013, 6)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6016, 6)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6018, 6)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6020, 6)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 10)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6002", 6023, 1)
 		e = World.LoadEntityLimited("mob6004", 6024, 1)
-		i = World.LoadItemLimited("item6024", Entity.RoomId(e), 4)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6024", Entity.RoomId(e), 4)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6005", 6015, 4)
 		e = World.LoadEntityLimited("mob6006", 6034, 1)
 		e = World.LoadEntityLimited("mob6007", 6034, 1)
@@ -61,8 +70,10 @@ Config.NewZone({
 		e = World.LoadEntityLimited("mob6014", 6028, 4)
 		e = World.LoadEntityLimited("mob6015", 6027, 1)
 		e = World.LoadEntityLimited("mob6016", 6026, 1)
-		i = World.LoadItemLimited("item6024", Entity.RoomId(e), 4)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6024", Entity.RoomId(e), 4)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6017", 6028, 3)
 		e = World.LoadEntityLimited("mob6017", 6028, 3)
 		e = World.LoadEntityLimited("mob6017", 6028, 3)
@@ -71,20 +82,30 @@ Config.NewZone({
 		e = World.LoadEntityLimited("mob6019", 6028, 2)
 		e = World.LoadEntityLimited("mob6019", 6028, 2)
 		e = World.LoadEntityLimited("mob6001", 6069, 11)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6063, 11)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6072, 11)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6071, 11)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6001", 6061, 11)
-		i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6023", Entity.RoomId(e), 16)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6005", 6070, 8)
 		e = World.LoadEntityLimited("mob6005", 6075, 8)
 		e = World.LoadEntityLimited("mob6005", 6061, 8)

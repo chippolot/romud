@@ -113,6 +113,8 @@ func parseZone(data []byte, outPath string) {
 				lb.Field("ResetFreq", utils.Seconds(parseInt(toks[2])*60))
 
 				// Parse reset commands
+				scopeObj := ""
+				scope := false
 				lb.FieldScope("ResetFunc", func() {
 					lb.Func(func() {
 						for lines[0] != "S" {
@@ -122,22 +124,28 @@ func parseZone(data []byte, outPath string) {
 							}
 							switch toks[0] {
 							case "M":
+								scope = popResetScope(lb, scope)
+								scopeObj = "e"
 								key := "mob" + toks[2]
 								lb.Linef("e = World.LoadEntityLimited(\"%s\", %d, %s)", key, parseInt(toks[4])+1, toks[3])
 							case "I":
+								scope = popResetScope(lb, scope)
+								scopeObj = "i"
 								key := "item" + toks[2]
 								lb.Linef("World.LoadItemLimited(\"%s\", %d, %s)", key, parseInt(toks[4])+1, toks[3])
 							case "G":
+								scope = pushResetScope(lb, scope, scopeObj)
 								key := "item" + toks[2]
 								lb.Linef("i = World.LoadItemLimited(\"%s\", Entity.RoomId(e), %s)", key, toks[3])
-								lb.Linef("Act.Get(e, i)")
+								lb.Linef("if i ~= nil then Act.Get(e, i) end")
 							case "E":
+								scope = pushResetScope(lb, scope, scopeObj)
 								key := "item" + toks[2]
 								lb.Linef("i = World.LoadItemLimited(\"%s\", Entity.RoomId(e), %s)", key, toks[3])
-								lb.Linef("Act.Get(e, i)")
-								lb.Linef("Act.Equip(e, i)")
+								lb.Linef("if i ~= nil then Act.Get(e, i) ; Act.Equip(e, i) end")
 							}
 						}
+						scope = popResetScope(lb, scope)
 					})
 				})
 			}
@@ -532,4 +540,20 @@ func toEquipSlot(s string) mud.EquipSlot {
 		return mud.EqSlot_Held1H
 	}
 	return mud.EqSlot_None
+}
+
+func pushResetScope(lb *LuaBuilder, scope bool, scopeObj string) bool {
+	if !scope {
+		lb.Linef("if %s ~= nil then", scopeObj)
+		lb.PushScope()
+	}
+	return true
+}
+
+func popResetScope(lb *LuaBuilder, scope bool) bool {
+	if scope {
+		lb.PopScope()
+		lb.Linef("end")
+	}
+	return false
 }

@@ -86,6 +86,16 @@ func NewLuaBuilder() *LuaBuilder {
 	return b
 }
 
+func (b *LuaBuilder) PushScope() *LuaBuilder {
+	b.pushScope(&LuaBuilderGeneralScope{}, true)
+	return b
+}
+
+func (b *LuaBuilder) PopScope() *LuaBuilder {
+	b.writeString(b.popScope())
+	return b
+}
+
 func (b *LuaBuilder) FuncCall(name string, scopeFn func()) *LuaBuilder {
 	b.pushScope(&LuaBuilderGeneralScope{}, false)
 	b.writeString(name + "(")

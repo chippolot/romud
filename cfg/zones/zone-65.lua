@@ -11,10 +11,12 @@ Config.NewZone({
 		e = World.LoadEntityLimited("mob6401", 6408, 2)
 		e = World.LoadEntityLimited("mob6401", 6408, 2)
 		e = World.LoadEntityLimited("mob6402", 6413, 1)
-		i = World.LoadItemLimited("item6410", Entity.RoomId(e), 20)
-		Act.Get(e, i)
-		i = World.LoadItemLimited("item6411", Entity.RoomId(e), 20)
-		Act.Get(e, i)
+		if e ~= nil then
+			i = World.LoadItemLimited("item6410", Entity.RoomId(e), 20)
+			if i ~= nil then Act.Get(e, i) end
+			i = World.LoadItemLimited("item6411", Entity.RoomId(e), 20)
+			if i ~= nil then Act.Get(e, i) end
+		end
 		e = World.LoadEntityLimited("mob6403", 6412, 1)
 		e = World.LoadEntityLimited("mob6405", 6438, 1)
 		e = World.LoadEntityLimited("mob6404", 6417, 3)

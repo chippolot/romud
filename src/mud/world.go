@@ -11,40 +11,44 @@ import (
 )
 
 type World struct {
-	db            Database
-	players       map[PlayerId]*Entity
-	sessions      map[server.SessionId]*server.Session
+	db Database
+	L  *lua.LState
+
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
-	zoneConfigs   map[ZoneId]*ZoneConfig
-	rooms         map[RoomId]*Room
-	entryRoomId   RoomId
-	entities      map[EntityId]*Entity
-	entityCounts  map[string]int
-	itemCounts    map[string]int
-	inCombat      *CombatList
-	loggingOut    map[PlayerId]bool
-	events        chan<- server.SessionEvent
-	L             *lua.LState
+
+	players      map[PlayerId]*Entity
+	sessions     map[server.SessionId]*server.Session
+	rooms        map[RoomId]*Room
+	zones        map[ZoneId]*Zone
+	entities     map[EntityId]*Entity
+	entityCounts map[string]int
+	itemCounts   map[string]int
+
+	entryRoomId RoomId
+	inCombat    *CombatList
+	loggingOut  map[PlayerId]bool
+
+	events chan<- server.SessionEvent
 }
 
 func NewWorld(db Database, l *lua.LState, events chan<- server.SessionEvent) *World {
 	return &World{
 		db,
-		make(map[PlayerId]*Entity),
-		make(map[server.SessionId]*server.Session),
+		l,
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
-		make(map[ZoneId]*ZoneConfig),
+		make(map[PlayerId]*Entity),
+		make(map[server.SessionId]*server.Session),
 		make(map[RoomId]*Room),
-		0,
+		make(map[ZoneId]*Zone),
 		make(map[EntityId]*Entity),
 		make(map[string]int),
 		make(map[string]int),
+		0,
 		&CombatList{},
 		make(map[PlayerId]bool),
 		events,
-		l,
 	}
 }
 
@@ -231,14 +235,16 @@ func (w *World) AddRoom(r *Room) *Room {
 }
 
 func (w *World) ResetZone(id ZoneId) {
-	z := w.zoneConfigs[id]
-	if z.resetFunc != nil {
-		z.resetFunc()
+	z := w.zones[id]
+	if z.cfg.resetFunc != nil {
+		z.cfg.resetFunc()
 	}
+	z.lastReset = time.Now().UTC()
+	log.Printf("reset zone %d", z.cfg.Id)
 }
 
 func (w *World) ResetAllZones() {
-	for zid := range w.zoneConfigs {
+	for zid := range w.zones {
 		w.ResetZone(zid)
 	}
 }

@@ -1,6 +1,10 @@
 package mud
 
-import "github.com/chippolot/go-mud/src/utils"
+import (
+	"time"
+
+	"github.com/chippolot/go-mud/src/utils"
+)
 
 type ZoneId int32
 
@@ -11,4 +15,9 @@ type ZoneConfig struct {
 	MaxRoomId RoomId
 	ResetFreq utils.Seconds
 	resetFunc func()
+}
+
+type Zone struct {
+	cfg       *ZoneConfig
+	lastReset time.Time
 }

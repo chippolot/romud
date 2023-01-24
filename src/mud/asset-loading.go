@@ -18,7 +18,7 @@ func LoadAssets(w *World, root string) {
 			log.Fatalf("failed to load zone file %s -- %v", path, err)
 		}
 	}
-	log.Printf("loaded %d zones", len(w.zoneConfigs))
+	log.Printf("loaded %d zones", len(w.zones))
 
 	// Load rooms
 	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "rooms"), ScriptFileExtension) {

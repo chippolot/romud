@@ -32,6 +32,7 @@ func (s *UpdateSystem) Update(w *World, t GameTime) {
 
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
+		{resetZones, 10, 0},
 		{updateStatusEffects, 1, 0},
 		{restoreStats, 10, 0},
 		{scavengerNPCs, 3, 0},
@@ -57,6 +58,15 @@ func GameLoop(w *World) {
 		t.dt = time.Since(lastUpdate).Seconds()
 		lastUpdate = time.Now()
 		t.time += t.dt
+	}
+}
+
+func resetZones(w *World, t GameTime) {
+	now := time.Now().UTC()
+	for _, z := range w.zones {
+		if now.After(z.lastReset.Add(time.Second * time.Duration(z.cfg.ResetFreq))) {
+			w.ResetZone(z.cfg.Id)
+		}
 	}
 }
 

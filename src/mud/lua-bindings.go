@@ -5,6 +5,7 @@ import (
 	"log"
 	"math/rand"
 	"reflect"
+	"time"
 
 	"github.com/benkeatingsmith/gluamapper"
 	"github.com/chippolot/go-mud/src/utils"
@@ -169,7 +170,7 @@ func lua_ConfigNewZone(tbl *lua.LTable) {
 		panic(err)
 	}
 	cfg.resetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
-	lua_W.zoneConfigs[cfg.Id] = cfg
+	lua_W.zones[cfg.Id] = &Zone{cfg, time.Time{}}
 }
 
 func lua_ConfigNewRoom(tbl *lua.LTable) {
@@ -178,9 +179,9 @@ func lua_ConfigNewRoom(tbl *lua.LTable) {
 		panic(err)
 	}
 	zoneId := ZoneId(-1)
-	for _, z := range lua_W.zoneConfigs {
-		if cfg.Id >= z.MinRoomId && cfg.Id <= z.MaxRoomId {
-			zoneId = z.Id
+	for _, z := range lua_W.zones {
+		if cfg.Id >= z.cfg.MinRoomId && cfg.Id <= z.cfg.MaxRoomId {
+			zoneId = z.cfg.Id
 			break
 		}
 	}

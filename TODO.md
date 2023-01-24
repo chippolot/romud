@@ -138,12 +138,12 @@
     [x] Items
     [x] Finish Spawn Commands
     [x] Make LoadEntityLimited/LoadItemLimited actually limited
-----------------------------------------
-[] Zones
+[x] Zones
     [x] Spawning in zones
         [x] Give enemies
         [x] Equip enemies w/ items
-    [] Respawn on timer
+    [x] Respawn on timer
+----------------------------------------
 [] RRO Stats
 [] RRO Combat
 [] Combat Speed

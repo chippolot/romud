@@ -60,14 +60,14 @@ func (w *World) SetEntryRoomId(id RoomId) {
 	w.entryRoomId = id
 }
 
-func (w *World) CreatePlayerCharacter(name string, player *Player) *Entity {
+func (w *World) CreatePlayerCharacter(name string, pass string, player *Player) *Entity {
 	playerEntityCfg, ok := w.entityConfigs[PlayerEntityKey]
 	if !ok {
 		log.Fatalf("cannot create player. expected entity config with key %s", PlayerEntityKey)
 	}
 	e := NewEntity(playerEntityCfg)
 	e.player = player
-	e.player.data = &PlayerData{Name: name}
+	e.player.data = &PlayerData{Name: name, Pass: pass}
 	return e
 }
 
@@ -78,7 +78,7 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 	}
 
 	// Create character entity
-	e := w.CreatePlayerCharacter(name, player)
+	e := w.CreatePlayerCharacter(name, data.Player.Pass, player)
 	e.SetData(data.Character, w)
 	e.player.SetData(data.Player)
 

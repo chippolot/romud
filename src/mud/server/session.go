@@ -19,6 +19,18 @@ func (pp *DefaultPromptProvider) Prompt() string {
 	return "> "
 }
 
+type ManualPromptProvider struct {
+	prompt string
+}
+
+func (pp *ManualPromptProvider) SetPrompt(s string) {
+	pp.prompt = s
+}
+
+func (pp *ManualPromptProvider) Prompt() string {
+	return pp.prompt
+}
+
 type SessionEvent struct {
 	Session *Session
 	Event   interface{}

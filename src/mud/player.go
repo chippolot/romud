@@ -2,6 +2,7 @@ package mud
 
 import (
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/chippolot/go-mud/src/mud/server"
@@ -19,6 +20,7 @@ type PlayerCharacterData struct {
 
 type PlayerData struct {
 	Name        string
+	Pass        string
 	Gender      Gender
 	LastSavedAt time.Time
 	Aliases     map[string]string
@@ -45,6 +47,11 @@ func (p *Player) SetData(data *PlayerData) {
 
 func (p *Player) Send(format string, a ...any) {
 	p.session.Send(format, a...)
+}
+
+func (p *Player) SendRaw(bytes []byte) {
+	n, err := p.session.Conn.Write(bytes)
+	log.Println("SENT RAW", n, err, bytes)
 }
 
 type PlayerPromptProvider struct {

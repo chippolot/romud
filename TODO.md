@@ -101,6 +101,8 @@
 [x] Equipment
     [x] Advantage / Disadvantage
     [x] Roll Boosts
+    [x] Use Armor in Combat
+    [x] Mobs use equipment
 [x] Advantage / Disadvantage Sources
 [x] Lua Scripting
     [x] EnterRoom / EntityEnterRoom
@@ -143,7 +145,13 @@
         [x] Give enemies
         [x] Equip enemies w/ items
     [x] Respawn on timer
+[x] Passwords
 ----------------------------------------
+[] Telnet protocol
+    [] Password mode
+    [] Handshake
+[] Github
+[] Config roots
 [] RRO Stats
 [] RRO Combat
 [] Combat Speed
@@ -173,8 +181,6 @@
 [] Items
     [] Gold
     [] Equipment
-        [] Use Armor in Combat
-        [] Mobs use equipment
         [] Prevent dual wield
 [] Combat
     [] More Skills!
@@ -197,8 +203,6 @@
     [] TLS
     [] SSH
     [] MUD Protocols
-[] Passwords
-[] User can login w/ character name and password
 [] Generify connections -- support ssh
 [] Look into MUD protocols
 [] Look into MUD compression

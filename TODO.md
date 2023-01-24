@@ -150,6 +150,7 @@
 [] Random Drops
 [] MVP mobs
 [] Equippable Cards
+[] More commands
 [] Lua scripting
     [] More bindings
     [] More examples
@@ -181,9 +182,7 @@
     [] Mobs can spawn w/ items from random table
     [] Mob Weapons
     [] Weapon dependent messages
-    [] More 5E combat options
     [] Attack type strengths / weaknesses
-    [] Multi-attack
     [] Multiple damage per attack
 [] Positions
     [] Look descriptions

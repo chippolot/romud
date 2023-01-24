@@ -2,7 +2,6 @@ package mud
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/chippolot/go-mud/src/mud/server"
@@ -50,8 +49,7 @@ func (p *Player) Send(format string, a ...any) {
 }
 
 func (p *Player) SendRaw(bytes []byte) {
-	n, err := p.session.Conn.Write(bytes)
-	log.Println("SENT RAW", n, err, bytes)
+	p.session.Conn.Write(bytes)
 }
 
 type PlayerPromptProvider struct {

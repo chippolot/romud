@@ -91,7 +91,7 @@ func (s *LoginState) ProcessInput(input string) StateId {
 		if s.passMatch(input, s.pass) {
 			log.Printf("creating new player: %s", s.name)
 			*s.playerCharacter = s.world.CreatePlayerCharacter(s.name, s.pass, s.player)
-			s.player.SendRaw(server.TelnetCommand_EchoOn())
+			s.player.SendRaw(server.TelNet_Command_EchoOn)
 			return GameState_Playing
 		} else {
 			s.player.Send("Passwords don't match!")
@@ -120,7 +120,7 @@ func (s *LoginState) ProcessInput(input string) StateId {
 			return 0
 		}
 		s.player.Send("Welcome back, %s!", s.name)
-		s.player.SendRaw(server.TelnetCommand_EchoOn())
+		s.player.SendRaw(server.TelNet_Command_EchoOn)
 		return GameState_Playing
 	}
 	return 0
@@ -135,19 +135,19 @@ func (s *LoginState) changeSubState(ss LoginSubState) {
 	s.substate = ss
 	switch s.substate {
 	case LSS_EnterName:
+		//s.player.SendRaw([]byte{255, 251, 1})
 		s.prompt.SetPrompt("What is your name? ")
-		s.player.SendRaw(server.TelnetCommand_EchoOn())
 	case LSS_RetUserEnterPass:
 		s.prompt.SetPrompt("Password: ")
-		s.player.SendRaw(server.TelnetCommand_EchoOff())
+		s.player.SendRaw(server.TelNet_Command_EchoOff)
 	case LSS_NewUserConfName:
 		s.prompt.SetPrompt(fmt.Sprintf("Looks like you're new here. Do you want to be called '%s' (y/n)? ", s.name))
 	case LSS_NewUserEnterPass:
 		s.prompt.SetPrompt("Choose a password: ")
-		s.player.SendRaw(server.TelnetCommand_EchoOff())
+		s.player.SendRaw(server.TelNet_Command_EchoOff)
 	case LSS_NewUserConfPass:
 		s.prompt.SetPrompt("Confirm password: ")
-		s.player.SendRaw(server.TelnetCommand_EchoOff())
+		s.player.SendRaw(server.TelNet_Command_EchoOff)
 	}
 	s.player.Send("")
 }

@@ -46,6 +46,7 @@ func (s *SessionHandler) Run() {
 
 		case *server.ClientInputEvent:
 			if state, ok := s.states[sid]; ok {
+				log.Println("###########", []byte(evt.Input))
 				if newStateId := state.ProcessInput(evt.Input); newStateId != GameState_None {
 					s.ChangeGameState(sid, newStateId)
 				}

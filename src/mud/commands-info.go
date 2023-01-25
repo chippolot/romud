@@ -8,6 +8,64 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
+func DoConsider(e *Entity, w *World, tokens []string) {
+	r := w.rooms[e.data.RoomId]
+
+	if e.entityFlags.Has(EFlag_Blind) {
+		Write("You can't see a thing!").ToPlayer(e).Send()
+		return
+	}
+
+	numtoks := len(tokens)
+	if numtoks == 0 || numtoks == 1 {
+		Write("Who do you want to consider attacking?").ToPlayer(e).Send()
+		return
+	}
+
+	query, ok, _ := parseSearchQuery(tokens[1:], false)
+	if ok {
+		if ents := SearchEntities(query, e, r); len(ents) > 0 {
+			tgt := ents[0]
+			if e == tgt {
+				Write("You size yourself up.").ToPlayer(e).Send()
+				return
+			}
+
+			eAtk := GetAttackData(e)
+			eDPS := eAtk.Damage.Average() + eAtk.DamageMod.Average()
+			eMaxHP := e.stats.Get(Stat_MaxHP)
+
+			tgtAtk := GetAttackData(tgt)
+			tgtDPS := tgtAtk.Damage.Average() + eAtk.DamageMod.Average()
+			tgtMaxHP := tgt.stats.Get(Stat_MaxHP)
+
+			eRoundsToKill := eMaxHP / tgtDPS
+			tgtRoundsToKill := tgtMaxHP / eDPS
+			diff := eRoundsToKill - tgtRoundsToKill
+
+			if diff == 0 {
+				Write("You feel evenly matched. It's anyone's game.").ToPlayer(e).Send()
+			} else if diff > 10 {
+				Write("You could take them with your hands tied behind your back!").ToPlayer(e).Send()
+			} else if diff > 5 {
+				Write("They look pretty weak to you.").ToPlayer(e).Send()
+			} else if diff > 0 {
+				Write("Looks farily easy.").ToPlayer(e).Send()
+			} else if diff < -10 {
+				Write("Never in a million years!").ToPlayer(e).Send()
+			} else if diff < -5 {
+				Write("They look stronger than you.").ToPlayer(e).Send()
+			} else if diff < 0 {
+				Write("Looks like it might be a bit of a challenge.").ToPlayer(e).Send()
+			}
+			return
+		}
+	} else {
+
+	}
+	Write("You don't see them here.").ToPlayer(e).Send()
+}
+
 func DoLook(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 

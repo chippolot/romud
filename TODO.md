@@ -146,15 +146,16 @@
         [x] Equip enemies w/ items
     [x] Respawn on timer
 [x] Passwords
+[x] Telnet protocol
+    [x] Password mode
 ----------------------------------------
-[] Telnet protocol
-    [] Password mode
-    [] Handshake
+[] Combat Speed
+[] Configurable Skills
+    [] Restrict by class
 [] Github
 [] Config roots
 [] RRO Stats
 [] RRO Combat
-[] Combat Speed
 [] Random Drops
 [] MVP mobs
 [] Equippable Cards

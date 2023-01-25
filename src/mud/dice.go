@@ -105,6 +105,12 @@ func (d *Dice) Roll() int {
 	return sum + d.Plus
 }
 
+func (d *Dice) Average() int {
+	min := d.Num*1 + uint(d.Plus)
+	max := d.Num*d.Sides + uint(d.Plus)
+	return int((max + min) / 2.0)
+}
+
 func (d *Dice) String() string {
 	if d.Sides == 0 {
 		return fmt.Sprintf("%d", d.Plus)

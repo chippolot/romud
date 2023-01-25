@@ -15,6 +15,8 @@ const (
 const (
 	Stat_HP StatType = iota
 	Stat_MaxHP
+	Stat_MP
+	Stat_MaxMP
 	Stat_AC
 	Stat_Mov
 	Stat_MaxMov
@@ -39,71 +41,35 @@ const (
 
 type StatType int
 
+var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
+	Stat_HP:     "HP",
+	Stat_MaxHP:  "MaxHP",
+	Stat_MP:     "MP",
+	Stat_MaxMP:  "MaxMP",
+	Stat_AC:     "AC",
+	Stat_Mov:    "Mov",
+	Stat_MaxMov: "MaxMov",
+	Stat_Speed:  "Speed",
+	Stat_Str:    "Str",
+	Stat_Dex:    "Dex",
+	Stat_Con:    "Con",
+	Stat_Int:    "Int",
+	Stat_Wis:    "Wis",
+	Stat_Cha:    "Cha",
+	Stat_Level:  "Level",
+	Stat_XP:     "XP",
+})
+
 func ParseStatType(str string) (StatType, error) {
-	switch str {
-	case "HP":
-		return Stat_HP, nil
-	case "MaxHP":
-		return Stat_MaxHP, nil
-	case "AC":
-		return Stat_AC, nil
-	case "Mov":
-		return Stat_Mov, nil
-	case "MaxMov":
-		return Stat_MaxMov, nil
-	case "Speed":
-		return Stat_Speed, nil
-	case "Str":
-		return Stat_Str, nil
-	case "Dex":
-		return Stat_Dex, nil
-	case "Con":
-		return Stat_Con, nil
-	case "Int":
-		return Stat_Int, nil
-	case "Wis":
-		return Stat_Wis, nil
-	case "Cha":
-		return Stat_Cha, nil
-	case "Level":
-		return Stat_Level, nil
-	case "XP":
-		return Stat_XP, nil
-	default:
-		return 0, fmt.Errorf("unknown stat type: %s", str)
+	if val, ok := statTypeStringMapping.ToValue[str]; ok {
+		return val, nil
 	}
+	return 0, fmt.Errorf("unknown stat type: %s", str)
 }
 
 func (s *StatType) String() string {
-	switch *s {
-	case Stat_HP:
-		return "HP"
-	case Stat_MaxHP:
-		return "MaxHP"
-	case Stat_AC:
-		return "AC"
-	case Stat_Mov:
-		return "Mov"
-	case Stat_MaxMov:
-		return "MaxMov"
-	case Stat_Speed:
-		return "Speed"
-	case Stat_Str:
-		return "Str"
-	case Stat_Dex:
-		return "Dex"
-	case Stat_Con:
-		return "Con"
-	case Stat_Int:
-		return "Int"
-	case Stat_Wis:
-		return "Wis"
-	case Stat_Cha:
-		return "Cha"
-	case Stat_Level:
-		return "Level"
-	case Stat_XP:
-		return "XP"
+	if str, ok := statTypeStringMapping.ToString[*s]; ok {
+		return str
 	}
 	return "unknown"
 }

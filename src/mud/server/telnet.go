@@ -26,6 +26,5 @@ const (
 	EOR     = byte(239)
 )
 
-// IAC WILL ECHO, IAC WILL SUPPRESS GO AHEAD, IAC DO ECHO, IAC DO SUPPRESS GO AHEAD
-var TelNet_Command_EchoOff = []byte{} //[]byte("\xff\xfb\x01\xff\xfd\x01")
-var TelNet_Command_EchoOn = []byte{}  //[]byte("\xff\xfb\x01\xff\xfd\x01")
+var TelNet_Command_EchoOff = []byte{255, 251, 1} // IAC WILL ECHO
+var TelNet_Command_EchoOn = []byte{255, 252, 1}  // IAC WONT ECHO

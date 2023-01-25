@@ -135,7 +135,7 @@ func (s *LoginState) changeSubState(ss LoginSubState) {
 	s.substate = ss
 	switch s.substate {
 	case LSS_EnterName:
-		//s.player.SendRaw([]byte{255, 251, 1})
+		s.player.SendRaw(server.TelNet_Command_EchoOn)
 		s.prompt.SetPrompt("What is your name? ")
 	case LSS_RetUserEnterPass:
 		s.prompt.SetPrompt("Password: ")

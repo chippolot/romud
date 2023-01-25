@@ -30,6 +30,12 @@ func (s *TelnetServer) handleConnection(conn net.Conn, sid SessionId, eventChann
 			return err
 		}
 		msg := string(buf[:n])
+
+		// Discard any telnet responses
+		if msg[0] == IAC {
+			msg = msg[3:]
+		}
+
 		sb.WriteString(msg)
 		if strings.HasSuffix(msg, "\r\n") {
 			msg = strings.TrimRight(sb.String(), "\r\n")

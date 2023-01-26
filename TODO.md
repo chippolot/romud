@@ -163,6 +163,8 @@
     [] Dex Weapons
     [] Damage type lookups
     [] Drop tables
+    [] Auto-Con using colors
+    [] Exp using level difference
 [] Configurable Skills
     [] Restrict by class
 [] Github

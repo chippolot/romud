@@ -148,8 +148,8 @@
 [x] Passwords
 [x] Telnet protocol
     [x] Password mode
+[x] Combat Speed
 ----------------------------------------
-[] Combat Speed
 [] Configurable Skills
     [] Restrict by class
 [] Github

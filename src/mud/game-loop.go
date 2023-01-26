@@ -118,7 +118,7 @@ func statRestorationSystem(w *World, t GameTime) {
 			continue
 		}
 
-		var hpGain, movGain int
+		var hpGain, spGain, movGain int
 		var message string
 
 		switch e.stats.Condition() {
@@ -126,12 +126,15 @@ func statRestorationSystem(w *World, t GameTime) {
 			switch e.position {
 			case Pos_Sitting, Pos_Prone:
 				hpGain = 5
+				spGain = 2
 				movGain = 5
 			case Pos_Sleeping:
 				hpGain = 7
+				spGain = 3
 				movGain = 7
 			default:
 				hpGain = 3
+				spGain = 1
 				movGain = 3
 			}
 		case Cnd_Incapacitated:
@@ -146,6 +149,7 @@ func statRestorationSystem(w *World, t GameTime) {
 			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
 			message = Colorize(Color_NegativeBld, "You are bleeding!")
 		}
+		e.stats.Add(Stat_SP, spGain)
 		e.stats.Add(Stat_Mov, movGain)
 
 		// Force a new prompt if something changed

@@ -70,6 +70,10 @@ func (w *World) CreatePlayerCharacter(name string, pass string, player *Player) 
 	e := NewEntity(playerEntityCfg)
 	e.player = player
 	e.player.data = &PlayerData{Name: name, Pass: pass}
+	calculateAndUpdatePlayerStats(e.stats)
+	e.stats.Set(Stat_HP, e.stats.Get(Stat_MaxHP))
+	e.stats.Set(Stat_SP, e.stats.Get(Stat_MaxSP))
+	e.stats.Set(Stat_Mov, e.stats.Get(Stat_MaxMov))
 	return e
 }
 
@@ -87,7 +91,11 @@ func (w *World) TryLoadPlayerCharacter(name string, player *Player) (*Entity, er
 	// Heal up
 	timeSinceSave := time.Now().UTC().Sub(e.player.data.LastSavedAt)
 	hpPerMin := 15
+	spPerMin := 6
+	movPerMin := 15
 	e.stats.Add(Stat_HP, int(timeSinceSave.Minutes()*float64(hpPerMin)))
+	e.stats.Add(Stat_SP, int(timeSinceSave.Minutes()*float64(spPerMin)))
+	e.stats.Add(Stat_Mov, int(timeSinceSave.Minutes()*float64(movPerMin)))
 
 	// Update status effect durations
 	for statusType, se := range e.data.Statuses {

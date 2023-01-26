@@ -156,6 +156,7 @@
         [] Calc full exp value
         [] Base Stats
         [] ASpd
+    [] Auto Level Up
     [] Combat
         [] Elements
     [] Damage type lookups

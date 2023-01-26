@@ -12,9 +12,7 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 	oldSP := e.stats.Get(Stat_SP)
 	oldMov := e.stats.Get(Stat_Mov)
 
-	e.stats.Set(Stat_MaxHP, calculateMaxHP(e.stats))
-	e.stats.Set(Stat_MaxSP, calculateMaxSP(e.stats))
-	e.stats.Set(Stat_MaxMov, calculateMaxMov(e.stats))
+	calculateAndUpdatePlayerStats(e.stats)
 
 	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Send()
 	Write("  You gain %d hp", e.stats.Get(Stat_HP)-oldHP).ToPlayer(e).Send()
@@ -237,7 +235,7 @@ func performTransferItem(w *World, src ItemContainer, dst ItemContainer, item *I
 	}
 
 	// Check destination's item capacity
-	if dstE != nil && dst.ItemWeight()+item.ItemWeight() > dstE.stats.CarryingCapacity() {
+	if dstE != nil && dst.ItemWeight()+item.ItemWeight() > calculateCarryingCapacity(dstE.stats) {
 		Write("You can't hold the weight of %s", ObservableName(item)).ToPlayer(dstE).Send()
 		return
 	}

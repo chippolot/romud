@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"math"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -157,10 +156,6 @@ func (c *CombatList) EndCombat(e *Entity) {
 	e.combat = nil
 }
 
-func AttacksPerRound(e *Entity) float64 {
-	return (math.Pow(float64(e.stats.AttackSpeed()), 1.3)) / 20.0
-}
-
 func GetAttackData(e *Entity) AttackData {
 	aData := AttackData{}
 	if weapon, eq, ok := e.GetWeapon(); ok {
@@ -293,7 +288,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	default:
 		var dam int
 
-		numAttacks := AttacksPerRound(e) + e.combat.speedCounter
+		numAttacks := calculateAttacksPerRound(e.stats) + e.combat.speedCounter
 		numAttacksFull := int(numAttacks)
 		e.combat.speedCounter = numAttacks - float64(numAttacksFull)
 
@@ -399,7 +394,7 @@ func die(tgt *Entity, w *World, killer *Entity) {
 
 	// Distribute XP
 	if killer != nil {
-		xp := tgt.cfg.Stats.BaseExp
+		xp := calculateExpValue(tgt.stats)
 		xp = applyXp(killer, xp)
 		if xp > 0 {
 			Write("You gain %d XP from defeating %s", xp, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()
@@ -487,8 +482,8 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, nounSingula
 		Write("%s %s %s ferociously", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 10 {
 		Write("You %s %s with all your might (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you with all your might (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s with all your might", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("%s %s you with all their might (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s with all their might", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else {
 		Write("You %s %s UNBELIEVABLY HARD (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
 		Write("%s %s you UNBELIEVABLY HARD (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()

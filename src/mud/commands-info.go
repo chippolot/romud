@@ -33,11 +33,11 @@ func DoConsider(e *Entity, w *World, tokens []string) {
 			}
 
 			eAtk := GetAttackData(e)
-			eDPR := float64(eAtk.Damage.Average()+eAtk.DamageMod.Average()) * AttacksPerRound(e)
+			eDPR := float64(eAtk.Damage.Average()+eAtk.DamageMod.Average()) * calculateAttacksPerRound(e.stats)
 			eMaxHP := e.stats.Get(Stat_MaxHP)
 
 			tgtAtk := GetAttackData(tgt)
-			tgtDPR := float64(tgtAtk.Damage.Average()+tgtAtk.DamageMod.Average()) * AttacksPerRound(tgt)
+			tgtDPR := float64(tgtAtk.Damage.Average()+tgtAtk.DamageMod.Average()) * calculateAttacksPerRound(tgt.stats)
 			tgtMaxHP := tgt.stats.Get(Stat_MaxHP)
 
 			eRoundsToKill := float64(eMaxHP) / tgtDPR

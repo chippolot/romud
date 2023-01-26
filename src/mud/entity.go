@@ -433,6 +433,8 @@ func (e *Entity) DescribeStatus() string {
 	}
 	sb.WriteNewLine()
 	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_HP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxHP)))
+	sb.WriteLinef("SP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_SP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxSP)))
+	sb.WriteLinef("Mov     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_Mov)), Colorize(Color_Stat, e.stats.Get(Stat_MaxMov)))
 	sb.WriteNewLine()
 	sb.WriteLinef("ToHit  : +%s", Colorize(Color_Stat, aData.ToHit))
 	sb.WriteLinef("Attack : %s%s", aData.Damage.StringColorized(Color_Stat), bonusDamage)
@@ -445,7 +447,7 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Dex    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Dex)))
 	sb.WriteLinef("Luk    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Luk)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, e.stats.CarryingCapacity()))
+	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, calculateCarryingCapacity(e.stats)))
 	if statuses != "" {
 		sb.WriteNewLine()
 		sb.WriteLinef("Status : %s", statuses)

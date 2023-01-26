@@ -2,6 +2,12 @@ package mud
 
 import "math"
 
+func calculateAndUpdatePlayerStats(s *Stats) {
+	s.Set(Stat_MaxHP, calculateMaxHP(s))
+	s.Set(Stat_MaxSP, calculateMaxSP(s))
+	s.Set(Stat_MaxMov, calculateMaxMov(s))
+}
+
 func calculateCarryingCapacity(s *Stats) int {
 	return s.Get(Stat_Str)*10 + 50
 }

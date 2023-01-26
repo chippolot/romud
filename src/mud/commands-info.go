@@ -2,6 +2,7 @@ package mud
 
 import (
 	"fmt"
+	"log"
 	"sort"
 	"strings"
 
@@ -32,16 +33,18 @@ func DoConsider(e *Entity, w *World, tokens []string) {
 			}
 
 			eAtk := GetAttackData(e)
-			eDPS := eAtk.Damage.Average() + eAtk.DamageMod.Average()
+			eDPR := float64(eAtk.Damage.Average()+eAtk.DamageMod.Average()) * AttacksPerRound(e)
 			eMaxHP := e.stats.Get(Stat_MaxHP)
 
 			tgtAtk := GetAttackData(tgt)
-			tgtDPS := tgtAtk.Damage.Average() + eAtk.DamageMod.Average()
+			tgtDPR := float64(tgtAtk.Damage.Average()+tgtAtk.DamageMod.Average()) * AttacksPerRound(tgt)
 			tgtMaxHP := tgt.stats.Get(Stat_MaxHP)
 
-			eRoundsToKill := eMaxHP / tgtDPS
-			tgtRoundsToKill := tgtMaxHP / eDPS
+			eRoundsToKill := float64(eMaxHP) / tgtDPR
+			tgtRoundsToKill := float64(tgtMaxHP) / eDPR
 			diff := eRoundsToKill - tgtRoundsToKill
+
+			log.Println(eDPR, tgtDPR, eMaxHP, tgtMaxHP, diff)
 
 			if diff == 0 {
 				Write("You feel evenly matched. It's anyone's game.").ToPlayer(e).Send()

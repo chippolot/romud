@@ -282,6 +282,10 @@ func (s *Stats) CarryingCapacity() int {
 	return s.Get(Stat_Str) * 15
 }
 
+func (s *Stats) AttackSpeed() int {
+	return s.Get(Stat_Dex)
+}
+
 func (s *Stats) MaxStatType(stats ...StatType) StatType {
 	maxStat := stats[0]
 	maxVal := s.Get(stats[0])

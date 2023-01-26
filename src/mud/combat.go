@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -116,6 +117,7 @@ type CombatSkill int
 type CombatData struct {
 	target         *Entity
 	requestedSkill CombatSkill
+	speedCounter   float64
 }
 
 func (c *CombatData) Valid(e *Entity) bool {
@@ -143,7 +145,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 	if e.combat != nil {
 		e.combat.target = tgt
 	} else if !c.Contains(e) {
-		e.combat = &CombatData{tgt, CombatSkill_None}
+		e.combat = &CombatData{tgt, CombatSkill_None, 0}
 		c.Add(e)
 	}
 	return true
@@ -155,6 +157,10 @@ func (c *CombatList) EndCombat(e *Entity) {
 	}
 	c.Remove(e)
 	e.combat = nil
+}
+
+func AttacksPerRound(e *Entity) float64 {
+	return (math.Pow(float64(e.stats.AttackSpeed()), 1.3)) / 20.0
 }
 
 func GetAttackData(e *Entity) AttackData {
@@ -291,54 +297,61 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	default:
 		var dam int
 
-		// Pick random attack or use weapon
-		aData := GetAttackData(e)
+		numAttacks := AttacksPerRound(e) + e.combat.speedCounter
+		numAttacksFull := int(numAttacks)
+		e.combat.speedCounter = numAttacks - float64(numAttacksFull)
 
-		// Determine advantage / disadvantage
-		advantageCount := e.stats.RollAdvantageCount(Roll_Hit)
-		if tgt.position < Pos_Standing {
-			advantageCount += 1
-		}
-		if e.position < Pos_Standing {
-			advantageCount -= 1
-		}
-		if !e.CanBeSeenBy(tgt) {
-			advantageCount += 1
-		}
-		if !tgt.CanBeSeenBy(e) {
-			advantageCount -= 1
-		}
+		for i := 0; i < numAttacksFull; i++ {
 
-		// Roll to hit
-		hitBase := D20.Roll()
-		if advantageCount > 0 {
-			hitBase2 := D20.Roll()
-			hitBase = utils.MaxInts(hitBase, hitBase2)
-		} else if advantageCount < 0 {
-			hitBase2 := D20.Roll()
-			hitBase = utils.MinInts(hitBase, hitBase2)
-		}
-		critMiss := hitBase == 1
-		critHit := hitBase == 20
-		hit := hitBase + aData.ToHit + e.stats.RollBonus(Roll_Hit)
+			// Pick random attack or use weapon
+			aData := GetAttackData(e)
 
-		didHit := false
-		if (critMiss || hit < tgt.AC()) && !critHit {
-			dam = 0
-		} else {
-			didHit = true
-			// Roll for damage
-			if critHit {
-				dam = aData.Damage.CriticalRoll()
-			} else {
-				dam = aData.Damage.Roll()
+			// Determine advantage / disadvantage
+			advantageCount := e.stats.RollAdvantageCount(Roll_Hit)
+			if tgt.position < Pos_Standing {
+				advantageCount += 1
 			}
-			dam += aData.DamageMod.Roll()
-			dam = utils.MaxInts(1, dam)
-		}
-		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)
-		if didHit {
-			rollForStatusEffect(tgt, w, aData.Effect)
+			if e.position < Pos_Standing {
+				advantageCount -= 1
+			}
+			if !e.CanBeSeenBy(tgt) {
+				advantageCount += 1
+			}
+			if !tgt.CanBeSeenBy(e) {
+				advantageCount -= 1
+			}
+
+			// Roll to hit
+			hitBase := D20.Roll()
+			if advantageCount > 0 {
+				hitBase2 := D20.Roll()
+				hitBase = utils.MaxInts(hitBase, hitBase2)
+			} else if advantageCount < 0 {
+				hitBase2 := D20.Roll()
+				hitBase = utils.MinInts(hitBase, hitBase2)
+			}
+			critMiss := hitBase == 1
+			critHit := hitBase == 20
+			hit := hitBase + aData.ToHit + e.stats.RollBonus(Roll_Hit)
+
+			didHit := false
+			if (critMiss || hit < tgt.AC()) && !critHit {
+				dam = 0
+			} else {
+				didHit = true
+				// Roll for damage
+				if critHit {
+					dam = aData.Damage.CriticalRoll()
+				} else {
+					dam = aData.Damage.Roll()
+				}
+				dam += aData.DamageMod.Roll()
+				dam = utils.MaxInts(1, dam)
+			}
+			applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)
+			if didHit {
+				rollForStatusEffect(tgt, w, aData.Effect)
+			}
 		}
 	}
 	e.combat.requestedSkill = CombatSkill_None
@@ -356,6 +369,10 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	}
 
 	tgt.stats.Add(Stat_HP, -dam)
+	if dam > 0 {
+		tgt.tookDamage = true
+	}
+
 	cnd = tgt.stats.Condition()
 
 	// Send damage messages
@@ -367,18 +384,22 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 		sendDamageMessages(dam, from, tgt, w, verbSingular, verbPlural)
 	}
 
-	// Send status messages
-	sendStatusMessages(dam, tgt, w)
-
 	// Handle kills
 	if cnd == Cnd_Dead {
 		die(tgt, w, from)
+	} else {
+		if dam > tgt.stats.Get(Stat_MaxHP)/4 {
+			Write("Ouch, that one stung!").ToPlayer(tgt).Colorized(Color_NegativeBld).Send()
+		}
 	}
 
 	return dam
 }
 
 func die(tgt *Entity, w *World, killer *Entity) {
+	Write("You feel your soul slip from your body. You are DEAD!").ToPlayer(tgt).Colorized(Color_NegativeBld).Send()
+	Write("%s is DEAD. R.I.P.", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Colorized(Color_NeutralBld).Send()
+
 	// Distribute XP
 	if killer != nil {
 		xp := tgt.cfg.Stats.XPValue
@@ -461,7 +482,7 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, atkVerbSing
 		Write("%s's %s barely scratches %s", ObservableNameCap(src), atkVerbSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 6 {
 		Write("You %s %s (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s you (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
 		Write("%s %s %s", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 8 {
 		Write("You %s %s ferociously (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
@@ -478,7 +499,7 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, atkVerbSing
 	}
 }
 
-func sendStatusMessages(dam int, tgt *Entity, w *World) {
+func sendStatusMessages(tgt *Entity, w *World) {
 	switch tgt.stats.Condition() {
 	case Cnd_Stunned:
 		Write("You are dazed and disoriented, struggling to regain your footing").ToPlayer(tgt).Send()
@@ -490,12 +511,7 @@ func sendStatusMessages(dam int, tgt *Entity, w *World) {
 		Write("You are bleeding profusely and will die soon if not healed").ToPlayer(tgt).Send()
 		Write("%s is bleeding profusely and will die soon if not healed", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Restricted(SendRst_CanSee).Send()
 	case Cnd_Dead:
-		Write("You feel your soul slip from your body. You are DEAD!").ToPlayer(tgt).Colorized(Color_NegativeBld).Send()
-		Write("%s is DEAD. R.I.P.", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Colorized(Color_NeutralBld).Send()
 	default:
-		if dam > tgt.stats.Get(Stat_MaxHP)/4 {
-			Write("Ouch, that one stung!").ToPlayer(tgt).Colorized(Color_NegativeBld).Send()
-		}
 		if tgt.stats.Get(Stat_HP) < tgt.stats.Get(Stat_MaxHP)/4 {
 			Write("You sure are BLEEDING a lot!").ToPlayer(tgt).Send()
 		}

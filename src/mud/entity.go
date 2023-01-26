@@ -70,6 +70,7 @@ type Entity struct {
 	player        *Player
 	stats         *Stats
 	combat        *CombatData
+	tookDamage    bool
 	position      Position
 	inventory     ItemList
 	equipped      map[EquipSlot]*Item
@@ -81,7 +82,7 @@ func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
+	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {

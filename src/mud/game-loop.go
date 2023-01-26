@@ -32,16 +32,17 @@ func (s *UpdateSystem) Update(w *World, t GameTime) {
 
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
-		{resetZones, 10, 0},
-		{updateStatusEffects, 1, 0},
-		{restoreStats, 10, 0},
-		{scavengerNPCs, 3, 0},
-		{wanderNPCs, 3, 0},
-		{aggroNPCs, 1, 0},
-		{assistNPCs, 1, 0},
-		{runCombat, 3, 0},
-		{logoutTheDead, 0, 0},
-		{flushPlayerOuput, 0, 0},
+		{zoneResetSystem, 10, 0},
+		{statusEffectsSystem, 1, 0},
+		{statRestorationSystem, 10, 0},
+		{scavengersSystem, 3, 0},
+		{wanderersSystem, 3, 0},
+		{aggroSystem, 1, 0},
+		{assistersSystem, 1, 0},
+		{combatSystem, 3, 0},
+		{statusMessagesSystem, 0, 0},
+		{cleanupDeadSystem, 0, 0},
+		{playerOutputSystem, 0, 0},
 	}
 
 	t := GameTime{}
@@ -61,7 +62,7 @@ func GameLoop(w *World) {
 	}
 }
 
-func resetZones(w *World, t GameTime) {
+func zoneResetSystem(w *World, t GameTime) {
 	now := time.Now().UTC()
 	for _, z := range w.zones {
 		if now.After(z.lastReset.Add(time.Second * time.Duration(z.cfg.ResetFreq))) {
@@ -70,7 +71,7 @@ func resetZones(w *World, t GameTime) {
 	}
 }
 
-func updateStatusEffects(w *World, t GameTime) {
+func statusEffectsSystem(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.statusEffects.mask == 0 {
 			continue
@@ -95,7 +96,17 @@ func updateStatusEffects(w *World, t GameTime) {
 	}
 }
 
-func restoreStats(w *World, t GameTime) {
+func statusMessagesSystem(w *World, t GameTime) {
+	for _, e := range w.entities {
+		if !e.tookDamage {
+			continue
+		}
+		sendStatusMessages(e, w)
+		e.tookDamage = false
+	}
+}
+
+func statRestorationSystem(w *World, t GameTime) {
 	for _, e := range w.entities {
 		// Fighting entities don't heal
 		if e.combat != nil {
@@ -144,7 +155,7 @@ func restoreStats(w *World, t GameTime) {
 	}
 }
 
-func wanderNPCs(w *World, t GameTime) {
+func wanderersSystem(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -200,7 +211,7 @@ func wanderNPCs(w *World, t GameTime) {
 	}
 }
 
-func aggroNPCs(w *World, t GameTime) {
+func aggroSystem(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -232,7 +243,7 @@ func aggroNPCs(w *World, t GameTime) {
 	}
 }
 
-func assistNPCs(w *World, t GameTime) {
+func assistersSystem(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -271,7 +282,7 @@ func assistNPCs(w *World, t GameTime) {
 	}
 }
 
-func scavengerNPCs(w *World, t GameTime) {
+func scavengersSystem(w *World, t GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -319,7 +330,7 @@ func scavengerNPCs(w *World, t GameTime) {
 	}
 }
 
-func runCombat(w *World, t GameTime) {
+func combatSystem(w *World, t GameTime) {
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
@@ -341,7 +352,7 @@ func runCombat(w *World, t GameTime) {
 	}
 }
 
-func logoutTheDead(w *World, t GameTime) {
+func cleanupDeadSystem(w *World, t GameTime) {
 	for _, e := range w.players {
 		if e.stats.Condition() == Cnd_Dead {
 			w.LogoutPlayer(e.player)
@@ -349,7 +360,7 @@ func logoutTheDead(w *World, t GameTime) {
 	}
 }
 
-func flushPlayerOuput(w *World, t GameTime) {
+func playerOutputSystem(w *World, t GameTime) {
 	for _, s := range w.sessions {
 		s.Flush()
 	}

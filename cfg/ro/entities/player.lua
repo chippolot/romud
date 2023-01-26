@@ -5,6 +5,10 @@ Config.NewEntity({
         Damage = "1",
         Noun="punch"
     }},
+    Attack = {
+        Power = "7-9",
+        Noun = "splash"
+    },
     Stats = {
         Level = 1,
         HP = "40",

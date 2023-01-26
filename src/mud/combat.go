@@ -83,22 +83,9 @@ func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
 	}
 }
 
-type AttackData struct {
-	ToHit      int
-	Damage     Dice
-	DamageMod  Dice
-	DamageType DamageType
-	Effect     *ApplyStatusEffectConfig
-	Noun       string
-}
-
 type AttackConfig struct {
-	ToHit      int
-	Damage     Dice
-	DamageType DamageType
-	Effect     *ApplyStatusEffectConfig
-	Noun       string
-	Weight     float32
+	Power Range
+	Noun  string
 }
 
 type SavingThrowConfig struct {
@@ -153,32 +140,6 @@ func (c *CombatList) EndCombat(e *Entity) {
 	}
 	c.Remove(e)
 	e.combat = nil
-}
-
-func GetAttackData(e *Entity) AttackData {
-	aData := AttackData{}
-	if weapon, eq, ok := e.GetWeapon(); ok {
-		bonusDice := eq.GetRollBonus(Roll_Dam)
-		aData.ToHit = GetAbilityModifier(e.stats.Get(Stat_Str)) + ProficiencyChart[e.stats.Get(Stat_Level)]
-		aData.Damage = weapon.Damage.Add(GetAbilityModifier(e.stats.Get(Stat_Str)))
-		aData.DamageMod = bonusDice
-		aData.DamageType = weapon.DamageType
-		aData.Noun = weapon.Noun
-	} else {
-		attack := e.RandomAttack()
-		aData.ToHit = attack.ToHit
-		aData.Damage = attack.Damage
-		if e.player != nil {
-			aData.Damage = aData.Damage.Add(GetAbilityModifier(e.stats.Get(Stat_Str)))
-		}
-		aData.Effect = attack.Effect
-		aData.DamageType = attack.DamageType
-		aData.Noun = attack.Noun
-	}
-	if e.player != nil {
-		aData.ToHit = GetAbilityModifier(e.stats.Get(Stat_Str)) + ProficiencyChart[e.stats.Get(Stat_Level)]
-	}
-	return aData
 }
 
 func validateAttack(e *Entity, tgt *Entity) bool {

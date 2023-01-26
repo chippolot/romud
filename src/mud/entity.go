@@ -3,7 +3,6 @@ package mud
 import (
 	"log"
 	"math"
-	"math/rand"
 	"strings"
 	"unicode"
 
@@ -26,7 +25,7 @@ type EntityConfig struct {
 	RoomDesc string
 	FullDesc string
 	Stats    *StatsConfig
-	Attacks  []*AttackConfig
+	Attack   *AttackConfig
 	Flags    EntityFlagMask
 
 	scripts *EntityScripts
@@ -37,11 +36,6 @@ func (cfg *EntityConfig) Init() {
 	cfg.lookup = make(map[string]bool)
 	for _, s := range cfg.Keywords {
 		cfg.lookup[strings.ToLower(s)] = true
-	}
-	for _, a := range cfg.Attacks {
-		if a.Weight == 0 {
-			a.Weight = 1
-		}
 	}
 }
 
@@ -151,25 +145,6 @@ func (e *Entity) Gender() Gender {
 		return e.player.data.Gender
 	}
 	return e.cfg.Gender
-}
-
-func (e *Entity) RandomAttack() *AttackConfig {
-	// Calc total weight
-	sum := float32(0)
-	for _, a := range e.cfg.Attacks {
-		sum += a.Weight
-	}
-
-	// Weighted selection
-	rnd := rand.Float32() * sum
-	for _, a := range e.cfg.Attacks {
-		if rnd <= a.Weight {
-			return a
-		}
-		rnd -= a.Weight
-	}
-	log.Panicf("failed to select random atttack for entity %s", e.Name())
-	return nil
 }
 
 func (e *Entity) AddItem(item *Item) {

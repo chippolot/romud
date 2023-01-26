@@ -66,6 +66,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewRoom", luar.New(L, lua_ConfigNewRoom))
 	configTable.RawSetString("NewEntity", luar.New(L, lua_ConfigNewEntity))
 	configTable.RawSetString("NewItem", luar.New(L, lua_ConfigNewItem))
+	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
 	L.SetGlobal("Config", configTable)
 
 	utilTbl := L.NewTable()
@@ -219,6 +220,23 @@ func lua_ConfigNewItem(tbl *lua.LTable) {
 	}
 	cfg.Init()
 	lua_W.AddItemConfig(cfg)
+}
+
+func lua_ConfigRegisterNouns(tbl *lua.LTable) {
+	nouns, ok := gluamapper.ToGoValue(tbl, gluamapper.Option{}).([]interface{})
+	if !ok {
+		panic("failed to map arg #1 to array")
+	}
+	if len(nouns)%2 != 0 {
+		panic("expected even number of nouns")
+	}
+	for i := 0; i < len(nouns); i += 2 {
+		ns := nouns[i].(string)
+		np := nouns[i+1].(string)
+		noun := &NounConfig{ns, np}
+		lua_W.vocab.nouns[noun.Singular] = noun
+	}
+	log.Printf("registered %d nouns", len(nouns)/2)
 }
 
 func lua_UtilChance() int {

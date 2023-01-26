@@ -6,5 +6,6 @@ type ServerConfig struct {
 }
 
 type AppConfig struct {
-	Servers []ServerConfig
+	ConfigRoot string
+	Servers    []ServerConfig
 }

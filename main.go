@@ -43,15 +43,9 @@ func main() {
 	mud.RegisterGlobalLuaBindings(L, world)
 
 	// Load assets
-	mud.LoadAssets(world, path.Join(projectRoot, "cfg"))
-	world.SetEntryRoomId(3001)
+	mud.LoadAssets(world, path.Join(projectRoot, cfg.ConfigRoot))
+	world.SetEntryRoomId(1)
 	world.ResetAllZones()
-
-	// Create test entity
-	addEntities(world, "mob", "rat", "rat", "janitor", "equipper")
-
-	// Create test item
-	addItems(world, "woodshortsword", "bag", "ancientscroll", "anvil", "woodbplate", "woodgreaves", "woodhelm")
 
 	// Create session handler
 	sessionHandler := mud.NewSessionHandler(world, events)
@@ -69,28 +63,6 @@ func main() {
 		err = srv.Start(s.Port, events)
 		if err != nil {
 			log.Fatalln(err)
-		}
-	}
-}
-
-func addEntities(w *mud.World, keys ...string) {
-	for _, key := range keys {
-		if cfg, ok := w.TryGetEntityConfig(key); ok {
-			ent := mud.NewEntity(cfg)
-			w.AddEntity(ent, w.EntryRoomId())
-		} else {
-			log.Fatalf("Failed to load entity: %s", key)
-		}
-	}
-}
-
-func addItems(w *mud.World, keys ...string) {
-	for _, key := range keys {
-		if cfg, ok := w.TryGetItemConfig(key); ok {
-			itm := mud.NewItem(cfg)
-			w.AddItem(itm, w.EntryRoomId())
-		} else {
-			log.Fatalf("Failed to load item: %s", key)
 		}
 	}
 }

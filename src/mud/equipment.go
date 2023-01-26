@@ -342,10 +342,9 @@ type ArmorConfig struct {
 }
 
 type WeaponConfig struct {
-	Damage       Dice
-	DamageType   DamageType
-	VerbSingular string
-	VerbPlural   string
+	Damage     Dice
+	DamageType DamageType
+	Noun       string
 }
 
 type EquipmentDataMap map[EquipSlot]*ItemData

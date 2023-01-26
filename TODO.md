@@ -149,13 +149,19 @@
 [x] Telnet protocol
     [x] Password mode
 [x] Combat Speed
+[x] Config roots
 ----------------------------------------
+[] RO 
+    [] Stats
+        [] Base Stats
+        [] ASpd
+    [] Combat
+        [] Elements
+    [] Damage type lookups
+    [] Drop tables
 [] Configurable Skills
     [] Restrict by class
 [] Github
-[] Config roots
-[] RRO Stats
-[] RRO Combat
 [] Random Drops
 [] MVP mobs
 [] Equippable Cards

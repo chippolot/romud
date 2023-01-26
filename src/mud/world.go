@@ -16,6 +16,7 @@ type World struct {
 
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
+	vocab         *Vocab
 
 	players      map[PlayerId]*Entity
 	sessions     map[server.SessionId]*server.Session
@@ -38,6 +39,7 @@ func NewWorld(db Database, l *lua.LState, events chan<- server.SessionEvent) *Wo
 		l,
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
+		NewVocab(),
 		make(map[PlayerId]*Entity),
 		make(map[server.SessionId]*server.Session),
 		make(map[RoomId]*Room),

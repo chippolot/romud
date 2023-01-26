@@ -1,4 +1,5 @@
 {
+    "ConfigRoot": "cfg/ro",
     "Servers": [{
         "Type": "telnet",
         "Port": 4000

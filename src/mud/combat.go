@@ -85,24 +85,22 @@ func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
 }
 
 type AttackData struct {
-	ToHit                    int
-	Damage                   Dice
-	DamageMod                Dice
-	DamageType               DamageType
-	Effect                   *ApplyStatusEffectConfig
-	VerbSingular, VerbPlural string
+	ToHit      int
+	Damage     Dice
+	DamageMod  Dice
+	DamageType DamageType
+	Effect     *ApplyStatusEffectConfig
+	Noun       string
 }
 
-// TODO Support multi-attack
 type AttackConfig struct {
-	Name         string
-	ToHit        int
-	Damage       Dice
-	DamageType   DamageType
-	Effect       *ApplyStatusEffectConfig
-	VerbSingular string
-	VerbPlural   string
-	Weight       float32
+	Name       string
+	ToHit      int
+	Damage     Dice
+	DamageType DamageType
+	Effect     *ApplyStatusEffectConfig
+	Noun       string
+	Weight     float32
 }
 
 type SavingThrowConfig struct {
@@ -171,8 +169,7 @@ func GetAttackData(e *Entity) AttackData {
 		aData.Damage = weapon.Damage.Add(GetAbilityModifier(e.stats.Get(Stat_Str)))
 		aData.DamageMod = bonusDice
 		aData.DamageType = weapon.DamageType
-		aData.VerbSingular = weapon.VerbSingular
-		aData.VerbPlural = weapon.VerbPlural
+		aData.Noun = weapon.Noun
 	} else {
 		attack := e.RandomAttack()
 		aData.ToHit = attack.ToHit
@@ -182,8 +179,7 @@ func GetAttackData(e *Entity) AttackData {
 		}
 		aData.Effect = attack.Effect
 		aData.DamageType = attack.DamageType
-		aData.VerbSingular = attack.VerbSingular
-		aData.VerbPlural = attack.VerbPlural
+		aData.Noun = attack.Noun
 	}
 	if e.player != nil {
 		aData.ToHit = GetAbilityModifier(e.stats.Get(Stat_Str)) + ProficiencyChart[e.stats.Get(Stat_Level)]
@@ -348,7 +344,8 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 				dam += aData.DamageMod.Roll()
 				dam = utils.MaxInts(1, dam)
 			}
-			applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, aData.VerbSingular, aData.VerbPlural)
+			noun := w.vocab.GetNoun(aData.Noun)
+			applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, noun.Singular, noun.Plural)
 			if didHit {
 				rollForStatusEffect(tgt, w, aData.Effect)
 			}
@@ -357,7 +354,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	e.combat.requestedSkill = CombatSkill_None
 }
 
-func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, verbSingular string, verbPlural string) int {
+func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, nounSingular string, nounPlural string) int {
 	cnd := tgt.stats.Condition()
 	if cnd == Cnd_Dead {
 		return 0
@@ -381,7 +378,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 		Write("You feel a wave of pain course through you. (%s)", Colorize(Color_Negative, dam)).ToPlayer(tgt).Send()
 		Write("%s shudders in pain", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Restricted(SendRst_CanSee).Send()
 	case DamCtx_Melee:
-		sendDamageMessages(dam, from, tgt, w, verbSingular, verbPlural)
+		sendDamageMessages(dam, from, tgt, w, nounSingular, nounPlural)
 	}
 
 	// Handle kills
@@ -465,37 +462,37 @@ func applyXp(e *Entity, xp int) int {
 	return 0
 }
 
-func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, atkVerbSingular string, atkVerbPlural string) {
+func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, nounSingular string, nounPlural string) {
 	srcDamStr := Colorize(Color_PlayerDam, dam)
 	dstDamStr := Colorize(Color_EnemyDam, dam)
 	if dam <= 0 {
-		Write("Your %s misses %s completely (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s's %s misses you completely (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s tries to %s %s, but misses", ObservableNameCap(src), atkVerbSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("Your %s misses %s completely (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s's %s misses you completely (%s)", ObservableNameCap(src), nounSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s tries to %s %s, but misses", ObservableNameCap(src), nounSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 2 {
-		Write("Your %s knicks %s as it fails to fully connect (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s's %s knicks you as it fails to fully connect (%s)", ObservableNameCap(src), atkVerbSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s's %s knicks %s as it fails to fully connect", ObservableNameCap(src), atkVerbSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("Your %s knicks %s as it fails to fully connect (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s's %s knicks you as it fails to fully connect (%s)", ObservableNameCap(src), nounSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s's %s knicks %s as it fails to fully connect", ObservableNameCap(src), nounSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 4 {
-		Write("Your %s barely scratches %s (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s's %s barely scratch you (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s's %s barely scratches %s", ObservableNameCap(src), atkVerbSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("Your %s barely scratches %s (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s's %s barely scratch you (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s's %s barely scratches %s", ObservableNameCap(src), nounSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 6 {
-		Write("You %s %s (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("You %s %s (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 8 {
-		Write("You %s %s ferociously (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you ferociously (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s ferociously", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("You %s %s ferociously (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you ferociously (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s ferociously", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 10 {
-		Write("You %s %s with all your might (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you with all your might (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s with all your might", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("You %s %s with all your might (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you with all your might (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s with all your might", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else {
-		Write("You %s %s UNBELIEVABLY HARD (%s)", atkVerbSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you UNBELIEVABLY HARD (%s)", ObservableNameCap(src), atkVerbPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s UNBELIEVABLY HARD", ObservableNameCap(src), atkVerbPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("You %s %s UNBELIEVABLY HARD (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you UNBELIEVABLY HARD (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s UNBELIEVABLY HARD", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	}
 }
 

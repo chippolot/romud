@@ -12,6 +12,13 @@ const (
 )
 
 func LoadAssets(w *World, root string) {
+	// Register misc config
+	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "misc"), ScriptFileExtension) {
+		if err := RunScript(w, path); err != nil {
+			log.Fatalf("failed to load scipt file %s -- %v", path, err)
+		}
+	}
+
 	// Load zones
 	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "zones"), ScriptFileExtension) {
 		if err := RunScript(w, path); err != nil {
@@ -36,7 +43,7 @@ func LoadAssets(w *World, root string) {
 	}
 	log.Printf("loaded %d mobs", len(w.entityConfigs))
 
-	// Loat items
+	// Load items
 	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "items"), ScriptFileExtension) {
 		if err := RunScript(w, path); err != nil {
 			log.Fatalf("failed to load items file %s -- %v", path, err)

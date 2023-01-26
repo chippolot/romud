@@ -150,15 +150,17 @@
     [x] Password mode
 [x] Combat Speed
 [x] Config roots
+[x] RO
+    [x] Calc full exp value
 ----------------------------------------
 [] RO 
-    [] Stats
-        [] Calc full exp value
-        [] Base Stats
-        [] ASpd
+    [] Weapon AtkPower
+    [] Base Stats
+    [] ASpd
+    [] Level Table
     [] Auto Level Up
-    [] Combat
-        [] Elements
+    [] Elements
+    [] Dex Weapons
     [] Damage type lookups
     [] Drop tables
 [] Configurable Skills

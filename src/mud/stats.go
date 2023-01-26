@@ -18,10 +18,9 @@ const (
 	Stat_SP
 	Stat_MaxSP
 	Stat_AC
-	Stat_AtkSpd
 	Stat_Mov
 	Stat_MaxMov
-	Stat_Speed
+	Stat_AtkSpd
 	Stat_Str
 	Stat_Agi
 	Stat_Vit
@@ -48,10 +47,9 @@ var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 	Stat_SP:     "SP",
 	Stat_MaxSP:  "MaxSP",
 	Stat_AC:     "AC",
-	Stat_AtkSpd: "AtkSped",
 	Stat_Mov:    "Mov",
 	Stat_MaxMov: "MaxMov",
-	Stat_Speed:  "Speed",
+	Stat_AtkSpd: "AtkSpeed",
 	Stat_Str:    "Str",
 	Stat_Agi:    "Agi",
 	Stat_Vit:    "Vit",
@@ -225,6 +223,10 @@ func (s *Stats) Set(stat StatType, val int) {
 func (s *Stats) Get(stat StatType) int {
 	mod := s.statMods[stat]
 	return s.data[stat] + mod
+}
+
+func (s *Stats) GetFloat(stat StatType) float64 {
+	return float64(s.Get(stat))
 }
 
 func (s *Stats) AddMod(stat StatType, mod int) {

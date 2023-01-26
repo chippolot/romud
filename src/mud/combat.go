@@ -93,7 +93,6 @@ type AttackData struct {
 }
 
 type AttackConfig struct {
-	Name       string
 	ToHit      int
 	Damage     Dice
 	DamageType DamageType

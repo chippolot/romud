@@ -15,8 +15,8 @@ const (
 const (
 	Stat_HP StatType = iota
 	Stat_MaxHP
-	Stat_MP
-	Stat_MaxMP
+	Stat_SP
+	Stat_MaxSP
 	Stat_AC
 	Stat_Mov
 	Stat_MaxMov
@@ -44,8 +44,8 @@ type StatType int
 var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 	Stat_HP:     "HP",
 	Stat_MaxHP:  "MaxHP",
-	Stat_MP:     "MP",
-	Stat_MaxMP:  "MaxMP",
+	Stat_SP:     "SP",
+	Stat_MaxSP:  "MaxSP",
 	Stat_AC:     "AC",
 	Stat_Mov:    "Mov",
 	Stat_MaxMov: "MaxMov",
@@ -209,12 +209,12 @@ func newStatsData(cfg *StatsConfig) StatMap {
 
 func (s *Stats) Add(stat StatType, delta int) {
 	s.data[stat] += delta
-	s.clamp()
+	s.claSP()
 }
 
 func (s *Stats) Set(stat StatType, val int) {
 	s.data[stat] = val
-	s.clamp()
+	s.claSP()
 }
 
 func (s *Stats) Get(stat StatType) int {
@@ -224,12 +224,12 @@ func (s *Stats) Get(stat StatType) int {
 
 func (s *Stats) AddMod(stat StatType, mod int) {
 	s.statMods[stat] += mod
-	s.clamp()
+	s.claSP()
 }
 
 func (s *Stats) RemoveMod(stat StatType, mod int) {
 	s.statMods[stat] -= mod
-	s.clamp()
+	s.claSP()
 }
 
 func (s *Stats) AddRollMod(roll RollType, cfg *RollModConfig, key any) {
@@ -331,7 +331,7 @@ func (s *Stats) ConditionShortString() string {
 		} else if pct >= 0.85 {
 			return Colorize(Color_Cnd_Healthy, "a few scratches")
 		} else if pct >= 0.70 {
-			return Colorize(Color_Cnd_Healthy, "bumps and bruises")
+			return Colorize(Color_Cnd_Healthy, "buSPs and bruises")
 		} else if pct >= 0.50 {
 			return Colorize(Color_Cnd_LightHurt, "roughed up")
 		} else if pct >= 0.30 {
@@ -362,7 +362,7 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 		} else if pct >= 0.85 {
 			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "a few scratches"))
 		} else if pct >= 0.70 {
-			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "bumps and bruises"))
+			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "buSPs and bruises"))
 		} else if pct >= 0.50 {
 			return fmt.Sprintf("%s is looking %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "roughed up"))
 		} else if pct >= 0.30 {
@@ -375,7 +375,7 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 	}
 }
 
-func (s *Stats) clamp() {
+func (s *Stats) claSP() {
 	s.data[Stat_HP] = utils.MinInts(s.Get(Stat_MaxHP), s.Get(Stat_HP))
 	s.data[Stat_Mov] = utils.MinInts(s.Get(Stat_MaxMov), s.Get(Stat_Mov))
 }

@@ -153,6 +153,7 @@
 ----------------------------------------
 [] RO 
     [] Stats
+        [] Calc full exp value
         [] Base Stats
         [] ASpd
     [] Combat

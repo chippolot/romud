@@ -1,9 +1,5 @@
 package mud
 
-import (
-	"github.com/chippolot/go-mud/src/utils"
-)
-
 func DoAdvance(e *Entity, w *World, _ []string) {
 	if !IsReadyForLevelUp(e) {
 		Write("You need more experience to advance to the next level").ToPlayer(e).Send()
@@ -12,13 +8,18 @@ func DoAdvance(e *Entity, w *World, _ []string) {
 
 	e.stats.Add(Stat_Level, 1)
 
-	// TODO Class hit die
-	// TODO Handle stat increases
-	hpGain := D8.Roll() + GetAbilityModifier(e.stats.Get(Stat_Con))
-	e.stats.Add(Stat_MaxHP, utils.MaxInts(1, hpGain))
+	oldHP := e.stats.Get(Stat_HP)
+	oldSP := e.stats.Get(Stat_SP)
+	oldMov := e.stats.Get(Stat_Mov)
+
+	e.stats.Set(Stat_MaxHP, calculateMaxHP(e.stats))
+	e.stats.Set(Stat_MaxSP, calculateMaxSP(e.stats))
+	e.stats.Set(Stat_MaxMov, calculateMaxMov(e.stats))
 
 	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Send()
-	Write("  You gain %d hp", hpGain).ToPlayer(e).Send()
+	Write("  You gain %d hp", e.stats.Get(Stat_HP)-oldHP).ToPlayer(e).Send()
+	Write("  You gain %d sp", e.stats.Get(Stat_SP)-oldSP).ToPlayer(e).Send()
+	Write("  You gain %d mov", e.stats.Get(Stat_Mov)-oldMov).ToPlayer(e).Send()
 	Write("Hooray! %s is now level %d", ObservableName(e), e.stats.Get(Stat_Level)).ToWorld(w).Send()
 
 	if e.player != nil {

@@ -18,15 +18,16 @@ const (
 	Stat_SP
 	Stat_MaxSP
 	Stat_AC
+	Stat_AtkSpd
 	Stat_Mov
 	Stat_MaxMov
 	Stat_Speed
 	Stat_Str
-	Stat_Dex
-	Stat_Con
+	Stat_Agi
+	Stat_Vit
 	Stat_Int
-	Stat_Wis
-	Stat_Cha
+	Stat_Dex
+	Stat_Luk
 	Stat_Level
 	Stat_XP
 )
@@ -47,15 +48,16 @@ var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 	Stat_SP:     "SP",
 	Stat_MaxSP:  "MaxSP",
 	Stat_AC:     "AC",
+	Stat_AtkSpd: "AtkSped",
 	Stat_Mov:    "Mov",
 	Stat_MaxMov: "MaxMov",
 	Stat_Speed:  "Speed",
 	Stat_Str:    "Str",
-	Stat_Dex:    "Dex",
-	Stat_Con:    "Con",
+	Stat_Agi:    "Agi",
+	Stat_Vit:    "Vit",
 	Stat_Int:    "Int",
-	Stat_Wis:    "Wis",
-	Stat_Cha:    "Cha",
+	Stat_Dex:    "Dex",
+	Stat_Luk:    "Luk",
 	Stat_Level:  "Level",
 	Stat_XP:     "XP",
 })
@@ -166,17 +168,19 @@ type RollMods struct {
 }
 
 type StatsConfig struct {
-	HP      Dice
-	AC      int
-	Speed   int
-	Str     int
-	Dex     int
-	Con     int
-	Int     int
-	Wis     int
-	Cha     int
-	Level   int
-	XPValue int
+	HP       Dice
+	AC       int
+	Mov      int
+	AtkSpd   int
+	Str      int
+	Agi      int
+	Vit      int
+	Int      int
+	Dex      int
+	Luk      int
+	Level    int
+	BaseExp  int
+	ExpPerHP float64
 }
 
 type Stats struct {
@@ -195,26 +199,27 @@ func newStatsData(cfg *StatsConfig) StatMap {
 	return StatMap{
 		Stat_HP:     maxHP,
 		Stat_MaxHP:  maxHP,
-		Stat_Mov:    cfg.Speed,
-		Stat_MaxMov: cfg.Speed,
+		Stat_Mov:    cfg.Mov,
+		Stat_MaxMov: cfg.Mov,
+		Stat_AtkSpd: cfg.AtkSpd,
 		Stat_Str:    cfg.Str,
-		Stat_Dex:    cfg.Dex,
-		Stat_Con:    cfg.Con,
+		Stat_Agi:    cfg.Agi,
+		Stat_Vit:    cfg.Vit,
 		Stat_Int:    cfg.Int,
-		Stat_Wis:    cfg.Wis,
-		Stat_Cha:    cfg.Cha,
+		Stat_Dex:    cfg.Dex,
+		Stat_Luk:    cfg.Luk,
 		Stat_Level:  utils.MaxInts(1, cfg.Level),
 	}
 }
 
 func (s *Stats) Add(stat StatType, delta int) {
 	s.data[stat] += delta
-	s.claSP()
+	s.clamp()
 }
 
 func (s *Stats) Set(stat StatType, val int) {
 	s.data[stat] = val
-	s.claSP()
+	s.clamp()
 }
 
 func (s *Stats) Get(stat StatType) int {
@@ -224,12 +229,12 @@ func (s *Stats) Get(stat StatType) int {
 
 func (s *Stats) AddMod(stat StatType, mod int) {
 	s.statMods[stat] += mod
-	s.claSP()
+	s.clamp()
 }
 
 func (s *Stats) RemoveMod(stat StatType, mod int) {
 	s.statMods[stat] -= mod
-	s.claSP()
+	s.clamp()
 }
 
 func (s *Stats) AddRollMod(roll RollType, cfg *RollModConfig, key any) {
@@ -331,7 +336,7 @@ func (s *Stats) ConditionShortString() string {
 		} else if pct >= 0.85 {
 			return Colorize(Color_Cnd_Healthy, "a few scratches")
 		} else if pct >= 0.70 {
-			return Colorize(Color_Cnd_Healthy, "buSPs and bruises")
+			return Colorize(Color_Cnd_Healthy, "bumps and bruises")
 		} else if pct >= 0.50 {
 			return Colorize(Color_Cnd_LightHurt, "roughed up")
 		} else if pct >= 0.30 {
@@ -362,7 +367,7 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 		} else if pct >= 0.85 {
 			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "a few scratches"))
 		} else if pct >= 0.70 {
-			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "buSPs and bruises"))
+			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "bumps and bruises"))
 		} else if pct >= 0.50 {
 			return fmt.Sprintf("%s is looking %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "roughed up"))
 		} else if pct >= 0.30 {
@@ -375,8 +380,9 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 	}
 }
 
-func (s *Stats) claSP() {
+func (s *Stats) clamp() {
 	s.data[Stat_HP] = utils.MinInts(s.Get(Stat_MaxHP), s.Get(Stat_HP))
+	s.data[Stat_SP] = utils.MinInts(s.Get(Stat_MaxSP), s.Get(Stat_SP))
 	s.data[Stat_Mov] = utils.MinInts(s.Get(Stat_MaxMov), s.Get(Stat_Mov))
 }
 

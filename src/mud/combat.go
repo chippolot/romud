@@ -413,17 +413,6 @@ func createCorpse(from *Entity, w *World) {
 	w.AddItem(corpse, from.data.RoomId)
 }
 
-func applyXp(e *Entity, w *World, xp int) int {
-	if !IsMaxLevel(e) {
-		e.stats.Add(Stat_XP, xp)
-		if IsReadyForLevelUp(e) {
-			performLevelUp(e, w)
-		}
-		return xp
-	}
-	return 0
-}
-
 func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, critical bool, nounSingular string, nounPlural string) {
 	srcDamStr := Colorize(Color_PlayerDam, dam)
 	dstDamStr := Colorize(Color_EnemyDam, dam)

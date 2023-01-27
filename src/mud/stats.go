@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -107,6 +108,12 @@ var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 func ParseStatType(str string) (StatType, error) {
 	if val, ok := statTypeStringMapping.ToValue[str]; ok {
 		return val, nil
+	}
+	// Case-insensitive compare
+	for str2, val := range statTypeStringMapping.ToValue {
+		if strings.EqualFold(str, str2) {
+			return val, nil
+		}
 	}
 	return 0, fmt.Errorf("unknown stat type: %s", str)
 }
@@ -604,6 +611,17 @@ func GetXpForNextLevel(e *Entity) int {
 
 func IsReadyForLevelUp(e *Entity) bool {
 	return !IsMaxLevel(e) && GetXpForNextLevel(e) == 0
+}
+
+func applyXp(e *Entity, w *World, xp int) int {
+	if !IsMaxLevel(e) {
+		e.stats.Add(Stat_XP, xp)
+		if IsReadyForLevelUp(e) {
+			performLevelUp(e, w)
+		}
+		return xp
+	}
+	return 0
 }
 
 func performLevelUp(e *Entity, w *World) {

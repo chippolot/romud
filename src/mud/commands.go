@@ -40,7 +40,8 @@ func init() {
 		{DoLook, []string{"look", "l"}, "Describes the current room or object in room", "look / look cat", true, Cnd_Healthy, Pos_Prone},
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
 		{DoPut, []string{"put", "place"}, "Places an item in a container", "put sword in bag", true, Cnd_Healthy, Pos_Sitting},
-		{DoQuit, []string{"quit"}, "Quits the game", "quit", false, 0, 0}, // TODO handle this here!
+		{DoQuit, []string{"quit"}, "Quits the game", "quit", false, 0, 0},
+		{DoRaise, []string{"raise"}, "Raises a stat point", "raise str", false, Cnd_Healthy, Pos_Sitting},
 		{DoSave, []string{"save"}, "Saves the game", "save", false, Cnd_Healthy, 0},
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi", true, Cnd_Healthy, Pos_Prone},
 		{DoShove, []string{"shove"}, "Attempts to shove an opponent during combat. If successful, opponent is knocked down.", "shove goblin", true, Cnd_Healthy, Pos_Standing},

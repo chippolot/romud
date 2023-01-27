@@ -57,12 +57,20 @@ type PlayerPromptProvider struct {
 }
 
 func (pp *PlayerPromptProvider) Prompt() string {
-	prompt := fmt.Sprintf("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv", pp.character.stats.Get(Stat_HP), pp.character.stats.Get(Stat_SP), pp.character.stats.Get(Stat_Mov))))
+	var sb utils.StringBuilder
+	toNextLvlPct := 0
+	lvl := pp.character.stats.Get(Stat_Level)
+	if !IsMaxLevel(pp.character) {
+		curLvlXp := float64(XPChart[lvl])
+		nxtLvlXp := float64(XPChart[lvl+1])
+		toNextLvlPct = int(((pp.character.stats.GetFloat(Stat_XP) - curLvlXp) / nxtLvlXp) * 100)
+	}
+	sb.WriteLinef("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv %d%%xp", pp.character.stats.Get(Stat_HP), pp.character.stats.Get(Stat_SP), pp.character.stats.Get(Stat_Mov), toNextLvlPct)))
 	if pp.character.combat != nil {
 		targetName := ObservableName(pp.character.combat.target).Desc(pp.character)
-		prompt = fmt.Sprintf("%s%s<%s (%s)>:<%s (%s)> ", prompt, utils.NewLine, pp.character.Name(), pp.character.stats.ConditionShortString(), targetName, pp.character.combat.target.stats.ConditionShortString())
+		sb.WriteLinef("<%s (%s)>:<%s (%s)> ", pp.character.Name(), pp.character.stats.ConditionShortString(), targetName, pp.character.combat.target.stats.ConditionShortString())
 	} else {
-		prompt = fmt.Sprintf("%s%s<>:<> ", prompt, utils.NewLine)
+		sb.WriteLine("<>:<> ")
 	}
-	return prompt
+	return sb.String()
 }

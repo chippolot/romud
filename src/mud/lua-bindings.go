@@ -113,6 +113,7 @@ func lua_WorldLoadEntityLimited(entityKey string, roomId RoomId, max int) *Entit
 	}
 	if cfg, ok := lua_W.TryGetEntityConfig(entityKey); ok {
 		ent := NewEntity(cfg)
+		calculateAndUpdateMonsterStats(ent.stats)
 		lua_W.AddEntity(ent, roomId)
 		return ent
 	}

@@ -3,6 +3,7 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -341,77 +342,102 @@ func (s *Stats) MaxStatType(stats ...StatType) StatType {
 
 func (s *Stats) Condition() Condition {
 	hp := s.Get(Stat_HP)
-	if hp < -10 {
-		return Cnd_Dead
-	} else if hp < -5 {
-		return Cnd_MortallyWounded
-	} else if hp < -2 {
-		return Cnd_Incapacitated
-	} else if hp <= 0 {
-		return Cnd_Stunned
-	} else {
-		return Cnd_Healthy
+	switch Option_DeathMode {
+	case Death_Instant:
+		if hp > 0 {
+			return Cnd_Healthy
+		} else {
+			return Cnd_Dead
+		}
+	case Death_Prolonged:
+		if hp < -10 {
+			return Cnd_Dead
+		} else if hp < -5 {
+			return Cnd_MortallyWounded
+		} else if hp < -2 {
+			return Cnd_Incapacitated
+		} else if hp <= 0 {
+			return Cnd_Stunned
+		} else {
+			return Cnd_Healthy
+		}
 	}
+	log.Panicln("unknown death mode", Option_DeathMode)
+	return Cnd_Healthy
 }
 
 func (s *Stats) ConditionShortString() string {
 	hp := s.Get(Stat_HP)
-	if hp < -10 {
-		return Colorize(Color_Cnd_Hurt, "dead")
-	} else if hp < -5 {
-		return Colorize(Color_Cnd_Hurt, "mortally wounded")
-	} else if hp < -2 {
-		return Colorize(Color_Cnd_Hurt, "badly wounded")
-	} else if hp <= 0 {
-		return Colorize(Color_Cnd_Hurt, "awful condition")
-	} else {
-		pct := float32(hp) / float32(s.Get(Stat_MaxHP))
-		if pct >= 0.95 {
-			return Colorize(Color_Cnd_Healthy, "excellent condition")
-		} else if pct >= 0.85 {
-			return Colorize(Color_Cnd_Healthy, "a few scratches")
-		} else if pct >= 0.70 {
-			return Colorize(Color_Cnd_Healthy, "bumps and bruises")
-		} else if pct >= 0.50 {
-			return Colorize(Color_Cnd_LightHurt, "roughed up")
-		} else if pct >= 0.30 {
-			return Colorize(Color_Cnd_LightHurt, "bleeding")
-		} else if pct >= 0.15 {
-			return Colorize(Color_Cnd_LightHurt, "bleeding heavily")
-		} else {
-			return Colorize(Color_Cnd_Hurt, "awful condition")
+	if hp <= 0 {
+		switch Option_DeathMode {
+		case Death_Instant:
+			return Colorize(Color_Cnd_Hurt, "dead")
+		case Death_Prolonged:
+			if hp < -10 {
+				return Colorize(Color_Cnd_Hurt, "dead")
+			} else if hp < -5 {
+				return Colorize(Color_Cnd_Hurt, "mortally wounded")
+			} else if hp < -2 {
+				return Colorize(Color_Cnd_Hurt, "badly wounded")
+			} else {
+				return Colorize(Color_Cnd_Hurt, "awful condition")
+			}
 		}
+	}
+
+	pct := float32(hp) / float32(s.Get(Stat_MaxHP))
+	if pct >= 0.95 {
+		return Colorize(Color_Cnd_Healthy, "excellent condition")
+	} else if pct >= 0.85 {
+		return Colorize(Color_Cnd_Healthy, "a few scratches")
+	} else if pct >= 0.70 {
+		return Colorize(Color_Cnd_Healthy, "bumps and bruises")
+	} else if pct >= 0.50 {
+		return Colorize(Color_Cnd_LightHurt, "roughed up")
+	} else if pct >= 0.30 {
+		return Colorize(Color_Cnd_LightHurt, "bleeding")
+	} else if pct >= 0.15 {
+		return Colorize(Color_Cnd_LightHurt, "bleeding heavily")
+	} else {
+		return Colorize(Color_Cnd_Hurt, "awful condition")
 	}
 }
 
 func (s *Stats) ConditionLongString(e *Entity) string {
 	hp := s.Get(Stat_HP)
-	maxHP := s.Get(Stat_MaxHP)
-	if hp < -10 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
-	} else if hp < -5 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "mortally wounded"))
-	} else if hp < -2 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "badly wounded"))
-	} else if hp <= 0 {
-		return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
-	} else {
-		pct := float32(hp) / float32(maxHP)
-		if pct >= 0.95 {
-			return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "excellent condition"))
-		} else if pct >= 0.85 {
-			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "a few scratches"))
-		} else if pct >= 0.70 {
-			return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "bumps and bruises"))
-		} else if pct >= 0.50 {
-			return fmt.Sprintf("%s is looking %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "roughed up"))
-		} else if pct >= 0.30 {
-			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding"))
-		} else if pct >= 0.15 {
-			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding heavily"))
-		} else {
-			return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
+	if hp <= 0 {
+		switch Option_DeathMode {
+		case Death_Instant:
+			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
+		case Death_Prolonged:
+			if hp < -10 {
+				return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
+			} else if hp < -5 {
+				return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "mortally wounded"))
+			} else if hp < -2 {
+				return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "badly wounded"))
+			} else {
+				return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
+			}
 		}
+	}
+
+	maxHP := s.Get(Stat_MaxHP)
+	pct := float32(hp) / float32(maxHP)
+	if pct >= 0.95 {
+		return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "excellent condition"))
+	} else if pct >= 0.85 {
+		return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "a few scratches"))
+	} else if pct >= 0.70 {
+		return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "bumps and bruises"))
+	} else if pct >= 0.50 {
+		return fmt.Sprintf("%s is looking %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "roughed up"))
+	} else if pct >= 0.30 {
+		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding"))
+	} else if pct >= 0.15 {
+		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding heavily"))
+	} else {
+		return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
 	}
 }
 
@@ -576,4 +602,29 @@ func GetXpForNextLevel(e *Entity) int {
 
 func IsReadyForLevelUp(e *Entity) bool {
 	return !IsMaxLevel(e) && GetXpForNextLevel(e) == 0
+}
+
+func performLevelUp(e *Entity, w *World) {
+	if !IsReadyForLevelUp(e) {
+		Write("You need more experience to advance to the next level").ToPlayer(e).Send()
+		return
+	}
+
+	e.stats.Add(Stat_Level, 1)
+
+	oldHP := e.stats.Get(Stat_HP)
+	oldSP := e.stats.Get(Stat_SP)
+	oldMov := e.stats.Get(Stat_Mov)
+
+	calculateAndUpdatePlayerStats(e.stats)
+
+	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Send()
+	Write("  You gain %d hp", e.stats.Get(Stat_HP)-oldHP).ToPlayer(e).Send()
+	Write("  You gain %d sp", e.stats.Get(Stat_SP)-oldSP).ToPlayer(e).Send()
+	Write("  You gain %d mov", e.stats.Get(Stat_Mov)-oldMov).ToPlayer(e).Send()
+	Write("Hooray! %s is now level %d", ObservableName(e), e.stats.Get(Stat_Level)).ToWorld(w).Send()
+
+	if e.player != nil {
+		w.SavePlayerCharacter(e.player.id)
+	}
 }

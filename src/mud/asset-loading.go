@@ -11,7 +11,9 @@ const (
 	ScriptFileExtension = ".lua"
 )
 
-func LoadAssets(w *World, root string) {
+func LoadAssets(w *World, projectRoot string) {
+	root := path.Join(projectRoot, w.cfg.ConfigRoot)
+
 	// Register misc config
 	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "misc"), ScriptFileExtension) {
 		if err := RunScript(w, path); err != nil {

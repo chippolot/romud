@@ -166,18 +166,22 @@
     [x] Weapon AtkPower
     [x] Unarmed AtkSpeed
     [x] Hard Def
+    [x] Fix damage messages
+    [x] Die at 0
+    [x] No more bleeding out
+    [x] Players don't drop corpses
+    [x] Critical Message
+    [x] Auto Level Up
+    [x] Why aren't they moving?
 ----------------------------------------
 [] RO 
-    [x] Fix damage messages
-    [] Why aren't they moving?
-    [] Die at 0
-    [] No more bleeding out
-    [] Players don't drop corpses
+    [] Stat points
+        [] Gain
+        [] Spend
+    [] HP / SP recovery via passive
+    [] Shops
     [] Corpses crumble after time
     [] Advantage / Disadvantage
-    [] Critical Message
-    [] Auto Level Up
-    [] HP / SP recovery via passive
     [] Dex Weapons
     [] Damage elements
     [] Damage sizes

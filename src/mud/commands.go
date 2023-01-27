@@ -27,7 +27,6 @@ var Commands CommandList
 func init() {
 	Commands = []*CommandDesc{
 		{DoAdmin, []string{"admin"}, "Runs an admin command", "admin {command} {params}", true, 0, 0},
-		{DoAdvance, []string{"advance"}, "Advances up to the next experience level", "advance", false, Cnd_Healthy, Pos_Sitting},
 		{DoAlias, []string{"alias"}, "Creates a new alias which expands to the subsequent text. If run alone, lists current aliases.", "alias gac get all corpse", true, 0, 0},
 		{DoAttack, []string{"kill", "hit", "attack", "fight"}, "Begin attacking a target", "attack rat / fight rat / kill rat / hit rat", true, Cnd_Healthy, Pos_Standing},
 		{DoConsider, []string{"con"}, "Considers how difficult it might be to kill a target", "con goblin", true, Cnd_Healthy, Pos_Prone},

@@ -1,30 +1,5 @@
 package mud
 
-func DoAdvance(e *Entity, w *World, _ []string) {
-	if !IsReadyForLevelUp(e) {
-		Write("You need more experience to advance to the next level").ToPlayer(e).Send()
-		return
-	}
-
-	e.stats.Add(Stat_Level, 1)
-
-	oldHP := e.stats.Get(Stat_HP)
-	oldSP := e.stats.Get(Stat_SP)
-	oldMov := e.stats.Get(Stat_Mov)
-
-	calculateAndUpdatePlayerStats(e.stats)
-
-	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Send()
-	Write("  You gain %d hp", e.stats.Get(Stat_HP)-oldHP).ToPlayer(e).Send()
-	Write("  You gain %d sp", e.stats.Get(Stat_SP)-oldSP).ToPlayer(e).Send()
-	Write("  You gain %d mov", e.stats.Get(Stat_Mov)-oldMov).ToPlayer(e).Send()
-	Write("Hooray! %s is now level %d", ObservableName(e), e.stats.Get(Stat_Level)).ToWorld(w).Send()
-
-	if e.player != nil {
-		w.SavePlayerCharacter(e.player.id)
-	}
-}
-
 func DoGet(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {

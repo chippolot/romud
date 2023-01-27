@@ -11,8 +11,9 @@ import (
 )
 
 type World struct {
-	db Database
-	L  *lua.LState
+	db  Database
+	L   *lua.LState
+	cfg *MudConfig
 
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
@@ -33,10 +34,12 @@ type World struct {
 	events chan<- server.SessionEvent
 }
 
-func NewWorld(db Database, l *lua.LState, events chan<- server.SessionEvent) *World {
+func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.SessionEvent) *World {
+	setGlobalOptions(cfg)
 	return &World{
 		db,
 		l,
+		cfg,
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
 		NewVocab(),

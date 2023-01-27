@@ -12,6 +12,11 @@ func calculateAndUpdatePlayerStats(s *Stats) {
 	s.Set(Stat_MaxMov, calculateMaxMov(s))
 }
 
+func calculateAndUpdateMonsterStats(s *Stats) {
+	s.Set(Stat_MaxMov, calculateMaxMov(s))
+	s.Set(Stat_Mov, s.Get(Stat_MaxMov))
+}
+
 func calculateCarryingCapacity(s *Stats) int {
 	// Mechanics: RO Classic
 	str := s.Get(Stat_Str)

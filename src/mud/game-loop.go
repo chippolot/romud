@@ -39,7 +39,7 @@ func GameLoop(w *World) {
 		{wanderersSystem, 3, 0},
 		{aggroSystem, 1, 0},
 		{assistersSystem, 1, 0},
-		{combatSystem, 3, 0},
+		{combatSystem, 2, 0},
 		{statusMessagesSystem, 0, 0},
 		{cleanupDeadSystem, 0, 0},
 		{playerOutputSystem, 0, 0},
@@ -143,9 +143,16 @@ func statRestorationSystem(w *World, t GameTime) {
 			hpGain = -2
 		}
 
+		if !Option_AutoRegenHP {
+			hpGain = 0
+		}
+		if !Option_AutoRegenSP {
+			spGain = 0
+		}
+
 		if hpGain > 0 {
 			e.stats.Add(Stat_HP, hpGain)
-		} else {
+		} else if hpGain < 0 {
 			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, false, "", "")
 			message = Colorize(Color_NegativeBld, "You are bleeding!")
 		}
@@ -197,6 +204,7 @@ func wanderersSystem(w *World, t GameTime) {
 		if !r.IsExitOpen(dir) {
 			continue
 		}
+
 		nextRid := r.cfg.Exits[dir]
 		nextR, ok := w.rooms[nextRid]
 		if !ok {
@@ -205,7 +213,7 @@ func wanderersSystem(w *World, t GameTime) {
 		}
 
 		// Stay in same zone
-		if e.entityFlags.Has(EFlag_StayZone) {
+		if !e.entityFlags.Has(EFlag_CanLeaveZone) {
 			if r.zone != nextR.zone {
 				continue
 			}

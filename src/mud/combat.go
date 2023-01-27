@@ -57,7 +57,7 @@ func ParseDamageType(str string) (DamageType, error) {
 	if val, ok := damageTypeStringMapping.ToValue[str]; ok {
 		return val, nil
 	}
-	return 0, fmt.Errorf("unknown damagee type: %s", str)
+	return 0, fmt.Errorf("unknown damage type: %s", str)
 }
 
 func (dt *DamageType) String() string {
@@ -360,14 +360,16 @@ func die(tgt *Entity, w *World, killer *Entity) {
 	// Distribute XP
 	if killer != nil {
 		xp := calculateExpValue(tgt.stats)
-		xp = applyXp(killer, xp)
+		xp = applyXp(killer, w, xp)
 		if xp > 0 {
 			Write("You gain %d XP from defeating %s", xp, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()
 		}
 	}
 
 	// Create corpse
-	createCorpse(tgt, w)
+	if tgt.player == nil || Option_PlayerCorpses {
+		createCorpse(tgt, w)
+	}
 
 	if tgt.player != nil {
 		// Clear temp status effects
@@ -411,11 +413,11 @@ func createCorpse(from *Entity, w *World) {
 	w.AddItem(corpse, from.data.RoomId)
 }
 
-func applyXp(e *Entity, xp int) int {
+func applyXp(e *Entity, w *World, xp int) int {
 	if !IsMaxLevel(e) {
 		e.stats.Add(Stat_XP, xp)
 		if IsReadyForLevelUp(e) {
-			Write("You're ready for level %d!", e.stats.Get(Stat_Level)+1).ToPlayer(e).Send()
+			performLevelUp(e, w)
 		}
 		return xp
 	}

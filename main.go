@@ -37,13 +37,13 @@ func main() {
 	defer L.Close()
 
 	// Create world
-	world := mud.NewWorld(db, L, events)
+	world := mud.NewWorld(db, L, cfg.Mud, events)
 
 	// Register global lua funcs
 	mud.RegisterGlobalLuaBindings(L, world)
 
 	// Load assets
-	mud.LoadAssets(world, path.Join(projectRoot, cfg.ConfigRoot))
+	mud.LoadAssets(world, projectRoot)
 	world.SetEntryRoomId(1)
 	world.ResetAllZones()
 

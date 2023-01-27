@@ -1,5 +1,11 @@
 {
-    "ConfigRoot": "cfg/ro",
+    "Mud": {
+        "ConfigRoot": "cfg/ro",
+        "PlayerCorpses": false,
+        "DeathMode": "instant",
+        "AutoRegenHP": false,
+        "AutoRegenSP": false
+    },
     "Servers": [{
         "Type": "telnet",
         "Port": 4000

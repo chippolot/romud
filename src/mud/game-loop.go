@@ -80,7 +80,7 @@ func statusEffectsSystem(w *World, t GameTime) {
 		// Apply status effects
 		if e.HasStatusEffect(StatusType_Poison) && int(t.time)%3 == 0 {
 			poisonDam := utils.MaxInt(1, e.stats.Get(Stat_MaxHP)/10)
-			applyDamage(e, w, e, poisonDam, DamCtx_Poison, Dam_Poison, "", "")
+			applyDamage(e, w, e, poisonDam, DamCtx_Poison, Dam_Poison, false, "", "")
 		}
 
 		// Decrease status timers
@@ -146,7 +146,7 @@ func statRestorationSystem(w *World, t GameTime) {
 		if hpGain > 0 {
 			e.stats.Add(Stat_HP, hpGain)
 		} else {
-			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, "hit", "hits")
+			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, false, "", "")
 			message = Colorize(Color_NegativeBld, "You are bleeding!")
 		}
 		e.stats.Add(Stat_SP, spGain)
@@ -317,7 +317,7 @@ func scavengersSystem(w *World, t GameTime) {
 			if item.cfg.Flags.Has(IFlag_Environmental) {
 				continue
 			}
-			itemValue := item.cfg.Value
+			itemValue := item.Value()
 
 			// Scavengers pick up the most valuable items whereas trash collectors
 			// pick up the least valuable item

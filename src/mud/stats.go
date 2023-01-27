@@ -19,7 +19,6 @@ const (
 	Stat_MaxHP
 	Stat_SP
 	Stat_MaxSP
-	Stat_AC
 	Stat_Mov
 	Stat_MaxMov
 	Stat_Str
@@ -90,7 +89,6 @@ var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 	Stat_MaxHP:  "MaxHP",
 	Stat_SP:     "SP",
 	Stat_MaxSP:  "MaxSP",
-	Stat_AC:     "AC",
 	Stat_Mov:    "Mov",
 	Stat_MaxMov: "MaxMov",
 	Stat_Str:    "Str",
@@ -211,7 +209,6 @@ type RollMods struct {
 type StatsConfig struct {
 	HP       Dice
 	Size     Size
-	AC       int
 	Mov      int
 	Str      int
 	Agi      int

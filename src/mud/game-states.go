@@ -91,6 +91,18 @@ func (s *LoginState) ProcessInput(input string) StateId {
 		if s.passMatch(input, s.pass) {
 			log.Printf("creating new player: %s", s.name)
 			*s.playerCharacter = s.world.CreatePlayerCharacter(s.name, s.pass, s.player)
+
+			// Give starting equipment
+			// TODO: Make scripted
+			cfg, _ := lua_W.TryGetItemConfig("knife")
+			itm := NewItem(cfg)
+			(*s.playerCharacter).AddItem(itm)
+			(*s.playerCharacter).Equip(itm)
+			cfg, _ = lua_W.TryGetItemConfig("cotton_shirt")
+			itm = NewItem(cfg)
+			(*s.playerCharacter).AddItem(itm)
+			(*s.playerCharacter).Equip(itm)
+
 			s.player.SendRaw(server.TelNet_Command_EchoOn)
 			return GameState_Playing
 		} else {

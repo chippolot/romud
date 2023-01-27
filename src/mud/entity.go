@@ -187,22 +187,16 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 
 		// Find best slot for slot categories
 		switch slot {
-		case EqSlot_Fingers:
-			slot = e.bestEquipSlot(EqSlot_FingerR, EqSlot_FingerL)
-		case EqSlot_Wrists:
-			slot = e.bestEquipSlot(EqSlot_WristR, EqSlot_WristL)
-		case EqSlot_Neck:
-			slot = e.bestEquipSlot(EqSlot_Neck1, EqSlot_Neck2)
-		case EqSlot_Held1H:
-			slot = e.bestEquipSlot(EqSlot_HeldR, EqSlot_HeldL)
+		case EqSlot_Held_1H:
+			slot = e.bestEquipSlot(EqSlot_Held_R, EqSlot_Held_L)
 		}
 		e.RemoveItem(item)
 		unequipped := make([]*Item, 0)
-		if slot == EqSlot_Held2H {
-			if u := e.unequipFromSlot(EqSlot_HeldL); u != nil {
+		if slot == EqSlot_Held_2H {
+			if u := e.equipToSlot(item, EqSlot_Held_R); u != nil {
 				unequipped = append(unequipped, u)
 			}
-			if u := e.equipToSlot(item, EqSlot_HeldR); u != nil {
+			if u := e.unequipFromSlot(EqSlot_Held_L); u != nil {
 				unequipped = append(unequipped, u)
 			}
 		} else {
@@ -242,49 +236,13 @@ func (e *Entity) Unequip(item *Item) bool {
 }
 
 func (e *Entity) GetWeapon() (*WeaponConfig, *EquipmentConfig, bool) {
-	if weaponItem, ok := e.equipped[EqSlot_HeldR]; ok && weaponItem.cfg.Equipment.Weapon != nil {
+	if weaponItem, ok := e.equipped[EqSlot_Held_R]; ok && weaponItem.cfg.Equipment.Weapon != nil {
 		return weaponItem.cfg.Equipment.Weapon, weaponItem.cfg.Equipment, true
 	}
-	if weaponItem, ok := e.equipped[EqSlot_HeldL]; ok && weaponItem.cfg.Equipment.Weapon != nil {
+	if weaponItem, ok := e.equipped[EqSlot_Held_L]; ok && weaponItem.cfg.Equipment.Weapon != nil {
 		return weaponItem.cfg.Equipment.Weapon, weaponItem.cfg.Equipment, true
 	}
 	return nil, nil, false
-}
-
-func (e *Entity) AC() int {
-	sum := 0.0
-	armCnt := 0
-	hvyCnt := 0
-	for _, eq := range e.equipped {
-		if eq.cfg.Equipment.Armor == nil {
-			continue
-		}
-		armCnt++
-		if eq.cfg.Flags.Has(IFlag_HeavyArmor) {
-			hvyCnt++
-		}
-		ac := float64(eq.cfg.Equipment.Armor.AC)
-		slot := eq.cfg.Equipment.Slot
-		if slot.Has(EqSlot_Body) {
-			ac *= .34
-		} else if slot.Has(EqSlot_Head) {
-			ac *= .2
-		} else if slot.Has(EqSlot_Arms) || slot.Has(EqSlot_Legs) {
-			ac *= .15
-		} else {
-			ac *= .1
-		}
-		sum += ac
-	}
-	dexBonus := GetAbilityModifier(e.stats.Get(Stat_Dex))
-	if e.player == nil {
-		dexBonus = 0
-	}
-	dexBonusRatio := 1.0
-	if armCnt > 0 {
-		dexBonusRatio = float64(armCnt-hvyCnt) / float64(armCnt)
-	}
-	return e.cfg.Stats.AC + int(sum+float64(dexBonus)*dexBonusRatio)
 }
 
 func (e *Entity) AddStatusEffect(statusType StatusEffectMask, duration utils.Seconds) bool {
@@ -411,7 +369,7 @@ func (e *Entity) DescribeStatus() string {
 	} else {
 		sb.WriteLinef("Atk    : %s-%s", Colorize(Color_Stat, e.cfg.Attack.Power.Min), Colorize(Color_Stat, e.cfg.Attack.Power.Max))
 	}
-	sb.WriteLinef("Def    : %s + %s", Colorize(Color_Stat, calculateHardDEF(e)), Colorize(Color_Stat, calculateSoftDEF(e)))
+	sb.WriteLinef("Def    : %s + %s", Colorize(Color_Stat, calculateHardDef(e)), Colorize(Color_Stat, calculateSoftDef(e)))
 	sb.WriteNewLine()
 	if e.player != nil {
 		sb.WriteLinef("Hit    : %s", Colorize(Color_Stat, calculateHit(e.stats)))
@@ -472,18 +430,29 @@ func (e *Entity) DescribeEquipment() string {
 	var sb utils.StringBuilder
 	sb.WriteLinef("%s is using:", e.NameCapitalized())
 	sb.WriteHorizontalDivider()
-	if len(e.equipped) == 0 {
-		sb.WriteLine("  Nothing.")
-	} else {
-		for slot, eq := range e.equipped {
-			slotDesc := GetEquipmentSlotDescription(slot, eq)
-			if slotDesc == "" {
-				continue
-			}
-			sb.WriteLinef("  %-15s%s", slotDesc, eq.Name())
-		}
-	}
+	e.describeEquipmeentSlot(EqSlot_Head_High, &sb)
+	e.describeEquipmeentSlot(EqSlot_Head_Mid, &sb)
+	e.describeEquipmeentSlot(EqSlot_Head_Low, &sb)
+	e.describeEquipmeentSlot(EqSlot_Armor, &sb)
+	e.describeEquipmeentSlot(EqSlot_Held_L, &sb)
+	e.describeEquipmeentSlot(EqSlot_Held_R, &sb)
+	e.describeEquipmeentSlot(EqSlot_Garment, &sb)
+	e.describeEquipmeentSlot(EqSlot_Feet, &sb)
+	e.describeEquipmeentSlot(EqSlot_Accessory_1, &sb)
+	e.describeEquipmeentSlot(EqSlot_Accessory_2, &sb)
 	return strings.TrimSuffix(sb.String(), utils.NewLine)
+}
+
+func (e *Entity) describeEquipmeentSlot(slot EquipSlot, sb *utils.StringBuilder) {
+	eqName := "--"
+	if eq, ok := e.equipped[slot]; ok {
+		eqName = eq.NameCapitalized()
+	}
+	slotDesc := GetEquipmentSlotDescription(slot)
+	if slotDesc == "" {
+		return
+	}
+	sb.WriteLinef("  %-15s%s", slotDesc, eqName)
 }
 
 func (e *Entity) MatchesKeyword(keyword string) bool {

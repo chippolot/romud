@@ -1,5 +1,6 @@
 Config.RegisterNouns({
     "hit", "hits",
     "punch", "punches",
-    "splash", "splashes"
+    "splash", "splashes",
+    "stab", "stabs"
 })

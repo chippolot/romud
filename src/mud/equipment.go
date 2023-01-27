@@ -3,89 +3,57 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 
 	"github.com/chippolot/go-mud/src/bits"
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type EquipSlot bits.Bits
 
 const (
 	EqSlot_None EquipSlot = 1 << iota
-	EqSlot_Waist
-	EqSlot_Neck1
-	EqSlot_Neck2
-	EqSlot_Head
-	EqSlot_Body
-	EqSlot_Hands
-	EqSlot_Arms
-	EqSlot_Legs
+
+	// Slot flags
+	EqSlot_Head_High
+	EqSlot_Head_Mid
+	EqSlot_Head_Low
+	EqSlot_Garment
+	EqSlot_Armor
 	EqSlot_Feet
-	EqSlot_FingerL
-	EqSlot_FingerR
-	EqSlot_WristL
-	EqSlot_WristR
-	EqSlot_Shoulders
-	EqSlot_HeldL
-	EqSlot_HeldR
-	EqSlot_2H
-	EqSlot_Fingers = EqSlot_FingerL | EqSlot_FingerR
-	EqSlot_Wrists  = EqSlot_WristL | EqSlot_WristR
-	EqSlot_Held1H  = EqSlot_HeldL | EqSlot_HeldR
-	EqSlot_Held2H  = EqSlot_HeldL | EqSlot_HeldR | EqSlot_2H
-	EqSlot_Neck    = EqSlot_Neck1 | EqSlot_Neck2
+	EqSlot_Accessory_1
+	EqSlot_Accessory_2
+	EqSlot_Held_L
+	EqSlot_Held_R
+
+	// Special flags
+	EqSlot_Accessory
+	EqSlot_Held_1H
+	EqSlot_Held_2H = EqSlot_Held_L | EqSlot_Held_R
 )
 
-func ParseEquipmentSlot(str string) (EquipSlot, error) {
-	switch str {
-	case "none":
-		return EqSlot_None, nil
-	case "waist":
-		return EqSlot_Waist, nil
-	case "neck1":
-		return EqSlot_Neck1, nil
-	case "neck2":
-		return EqSlot_Neck2, nil
-	case "head":
-		return EqSlot_Head, nil
-	case "body":
-		return EqSlot_Body, nil
-	case "hands":
-		return EqSlot_Hands, nil
-	case "arms":
-		return EqSlot_Arms, nil
-	case "legs":
-		return EqSlot_Legs, nil
-	case "feet":
-		return EqSlot_Feet, nil
-	case "fingerl":
-		return EqSlot_FingerL, nil
-	case "fingerr":
-		return EqSlot_FingerR, nil
-	case "wristl":
-		return EqSlot_WristL, nil
-	case "wristr":
-		return EqSlot_WristR, nil
-	case "shoulders":
-		return EqSlot_Shoulders, nil
-	case "heldl":
-		return EqSlot_HeldL, nil
-	case "heldr":
-		return EqSlot_HeldR, nil
-	case "2h":
-		return EqSlot_2H, nil
-	case "fingers":
-		return EqSlot_Fingers, nil
-	case "wrists":
-		return EqSlot_Wrists, nil
-	case "held1h":
-		return EqSlot_Held1H, nil
-	case "held2h":
-		return EqSlot_Held2H, nil
-	case "neck":
-		return EqSlot_Neck, nil
-	default:
-		return 0, fmt.Errorf("unknown equipment slot: %s", str)
+var equipSlotStringMapping = utils.NewStringMapping(map[EquipSlot]string{
+	EqSlot_None:        "none",
+	EqSlot_Head_High:   "head_high",
+	EqSlot_Head_Mid:    "head_mid",
+	EqSlot_Head_Low:    "head_low",
+	EqSlot_Garment:     "garment",
+	EqSlot_Armor:       "armor",
+	EqSlot_Feet:        "feet",
+	EqSlot_Accessory_1: "accessory_1",
+	EqSlot_Accessory_2: "accessory_2",
+	EqSlot_Accessory:   "accessory",
+	EqSlot_Held_L:      "held_l",
+	EqSlot_Held_R:      "held_r",
+	EqSlot_Held_1H:     "held_1h",
+	EqSlot_Held_2H:     "held_2h",
+})
+
+func ParseEquipSlot(str string) (EquipSlot, error) {
+	if val, ok := equipSlotStringMapping.ToValue[str]; ok {
+		return val, nil
 	}
+	return 0, fmt.Errorf("unknown equip slot: %s", str)
 }
 
 func (s *EquipSlot) Has(flag EquipSlot) bool {
@@ -93,53 +61,8 @@ func (s *EquipSlot) Has(flag EquipSlot) bool {
 }
 
 func (s *EquipSlot) String() string {
-	switch *s {
-	case EqSlot_None:
-		return "none"
-	case EqSlot_Waist:
-		return "waist"
-	case EqSlot_Neck1:
-		return "neck1"
-	case EqSlot_Neck2:
-		return "neck2"
-	case EqSlot_Head:
-		return "head"
-	case EqSlot_Body:
-		return "body"
-	case EqSlot_Hands:
-		return "hands"
-	case EqSlot_Arms:
-		return "arms"
-	case EqSlot_Legs:
-		return "legs"
-	case EqSlot_Feet:
-		return "feet"
-	case EqSlot_FingerL:
-		return "fingerl"
-	case EqSlot_FingerR:
-		return "fingerr"
-	case EqSlot_WristL:
-		return "wristl"
-	case EqSlot_WristR:
-		return "wristr"
-	case EqSlot_Shoulders:
-		return "shoulders"
-	case EqSlot_HeldL:
-		return "heldl"
-	case EqSlot_HeldR:
-		return "heldr"
-	case EqSlot_2H:
-		return "2h"
-	case EqSlot_Fingers:
-		return "fingers"
-	case EqSlot_Wrists:
-		return "wrists"
-	case EqSlot_Held1H:
-		return "held1h"
-	case EqSlot_Held2H:
-		return "held2h"
-	case EqSlot_Neck:
-		return "neck"
+	if str, ok := equipSlotStringMapping.ToString[*s]; ok {
+		return str
 	}
 	return "unknown"
 }
@@ -153,55 +76,30 @@ func (s *EquipSlot) UnmarshalJSON(data []byte) (err error) {
 	if err := json.Unmarshal(data, &str); err != nil {
 		return err
 	}
-	if flag, err := ParseEquipmentSlot(str); err == nil {
-		*s |= flag
+	if *s, err = ParseEquipSlot(str); err != nil {
+		return err
 	}
-	return err
+	return nil
 }
 
-func GetEquipmentSlotDescription(slot EquipSlot, item *Item) string {
-	if item.cfg.Equipment.Slot.Has(EqSlot_2H) {
-		switch slot {
-		case EqSlot_FingerL, EqSlot_FingerR, EqSlot_Fingers:
-			return "<fingers>"
-		case EqSlot_WristL, EqSlot_WristR, EqSlot_Wrists:
-			return "<wrists>"
-		case EqSlot_HeldL, EqSlot_HeldR, EqSlot_Held1H, EqSlot_Held2H:
-			return "<hands>"
-		}
-	}
+func GetEquipmentSlotDescription(slot EquipSlot) string {
 	switch slot {
-	case EqSlot_Waist:
-		return "<waist>"
-	case EqSlot_Neck1, EqSlot_Neck2, EqSlot_Neck:
-		return "<neck>"
-	case EqSlot_Head:
+	case EqSlot_Head_High, EqSlot_Head_Mid, EqSlot_Head_Low:
 		return "<head>"
-	case EqSlot_Body:
-		return "<body>"
-	case EqSlot_Hands:
-		return "<hands>"
-	case EqSlot_Arms:
-		return "<arms>"
-	case EqSlot_Legs:
-		return "<legs>"
+	case EqSlot_Accessory_1, EqSlot_Accessory_2:
+		return "<accessory>"
+	case EqSlot_Garment:
+		return "<garment>"
+	case EqSlot_Armor:
+		return "<armor>"
 	case EqSlot_Feet:
 		return "<feet>"
-	case EqSlot_FingerL:
-		return "<left finger>"
-	case EqSlot_FingerR:
-		return "<right finger>"
-	case EqSlot_WristL:
-		return "<left wrist>"
-	case EqSlot_WristR:
-		return "<right wrist>"
-	case EqSlot_Shoulders:
-		return "<shoulders>"
-	case EqSlot_HeldL:
+	case EqSlot_Held_L:
 		return "<left hand>"
-	case EqSlot_HeldR:
+	case EqSlot_Held_R:
 		return "<right hand>"
 	}
+	log.Printf("unknown slot %s", slot.String())
 	return ""
 }
 
@@ -232,80 +130,33 @@ func performUnequip(e *Entity, w *World, item *Item) {
 }
 
 func sendEquipMessages(e *Entity, r *Room, slot EquipSlot, item *Item) {
-	if item.cfg.Equipment.Slot.Has(EqSlot_2H) {
-		switch slot {
-		case EqSlot_FingerL, EqSlot_FingerR, EqSlot_Fingers:
-			Write("You slide %s onto both of your ring fingrs", ObservableName(item)).ToPlayer(e).Send()
-			Write("%s slides %s onto both of %s ring fingrs", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-			return
-		case EqSlot_WristL, EqSlot_WristR, EqSlot_Wrists:
-			Write("You put %s around both of your wrists", ObservableName(item)).ToPlayer(e).Send()
-			Write("%s puts %s onto both of %s wrists", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-			return
-		case EqSlot_HeldL, EqSlot_HeldR, EqSlot_Held1H, EqSlot_Held2H:
-			Write("You grasp %s in both hands", ObservableName(item)).ToPlayer(e).Send()
-			Write("%s grasps %s in both of %s hands", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-			return
-		}
+	if item.cfg.Equipment.Slot.Has(EqSlot_Held_2H) {
+		Write("You grasp %s in both hands", ObservableName(item)).ToPlayer(e).Send()
+		Write("%s grasps %s in both of %s hands", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
+		return
 	}
 	switch slot {
-	case EqSlot_Waist:
-		Write("You fasten %s around your waist", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s fastens %s around %s waist", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_Neck1, EqSlot_Neck2, EqSlot_Neck:
-		Write("You wear %s around your neck", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s wears %s around %s neck", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_Head:
+	case EqSlot_Head_High, EqSlot_Head_Mid, EqSlot_Head_Low:
 		Write("You wear %s on your head", ObservableName(item)).ToPlayer(e).Send()
 		Write("%s wears %s on %s head", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
 		return
-	case EqSlot_Body:
-		Write("You wear %s around your body", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s wears %s around %s body", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_Hands:
-		Write("You put %s on your hands", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s puts %s on %s hands", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_Arms:
-		Write("You wear %s on your arms", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s wears %s on %s arms", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_Legs:
-		Write("You wear %s on your legs", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s wears %s on %s legs", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
+	case EqSlot_Accessory_1, EqSlot_Accessory_2, EqSlot_Armor:
+		Write("You wear %s", ObservableName(item)).ToPlayer(e).Send()
+		Write("%s wears %s", ObservableNameCap(e), ObservableName(item)).ToRoom(r).Subject(e).Send()
 		return
 	case EqSlot_Feet:
 		Write("You wear %s on your feet", ObservableName(item)).ToPlayer(e).Send()
 		Write("%s wears %s on %s feet", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
 		return
-	case EqSlot_FingerL:
-		Write("You slide %s on your left ring finger", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s slides %s on %s left ring finger", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
+	case EqSlot_Garment:
+		Write("You throw on %s", ObservableName(item)).ToPlayer(e).Send()
+		Write("%s throws on %s", ObservableNameCap(e), ObservableName(item)).ToRoom(r).Subject(e).Send()
 		return
-	case EqSlot_FingerR:
-		Write("You slide %s on your right ring finger", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s slides %s on %s right ring finger", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_WristL:
-		Write("You put %s around your left wrist", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s puts %s around %s left wrist", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_WristR:
-		Write("You put %s around your right wrist", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s puts %s around %s right wrist", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_Shoulders:
-		Write("You wear %s over your shoulders", ObservableName(item)).ToPlayer(e).Send()
-		Write("%s wears %s over %s shoulders", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
-		return
-	case EqSlot_HeldL:
+	case EqSlot_Held_L:
 		Write("You grasp %s in your left hand", ObservableName(item)).ToPlayer(e).Send()
 		Write("%s grasps %s in %s left hand", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
 		return
-	case EqSlot_HeldR:
+	case EqSlot_Held_R:
 		Write("You grasp %s in your right hand", ObservableName(item)).ToPlayer(e).Send()
 		Write("%s grasps %s in %s right hand", ObservableNameCap(e), ObservableName(item), e.Gender().GetPossessivePronoun()).ToRoom(r).Subject(e).Send()
 		return
@@ -318,12 +169,14 @@ func sendUnequipMessages(e *Entity, r *Room, item *Item) {
 }
 
 type EquipmentConfig struct {
-	Slot         EquipSlot
-	Stats        StatMap
-	StatusEffect StatusEffectMask
-	Rolls        RollModConfigMap
-	Armor        *ArmorConfig
-	Weapon       *WeaponConfig
+	Slot          EquipSlot
+	Stats         StatMap
+	StatusEffect  StatusEffectMask
+	Rolls         RollModConfigMap
+	Armor         *ArmorConfig
+	Weapon        *WeaponConfig
+	RequiredLevel int
+	Upgradable    bool
 }
 
 func (cfg *EquipmentConfig) GetRollBonus(roll RollType) Dice {
@@ -338,13 +191,15 @@ func (cfg *EquipmentConfig) GetRollBonus(roll RollType) Dice {
 }
 
 type ArmorConfig struct {
-	AC int
+	Def  int
+	MDef int
 }
 
 type WeaponConfig struct {
-	Damage     Dice
-	DamageType DamageType
-	Noun       string
+	Atk     int
+	Element Element
+	Level   int
+	Noun    string
 }
 
 type EquipmentDataMap map[EquipSlot]*ItemData
@@ -364,7 +219,7 @@ func (m *EquipmentDataMap) UnmarshalJSON(data []byte) (err error) {
 	}
 	*m = make(EquipmentDataMap)
 	for slotStr, data := range m2 {
-		if slot, err := ParseEquipmentSlot(slotStr); err == nil {
+		if slot, err := ParseEquipSlot(slotStr); err == nil {
 			(*m)[slot] = data
 		}
 	}

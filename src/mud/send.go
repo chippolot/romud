@@ -193,7 +193,7 @@ func Colorize(color ANSIColor, a any) string {
 func ColorizeRainbow(str string) string {
 	var sb strings.Builder
 	for idx, c := range str {
-		sb.WriteString(fmt.Sprintf("<c %s>%v</c>", rainbowColors[idx%len(rainbowColors)], c))
+		sb.WriteString(fmt.Sprintf("<c %s>%s</c>", rainbowColors[idx%len(rainbowColors)], string(c)))
 	}
 	return sb.String()
 }

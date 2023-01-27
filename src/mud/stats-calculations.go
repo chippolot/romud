@@ -14,28 +14,31 @@ func calculateAndUpdatePlayerStats(s *Stats) {
 
 func calculateCarryingCapacity(s *Stats) int {
 	// Mechanics: RO Classic
-	return s.Get(Stat_Str)*10 + 50
+	str := s.Get(Stat_Str)
+	wgtJob := 0 // TODO: Implement
+	wgtMod := 0 // TODO: Implement
+	return 2000 + 30*str + wgtJob + wgtMod
 }
 
 func calculateMaxHP(s *Stats) int {
 	// Mechanics: RO Classic
 	baseHP := 35 + 5*s.GetFloat(Stat_Level)
-	return int(baseHP * (1 + s.GetFloat(Stat_Vit)) * 0.1)
+	return int(baseHP * (1 + s.GetFloat(Stat_Vit)*0.1))
 }
 
 func calculateMaxSP(s *Stats) int {
 	// Mechanics: RO Classic
 	baseSP := 10 + 2*s.GetFloat(Stat_Level)
-	return int(baseSP * (1.0 + s.GetFloat(Stat_Int)) * 0.1)
+	return int(baseSP * (1.0 + s.GetFloat(Stat_Int)*0.1))
 }
 
 func calculateMaxMov(s *Stats) int {
 	// Mechanics: RO Classic
 	baseMov := 33 + 2*s.GetFloat(Stat_Level)
-	return int(baseMov * (1 + s.GetFloat(Stat_Agi)) * 0.1)
+	return int(baseMov * (1 + s.GetFloat(Stat_Agi)*0.1))
 }
 
-func calculatePlayerSoftDEF(s *Stats) int {
+func calculatePlayerSoftDef(s *Stats) int {
 	// Mechanics: RO Classic
 	vit := s.GetFloat(Stat_Vit)
 	vit30 := int(vit * 0.3)
@@ -45,7 +48,7 @@ func calculatePlayerSoftDEF(s *Stats) int {
 	return vit50 + utils.RandRange(minA, maxA)
 }
 
-func calculateMonsterSoftDEF(s *Stats) int {
+func calculateMonsterSoftDef(s *Stats) int {
 	// Mechanics: RO Classic
 	vit := s.GetFloat(Stat_Vit)
 	return int(vit) + utils.RandRange(0, int(math.Pow(vit/20.0, 2)-1.0))

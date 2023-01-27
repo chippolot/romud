@@ -161,22 +161,31 @@
     [x] Mov everything to RO Classic
     [x] Mon Dodge special calc?
     [x] Mon Flee special calc?
+    [x] Players start w/ knife + shirt
+    [x] How much damage should unarmed do?
+    [x] Weapon AtkPower
+    [x] Unarmed AtkSpeed
+    [x] Hard Def
 ----------------------------------------
 [] RO 
-    [] How much damage should unarmed do?
-    [] Weapon AtkPower
-    [] Unarmed AtkSpeed
-    [] Hard DEF
+    [x] Fix damage messages
+    [] Why aren't they moving?
+    [] Die at 0
+    [] No more bleeding out
+    [] Players don't drop corpses
+    [] Corpses crumble after time
     [] Advantage / Disadvantage
     [] Critical Message
     [] Auto Level Up
     [] HP / SP recovery via passive
-    [] Elements
     [] Dex Weapons
-    [] Damage type lookups
+    [] Damage elements
+    [] Damage sizes
     [] Drop tables
     [] Auto-Con using colors
     [] Exp using level difference
+    [] Starting equip scriptable
+[] Remove items from world!
 [] Configurable Skills
     [] Restrict by class
 [] Github

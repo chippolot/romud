@@ -261,6 +261,13 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 	attack := e.cfg.Attack
 	noun := w.vocab.GetNoun(attack.Noun)
 
+	// Use weapon's noun if applicable
+	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {
+		if weap, _, ok := e.GetWeapon(); ok {
+			noun = w.vocab.GetNoun(weap.Noun)
+		}
+	}
+
 	if e.CanBeSeenBy(tgt) {
 		// 1. Perfect Dodge Check
 		//    Note: Only players perform perfect dodges
@@ -269,7 +276,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 			perfectDodgeChance = calculatePerfectDodge(tgt.stats)
 		}
 		if utils.RandChance100() <= float64(perfectDodgeChance) {
-			Write("%s You dodge the %s's %s perfectly!", ColorizeRainbow("LUCKY!"), ObservableName(e), noun.Singular).ToPlayer(tgt).Subject(e).Send()
+			Write("%s You dodge the %s's %s perfectly!", ColorizeRainbow("LUCKY"), ObservableName(e), noun.Singular).ToPlayer(tgt).Subject(e).Send()
 			Write("Your %s misses %s completely (0)", noun.Singular, ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
 			Write("%s tries to %s %s, but misses", ObservableNameCap(e), noun.Singular, ObservableName(tgt)).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Send()
 			return
@@ -302,14 +309,14 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 	// 4. Calculate + Apply Damage
 	if didHit {
 		dam := calculateAttackDamage(e, tgt, didCrit)
-		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, noun.Singular, noun.Plural)
+		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
 	} else {
-		sendDamageMessages(0, e, tgt, w, noun.Singular, noun.Plural)
+		sendDamageMessages(0, e, tgt, w, false, noun.Singular, noun.Plural)
 		return
 	}
 }
 
-func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, nounSingular string, nounPlural string) int {
+func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, critical bool, nounSingular string, nounPlural string) int {
 	cnd := tgt.stats.Condition()
 	if cnd == Cnd_Dead {
 		return 0
@@ -331,7 +338,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 		Write("You feel a wave of pain course through you. (%s)", Colorize(Color_Negative, dam)).ToPlayer(tgt).Send()
 		Write("%s shudders in pain", ObservableNameCap(tgt)).ToEntityRoom(w, tgt).Subject(tgt).Restricted(SendRst_CanSee).Send()
 	case DamCtx_Melee:
-		sendDamageMessages(dam, from, tgt, w, nounSingular, nounPlural)
+		sendDamageMessages(dam, from, tgt, w, critical, nounSingular, nounPlural)
 	}
 
 	// Handle kills
@@ -415,7 +422,7 @@ func applyXp(e *Entity, xp int) int {
 	return 0
 }
 
-func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, nounSingular string, nounPlural string) {
+func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, critical bool, nounSingular string, nounPlural string) {
 	srcDamStr := Colorize(Color_PlayerDam, dam)
 	dstDamStr := Colorize(Color_EnemyDam, dam)
 	if dam <= 0 {
@@ -423,29 +430,17 @@ func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, nounSingula
 		Write("%s's %s misses you completely (%s)", ObservableNameCap(src), nounSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
 		Write("%s tries to %s %s, but misses", ObservableNameCap(src), nounSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else if dam <= 2 {
-		Write("Your %s knicks %s as it fails to fully connect (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s's %s knicks you as it fails to fully connect (%s)", ObservableNameCap(src), nounSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s's %s knicks %s as it fails to fully connect", ObservableNameCap(src), nounSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
-	} else if dam <= 4 {
-		Write("Your %s barely scratches %s (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s's %s barely scratch you (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s's %s barely scratches %s", ObservableNameCap(src), nounSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
-	} else if dam <= 6 {
+		Write("Your %s tickles %s (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s's %s tickles you (%s)", ObservableNameCap(src), nounSingular, dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s's %s tickles %s", ObservableNameCap(src), nounSingular, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+	} else if !critical {
 		Write("You %s %s (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
 		Write("%s %s you (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
 		Write("%s %s %s", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
-	} else if dam <= 8 {
-		Write("You %s %s ferociously (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you ferociously (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s ferociously", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
-	} else if dam <= 10 {
-		Write("You %s %s with all your might (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you with all their might (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s with all their might", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	} else {
-		Write("You %s %s UNBELIEVABLY HARD (%s)", nounSingular, ObservableName(dst), srcDamStr).ToPlayer(src).Subject(dst).Send()
-		Write("%s %s you UNBELIEVABLY HARD (%s)", ObservableNameCap(src), nounPlural, dstDamStr).ToPlayer(dst).Subject(src).Send()
-		Write("%s %s %s UNBELIEVABLY HARD", ObservableNameCap(src), nounPlural, ObservableName(dst)).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
+		Write("You %s %s %s (%s)", nounSingular, ObservableName(dst), ColorizeRainbow("HARD"), srcDamStr).ToPlayer(src).Subject(dst).Send()
+		Write("%s %s you %s (%s)", ObservableNameCap(src), nounPlural, ColorizeRainbow("HARD"), dstDamStr).ToPlayer(dst).Subject(src).Send()
+		Write("%s %s %s %s", ObservableNameCap(src), nounPlural, ObservableName(dst), ColorizeRainbow("HARD")).ToEntityRoom(w, src).Subject(src).Ignore(dst).Send()
 	}
 }
 

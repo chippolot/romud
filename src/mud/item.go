@@ -24,7 +24,8 @@ type ItemConfig struct {
 	FullDesc  string
 	Flags     ItemFlagMask
 	Equipment *EquipmentConfig
-	Value     int
+	BuyPrice  int
+	SellPrice int
 	Weight    int
 	lookup    map[string]bool
 }
@@ -144,6 +145,10 @@ func (i *Item) ItemWeight() int {
 		w += i2.cfg.Weight
 	}
 	return w
+}
+
+func (i *Item) Value() int {
+	return utils.MaxInt(i.cfg.BuyPrice, i.cfg.SellPrice*2)
 }
 
 func (i *Item) RemoveItem(item *Item) {

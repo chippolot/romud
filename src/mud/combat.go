@@ -280,23 +280,22 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 	//    Note: Only players perform automatic critical hits
 	didCrit := false
 	if tgt.CanBeSeenBy(e) {
-		critChance := 0
-		if e.player != nil {
-			critChance = calculateStatusCritical(e.stats) - calculateCrticialShield(tgt.stats)
-		}
+		critChance := calculateeCriticalChance(e, tgt)
 		if utils.RandChance100() < float64(critChance) {
 			didCrit = true
 		}
 	}
 
 	// 3. Standard Hit Check
-	didHit := true
+	didHit := false
 	if e.CanBeSeenBy(tgt) {
 		if !didCrit {
 			hitChance := calcuateHitChance(e, w, tgt)
 			if utils.RandChance100() < float64(hitChance) {
-				didHit = false
+				didHit = true
 			}
+		} else {
+			didHit = true
 		}
 	}
 

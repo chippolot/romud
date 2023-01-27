@@ -155,16 +155,20 @@
 [x] Config roots
 [x] RO
     [x] Calc full exp value
+    [x] Base Stats
+    [x] ASpd
+    [x] Level Table
+    [x] Mov everything to RO Classic
+    [x] Mon Dodge special calc?
+    [x] Mon Flee special calc?
 ----------------------------------------
 [] RO 
+    [] How much damage should unarmed do?
     [] Weapon AtkPower
     [] Unarmed AtkSpeed
     [] Hard DEF
     [] Advantage / Disadvantage
-    [] Critical
-    [] Base Stats
-    [] ASpd
-    [] Level Table
+    [] Critical Message
     [] Auto Level Up
     [] HP / SP recovery via passive
     [] Elements
@@ -173,9 +177,6 @@
     [] Drop tables
     [] Auto-Con using colors
     [] Exp using level difference
-    [] Mov everything to RO Classic
-    [] Mon Dodge special calc?
-    [] Mon Flee special calc?
 [] Configurable Skills
     [] Restrict by class
 [] Github

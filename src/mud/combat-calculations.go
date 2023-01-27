@@ -45,6 +45,14 @@ func calculateHardDEF(e *Entity) int {
 	return utils.ClampInt(def, 0, 100) // TODO: Impleement
 }
 
+func calculateeCriticalChance(e *Entity, tgt *Entity) int {
+	if e.player != nil {
+		return calculateStatusCritical(e.stats) - calculateCrticialShield(tgt.stats)
+	} else {
+		return 0
+	}
+}
+
 func calcuateHitChance(e *Entity, w *World, tgt *Entity) int {
 	// Mechanics: RO Classic
 	hitChance := 0

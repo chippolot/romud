@@ -388,6 +388,7 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Int    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Int)))
 	sb.WriteLinef("Dex    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Dex)))
 	sb.WriteLinef("Luk    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Luk)))
+	sb.WriteLinef("Points : %s", Colorize(Color_Stat, e.stats.Get(Stat_StatPoints)))
 	sb.WriteNewLine()
 	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, calculateCarryingCapacity(e.stats)))
 	if statuses != "" {

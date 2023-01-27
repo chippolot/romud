@@ -30,6 +30,7 @@ const (
 	Stat_Luk
 	Stat_Level
 	Stat_XP
+	Stat_StatPoints
 )
 
 const (
@@ -86,20 +87,21 @@ func (s *Size) UnmarshalJSON(data []byte) (err error) {
 }
 
 var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
-	Stat_HP:     "HP",
-	Stat_MaxHP:  "MaxHP",
-	Stat_SP:     "SP",
-	Stat_MaxSP:  "MaxSP",
-	Stat_Mov:    "Mov",
-	Stat_MaxMov: "MaxMov",
-	Stat_Str:    "Str",
-	Stat_Agi:    "Agi",
-	Stat_Vit:    "Vit",
-	Stat_Int:    "Int",
-	Stat_Dex:    "Dex",
-	Stat_Luk:    "Luk",
-	Stat_Level:  "Level",
-	Stat_XP:     "XP",
+	Stat_HP:         "HP",
+	Stat_MaxHP:      "MaxHP",
+	Stat_SP:         "SP",
+	Stat_MaxSP:      "MaxSP",
+	Stat_Mov:        "Mov",
+	Stat_MaxMov:     "MaxMov",
+	Stat_Str:        "Str",
+	Stat_Agi:        "Agi",
+	Stat_Vit:        "Vit",
+	Stat_Int:        "Int",
+	Stat_Dex:        "Dex",
+	Stat_Luk:        "Luk",
+	Stat_Level:      "Level",
+	Stat_XP:         "XP",
+	Stat_StatPoints: "StatPts",
 })
 
 func ParseStatType(str string) (StatType, error) {
@@ -610,19 +612,25 @@ func performLevelUp(e *Entity, w *World) {
 		return
 	}
 
-	e.stats.Add(Stat_Level, 1)
+	oldHP := e.stats.Get(Stat_MaxHP)
+	oldSP := e.stats.Get(Stat_MaxSP)
+	oldMov := e.stats.Get(Stat_MaxMov)
+	oldStatPts := e.stats.Get(Stat_StatPoints)
 
-	oldHP := e.stats.Get(Stat_HP)
-	oldSP := e.stats.Get(Stat_SP)
-	oldMov := e.stats.Get(Stat_Mov)
+	for IsReadyForLevelUp(e) {
+		nextLevel := e.stats.Get(Stat_Level) + 1
+		e.stats.Set(Stat_Level, nextLevel)
 
-	calculateAndUpdatePlayerStats(e.stats)
+		calculateAndUpdatePlayerStats(e.stats)
+		e.stats.Add(Stat_StatPoints, calculateStatPointsGainedForLevelUp(nextLevel))
+	}
 
 	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Send()
-	Write("  You gain %d hp", e.stats.Get(Stat_HP)-oldHP).ToPlayer(e).Send()
-	Write("  You gain %d sp", e.stats.Get(Stat_SP)-oldSP).ToPlayer(e).Send()
-	Write("  You gain %d mov", e.stats.Get(Stat_Mov)-oldMov).ToPlayer(e).Send()
-	Write("Hooray! %s is now level %d", ObservableName(e), e.stats.Get(Stat_Level)).ToWorld(w).Send()
+	Write("  You gain %d hp", e.stats.Get(Stat_MaxHP)-oldHP).ToPlayer(e).Send()
+	Write("  You gain %d sp", e.stats.Get(Stat_MaxSP)-oldSP).ToPlayer(e).Send()
+	Write("  You gain %d mov", e.stats.Get(Stat_MaxMov)-oldMov).ToPlayer(e).Send()
+	Write("  You gain %d stat points", e.stats.Get(Stat_StatPoints)-oldStatPts).ToPlayer(e).Send()
+	Write("Hooray! %s is now level %d", e.Name(), e.stats.Get(Stat_Level)).ToWorld(w).Send()
 
 	if e.player != nil {
 		w.SavePlayerCharacter(e.player.id)

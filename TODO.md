@@ -176,7 +176,7 @@
 ----------------------------------------
 [] RO 
     [] Stat points
-        [] Gain
+        [x] Gain
         [] Spend
     [] HP / SP recovery via passive
     [] Shops

@@ -113,3 +113,18 @@ func calculateExpValue(s *Stats) int {
 	// Mechanics: RO Classic
 	return s.cfg.ExpBase + (s.Get(Stat_MaxHP) * s.cfg.ExpPerHP)
 }
+
+func calculateStatPointsGainedForLevelUp(nextLevel int) int {
+	// Mechanics: RO Classic
+	x := float64(nextLevel - 1)
+	return int(x/5.0) + 3
+}
+
+func calculateStatPointsRequiredForStatIncrease(s *Stats, stat StatType) int {
+	// Mechanics: RO Classic
+	statVal := s.Get(stat)
+	if statVal >= 99 {
+		return -1
+	}
+	return int(float64(statVal-1)/10.0) + 2
+}

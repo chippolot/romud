@@ -300,62 +300,14 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 		}
 	}
 
-	// 4. Calculate Damage
+	// 4. Calculate + Apply Damage
 	if didHit {
 		dam := calculateAttackDamage(e, tgt, didCrit)
+		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, noun.Singular, noun.Plural)
 	} else {
-		// TODO: Send messages
+		sendDamageMessages(0, e, tgt, w, noun.Singular, noun.Plural)
+		return
 	}
-
-	/*
-		// Determine advantage / disadvantage
-		advantageCount := e.stats.RollAdvantageCount(Roll_Hit)
-		if tgt.position < Pos_Standing {
-			advantageCount += 1
-		}
-		if e.position < Pos_Standing {
-			advantageCount -= 1
-		}
-		if !e.CanBeSeenBy(tgt) {
-			advantageCount += 1
-		}
-		if !tgt.CanBeSeenBy(e) {
-			advantageCount -= 1
-		}
-
-		// Roll to hit
-		hitBase := D20.Roll()
-		if advantageCount > 0 {
-			hitBase2 := D20.Roll()
-			hitBase = utils.MaxInts(hitBase, hitBase2)
-		} else if advantageCount < 0 {
-			hitBase2 := D20.Roll()
-			hitBase = utils.MinInts(hitBase, hitBase2)
-		}
-		critMiss := hitBase == 1
-		critHit := hitBase == 20
-		hit := hitBase + aData.ToHit + e.stats.RollBonus(Roll_Hit)
-
-		didHit := false
-		if (critMiss || hit < tgt.AC()) && !critHit {
-			dam = 0
-		} else {
-			didHit = true
-			// Roll for damage
-			if critHit {
-				dam = aData.Damage.CriticalRoll()
-			} else {
-				dam = aData.Damage.Roll()
-			}
-			dam += aData.DamageMod.Roll()
-			dam = utils.MaxInts(1, dam)
-		}
-		noun := w.vocab.GetNoun(aData.Noun)
-		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, noun.Singular, noun.Plural)
-		if didHit {
-			rollForStatusEffect(tgt, w, aData.Effect)
-		}
-	*/
 }
 
 func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, nounSingular string, nounPlural string) int {
@@ -401,7 +353,7 @@ func die(tgt *Entity, w *World, killer *Entity) {
 
 	// Distribute XP
 	if killer != nil {
-		xp := calculateExpValue(tgt.stats)
+		xp := tgt.stats.cfg.ExpValue
 		xp = applyXp(killer, xp)
 		if xp > 0 {
 			Write("You gain %d XP from defeating %s", xp, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()

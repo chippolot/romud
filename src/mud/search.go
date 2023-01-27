@@ -26,7 +26,7 @@ func NewSearchQuery(keyword string, count int) SearchQuery {
 		preDot := keyword[:dotIdx]
 		postDot := keyword[dotIdx+1:]
 		if num, err := strconv.Atoi(preDot); err == nil {
-			q.Index = utils.MaxInts(0, num-1)
+			q.Index = utils.MaxInt(0, num-1)
 		} else if preDot == "all" {
 			q.Count = math.MaxInt
 		}
@@ -85,7 +85,7 @@ func filterSearchResults[TItem Matchable](query SearchQuery, results []TItem) []
 		return results
 	}
 	if query.Index == -1 {
-		return results[:utils.MinInts(len(results), query.Count)]
+		return results[:utils.MinInt(len(results), query.Count)]
 	}
 	if query.Index >= len(results) {
 		return results[:0]

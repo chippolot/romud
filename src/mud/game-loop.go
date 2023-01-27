@@ -79,7 +79,7 @@ func statusEffectsSystem(w *World, t GameTime) {
 
 		// Apply status effects
 		if e.HasStatusEffect(StatusType_Poison) && int(t.time)%3 == 0 {
-			poisonDam := utils.MaxInts(1, e.stats.Get(Stat_MaxHP)/10)
+			poisonDam := utils.MaxInt(1, e.stats.Get(Stat_MaxHP)/10)
 			applyDamage(e, w, e, poisonDam, DamCtx_Poison, Dam_Poison, "", "")
 		}
 

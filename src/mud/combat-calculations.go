@@ -24,7 +24,7 @@ func calculateAttackDamage(e *Entity, tgt *Entity, critical bool) int {
 	} else {
 		dam = calculateWeaponAttackPower(e)*int(hardDEFMult) - int(softDEF)
 	}
-	return utils.MaxInts(0, dam)
+	return utils.MaxInt(dam, 1)
 }
 
 func calculateSoftDEF(e *Entity) int {
@@ -38,7 +38,7 @@ func calculateSoftDEF(e *Entity) int {
 func calculateHardDEF(e *Entity) int {
 	// Mechanics: RO Classic
 	def := 0
-	return utils.ClampInts(def, 0, 100) // TODO: Impleement
+	return utils.ClampInt(def, 0, 100) // TODO: Impleement
 }
 
 func calcuateDodgeChance(e *Entity, w *World, tgt *Entity) int {
@@ -46,9 +46,10 @@ func calcuateDodgeChance(e *Entity, w *World, tgt *Entity) int {
 	flee := calculateStatusFlee(tgt.stats)
 	if tgt.player != nil {
 		numAttackers := numAttackers(tgt, w)
-		flee = utils.MaxInts(0, flee-utils.MaxInts(0, numAttackers-2)*10)
+		flee = utils.MaxInt(0, flee-utils.MaxInt(0, numAttackers-2)*10)
 	}
-	return 80 + calculateHit(e.stats) - flee
+	hit := calculateHit(e.stats)
+	return utils.MinInt(95, 80+hit-flee)
 }
 
 func calculateBaseAttackPower(e *Entity) int {
@@ -65,7 +66,7 @@ func calculateWeaponAttackPower(e *Entity) int {
 	var min, max int
 	if e.player != nil {
 		atk := 0 // TODO: Weapon power
-		min = utils.MinInts(atk, e.stats.Get(Stat_Dex))
+		min = utils.MinInt(atk, e.stats.Get(Stat_Dex))
 		max = atk
 	} else {
 		min = e.cfg.Attack.Power.Min

@@ -412,7 +412,7 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Hit    : %s", Colorize(Color_Stat, calculateHit(e.stats)))
 	sb.WriteLinef("Flee   : %s + %s", Colorize(Color_Stat, calculateStatusFlee(e.stats)), Colorize(Color_Stat, calculatePerfectDodge(e.stats)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Aspd   : %s", Colorize(Color_Stat, e.stats.Get(Stat_AtkSpd)))
+	sb.WriteLinef("Aspd   : %s", Colorize(Color_Stat, calculateAttackSpeed(e.stats)))
 	sb.WriteLinef("Crit   : %s", Colorize(Color_Stat, calculateStatusCritical(e.stats)))
 	sb.WriteNewLine()
 	sb.WriteLinef("Str    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Str)))

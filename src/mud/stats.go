@@ -20,7 +20,6 @@ const (
 	Stat_AC
 	Stat_Mov
 	Stat_MaxMov
-	Stat_AtkSpd
 	Stat_Str
 	Stat_Agi
 	Stat_Vit
@@ -92,7 +91,6 @@ var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 	Stat_AC:     "AC",
 	Stat_Mov:    "Mov",
 	Stat_MaxMov: "MaxMov",
-	Stat_AtkSpd: "AtkSpeed",
 	Stat_Str:    "Str",
 	Stat_Agi:    "Agi",
 	Stat_Vit:    "Vit",
@@ -213,7 +211,6 @@ type StatsConfig struct {
 	Size     Size
 	AC       int
 	Mov      int
-	AtkSpd   int
 	Str      int
 	Agi      int
 	Vit      int
@@ -221,8 +218,7 @@ type StatsConfig struct {
 	Dex      int
 	Luk      int
 	Level    int
-	BaseExp  int
-	ExpPerHP float64
+	ExpValue int
 }
 
 type Stats struct {
@@ -243,14 +239,13 @@ func newStatsData(cfg *StatsConfig) StatMap {
 		Stat_MaxHP:  maxHP,
 		Stat_Mov:    cfg.Mov,
 		Stat_MaxMov: cfg.Mov,
-		Stat_AtkSpd: cfg.AtkSpd,
 		Stat_Str:    cfg.Str,
 		Stat_Agi:    cfg.Agi,
 		Stat_Vit:    cfg.Vit,
 		Stat_Int:    cfg.Int,
 		Stat_Dex:    cfg.Dex,
 		Stat_Luk:    cfg.Luk,
-		Stat_Level:  utils.MaxInts(1, cfg.Level),
+		Stat_Level:  utils.MaxInt(1, cfg.Level),
 	}
 }
 
@@ -419,9 +414,9 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 }
 
 func (s *Stats) clamp() {
-	s.data[Stat_HP] = utils.MinInts(s.Get(Stat_MaxHP), s.Get(Stat_HP))
-	s.data[Stat_SP] = utils.MinInts(s.Get(Stat_MaxSP), s.Get(Stat_SP))
-	s.data[Stat_Mov] = utils.MinInts(s.Get(Stat_MaxMov), s.Get(Stat_Mov))
+	s.data[Stat_HP] = utils.MinInt(s.Get(Stat_MaxHP), s.Get(Stat_HP))
+	s.data[Stat_SP] = utils.MinInt(s.Get(Stat_MaxSP), s.Get(Stat_SP))
+	s.data[Stat_Mov] = utils.MinInt(s.Get(Stat_MaxMov), s.Get(Stat_Mov))
 }
 
 func (s *Stats) getRollMods(roll RollType) *RollMods {
@@ -517,7 +512,7 @@ func GetXpForNextLevel(e *Entity) int {
 	}
 	nextLevel := e.stats.Get(Stat_Level) + 1
 	requiredXp := XPChart[nextLevel] - e.stats.Get(Stat_XP)
-	return utils.MaxInts(0, requiredXp)
+	return utils.MaxInt(0, requiredXp)
 }
 
 func IsReadyForLevelUp(e *Entity) bool {

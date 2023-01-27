@@ -13,7 +13,6 @@ Config.NewEntity({
         Level = 1,
         Size = "medium",
         HP = "40",
-        AtkSpd = 100,
         Str = 1,
         Agi = 1,
         Vit = 1,

@@ -13,20 +13,24 @@ func calculateAndUpdatePlayerStats(s *Stats) {
 }
 
 func calculateCarryingCapacity(s *Stats) int {
+	// Mechanics: RO Classic
 	return s.Get(Stat_Str)*10 + 50
 }
 
 func calculateMaxHP(s *Stats) int {
+	// Mechanics: RO Classic
 	baseHP := 35 + 5*s.GetFloat(Stat_Level)
 	return int(baseHP * (1 + s.GetFloat(Stat_Vit)) * 0.1)
 }
 
 func calculateMaxSP(s *Stats) int {
+	// Mechanics: RO Classic
 	baseSP := 10 + 2*s.GetFloat(Stat_Level)
-	return int(baseSP * (1 + s.GetFloat(Stat_Int)) * 0.1)
+	return int(baseSP * (1.0 + s.GetFloat(Stat_Int)) * 0.1)
 }
 
 func calculateMaxMov(s *Stats) int {
+	// Mechanics: RO Classic
 	baseMov := 33 + 2*s.GetFloat(Stat_Level)
 	return int(baseMov * (1 + s.GetFloat(Stat_Agi)) * 0.1)
 }
@@ -37,33 +41,34 @@ func calculatePlayerSoftDEF(s *Stats) int {
 	vit30 := int(vit * 0.3)
 	vit50 := int(vit * 0.5)
 	minA := vit30
-	maxA := utils.MaxInts(vit30, int(math.Pow(vit, 2)/150.0-1))
+	maxA := utils.MaxInt(vit30, int(math.Pow(vit, 2)/150.0-1))
 	return vit50 + utils.RandRange(minA, maxA)
 }
 
 func calculateMonsterSoftDEF(s *Stats) int {
-	return (s.Get(Stat_Vit) + s.Get(Stat_Level)) / 2
-}
-
-func calculateExpValue(s *Stats) int {
-	return int(float64(s.cfg.BaseExp) + s.cfg.ExpPerHP*s.GetFloat(Stat_MaxHP))
+	// Mechanics: RO Classic
+	vit := s.GetFloat(Stat_Vit)
+	return int(vit) + utils.RandRange(0, int(math.Pow(vit/20.0, 2)-1.0))
 }
 
 func calculateNextLevelXp(lvl int) int {
+	// Mechanics: RO Classic
 	return int(0.75 * math.Pow(float64(lvl), 2.5))
 }
 
 func calculateHit(s *Stats) int {
-	return 175 + s.Get(Stat_Level) + s.Get(Stat_Dex) + int(s.GetFloat(Stat_Luk)/3.0)
+	// Mechanics: RO Classic
+	return s.Get(Stat_Level) + s.Get(Stat_Dex)
 }
 
 func calculateStatusFlee(s *Stats) int {
-	return 100 + s.Get(Stat_Level) + s.Get(Stat_Agi) + int(s.GetFloat(Stat_Luk)/5.0)
+	// Mechanics: RO Classic
+	return s.Get(Stat_Level) + s.Get(Stat_Agi)
 }
 
 func calculatePerfectDodge(s *Stats) int {
 	// Mechanics: RO Classic
-	return utils.MinInts(100, int(s.GetFloat(Stat_Luk)/10.0)+1)
+	return utils.MinInt(100, int(s.GetFloat(Stat_Luk)/10.0)+1)
 }
 
 func calculateStatusCritical(s *Stats) int {
@@ -76,10 +81,20 @@ func calculateCrticialShield(s *Stats) int {
 	return int(s.GetFloat(Stat_Luk) / 5.0)
 }
 
+func calculateAttackSpeed(s *Stats) int {
+	// Mechanics: RO Classic
+	weaponDelay := 1.0 // TODO: Weapon types
+	speedMod := 0.0    // TODO: Speed mod
+	agi := s.GetFloat(Stat_Agi)
+	dex := s.GetFloat(Stat_Dex)
+	aspd := int(200.0 - (weaponDelay-((weaponDelay*agi/25.0)+(weaponDelay*dex/100.0))/10.0)*(1.0-speedMod))
+	return utils.ClampInt(aspd, 0, 190)
+}
+
 func calculateAttacksPerRound(s *Stats) float64 {
 	// Mechanics: RO Classic
-	aspd := s.GetFloat(Stat_AtkSpd)
-	return 0.025*aspd - 0.00025*math.Pow(aspd, 2) + math.Pow(10, -6)*math.Pow(aspd, 3)
+	aspd := float64(calculateAttackSpeed(s))
+	return 50.0 / (200.0 - aspd)
 }
 
 func calculateStatusAttackPower(s *Stats) int {

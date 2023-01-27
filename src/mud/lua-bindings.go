@@ -254,6 +254,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseDice(s) }); err != nil {
 			return nil, err
 		}
+	} else if to == reflect.TypeOf(Range{}) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRange(s) }); err != nil {
+			return nil, err
+		}
 	} else if to == reflect.TypeOf(DamageType(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseDamageType(s) }); err != nil {
 			return nil, err
@@ -280,6 +284,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(RollType(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRollType(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(Size(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSize(s) }); err != nil {
 			return nil, err
 		}
 	}

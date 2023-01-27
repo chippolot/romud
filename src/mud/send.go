@@ -3,6 +3,7 @@ package mud
 import (
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
 	"github.com/chippolot/go-mud/src/utils"
@@ -64,6 +65,15 @@ const (
 	SendRst_None   SendRestrictionsMask = 0
 	SendRst_CanSee SendRestrictionsMask = 1 << iota
 )
+
+var rainbowColors = []ANSIColor{
+	Color_BrightRed,
+	Color_BrightYellow,
+	Color_BrightGreen,
+	Color_BrightCyan,
+	Color_BrightBlue,
+	Color_BrightMagenta,
+}
 
 type ANSIColor string
 type SendRestrictionsMask bits.Bits
@@ -178,6 +188,14 @@ func Write(format string, args ...any) *SendBuilder {
 
 func Colorize(color ANSIColor, a any) string {
 	return fmt.Sprintf("<c %s>%v</c>", color, a)
+}
+
+func ColorizeRainbow(str string) string {
+	var sb strings.Builder
+	for idx, c := range str {
+		sb.WriteString(fmt.Sprintf("<c %s>%v</c>", rainbowColors[idx%len(rainbowColors)], c))
+	}
+	return sb.String()
 }
 
 func sendToPlayer(e *Entity, subject NamedObservable, restrictions SendRestrictionsMask, format string, a ...any) {

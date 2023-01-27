@@ -2,7 +2,6 @@ package mud
 
 import (
 	"fmt"
-	"log"
 	"sort"
 	"strings"
 
@@ -32,34 +31,20 @@ func DoConsider(e *Entity, w *World, tokens []string) {
 				return
 			}
 
-			eAtk := GetAttackData(e)
-			eDPR := float64(eAtk.Damage.Average()+eAtk.DamageMod.Average()) * calculateAttacksPerRound(e.stats)
-			eMaxHP := e.stats.Get(Stat_MaxHP)
+			diff := tgt.stats.Get(Stat_Level) - e.stats.Get(Stat_Level)
 
-			tgtAtk := GetAttackData(tgt)
-			tgtDPR := float64(tgtAtk.Damage.Average()+tgtAtk.DamageMod.Average()) * calculateAttacksPerRound(tgt.stats)
-			tgtMaxHP := tgt.stats.Get(Stat_MaxHP)
-
-			eRoundsToKill := float64(eMaxHP) / tgtDPR
-			tgtRoundsToKill := float64(tgtMaxHP) / eDPR
-			diff := eRoundsToKill - tgtRoundsToKill
-
-			log.Println(eDPR, tgtDPR, eMaxHP, tgtMaxHP, diff)
-
-			if diff == 0 {
+			if diff <= 2 && diff >= -2 {
 				Write("You feel evenly matched. It's anyone's game.").ToPlayer(e).Send()
-			} else if diff > 10 {
+			} else if diff > 15 {
 				Write("You could take them with your hands tied behind your back!").ToPlayer(e).Send()
-			} else if diff > 5 {
-				Write("They look pretty weak to you.").ToPlayer(e).Send()
-			} else if diff > 0 {
-				Write("Looks farily easy.").ToPlayer(e).Send()
+			} else if diff > 8 {
+				Write("It would be an easy fight.").ToPlayer(e).Send()
+			} else if diff > 2 {
+				Write("They appear weaker than you.").ToPlayer(e).Send()
 			} else if diff < -10 {
 				Write("Never in a million years!").ToPlayer(e).Send()
-			} else if diff < -5 {
-				Write("They look stronger than you.").ToPlayer(e).Send()
-			} else if diff < 0 {
-				Write("Looks like it might be a bit of a challenge.").ToPlayer(e).Send()
+			} else if diff < -2 {
+				Write("They appear stronger than you.").ToPlayer(e).Send()
 			}
 			return
 		}

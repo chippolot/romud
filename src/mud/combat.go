@@ -246,67 +246,108 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 			Write("%s tries to shove %s but fails miserably", ObservableNameCap(e), ObservableName(tgt)).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Restricted(SendRst_CanSee).Send()
 		}
 	default:
-		var dam int
-
 		numAttacks := calculateAttacksPerRound(e.stats) + e.combat.speedCounter
 		numAttacksFull := int(numAttacks)
 		e.combat.speedCounter = numAttacks - float64(numAttacksFull)
 
 		for i := 0; i < numAttacksFull; i++ {
-
-			// Pick random attack or use weapon
-			aData := GetAttackData(e)
-
-			// Determine advantage / disadvantage
-			advantageCount := e.stats.RollAdvantageCount(Roll_Hit)
-			if tgt.position < Pos_Standing {
-				advantageCount += 1
-			}
-			if e.position < Pos_Standing {
-				advantageCount -= 1
-			}
-			if !e.CanBeSeenBy(tgt) {
-				advantageCount += 1
-			}
-			if !tgt.CanBeSeenBy(e) {
-				advantageCount -= 1
-			}
-
-			// Roll to hit
-			hitBase := D20.Roll()
-			if advantageCount > 0 {
-				hitBase2 := D20.Roll()
-				hitBase = utils.MaxInts(hitBase, hitBase2)
-			} else if advantageCount < 0 {
-				hitBase2 := D20.Roll()
-				hitBase = utils.MinInts(hitBase, hitBase2)
-			}
-			critMiss := hitBase == 1
-			critHit := hitBase == 20
-			hit := hitBase + aData.ToHit + e.stats.RollBonus(Roll_Hit)
-
-			didHit := false
-			if (critMiss || hit < tgt.AC()) && !critHit {
-				dam = 0
-			} else {
-				didHit = true
-				// Roll for damage
-				if critHit {
-					dam = aData.Damage.CriticalRoll()
-				} else {
-					dam = aData.Damage.Roll()
-				}
-				dam += aData.DamageMod.Roll()
-				dam = utils.MaxInts(1, dam)
-			}
-			noun := w.vocab.GetNoun(aData.Noun)
-			applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, noun.Singular, noun.Plural)
-			if didHit {
-				rollForStatusEffect(tgt, w, aData.Effect)
-			}
+			combatLogicAttack(e, w, tgt)
 		}
 	}
 	e.combat.requestedSkill = CombatSkill_None
+}
+
+func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
+	attack := e.cfg.Attack
+	noun := w.vocab.GetNoun(attack.Noun)
+
+	if e.CanBeSeenBy(tgt) {
+		// 1. Perfect Dodge Check
+		//    Note: Only players perform perfect dodges
+		perfectDodgeChance := 0
+		if tgt.player != nil {
+			perfectDodgeChance = calculatePerfectDodge(tgt.stats)
+		}
+		if randChance100() <= float64(perfectDodgeChance) {
+			Write("%s You dodge the %s's %s perfectly!", ColorizeRainbow("LUCKY!"), ObservableName(e), noun.Singular).ToPlayer(tgt).Subject(e).Send()
+			Write("Your %s misses %s completely (0)", noun.Singular, ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
+			Write("%s tries to %s %s, but misses", ObservableNameCap(e), noun.Singular, ObservableName(tgt)).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Send()
+			return
+		}
+	}
+
+	// 2. Critical Check
+	//    Note: Only players perform automatic critical hits
+	didCrit := false
+	if tgt.CanBeSeenBy(e) {
+		critChance := 0
+		if e.player != nil {
+			critChance = calculateStatusCritical(e.stats) - calculateCrticialShield(tgt.stats)
+		}
+		if randChance100() < float64(critChance) {
+			didCrit = true
+		}
+	}
+
+	// 3. Standard Dodge Check
+	didHit := true
+	if e.CanBeSeenBy(tgt) {
+		if !didCrit {
+			dodgeChance := calcuateDodgeChance(e, w, tgt)
+			if randChance100() < float64(dodgeChance) {
+				didHit = false
+			}
+		}
+	}
+	/*
+		// Determine advantage / disadvantage
+		advantageCount := e.stats.RollAdvantageCount(Roll_Hit)
+		if tgt.position < Pos_Standing {
+			advantageCount += 1
+		}
+		if e.position < Pos_Standing {
+			advantageCount -= 1
+		}
+		if !e.CanBeSeenBy(tgt) {
+			advantageCount += 1
+		}
+		if !tgt.CanBeSeenBy(e) {
+			advantageCount -= 1
+		}
+
+		// Roll to hit
+		hitBase := D20.Roll()
+		if advantageCount > 0 {
+			hitBase2 := D20.Roll()
+			hitBase = utils.MaxInts(hitBase, hitBase2)
+		} else if advantageCount < 0 {
+			hitBase2 := D20.Roll()
+			hitBase = utils.MinInts(hitBase, hitBase2)
+		}
+		critMiss := hitBase == 1
+		critHit := hitBase == 20
+		hit := hitBase + aData.ToHit + e.stats.RollBonus(Roll_Hit)
+
+		didHit := false
+		if (critMiss || hit < tgt.AC()) && !critHit {
+			dam = 0
+		} else {
+			didHit = true
+			// Roll for damage
+			if critHit {
+				dam = aData.Damage.CriticalRoll()
+			} else {
+				dam = aData.Damage.Roll()
+			}
+			dam += aData.DamageMod.Roll()
+			dam = utils.MaxInts(1, dam)
+		}
+		noun := w.vocab.GetNoun(aData.Noun)
+		applyDamage(tgt, w, e, dam, DamCtx_Melee, aData.DamageType, noun.Singular, noun.Plural)
+		if didHit {
+			rollForStatusEffect(tgt, w, aData.Effect)
+		}
+	*/
 }
 
 func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, nounSingular string, nounPlural string) int {
@@ -316,9 +357,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	}
 
 	// Start fighting damage source
-	if from != nil && from != tgt && tgt.combat == nil && from.stats.Condition() > Cnd_Stunned {
-		w.inCombat.StartCombat(tgt, from)
-	}
+	startAttacking(tgt, w, from)
 
 	tgt.stats.Add(Stat_HP, -dam)
 	if dam > 0 {
@@ -467,5 +506,22 @@ func sendStatusMessages(tgt *Entity, w *World) {
 		if tgt.stats.Get(Stat_HP) < tgt.stats.Get(Stat_MaxHP)/4 {
 			Write("You sure are BLEEDING a lot!").ToPlayer(tgt).Send()
 		}
+	}
+}
+
+func numAttackers(e *Entity, w *World) int {
+	r := w.rooms[e.data.RoomId]
+	num := 0
+	for _, e2 := range r.entities {
+		if e2.combat != nil && e2.combat.target == e {
+			num++
+		}
+	}
+	return num
+}
+
+func startAttacking(e *Entity, w *World, tgt *Entity) {
+	if tgt != nil && tgt != e && e.combat == nil && tgt.stats.Condition() > Cnd_Stunned && e.stats.Condition() > Cnd_Stunned {
+		w.inCombat.StartCombat(e, tgt)
 	}
 }

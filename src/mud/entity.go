@@ -391,12 +391,7 @@ func (e *Entity) Describe() string {
 }
 
 func (e *Entity) DescribeStatus() string {
-	aData := GetAttackData(e)
 	statuses := e.DescribeStatusEffects()
-	bonusDamage := ""
-	if !aData.DamageMod.IsZero() {
-		bonusDamage = " + " + aData.DamageMod.StringColorized(Color_Stat)
-	}
 
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
@@ -409,11 +404,16 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteNewLine()
 	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_HP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxHP)))
 	sb.WriteLinef("SP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_SP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxSP)))
-	sb.WriteLinef("Mov     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_Mov)), Colorize(Color_Stat, e.stats.Get(Stat_MaxMov)))
+	sb.WriteLinef("Mov    : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_Mov)), Colorize(Color_Stat, e.stats.Get(Stat_MaxMov)))
 	sb.WriteNewLine()
-	sb.WriteLinef("ToHit  : +%s", Colorize(Color_Stat, aData.ToHit))
-	sb.WriteLinef("Attack : %s%s", aData.Damage.StringColorized(Color_Stat), bonusDamage)
-	sb.WriteLinef("AC     : %s", Colorize(Color_Stat, e.AC()))
+	sb.WriteLinef("Atk    : %s + %s", Colorize(Color_Stat, calculateBaseAttackPower(e)), Colorize(Color_Stat, calculateWeaponAttackPower(e.stats)))
+	sb.WriteLinef("Def    : %s", Colorize(Color_Stat, calculateDEF(e)))
+	sb.WriteNewLine()
+	sb.WriteLinef("Hit    : %s", Colorize(Color_Stat, calculateHit(e.stats)))
+	sb.WriteLinef("Flee   : %s + %s", Colorize(Color_Stat, calculateStatusFlee(e.stats)), Colorize(Color_Stat, calculatePerfectDodge(e.stats)))
+	sb.WriteNewLine()
+	sb.WriteLinef("Aspd   : %s", Colorize(Color_Stat, e.stats.Get(Stat_AtkSpd)))
+	sb.WriteLinef("Crit   : %s", Colorize(Color_Stat, calculateStatusCritical(e.stats)))
 	sb.WriteNewLine()
 	sb.WriteLinef("Str    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Str)))
 	sb.WriteLinef("Agi    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Agi)))

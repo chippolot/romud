@@ -1,6 +1,10 @@
 package mud
 
-import "math"
+import (
+	"math"
+
+	"github.com/chippolot/go-mud/src/utils"
+)
 
 func calculateAndUpdatePlayerStats(s *Stats) {
 	s.Set(Stat_MaxHP, calculateMaxHP(s))
@@ -43,11 +47,42 @@ func calculateNextLevelXp(lvl int) int {
 	return int(0.75 * math.Pow(float64(lvl), 2.5))
 }
 
+func calculateHit(s *Stats) int {
+	return 175 + s.Get(Stat_Level) + s.Get(Stat_Dex) + int(s.GetFloat(Stat_Luk)/3.0)
+}
+
+func calculateStatusFlee(s *Stats) int {
+	return 100 + s.Get(Stat_Level) + s.Get(Stat_Agi) + int(s.GetFloat(Stat_Luk)/5.0)
+}
+
+func calculatePerfectDodge(s *Stats) int {
+	return utils.MinInts(100, int(s.GetFloat(Stat_Luk)/10.0)+1)
+}
+
+func calculateStatusCritical(s *Stats) int {
+	//  Mechanics: RO Classic
+	return int(1 + s.GetFloat(Stat_Luk)/3.0)
+}
+
+func calculateCrticialShield(s *Stats) int {
+	//  Mechanics: RO Classic
+	return int(s.GetFloat(Stat_Luk) / 5.0)
+}
+
 func calculateAttacksPerRound(s *Stats) float64 {
+	//  Mechanics: RO Classic
 	aspd := s.GetFloat(Stat_AtkSpd)
 	return 0.025*aspd - 0.00025*math.Pow(aspd, 2) + math.Pow(10, -6)*math.Pow(aspd, 3)
 }
 
-func calculateBaseAttackPower(s *Stats) int {
-	return int(s.GetFloat(Stat_Level)/4.0 + s.GetFloat(Stat_Str) + s.GetFloat(Stat_Dex)/5.0 + s.GetFloat(Stat_Luk)/3.0)
+func calculateStatusAttackPower(s *Stats) int {
+	//  Mechanics: RO Classic
+	str := s.GetFloat(Stat_Str)
+	dex := s.GetFloat(Stat_Dex)
+	luk := s.GetFloat(Stat_Luk)
+	return int(str + math.Pow(str/10.0, 2) + dex/5.0 + luk/5.0)
+}
+
+func calculateWeaponAttackPower(s *Stats) int {
+	return 0
 }

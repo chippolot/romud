@@ -3,7 +3,6 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
-	"math/rand"
 	"strconv"
 	"strings"
 )
@@ -40,10 +39,7 @@ func ParseRange(s string) (Range, error) {
 }
 
 func (r *Range) Random() int {
-	if r.Min == r.Max {
-		return r.Min
-	}
-	return r.Min + rand.Intn(r.Max-r.Min+1)
+	return randRange(r.Min, r.Max)
 }
 
 func (r *Range) Average() int {

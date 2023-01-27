@@ -5,22 +5,7 @@ import (
 )
 
 func calculateAttackDamage(e *Entity, tgt *Entity) int {
-	return utils.MaxInts(0, calculateAttackPower(e)-calculateDEF(tgt))
-}
-
-func calculateAttackPower(e *Entity) int {
-	if e.player != nil {
-		return calculateBaseAttackPower(e.stats)
-	} else {
-		/*minAtk := e.stats.Get(Stat_MinAtk)
-		maxAtk := e.stats.Get(Stat_MaxAtk)
-		if minAtk == maxAtk {
-			return minAtk
-		}
-		return rand.Intn(maxAtk-minAtk+1) + minAtk*/
-		return 0
-		// TODO NOT READY
-	}
+	return utils.MaxInts(0, calculateBaseAttackPower(e)-calculateDEF(tgt))
 }
 
 func calculateDEF(e *Entity) int {
@@ -29,4 +14,22 @@ func calculateDEF(e *Entity) int {
 	} else {
 		return calculateMonsterDEF(e.stats)
 	}
+}
+
+func calcuateDodgeChance(e *Entity, w *World, tgt *Entity) int {
+	//  Mechanics: RO Classic
+	flee := calculateStatusFlee(tgt.stats)
+	if tgt.player != nil {
+		numAttackers := numAttackers(tgt, w)
+		flee = utils.MaxInts(0, flee-utils.MaxInts(0, numAttackers-2)*10)
+	}
+	return 80 + calculateHit(e.stats) - flee
+}
+
+func calculateBaseAttackPower(e *Entity) int {
+	//  Mechanics: RO Classic
+	if e.player != nil {
+		return calculateStatusAttackPower(e.stats)
+	}
+	return 0
 }

@@ -155,16 +155,24 @@
 ----------------------------------------
 [] RO 
     [] Weapon AtkPower
+    [] Unarmed AtkSpeed
+    [] Hard DEF
+    [] Advantage / Disadvantage
+    [] Critical
     [] Base Stats
     [] ASpd
     [] Level Table
     [] Auto Level Up
+    [] HP / SP recovery via passive
     [] Elements
     [] Dex Weapons
     [] Damage type lookups
     [] Drop tables
     [] Auto-Con using colors
     [] Exp using level difference
+    [] Mov everything to RO Classic
+    [] Mon Dodge special calc?
+    [] Mon Flee special calc?
 [] Configurable Skills
     [] Restrict by class
 [] Github

@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/chippolot/go-mud/src/utils"
 )
 
 type Range struct {
@@ -39,7 +41,7 @@ func ParseRange(s string) (Range, error) {
 }
 
 func (r *Range) Random() int {
-	return randRange(r.Min, r.Max)
+	return utils.RandRange(r.Min, r.Max)
 }
 
 func (r *Range) Average() int {

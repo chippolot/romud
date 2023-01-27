@@ -268,7 +268,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 		if tgt.player != nil {
 			perfectDodgeChance = calculatePerfectDodge(tgt.stats)
 		}
-		if randChance100() <= float64(perfectDodgeChance) {
+		if utils.RandChance100() <= float64(perfectDodgeChance) {
 			Write("%s You dodge the %s's %s perfectly!", ColorizeRainbow("LUCKY!"), ObservableName(e), noun.Singular).ToPlayer(tgt).Subject(e).Send()
 			Write("Your %s misses %s completely (0)", noun.Singular, ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
 			Write("%s tries to %s %s, but misses", ObservableNameCap(e), noun.Singular, ObservableName(tgt)).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Send()
@@ -284,7 +284,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 		if e.player != nil {
 			critChance = calculateStatusCritical(e.stats) - calculateCrticialShield(tgt.stats)
 		}
-		if randChance100() < float64(critChance) {
+		if utils.RandChance100() < float64(critChance) {
 			didCrit = true
 		}
 	}
@@ -294,11 +294,19 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 	if e.CanBeSeenBy(tgt) {
 		if !didCrit {
 			dodgeChance := calcuateDodgeChance(e, w, tgt)
-			if randChance100() < float64(dodgeChance) {
+			if utils.RandChance100() < float64(dodgeChance) {
 				didHit = false
 			}
 		}
 	}
+
+	// 4. Calculate Damage
+	if didHit {
+		dam := calculateAttackDamage(e, tgt, didCrit)
+	} else {
+		// TODO: Send messages
+	}
+
 	/*
 		// Determine advantage / disadvantage
 		advantageCount := e.stats.RollAdvantageCount(Roll_Hit)

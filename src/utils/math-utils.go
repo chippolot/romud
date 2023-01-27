@@ -13,3 +13,13 @@ func MinInts(a, b int) int {
 	}
 	return b
 }
+
+func ClampInts(v, min, max int) int {
+	if v > max {
+		return max
+	}
+	if v < min {
+		return min
+	}
+	return v
+}

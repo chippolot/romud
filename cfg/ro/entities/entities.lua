@@ -5,8 +5,7 @@ Config.NewEntity({
     RoomDesc = "A smiling pink ball of jelly is wiggling here.",
     FullDesc = "It's kind of cute!",
     Attacks = { {
-        Name = "Hit",
-        Damage = "1d2+7",
+        Power = "7-10",
         Noun = "splash"
     } },
     DropTable = {
@@ -21,15 +20,16 @@ Config.NewEntity({
     },
     Flags = { "scavenger" },
     Stats = {
-        HP = "2d5+48",
+        HP = "50",
+        Size = "medium",
         Level = 1,
-        ExpBase = 27,
+        ExpBase = 2,
         ExpPerHP = 0.45,
         AtkSpd = 100,
         Agi = 1,
         Vit = 1,
         Int = 0,
         Dex = 6,
-        Luk = 5
+        Luk = 30
     }
 })

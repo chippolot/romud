@@ -39,7 +39,50 @@ const (
 	Cnd_Healthy
 )
 
+const (
+	Size_Small Size = iota
+	Size_Medium
+	Size_Large
+)
+
+type Size int
+type Condition int
 type StatType int
+
+var sizeStringMapping = utils.NewStringMapping(map[Size]string{
+	Size_Small:  "small",
+	Size_Medium: "medium",
+	Size_Large:  "large",
+})
+
+func ParseSize(str string) (Size, error) {
+	if val, ok := sizeStringMapping.ToValue[str]; ok {
+		return val, nil
+	}
+	return 0, fmt.Errorf("unknown size: %s", str)
+}
+
+func (s *Size) String() string {
+	if str, ok := sizeStringMapping.ToString[*s]; ok {
+		return str
+	}
+	return "unknown"
+}
+
+func (s *Size) MarshalJSON() ([]byte, error) {
+	return json.Marshal(s.String())
+}
+
+func (s *Size) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *s, err = ParseSize(str); err != nil {
+		return err
+	}
+	return nil
+}
 
 var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 	Stat_HP:     "HP",
@@ -167,6 +210,7 @@ type RollMods struct {
 
 type StatsConfig struct {
 	HP       Dice
+	Size     Size
 	AC       int
 	Mov      int
 	AtkSpd   int
@@ -400,8 +444,6 @@ func SavingThrow(e *Entity, stat StatType, dc int) bool {
 	roll := D20.Roll() + GetAbilityModifier(e.stats.Get(stat))
 	return roll >= dc
 }
-
-type Condition int
 
 func (c Condition) InactionString() string {
 	switch c {

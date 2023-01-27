@@ -51,11 +51,6 @@ func calculateMonsterSoftDEF(s *Stats) int {
 	return int(vit) + utils.RandRange(0, int(math.Pow(vit/20.0, 2)-1.0))
 }
 
-func calculateNextLevelXp(lvl int) int {
-	// Mechanics: RO Classic
-	return int(0.75 * math.Pow(float64(lvl), 2.5))
-}
-
 func calculateHit(s *Stats) int {
 	// Mechanics: RO Classic
 	return s.Get(Stat_Level) + s.Get(Stat_Dex)
@@ -83,11 +78,12 @@ func calculateCrticialShield(s *Stats) int {
 
 func calculateAttackSpeed(s *Stats) int {
 	// Mechanics: RO Classic
-	weaponDelay := 1.0 // TODO: Weapon types
-	speedMod := 0.0    // TODO: Speed mod
+	weaponDelay := 50.0 // TODO: Weapon types
+	speedMod := 0.0     // TODO: Speed mod
 	agi := s.GetFloat(Stat_Agi)
 	dex := s.GetFloat(Stat_Dex)
 	aspd := int(200.0 - (weaponDelay-((weaponDelay*agi/25.0)+(weaponDelay*dex/100.0))/10.0)*(1.0-speedMod))
+	// 200 - (1 - ((1/25)+(1/100))/10)
 	return utils.ClampInt(aspd, 0, 190)
 }
 

@@ -106,8 +106,25 @@ func DoEquipment(e *Entity, _ *World, _ []string) {
 	Write(e.DescribeEquipment()).ToPlayer(e).Send()
 }
 
-func DoStatus(e *Entity, _ *World, _ []string) {
-	Write(e.DescribeStatus()).ToPlayer(e).Send()
+func DoStatus(e *Entity, w *World, tokens []string) {
+	numtoks := len(tokens)
+	if numtoks < 2 {
+		Write(e.DescribeStatus()).ToPlayer(e).Send()
+	}
+
+	// TODO: Make admin only
+	query, ok, _ := parseSearchQuery(tokens[1:], false)
+	if !ok {
+		Write("You don't see that here.").ToPlayer(e).Send()
+		return
+	}
+
+	r := w.rooms[e.data.RoomId]
+	if ents := SearchEntities(query, e, r); len(ents) > 0 {
+		Write(ents[0].DescribeStatus()).ToPlayer(e).Send()
+	} else {
+		Write("You don't see that here.").ToPlayer(e).Send()
+	}
 }
 
 func DoWho(e *Entity, w *World, _ []string) {

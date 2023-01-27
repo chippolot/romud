@@ -4,10 +4,10 @@ Config.NewEntity({
     Keywords = { "poring" },
     RoomDesc = "A smiling pink ball of jelly is wiggling here.",
     FullDesc = "It's kind of cute!",
-    Attacks = { {
+    Attack = {
         Power = "7-10",
         Noun = "splash"
-    } },
+    },
     DropTable = {
         {Key = jellopy , Chance = 70},
         {Key = knife , Chance = 1},

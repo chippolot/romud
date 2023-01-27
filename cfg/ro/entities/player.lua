@@ -7,7 +7,7 @@ Config.NewEntity({
     }},
     Attack = {
         Power = "7-9",
-        Noun = "splash"
+        Noun = "hit"
     },
     Stats = {
         Level = 1,

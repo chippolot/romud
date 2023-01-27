@@ -30,8 +30,6 @@ const (
 	Stat_Luk
 	Stat_Level
 	Stat_XP
-	Stat_100Hit LEFT OFF HERE
-	Stat_95Flee LEFT OFF HERE
 )
 
 const (
@@ -222,7 +220,10 @@ type StatsConfig struct {
 	Dex      int
 	Luk      int
 	Level    int
-	ExpValue int
+	Hit100   int // Monster Only: HIT value required for making 100% chance hit on monster
+	Flee95   int // Monster Only: FLEE value required for making 95% chance dodge on monster
+	ExpBase  int
+	ExpPerHP int
 }
 
 type Stats struct {

@@ -406,11 +406,20 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("SP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_SP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxSP)))
 	sb.WriteLinef("Mov    : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_Mov)), Colorize(Color_Stat, e.stats.Get(Stat_MaxMov)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Atk    : %s + %s", Colorize(Color_Stat, calculateBaseAttackPower(e)), Colorize(Color_Stat, calculateWeaponAttackPower(e)))
+	if e.player != nil {
+		sb.WriteLinef("Atk    : %s + %s", Colorize(Color_Stat, calculateBaseAttackPower(e)), Colorize(Color_Stat, calculateWeaponAttackPower(e, true)))
+	} else {
+		sb.WriteLinef("Atk    : %s-%s", Colorize(Color_Stat, e.cfg.Attack.Power.Min), Colorize(Color_Stat, e.cfg.Attack.Power.Max))
+	}
 	sb.WriteLinef("Def    : %s + %s", Colorize(Color_Stat, calculateHardDEF(e)), Colorize(Color_Stat, calculateSoftDEF(e)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Hit    : %s", Colorize(Color_Stat, calculateHit(e.stats)))
-	sb.WriteLinef("Flee   : %s + %s", Colorize(Color_Stat, calculateStatusFlee(e.stats)), Colorize(Color_Stat, calculatePerfectDodge(e.stats)))
+	if e.player != nil {
+		sb.WriteLinef("Hit    : %s", Colorize(Color_Stat, calculateHit(e.stats)))
+		sb.WriteLinef("Flee   : %s + %s", Colorize(Color_Stat, calculateStatusFlee(e.stats)), Colorize(Color_Stat, calculatePerfectDodge(e.stats)))
+	} else {
+		sb.WriteLinef("Hit100 : %s", Colorize(Color_Stat, e.stats.cfg.Hit100))
+		sb.WriteLinef("Flee95 : %s", Colorize(Color_Stat, e.stats.cfg.Flee95))
+	}
 	sb.WriteNewLine()
 	sb.WriteLinef("Aspd   : %s", Colorize(Color_Stat, calculateAttackSpeed(e.stats)))
 	sb.WriteLinef("Crit   : %s", Colorize(Color_Stat, calculateStatusCritical(e.stats)))

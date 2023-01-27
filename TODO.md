@@ -1,5 +1,8 @@
 ## Resources
 * https://github.com/mudcoders/awesome-mud
+* https://irowiki.org/classic/Attacks
+* https://db.irowiki.org/db/monster-info/1002/
+* https://ratemyserver.net/index.php?page=mob_db&list=1&letter=d
 
 ## TODO
 [x] Users can see each others' messages

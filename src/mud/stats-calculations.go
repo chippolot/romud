@@ -100,3 +100,8 @@ func calculateStatusAttackPower(s *Stats) int {
 	luk := s.GetFloat(Stat_Luk)
 	return int(str + math.Pow(str/10.0, 2) + dex/5.0 + luk/5.0)
 }
+
+func calculateExpValue(s *Stats) int {
+	// Mechanics: RO Classic
+	return s.cfg.ExpBase + (s.Get(Stat_MaxHP) * s.cfg.ExpPerHP)
+}

@@ -289,12 +289,12 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 		}
 	}
 
-	// 3. Standard Dodge Check
+	// 3. Standard Hit Check
 	didHit := true
 	if e.CanBeSeenBy(tgt) {
 		if !didCrit {
-			dodgeChance := calcuateDodgeChance(e, w, tgt)
-			if utils.RandChance100() < float64(dodgeChance) {
+			hitChance := calcuateHitChance(e, w, tgt)
+			if utils.RandChance100() < float64(hitChance) {
 				didHit = false
 			}
 		}
@@ -353,7 +353,7 @@ func die(tgt *Entity, w *World, killer *Entity) {
 
 	// Distribute XP
 	if killer != nil {
-		xp := tgt.stats.cfg.ExpValue
+		xp := calculateExpValue(tgt.stats)
 		xp = applyXp(killer, xp)
 		if xp > 0 {
 			Write("You gain %d XP from defeating %s", xp, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()

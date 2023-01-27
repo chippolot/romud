@@ -28,6 +28,8 @@ Config.NewEntity({
         Vit = 1,
         Int = 0,
         Dex = 6,
-        Luk = 30
+        Luk = 30,
+        Hit100 = 22,
+        Flee95 = 82
     }
 })

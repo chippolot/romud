@@ -183,9 +183,12 @@
     [] Create poring items
     [] Item types (?)
     [] Temp dropped item ownership
-    [] HP / SP recovery via passive
     [] Shops
     [] Corpses crumble after time
+    [] Skills
+        [] Active
+        [] Passive
+            [] HP / SP recovery via passive
     [] Advantage / Disadvantage
     [] Dex Weapons
     [] Damage elements
@@ -194,8 +197,6 @@
     [] Exp using level difference
     [] Starting equip scriptable
 [] Remove items from world!
-[] Configurable Skills
-    [] Restrict by class
 [] Github
 [] Random Drops
 [] MVP mobs

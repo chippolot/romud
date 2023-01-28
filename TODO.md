@@ -180,6 +180,7 @@
     [x] Drop tables
 ----------------------------------------
 [] RO 
+    [] Make linked list add to tail as well
     [] Create poring items
     [] Item types (?)
     [] Temp dropped item ownership

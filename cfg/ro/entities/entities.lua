@@ -9,14 +9,14 @@ Config.NewEntity({
         Noun = "splash"
     },
     DropTable = {
-        {Key = jellopy , Chance = 70},
-        {Key = knife , Chance = 1},
-        {Key = sticky_mucus , Chance = 4},
-        {Key = apple , Chance = 10},
-        {Key = apple , Chance = 1.5},
-        {Key = empty_bottle , Chance = 15},
-        {Key = unripe_apple , Chance = 0.2},
-        {Key = poring_card , Chance = 0.02}
+        {Value = "jellopy" , Chance = 70},
+        {Value = "knife" , Chance = 1},
+        {Value = "sticky_mucus" , Chance = 4},
+        {Value = "apple" , Chance = 10},
+        {Value = "apple" , Chance = 1.5},
+        {Value = "empty_bottle" , Chance = 15},
+        {Value = "unripe_apple" , Chance = 0.2},
+        {Value = "poring_card" , Chance = 0.02}
     },
     Flags = { "scavenger" },
     Stats = {

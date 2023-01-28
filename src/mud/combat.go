@@ -398,6 +398,17 @@ func die(tgt *Entity, w *World, killer *Entity) {
 		// Do nothing -- items will not be removed
 	}
 
+	// Add items from optional drop table
+	if tgt.cfg.DropTable != nil {
+		for _, key := range tgt.cfg.DropTable.Select() {
+			if cfg, ok := lua_W.TryGetItemConfig(key); ok {
+				items = append(items, NewItem(cfg))
+			} else {
+				log.Printf("invalid item key '%s'", key)
+			}
+		}
+	}
+
 	// Deposit items in target (either room or corpse)
 	if onDeathConfig.Items == ItemsOnDeath_Drop {
 		for _, i := range items {

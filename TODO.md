@@ -177,9 +177,11 @@
         [x] Gain
         [x] Spend
     [x] Death options
+    [x] Drop tables
 ----------------------------------------
 [] RO 
-    [] Drop tables
+    [] Create poring items
+    [] Item types (?)
     [] Temp dropped item ownership
     [] HP / SP recovery via passive
     [] Shops

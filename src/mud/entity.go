@@ -18,15 +18,16 @@ type EntityId int32
 type EntityConfigList []*EntityConfig
 
 type EntityConfig struct {
-	Key      string
-	Name     string
-	Gender   Gender
-	Keywords []string
-	RoomDesc string
-	FullDesc string
-	Stats    *StatsConfig
-	Attack   *AttackConfig
-	Flags    EntityFlagMask
+	Key       string
+	Name      string
+	Gender    Gender
+	Keywords  []string
+	RoomDesc  string
+	FullDesc  string
+	DropTable *utils.ChanceTable[string]
+	Stats     *StatsConfig
+	Attack    *AttackConfig
+	Flags     EntityFlagMask
 
 	scripts *EntityScripts
 	lookup  map[string]bool

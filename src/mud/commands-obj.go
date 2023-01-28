@@ -276,4 +276,14 @@ func onItemTransferred(w *World, src ItemContainer, dst ItemContainer, item *Ite
 			Write("%s falls to the floor", ObservableName(item)).ToRoom(dstR).Send()
 		}
 	}
+
+	// Transferring to item
+	if dstI, ok := dst.(*Item); ok {
+		switch fromObj := src.(type) {
+		// Item placed in container by entity
+		case *Entity:
+			Write("You put %s in %s", ObservableName(item), ObservableName(dstI)).ToPlayer(fromObj).Send()
+			Write("%s puts %s in %s", ObservableNameCap(fromObj), ObservableName(item), ObservableName(dstI)).ToEntityRoom(w, fromObj).Subject(fromObj).Restricted(SendRst_CanSee).Send()
+		}
+	}
 }

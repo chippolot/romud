@@ -367,8 +367,45 @@ func die(tgt *Entity, w *World, killer *Entity) {
 	}
 
 	// Create corpse
-	if tgt.player == nil || Option_PlayerCorpses {
-		createCorpse(tgt, w)
+	r := w.rooms[tgt.data.RoomId]
+	var itemTarget ItemContainer = r
+	onDeathConfig := Option_Death.Monsters
+	if tgt.player != nil {
+		onDeathConfig = Option_Death.Players
+	}
+	if onDeathConfig.Corpses {
+		itemTarget = createCorpse(tgt, w)
+	}
+
+	// Collect items from eying entity
+	items := make([]*Item, 0)
+	switch onDeathConfig.Items {
+	case ItemsOnDeath_Drop, ItemsOnDeath_Destroy:
+		for _, eq := range tgt.equipped {
+			tgt.onUnequipped(eq)
+			items = append(items, eq)
+		}
+		for es := range tgt.equipped {
+			delete(tgt.equipped, es)
+			delete(tgt.data.Equipped, es)
+		}
+		for _, i := range tgt.inventory {
+			items = append(items, i)
+		}
+		tgt.inventory = tgt.inventory[:0]
+		tgt.data.Inventory = tgt.data.Inventory[:0]
+	case ItemsOnDeath_Retain:
+		// Do nothing -- items will not be removed
+	}
+
+	// Deposit items in target (either room or corpse)
+	if onDeathConfig.Items == ItemsOnDeath_Drop {
+		for _, i := range items {
+			itemTarget.AddItem(i)
+			if itemTarget == r {
+				onItemTransferred(w, tgt, r, i)
+			}
+		}
 	}
 
 	if tgt.player != nil {
@@ -382,7 +419,7 @@ func die(tgt *Entity, w *World, killer *Entity) {
 	w.RemoveEntity(tgt.id)
 }
 
-func createCorpse(from *Entity, w *World) {
+func createCorpse(from *Entity, w *World) *Item {
 	// Create new corpse
 	cfg := &ItemConfig{}
 	cfg.Key = from.cfg.Key + "_corpse"
@@ -392,25 +429,10 @@ func createCorpse(from *Entity, w *World) {
 	cfg.Init()
 	corpse := NewItem(cfg)
 
-	// Unequip everything
-	for _, eq := range from.equipped {
-		from.onUnequipped(eq)
-		corpse.AddItem(eq)
-	}
-	for es := range from.equipped {
-		delete(from.equipped, es)
-		delete(from.data.Equipped, es)
-	}
-
-	// Transfer items from dead entity to corpse
-	for _, i := range from.inventory {
-		corpse.AddItem(i)
-	}
-	from.inventory = from.inventory[:0]
-	from.data.Inventory = from.data.Inventory[:0]
-
 	// Place corpse in room
 	w.AddItem(corpse, from.data.RoomId)
+
+	return corpse
 }
 
 func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, critical bool, nounSingular string, nounPlural string) {

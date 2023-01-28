@@ -173,11 +173,14 @@
     [x] Critical Message
     [x] Auto Level Up
     [x] Why aren't they moving?
+    [x] Stat points
+        [x] Gain
+        [x] Spend
+    [x] Death options
 ----------------------------------------
 [] RO 
-    [] Stat points
-        [x] Gain
-        [] Spend
+    [] Drop tables
+    [] Temp dropped item ownership
     [] HP / SP recovery via passive
     [] Shops
     [] Corpses crumble after time
@@ -185,7 +188,6 @@
     [] Dex Weapons
     [] Damage elements
     [] Damage sizes
-    [] Drop tables
     [] Auto-Con using colors
     [] Exp using level difference
     [] Starting equip scriptable

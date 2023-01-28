@@ -351,7 +351,7 @@ func (s *Stats) MaxStatType(stats ...StatType) StatType {
 
 func (s *Stats) Condition() Condition {
 	hp := s.Get(Stat_HP)
-	switch Option_DeathMode {
+	switch Option_Death.Mode {
 	case Death_Instant:
 		if hp > 0 {
 			return Cnd_Healthy
@@ -371,14 +371,14 @@ func (s *Stats) Condition() Condition {
 			return Cnd_Healthy
 		}
 	}
-	log.Panicln("unknown death mode", Option_DeathMode)
+	log.Panicln("unknown death mode", Option_Death.Mode)
 	return Cnd_Healthy
 }
 
 func (s *Stats) ConditionShortString() string {
 	hp := s.Get(Stat_HP)
 	if hp <= 0 {
-		switch Option_DeathMode {
+		switch Option_Death.Mode {
 		case Death_Instant:
 			return Colorize(Color_Cnd_Hurt, "dead")
 		case Death_Prolonged:
@@ -415,7 +415,7 @@ func (s *Stats) ConditionShortString() string {
 func (s *Stats) ConditionLongString(e *Entity) string {
 	hp := s.Get(Stat_HP)
 	if hp <= 0 {
-		switch Option_DeathMode {
+		switch Option_Death.Mode {
 		case Death_Instant:
 			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
 		case Death_Prolonged:

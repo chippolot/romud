@@ -1,8 +1,17 @@
 {
     "Mud": {
         "ConfigRoot": "cfg/ro",
-        "PlayerCorpses": false,
-        "DeathMode": "instant",
+        "Death": {
+            "Mode": "instant",
+            "Players": {
+                "Corpses": false,
+                "Items": "retain"
+            },
+            "Monsters": {
+                "Corpses": false,
+                "Items": "drop"
+            }
+        },
         "AutoRegenHP": false,
         "AutoRegenSP": false
     },

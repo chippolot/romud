@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"strings"
+	"time"
 	"unicode"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -37,6 +38,15 @@ func (cfg *ItemConfig) Init() {
 	}
 }
 
+type Ownership struct {
+	OwnerId EntityId
+	Until   time.Time
+}
+
+func (o Ownership) Valid() bool {
+	return time.Now().UTC().After(o.Until)
+}
+
 type ItemData struct {
 	Key      string
 	RoomId   RoomId      `json:",omitempty"`
@@ -58,12 +68,13 @@ type Item struct {
 	cfg      *ItemConfig
 	data     *ItemData
 	contents ItemList
+	ownedBy  *Ownership
 }
 
 func NewItem(cfg *ItemConfig) *Item {
 	itemIdCounter++
 	id := itemIdCounter
-	return &Item{id, cfg, newItemData(cfg), make(ItemList, 0)}
+	return &Item{id, cfg, newItemData(cfg), make(ItemList, 0), nil}
 }
 
 func newItemData(cfg *ItemConfig) *ItemData {

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -406,6 +407,17 @@ func die(tgt *Entity, w *World, killer *Entity) {
 			} else {
 				log.Printf("invalid item key '%s'", key)
 			}
+		}
+	}
+
+	// Apply temporary ownership
+	if killer != nil && mudConfig.LootOwnershipDurationSeconds > 0 {
+		ownership := &Ownership{killer.id, time.Now().UTC().Add(time.Second * time.Duration(mudConfig.LootOwnershipDurationSeconds))}
+		for _, item := range items {
+			if item.ownedBy != nil && item.ownedBy.Valid() {
+				continue
+			}
+			item.ownedBy = ownership
 		}
 	}
 

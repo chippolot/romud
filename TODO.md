@@ -179,9 +179,10 @@
     [x] Death options
     [x] Drop tables
     [x] Make linked list add to tail as well 
+    [x] Temp dropped item ownership
 ----------------------------------------
 [] RO 
-    [] Temp dropped item ownership
+    [] HP / SP Recovery -- https://irowiki.org/classic/HP_Recovery
     [] Create Poring Items
         [] Healing Items
             [] Apple
@@ -189,6 +190,9 @@
             [] Poring Card
         [] Taming Items
             [] Unripe Apple
+    [] RO Spawning
+    [] Skills
+        [] Water Attribute Attack
     [] Item types (?)
     [] Shops
     [] Corpses crumble after time

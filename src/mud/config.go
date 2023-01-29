@@ -84,13 +84,14 @@ func (d *ItemsOnDeath) UnmarshalJSON(data []byte) (err error) {
 }
 
 type MudConfig struct {
-	ConfigRoot             string
-	Death                  *DeathConfig
-	AutoRegenHP            bool
-	AutoRegenSP            bool
-	ItemDropRateMultiplier float64
-	ExpRateMultiplier      float64
-	GameSpeedMultiplier    float64
+	ConfigRoot                   string
+	Death                        *DeathConfig
+	AutoRegenHP                  bool
+	AutoRegenSP                  bool
+	ItemDropRateMultiplier       float64
+	ExpRateMultiplier            float64
+	GameSpeedMultiplier          float64
+	LootOwnershipDurationSeconds float64
 }
 
 func setGlobalConfig(cfg *MudConfig) {

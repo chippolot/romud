@@ -16,7 +16,8 @@
         "AutoRegenSP": false,
         "ItemDropRateMultiplier": 1.0,
         "ExpRateMultiplier": 1.0,
-        "GameSpeedMultiplier": 2.0
+        "GameSpeedMultiplier": 2.0,
+        "LootOwnershipDurationSeconds": 30
     },
     "Servers": [
         {

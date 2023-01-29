@@ -7,10 +7,24 @@ type Node[T any] struct {
 
 type List[T comparable] struct {
 	Head *Node[T]
+	Tail *Node[T]
 }
 
-func (l *List[T]) Add(value T) {
+func (l *List[T]) AddFront(value T) {
 	l.Head = &Node[T]{Value: value, Next: l.Head}
+	if l.Tail == nil {
+		l.Tail = l.Head
+	}
+}
+
+func (l *List[T]) AddBack(value T) {
+	tail := &Node[T]{Value: value}
+	if l.Head!= nil {
+		l.Head.Next = tail
+	} else {
+		l.Head = tail
+	}
+	l.Tail = tail
 }
 
 func (l *List[T]) Contains(value T) bool {

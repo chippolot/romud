@@ -199,20 +199,9 @@
     [] Starting equip scriptable
 [] Remove items from world!
 [] Github
-[] Random Drops
 [] MVP mobs
 [] Equippable Cards
 [] More commands
-[] Lua scripting
-    [] More bindings
-    [] More examples
-    [] Tick trigger
-    [] Delay?
-    [] Example: Shrieker
-[] Status Display
-    [] Hit adv/dis
-    [] Hit bonus
-    [] Dam bonus
 [] Status Effects
     [] Finish implementing
     [] Immunities
@@ -236,8 +225,6 @@
     [] Multiple damage per attack
 [] Positions
     [] Look descriptions
-[] Shops
-[] Races
 [] Classes
 [] Followers
 [] Doors

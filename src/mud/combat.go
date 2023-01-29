@@ -129,7 +129,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 		e.combat.target = tgt
 	} else if !c.Contains(e) {
 		e.combat = &CombatData{tgt, CombatSkill_None, 0}
-		c.Add(e)
+		c.AddBack(e)
 	}
 	return true
 }

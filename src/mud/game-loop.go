@@ -9,18 +9,13 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-type GameTime struct {
-	time float64
-	dt   float64
-}
-
 type UpdateSystem struct {
-	fn   func(w *World, t GameTime)
-	freq float64
-	last float64
+	fn   func(w *World, t *GameTime)
+	freq utils.Seconds
+	last utils.Seconds
 }
 
-func (s *UpdateSystem) Update(w *World, t GameTime) {
+func (s *UpdateSystem) Update(w *World, t *GameTime) {
 	nextUpdate := s.last + s.freq
 	if t.time < nextUpdate {
 		return
@@ -45,24 +40,23 @@ func GameLoop(w *World) {
 		{playerOutputSystem, 0, 0},
 	}
 
-	t := GameTime{}
 	lastUpdate := time.Now()
 	for {
 		if len(w.sessions) > 0 {
 			for _, sys := range systems {
-				sys.Update(w, t)
+				sys.Update(w, w.time)
 			}
 		}
 
 		time.Sleep(time.Second / 30.0)
 
-		t.dt = time.Since(lastUpdate).Seconds()
+		w.time.dt = utils.Seconds(time.Since(lastUpdate).Seconds())
 		lastUpdate = time.Now()
-		t.time += t.dt * mudConfig.GameSpeedMultiplier
+		w.time.time += utils.Seconds(float64(w.time.dt) * mudConfig.GameSpeedMultiplier)
 	}
 }
 
-func zoneResetSystem(w *World, t GameTime) {
+func zoneResetSystem(w *World, t *GameTime) {
 	now := time.Now().UTC()
 	for _, z := range w.zones {
 		if now.After(z.lastReset.Add(time.Second * time.Duration(z.cfg.ResetFreq))) {
@@ -71,7 +65,7 @@ func zoneResetSystem(w *World, t GameTime) {
 	}
 }
 
-func statusEffectsSystem(w *World, t GameTime) {
+func statusEffectsSystem(w *World, t *GameTime) {
 	for _, e := range w.entities {
 		if e.statusEffects.mask == 0 {
 			continue
@@ -96,7 +90,7 @@ func statusEffectsSystem(w *World, t GameTime) {
 	}
 }
 
-func statusMessagesSystem(w *World, t GameTime) {
+func statusMessagesSystem(w *World, t *GameTime) {
 	for _, e := range w.entities {
 		if !e.tookDamage {
 			continue
@@ -106,8 +100,7 @@ func statusMessagesSystem(w *World, t GameTime) {
 	}
 }
 
-LEFT OFF HERE
-func statRestorationSystem(w *World, t GameTime) {
+func statRestorationSystem(w *World, t *GameTime) {
 	for _, e := range w.entities {
 		// Fighting entities don't heal
 		if e.combat != nil {
@@ -119,55 +112,47 @@ func statRestorationSystem(w *World, t GameTime) {
 			continue
 		}
 
-		var hpGain, spGain, movGain int
-		var message string
+		lastHPMovRegen, lastSPRegen := e.stats.lastHPMovRegen, e.stats.lastSPRegen
+		nextHPMovRegen, nextSPRegen := utils.Seconds(-1.0), utils.Seconds(-1.0)
 
-		switch e.stats.Condition() {
+		cnd := e.stats.Condition()
+		switch cnd {
 		case Cnd_Healthy, Cnd_Stunned:
 			switch e.position {
-			case Pos_Sitting, Pos_Prone:
-				hpGain = 5
-				spGain = 2
-				movGain = 5
-			case Pos_Sleeping:
-				hpGain = 7
-				spGain = 3
-				movGain = 7
+			case Pos_Sitting, Pos_Prone, Pos_Sleeping:
+				nextHPMovRegen = lastHPMovRegen + 3
+				nextSPRegen = lastSPRegen + 4
 			default:
-				hpGain = 3
-				spGain = 1
-				movGain = 3
+				nextHPMovRegen = lastHPMovRegen + 6
+				nextSPRegen = lastSPRegen + 8
 			}
-		case Cnd_Incapacitated:
-			hpGain = -1
-		case Cnd_MortallyWounded:
-			hpGain = -2
+		case Cnd_Incapacitated, Cnd_MortallyWounded:
+			nextHPMovRegen = lastHPMovRegen + 6
 		}
 
-		if !mudConfig.AutoRegenHP {
-			hpGain = 0
-		}
-		if !mudConfig.AutoRegenSP {
-			spGain = 0
+		now := w.time.time
+		if nextHPMovRegen >= 0 && now >= nextHPMovRegen {
+			if cnd == Cnd_Incapacitated || cnd == Cnd_MortallyWounded {
+				applyDamage(e, w, nil, 1, DamCtx_Bleeding, Dam_Slashing, false, "", "")
+				Write("You are bleeding!").ToPlayer(e).Colorized(Color_NegativeBld).Send()
+			} else {
+				e.stats.Add(Stat_HP, calculateHPRestoration(e.stats))
+				e.stats.Add(Stat_Mov, 2)
+				Write("HEAL %v", now).ToPlayer(e).Send()
+			}
+			e.stats.lastHPMovRegen = now
 		}
 
-		if hpGain > 0 {
-			e.stats.Add(Stat_HP, hpGain)
-		} else if hpGain < 0 {
-			applyDamage(e, w, nil, -hpGain, DamCtx_Bleeding, Dam_Slashing, false, "", "")
-			message = Colorize(Color_NegativeBld, "You are bleeding!")
-		}
-		e.stats.Add(Stat_SP, spGain)
-		e.stats.Add(Stat_Mov, movGain)
-
-		// Force a new prompt if something changed
-		if message != "" {
-			Write(message).ToPlayer(e).Send()
+		if nextSPRegen >= 0 && now >= nextSPRegen {
+			if cnd != Cnd_Incapacitated && cnd != Cnd_MortallyWounded {
+				e.stats.Add(Stat_SP, calculateSPRestoration(e.stats))
+			}
+			e.stats.lastSPRegen = now
 		}
 	}
 }
 
-func wanderersSystem(w *World, t GameTime) {
+func wanderersSystem(w *World, t *GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -224,7 +209,7 @@ func wanderersSystem(w *World, t GameTime) {
 	}
 }
 
-func aggroSystem(w *World, t GameTime) {
+func aggroSystem(w *World, t *GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -256,7 +241,7 @@ func aggroSystem(w *World, t GameTime) {
 	}
 }
 
-func assistersSystem(w *World, t GameTime) {
+func assistersSystem(w *World, t *GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -295,7 +280,7 @@ func assistersSystem(w *World, t GameTime) {
 	}
 }
 
-func scavengersSystem(w *World, t GameTime) {
+func scavengersSystem(w *World, t *GameTime) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -343,7 +328,7 @@ func scavengersSystem(w *World, t GameTime) {
 	}
 }
 
-func combatSystem(w *World, t GameTime) {
+func combatSystem(w *World, t *GameTime) {
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
@@ -365,7 +350,7 @@ func combatSystem(w *World, t GameTime) {
 	}
 }
 
-func cleanupDeadSystem(w *World, t GameTime) {
+func cleanupDeadSystem(w *World, t *GameTime) {
 	for _, e := range w.players {
 		if e.stats.Condition() == Cnd_Dead {
 			w.LogoutPlayer(e.player)
@@ -373,7 +358,7 @@ func cleanupDeadSystem(w *World, t GameTime) {
 	}
 }
 
-func playerOutputSystem(w *World, t GameTime) {
+func playerOutputSystem(w *World, t *GameTime) {
 	for _, s := range w.sessions {
 		s.Flush()
 	}

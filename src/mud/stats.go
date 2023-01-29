@@ -234,14 +234,16 @@ type StatsConfig struct {
 }
 
 type Stats struct {
-	cfg      *StatsConfig
-	data     StatMap
-	statMods StatMap
-	rollMods map[RollType]*RollMods
+	cfg            *StatsConfig
+	data           StatMap
+	statMods       StatMap
+	rollMods       map[RollType]*RollMods
+	lastHPMovRegen utils.Seconds
+	lastSPRegen    utils.Seconds
 }
 
 func newStats(cfg *StatsConfig, data StatMap) *Stats {
-	return &Stats{cfg, data, make(StatMap), make(map[RollType]*RollMods)}
+	return &Stats{cfg, data, make(StatMap), make(map[RollType]*RollMods), 0, 0}
 }
 
 func newStatsData(cfg *StatsConfig) StatMap {

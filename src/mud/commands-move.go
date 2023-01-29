@@ -136,6 +136,10 @@ func performMove(e *Entity, w *World, dstRoom *Room, broadcastLeaveFn func(), br
 	srcRoom.RemoveEntity(e)
 	dstRoom.AddEntity(e)
 
+	// Reset regen timers
+	e.stats.lastHPMovRegen = w.time.time
+	e.stats.lastSPRegen = w.time.time
+
 	if broadcastEnterFn != nil {
 		broadcastEnterFn()
 	}

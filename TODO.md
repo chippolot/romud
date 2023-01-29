@@ -180,9 +180,9 @@
     [x] Drop tables
     [x] Make linked list add to tail as well 
     [x] Temp dropped item ownership
+    [x] HP / SP Recovery -- https://irowiki.org/classic/HP_Recovery
 ----------------------------------------
 [] RO 
-    [] HP / SP Recovery -- https://irowiki.org/classic/HP_Recovery
     [] Create Poring Items
         [] Healing Items
             [] Apple

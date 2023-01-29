@@ -10,10 +10,16 @@ import (
 	lua "github.com/yuin/gopher-lua"
 )
 
+type GameTime struct {
+	time utils.Seconds
+	dt   utils.Seconds
+}
+
 type World struct {
-	db  Database
-	L   *lua.LState
-	cfg *MudConfig
+	db   Database
+	L    *lua.LState
+	cfg  *MudConfig
+	time *GameTime
 
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
@@ -40,6 +46,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		db,
 		l,
 		cfg,
+		&GameTime{},
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
 		NewVocab(),

@@ -16,7 +16,7 @@ Config.NewEntity({
         {Value = "apple" , Chance = 1.5},
         {Value = "empty_bottle" , Chance = 15},
         {Value = "unripe_apple" , Chance = 0.2},
-        {Value = "poring_card" , Chance = 0.02}
+        {Value = "poring_card" , Chance = 0.01}
     },
     Flags = { "scavenger" },
     Stats = {

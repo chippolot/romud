@@ -181,8 +181,14 @@
     [x] Make linked list add to tail as well 
 ----------------------------------------
 [] RO 
-    [] Create poring items
     [] Temp dropped item ownership
+    [] Create Poring Items
+        [] Healing Items
+            [] Apple
+        [] Cards
+            [] Poring Card
+        [] Taming Items
+            [] Unripe Apple
     [] Item types (?)
     [] Shops
     [] Corpses crumble after time

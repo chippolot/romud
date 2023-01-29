@@ -90,6 +90,7 @@ type MudConfig struct {
 	AutoRegenSP            bool
 	ItemDropRateMultiplier float64
 	ExpRateMultiplier      float64
+	GameSpeedMultiplier    float64
 }
 
 func setGlobalConfig(cfg *MudConfig) {

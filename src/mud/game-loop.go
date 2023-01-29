@@ -58,7 +58,7 @@ func GameLoop(w *World) {
 
 		t.dt = time.Since(lastUpdate).Seconds()
 		lastUpdate = time.Now()
-		t.time += t.dt
+		t.time += t.dt * mudConfig.GameSpeedMultiplier
 	}
 }
 

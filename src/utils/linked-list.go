@@ -19,8 +19,8 @@ func (l *List[T]) AddFront(value T) {
 
 func (l *List[T]) AddBack(value T) {
 	tail := &Node[T]{Value: value}
-	if l.Head!= nil {
-		l.Head.Next = tail
+	if l.Tail != nil {
+		l.Tail.Next = tail
 	} else {
 		l.Head = tail
 	}

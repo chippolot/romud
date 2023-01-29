@@ -13,10 +13,15 @@
             }
         },
         "AutoRegenHP": false,
-        "AutoRegenSP": false
+        "AutoRegenSP": false,
+        "ItemDropRateMultiplier": 1.0,
+        "ExpRateMultiplier": 1.0,
+        "GameSpeedMultiplier": 2.0
     },
-    "Servers": [{
-        "Type": "telnet",
-        "Port": 4000
-    }]
+    "Servers": [
+        {
+            "Type": "telnet",
+            "Port": 4000
+        }
+    ]
 }

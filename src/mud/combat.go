@@ -369,9 +369,9 @@ func die(tgt *Entity, w *World, killer *Entity) {
 	// Create corpse
 	r := w.rooms[tgt.data.RoomId]
 	var itemTarget ItemContainer = r
-	onDeathConfig := Option_Death.Monsters
+	onDeathConfig := mudConfig.Death.Monsters
 	if tgt.player != nil {
-		onDeathConfig = Option_Death.Players
+		onDeathConfig = mudConfig.Death.Players
 	}
 	if onDeathConfig.Corpses {
 		itemTarget = createCorpse(tgt, w)
@@ -400,7 +400,7 @@ func die(tgt *Entity, w *World, killer *Entity) {
 
 	// Add items from optional drop table
 	if tgt.cfg.DropTable != nil {
-		for _, key := range tgt.cfg.DropTable.Select() {
+		for _, key := range tgt.cfg.DropTable.SelectMultiplied(mudConfig.ItemDropRateMultiplier) {
 			if cfg, ok := lua_W.TryGetItemConfig(key); ok {
 				items = append(items, NewItem(cfg))
 			} else {

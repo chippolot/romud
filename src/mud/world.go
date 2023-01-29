@@ -35,7 +35,7 @@ type World struct {
 }
 
 func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.SessionEvent) *World {
-	setGlobalOptions(cfg)
+	setGlobalConfig(cfg)
 	return &World{
 		db,
 		l,

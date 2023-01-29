@@ -10,7 +10,7 @@ func DoGet(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	// Trying to get something from a container?
-	containerQuery, ok, tokens := parseSearchQuery(tokens, false)
+	containerQuery, ok, _ := parseSearchQuery(tokens, false)
 	if ok {
 		contianers := SearchItems(containerQuery, e, r)
 		if len(contianers) == 0 {
@@ -53,7 +53,7 @@ func DoGive(e *Entity, w *World, tokens []string) {
 	r := w.rooms[e.data.RoomId]
 
 	// Find the target
-	targetQuery, ok, tokens := parseSearchQuery(tokens, false)
+	targetQuery, ok, _ := parseSearchQuery(tokens, false)
 	if !ok {
 		Write("Who do you want to give that to?").ToPlayer(e).Send()
 		return
@@ -90,7 +90,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 	}
 
 	// Find the container
-	containerQuery, ok, tokens := parseSearchQuery(tokens, false)
+	containerQuery, ok, _ := parseSearchQuery(tokens, false)
 	if !ok {
 		Write("What do you want to put that in?").ToPlayer(e).Send()
 		return
@@ -124,7 +124,7 @@ func DoPut(e *Entity, w *World, tokens []string) {
 }
 
 func DoDrop(e *Entity, w *World, tokens []string) {
-	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
+	itemQuery, ok, _ := parseSearchQuery(tokens[1:], true)
 	if !ok {
 		Write("What do you want to drop?").ToPlayer(e).Send()
 		return
@@ -146,7 +146,7 @@ func DoDrop(e *Entity, w *World, tokens []string) {
 }
 
 func DoEquip(e *Entity, w *World, tokens []string) {
-	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
+	itemQuery, ok, _ := parseSearchQuery(tokens[1:], true)
 	if !ok {
 		Write("What do you want to equip?").ToPlayer(e).Send()
 		return
@@ -166,7 +166,7 @@ func DoEquip(e *Entity, w *World, tokens []string) {
 }
 
 func DoUnequip(e *Entity, w *World, tokens []string) {
-	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
+	itemQuery, ok, _ := parseSearchQuery(tokens[1:], true)
 	if !ok {
 		Write("What do you want to equip?").ToPlayer(e).Send()
 		return

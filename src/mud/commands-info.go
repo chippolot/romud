@@ -48,8 +48,6 @@ func DoConsider(e *Entity, w *World, tokens []string) {
 			}
 			return
 		}
-	} else {
-
 	}
 	Write("You don't see them here.").ToPlayer(e).Send()
 }

@@ -7,11 +7,7 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-var (
-	Option_Death       *DeathConfig
-	Option_AutoRegenHP bool
-	Option_AutoRegenSP bool
-)
+var mudConfig *MudConfig
 
 const (
 	Death_Instant DeathMode = iota
@@ -88,14 +84,14 @@ func (d *ItemsOnDeath) UnmarshalJSON(data []byte) (err error) {
 }
 
 type MudConfig struct {
-	ConfigRoot  string
-	Death       *DeathConfig
-	AutoRegenHP bool
-	AutoRegenSP bool
+	ConfigRoot             string
+	Death                  *DeathConfig
+	AutoRegenHP            bool
+	AutoRegenSP            bool
+	ItemDropRateMultiplier float64
+	ExpRateMultiplier      float64
 }
 
-func setGlobalOptions(cfg *MudConfig) {
-	Option_Death = cfg.Death
-	Option_AutoRegenHP = cfg.AutoRegenHP
-	Option_AutoRegenSP = cfg.AutoRegenSP
+func setGlobalConfig(cfg *MudConfig) {
+	mudConfig = cfg
 }

@@ -178,12 +178,12 @@
         [x] Spend
     [x] Death options
     [x] Drop tables
+    [x] Make linked list add to tail as well 
 ----------------------------------------
 [] RO 
-    [] Make linked list add to tail as well 
     [] Create poring items
-    [] Item types (?)
     [] Temp dropped item ownership
+    [] Item types (?)
     [] Shops
     [] Corpses crumble after time
     [] Skills

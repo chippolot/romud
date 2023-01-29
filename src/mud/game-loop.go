@@ -143,10 +143,10 @@ func statRestorationSystem(w *World, t GameTime) {
 			hpGain = -2
 		}
 
-		if !Option_AutoRegenHP {
+		if !mudConfig.AutoRegenHP {
 			hpGain = 0
 		}
-		if !Option_AutoRegenSP {
+		if !mudConfig.AutoRegenSP {
 			spGain = 0
 		}
 

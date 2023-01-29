@@ -1,7 +1,7 @@
 package mud
 
 func DoAttack(e *Entity, w *World, tokens []string) {
-	q, ok, tokens := parseSearchQuery(tokens[1:], false)
+	q, ok, _ := parseSearchQuery(tokens[1:], false)
 	if !ok {
 		Write("What do you want to attack?").ToPlayer(e).Send()
 		return
@@ -28,7 +28,7 @@ func DoAttack(e *Entity, w *World, tokens []string) {
 }
 
 func DoShove(e *Entity, w *World, tokens []string) {
-	q, ok, tokens := parseSearchQuery(tokens[1:], false)
+	q, ok, _ := parseSearchQuery(tokens[1:], false)
 	if !ok {
 		Write("What do you want to shove?").ToPlayer(e).Send()
 		return

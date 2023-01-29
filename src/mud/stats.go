@@ -351,7 +351,7 @@ func (s *Stats) MaxStatType(stats ...StatType) StatType {
 
 func (s *Stats) Condition() Condition {
 	hp := s.Get(Stat_HP)
-	switch Option_Death.Mode {
+	switch mudConfig.Death.Mode {
 	case Death_Instant:
 		if hp > 0 {
 			return Cnd_Healthy
@@ -371,14 +371,14 @@ func (s *Stats) Condition() Condition {
 			return Cnd_Healthy
 		}
 	}
-	log.Panicln("unknown death mode", Option_Death.Mode)
+	log.Panicln("unknown death mode", mudConfig.Death.Mode)
 	return Cnd_Healthy
 }
 
 func (s *Stats) ConditionShortString() string {
 	hp := s.Get(Stat_HP)
 	if hp <= 0 {
-		switch Option_Death.Mode {
+		switch mudConfig.Death.Mode {
 		case Death_Instant:
 			return Colorize(Color_Cnd_Hurt, "dead")
 		case Death_Prolonged:
@@ -415,7 +415,7 @@ func (s *Stats) ConditionShortString() string {
 func (s *Stats) ConditionLongString(e *Entity) string {
 	hp := s.Get(Stat_HP)
 	if hp <= 0 {
-		switch Option_Death.Mode {
+		switch mudConfig.Death.Mode {
 		case Death_Instant:
 			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
 		case Death_Prolonged:
@@ -615,6 +615,7 @@ func IsReadyForLevelUp(e *Entity) bool {
 
 func applyXp(e *Entity, w *World, xp int) int {
 	if !IsMaxLevel(e) {
+		xp = int(float64(xp) * mudConfig.ExpRateMultiplier)
 		e.stats.Add(Stat_XP, xp)
 		if IsReadyForLevelUp(e) {
 			performLevelUp(e, w)

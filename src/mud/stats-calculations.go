@@ -128,3 +128,21 @@ func calculateStatPointsRequiredForStatIncrease(s *Stats, stat StatType) int {
 	}
 	return int(float64(statVal-1)/10.0) + 2
 }
+
+func calculateHPRestoration(s *Stats) int {
+	// Mechanics: RO Classic
+	gain := utils.MaxInt(1, int(s.GetFloat(Stat_MaxHP)/200.0))
+	gain += int(s.GetFloat(Stat_Vit) / 5.0)
+	return gain
+}
+
+func calculateSPRestoration(s *Stats) int {
+	// Mechanics: RO Classic
+	sint := s.GetFloat(Stat_Int)
+	gain := utils.MaxInt(1, int(s.GetFloat(Stat_MaxSP)/100.0))
+	gain += int(sint / 6.0)
+	if sint >= 120 {
+		gain += int(sint/2.0 - 56.0)
+	}
+	return gain
+}

@@ -34,7 +34,7 @@ func GameLoop(w *World) {
 	systems := []*UpdateSystem{
 		{zoneResetSystem, 10, 0},
 		{statusEffectsSystem, 1, 0},
-		{statRestorationSystem, 10, 0},
+		{statRestorationSystem, 1, 0},
 		{scavengersSystem, 3, 0},
 		{wanderersSystem, 3, 0},
 		{aggroSystem, 1, 0},
@@ -106,6 +106,7 @@ func statusMessagesSystem(w *World, t GameTime) {
 	}
 }
 
+LEFT OFF HERE
 func statRestorationSystem(w *World, t GameTime) {
 	for _, e := range w.entities {
 		// Fighting entities don't heal

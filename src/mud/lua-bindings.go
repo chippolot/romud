@@ -22,7 +22,9 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	entityTbl := L.NewTable()
 	entityTbl.RawSetString("Name", luar.New(L, lua_EntityName))
+	entityTbl.RawSetString("NameCap", luar.New(L, lua_EntityNameCap))
 	entityTbl.RawSetString("RoomId", luar.New(L, lua_EntityRoomId))
+	entityTbl.RawSetString("Room", luar.New(L, lua_EntityRoom))
 	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
 	entityTbl.RawSetString("HealHP", luar.New(L, lua_EntityHealHP))
 	entityTbl.RawSetString("HealSP", luar.New(L, lua_EntityHealSP))
@@ -30,6 +32,8 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	L.SetGlobal("Entity", entityTbl)
 
 	itemTbl := L.NewTable()
+	itemTbl.RawSetString("Name", luar.New(L, lua_ItemName))
+	itemTbl.RawSetString("NameCap", luar.New(L, lua_ItemNameCap))
 	itemTbl.RawSetString("Equippable", luar.New(L, lua_ItemEquippable))
 	itemTbl.RawSetString("EquipSlot", luar.New(L, lua_ItemEquipSlot))
 	L.SetGlobal("Item", itemTbl)
@@ -58,6 +62,11 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	actTbl.RawSetString("Yell", luar.New(L, lua_ActYell))
 	L.SetGlobal("Act", actTbl)
 
+	writeTbl := L.NewTable()
+	writeTbl.RawSetString("ToPlayer", luar.New(L, lua_WriteToPlayer))
+	writeTbl.RawSetString("ToRoom", luar.New(L, lua_WriteToRoom))
+	L.SetGlobal("Write", writeTbl)
+
 	configTable := L.NewTable()
 	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
 	configTable.RawSetString("NewRoom", luar.New(L, lua_ConfigNewRoom))
@@ -76,8 +85,16 @@ func lua_EntityName(e *Entity) string {
 	return e.Name()
 }
 
+func lua_EntityNameCap(e *Entity) string {
+	return e.NameCapitalized()
+}
+
 func lua_EntityRoomId(e *Entity) RoomId {
 	return e.data.RoomId
+}
+
+func lua_EntityRoom(e *Entity) *Room {
+	return lua_W.rooms[e.data.RoomId]
 }
 
 func lua_EntityEquipSlotOpen(e *Entity, slot EquipSlot) bool {
@@ -95,6 +112,14 @@ func lua_EntityHealSP(e *Entity, amount int) {
 
 func lua_EntityHealMov(e *Entity, amount int) {
 	e.stats.Add(Stat_Mov, amount)
+}
+
+func lua_ItemName(i *Item) string {
+	return i.Name()
+}
+
+func lua_ItemNameCap(i *Item) string {
+	return i.NameCapitalized()
 }
 
 func lua_ItemEquippable(i *Item) bool {
@@ -147,6 +172,14 @@ func lua_ActTell(self *Entity, target *Entity, msg string) {
 
 func lua_ActYell(self *Entity, msg string) {
 	performYell(self, lua_W, msg)
+}
+
+func lua_WriteToPlayer(e *Entity, msg string) {
+	Write(msg).ToPlayer(e).Send()
+}
+
+func lua_WriteToRoom(r *Room, except *Entity, msg string) {
+	Write(msg).ToRoom(r).Ignore(except).Send()
 }
 
 func lua_ConfigNewZone(tbl *lua.LTable) {

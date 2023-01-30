@@ -1,10 +1,18 @@
+local function UseEdibleHealingItem(user, item, min, max) 
+    local amt = Util.RandomRange(min, max)
+    Entity.HealHP(user, amt)
+    Write.ToPlayer(user, string.format("You eat %s <c green>(%d)</c>", Item.Name(item), amt))
+    Write.ToRoom(Entity.Room(user), user, string.format("%s eats %s.", Entity.NameCap(user), Item.Name(item)))
+    return true
+end
+
 Config.NewItem({
     Key = "apple",
 	Keywords = {
         "apple"
 	},
 	Name = "an apple",
-	RoomDesc = "A shiny red apple is here",
+	RoomDesc = "A shiny red apple is here.",
     FullDesc = "A round, edible fruit that, when eaten once a day, keeps the doctor away. Recovers a small amount of HP.",
 	BuyPrice = 15,
     SellPrice = 7,
@@ -14,8 +22,27 @@ Config.NewItem({
     },
     Scripts = {
         Use = function(user, item) 
-            Entity.HealHP(user, Util.RandomRange(16, 22))
-            return true
+            return UseEdibleHealingItem(user, item, 16, 22)
+        end
+    }
+})
+Config.NewItem({
+    Key = "red_herb",
+	Keywords = {
+        "red", "herb"
+	},
+	Name = "a red herb",
+	RoomDesc = "Some sprigs of red herb are here.",
+    FullDesc = "	A weak medicinal herb which heals wounds. Recovers a little HP.",
+	BuyPrice = 18,
+    SellPrice = 9,
+	Weight = 3,
+    Flags = {
+        "usable", "consumable"
+    },
+    Scripts = {
+        Use = function(user, item) 
+            return UseEdibleHealingItem(user, item, 18, 28)
         end
     }
 })

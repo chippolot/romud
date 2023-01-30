@@ -184,13 +184,16 @@
     [x] RO Spawning
     [x] Required equipment levels
     [x] Entity Speeds - Walking
+    [x] Items
+        [x] Healing Items
+            [x] Apple
 ----------------------------------------
+[] Lua
+    [] Enable requiring
 [] RO
     [] Skills
         [] Water Attribute Attack
     [] Create Poring Items
-        [] Healing Items
-            [] Apple
         [] Cards
             [] Poring Card
         [] Taming Items

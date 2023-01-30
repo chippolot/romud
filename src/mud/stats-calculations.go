@@ -24,13 +24,13 @@ func calculateChanceToWander(s *Stats) float64 {
 	case Speed_Immovable:
 		return 0
 	case Speed_VerySlow:
-		return 2.5
+		return 3
 	case Speed_Slow:
-		return 5
+		return 6
 	case Speed_Fast:
 		return 10
 	case Speed_VeryFast:
-		return 20
+		return 14
 	}
 	log.Printf("unknown speed %s", s.cfg.Speed.String())
 	return 0

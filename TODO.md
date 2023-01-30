@@ -182,9 +182,9 @@
     [x] Temp dropped item ownership
     [x] HP / SP Recovery -- https://irowiki.org/classic/HP_Recovery
     [x] RO Spawning
+    [x] Required equipment levels
 ----------------------------------------
 [] RO
-    [] Required equipment levels
     [] Create Poring Items
         [] Healing Items
             [] Apple

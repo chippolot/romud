@@ -183,12 +183,19 @@ func (e *Entity) RemoveItem(item *Item) {
 	}
 }
 func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
-	if item.cfg.Equipment == nil {
+	eq := item.cfg.Equipment
+	if eq == nil {
 		Write("You can't equip %s", item.Name()).ToPlayer(e).Send()
 		return EqSlot_None, nil, false
 	}
+
+	if eq.RequiredLevel > 0 && e.stats.Get(Stat_Level) < eq.RequiredLevel {
+		Write("You need to be level %d before you can equip %s", eq.RequiredLevel, item.Name()).ToPlayer(e).Send()
+		return EqSlot_None, nil, false
+	}
+
 	if idx := utils.FindIndex(e.inventory, item); idx != -1 {
-		slot := item.cfg.Equipment.Slot
+		slot := eq.Slot
 
 		// Find best slot for slot categories
 		switch slot {

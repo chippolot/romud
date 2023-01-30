@@ -1,5 +1,25 @@
 package mud
 
+import "log"
+
+func DoUse(e *Entity, w *World, tokens []string) {
+	itemQuery, ok, _ := parseSearchQuery(tokens[1:], false)
+	if !ok {
+		Write("What do you want to use?").ToPlayer(e).Send()
+		return
+	}
+
+	// Find the item
+	items := e.SearchItems(itemQuery)
+	if len(items) == 0 {
+		Write("You're not carrying '%s'", itemQuery.Keyword).ToPlayer(e).Send()
+		return
+	}
+	for _, item := range items {
+		performUseItem(e, w, item)
+	}
+}
+
 func DoGet(e *Entity, w *World, tokens []string) {
 	itemQuery, ok, tokens := parseSearchQuery(tokens[1:], true)
 	if !ok {
@@ -289,5 +309,25 @@ func onItemTransferred(w *World, src ItemContainer, dst ItemContainer, item *Ite
 			Write("You put %s in %s", ObservableName(item), ObservableName(dstI)).ToPlayer(fromObj).Send()
 			Write("%s puts %s in %s", ObservableNameCap(fromObj), ObservableName(item), ObservableName(dstI)).ToEntityRoom(w, fromObj).Subject(fromObj).Restricted(SendRst_CanSee).Send()
 		}
+	}
+}
+
+func performUseItem(e *Entity, w *World, i *Item) {
+	if !i.cfg.Flags.Has(IFlag_Usable) {
+		Write("You can't use that!").ToPlayer(e).Send()
+		return
+	}
+
+	// No use script configured!
+	if i.cfg.scripts == nil || i.cfg.scripts.use == nil {
+		log.Panicf("item %s has no use script but is marked as usable!", i.cfg.Key)
+		return
+	}
+
+	triggerUseItemScript(e, i)
+
+	// Destroy item after successful use
+	if i.cfg.Flags.Has(IFlag_Consumable) {
+		e.RemoveItem(i)
 	}
 }

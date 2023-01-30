@@ -51,6 +51,7 @@ func init() {
 		{DoStatus, []string{"st", "status"}, "Displays status for the current player", "status", true, 0, 0},
 		{DoUnalias, []string{"unalias"}, "Removes an existing alias", "unalias", true, 0, 0},
 		{DoUnequip, []string{"unequip", "remove"}, "Unequips an equipped item", "unequip sword", false, Cnd_Healthy, Pos_Sitting},
+		{DoUse, []string{"use"}, "Uses an item", "use potion", false, Cnd_Healthy, Pos_Sitting},
 		{DoWake, []string{"wake", "awake"}, "Wakes up from sleeep", "wake / awake", false, Cnd_Healthy, Pos_Sleeping},
 		{DoTell, []string{"tell"}, "Say something to a specific player", "tell lancelot Hi buddy!", true, Cnd_Healthy, Pos_Prone},
 		{DoWho, []string{"who"}, "Lists all online players", "who", true, 0, 0},

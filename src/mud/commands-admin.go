@@ -53,9 +53,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 			return
 		}
 		key := tokens[2]
-		if cfg, ok := w.TryGetEntityConfig(key); ok {
-			ent := NewEntity(cfg)
-			w.AddEntity(ent, r.cfg.Id)
+		if ent := spawnEntityByKey(key, w, r.cfg.Id); ent != nil {
 			Write("Admin: Spawned Entity %s", key).ToPlayer(e).Send()
 		} else {
 			Write("Admin: Failed to load entity %s", key).ToPlayer(e).Send()
@@ -66,9 +64,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 			return
 		}
 		key := tokens[2]
-		if cfg, ok := w.TryGetItemConfig(key); ok {
-			itm := NewItem(cfg)
-			w.AddItem(itm, r.cfg.Id)
+		if item := spawnItemByKey(key, w, r.cfg.Id); item != nil {
 			Write("Admin: Spawned Item %s", key).ToPlayer(e).Send()
 		} else {
 			Write("Admin: Failed to load item %s", key).ToPlayer(e).Send()

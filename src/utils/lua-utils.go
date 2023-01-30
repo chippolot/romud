@@ -27,3 +27,16 @@ func WrapLuaFunc(L *lua.LState, val lua.LValue) func() {
 		}
 	}
 }
+
+func GetLuaFunctionFromTable(tbl *lua.LTable, fnName string) *lua.LFunction {
+	val := tbl.RawGetString(fnName)
+	if val == lua.LNil {
+		return nil
+	}
+	if fn, ok := val.(*lua.LFunction); !ok {
+		log.Panicf("expected lua value '%s' to be a function", fnName)
+		return nil
+	} else {
+		return fn
+	}
+}

@@ -16,7 +16,8 @@ const (
 	IFlag_Light                                  // Light the room that they're in
 	IFlag_Environmental                          // Can't be picked up
 	IFlag_Crumbles                               // Crumble when picked up
-	IFlag_HeavyArmor                             // Heavy armor does not receive DEX bonus
+	IFlag_Usable                                 // Item can be used ('use' command)
+	IFlag_Consumable                             // Item is consumed when used
 )
 
 var itemFlagStringMapping = utils.NewStringMapping(map[ItemFlagMask]string{
@@ -25,7 +26,8 @@ var itemFlagStringMapping = utils.NewStringMapping(map[ItemFlagMask]string{
 	IFlag_Light:         "light",
 	IFlag_Environmental: "environmental",
 	IFlag_Crumbles:      "crumbles",
-	IFlag_HeavyArmor:    "heavyarmor",
+	IFlag_Usable:        "usable",
+	IFlag_Consumable:    "consumable",
 })
 
 func ParseItemFlag(str string) (ItemFlagMask, error) {

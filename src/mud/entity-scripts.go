@@ -17,35 +17,35 @@ type EntityScripts struct {
 
 func NewEntityScripts(L *lua.LState, tbl *lua.LTable) *EntityScripts {
 	scripts := &EntityScripts{}
-	if fn := getScriptFunc(tbl, "entityEnteredRoom"); fn != nil {
+	if fn := utils.GetLuaFunctionFromTable(tbl, "EntityEnteredRoom"); fn != nil {
 		scripts.entityEnteredRoom = func(self *Entity, other *Entity, room *Room) {
 			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, self), utils.ToUserData(L, other), utils.ToUserData(L, room)); err != nil {
-				log.Panicln("error calling enteredRoom script: ", err)
+				log.Panicln("error calling entityEnteredRoom script: ", err)
 			}
 		}
 	}
-	if fn := getScriptFunc(tbl, "enteredRoom"); fn != nil {
+	if fn := utils.GetLuaFunctionFromTable(tbl, "EnteredRoom"); fn != nil {
 		scripts.enteredRoom = func(self *Entity, room *Room) {
 			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, self), utils.ToUserData(L, room)); err != nil {
 				log.Panicln("error calling enteredRoom script: ", err)
 			}
 		}
 	}
-	if fn := getScriptFunc(tbl, "itemDropped"); fn != nil {
+	if fn := utils.GetLuaFunctionFromTable(tbl, "ItemDropped"); fn != nil {
 		scripts.itemDropped = func(self *Entity, room *Room, item *Item) {
 			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, self), utils.ToUserData(L, room), utils.ToUserData(L, item)); err != nil {
 				log.Panicln("error calling itemDropped script: ", err)
 			}
 		}
 	}
-	if fn := getScriptFunc(tbl, "givenItem"); fn != nil {
+	if fn := utils.GetLuaFunctionFromTable(tbl, "GivenItem"); fn != nil {
 		scripts.givenItem = func(self *Entity, from *Entity, item *Item) {
 			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, self), utils.ToUserData(L, from), utils.ToUserData(L, item)); err != nil {
 				log.Panicln("error calling givenItem script: ", err)
 			}
 		}
 	}
-	if fn := getScriptFunc(tbl, "receivedItem"); fn != nil {
+	if fn := utils.GetLuaFunctionFromTable(tbl, "ReceivedItem"); fn != nil {
 		scripts.receivedItem = func(self *Entity, item *Item) {
 			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, self), utils.ToUserData(L, item)); err != nil {
 				log.Panicln("error calling receivedItem script: ", err)
@@ -53,19 +53,6 @@ func NewEntityScripts(L *lua.LState, tbl *lua.LTable) *EntityScripts {
 		}
 	}
 	return scripts
-}
-
-func getScriptFunc(tbl *lua.LTable, fnName string) *lua.LFunction {
-	val := tbl.RawGetString(fnName)
-	if val == lua.LNil {
-		return nil
-	}
-	if fn, ok := val.(*lua.LFunction); !ok {
-		log.Panicf("expected lua value '%s' to be a function", fnName)
-		return nil
-	} else {
-		return fn
-	}
 }
 
 func triggerEnterRoomScript(e *Entity, r *Room) {

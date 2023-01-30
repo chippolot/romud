@@ -29,6 +29,7 @@ type ItemConfig struct {
 	SellPrice int
 	Weight    int
 	lookup    map[string]bool
+	scripts   *ItemScripts
 }
 
 func (cfg *ItemConfig) Init() {

@@ -24,6 +24,9 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("Name", luar.New(L, lua_EntityName))
 	entityTbl.RawSetString("RoomId", luar.New(L, lua_EntityRoomId))
 	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
+	entityTbl.RawSetString("HealHP", luar.New(L, lua_EntityHealHP))
+	entityTbl.RawSetString("HealSP", luar.New(L, lua_EntityHealSP))
+	entityTbl.RawSetString("HealMov", luar.New(L, lua_EntityHealMov))
 	L.SetGlobal("Entity", entityTbl)
 
 	itemTbl := L.NewTable()
@@ -64,7 +67,8 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	L.SetGlobal("Config", configTable)
 
 	utilTbl := L.NewTable()
-	utilTbl.RawSetString("Chance", luar.New(L, lua_UtilChance))
+	utilTbl.RawSetString("RandomChance", luar.New(L, lua_UtilChance))
+	utilTbl.RawSetString("RandomRange", luar.New(L, lua_UtilRandomRange))
 	L.SetGlobal("Util", utilTbl)
 }
 
@@ -79,6 +83,18 @@ func lua_EntityRoomId(e *Entity) RoomId {
 func lua_EntityEquipSlotOpen(e *Entity, slot EquipSlot) bool {
 	_, ok := e.data.Equipped[slot]
 	return !ok
+}
+
+func lua_EntityHealHP(e *Entity, amount int) {
+	e.stats.Add(Stat_HP, amount)
+}
+
+func lua_EntityHealSP(e *Entity, amount int) {
+	e.stats.Add(Stat_SP, amount)
+}
+
+func lua_EntityHealMov(e *Entity, amount int) {
+	e.stats.Add(Stat_Mov, amount)
 }
 
 func lua_ItemEquippable(i *Item) bool {
@@ -186,6 +202,12 @@ func lua_ConfigNewItem(tbl *lua.LTable) {
 		panic(err)
 	}
 	cfg.Init()
+
+	lScripts := tbl.RawGetString("Scripts")
+	if lScriptsTable, ok := lScripts.(*lua.LTable); ok {
+		cfg.scripts = NewItemScripts(lua_W.L, lScriptsTable)
+	}
+
 	lua_W.AddItemConfig(cfg)
 }
 
@@ -208,6 +230,10 @@ func lua_ConfigRegisterNouns(tbl *lua.LTable) {
 
 func lua_UtilChance() int {
 	return rand.Intn(100)
+}
+
+func lua_UtilRandomRange(min int, max int) int {
+	return utils.RandRange(min, max)
 }
 
 func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (interface{}, error) {
@@ -261,8 +287,8 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSize(s) }); err != nil {
 			return nil, err
 		}
-	} else if to == reflect.TypeOf(ZoneSpawnerType(0)) {
-		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseZoneSpawnerType(s) }); err != nil {
+	} else if to == reflect.TypeOf(SpawnerType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSpawnerType(s) }); err != nil {
 			return nil, err
 		}
 	} else if to == reflect.TypeOf(Speed(0)) {

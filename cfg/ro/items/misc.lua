@@ -76,7 +76,7 @@ Config.NewItem({
 Config.NewItem({
     Key = "shell",
 	Keywords = {
-		"sbell"
+		"shell"
 	},
 	Name = "a shell",
 	RoomDesc = "A shell that used to protect a monster lies here.",

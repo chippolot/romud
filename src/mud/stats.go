@@ -217,7 +217,7 @@ type RollMods struct {
 }
 
 type StatsConfig struct {
-	HP       Dice
+	HP       Range
 	Size     Size
 	Mov      int
 	Str      int
@@ -247,7 +247,7 @@ func newStats(cfg *StatsConfig, data StatMap) *Stats {
 }
 
 func newStatsData(cfg *StatsConfig) StatMap {
-	maxHP := cfg.HP.Roll()
+	maxHP := cfg.HP.Random()
 	return StatMap{
 		Stat_HP:     maxHP,
 		Stat_MaxHP:  maxHP,

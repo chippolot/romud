@@ -20,3 +20,25 @@ Config.NewItem({
     SellPrice = 5,
 	Weight = 10
 })
+Config.NewItem({
+    Key = "clown_nose",
+	Keywords = {
+		"clown",
+        "nose"
+	},
+	Name = "a clown nose",
+	RoomDesc = "A simple clown nose has been poignantly discarded here.",
+    FullDesc = "A fashion accessory used in clown or town drunk disguises.",
+	Equipment = {
+		Armor = {
+			Def = 0,
+            MDef = 0
+		},
+		Slot = "head_low",
+        RequiredLevel = 0,
+        Upgradable = false
+	},
+	BuyPrice = 20,
+    SellPrice = 10,
+	Weight = 10
+})

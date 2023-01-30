@@ -12,8 +12,6 @@
                 "Items": "drop"
             }
         },
-        "AutoRegenHP": false,
-        "AutoRegenSP": false,
         "ItemDropRateMultiplier": 1.0,
         "ExpRateMultiplier": 1.0,
         "GameSpeedMultiplier": 2.0,

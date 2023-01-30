@@ -511,6 +511,9 @@ func numAttackers(e *Entity, w *World) int {
 }
 
 func startAttacking(e *Entity, w *World, tgt *Entity) {
+	if e.entityFlags.Has(EFlag_Pacifist) {
+		return
+	}
 	if tgt != nil && tgt != e && e.combat == nil && tgt.stats.Condition() > Cnd_Stunned && e.stats.Condition() > Cnd_Stunned {
 		w.inCombat.StartCombat(e, tgt)
 	}

@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"log"
 	"math"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -15,6 +16,24 @@ func calculateAndUpdatePlayerStats(s *Stats) {
 func calculateAndUpdateMonsterStats(s *Stats) {
 	s.Set(Stat_MaxMov, calculateMaxMov(s))
 	s.Set(Stat_Mov, s.Get(Stat_MaxMov))
+}
+
+func calculateChanceToWander(s *Stats) float64 {
+	// Mechanics: RO Classic
+	switch s.cfg.Speed {
+	case Speed_Immovable:
+		return 0
+	case Speed_VerySlow:
+		return 2.5
+	case Speed_Slow:
+		return 5
+	case Speed_Fast:
+		return 10
+	case Speed_VeryFast:
+		return 20
+	}
+	log.Printf("unknown speed %s", s.cfg.Speed.String())
+	return 0
 }
 
 func calculateCarryingCapacity(s *Stats) int {

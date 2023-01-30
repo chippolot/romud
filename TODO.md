@@ -183,8 +183,11 @@
     [x] HP / SP Recovery -- https://irowiki.org/classic/HP_Recovery
     [x] RO Spawning
     [x] Required equipment levels
+    [x] Entity Speeds - Walking
 ----------------------------------------
 [] RO
+    [] Skills
+        [] Water Attribute Attack
     [] Create Poring Items
         [] Healing Items
             [] Apple
@@ -192,8 +195,6 @@
             [] Poring Card
         [] Taming Items
             [] Unripe Apple
-    [] Skills
-        [] Water Attribute Attack
     [] Item types (?)
     [] Shops
     [] Corpses crumble after time

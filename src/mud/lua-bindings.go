@@ -265,6 +265,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseZoneSpawnerType(s) }); err != nil {
 			return nil, err
 		}
+	} else if to == reflect.TypeOf(Speed(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSpeed(s) }); err != nil {
+			return nil, err
+		}
 	}
 
 	return data, nil

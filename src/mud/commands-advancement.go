@@ -23,5 +23,10 @@ func DoRaise(e *Entity, w *World, tokens []string) {
 
 	e.stats.Add(Stat_StatPoints, -raiseCost)
 	e.stats.Add(stat, 1)
+	calculateAndUpdatePlayerStats(e.stats)
 	Write("Raised %s from %d -> %d!", stat.String(), oldValue, oldValue+1).ToPlayer(e).Send()
+
+	if e.player != nil {
+		w.SavePlayerCharacter(e.player.id)
+	}
 }

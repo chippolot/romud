@@ -167,7 +167,7 @@ func wanderersSystem(w *World, t *GameTime) {
 			continue
 		}
 
-		if rand.Intn(15) != 0 {
+		if utils.RandChance100() > calculateChanceToWander(e.stats) {
 			continue
 		}
 

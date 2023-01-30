@@ -7,7 +7,8 @@ Config.NewZone({
 		{Type = "entity", MaxActive = 5, Spawns = {
 			{Value="poring", Weight=70},
 			{Value="pupa", Weight=20},
-			{Value="lunatic", Weight=40}
+			{Value="lunatic", Weight=40},
+			{Value="drops", Weight=10}
 		}}
 	}
 })

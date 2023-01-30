@@ -48,9 +48,18 @@ const (
 	Size_Large
 )
 
+const (
+	Speed_Immovable Speed = iota
+	Speed_VerySlow
+	Speed_Slow
+	Speed_Fast
+	Speed_VeryFast
+)
+
 type Size int
 type Condition int
 type StatType int
+type Speed int
 
 var sizeStringMapping = utils.NewStringMapping(map[Size]string{
 	Size_Small:  "small",
@@ -82,6 +91,43 @@ func (s *Size) UnmarshalJSON(data []byte) (err error) {
 		return err
 	}
 	if *s, err = ParseSize(str); err != nil {
+		return err
+	}
+	return nil
+}
+
+var speedStringMapping = utils.NewStringMapping(map[Speed]string{
+	Speed_Immovable: "immovable",
+	Speed_VerySlow:  "veryslow",
+	Speed_Slow:      "slow",
+	Speed_Fast:      "fast",
+	Speed_VeryFast:  "veryfast",
+})
+
+func ParseSpeed(str string) (Speed, error) {
+	if val, ok := speedStringMapping.ToValue[str]; ok {
+		return val, nil
+	}
+	return 0, fmt.Errorf("unknown size: %s", str)
+}
+
+func (s *Speed) String() string {
+	if str, ok := speedStringMapping.ToString[*s]; ok {
+		return str
+	}
+	return "unknown"
+}
+
+func (s *Speed) MarshalJSON() ([]byte, error) {
+	return json.Marshal(s.String())
+}
+
+func (s *Speed) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *s, err = ParseSpeed(str); err != nil {
 		return err
 	}
 	return nil
@@ -219,6 +265,7 @@ type RollMods struct {
 type StatsConfig struct {
 	HP       Range
 	Size     Size
+	Speed    Speed
 	Mov      int
 	Str      int
 	Agi      int

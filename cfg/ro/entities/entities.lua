@@ -22,9 +22,11 @@ Config.NewEntity({
     Stats = {
         HP = "50",
         Size = "medium",
+        Speed = "veryslow",
         Level = 1,
         ExpBase = 2,
         ExpPerHP = 0.04,
+        Str = 1,
         Agi = 1,
         Vit = 1,
         Int = 0,
@@ -58,6 +60,7 @@ Config.NewEntity({
     Stats = {
         HP = "60",
         Size = "small",
+        Speed = "slow",
         Level = 3,
         ExpBase = 6,
         ExpPerHP = 0.1,
@@ -91,6 +94,7 @@ Config.NewEntity({
     Stats = {
         HP = "427",
         Size = "small",
+        Speed = "immovable",
         Level = 2,
         ExpBase = 2,
         ExpPerHP = 0.005,
@@ -102,5 +106,43 @@ Config.NewEntity({
         Luk = 20,
         Hit100 = 23,
         Flee95 = 78
+    }
+})
+Config.NewEntity({
+    Key = "drops",
+    Name = "a drops",
+    Keywords = { "drops" },
+    RoomDesc = "A sizzling orange ball of jelly is wiggling here.",
+    FullDesc = "It's kind of cute!",
+    Attack = {
+        Power = "10-13",
+        Noun = "splash"
+    },
+    DropTable = {
+        {Value = "jellopy" , Chance = 75},
+        {Value = "rod" , Chance = 0.8},
+        {Value = "sticky_mucus" , Chance = 5},
+        {Value = "apple" , Chance = 11},
+        {Value = "apple" , Chance = 8},
+        {Value = "empty_bottle" , Chance = 17},
+        {Value = "orange_juice" , Chance = 0.2},
+        {Value = "drops_card" , Chance = 0.01}
+    },
+    Flags = { "scavenger" },
+    Stats = {
+        HP = "55",
+        Size = "medium",
+        Speed = "veryslow",
+        Level = 3,
+        ExpBase = 4,
+        ExpPerHP = 0.073,
+        Str = 1,
+        Agi = 3,
+        Vit = 3,
+        Int = 0,
+        Dex = 12,
+        Luk = 15,
+        Hit100 = 26,
+        Flee95 = 90
     }
 })

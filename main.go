@@ -45,7 +45,6 @@ func main() {
 	// Load assets
 	mud.LoadAssets(world, projectRoot)
 	world.SetEntryRoomId(1)
-	world.ResetAllZones()
 
 	// Create session handler
 	sessionHandler := mud.NewSessionHandler(world, events)

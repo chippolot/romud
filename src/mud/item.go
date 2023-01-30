@@ -102,6 +102,10 @@ func (i *Item) SetData(data *ItemData, w *World) {
 	}
 }
 
+func (i *Item) RoomId() RoomId {
+	return i.data.RoomId
+}
+
 func (i *Item) Name() string {
 	return i.cfg.Name
 }

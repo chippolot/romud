@@ -5,7 +5,6 @@ import (
 	"log"
 	"math/rand"
 	"reflect"
-	"time"
 
 	"github.com/benkeatingsmith/gluamapper"
 	"github.com/chippolot/go-mud/src/utils"
@@ -44,11 +43,6 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	dirTbl.RawSetString("Up", lua.LNumber(DirUp))
 	dirTbl.RawSetString("Down", lua.LNumber(DirDown))
 	L.SetGlobal("Dir", dirTbl)
-
-	worldTbl := L.NewTable()
-	worldTbl.RawSetString("LoadEntityLimited", luar.New(L, lua_WorldLoadEntityLimited))
-	worldTbl.RawSetString("LoadItemLimited", luar.New(L, lua_WorldLoadItemLimited))
-	L.SetGlobal("World", worldTbl)
 
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
@@ -107,33 +101,6 @@ func lua_RoomItems(r *Room) *lua.LTable {
 	return ret
 }
 
-func lua_WorldLoadEntityLimited(entityKey string, roomId RoomId, max int) *Entity {
-	if lua_W.EntityCount(entityKey) >= max {
-		return nil
-	}
-	if cfg, ok := lua_W.TryGetEntityConfig(entityKey); ok {
-		ent := NewEntity(cfg)
-		calculateAndUpdateMonsterStats(ent.stats)
-		lua_W.AddEntity(ent, roomId)
-		return ent
-	}
-	log.Printf("Failed to load entity: %s", entityKey)
-	return nil
-}
-
-func lua_WorldLoadItemLimited(itemKey string, roomId RoomId, max int) *Item {
-	if lua_W.ItemCount(itemKey) >= max {
-		return nil
-	}
-	if cfg, ok := lua_W.TryGetItemConfig(itemKey); ok {
-		itm := NewItem(cfg)
-		lua_W.AddItem(itm, roomId)
-		return itm
-	}
-	log.Printf("Failed to load item: %s", itemKey)
-	return nil
-}
-
 func lua_ActAttack(self *Entity, target *Entity) {
 	performAttack(self, lua_W, target)
 }
@@ -171,8 +138,7 @@ func lua_ConfigNewZone(tbl *lua.LTable) {
 	if err := lua_Mapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
-	cfg.resetFunc = utils.WrapLuaFunc(lua_W.L, tbl.RawGetString("ResetFunc"))
-	lua_W.zones[cfg.Id] = &Zone{cfg, time.Time{}}
+	lua_W.zones[cfg.Id] = NewZone(cfg)
 }
 
 func lua_ConfigNewRoom(tbl *lua.LTable) {
@@ -293,6 +259,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(Size(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSize(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(ZoneSpawnerType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseZoneSpawnerType(s) }); err != nil {
 			return nil, err
 		}
 	}

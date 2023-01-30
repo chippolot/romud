@@ -128,6 +128,10 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 	}
 }
 
+func (e *Entity) RoomId() RoomId {
+	return e.data.RoomId
+}
+
 func (e *Entity) Name() string {
 	if e.player != nil {
 		return e.player.data.Name

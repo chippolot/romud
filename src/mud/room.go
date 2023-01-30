@@ -19,6 +19,10 @@ const (
 
 type RoomId int32
 
+type RoomPresence interface {
+	RoomId() RoomId
+}
+
 type RoomExitsConfig map[Direction]RoomId
 
 type RoomExitConfig struct {

@@ -25,13 +25,11 @@ type World struct {
 	itemConfigs   map[string]*ItemConfig
 	vocab         *Vocab
 
-	players      map[PlayerId]*Entity
-	sessions     map[server.SessionId]*server.Session
-	rooms        map[RoomId]*Room
-	zones        map[ZoneId]*Zone
-	entities     map[EntityId]*Entity
-	entityCounts map[string]int
-	itemCounts   map[string]int
+	players  map[PlayerId]*Entity
+	sessions map[server.SessionId]*server.Session
+	rooms    map[RoomId]*Room
+	zones    map[ZoneId]*Zone
+	entities map[EntityId]*Entity
 
 	entryRoomId RoomId
 	inCombat    *CombatList
@@ -55,8 +53,6 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		make(map[RoomId]*Room),
 		make(map[ZoneId]*Zone),
 		make(map[EntityId]*Entity),
-		make(map[string]int),
-		make(map[string]int),
 		0,
 		&CombatList{},
 		make(map[PlayerId]bool),
@@ -156,7 +152,6 @@ func (w *World) TryGetEntityConfig(key string) (*EntityConfig, bool) {
 
 func (w *World) AddEntity(e *Entity, roomId RoomId) {
 	w.entities[e.id] = e
-	w.entityCounts[e.cfg.Key] += 1
 
 	r, ok := w.rooms[roomId]
 	if !ok {
@@ -173,10 +168,6 @@ func (w *World) AddEntity(e *Entity, roomId RoomId) {
 	}
 }
 
-func (w *World) EntityCount(key string) int {
-	return w.entityCounts[key]
-}
-
 func (w *World) TryGetEntityByPlayerId(id PlayerId) (*Entity, bool) {
 	if e, ok := w.players[id]; ok {
 		return e, true
@@ -189,8 +180,6 @@ func (w *World) RemoveEntity(eid EntityId) {
 	if !ok {
 		return
 	}
-
-	w.entityCounts[e.cfg.Key] -= 1
 
 	r := w.rooms[e.data.RoomId]
 	r.RemoveEntity(e)
@@ -222,12 +211,7 @@ func (w *World) TryGetItemConfig(key string) (*ItemConfig, bool) {
 
 func (w *World) AddItem(i *Item, roomId RoomId) {
 	r := w.rooms[roomId]
-	w.itemCounts[i.cfg.Key] += 1
 	r.AddItem(i)
-}
-
-func (w *World) ItemCount(key string) int {
-	return w.itemCounts[key]
 }
 
 func (w *World) LogoutPlayer(p *Player) {
@@ -248,25 +232,11 @@ func (w *World) RemoveSession(sid server.SessionId) {
 
 func (w *World) AddRoom(r *Room) *Room {
 	w.rooms[r.cfg.Id] = r
+	w.zones[r.zone].rooms = append(w.zones[r.zone].rooms, r)
 	if w.entryRoomId == 0 {
 		w.entryRoomId = r.cfg.Id
 	}
 	return r
-}
-
-func (w *World) ResetZone(id ZoneId) {
-	z := w.zones[id]
-	if z.cfg.resetFunc != nil {
-		z.cfg.resetFunc()
-	}
-	z.lastReset = time.Now().UTC()
-	log.Printf("reset zone %d", z.cfg.Id)
-}
-
-func (w *World) ResetAllZones() {
-	for zid := range w.zones {
-		w.ResetZone(zid)
-	}
 }
 
 func (w *World) OnPlayerInput(p *Player, input string) StateId {

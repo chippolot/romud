@@ -1,3 +1,17 @@
+Config.NewZone({
+	Id = 1,
+	Name = "Prontera Fields",
+	MinRoomId = 1,
+	MaxRoomId = 10,
+	Spawners = {
+		{Type = "entity", MaxActive = 5, Spawns = {
+			{Value="poring", Weight=70},
+			{Value="pupa", Weight=20},
+			{Value="lunatic", Weight=40}
+		}}
+	}
+})
+
 Config.NewRoom({
 	Id = 1,
 	Name = "Newbie Zone",

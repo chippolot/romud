@@ -27,7 +27,7 @@ func (s *UpdateSystem) Update(w *World, t *GameTime) {
 
 func GameLoop(w *World) {
 	systems := []*UpdateSystem{
-		{zoneResetSystem, 10, 0},
+		{zoneSpawnersSystem, 1, 0},
 		{statusEffectsSystem, 1, 0},
 		{statRestorationSystem, 1, 0},
 		{scavengersSystem, 3, 0},
@@ -56,11 +56,13 @@ func GameLoop(w *World) {
 	}
 }
 
-func zoneResetSystem(w *World, t *GameTime) {
-	now := time.Now().UTC()
+func zoneSpawnersSystem(w *World, t *GameTime) {
 	for _, z := range w.zones {
-		if now.After(z.lastReset.Add(time.Second * time.Duration(z.cfg.ResetFreq))) {
-			w.ResetZone(z.cfg.Id)
+		for _, s := range z.spawners {
+			s.UpdateActive(w.time)
+			if s.CanSpawn(w.time) {
+				s.Spawn(z, w)
+			}
 		}
 	}
 }
@@ -138,7 +140,6 @@ func statRestorationSystem(w *World, t *GameTime) {
 			} else {
 				e.stats.Add(Stat_HP, calculateHPRestoration(e.stats))
 				e.stats.Add(Stat_Mov, 2)
-				Write("HEAL %v", now).ToPlayer(e).Send()
 			}
 			e.stats.lastHPMovRegen = now
 		}

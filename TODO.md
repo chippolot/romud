@@ -181,6 +181,7 @@
     [x] Make linked list add to tail as well 
     [x] Temp dropped item ownership
     [x] HP / SP Recovery -- https://irowiki.org/classic/HP_Recovery
+    [x] RO Spawning
 ----------------------------------------
 [] RO
     [] Required equipment levels
@@ -191,7 +192,6 @@
             [] Poring Card
         [] Taming Items
             [] Unripe Apple
-    [] RO Spawning
     [] Skills
         [] Water Attribute Attack
     [] Item types (?)

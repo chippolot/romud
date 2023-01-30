@@ -44,7 +44,7 @@ type Ownership struct {
 }
 
 func (o Ownership) Valid() bool {
-	return time.Now().UTC().After(o.Until)
+	return time.Now().UTC().Before(o.Until)
 }
 
 type ItemData struct {

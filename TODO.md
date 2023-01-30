@@ -209,7 +209,6 @@
     [] Auto-Con using colors
     [] Exp using level difference
     [] Starting equip scriptable
-[] Remove items from world!
 [] Github
 [] MVP mobs
 [] Equippable Cards

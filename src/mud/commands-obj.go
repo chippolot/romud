@@ -196,6 +196,10 @@ func performGet(e *Entity, w *World, from ItemContainer, items ...*Item) {
 	}
 
 	for _, item := range items {
+		if item.ownedBy != nil && item.ownedBy.Valid() && item.ownedBy.OwnerId != e.id {
+			Write("%s is not yours!", ObservableNameCap(item)).ToPlayer(e).Send()
+			continue
+		}
 		performTransferItem(w, from, e, item)
 	}
 }

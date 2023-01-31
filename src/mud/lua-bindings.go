@@ -53,6 +53,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
+	actTbl.RawSetString("CustomAttack", luar.New(L, lua_ActCustomAttack))
 	actTbl.RawSetString("Get", luar.New(L, lua_ActGet))
 	actTbl.RawSetString("Equip", luar.New(L, lua_ActEquip))
 	actTbl.RawSetString("MoveDir", luar.New(L, lua_ActMoveDir))
@@ -145,6 +146,10 @@ func lua_RoomItems(r *Room) *lua.LTable {
 
 func lua_ActAttack(self *Entity, target *Entity) {
 	performAttack(self, lua_W, target)
+}
+
+func lua_ActCustomAttack(self *Entity, target *Entity, opts *CustomAttackOptions) {
+	performCustomAttack(self, lua_W, target, opts)
 }
 
 func lua_ActGet(self *Entity, item *Item) {

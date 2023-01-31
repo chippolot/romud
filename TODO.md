@@ -192,14 +192,14 @@
     [x] Shops
         [x] Group notifs by amount
         [x] Item name plural or singular
+        [x] Allow buying multiples
 ----------------------------------------
 [] RO
-    [] Shops
-        [] Allow buying multiples
-        [] Indoors/ Outdoors
-        [] No Monster Spawns / Movement
     [] Skills
         [] Water Attribute Attack
+    [] Shops
+        [] Indoors/ Outdoors
+        [] No Monster Spawns / Movement
     [] Create Poring Items
         [] Cards
             [] Poring Card

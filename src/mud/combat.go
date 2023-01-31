@@ -30,10 +30,6 @@ const (
 	DamCtx_Poison
 	DamCtx_Admin DamageContext = 999
 )
-const (
-	CombatSkill_None CombatSkill = iota
-	CombatSkill_Shove
-)
 
 type AdvantageType int
 type DamageType int
@@ -96,11 +92,9 @@ type SavingThrowConfig struct {
 
 type DamageContext int
 
-type CombatSkill int
-
 type CombatData struct {
 	target         *Entity
-	requestedSkill CombatSkill
+	nextAttackOpts *CustomAttackOptions
 	speedCounter   float64
 }
 
@@ -129,7 +123,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 	if e.combat != nil {
 		e.combat.target = tgt
 	} else if !c.Contains(e) {
-		e.combat = &CombatData{tgt, CombatSkill_None, 0}
+		e.combat = &CombatData{tgt, nil, 0}
 		c.AddBack(e)
 	}
 	return true
@@ -141,6 +135,19 @@ func (c *CombatList) EndCombat(e *Entity) {
 	}
 	c.Remove(e)
 	e.combat = nil
+}
+
+type CustomAttackMessages struct {
+	ToAttacker string
+	ToTarget   string
+	ToRoom     string
+}
+
+type CustomAttackOptions struct {
+	AtkMultiplier float64
+	HitMultiplier float64
+	HitMessages   *CustomAttackMessages
+	MissMessages  *CustomAttackMessages
 }
 
 func validateAttack(e *Entity, tgt *Entity) bool {
@@ -169,12 +176,18 @@ func performAssist(e *Entity, w *World, ally *Entity) {
 }
 
 func performAttack(e *Entity, w *World, tgt *Entity) {
+	performCustomAttack(e, w, tgt, nil)
+}
+
+func performCustomAttack(e *Entity, w *World, tgt *Entity, opts *CustomAttackOptions) {
 	if !validateAttack(e, tgt) {
 		return
 	}
 
 	// Already in combat
 	if e.combat != nil {
+		e.combat.nextAttackOpts = opts
+
 		// Trying to attack current tgt!
 		if e.combat.target == tgt {
 			Write("You're already fighting them!").ToPlayer(e).Send()
@@ -186,6 +199,7 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 		return
 	} else {
 		if w.inCombat.StartCombat(e, tgt) {
+			e.combat.nextAttackOpts = opts
 			runCombatLogic(e, w, tgt)
 		}
 	}
@@ -209,17 +223,14 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		return
 	}
 
-	switch e.combat.requestedSkill {
-	default:
-		numAttacks := calculateAttacksPerRound(e.stats) + e.combat.speedCounter
-		numAttacksFull := int(numAttacks)
-		e.combat.speedCounter = numAttacks - float64(numAttacksFull)
+	numAttacks := calculateAttacksPerRound(e.stats) + e.combat.speedCounter
+	numAttacksFull := int(numAttacks)
+	e.combat.speedCounter = numAttacks - float64(numAttacksFull)
 
-		for i := 0; i < numAttacksFull; i++ {
-			combatLogicAttack(e, w, tgt)
-		}
+	for i := 0; i < numAttacksFull; i++ {
+		combatLogicAttack(e, w, tgt)
 	}
-	e.combat.requestedSkill = CombatSkill_None
+	e.combat.nextAttackOpts = nil
 }
 
 func combatLogicAttack(e *Entity, w *World, tgt *Entity) {

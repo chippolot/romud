@@ -10,6 +10,7 @@ import (
 )
 
 type EquipSlot bits.Bits
+type WeaponType int
 
 const (
 	EqSlot_None EquipSlot = 1 << iota
@@ -31,6 +32,75 @@ const (
 	EqSlot_Held_1H
 	EqSlot_Held_2H = EqSlot_Held_L | EqSlot_Held_R
 )
+
+const (
+	WeaponType_Bare_Handed WeaponType = iota
+	WeaponType_Dagger
+	WeaponType_Sword_1H
+	WeaponType_Sword_2H
+	WeaponType_Spear
+	WeaponType_Spear_Mounted
+	WeaponType_Axe
+	WeaponType_Mace
+	WeaponType_Rod
+	WeaponType_Bow
+	WeaponType_Katar
+	WeaponType_Book
+	WeaponType_Knuckle
+	WeaponType_Instrument
+	WeaponType_Whip
+	WeaponType_Gun
+	WeaponType_Huuma_Shuriken
+)
+
+var weaponTypeStringMapping = utils.NewStringMapping(map[WeaponType]string{
+	WeaponType_Bare_Handed:    "bare_handed",
+	WeaponType_Dagger:         "dagger",
+	WeaponType_Sword_1H:       "sword_1h",
+	WeaponType_Sword_2H:       "sword_2h",
+	WeaponType_Spear:          "spear",
+	WeaponType_Spear_Mounted:  "spear_mounted",
+	WeaponType_Axe:            "axe",
+	WeaponType_Mace:           "mace",
+	WeaponType_Rod:            "rod",
+	WeaponType_Bow:            "bow",
+	WeaponType_Katar:          "katar",
+	WeaponType_Book:           "book",
+	WeaponType_Knuckle:        "knuckle",
+	WeaponType_Instrument:     "instrument",
+	WeaponType_Whip:           "whip",
+	WeaponType_Gun:            "gun",
+	WeaponType_Huuma_Shuriken: "huuma_shuriken",
+})
+
+func ParseWeaponType(str string) (WeaponType, error) {
+	if val, ok := weaponTypeStringMapping.ToValue[str]; ok {
+		return val, nil
+	}
+	return 0, fmt.Errorf("unknown equip slot: %s", str)
+}
+
+func (wt *WeaponType) String() string {
+	if str, ok := weaponTypeStringMapping.ToString[*wt]; ok {
+		return str
+	}
+	return "unknown"
+}
+
+func (wt *WeaponType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(wt.String())
+}
+
+func (wt *WeaponType) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *wt, err = ParseWeaponType(str); err != nil {
+		return err
+	}
+	return nil
+}
 
 var equipSlotStringMapping = utils.NewStringMapping(map[EquipSlot]string{
 	EqSlot_None:        "none",
@@ -196,6 +266,7 @@ type ArmorConfig struct {
 }
 
 type WeaponConfig struct {
+	Type    WeaponType
 	Atk     int
 	Element Element
 	Level   int

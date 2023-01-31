@@ -8,6 +8,7 @@ Config.NewItem({
 	FullDesc = "A simple knife.",
 	Equipment = {
 		Weapon = {
+			Type = "dagger",
 			Atk = 17,
             Noun = "stab",
             Level = 1

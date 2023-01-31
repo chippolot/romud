@@ -187,6 +187,8 @@
     [x] Items
         [x] Healing Items
             [x] Apple
+    [x] Damage elements
+    [x] Damage sizes
 ----------------------------------------
 [] RO
     [] Skills
@@ -205,8 +207,6 @@
             [] HP / SP recovery via passive
     [] Advantage / Disadvantage
     [] Dex Weapons
-    [] Damage elements
-    [] Damage sizes
     [] Auto-Con using colors
     [] Exp using level difference
     [] Starting equip scriptable

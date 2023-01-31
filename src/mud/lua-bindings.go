@@ -308,6 +308,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseEquipSlot(s) }); err != nil {
 			return nil, err
 		}
+	} else if to == reflect.TypeOf(WeaponType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseWeaponType(s) }); err != nil {
+			return nil, err
+		}
 	} else if to == reflect.TypeOf(Element(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseElement(s) }); err != nil {
 			return nil, err

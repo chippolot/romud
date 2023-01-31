@@ -225,11 +225,13 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 	attack := e.cfg.Attack
 	noun := w.vocab.GetNoun(attack.Noun)
+	weaponType := WeaponType_Bare_Handed
 
 	// Use weapon's noun if applicable
 	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {
 		if weap, _, ok := e.GetWeapon(); ok {
 			noun = w.vocab.GetNoun(weap.Noun)
+			weaponType = weap.Type
 		}
 	}
 
@@ -273,7 +275,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 
 	// 4. Calculate + Apply Damage
 	if didHit {
-		dam := calculateAttackDamage(e, tgt, Neutral, didCrit)
+		dam := calculateAttackDamage(e, tgt, weaponType, Neutral, didCrit)
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
 	} else {
 		sendDamageMessages(0, e, tgt, w, false, noun.Singular, noun.Plural)

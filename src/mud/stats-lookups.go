@@ -105,7 +105,7 @@ var XPLookup = []int{
 
 // Map of defending element to attacking element multiplier (by defending element level)
 // = [DefElemLevel][DefElem][AtkElem]Mult
-var ElementLookup = [][][]float64{
+var DefenderElementModifierLookup = [][][]float64{
 	// Level 1
 	{
 		{1, 1, 1, 1, 1, 1, 1, 1, 0.25, 1},                   // Neutral
@@ -158,4 +158,12 @@ var ElementLookup = [][][]float64{
 		{0, 1, 1, 1, 1, 0.25, 1, 1, 2, 1},                        // Ghost
 		{1, 1.5, 0.5, 2, 1, -1, 2, -1, 1.75, 0},                  // Undead
 	},
+}
+
+// Determines damage modification multiplier when attacking entity of specified size with weapon type
+// = [Size][WeaponType]Mult
+var DefenderSizeModifierLookup = [][]float64{
+	{1, 1, 0.75, 0.75, 0.75, 0.75, 0.5, 0.75, 1, 1, 0.75, 1, 1, 0.75, 0.75}, // Small
+	{1, 0.75, 1, 0.75, 0.75, 1, 0.75, 1, 1, 1, 1, 1, 0.75, 1, 1},            // Medium
+	{1, 0.5, 0.75, 1, 1, 1, 1, 1, 1, 0.75, 0.75, 0.5, 0.5, 0.75, 0.5},       //Large
 }

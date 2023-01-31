@@ -4,7 +4,7 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-func calculateAttackDamage(e *Entity, tgt *Entity, critical bool) int {
+func calculateAttackDamage(e *Entity, tgt *Entity, attackElement Element, critical bool) int {
 	// Mechanics: RO Classic
 	// https://irowiki.org/classic/Attacks
 
@@ -20,8 +20,9 @@ func calculateAttackDamage(e *Entity, tgt *Entity, critical bool) int {
 
 	sizeModifier := 1.0 // TODO: Size modification based on weapon type
 	combinedAtkPower := float64(calculateBaseAttackPower(e)) + float64(calculateWeaponAttackPower(e, critical))*sizeModifier
-	dam := int(combinedAtkPower*hardDefMult - softDef)
-	return utils.MaxInt(dam, 1)
+	dam := combinedAtkPower*hardDefMult - softDef
+	dam *= ElementLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][attackElement]
+	return utils.MaxInt(int(dam), 1)
 }
 
 func calculateSoftDef(e *Entity) int {

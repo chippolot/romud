@@ -263,7 +263,7 @@ type RollMods struct {
 }
 
 type StatsConfig struct {
-	HP           Range
+	HP           int
 	Size         Size
 	Speed        Speed
 	Element      Element
@@ -296,10 +296,9 @@ func newStats(cfg *StatsConfig, data StatMap) *Stats {
 }
 
 func newStatsData(cfg *StatsConfig) StatMap {
-	maxHP := cfg.HP.Random()
 	return StatMap{
-		Stat_HP:     maxHP,
-		Stat_MaxHP:  maxHP,
+		Stat_HP:     cfg.HP,
+		Stat_MaxHP:  cfg.HP,
 		Stat_Mov:    cfg.Mov,
 		Stat_MaxMov: cfg.Mov,
 		Stat_Str:    cfg.Str,

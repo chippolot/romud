@@ -9,18 +9,18 @@ Config.NewEntity({
         Noun = "splash"
     },
     DropTable = {
-        {Value = "jellopy" , Chance = 70},
-        {Value = "knife" , Chance = 1},
-        {Value = "sticky_mucus" , Chance = 4},
-        {Value = "apple" , Chance = 10},
-        {Value = "apple" , Chance = 1.5},
-        {Value = "empty_bottle" , Chance = 15},
-        {Value = "unripe_apple" , Chance = 0.2},
-        {Value = "poring_card" , Chance = 0.01}
+        { Value = "jellopy", Chance = 70 },
+        { Value = "knife", Chance = 1 },
+        { Value = "sticky_mucus", Chance = 4 },
+        { Value = "apple", Chance = 10 },
+        { Value = "apple", Chance = 1.5 },
+        { Value = "empty_bottle", Chance = 15 },
+        { Value = "unripe_apple", Chance = 0.2 },
+        { Value = "poring_card", Chance = 0.01 }
     },
     Flags = { "scavenger" },
     Stats = {
-        HP = "50",
+        HP = 50,
         Size = "medium",
         Speed = "veryslow",
         Level = 1,
@@ -34,7 +34,7 @@ Config.NewEntity({
         Luk = 30,
         Hit100 = 22,
         Flee95 = 82,
-        Element= "water",
+        Element = "water",
         ElementLevel = 1
     }
 })
@@ -49,18 +49,18 @@ Config.NewEntity({
         Noun = "scratch"
     },
     DropTable = {
-        {Value = "red_herb" , Chance = 6},
-        {Value = "clown_nose" , Chance = 0.04},
-        {Value = "carrot" , Chance = 11},
-        {Value = "apple" , Chance = 20},
-        {Value = "rainbow_carrot" , Chance = 0.2},
-        {Value = "clover" , Chance = 65},
-        {Value = "feather" , Chance = 10},
-        {Value = "lunatic_card" , Chance = 0.01}
+        { Value = "red_herb", Chance = 6 },
+        { Value = "clown_nose", Chance = 0.04 },
+        { Value = "carrot", Chance = 11 },
+        { Value = "apple", Chance = 20 },
+        { Value = "rainbow_carrot", Chance = 0.2 },
+        { Value = "clover", Chance = 65 },
+        { Value = "feather", Chance = 10 },
+        { Value = "lunatic_card", Chance = 0.01 }
     },
     Flags = {},
     Stats = {
-        HP = "60",
+        HP = 60,
         Size = "small",
         Speed = "slow",
         Level = 3,
@@ -74,7 +74,7 @@ Config.NewEntity({
         Luk = 60,
         Hit100 = 26,
         Flee95 = 86,
-        Element= "neutral",
+        Element = "neutral",
         ElementLevel = 3
     }
 })
@@ -85,18 +85,18 @@ Config.NewEntity({
     RoomDesc = "A pulsating brown chrysalis is nestled in the grass.",
     FullDesc = "It's kind of cute!",
     DropTable = {
-        {Value = "chrysalis" , Chance = 55},
-        {Value = "shell" , Chance = 10},
-        {Value = "sticky_mucus" , Chance = 6},
-        {Value = "sticky_mucus" , Chance = 6},
-        {Value = "iron_ore" , Chance = 2},
-        {Value = "phracon" , Chance = 0.8},
-        {Value = "guard" , Chance = 0.02},
-        {Value = "pupa_card" , Chance = 0.01}
+        { Value = "chrysalis", Chance = 55 },
+        { Value = "shell", Chance = 10 },
+        { Value = "sticky_mucus", Chance = 6 },
+        { Value = "sticky_mucus", Chance = 6 },
+        { Value = "iron_ore", Chance = 2 },
+        { Value = "phracon", Chance = 0.8 },
+        { Value = "guard", Chance = 0.02 },
+        { Value = "pupa_card", Chance = 0.01 }
     },
-    Flags = {"stationary", "pacifist"},
+    Flags = { "stationary", "pacifist" },
     Stats = {
-        HP = "427",
+        HP = 427,
         Size = "small",
         Speed = "immovable",
         Level = 2,
@@ -110,7 +110,7 @@ Config.NewEntity({
         Luk = 20,
         Hit100 = 23,
         Flee95 = 78,
-        Element= "earth",
+        Element = "earth",
         ElementLevel = 1
     }
 })
@@ -125,18 +125,18 @@ Config.NewEntity({
         Noun = "splash"
     },
     DropTable = {
-        {Value = "jellopy" , Chance = 75},
-        {Value = "rod" , Chance = 0.8},
-        {Value = "sticky_mucus" , Chance = 5},
-        {Value = "apple" , Chance = 11},
-        {Value = "apple" , Chance = 8},
-        {Value = "empty_bottle" , Chance = 17},
-        {Value = "orange_juice" , Chance = 0.2},
-        {Value = "drops_card" , Chance = 0.01}
+        { Value = "jellopy", Chance = 75 },
+        { Value = "rod", Chance = 0.8 },
+        { Value = "sticky_mucus", Chance = 5 },
+        { Value = "apple", Chance = 11 },
+        { Value = "apple", Chance = 8 },
+        { Value = "empty_bottle", Chance = 17 },
+        { Value = "orange_juice", Chance = 0.2 },
+        { Value = "drops_card", Chance = 0.01 }
     },
     Flags = { "scavenger" },
     Stats = {
-        HP = "55",
+        HP = 55,
         Size = "medium",
         Speed = "veryslow",
         Level = 3,
@@ -150,7 +150,7 @@ Config.NewEntity({
         Luk = 15,
         Hit100 = 26,
         Flee95 = 90,
-        Element= "fire",
+        Element = "fire",
         ElementLevel = 1
     }
 })

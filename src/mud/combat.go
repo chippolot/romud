@@ -273,7 +273,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 
 	// 4. Calculate + Apply Damage
 	if didHit {
-		dam := calculateAttackDamage(e, tgt, didCrit)
+		dam := calculateAttackDamage(e, tgt, Neutral, didCrit)
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
 	} else {
 		sendDamageMessages(0, e, tgt, w, false, noun.Singular, noun.Plural)

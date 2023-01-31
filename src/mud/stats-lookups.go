@@ -103,8 +103,8 @@ var XPLookup = []int{
 	405234427,
 }
 
-// Map of attacking element to defending element multiplier (by defending element level)
-// = [DefElemLevel][AtkElem][DefElem]Mult
+// Map of defending element to attacking element multiplier (by defending element level)
+// = [DefElemLevel][DefElem][AtkElem]Mult
 var ElementLookup = [][][]float64{
 	// Level 1
 	{

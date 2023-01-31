@@ -188,8 +188,6 @@
         [x] Healing Items
             [x] Apple
 ----------------------------------------
-[] Lua
-    [] Enable requiring
 [] RO
     [] Skills
         [] Water Attribute Attack
@@ -212,6 +210,12 @@
     [] Auto-Con using colors
     [] Exp using level difference
     [] Starting equip scriptable
+[] Lua
+    [] Enable requiring
+[] Items
+    [] Use flags (ex: edible = eat)
+    [] Equipment Slots + Cards
+        [] Modifies item name
 [] Github
 [] MVP mobs
 [] Equippable Cards

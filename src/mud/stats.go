@@ -263,21 +263,23 @@ type RollMods struct {
 }
 
 type StatsConfig struct {
-	HP       Range
-	Size     Size
-	Speed    Speed
-	Mov      int
-	Str      int
-	Agi      int
-	Vit      int
-	Int      int
-	Dex      int
-	Luk      int
-	Level    int
-	Hit100   int // Monster Only: HIT value required for making 100% chance hit on monster
-	Flee95   int // Monster Only: FLEE value required for making 95% chance dodge on monster
-	ExpBase  int
-	ExpPerHP int
+	HP           Range
+	Size         Size
+	Speed        Speed
+	Element      Element
+	ElementLevel int
+	Mov          int
+	Str          int
+	Agi          int
+	Vit          int
+	Int          int
+	Dex          int
+	Luk          int
+	Level        int
+	Hit100       int // Monster Only: HIT value required for making 100% chance hit on monster
+	Flee95       int // Monster Only: FLEE value required for making 95% chance dodge on monster
+	ExpBase      int
+	ExpPerHP     int
 }
 
 type Stats struct {
@@ -515,17 +517,6 @@ func (s *Stats) getRollMods(roll RollType) *RollMods {
 	}
 }
 
-func ContestAbility(e *Entity, tgt *Entity, stat StatType) bool {
-	eRoll := D20.Roll() + GetAbilityModifier(e.stats.Get(stat))
-	tgtRoll := D20.Roll() + GetAbilityModifier(tgt.stats.Get(stat))
-	return eRoll > tgtRoll
-}
-
-func SavingThrow(e *Entity, stat StatType, dc int) bool {
-	roll := D20.Roll() + GetAbilityModifier(e.stats.Get(stat))
-	return roll >= dc
-}
-
 func (c Condition) InactionString() string {
 	switch c {
 	case Cnd_Dead:
@@ -538,115 +529,8 @@ func (c Condition) InactionString() string {
 	return ""
 }
 
-var XPChart = []int{
-	0,
-	0,
-	9,
-	25,
-	50,
-	86,
-	163,
-	275,
-	428,
-	628,
-	881,
-	1201,
-	1586,
-	2076,
-	2661,
-	3361,
-	4191,
-	5161,
-	6281,
-	7541,
-	8961,
-	10581,
-	12441,
-	14431,
-	16671,
-	19175,
-	22125,
-	25551,
-	29485,
-	33959,
-	40848,
-	48843,
-	58017,
-	68442,
-	80190,
-	94157,
-	109932,
-	127610,
-	147287,
-	169060,
-	199603,
-	233815,
-	271880,
-	313982,
-	360305,
-	413331,
-	471750,
-	535791,
-	605683,
-	681656,
-	784124,
-	899378,
-	1028070,
-	1170854,
-	1328382,
-	1506566,
-	1702866,
-	1918064,
-	2152943,
-	2408284,
-	2738472,
-	3104386,
-	3507610,
-	3949726,
-	4432316,
-	4969264,
-	5554455,
-	6189733,
-	6876944,
-	7617932,
-	8543332,
-	10017078,
-	11611136,
-	13330064,
-	15178419,
-	17160759,
-	19390872,
-	21777034,
-	24324451,
-	27038329,
-	30244489,
-	33925513,
-	37947985,
-	42325009,
-	47069689,
-	52195129,
-	57962401,
-	64166401,
-	70821865,
-	77943529,
-	85546129,
-	95284849,
-	106934809,
-	120578329,
-	138917629,
-	162754429,
-	198412429,
-	247099429,
-	305234429,
-	405234427,
-}
-
-func GetAbilityModifier(score int) int {
-	return (score - 10) / 2
-}
-
 func IsMaxLevel(e *Entity) bool {
-	return e.stats.Get(Stat_Level) >= len(XPChart)
+	return e.stats.Get(Stat_Level) >= len(XPLookup)
 }
 
 func GetXpForNextLevel(e *Entity) int {
@@ -654,7 +538,7 @@ func GetXpForNextLevel(e *Entity) int {
 		return -1
 	}
 	nextLevel := e.stats.Get(Stat_Level) + 1
-	requiredXp := XPChart[nextLevel] - e.stats.Get(Stat_XP)
+	requiredXp := XPLookup[nextLevel] - e.stats.Get(Stat_XP)
 	return utils.MaxInt(0, requiredXp)
 }
 

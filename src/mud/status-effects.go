@@ -207,13 +207,6 @@ func newStatusEffects() *StatusEffects {
 	return &StatusEffects{make([]*StatusEffect, 0), 0}
 }
 
-func rollForStatusEffect(e *Entity, w *World, cfg *ApplyStatusEffectConfig) {
-	if cfg == nil || (cfg.Save != nil && SavingThrow(e, cfg.Save.Stat, cfg.Save.DC)) {
-		return
-	}
-	performAddStatusEffect(e, w, cfg.Type, cfg.Duration)
-}
-
 func performAddStatusEffect(e *Entity, w *World, statusType StatusEffectMask, duration utils.Seconds) {
 	oldStatusEffectFlags := e.statusEffects.mask
 	if e.AddStatusEffect(statusType, duration) {

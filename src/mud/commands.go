@@ -44,7 +44,6 @@ func init() {
 		{DoRaise, []string{"raise"}, "Raises a stat point", "raise str", false, Cnd_Healthy, Pos_Sitting},
 		{DoSave, []string{"save"}, "Saves the game", "save", false, Cnd_Healthy, 0},
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi", true, Cnd_Healthy, Pos_Prone},
-		{DoShove, []string{"shove"}, "Attempts to shove an opponent during combat. If successful, opponent is knocked down.", "shove goblin", true, Cnd_Healthy, Pos_Standing},
 		{DoSit, []string{"sit"}, "Sit down on the ground", "sit", false, Cnd_Healthy, Pos_Prone},
 		{DoSleep, []string{"sleep"}, "Fall asleep to refresh yourself", "sleep", false, Cnd_Healthy, Pos_Sleeping},
 		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},

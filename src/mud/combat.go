@@ -191,30 +191,6 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 	}
 }
 
-func performShove(e *Entity, w *World, tgt *Entity) {
-	if !validateAttack(e, tgt) {
-		return
-	}
-
-	if tgt.position != Pos_Standing {
-		Write("You can't shove something that isn't standing!").ToPlayer(e).Subject(tgt).Send()
-	}
-
-	if e.combat != nil {
-		Write("You prepare to shove %s", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
-		e.combat.requestedSkill = CombatSkill_Shove
-		if e.combat.target != tgt {
-			Write("You turn to face %s", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
-			e.combat.target = tgt
-		}
-	} else {
-		if w.inCombat.StartCombat(e, tgt) {
-			e.combat.requestedSkill = CombatSkill_Shove
-			runCombatLogic(e, w, tgt)
-		}
-	}
-}
-
 func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	if e == tgt {
 		log.Panic("trying to run combat against self?")
@@ -234,18 +210,6 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 	}
 
 	switch e.combat.requestedSkill {
-	case CombatSkill_Shove:
-		// STR or DEX contest
-		if ContestAbility(e, tgt, tgt.stats.MaxStatType(Stat_Str, Stat_Dex)) {
-			tgt.position = Pos_Prone
-			Write("You shove %s, knocking %s to the ground", ObservableName(tgt), tgt.Gender().GetObjectPronoun()).ToPlayer(e).Subject(tgt).Colorized(Color_Neutral).Send()
-			Write("%s shoves you, knocking you to the ground", ObservableNameCap(e)).ToPlayer(tgt).Subject(e).Colorized(Color_Negative).Send()
-			Write("%s shoves %s, knocking %s to the ground", ObservableNameCap(e), ObservableName(tgt), tgt.Gender().GetObjectPronoun()).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Restricted(SendRst_CanSee).Send()
-		} else {
-			Write("You try to shove %s but fail miserably", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
-			Write("%s tries to shove you but fails miserably", ObservableNameCap(e)).ToPlayer(tgt).Subject(e).Send()
-			Write("%s tries to shove %s but fails miserably", ObservableNameCap(e), ObservableName(tgt)).ToEntityRoom(w, e).Subject(e).Ignore(tgt).Restricted(SendRst_CanSee).Send()
-		}
 	default:
 		numAttacks := calculateAttacksPerRound(e.stats) + e.combat.speedCounter
 		numAttacksFull := int(numAttacks)

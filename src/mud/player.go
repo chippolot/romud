@@ -61,8 +61,8 @@ func (pp *PlayerPromptProvider) Prompt() string {
 	toNextLvlPct := 0
 	lvl := pp.character.stats.Get(Stat_Level)
 	if !IsMaxLevel(pp.character) {
-		curLvlXp := float64(XPChart[lvl])
-		nxtLvlXp := float64(XPChart[lvl+1])
+		curLvlXp := float64(XPLookup[lvl])
+		nxtLvlXp := float64(XPLookup[lvl+1])
 		toNextLvlPct = int(((pp.character.stats.GetFloat(Stat_XP) - curLvlXp) / nxtLvlXp) * 100)
 	}
 	sb.WriteLinef("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv %d%%xp", pp.character.stats.Get(Stat_HP), pp.character.stats.Get(Stat_SP), pp.character.stats.Get(Stat_Mov), toNextLvlPct)))

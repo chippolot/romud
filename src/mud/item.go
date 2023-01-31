@@ -18,18 +18,19 @@ type ItemId int32
 type ItemConfigList []*ItemConfig
 
 type ItemConfig struct {
-	Key       string
-	Name      string
-	Keywords  []string
-	RoomDesc  string
-	FullDesc  string
-	Flags     ItemFlagMask
-	Equipment *EquipmentConfig
-	BuyPrice  int
-	SellPrice int
-	Weight    int
-	lookup    map[string]bool
-	scripts   *ItemScripts
+	Key        string
+	Name       string
+	NamePlural string
+	Keywords   []string
+	RoomDesc   string
+	FullDesc   string
+	Flags      ItemFlagMask
+	Equipment  *EquipmentConfig
+	BuyPrice   int
+	SellPrice  int
+	Weight     int
+	lookup     map[string]bool
+	scripts    *ItemScripts
 }
 
 func (cfg *ItemConfig) Init() {

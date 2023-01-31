@@ -4,6 +4,7 @@ Config.NewItem({
 		"knife"
 	},
 	Name = "a knife",
+	NamePlural = "knives",
 	RoomDesc = "A simple knife has been left here.",
 	FullDesc = "A simple knife.",
 	Equipment = {

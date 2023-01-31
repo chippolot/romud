@@ -189,9 +189,12 @@
             [x] Apple
     [x] Damage elements
     [x] Damage sizes
+    [x] Shops
 ----------------------------------------
 [] RO
     [] Shops
+        [] Group notifs by amount
+        [] Allow buying multiples
         [] Indoors/ Outdoors
         [] No Monster Spawns / Movement
     [] Skills
@@ -202,7 +205,6 @@
         [] Taming Items
             [] Unripe Apple
     [] Item types (?)
-    [] Shops
     [] Corpses crumble after time
     [] Skills
         [] Active
@@ -211,7 +213,6 @@
     [] Advantage / Disadvantage
     [] Dex Weapons
     [] Auto-Con using colors
-    [] Exp using level difference
     [] Starting equip scriptable
 [] Lua
     [] Enable requiring

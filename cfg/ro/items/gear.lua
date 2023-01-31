@@ -5,6 +5,7 @@ Config.NewItem({
         "shirt"
 	},
 	Name = "a cotton shirt",
+	NamePlural = "cotton shirts",
 	RoomDesc = "A simple cotton shirt has been left here.",
     FullDesc = "A simple, sturdily made shirt of cotton.",
 	Equipment = {
@@ -27,6 +28,7 @@ Config.NewItem({
         "nose"
 	},
 	Name = "a clown nose",
+	NamePlural = "clown noses",
 	RoomDesc = "A simple clown nose has been poignantly discarded here.",
     FullDesc = "A fashion accessory used in clown or town drunk disguises.",
 	Equipment = {

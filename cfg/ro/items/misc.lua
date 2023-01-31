@@ -18,6 +18,7 @@ Config.NewItem({
         "bottle"
 	},
 	Name = "an empty bottle",
+	NamePlural = "empty bottles",
 	RoomDesc = "A plain empty bottle is discarded here.",
     FullDesc = "An empty bottle that can be used for carrying liquid.",
 	BuyPrice = 6,
@@ -28,9 +29,11 @@ Config.NewItem({
     Key = "sticky_mucus",
 	Keywords = {
 		"sticky",
-        "mucus"
+        "mucus",
+		"liquid"
 	},
 	Name = "sticky mucus",
+	NamePlural = "sticky mucus",
 	RoomDesc = "Mysterious sticky liquid is pools on the ground.",
     FullDesc = "Mysteriously sticky liquid.",
 	BuyPrice = 70,
@@ -40,9 +43,11 @@ Config.NewItem({
 Config.NewItem({
     Key = "clover",
 	Keywords = {
+		"stalk",
 		"clover"
 	},
 	Name = "a stalk of clover",
+	NamePlural = "stalks of clover",
 	RoomDesc = "A stalk of three-leaf clover is growing here.",
     FullDesc = "A plant with three heart shaped leaves that is plentiful in meadows.",
 	BuyPrice = 10,
@@ -55,6 +60,7 @@ Config.NewItem({
 		"feather"
 	},
 	Name = "a feather",
+	NamePlural = "feathers",
 	RoomDesc = "A downy feather flits in the breeze.",
     FullDesc = "A feather that boasts full, lustrous barbs used for making clothes of the highest quality.",
 	BuyPrice = 20,
@@ -67,6 +73,7 @@ Config.NewItem({
 		"chrysalis"
 	},
 	Name = "a flake of chrysalis",
+	NamePlural = "flakes of chrysalis",
 	RoomDesc = "Some flaky chrysalis is discarded here.",
     FullDesc = "Skin from a larva that has been shed or peeled off.",
 	BuyPrice = 8,
@@ -88,10 +95,12 @@ Config.NewItem({
 Config.NewItem({
     Key = "iron_ore",
 	Keywords = {
+		"chunk",
 		"iron",
 		"ore"
 	},
 	Name = "some iron ore",
+	NamePlural = "chunks of iron ore",
 	RoomDesc = "A chunk of iron ore lies here",
     FullDesc = "An impure ore that forms Iron after being refined.",
 	BuyPrice = 50,
@@ -101,9 +110,11 @@ Config.NewItem({
 Config.NewItem({
     Key = "phracon",
 	Keywords = {
+		"shard",
 		"phracon"
 	},
 	Name = "a shard of phracon",
+	NamePlural = "shards of phracon",
 	RoomDesc = "A shard of phracon lies here.",
     FullDesc = "A metal that can be used to strengthen and upgrade Level 1 Weapons.",
 	BuyPrice = 200,

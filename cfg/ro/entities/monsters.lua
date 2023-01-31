@@ -1,7 +1,7 @@
 Config.NewEntity({
     Key = "poring",
     Name = "a poring",
-    Keywords = { "poring" },
+    Keywords = { "poring", "pink", "ball", "jelly" },
     RoomDesc = "A smiling pink ball of jelly is wiggling here.",
     FullDesc = "It's kind of cute!",
     Attack = {
@@ -41,7 +41,7 @@ Config.NewEntity({
 Config.NewEntity({
     Key = "lunatic",
     Name = "a lunatic",
-    Keywords = { "lunatic" },
+    Keywords = { "lunatic", "white", "fluffy", "creature" },
     RoomDesc = "A small, white, fluffy creature scurries beneath your feet.",
     FullDesc = "It's kind of cute!",
     Attack = {
@@ -81,7 +81,7 @@ Config.NewEntity({
 Config.NewEntity({
     Key = "pupa",
     Name = "a pupa",
-    Keywords = { "pupa" },
+    Keywords = { "pupa", "brown", "chrysalis" },
     RoomDesc = "A pulsating brown chrysalis is nestled in the grass.",
     FullDesc = "It's kind of cute!",
     DropTable = {
@@ -117,7 +117,7 @@ Config.NewEntity({
 Config.NewEntity({
     Key = "drops",
     Name = "a drops",
-    Keywords = { "drops" },
+    Keywords = { "drops", "orange", "ball", "jelly" },
     RoomDesc = "A sizzling orange ball of jelly is wiggling here.",
     FullDesc = "It's kind of cute!",
     Attack = {

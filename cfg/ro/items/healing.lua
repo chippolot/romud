@@ -9,9 +9,11 @@ end
 Config.NewItem({
     Key = "apple",
 	Keywords = {
+        "red",
         "apple"
 	},
 	Name = "an apple",
+	NamePlural = "apples",
 	RoomDesc = "A shiny red apple is here.",
     FullDesc = "A round, edible fruit that, when eaten once a day, keeps the doctor away. Recovers a small amount of HP.",
 	BuyPrice = 15,
@@ -32,6 +34,7 @@ Config.NewItem({
         "red", "herb"
 	},
 	Name = "a red herb",
+	NamePlural = "red herbs",
 	RoomDesc = "Some sprigs of red herb are here.",
     FullDesc = "	A weak medicinal herb which heals wounds. Recovers a little HP.",
 	BuyPrice = 18,

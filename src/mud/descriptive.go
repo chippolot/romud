@@ -3,8 +3,9 @@ package mud
 import "fmt"
 
 type Named interface {
-	Name() string
-	NameCapitalized() string
+	GetName() string
+	GetNameCapitalized() string
+	GetNamePluralized(count int, includeCount bool) string
 }
 
 type Descriptive interface {

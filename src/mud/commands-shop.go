@@ -63,8 +63,8 @@ func DoBuy(e *Entity, w *World, tokens []string) {
 		spawnItemByKey(item.Key, e)
 	}
 	for item, amt := range groups {
-		Write("You buy %d %s for %dz", amt, item.NamePlural, item.BuyPrice*amt).ToPlayer(e).Send()
-		Write("%s buys %d %s", ObservableNameCap(e), amt, item.NamePlural).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
+		Write("You buy %s for %dz", item.GetNamePluralized(amt, true), item.BuyPrice*amt).ToPlayer(e).Send()
+		Write("%s buys %s", ObservableNameCap(e), item.GetNamePluralized(amt, true)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 	}
 }
 
@@ -94,7 +94,7 @@ func DoSell(e *Entity, w *World, tokens []string) {
 	groups := make(map[*ItemConfig]int)
 	for _, item := range items {
 		if item.cfg.SellPrice <= 0 {
-			Write("This shop doesn't buy %s", item.Name()).ToPlayer(e).Send()
+			Write("This shop doesn't buy %s", item.GetName()).ToPlayer(e).Send()
 			return
 		}
 		groups[item.cfg] += 1
@@ -105,7 +105,7 @@ func DoSell(e *Entity, w *World, tokens []string) {
 		e.stats.Add(Stat_Gold, item.cfg.SellPrice)
 	}
 	for item, amt := range groups {
-		Write("You sell %d %s for %dz", amt, item.NamePlural, item.SellPrice*amt).ToPlayer(e).Send()
-		Write("%s sells %d %s", ObservableNameCap(e), amt, item.NamePlural).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
+		Write("You sell %s for %dz", item.GetNamePluralized(amt, true), item.SellPrice*amt).ToPlayer(e).Send()
+		Write("%s sells %s", ObservableNameCap(e), item.GetNamePluralized(amt, true)).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Send()
 	}
 }

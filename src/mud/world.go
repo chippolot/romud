@@ -128,12 +128,12 @@ func (w *World) SavePlayerCharacter(pid PlayerId) {
 
 	data := &PlayerCharacterData{e.player.data, e.data}
 	go func() {
-		err := w.db.SavePlayer(e.Name(), data)
+		err := w.db.SavePlayer(e.GetName(), data)
 		if err != nil {
-			log.Printf("error saving player %v -- %v", e.Name(), err)
+			log.Printf("error saving player %v -- %v", e.GetName(), err)
 		} else {
 
-			log.Printf("saved player %v", e.Name())
+			log.Printf("saved player %v", e.GetName())
 		}
 	}()
 }

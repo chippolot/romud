@@ -51,14 +51,18 @@ func NewRoom(cfg *RoomConfig, zoneId ZoneId) (*Room, error) {
 	return r, nil
 }
 
-func (r *Room) Name() string {
+func (r *Room) GetName() string {
 	return r.cfg.Name
 }
 
-func (r *Room) NameCapitalized() string {
-	arr := []rune(r.Name())
+func (r *Room) GetNameCapitalized() string {
+	arr := []rune(r.GetName())
 	arr[0] = unicode.ToUpper(arr[0])
 	return string(arr)
+}
+
+func (r *Room) GetNamePluralized(count int, includeCount bool) string {
+	return r.cfg.Name
 }
 
 func (r *Room) AddEntity(e *Entity) {
@@ -123,7 +127,7 @@ func (r *Room) IsExitOpen(dir Direction) bool {
 func (r *Room) Describe(subject *Entity) string {
 	var sb utils.StringBuilder
 	sb.WriteStringf("<c %s>", Color_Header).
-		WriteString(r.Name()).
+		WriteString(r.GetName()).
 		WriteLine("</c>").
 		WriteLinef("   %s", r.cfg.Desc)
 	describeExits(r, &sb)
@@ -165,7 +169,7 @@ func describePlayers(r *Room, sb *utils.StringBuilder, subject *Entity) {
 		if !e.CanBeSeenBy(subject) {
 			continue
 		}
-		descs = append(descs, fmt.Sprintf("%s is here", e.Name()))
+		descs = append(descs, fmt.Sprintf("%s is here", e.GetName()))
 	}
 	if len(descs) == 0 {
 		return
@@ -189,7 +193,7 @@ func describeNonPlayerEntities(r *Room, sb *utils.StringBuilder, subject *Entity
 			}
 			desc := e.cfg.RoomDesc
 			if desc == "" {
-				desc = fmt.Sprintf("%s is here", e.Name())
+				desc = fmt.Sprintf("%s is here", e.GetName())
 			}
 			return desc
 		})
@@ -207,7 +211,7 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 	descs := GroupDescriptionsFromMap(r.items, nil, func(_ ItemId, i *Item) string {
 		desc := i.cfg.RoomDesc
 		if desc == "" {
-			desc = fmt.Sprintf("%s is here", i.Name())
+			desc = fmt.Sprintf("%s is here", i.GetName())
 		}
 		return desc
 	})

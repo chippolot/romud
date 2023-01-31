@@ -4,7 +4,6 @@ import (
 	"log"
 	"math"
 	"strings"
-	"unicode"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -132,17 +131,20 @@ func (e *Entity) RoomId() RoomId {
 	return e.data.RoomId
 }
 
-func (e *Entity) Name() string {
+func (e *Entity) GetName() string {
 	if e.player != nil {
 		return e.player.data.Name
 	}
 	return e.cfg.Name
 }
 
-func (e *Entity) NameCapitalized() string {
-	arr := []rune(e.Name())
-	arr[0] = unicode.ToUpper(arr[0])
-	return string(arr)
+func (e *Entity) GetNameCapitalized() string {
+	return utils.Capitalize(e.GetName())
+}
+
+func (e *Entity) GetNamePluralized(count int, includeCount bool) string {
+	// TODO Support plurals
+	return e.GetName()
 }
 
 func (e *Entity) Gender() Gender {
@@ -185,12 +187,12 @@ func (e *Entity) RemoveItem(item *Item) {
 func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 	eq := item.cfg.Equipment
 	if eq == nil {
-		Write("You can't equip %s", item.Name()).ToPlayer(e).Send()
+		Write("You can't equip %s", item.GetName()).ToPlayer(e).Send()
 		return EqSlot_None, nil, false
 	}
 
 	if eq.RequiredLevel > 0 && e.stats.Get(Stat_Level) < eq.RequiredLevel {
-		Write("You need to be level %d before you can equip %s", eq.RequiredLevel, item.Name()).ToPlayer(e).Send()
+		Write("You need to be level %d before you can equip %s", eq.RequiredLevel, item.GetName()).ToPlayer(e).Send()
 		return EqSlot_None, nil, false
 	}
 
@@ -219,14 +221,14 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 		e.onEquipped(item)
 		return slot, unequipped, true
 	} else {
-		Write("You aren't carrying %s", item.Name()).ToPlayer(e).Send()
+		Write("You aren't carrying %s", item.GetName()).ToPlayer(e).Send()
 		return EqSlot_None, nil, false
 	}
 }
 
 func (e *Entity) Unequip(item *Item) bool {
 	if item.cfg.Equipment == nil {
-		Write("%s isn't equipped", item.NameCapitalized()).ToPlayer(e).Send()
+		Write("%s isn't equipped", item.GetNameCapitalized()).ToPlayer(e).Send()
 		return false
 	}
 	var found bool
@@ -241,7 +243,7 @@ func (e *Entity) Unequip(item *Item) bool {
 		e.onUnequipped(item)
 		e.AddItem(item)
 	} else {
-		Write("%s isn't equipped", item.NameCapitalized()).ToPlayer(e).Send()
+		Write("%s isn't equipped", item.GetNameCapitalized()).ToPlayer(e).Send()
 		return false
 	}
 	return true
@@ -352,7 +354,7 @@ func (e *Entity) Describe() string {
 	sb.WriteLine(e.stats.ConditionLongString(e))
 	statuses := e.DescribeStatusEffects()
 	if statuses != "" {
-		sb.WriteLinef("%s is %s", e.NameCapitalized(), statuses)
+		sb.WriteLinef("%s is %s", e.GetNameCapitalized(), statuses)
 	}
 	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {
 		sb.WriteLine(e.DescribeEquipment())
@@ -365,7 +367,7 @@ func (e *Entity) DescribeStatus() string {
 
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
-	sb.WriteLinef("%s", e.Name())
+	sb.WriteLinef("%s", e.GetName())
 	sb.WriteNewLine()
 	sb.WriteLinef("Level  : %s", Colorize(Color_Stat, e.stats.Get(Stat_Level)))
 	if !IsMaxLevel(e) {
@@ -425,12 +427,12 @@ func (e *Entity) DescribeStatusEffects() string {
 
 func (e *Entity) DescribeInventory() string {
 	var sb utils.StringBuilder
-	sb.WriteLinef("%s is carrying:", e.NameCapitalized())
+	sb.WriteLinef("%s is carrying:", e.GetNameCapitalized())
 	if len(e.inventory) == 0 {
 		sb.WriteLine("  Nothing.")
 	} else {
 		descs := GroupDescriptionsFromSlice(e.inventory, nil, func(i *Item) string {
-			return Colorize(Color_Enum, i.NameCapitalized())
+			return Colorize(Color_Enum, i.GetNameCapitalized())
 		})
 		for idx, desc := range descs {
 			descs[idx] = "  " + desc
@@ -442,7 +444,7 @@ func (e *Entity) DescribeInventory() string {
 
 func (e *Entity) DescribeEquipment() string {
 	var sb utils.StringBuilder
-	sb.WriteLinef("%s is using:", e.NameCapitalized())
+	sb.WriteLinef("%s is using:", e.GetNameCapitalized())
 	sb.WriteHorizontalDivider()
 	e.describeEquipmeentSlot(EqSlot_Head_High, &sb)
 	e.describeEquipmeentSlot(EqSlot_Head_Mid, &sb)
@@ -460,7 +462,7 @@ func (e *Entity) DescribeEquipment() string {
 func (e *Entity) describeEquipmeentSlot(slot EquipSlot, sb *utils.StringBuilder) {
 	eqName := "--"
 	if eq, ok := e.equipped[slot]; ok {
-		eqName = eq.NameCapitalized()
+		eqName = eq.GetNameCapitalized()
 	}
 	slotDesc := GetEquipmentSlotDescription(slot)
 	if slotDesc == "" {
@@ -470,7 +472,7 @@ func (e *Entity) describeEquipmeentSlot(slot EquipSlot, sb *utils.StringBuilder)
 }
 
 func (e *Entity) MatchesKeyword(keyword string) bool {
-	if strings.EqualFold(e.Name(), keyword) {
+	if strings.EqualFold(e.GetName(), keyword) {
 		return true
 	}
 	_, ok := e.cfg.lookup[keyword]
@@ -544,7 +546,7 @@ func (e *Entity) updateEntityFlagsMask() {
 
 func TryGetEntityByName(name string, ents map[EntityId]*Entity) (*Entity, bool) {
 	for _, e := range ents {
-		if strings.EqualFold(e.Name(), name) {
+		if strings.EqualFold(e.GetName(), name) {
 			return e, true
 		}
 	}

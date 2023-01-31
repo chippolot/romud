@@ -412,7 +412,7 @@ func createCorpse(from *Entity, w *World) *Item {
 	// Create new corpse
 	cfg := &ItemConfig{}
 	cfg.Key = from.cfg.Key + "_corpse"
-	cfg.Name = fmt.Sprintf("the corpse of %s", from.Name())
+	cfg.Name = fmt.Sprintf("the corpse of %s", from.GetName())
 	cfg.Keywords = append([]string{"corpse"}, from.cfg.Keywords...)
 	cfg.Flags = IFlag_Container | IFlag_Crumbles | IFlag_NoStorage
 	cfg.Init()

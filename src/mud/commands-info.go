@@ -129,10 +129,10 @@ func DoWho(e *Entity, w *World, _ []string) {
 	var sb utils.StringBuilder
 	sb.WriteLinef("Online Players: %d", len(w.players))
 	sb.WriteHorizontalDivider()
-	sb.WriteLinef("  (you) %s", e.Name())
+	sb.WriteLinef("  (you) %s", e.GetName())
 	for _, e2 := range w.players {
 		if e2 != e {
-			sb.WriteLinef("  %s", e2.Name())
+			sb.WriteLinef("  %s", e2.GetName())
 		}
 	}
 	Write(sb.String()).ToPlayer(e).Send()

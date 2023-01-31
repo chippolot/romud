@@ -190,10 +190,11 @@
     [x] Damage elements
     [x] Damage sizes
     [x] Shops
+        [x] Group notifs by amount
+        [x] Item name plural or singular
 ----------------------------------------
 [] RO
     [] Shops
-        [] Group notifs by amount
         [] Allow buying multiples
         [] Indoors/ Outdoors
         [] No Monster Spawns / Movement

@@ -469,16 +469,16 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 	if hp <= 0 {
 		switch mudConfig.Death.Mode {
 		case Death_Instant:
-			return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
+			return fmt.Sprintf("%s is %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
 		case Death_Prolonged:
 			if hp < -10 {
-				return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
+				return fmt.Sprintf("%s is %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Hurt, "dead"))
 			} else if hp < -5 {
-				return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "mortally wounded"))
+				return fmt.Sprintf("%s is %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Hurt, "mortally wounded"))
 			} else if hp < -2 {
-				return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "badly wounded"))
+				return fmt.Sprintf("%s is %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Hurt, "badly wounded"))
 			} else {
-				return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
+				return fmt.Sprintf("%s is in %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
 			}
 		}
 	}
@@ -486,19 +486,19 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 	maxHP := s.Get(Stat_MaxHP)
 	pct := float32(hp) / float32(maxHP)
 	if pct >= 0.95 {
-		return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "excellent condition"))
+		return fmt.Sprintf("%s is in %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Healthy, "excellent condition"))
 	} else if pct >= 0.85 {
-		return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "a few scratches"))
+		return fmt.Sprintf("%s has %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Healthy, "a few scratches"))
 	} else if pct >= 0.70 {
-		return fmt.Sprintf("%s has %s", e.NameCapitalized(), Colorize(Color_Cnd_Healthy, "bumps and bruises"))
+		return fmt.Sprintf("%s has %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Healthy, "bumps and bruises"))
 	} else if pct >= 0.50 {
-		return fmt.Sprintf("%s is looking %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "roughed up"))
+		return fmt.Sprintf("%s is looking %s", e.GetNameCapitalized(), Colorize(Color_Cnd_LightHurt, "roughed up"))
 	} else if pct >= 0.30 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding"))
+		return fmt.Sprintf("%s is %s", e.GetNameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding"))
 	} else if pct >= 0.15 {
-		return fmt.Sprintf("%s is %s", e.NameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding heavily"))
+		return fmt.Sprintf("%s is %s", e.GetNameCapitalized(), Colorize(Color_Cnd_LightHurt, "bleeding heavily"))
 	} else {
-		return fmt.Sprintf("%s is in %s", e.NameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
+		return fmt.Sprintf("%s is in %s", e.GetNameCapitalized(), Colorize(Color_Cnd_Hurt, "awful condition"))
 	}
 }
 
@@ -583,7 +583,7 @@ func performLevelUp(e *Entity, w *World) {
 	Write("  You gain %d sp", e.stats.Get(Stat_MaxSP)-oldSP).ToPlayer(e).Send()
 	Write("  You gain %d mov", e.stats.Get(Stat_MaxMov)-oldMov).ToPlayer(e).Send()
 	Write("  You gain %d stat points", e.stats.Get(Stat_StatPoints)-oldStatPts).ToPlayer(e).Send()
-	Write("Hooray! %s is now level %d", e.Name(), e.stats.Get(Stat_Level)).ToWorld(w).Send()
+	Write("Hooray! %s is now level %d", e.GetName(), e.stats.Get(Stat_Level)).ToWorld(w).Send()
 
 	if e.player != nil {
 		w.SavePlayerCharacter(e.player.id)

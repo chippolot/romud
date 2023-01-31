@@ -1,6 +1,9 @@
 package utils
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+)
 
 const NewLine = "\n\r"
 const HorizontalDivider = "---------------------------------"
@@ -26,6 +29,12 @@ func LineBreak(str string, maxLen int, delimiter string) []string {
 	}
 	lines = append(lines, sb.String())
 	return lines
+}
+
+func Capitalize(str string) string {
+	arr := []rune(str)
+	arr[0] = unicode.ToUpper(arr[0])
+	return string(arr)
 }
 
 type StringMapping[T comparable] struct {

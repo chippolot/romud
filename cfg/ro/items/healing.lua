@@ -1,8 +1,8 @@
 local function UseEdibleHealingItem(user, item, min, max) 
     local amt = Util.RandomRange(min, max)
     Entity.HealHP(user, amt)
-    Write.ToPlayer(user, string.format("You eat %s <c green>(%d)</c>", Item.Name(item), amt))
-    Write.ToRoom(Entity.Room(user), user, string.format("%s eats %s.", Entity.NameCap(user), Item.Name(item)))
+    Write.ToPlayer(user, string.format("You eat %s <c green>(%d)</c>", Item.GetName(item), amt))
+    Write.ToRoom(Entity.Room(user), user, string.format("%s eats %s.", Entity.NameCap(user), Item.GetName(item)))
     return true
 end
 

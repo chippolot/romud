@@ -28,7 +28,7 @@ func DoTell(e *Entity, w *World, tokens []string) {
 		name := tokens[1]
 		msg := strings.Join(tokens[2:], " ")
 
-		if name == e.Name() {
+		if name == e.GetName() {
 			Write("You try whispering to yourself...").ToPlayer(e).Send()
 			return
 		} else if te, ok := TryGetEntityByName(name, w.entities); ok {

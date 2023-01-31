@@ -209,7 +209,7 @@ func performGet(e *Entity, w *World, from ItemContainer, items ...*Item) {
 	if len(items) == 0 {
 		containerName := "something"
 		if named, ok := from.(Named); ok {
-			containerName = named.Name()
+			containerName = named.GetName()
 		}
 		Write("The %s is empty", containerName).ToPlayer(e).Send()
 		return

@@ -69,7 +69,7 @@ func (pp *PlayerPromptProvider) Prompt() string {
 	sb.WriteLinef("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv %dz %d%%xp", stats.Get(Stat_HP), stats.Get(Stat_SP), stats.Get(Stat_Mov), stats.Get(Stat_Gold), toNextLvlPct)))
 	if pp.character.combat != nil {
 		targetName := ObservableName(pp.character.combat.target).Desc(pp.character)
-		sb.WriteLinef("<%s (%s)>:<%s (%s)> ", pp.character.Name(), stats.ConditionShortString(), targetName, pp.character.combat.target.stats.ConditionShortString())
+		sb.WriteLinef("<%s (%s)>:<%s (%s)> ", pp.character.GetName(), stats.ConditionShortString(), targetName, pp.character.combat.target.stats.ConditionShortString())
 	} else {
 		sb.WriteLine("<>:<> ")
 	}

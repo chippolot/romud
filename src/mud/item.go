@@ -5,7 +5,6 @@ import (
 	"log"
 	"strings"
 	"time"
-	"unicode"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -45,6 +44,24 @@ func (cfg *ItemConfig) MatchesKeyword(keyword string) bool {
 	}
 	_, ok := cfg.lookup[keyword]
 	return ok
+}
+
+func (cfg *ItemConfig) GetName() string {
+	return cfg.Name
+}
+
+func (cfg *ItemConfig) GetNameCapitalized() string {
+	return utils.Capitalize(cfg.Name)
+}
+
+func (cfg *ItemConfig) GetNamePluralized(count int, includeCount bool) string {
+	if count < 2 {
+		return cfg.Name
+	}
+	if includeCount {
+		return fmt.Sprintf("%d %s", count, cfg.NamePlural)
+	}
+	return cfg.NamePlural
 }
 
 type Ownership struct {
@@ -115,14 +132,16 @@ func (i *Item) RoomId() RoomId {
 	return i.data.RoomId
 }
 
-func (i *Item) Name() string {
-	return i.cfg.Name
+func (i *Item) GetName() string {
+	return i.cfg.GetName()
 }
 
-func (i *Item) NameCapitalized() string {
-	arr := []rune(i.Name())
-	arr[0] = unicode.ToUpper(arr[0])
-	return string(arr)
+func (i *Item) GetNameCapitalized() string {
+	return i.cfg.GetNameCapitalized()
+}
+
+func (i *Item) GetNamePluralized(count int, includeCount bool) string {
+	return i.cfg.GetNamePluralized(count, includeCount)
 }
 
 func (i *Item) CanBeSeenBy(viewer *Entity) bool {
@@ -183,7 +202,7 @@ func (i *Item) RemoveItem(item *Item) {
 
 func (i *Item) DescribeContents() string {
 	if !i.cfg.Flags.Has(IFlag_Container) {
-		return fmt.Sprintf("%s is not a container!", i.Name())
+		return fmt.Sprintf("%s is not a container!", i.GetName())
 	}
 
 	var sb utils.StringBuilder
@@ -193,12 +212,12 @@ func (i *Item) DescribeContents() string {
 	} else {
 		state = "in room"
 	}
-	sb.WriteLinef("You look in %s (%s):", i.Name(), state)
+	sb.WriteLinef("You look in %s (%s):", i.GetName(), state)
 	if len(i.contents) == 0 {
 		sb.WriteLine("  Nothing.")
 	} else {
 		for _, i2 := range i.contents {
-			sb.WriteLinef("  %s", Colorize(Color_Enum, i2.Name()))
+			sb.WriteLinef("  %s", Colorize(Color_Enum, i2.GetName()))
 		}
 	}
 	return sb.String()

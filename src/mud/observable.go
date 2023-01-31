@@ -21,9 +21,9 @@ type ObservableNameDescriptor struct {
 func (d ObservableNameDescriptor) Desc(observer *Entity) string {
 	if observer == nil || (observer != d.obj && d.obj.CanBeSeenBy(observer)) {
 		if d.capitalized {
-			return d.obj.NameCapitalized()
+			return d.obj.GetNameCapitalized()
 		} else {
-			return d.obj.Name()
+			return d.obj.GetName()
 		}
 	}
 	if d.capitalized {

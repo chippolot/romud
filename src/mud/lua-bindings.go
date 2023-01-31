@@ -83,11 +83,11 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 }
 
 func lua_EntityName(e *Entity) string {
-	return e.Name()
+	return e.GetName()
 }
 
 func lua_EntityNameCap(e *Entity) string {
-	return e.NameCapitalized()
+	return e.GetNameCapitalized()
 }
 
 func lua_EntityRoomId(e *Entity) RoomId {
@@ -116,11 +116,11 @@ func lua_EntityHealMov(e *Entity, amount int) {
 }
 
 func lua_ItemName(i *Item) string {
-	return i.Name()
+	return i.GetName()
 }
 
 func lua_ItemNameCap(i *Item) string {
-	return i.NameCapitalized()
+	return i.GetNameCapitalized()
 }
 
 func lua_ItemEquippable(i *Item) bool {

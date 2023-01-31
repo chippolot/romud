@@ -29,6 +29,7 @@ type World struct {
 	sessions map[server.SessionId]*server.Session
 	rooms    map[RoomId]*Room
 	zones    map[ZoneId]*Zone
+	shops    map[RoomId]*Shop
 	entities map[EntityId]*Entity
 
 	entryRoomId RoomId
@@ -52,6 +53,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		make(map[server.SessionId]*server.Session),
 		make(map[RoomId]*Room),
 		make(map[ZoneId]*Zone),
+		make(map[RoomId]*Shop),
 		make(map[EntityId]*Entity),
 		0,
 		&CombatList{},

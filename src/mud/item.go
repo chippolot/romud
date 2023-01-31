@@ -38,6 +38,13 @@ func (cfg *ItemConfig) Init() {
 		cfg.lookup[strings.ToLower(s)] = true
 	}
 }
+func (cfg *ItemConfig) MatchesKeyword(keyword string) bool {
+	if strings.EqualFold(cfg.Name, keyword) {
+		return true
+	}
+	_, ok := cfg.lookup[keyword]
+	return ok
+}
 
 type Ownership struct {
 	OwnerId EntityId
@@ -129,11 +136,7 @@ func (i *Item) Describe() string {
 }
 
 func (i *Item) MatchesKeyword(keyword string) bool {
-	if strings.EqualFold(i.Name(), keyword) {
-		return true
-	}
-	_, ok := i.cfg.lookup[keyword]
-	return ok
+	return i.cfg.MatchesKeyword(keyword)
 }
 
 func (i *Item) AddItem(i2 *Item) {
@@ -215,7 +218,6 @@ func (i *Item) RemoveAllFromContainer() ItemList {
 }
 
 func SearchItems(query SearchQuery, containers ...ItemContainer) []*Item {
-	// TODO dot notation for specifying container type
 	for _, c := range containers {
 		if items := c.SearchItems(query); len(items) != 0 {
 			return items

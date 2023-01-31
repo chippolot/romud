@@ -64,7 +64,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 			return
 		}
 		key := tokens[2]
-		if item := spawnItemByKey(key, w, r.cfg.Id); item != nil {
+		if item := spawnItemByKey(key, r); item != nil {
 			Write("Admin: Spawned Item %s", key).ToPlayer(e).Send()
 		} else {
 			Write("Admin: Failed to load item %s", key).ToPlayer(e).Send()

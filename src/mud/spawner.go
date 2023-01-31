@@ -97,7 +97,8 @@ func (s *ZoneSpawner) Spawn(z *Zone, w *World) {
 	case Spawner_Entity:
 		spawned = spawnEntityByKey(key, w, roomId)
 	case Spawner_Item:
-		spawned = spawnItemByKey(key, w, roomId)
+		r := w.rooms[roomId]
+		spawned = spawnItemByKey(key, r)
 	}
 	s.active = append(s.active, spawned)
 }
@@ -114,11 +115,11 @@ func spawnEntityByKey(key string, w *World, roomId RoomId) *Entity {
 	return nil
 }
 
-func spawnItemByKey(key string, w *World, roomId RoomId) *Item {
+func spawnItemByKey(key string, into ItemContainer) *Item {
 	if cfg, ok := lua_W.TryGetItemConfig(key); ok {
-		itm := NewItem(cfg)
-		w.AddItem(itm, roomId)
-		return itm
+		item := NewItem(cfg)
+		into.AddItem(item)
+		return item
 	}
 	log.Printf("Failed to load item: %s", key)
 	return nil

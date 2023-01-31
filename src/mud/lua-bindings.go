@@ -70,6 +70,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable := L.NewTable()
 	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
 	configTable.RawSetString("NewRoom", luar.New(L, lua_ConfigNewRoom))
+	configTable.RawSetString("NewShop", luar.New(L, lua_ConfigNewShop))
 	configTable.RawSetString("NewEntity", luar.New(L, lua_ConfigNewEntity))
 	configTable.RawSetString("NewItem", luar.New(L, lua_ConfigNewItem))
 	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
@@ -211,6 +212,14 @@ func lua_ConfigNewRoom(tbl *lua.LTable) {
 		log.Fatalf("failed to parse room with error: %v", err)
 	}
 	lua_W.AddRoom(r)
+}
+
+func lua_ConfigNewShop(tbl *lua.LTable) {
+	cfg := &ShopConfig{}
+	if err := lua_Mapper.Map(tbl, cfg); err != nil {
+		panic(err)
+	}
+	lua_W.shops[cfg.RoomId] = NewShop(cfg)
 }
 
 func lua_ConfigNewEntity(tbl *lua.LTable) {

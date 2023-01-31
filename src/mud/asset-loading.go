@@ -52,6 +52,11 @@ func LoadAssets(w *World, projectRoot string) {
 		}
 	}
 	log.Printf("loaded %d items", len(w.itemConfigs))
+
+	// Prepare shops
+	for _, shop := range w.shops {
+		shop.Init(w)
+	}
 }
 
 func RunScript(w *World, filePath string) error {

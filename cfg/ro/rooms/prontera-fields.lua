@@ -12,7 +12,12 @@ Config.NewZone({
 		}}
 	}
 })
-
+Config.NewShop({
+	RoomId = 1,
+	Stock = {
+		"knife"
+	}
+})
 Config.NewRoom({
 	Id = 1,
 	Name = "Newbie Zone",

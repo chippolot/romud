@@ -32,6 +32,7 @@ const (
 	Stat_Level
 	Stat_XP
 	Stat_StatPoints
+	Stat_Gold
 )
 
 const (
@@ -149,6 +150,7 @@ var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
 	Stat_Level:      "Level",
 	Stat_XP:         "XP",
 	Stat_StatPoints: "StatPts",
+	Stat_Gold:       "Gold",
 })
 
 func ParseStatType(str string) (StatType, error) {

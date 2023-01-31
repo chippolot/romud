@@ -371,6 +371,7 @@ func (e *Entity) DescribeStatus() string {
 	if !IsMaxLevel(e) {
 		sb.WriteLinef("Next   : %s XP", Colorize(Color_Stat, GetXpForNextLevel(e)))
 	}
+	sb.WriteLinef("Zeny   : %s", Colorize(Color_Stat, e.stats.Get(Stat_Gold)))
 	sb.WriteNewLine()
 	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_HP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxHP)))
 	sb.WriteLinef("SP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_SP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxSP)))

@@ -191,6 +191,9 @@
     [x] Damage sizes
 ----------------------------------------
 [] RO
+    [] Shops
+        [] Indoors/ Outdoors
+        [] No Monster Spawns / Movement
     [] Skills
         [] Water Attribute Attack
     [] Create Poring Items

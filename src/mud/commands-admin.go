@@ -47,6 +47,14 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 		xp, _ := strconv.Atoi(tokens[2])
 		Write("Admin: Added XP %d", xp).ToPlayer(e).Send()
 		applyXp(e, w, xp)
+	case "pgold":
+		if len(tokens) <= 2 {
+			Write("Admin: How much gold?").ToPlayer(e).Send()
+			return
+		}
+		amt, _ := strconv.Atoi(tokens[2])
+		e.stats.Add(Stat_Gold, amt)
+		Write("Admin: Added %dz", amt).ToPlayer(e).Send()
 	case "spawne":
 		if len(tokens) <= 2 {
 			Write("Admin: Which entity?").ToPlayer(e).Send()

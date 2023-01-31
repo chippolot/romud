@@ -32,6 +32,10 @@ func DoBuy(e *Entity, w *World, tokens []string) {
 		Write("What do you want to buy?").ToPlayer(e).Send()
 		return
 	}
+	if query.Count < 1 {
+		Write("How many do you want to buy?").ToPlayer(e).Send()
+		return
+	}
 
 	items := SearchList(query, shop.stock, nil)
 	if len(items) == 0 {
@@ -43,9 +47,9 @@ func DoBuy(e *Entity, w *World, tokens []string) {
 	totalWeight := 0
 	groups := make(map[*ItemConfig]int)
 	for _, item := range items {
-		totalPrice += item.BuyPrice
-		totalWeight += item.Weight
-		groups[item] += 1
+		totalPrice += item.BuyPrice * query.Count
+		totalWeight += item.Weight * query.Count
+		groups[item] += query.Count
 	}
 
 	wealth := e.stats.Get(Stat_Gold)
@@ -60,7 +64,9 @@ func DoBuy(e *Entity, w *World, tokens []string) {
 
 	e.stats.Add(Stat_Gold, -totalPrice)
 	for _, item := range items {
-		spawnItemByKey(item.Key, e)
+		for i := 0; i < query.Count; i++ {
+			spawnItemByKey(item.Key, e)
+		}
 	}
 	for item, amt := range groups {
 		Write("You buy %s for %dz", item.GetNamePluralized(amt, true), item.BuyPrice*amt).ToPlayer(e).Send()

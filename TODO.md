@@ -197,6 +197,9 @@
 [] RO
     [] Skills
         [] Water Attribute Attack
+        [] SPCost num or func
+        [] Upgrade skills
+        [] Cast skills at level
     [] Shops
         [] Indoors/ Outdoors
         [] No Monster Spawns / Movement

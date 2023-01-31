@@ -29,6 +29,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("HealHP", luar.New(L, lua_EntityHealHP))
 	entityTbl.RawSetString("HealSP", luar.New(L, lua_EntityHealSP))
 	entityTbl.RawSetString("HealMov", luar.New(L, lua_EntityHealMov))
+	entityTbl.RawSetString("InCombat", luar.New(L, lua_EntityInCombat))
 	L.SetGlobal("Entity", entityTbl)
 
 	itemTbl := L.NewTable()
@@ -114,6 +115,10 @@ func lua_EntityHealSP(e *Entity, amount int) {
 
 func lua_EntityHealMov(e *Entity, amount int) {
 	e.stats.Add(Stat_Mov, amount)
+}
+
+func lua_EntityInCombat(e *Entity) bool {
+	return e.combat != nil
 }
 
 func lua_ItemName(i *Item) string {

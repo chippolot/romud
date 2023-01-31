@@ -4,9 +4,11 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-func calculateAttackDamage(e *Entity, tgt *Entity, attackWeaponType WeaponType, attackElement Element, critical bool) int {
+func calculateAttackDamage(e *Entity, tgt *Entity, attackWeaponType WeaponType, attackElement Element, atkBonus float64, critical bool) int {
 	// Mechanics: RO Classic
 	// https://irowiki.org/classic/Attacks
+
+	atkBonusMultiplier := 1.0 + atkBonus
 
 	// Calculate defensive reductions
 	hardDefMult := 1.0 - float64(calculateHardDef(tgt))/100.0
@@ -19,7 +21,7 @@ func calculateAttackDamage(e *Entity, tgt *Entity, attackWeaponType WeaponType, 
 	}
 
 	sizeModifier := DefenderSizeModifierLookup[tgt.stats.cfg.Size][attackWeaponType]
-	combinedAtkPower := float64(calculateBaseAttackPower(e)) + float64(calculateWeaponAttackPower(e, critical))*sizeModifier
+	combinedAtkPower := float64(calculateBaseAttackPower(e)) + float64(calculateWeaponAttackPower(e, critical))*sizeModifier*atkBonusMultiplier
 	dam := combinedAtkPower*hardDefMult - softDef
 	dam *= DefenderElementModifierLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][attackElement]
 	return utils.MaxInt(int(dam), 1)
@@ -53,8 +55,9 @@ func calculateeCriticalChance(e *Entity, tgt *Entity) int {
 	}
 }
 
-func calcuateHitChance(e *Entity, w *World, tgt *Entity) int {
+func calcuateHitChance(e *Entity, w *World, tgt *Entity, hitBonus float64) int {
 	// Mechanics: RO Classic
+	hitBonusMultiplier := 1 + hitBonus
 	hitChance := 0
 
 	// Target's FLEE
@@ -65,7 +68,7 @@ func calcuateHitChance(e *Entity, w *World, tgt *Entity) int {
 	}
 
 	if e.player != nil {
-		hit := calculateHit(e.stats)
+		hit := int(float64(calculateHit(e.stats)) * hitBonusMultiplier)
 		if tgt.player != nil {
 			// Chance for player to hit player
 			hitChance = 80 + hit - flee
@@ -75,7 +78,7 @@ func calcuateHitChance(e *Entity, w *World, tgt *Entity) int {
 		}
 	} else {
 		// Chance for monster to hit player
-		hitChance = 95 + flee - e.cfg.Stats.Flee95
+		hitChance = int(float64(95+flee-e.cfg.Stats.Flee95) * hitBonusMultiplier)
 	}
 	return utils.MinInt(95, hitChance)
 }

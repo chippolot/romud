@@ -31,8 +31,15 @@ const (
 	DamCtx_Admin DamageContext = 999
 )
 
+const (
+	AOE_Single AreaOfEffect = iota
+	AOE_Room
+)
+
 type AdvantageType int
 type DamageType int
+type DamageContext int
+type AreaOfEffect int
 
 var damageTypeStringMapping = utils.NewStringMapping(map[DamageType]string{
 	Dam_Acid:        "acid",
@@ -90,12 +97,20 @@ type SavingThrowConfig struct {
 	DC   int
 }
 
-type DamageContext int
+type AttackData struct {
+	skill        *SkillConfig  // Skill to be used
+	AtkBonus     float64       // Attack multiplier
+	HitBonus     float64       // Hit multiplier
+	Element      Element       // Element of attack
+	AreaOfEffect AreaOfEffect  // AOE type
+	Delay        utils.Seconds // Delay until attack triggers
+}
 
 type CombatData struct {
-	target         *Entity
-	nextAttackOpts *CustomAttackOptions
-	speedCounter   float64
+	target              *Entity       // Current attack target
+	numAttacksRemainder float64       // Fractional number of attacks left over from previous combat round
+	skillCooldownExpiry utils.Seconds // Amount of time the entity must wait before using another skill
+	nextAttack          *AttackData   // Data regarding next attack
 }
 
 func (c *CombatData) Valid(e *Entity) bool {
@@ -123,7 +138,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 	if e.combat != nil {
 		e.combat.target = tgt
 	} else if !c.Contains(e) {
-		e.combat = &CombatData{tgt, nil, 0}
+		e.combat = &CombatData{tgt, 0, 0, nil}
 		c.AddBack(e)
 	}
 	return true
@@ -135,19 +150,6 @@ func (c *CombatList) EndCombat(e *Entity) {
 	}
 	c.Remove(e)
 	e.combat = nil
-}
-
-type CustomAttackMessages struct {
-	ToAttacker string
-	ToTarget   string
-	ToRoom     string
-}
-
-type CustomAttackOptions struct {
-	AtkMultiplier float64
-	HitMultiplier float64
-	HitMessages   *CustomAttackMessages
-	MissMessages  *CustomAttackMessages
 }
 
 func validateAttack(e *Entity, tgt *Entity) bool {
@@ -176,17 +178,27 @@ func performAssist(e *Entity, w *World, ally *Entity) {
 }
 
 func performAttack(e *Entity, w *World, tgt *Entity) {
-	performCustomAttack(e, w, tgt, nil)
+	prepareAttack(e, w, tgt, nil)
 }
 
-func performCustomAttack(e *Entity, w *World, tgt *Entity, opts *CustomAttackOptions) {
+func performSkillAttack(e *Entity, w *World, tgt *Entity, attack *AttackData) {
+	prepareAttack(e, w, tgt, func() {
+		if e.combat != nil {
+			e.combat.nextAttack = attack
+		}
+	})
+}
+
+func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
 	if !validateAttack(e, tgt) {
 		return
 	}
 
 	// Already in combat
 	if e.combat != nil {
-		e.combat.nextAttackOpts = opts
+		if preAttackFn != nil {
+			preAttackFn()
+		}
 
 		// Trying to attack current tgt!
 		if e.combat.target == tgt {
@@ -199,7 +211,9 @@ func performCustomAttack(e *Entity, w *World, tgt *Entity, opts *CustomAttackOpt
 		return
 	} else {
 		if w.inCombat.StartCombat(e, tgt) {
-			e.combat.nextAttackOpts = opts
+			if preAttackFn != nil {
+				preAttackFn()
+			}
 			runCombatLogic(e, w, tgt)
 		}
 	}
@@ -223,27 +237,55 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		return
 	}
 
-	numAttacks := calculateAttacksPerRound(e.stats) + e.combat.speedCounter
+	numAttacks := calculateAttacksPerRound(e.stats) + e.combat.numAttacksRemainder
 	numAttacksFull := int(numAttacks)
-	e.combat.speedCounter = numAttacks - float64(numAttacksFull)
+	e.combat.numAttacksRemainder = numAttacks - float64(numAttacksFull)
 
 	for i := 0; i < numAttacksFull; i++ {
-		combatLogicAttack(e, w, tgt)
+		combatLogicAttack(e, w, tgt, e.combat.nextAttack)
+		e.combat.nextAttack = nil
 	}
-	e.combat.nextAttackOpts = nil
 }
 
-func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
+func combatLogicAttack(e *Entity, w *World, tgt *Entity, specialAttack *AttackData) {
 	attack := e.cfg.Attack
 	noun := w.vocab.GetNoun(attack.Noun)
+	atkBonus := 0.0
+	atkElem := Neutral
+	hitBonus := 0.0
 	weaponType := WeaponType_Bare_Handed
 
-	// Use weapon's noun if applicable
+	// Pull attack data from weapon (where applicable)
 	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {
 		if weap, _, ok := e.GetWeapon(); ok {
 			noun = w.vocab.GetNoun(weap.Noun)
 			weaponType = weap.Type
 		}
+	}
+
+	// Special Melee Attack
+	if specialAttack != nil {
+
+		// If AOE attack, re-run combat logic against all enemies in the room
+		if specialAttack.AreaOfEffect == AOE_Room {
+
+			// Prevent stack overflow
+			specialAttack.AreaOfEffect = AOE_Single
+
+			r := w.rooms[e.data.RoomId]
+			for _, e2 := range r.entities {
+
+				// Players attack NPCs and vice versa
+				if (e.player == nil) != (e2.player == nil) {
+					combatLogicAttack(e, w, e2, specialAttack)
+				}
+			}
+			return
+		}
+
+		atkElem = specialAttack.Element
+		atkBonus += specialAttack.AtkBonus
+		hitBonus += specialAttack.HitBonus
 	}
 
 	if e.CanBeSeenBy(tgt) {
@@ -275,7 +317,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 	didHit := false
 	if e.CanBeSeenBy(tgt) {
 		if !didCrit {
-			hitChance := calcuateHitChance(e, w, tgt)
+			hitChance := calcuateHitChance(e, w, tgt, hitBonus)
 			if utils.RandChance100() < float64(hitChance) {
 				didHit = true
 			}
@@ -286,10 +328,18 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity) {
 
 	// 4. Calculate + Apply Damage
 	if didHit {
-		dam := calculateAttackDamage(e, tgt, weaponType, Neutral, didCrit)
+		dam := calculateAttackDamage(e, tgt, weaponType, atkElem, atkBonus, didCrit)
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
+		// TODO: Skill: Only call this (don't send msg)
+		if specialAttack != nil && specialAttack.skill != nil {
+			triggerSkillHitScript(specialAttack.skill, e, tgt)
+		}
 	} else {
-		sendDamageMessages(0, e, tgt, w, false, noun.Singular, noun.Plural)
+		if specialAttack != nil && specialAttack.skill != nil {
+			triggerSkillMissedScript(specialAttack.skill, e, tgt)
+		} else {
+			sendDamageMessages(0, e, tgt, w, false, noun.Singular, noun.Plural)
+		}
 		return
 	}
 }

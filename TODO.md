@@ -193,10 +193,12 @@
         [x] Group notifs by amount
         [x] Item name plural or singular
         [x] Allow buying multiples
+    [x] Skills
+        [x] Water Attribute Attack
 ----------------------------------------
 [] RO
     [] Skills
-        [] Water Attribute Attack
+        [] Metamorphasis
         [] SPCost num or func
         [] Upgrade skills
         [] Cast skills at level
@@ -213,7 +215,6 @@
     [] Skills
         [] Active
         [] Passive
-            [] HP / SP recovery via passive
     [] Advantage / Disadvantage
     [] Dex Weapons
     [] Auto-Con using colors

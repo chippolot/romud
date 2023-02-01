@@ -78,7 +78,7 @@ func calcuateHitChance(e *Entity, w *World, tgt *Entity, hitBonus float64) int {
 		}
 	} else {
 		// Chance for monster to hit player
-		hitChance = int(float64(95+flee-e.cfg.Stats.Flee95) * hitBonusMultiplier)
+		hitChance = 100 - int(float64(95+flee-e.cfg.Stats.Flee95)*hitBonusMultiplier)
 	}
 	return utils.MinInt(95, hitChance)
 }

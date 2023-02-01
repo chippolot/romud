@@ -157,6 +157,8 @@ func (b *SendBuilder) Subject(s NamedObservable) *SendBuilder {
 func (b *SendBuilder) Ignore(e *Entity) *SendBuilder {
 	if b.ignored == nil {
 		b.ignored = []*Entity{e}
+	} else {
+		b.ignored = append(b.ignored, e)
 	}
 	return b
 }

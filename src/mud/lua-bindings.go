@@ -198,7 +198,7 @@ func lua_WriteToPlayer(e *Entity, msg string) {
 func lua_WriteToRoom(r *Room, except []*Entity, msg string) {
 	b := Write(msg).ToRoom(r)
 	for _, e := range except {
-		b.Ignore(e)
+		b = b.Ignore(e)
 	}
 	b.Send()
 }

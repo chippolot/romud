@@ -27,13 +27,13 @@ Config.NewSkill({
             })
         end,
         Missed = function(user, target) 
-            Write.ToPlayer(user, string.format("Your <c dim yellow>BASH</c> misses %s by a mile! %s", Entity.Name(target), attackerDamageMessage(0)))
-            Write.ToPlayer(target, string.format("%s's <c dim yellow>BASH</c> misses you by a mile! %s", Entity.NameCap(user), targetDamageMessage(0)))
+            Write.ToPlayer(user, string.format("Your <c yellow>BASH</c> misses %s by a mile! %s", Entity.Name(target), attackerDamageMessage(0)))
+            Write.ToPlayer(target, string.format("%s's <c yellow>BASH</c> misses you by a mile! %s", Entity.NameCap(user), targetDamageMessage(0)))
             Write.ToRoom(Entity.Room(user), user, string.format("%s's <c dim yellow>BASH</c> misses %s by a mile!", Entity.NameCap(user), Entity.Name(target)))
         end,
         Hit = function(user, target, dam)
-            Write.ToPlayer(user, string.format("You <c yellow>BASH</c> %s %s!", Entity.Name(target), attackerDamageMessage(dam)))
-            Write.ToPlayer(target, string.format("%s <c yellow>BASHES</c> you! %s", Entity.NameCap(user), targetDamageMessage(dam)))
+            Write.ToPlayer(user, string.format("You <c bright yellow>BASH</c> %s %s!", Entity.Name(target), attackerDamageMessage(dam)))
+            Write.ToPlayer(target, string.format("%s <c bright yellow>BASHES</c> you! %s", Entity.NameCap(user), targetDamageMessage(dam)))
             Write.ToRoom(Entity.Room(user), user, string.format("%s <c yellow>BASHES</c> %s!", Entity.NameCap(user), Entity.Name(target)))
         end
     }

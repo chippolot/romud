@@ -28,6 +28,7 @@ const (
 	DamCtx_Melee DamageContext = iota
 	DamCtx_Bleeding
 	DamCtx_Poison
+	DamCtx_Skill
 	DamCtx_Admin DamageContext = 999
 )
 
@@ -328,9 +329,12 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity, specialAttack *AttackDa
 
 	// 4. Calculate + Apply Damage
 	if didHit {
+		ctx := DamCtx_Melee
+		if specialAttack != nil && specialAttack.skill != nil {
+			ctx = DamCtx_Skill
+		}
 		dam := calculateAttackDamage(e, tgt, weaponType, atkElem, atkBonus, didCrit)
-		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
-		// TODO: Skill: Only call this (don't send msg)
+		applyDamage(tgt, w, e, dam, ctx, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
 		if specialAttack != nil && specialAttack.skill != nil {
 			triggerSkillHitScript(specialAttack.skill, e, tgt, dam)
 		}

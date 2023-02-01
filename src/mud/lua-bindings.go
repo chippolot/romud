@@ -54,7 +54,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
-	actTbl.RawSetString("CustomAttack", luar.New(L, lua_ActCustomAttack))
+	actTbl.RawSetString("SkillAttack", luar.New(L, lua_ActSkillAttack))
 	actTbl.RawSetString("Get", luar.New(L, lua_ActGet))
 	actTbl.RawSetString("Equip", luar.New(L, lua_ActEquip))
 	actTbl.RawSetString("MoveDir", luar.New(L, lua_ActMoveDir))
@@ -75,6 +75,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewShop", luar.New(L, lua_ConfigNewShop))
 	configTable.RawSetString("NewEntity", luar.New(L, lua_ConfigNewEntity))
 	configTable.RawSetString("NewItem", luar.New(L, lua_ConfigNewItem))
+	configTable.RawSetString("NewSkill", luar.New(L, lua_ConfigNewSkill))
 	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
 	L.SetGlobal("Config", configTable)
 
@@ -153,8 +154,9 @@ func lua_ActAttack(self *Entity, target *Entity) {
 	performAttack(self, lua_W, target)
 }
 
-func lua_ActCustomAttack(self *Entity, target *Entity, opts *CustomAttackOptions) {
-	performCustomAttack(self, lua_W, target, opts)
+func lua_ActSkillAttack(self *Entity, target *Entity, skill *SkillConfig, attack *AttackData) {
+	attack.skill = skill
+	performSkillAttack(self, lua_W, target, attack)
 }
 
 func lua_ActGet(self *Entity, item *Item) {
@@ -263,6 +265,20 @@ func lua_ConfigNewItem(tbl *lua.LTable) {
 	lua_W.AddItemConfig(cfg)
 }
 
+func lua_ConfigNewSkill(tbl *lua.LTable) {
+	cfg := &SkillConfig{}
+	if err := lua_Mapper.Map(tbl, cfg); err != nil {
+		panic(err)
+	}
+
+	lScripts := tbl.RawGetString("Scripts")
+	if lScriptsTable, ok := lScripts.(*lua.LTable); ok {
+		cfg.scripts = NewSkillScripts(lua_W.L, lScriptsTable)
+	}
+
+	lua_W.AddSkillConfig(cfg)
+}
+
 func lua_ConfigRegisterNouns(tbl *lua.LTable) {
 	nouns, ok := gluamapper.ToGoValue(tbl, gluamapper.Option{}).([]interface{})
 	if !ok {
@@ -349,6 +365,14 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(Speed(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSpeed(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(SkillType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSkillType(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(SkillTargetType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSkillTargetType(s) }); err != nil {
 			return nil, err
 		}
 	}

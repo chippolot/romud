@@ -332,7 +332,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity, specialAttack *AttackDa
 		applyDamage(tgt, w, e, dam, DamCtx_Melee, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
 		// TODO: Skill: Only call this (don't send msg)
 		if specialAttack != nil && specialAttack.skill != nil {
-			triggerSkillHitScript(specialAttack.skill, e, tgt)
+			triggerSkillHitScript(specialAttack.skill, e, tgt, dam)
 		}
 	} else {
 		if specialAttack != nil && specialAttack.skill != nil {

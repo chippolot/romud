@@ -23,6 +23,7 @@ type World struct {
 
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
+	skillConfigs  map[string]*SkillConfig
 	vocab         *Vocab
 
 	players  map[PlayerId]*Entity
@@ -48,6 +49,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		&GameTime{},
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
+		make(map[string]*SkillConfig),
 		NewVocab(),
 		make(map[PlayerId]*Entity),
 		make(map[server.SessionId]*server.Session),
@@ -214,6 +216,20 @@ func (w *World) TryGetItemConfig(key string) (*ItemConfig, bool) {
 func (w *World) AddItem(i *Item, roomId RoomId) {
 	r := w.rooms[roomId]
 	r.AddItem(i)
+}
+
+func (w *World) AddSkillConfig(cfg *SkillConfig) {
+	if _, found := w.skillConfigs[cfg.Key]; found {
+		log.Fatalf("Registered multiple skill configs with key: %v", cfg.Key)
+	}
+	w.skillConfigs[cfg.Key] = cfg
+}
+
+func (w *World) TryGetSkillConfig(key string) (*SkillConfig, bool) {
+	if cfg, ok := w.skillConfigs[key]; ok {
+		return cfg, true
+	}
+	return nil, false
 }
 
 func (w *World) LogoutPlayer(p *Player) {

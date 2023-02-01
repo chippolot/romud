@@ -53,6 +53,14 @@ func LoadAssets(w *World, projectRoot string) {
 	}
 	log.Printf("loaded %d items", len(w.itemConfigs))
 
+	// Load skills
+	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "skills"), ScriptFileExtension) {
+		if err := RunScript(w, path); err != nil {
+			log.Fatalf("failed to load skills file %s -- %v", path, err)
+		}
+	}
+	log.Printf("loaded %d skills", len(w.skillConfigs))
+
 	// Prepare shops
 	for _, shop := range w.shops {
 		shop.Init(w)

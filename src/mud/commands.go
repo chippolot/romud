@@ -48,6 +48,7 @@ func init() {
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi", true, Cnd_Healthy, Pos_Prone},
 		{DoSell, []string{"sell"}, "(When in a shop) Sells a specified item", "sell potion", false, Cnd_Healthy, Pos_Sitting},
 		{DoSit, []string{"sit"}, "Sit down on the ground", "sit", false, Cnd_Healthy, Pos_Prone},
+		{DoSkill, []string{"skill"}, "Use a skill", "skill bash goblin", true, Cnd_Healthy, Pos_Sitting},
 		{DoSleep, []string{"sleep"}, "Fall asleep to refresh yourself", "sleep", false, Cnd_Healthy, Pos_Sleeping},
 		{DoStand, []string{"stand"}, "Stands up", "stand", true, Cnd_Healthy, Pos_Prone},
 		{DoStatus, []string{"st", "status"}, "Displays status for the current player", "status", true, 0, 0},

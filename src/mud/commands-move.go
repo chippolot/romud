@@ -122,7 +122,7 @@ func performMoveDirection(e *Entity, w *World, dir Direction) bool {
 }
 
 func performMoveRoom(e *Entity, w *World, dstRoom *Room) {
-	// TODO broadcast something here!
+	// TODO: broadcast something here!
 	performMove(e, w, dstRoom, nil, nil)
 }
 

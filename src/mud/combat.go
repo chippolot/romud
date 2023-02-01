@@ -190,6 +190,25 @@ func performSkillAttack(e *Entity, w *World, tgt *Entity, attack *AttackData) {
 	})
 }
 
+func performSkill(e *Entity, w *World, tgt *Entity, skill *SkillConfig, level int) {
+
+	// TODO: Skill: Confirm player knows skill
+
+	// Can't afford
+	if skill.SPCost > 0 && e.stats.Get(Stat_SP) < skill.SPCost {
+		Write("You don't have enough SP!").ToPlayer(e).Send()
+		return
+	}
+
+	// TODO: Skill: Cooldown check
+
+	// Subtract SP
+	e.stats.Add(Stat_SP, -skill.SPCost)
+
+	// Trigger skill script
+	triggerSkillActivatedScript(skill, e, tgt, level)
+}
+
 func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
 	if !validateAttack(e, tgt) {
 		return
@@ -238,10 +257,31 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		return
 	}
 
+	// Evaluate skill triggers
+	if tgt != nil {
+		if triggers := e.SkillTriggers(EState_Combat); len(triggers) > 0 {
+			// TODO: Skill: Cooldowns
+			chance := utils.RandChance100()
+			for _, trigger := range triggers {
+				chance -= trigger.Chance
+				if chance <= 0 {
+					if skill, ok := w.skillConfigs[trigger.Key]; ok {
+						performSkill(e, w, tgt, skill, trigger.Level)
+					} else {
+						log.Printf("invalid skill key '%s' used in skill trigger by enitty '%s'", trigger.Key, e.cfg.Key)
+						break
+					}
+				}
+			}
+		}
+	}
+
+	// Determine number of attacks per round based on Aspd
 	numAttacks := calculateAttacksPerRound(e.stats) + e.combat.numAttacksRemainder
 	numAttacksFull := int(numAttacks)
 	e.combat.numAttacksRemainder = numAttacks - float64(numAttacksFull)
 
+	// Perform attacks
 	for i := 0; i < numAttacksFull; i++ {
 		combatLogicAttack(e, w, tgt, e.combat.nextAttack)
 		e.combat.nextAttack = nil

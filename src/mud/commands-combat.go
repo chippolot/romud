@@ -35,25 +35,14 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 	}
 
 	key := tokens[1]
-	cfg, ok := w.skillConfigs[key]
+	skill, ok := w.skillConfigs[key]
 	if !ok {
 		Write("%s isn't any skill you've ever heard of!", key).ToPlayer(e).Send()
 		return
 	}
-
-	// TODO: Skill: Confirm player knows skill
-
-	// Can't afford
-	if e.stats.Get(Stat_SP) < cfg.SPCost {
-		Write("You don't have enough SP!").ToPlayer(e).Send()
-		return
-	}
-
-	// TODO: Skill: Cooldown check
-
 	// Get skill target
 	var target *Entity
-	switch cfg.TargetType {
+	switch skill.TargetType {
 	case SkillTargetType_Self:
 		target = e
 	// TODO: Skill: Support single ally and single entity
@@ -82,9 +71,6 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		}
 	}
 
-	// Subtract SP
-	e.stats.Add(Stat_SP, -cfg.SPCost)
-
-	// TODO: Skill: Levels
-	triggerSkillActivatedScript(cfg, e, target, 1)
+	// TODO: Skill: Level
+	performSkill(e, w, target, skill, 1)
 }

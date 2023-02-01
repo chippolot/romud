@@ -101,9 +101,6 @@ func (s *SkillTargetType) UnmarshalJSON(data []byte) (err error) {
 	}
 }
 
-// TODO: SkillTargetType Mapping
-// TODO: SkillTargetType Lua
-
 type SkillConfig struct {
 	Key        string
 	Name       string
@@ -117,6 +114,12 @@ type SkillConfig struct {
 	scripts    *SkillScripts
 }
 
+type SkillTriggerConfig struct {
+	Key    string
+	Level  int
+	Chance float64
+}
+
 type SkillScripts struct {
 	activated func(*Entity, *Entity, *SkillConfig, int)
 	missed    func(*Entity, *Entity)
@@ -127,7 +130,7 @@ func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 	scripts := &SkillScripts{}
 	if fn := utils.GetLuaFunctionFromTable(tbl, "Activated"); fn != nil {
 		scripts.activated = func(user *Entity, target *Entity, skill *SkillConfig, level int) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, user), utils.ToUserData(L, target), utils.ToUserData(L, skill), lua.LNumber(level)); err != nil {
+			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserData(L, target), utils.ToUserData(L, skill), lua.LNumber(level)); err != nil {
 				log.Panicln("error calling activated script: ", err)
 			}
 		}

@@ -154,7 +154,11 @@ func lua_ActAttack(self *Entity, target *Entity) {
 	performAttack(self, lua_W, target)
 }
 
-func lua_ActSkillAttack(self *Entity, target *Entity, skill *SkillConfig, attack *AttackData) {
+func lua_ActSkillAttack(self *Entity, target *Entity, skill *SkillConfig, attackTbl *lua.LTable) {
+	attack := &AttackData{}
+	if err := lua_Mapper.Map(attackTbl, attack); err != nil {
+		panic(err)
+	}
 	attack.skill = skill
 	performSkillAttack(self, lua_W, target, attack)
 }
@@ -191,8 +195,12 @@ func lua_WriteToPlayer(e *Entity, msg string) {
 	Write(msg).ToPlayer(e).Send()
 }
 
-func lua_WriteToRoom(r *Room, except *Entity, msg string) {
-	Write(msg).ToRoom(r).Ignore(except).Send()
+func lua_WriteToRoom(r *Room, except []*Entity, msg string) {
+	b := Write(msg).ToRoom(r)
+	for _, e := range except {
+		b.Ignore(e)
+	}
+	b.Send()
 }
 
 func lua_ConfigNewZone(tbl *lua.LTable) {
@@ -373,6 +381,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(SkillTargetType(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSkillTargetType(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(EntityState(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseEntityState(s) }); err != nil {
 			return nil, err
 		}
 	}

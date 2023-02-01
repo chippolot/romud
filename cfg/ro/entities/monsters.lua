@@ -8,6 +8,11 @@ Config.NewEntity({
         Power = "7-10",
         Noun = "splash"
     },
+    SkillTriggers = {
+        combat = {
+            { Key = "npc_water_attack", Level = 1, Chance = 20 }
+        }
+    },
     DropTable = {
         { Value = "jellopy", Chance = 70 },
         { Value = "knife", Chance = 1 },
@@ -135,6 +140,11 @@ Config.NewEntity({
         { Value = "drops_card", Chance = 0.01 }
     },
     Flags = { "scavenger" },
+    SkillTriggers = {
+        combat = {
+            { Key = "npc_fire_attack", Level = 1, Chance = 20 }
+        }
+    },
     Stats = {
         HP = 55,
         Size = "medium",

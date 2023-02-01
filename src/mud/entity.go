@@ -1,6 +1,8 @@
 package mud
 
 import (
+	"encoding/json"
+	"fmt"
 	"log"
 	"math"
 	"strings"
@@ -12,21 +14,64 @@ const PlayerEntityKey = "_player"
 
 var entityIdCounter EntityId = InvalidId
 
+const (
+	EState_Idle EntityState = iota
+	EState_Combat
+)
+
 type EntityId int32
+type EntityState int32
+
+var entityStateStringMapping = utils.NewStringMapping(map[EntityState]string{
+	EState_Idle:   "idle",
+	EState_Combat: "combat",
+})
+
+func ParseEntityState(str string) (EntityState, error) {
+	str = strings.ToLower(str)
+	if val, ok := entityStateStringMapping.ToValue[str]; ok {
+		return val, nil
+	}
+	return 0, fmt.Errorf("unknown EntityState: %s", str)
+}
+
+func (es *EntityState) String() string {
+	if str, ok := entityStateStringMapping.ToString[*es]; ok {
+		return str
+	}
+	return "unknown"
+}
+
+func (es *EntityState) MarshalJSON() ([]byte, error) {
+	return json.Marshal(es.String())
+}
+
+func (es *EntityState) UnmarshalJSON(data []byte) (err error) {
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+	if *es, err = ParseEntityState(str); err != nil {
+		return nil
+	} else {
+		return err
+	}
+}
 
 type EntityConfigList []*EntityConfig
 
 type EntityConfig struct {
-	Key       string
-	Name      string
-	Gender    Gender
-	Keywords  []string
-	RoomDesc  string
-	FullDesc  string
-	DropTable *utils.ChanceTable[string]
-	Stats     *StatsConfig
-	Attack    *AttackConfig
-	Flags     EntityFlagMask
+	Key           string
+	Name          string
+	Gender        Gender
+	Keywords      []string
+	RoomDesc      string
+	FullDesc      string
+	DropTable     *utils.ChanceTable[string]
+	Stats         *StatsConfig
+	Attack        *AttackConfig
+	SkillTriggers map[EntityState][]*SkillTriggerConfig
+	Flags         EntityFlagMask
 
 	scripts *EntityScripts
 	lookup  map[string]bool
@@ -129,6 +174,13 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 
 func (e *Entity) RoomId() RoomId {
 	return e.data.RoomId
+}
+
+func (e *Entity) State() EntityState {
+	if e.combat != nil {
+		return EState_Combat
+	}
+	return EState_Idle
 }
 
 func (e *Entity) GetName() string {
@@ -344,6 +396,10 @@ func (e *Entity) CanBeSeenBy(viewer *Entity) bool {
 		return false
 	}
 	return true
+}
+
+func (e *Entity) SkillTriggers(state EntityState) []*SkillTriggerConfig {
+	return e.cfg.SkillTriggers[state]
 }
 
 func (e *Entity) Describe() string {

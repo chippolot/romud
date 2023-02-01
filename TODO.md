@@ -198,10 +198,15 @@
 ----------------------------------------
 [] RO
     [] Skills
+        [] Whirlwind
+            [] Fix
         [] Metamorphasis
         [] SPCost num or func
         [] Upgrade skills
         [] Cast skills at level
+    [] Ranged combat
+    [] Quick slot
+    [] Magic
     [] Shops
         [] Indoors/ Outdoors
         [] No Monster Spawns / Movement

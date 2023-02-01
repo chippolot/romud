@@ -1,12 +1,28 @@
 local stringUtils = require('cfg.ro.utils.string-utils')
 
 local lib = {}
+
 lib.AttackerDamageMessage = function(dam)
     return string.format("(<c green>%d</c>)", dam)
 end
 
 lib.TargetDamageMessage = function(dam)
     return string.format("(<c red>%d</c>)", dam)
+end
+
+lib.HealMessage = function(amt)
+    return string.format("(<c yellow>%d</c>)", amt)
+end
+
+lib.EnemiesInRoom = function(e)
+    local room = Entity.Room(e)
+    local ret = {}
+    for _, e2 in ipairs(Room.Entities(room)) do
+        if Entity.IsPlayer(e) ~= Entity.IsPlayer(e2) then
+            table.insert(ret, e2)
+        end
+    end
+    return ret
 end
 
 lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMessages)

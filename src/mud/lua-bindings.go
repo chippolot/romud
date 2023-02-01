@@ -30,6 +30,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("HealSP", luar.New(L, lua_EntityHealSP))
 	entityTbl.RawSetString("HealMov", luar.New(L, lua_EntityHealMov))
 	entityTbl.RawSetString("InCombat", luar.New(L, lua_EntityInCombat))
+	entityTbl.RawSetString("IsPlayer", luar.New(L, lua_EntityIsPlayer))
 	L.SetGlobal("Entity", entityTbl)
 
 	itemTbl := L.NewTable()
@@ -40,6 +41,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	L.SetGlobal("Item", itemTbl)
 
 	roomTbl := L.NewTable()
+	roomTbl.RawSetString("Entities", luar.New(L, lua_RoomEntities))
 	roomTbl.RawSetString("Items", luar.New(L, lua_RoomItems))
 	L.SetGlobal("Room", roomTbl)
 
@@ -122,6 +124,10 @@ func lua_EntityInCombat(e *Entity) bool {
 	return e.combat != nil
 }
 
+func lua_EntityIsPlayer(e *Entity) bool {
+	return e.player != nil
+}
+
 func lua_ItemName(i *Item) string {
 	return i.GetName()
 }
@@ -139,6 +145,14 @@ func lua_ItemEquipSlot(i *Item) EquipSlot {
 		return EqSlot_None
 	}
 	return i.cfg.Equipment.Slot
+}
+
+func lua_RoomEntities(r *Room) *lua.LTable {
+	ret := lua_W.L.NewTable()
+	for _, e := range r.entities {
+		ret.Append(utils.ToUserData(lua_W.L, e))
+	}
+	return ret
 }
 
 // TODO can this be simplified?

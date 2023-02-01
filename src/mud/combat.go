@@ -154,6 +154,10 @@ func (c *CombatList) EndCombat(e *Entity) {
 }
 
 func validateAttack(e *Entity, tgt *Entity) bool {
+	if tgt == nil {
+		log.Printf("trying to attack nil target!")
+		return false
+	}
 	if e.data.RoomId != tgt.data.RoomId {
 		log.Printf("trying to attack tgt %d in different room!", tgt.id)
 		return false
@@ -220,13 +224,13 @@ func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
 			preAttackFn()
 		}
 
-		// Trying to attack current tgt!
-		if e.combat.target == tgt {
-			Write("You're already fighting them!").ToPlayer(e).Send()
+		if e.combat.target != tgt {
 			// Trying to attack different tgt. Just update tgt and wait for next combat round.
-		} else {
 			Write("You turn to face %s", ObservableName(tgt)).ToPlayer(e).Subject(tgt).Send()
 			e.combat.target = tgt
+		} else {
+			// Force a new prompt
+			Write("").ToPlayer(e).Send()
 		}
 		return
 	} else {

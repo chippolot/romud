@@ -45,6 +45,75 @@ Config.NewSkill({
     }
 })
 
+Config.NewSkill({
+    Key = "whirlwind",
+    Name = "Whirlwind",
+    Type = "offensive",
+    TargetType = "all_enemies",
+    CastTime = 0,
+    CastDelay = 5.0,
+    SPCost = 8,
+    MaxLevel = 10,
+    Desc = "Strike all enemies in the room with a weapon attack.",
+    Scripts = {
+        Activated = function(user, target, skill, level)
+            local atkPct = 0.1 * level - 0.2
+            local hitPct = 0.05 * level - 0.2
+            Write.ToPlayer(user, "You around quickly, sweeping your weapon in a wide arc ...")
+            Write.ToRoom(Entity.Room(user), { user, target },
+                string.format("%s spins around quickly, sweeping their weapon in a wide arc...", Entity.NameCap(user)))
+            for _, tgt in ipairs(skillUtils.EnemiesInRoom(user)) do
+                Act.SkillAttack(user, tgt, skill, {
+                    AtkBonus = atkPct,
+                    HitBonus = hitPct
+                })
+            end
+        end,
+        Missed = function(user, target)
+            Write.ToPlayer(user,
+                string.format("%s easily dodges your <c yellow>WHIRLWIND</c>. %s", Entity.NameCap(target),
+                    skillUtils.AttackerDamageMessage(0)))
+            Write.ToPlayer(target,
+                string.format("%s easily dodges your <c yellow>WHIRLWIND</c>. %s", Entity.NameCap(user),
+                    skillUtils.TargetDamageMessage(0)))
+            Write.ToRoom(Entity.Room(user), { user, target },
+                string.format("%s easily dodges %s's <c yellow>WHIRLWIND</c>.", Entity.NameCap(user), Entity.Name(target)))
+        end,
+        Hit = function(user, target, dam)
+            Write.ToPlayer(user,
+                string.format("You slash %s with your <c bright yellow>WHIRLWIND</c>! %s", Entity.Name(target),
+                    skillUtils.AttackerDamageMessage(dam)))
+            Write.ToPlayer(target,
+                string.format("%s slashes you with their <c bright yellow>WHIRLWIND</c>! %s", Entity.NameCap(user),
+                    skillUtils.TargetDamageMessage(dam)))
+            Write.ToRoom(Entity.Room(user), { user, target },
+                string.format("%s slashes %s with their  <c bright yellow>WHIRLWIND</c>!", Entity.NameCap(user),
+                    Entity.Name(target)))
+        end
+    }
+})
+
+
+Config.NewSkill({
+    Key = "first_aid",
+    Name = "First Aid",
+    Type = "active",
+    TargetType = "self",
+    CastTime = 0,
+    CastDelay = 0,
+    SPCost = 3,
+    MaxLevel = 1,
+    Desc = "Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.",
+    Scripts = {
+        Activated = function(user, _, _, _)
+            local amt = 5
+            Write.ToPlayer(user, string.format("You tend some of your wounds. %s", skillUtils.HealMessage(5)))
+            Write.ToRoom(Entity.Room(user), { user }, string.format("%s tends to their wounds.", Entity.NameCap(user)))
+            Entity.HealHP(user, amt)
+        end
+    }
+})
+
 Config.NewSkill(skillUtils.GenerateElementAttackSkillConfig("water", {
     "You fire a jet of <c yellow>WATER</c> at %s, but it misses. %s",
     "%s fires a jet of <c yellow>WATER</c> at you, but you easliy dodge it. %s",

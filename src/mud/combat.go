@@ -32,15 +32,9 @@ const (
 	DamCtx_Admin DamageContext = 999
 )
 
-const (
-	AOE_Single AreaOfEffect = iota
-	AOE_Room
-)
-
 type AdvantageType int
 type DamageType int
 type DamageContext int
-type AreaOfEffect int
 
 var damageTypeStringMapping = utils.NewStringMapping(map[DamageType]string{
 	Dam_Acid:        "acid",
@@ -98,20 +92,17 @@ type SavingThrowConfig struct {
 	DC   int
 }
 
-type AttackData struct {
-	skill        *SkillConfig  // Skill to be used
-	AtkBonus     float64       // Attack multiplier
-	HitBonus     float64       // Hit multiplier
-	Element      Element       // Element of attack
-	AreaOfEffect AreaOfEffect  // AOE type
-	Delay        utils.Seconds // Delay until attack triggers
+type SkillAttack struct {
+	skill    *SkillConfig  // Skill to be used
+	AtkBonus float64       // Attack multiplier
+	HitBonus float64       // Hit multiplier
+	Element  Element       // Element of attack
+	Delay    utils.Seconds // Delay until attack triggers
 }
 
 type CombatData struct {
-	target              *Entity       // Current attack target
-	numAttacksRemainder float64       // Fractional number of attacks left over from previous combat round
-	skillCooldownExpiry utils.Seconds // Amount of time the entity must wait before using another skill
-	nextAttack          *AttackData   // Data regarding next attack
+	target              *Entity // Current attack target
+	numAttacksRemainder float64 // Fractional number of attacks left over from previous combat round
 }
 
 func (c *CombatData) Valid(e *Entity) bool {
@@ -139,7 +130,7 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 	if e.combat != nil {
 		e.combat.target = tgt
 	} else if !c.Contains(e) {
-		e.combat = &CombatData{tgt, 0, 0, nil}
+		e.combat = &CombatData{tgt, 0}
 		c.AddBack(e)
 	}
 	return true
@@ -186,17 +177,20 @@ func performAttack(e *Entity, w *World, tgt *Entity) {
 	prepareAttack(e, w, tgt, nil)
 }
 
-func performSkillAttack(e *Entity, w *World, tgt *Entity, attack *AttackData) {
-	prepareAttack(e, w, tgt, func() {
-		if e.combat != nil {
-			e.combat.nextAttack = attack
-		}
-	})
+func performSkillAttack(e *Entity, w *World, targets []*Entity, attack *SkillAttack) {
+	for _, tgt := range targets {
+		combatLogicAttack(e, w, tgt, attack)
+	}
 }
 
-func performSkill(e *Entity, w *World, tgt *Entity, skill *SkillConfig, level int) {
-
+func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level int) {
 	// TODO: Skill: Confirm player knows skill
+
+	// Cooldown check
+	if w.time.time < e.skillCooldownExpiry {
+		Write("You can't use another skill yet!").ToPlayer(e).Send()
+		return
+	}
 
 	// Can't afford
 	if skill.SPCost > 0 && e.stats.Get(Stat_SP) < skill.SPCost {
@@ -204,13 +198,26 @@ func performSkill(e *Entity, w *World, tgt *Entity, skill *SkillConfig, level in
 		return
 	}
 
-	// TODO: Skill: Cooldown check
+	// Collect targets for AOE skills
+	targets := []*Entity{target}
+	switch skill.TargetType {
+	case SkillTargetType_AllEnemies:
+		targets = make([]*Entity, 0)
+		r := w.rooms[e.data.RoomId]
+		for _, e2 := range r.entities {
+			if e.IsEnemyOf(e2) {
+				targets = append(targets, e2)
+			}
+		}
+	}
+
+	// TODO: Skill: Cast Types
 
 	// Subtract SP
 	e.stats.Add(Stat_SP, -skill.SPCost)
 
 	// Trigger skill script
-	triggerSkillActivatedScript(skill, e, tgt, level)
+	triggerSkillActivatedScript(skill, e, targets, level)
 }
 
 func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
@@ -218,8 +225,8 @@ func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
 		return
 	}
 
-	// Already in combat
 	if e.combat != nil {
+		// Already in combat
 		if preAttackFn != nil {
 			preAttackFn()
 		}
@@ -233,13 +240,12 @@ func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
 			Write("").ToPlayer(e).Send()
 		}
 		return
-	} else {
-		if w.inCombat.StartCombat(e, tgt) {
-			if preAttackFn != nil {
-				preAttackFn()
-			}
-			runCombatLogic(e, w, tgt)
+	} else if w.inCombat.StartCombat(e, tgt) {
+		// Enter combat
+		if preAttackFn != nil {
+			preAttackFn()
 		}
+		runCombatLogic(e, w, tgt)
 	}
 }
 
@@ -261,25 +267,6 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		return
 	}
 
-	// Evaluate skill triggers
-	if tgt != nil {
-		if triggers := e.SkillTriggers(EState_Combat); len(triggers) > 0 {
-			// TODO: Skill: Cooldowns
-			chance := utils.RandChance100()
-			for _, trigger := range triggers {
-				chance -= trigger.Chance
-				if chance <= 0 {
-					if skill, ok := w.skillConfigs[trigger.Key]; ok {
-						performSkill(e, w, tgt, skill, trigger.Level)
-					} else {
-						log.Printf("invalid skill key '%s' used in skill trigger by enitty '%s'", trigger.Key, e.cfg.Key)
-						break
-					}
-				}
-			}
-		}
-	}
-
 	// Determine number of attacks per round based on Aspd
 	numAttacks := calculateAttacksPerRound(e.stats) + e.combat.numAttacksRemainder
 	numAttacksFull := int(numAttacks)
@@ -287,12 +274,13 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 
 	// Perform attacks
 	for i := 0; i < numAttacksFull; i++ {
-		combatLogicAttack(e, w, tgt, e.combat.nextAttack)
-		e.combat.nextAttack = nil
+		if !tryTriggerCombatSkill(e, w, tgt) {
+			combatLogicAttack(e, w, tgt, nil)
+		}
 	}
 }
 
-func combatLogicAttack(e *Entity, w *World, tgt *Entity, specialAttack *AttackData) {
+func combatLogicAttack(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttack) {
 	attack := e.cfg.Attack
 	noun := w.vocab.GetNoun(attack.Noun)
 	atkBonus := 0.0
@@ -309,28 +297,10 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity, specialAttack *AttackDa
 	}
 
 	// Special Melee Attack
-	if specialAttack != nil {
-
-		// If AOE attack, re-run combat logic against all enemies in the room
-		if specialAttack.AreaOfEffect == AOE_Room {
-
-			// Prevent stack overflow
-			specialAttack.AreaOfEffect = AOE_Single
-
-			r := w.rooms[e.data.RoomId]
-			for _, e2 := range r.entities {
-
-				// Players attack NPCs and vice versa
-				if (e.player == nil) != (e2.player == nil) {
-					combatLogicAttack(e, w, e2, specialAttack)
-				}
-			}
-			return
-		}
-
-		atkElem = specialAttack.Element
-		atkBonus += specialAttack.AtkBonus
-		hitBonus += specialAttack.HitBonus
+	if skillAttack != nil {
+		atkElem = skillAttack.Element
+		atkBonus += skillAttack.AtkBonus
+		hitBonus += skillAttack.HitBonus
 	}
 
 	if e.CanBeSeenBy(tgt) {
@@ -374,17 +344,17 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity, specialAttack *AttackDa
 	// 4. Calculate + Apply Damage
 	if didHit {
 		ctx := DamCtx_Melee
-		if specialAttack != nil && specialAttack.skill != nil {
+		if skillAttack != nil && skillAttack.skill != nil {
 			ctx = DamCtx_Skill
 		}
 		dam := calculateAttackDamage(e, tgt, weaponType, atkElem, atkBonus, didCrit)
 		applyDamage(tgt, w, e, dam, ctx, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
-		if specialAttack != nil && specialAttack.skill != nil {
-			triggerSkillHitScript(specialAttack.skill, e, tgt, dam)
+		if skillAttack != nil && skillAttack.skill != nil {
+			triggerSkillHitScript(skillAttack.skill, e, tgt, dam)
 		}
 	} else {
-		if specialAttack != nil && specialAttack.skill != nil {
-			triggerSkillMissedScript(specialAttack.skill, e, tgt)
+		if skillAttack != nil && skillAttack.skill != nil {
+			triggerSkillMissedScript(skillAttack.skill, e, tgt)
 		} else {
 			sendDamageMessages(0, e, tgt, w, false, noun.Singular, noun.Plural)
 		}
@@ -531,6 +501,39 @@ func createCorpse(from *Entity, w *World) *Item {
 	w.AddItem(corpse, from.data.RoomId)
 
 	return corpse
+}
+
+func tryTriggerCombatSkill(e *Entity, w *World, tgt *Entity) bool {
+	if tgt == nil {
+		return false
+	}
+
+	// No skill triggers
+	triggers := e.SkillTriggers(EState_Combat)
+	if len(triggers) == 0 {
+		return false
+	}
+
+	// On skill cooldown
+	if w.time.time < e.skillCooldownExpiry {
+		return false
+	}
+
+	// Check all skill triggers
+	chance := utils.RandChance100()
+	for _, trigger := range triggers {
+		chance -= trigger.Chance
+		if chance <= 0 {
+			if skill, ok := w.skillConfigs[trigger.Key]; ok {
+				performSkill(e, w, tgt, skill, trigger.Level)
+				return true
+			} else {
+				log.Printf("invalid skill key '%s' used in skill trigger by enitty '%s'", trigger.Key, e.cfg.Key)
+				break
+			}
+		}
+	}
+	return false
 }
 
 func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, critical bool, nounSingular string, nounPlural string) {

@@ -14,32 +14,20 @@ lib.HealMessage = function(amt)
     return string.format("(<c yellow>%d</c>)", amt)
 end
 
-lib.EnemiesInRoom = function(e)
-    local room = Entity.Room(e)
-    local ret = {}
-    for _, e2 in ipairs(Room.Entities(room)) do
-        if Entity.IsPlayer(e) ~= Entity.IsPlayer(e2) then
-            table.insert(ret, e2)
-        end
-    end
-    return ret
-end
-
 lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMessages)
     return {
         Key = string.format("npc_%s_attack", element),
         Name = string.format("%s Attack", stringUtils.FirstToUpper(element)),
         Type = "offensive",
         TargetType = "single_enemy",
-        CastTime = 0,
         CastDelay = 5.0,
         MaxLevel = 10,
         Desc = string.format("(NPC Only) Deals %s damage to the target. Damage is based on the monster's ATK.",
             element),
         Scripts = {
-            Activated = function(user, target, skill, level)
+            Activated = function(user, targets, skill, level)
                 local atkBonus = (level - 1)
-                Act.SkillAttack(user, target, skill, {
+                Act.SkillAttack(user, targets, skill, {
                     AtkBonus = atkBonus,
                     Element = element
                 })

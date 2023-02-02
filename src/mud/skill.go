@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 
@@ -46,22 +45,6 @@ func (s *SkillType) String() string {
 	return "unknown"
 }
 
-func (s *SkillType) MarshalJSON() ([]byte, error) {
-	return json.Marshal(s.String())
-}
-
-func (s *SkillType) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *s, err = ParseSkillType(str); err != nil {
-		return nil
-	} else {
-		return err
-	}
-}
-
 var skillTargetTypeStringMapping = utils.NewStringMapping(map[SkillTargetType]string{
 	SkillTargetType_None:         "none",
 	SkillTargetType_Self:         "self",
@@ -85,22 +68,6 @@ func (s *SkillTargetType) String() string {
 	return "unknown"
 }
 
-func (s *SkillTargetType) MarshalJSON() ([]byte, error) {
-	return json.Marshal(s.String())
-}
-
-func (s *SkillTargetType) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *s, err = ParseSkillTargetType(str); err != nil {
-		return nil
-	} else {
-		return err
-	}
-}
-
 type SkillConfig struct {
 	Key        string
 	Name       string
@@ -121,7 +88,7 @@ type SkillTriggerConfig struct {
 }
 
 type SkillScripts struct {
-	activated func(*Entity, *Entity, *SkillConfig, int)
+	activated func(*Entity, []*Entity, *SkillConfig, int)
 	missed    func(*Entity, *Entity)
 	hit       func(*Entity, *Entity, int)
 }
@@ -129,8 +96,8 @@ type SkillScripts struct {
 func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 	scripts := &SkillScripts{}
 	if fn := utils.GetLuaFunctionFromTable(tbl, "Activated"); fn != nil {
-		scripts.activated = func(user *Entity, target *Entity, skill *SkillConfig, level int) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserData(L, target), utils.ToUserData(L, skill), lua.LNumber(level)); err != nil {
+		scripts.activated = func(user *Entity, targets []*Entity, skill *SkillConfig, level int) {
+			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserDataList(L, targets), utils.ToUserData(L, skill), lua.LNumber(level)); err != nil {
 				log.Panicln("error calling activated script: ", err)
 			}
 		}
@@ -152,9 +119,9 @@ func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 	return scripts
 }
 
-func triggerSkillActivatedScript(skill *SkillConfig, e *Entity, tgt *Entity, level int) {
+func triggerSkillActivatedScript(skill *SkillConfig, e *Entity, targets []*Entity, level int) {
 	if skill.scripts != nil && skill.scripts.activated != nil {
-		skill.scripts.activated(e, tgt, skill, level)
+		skill.scripts.activated(e, targets, skill, level)
 	}
 }
 

@@ -168,13 +168,13 @@ func lua_ActAttack(self *Entity, target *Entity) {
 	performAttack(self, lua_W, target)
 }
 
-func lua_ActSkillAttack(self *Entity, target *Entity, skill *SkillConfig, attackTbl *lua.LTable) {
-	attack := &AttackData{}
-	if err := lua_Mapper.Map(attackTbl, attack); err != nil {
+func lua_ActSkillAttack(self *Entity, targets []*Entity, skill *SkillConfig, attackTbl *lua.LTable) {
+	skillAttack := &SkillAttack{}
+	if err := lua_Mapper.Map(attackTbl, skillAttack); err != nil {
 		panic(err)
 	}
-	attack.skill = skill
-	performSkillAttack(self, lua_W, target, attack)
+	skillAttack.skill = skill
+	performSkillAttack(self, lua_W, targets, skillAttack)
 }
 
 func lua_ActGet(self *Entity, item *Item) {

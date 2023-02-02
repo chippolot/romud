@@ -5,13 +5,13 @@ Config.NewSkill({
     Name = "Bash",
     Type = "offensive",
     TargetType = "single_enemy",
-    CastTime = 0,
     CastDelay = 1.0,
     SPCost = 8,
     MaxLevel = 10,
     Desc = "Strike a single enemy with significantly more power.",
     Scripts = {
-        Activated = function(user, target, skill, level)
+        Activated = function(user, targets, skill, level)
+            local target = targets[1]
             local atkPct = 0.3 * level
             local hitPct = 0.05 * level
             Write.ToPlayer(user, "You dramatically wind up for a big attack...")
@@ -50,24 +50,22 @@ Config.NewSkill({
     Name = "Whirlwind",
     Type = "offensive",
     TargetType = "all_enemies",
-    CastTime = 0,
     CastDelay = 5.0,
     SPCost = 8,
     MaxLevel = 10,
     Desc = "Strike all enemies in the room with a weapon attack.",
     Scripts = {
-        Activated = function(user, target, skill, level)
-            local atkPct = 0.1 * level - 0.2
-            local hitPct = 0.05 * level - 0.2
+        Activated = function(user, targets, skill, level)
+            local atkPct = 0.1 * level - 0.5
+            local hitPct = 0.05 * level - 0.25
             Write.ToPlayer(user, "You around quickly, sweeping your weapon in a wide arc ...")
             Write.ToRoom(Entity.Room(user), { user, target },
                 string.format("%s spins around quickly, sweeping their weapon in a wide arc...", Entity.NameCap(user)))
-            for _, tgt in ipairs(skillUtils.EnemiesInRoom(user)) do
-                Act.SkillAttack(user, tgt, skill, {
-                    AtkBonus = atkPct,
-                    HitBonus = hitPct
-                })
-            end
+            
+            Act.SkillAttack(user, targets, skill, {
+                AtkBonus = atkPct,
+                HitBonus = hitPct
+            })
         end,
         Missed = function(user, target)
             Write.ToPlayer(user,
@@ -99,8 +97,6 @@ Config.NewSkill({
     Name = "First Aid",
     Type = "active",
     TargetType = "self",
-    CastTime = 0,
-    CastDelay = 0,
     SPCost = 3,
     MaxLevel = 1,
     Desc = "Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.",

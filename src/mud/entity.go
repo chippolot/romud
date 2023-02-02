@@ -103,25 +103,26 @@ type EntityContainer interface {
 type EntityList []*Entity
 
 type Entity struct {
-	id            EntityId
-	cfg           *EntityConfig
-	data          *EntityData
-	player        *Player
-	stats         *Stats
-	combat        *CombatData
-	tookDamage    bool
-	position      Position
-	inventory     ItemList
-	equipped      map[EquipSlot]*Item
-	entityFlags   EntityFlagMask
-	statusEffects *StatusEffects
+	id                  EntityId
+	cfg                 *EntityConfig
+	data                *EntityData
+	player              *Player
+	stats               *Stats
+	combat              *CombatData   // If in combat, data about current encounter
+	skillCooldownExpiry utils.Seconds // Amount of time the entity must wait before using another skill
+	tookDamage          bool
+	position            Position
+	inventory           ItemList
+	equipped            map[EquipSlot]*Item
+	entityFlags         EntityFlagMask
+	statusEffects       *StatusEffects
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
+	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, 0, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
@@ -181,6 +182,10 @@ func (e *Entity) State() EntityState {
 		return EState_Combat
 	}
 	return EState_Idle
+}
+
+func (e *Entity) IsEnemyOf(e2 *Entity) bool {
+	return (e.player == nil) != (e2.player == nil)
 }
 
 func (e *Entity) GetName() string {

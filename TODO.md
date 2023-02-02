@@ -195,11 +195,12 @@
         [x] Allow buying multiples
     [x] Skills
         [x] Water Attribute Attack
+        [x] Whirlwind
+            [x] Fix
 ----------------------------------------
 [] RO
     [] Skills
-        [] Whirlwind
-            [] Fix
+        [] Skill cast types
         [] Metamorphasis
         [] SPCost num or func
         [] Upgrade skills

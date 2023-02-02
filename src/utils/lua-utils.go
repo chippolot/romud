@@ -12,6 +12,14 @@ func ToUserData(L *lua.LState, val interface{}) *lua.LUserData {
 	return data
 }
 
+func ToUserDataList[T any](L *lua.LState, arr []T) *lua.LTable {
+	tbl := L.NewTable()
+	for _, v := range arr {
+		tbl.Append(ToUserData(L, v))
+	}
+	return tbl
+}
+
 func WrapLuaFunc(L *lua.LState, val lua.LValue) func() {
 	if val == lua.LNil {
 		return nil

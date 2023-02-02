@@ -45,6 +45,9 @@ func (l *List[T]) Remove(value T) {
 			} else {
 				l.Head = i.Next
 			}
+			if i.Next == nil {
+				l.Tail = prev
+			}
 			i.Next = nil
 			return
 		}

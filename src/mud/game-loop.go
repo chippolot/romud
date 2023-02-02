@@ -34,6 +34,7 @@ func GameLoop(w *World) {
 		{wanderersSystem, 3, 0},
 		{aggroSystem, 1, 0},
 		{assistersSystem, 1, 0},
+		{castSystem, 0.1, 0},
 		{combatSystem, 2, 0},
 		{statusMessagesSystem, 0, 0},
 		{cleanupDeadSystem, 0, 0},
@@ -325,6 +326,25 @@ func scavengersSystem(w *World, t *GameTime) {
 
 		if toPickup != nil {
 			performGet(e, w, toPickup)
+		}
+	}
+}
+
+func castSystem(w *World, t *GameTime) {
+	for i := w.casting.Head; i != nil; {
+		e := i.Value
+		i = i.Next
+
+		// Pre attack cleanup
+		if !e.casting.Valid(e) {
+			w.casting.EndCasting(e)
+			continue
+		}
+
+		// Handle attack
+		if t.time >= e.casting.castTime {
+			triggerSkillCastScript(e.casting.skill, e, e.casting.targets, e.casting.level)
+			w.casting.EndCasting(e)
 		}
 	}
 }

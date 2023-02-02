@@ -1,5 +1,29 @@
 local stringUtils = require('cfg.ro.utils.string-utils')
 
+local function getElementColor(element)
+    if element == "water" then
+        return "blue"
+    elseif element == "neutral" then
+        return "dimly"
+    elseif element == "earth" then
+        return "dark green"
+    elseif element == "fire" then
+        return "red"
+    elseif element == "wind" then
+        return "light blue"
+    elseif element == "poison" then
+        return "green"
+    elseif element == "holy" then
+        return "white"
+    elseif element == "shadow" then
+        return "black"
+    elseif element == "ghost" then
+        return "grey"
+    elseif element == "undead" then
+        return "purple"
+    end
+end
+
 local lib = {}
 
 lib.AttackerDamageMessage = function(dam)
@@ -20,12 +44,12 @@ lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMess
         Name = string.format("%s Attack", stringUtils.FirstToUpper(element)),
         Type = "offensive",
         TargetType = "single_enemy",
-        CastDelay = 5.0,
+        CastDelays = { 5.0 },
         MaxLevel = 10,
         Desc = string.format("(NPC Only) Deals %s damage to the target. Damage is based on the monster's ATK.",
             element),
         Scripts = {
-            Activated = function(user, targets, skill, level)
+            Cast = function(user, targets, skill, level)
                 local atkBonus = (level - 1)
                 Act.SkillAttack(user, targets, skill, {
                     AtkBonus = atkBonus,
@@ -50,5 +74,22 @@ lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMess
             end
         }
     }
+end
+
+lib.WriteCastingMessages = function(e, element)
+    local elementColor = getElementColor(element)
+    Write.ToPlayer(e, string.format("Your eyes flash %s as you begin murmuring a spell incantation...", elementColor))
+    Write.ToRoom(Entity.Room(e), { e },
+        string.format("%s's eyes flash %s as they begin murmuring a spell incantation...", Entity.NameCap(e),
+            elementColor))
+end
+
+lib.WriteCastInterruptMessages = function(e)
+    Write.ToPlayer(e, "!! Your concentration suddenly breaks as you snap out of your trance!")
+end
+
+lib.WriteCastSuccessMessages = function(e, chant)
+    Write.ToPlayer(e, string.format("You shout '%s'", chant))
+    Write.ToRoom(Entity.Room(e), { e }, string.format("%s shouts '%s'", Entity.NameCap(e), chant))
 end
 return lib

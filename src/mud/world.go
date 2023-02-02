@@ -35,6 +35,7 @@ type World struct {
 
 	entryRoomId RoomId
 	inCombat    *CombatList
+	casting     *CastingList
 	loggingOut  map[PlayerId]bool
 
 	events chan<- server.SessionEvent
@@ -59,6 +60,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		make(map[EntityId]*Entity),
 		0,
 		&CombatList{},
+		&CastingList{},
 		make(map[PlayerId]bool),
 		events,
 	}

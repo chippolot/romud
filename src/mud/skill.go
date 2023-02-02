@@ -73,12 +73,89 @@ type SkillConfig struct {
 	Name       string
 	Type       SkillType
 	TargetType SkillTargetType
-	CastTime   utils.Seconds
-	CastDelay  utils.Seconds
-	SPCost     int
+	Range      int
+	CastTimes  []utils.Seconds
+	CastDelays []utils.Seconds
+	SPCosts    []int
 	MaxLevel   int
 	Desc       string
 	scripts    *SkillScripts
+}
+
+func (cfg *SkillConfig) SPCost(level int) int {
+	if cfg.SPCosts == nil {
+		return 0
+	}
+	ret := cfg.SPCosts[0]
+	if level <= len(cfg.SPCosts) {
+		ret = cfg.SPCosts[level-1]
+	}
+	return ret
+}
+
+func (cfg *SkillConfig) CastTime(level int) utils.Seconds {
+	if cfg.CastTimes == nil {
+		return 0
+	}
+	ret := cfg.CastTimes[0]
+	if level <= len(cfg.CastTimes) {
+		ret = cfg.CastTimes[level-1]
+	}
+	return ret
+}
+
+func (cfg *SkillConfig) CastDelay(level int) utils.Seconds {
+	if cfg.CastDelays == nil {
+		return 0
+	}
+	ret := cfg.CastDelays[0]
+	if level <= len(cfg.CastDelays) {
+		ret = cfg.CastDelays[level-1]
+	}
+	return ret
+}
+
+type CastingList struct {
+	utils.List[*Entity]
+}
+
+func (c *CastingList) StartCasting(e *Entity, t *GameTime, targets []*Entity, skill *SkillConfig, level int) bool {
+	// Already casting!
+	// TODO: SKILL: Support cancelation
+	if e.casting != nil {
+		return false
+	}
+
+	// Can't cast when you're stunned!
+	if e.stats.Condition() <= Cnd_Stunned {
+		return false
+	}
+
+	// Add to cast list
+	e.casting = &CastingData{e.data.RoomId, targets, skill, level, t.time + skill.CastTime(level)}
+	c.AddBack(e)
+
+	return true
+}
+
+func (c *CastingList) EndCasting(e *Entity) {
+	if e.casting == nil {
+		return
+	}
+	c.Remove(e)
+	e.casting = nil
+}
+
+type CastingData struct {
+	roomId   RoomId        // Id of room where entity began casting
+	targets  []*Entity     // Current skill targets
+	skill    *SkillConfig  // Current skill being cast
+	level    int           // Level skill is being cast at
+	castTime utils.Seconds // Timestamp when skill will be done casting
+}
+
+func (c *CastingData) Valid(e *Entity) bool {
+	return c != nil && e.stats.Condition() > Cnd_Stunned && e.data.RoomId == c.roomId
 }
 
 type SkillTriggerConfig struct {
@@ -88,17 +165,33 @@ type SkillTriggerConfig struct {
 }
 
 type SkillScripts struct {
-	activated func(*Entity, []*Entity, *SkillConfig, int)
-	missed    func(*Entity, *Entity)
-	hit       func(*Entity, *Entity, int)
+	activated   func(*Entity, []*Entity)
+	interrupted func(*Entity)
+	cast        func(*Entity, []*Entity, *SkillConfig, int)
+	missed      func(*Entity, *Entity)
+	hit         func(*Entity, *Entity, int)
 }
 
 func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 	scripts := &SkillScripts{}
 	if fn := utils.GetLuaFunctionFromTable(tbl, "Activated"); fn != nil {
-		scripts.activated = func(user *Entity, targets []*Entity, skill *SkillConfig, level int) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserDataList(L, targets), utils.ToUserData(L, skill), lua.LNumber(level)); err != nil {
+		scripts.activated = func(user *Entity, targets []*Entity) {
+			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserDataList(L, targets)); err != nil {
 				log.Panicln("error calling activated script: ", err)
+			}
+		}
+	}
+	if fn := utils.GetLuaFunctionFromTable(tbl, "Interrupted"); fn != nil {
+		scripts.interrupted = func(user *Entity) {
+			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user)); err != nil {
+				log.Panicln("error calling interrupted script: ", err)
+			}
+		}
+	}
+	if fn := utils.GetLuaFunctionFromTable(tbl, "Cast"); fn != nil {
+		scripts.cast = func(user *Entity, targets []*Entity, skill *SkillConfig, level int) {
+			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserDataList(L, targets), utils.ToUserData(L, skill), lua.LNumber(level)); err != nil {
+				log.Panicln("error calling cast script: ", err)
 			}
 		}
 	}
@@ -119,9 +212,22 @@ func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 	return scripts
 }
 
-func triggerSkillActivatedScript(skill *SkillConfig, e *Entity, targets []*Entity, level int) {
+func triggerSkillActivatedScript(skill *SkillConfig, e *Entity, targets []*Entity) {
 	if skill.scripts != nil && skill.scripts.activated != nil {
-		skill.scripts.activated(e, targets, skill, level)
+		skill.scripts.activated(e, targets)
+	}
+}
+
+// TODO: SKILL: CALL
+func triggerSkillInterruptedScript(skill *SkillConfig, e *Entity) {
+	if skill.scripts != nil && skill.scripts.interrupted != nil {
+		skill.scripts.interrupted(e)
+	}
+}
+
+func triggerSkillCastScript(skill *SkillConfig, e *Entity, targets []*Entity, level int) {
+	if skill.scripts != nil && skill.scripts.cast != nil {
+		skill.scripts.cast(e, targets, skill, level)
 	}
 }
 

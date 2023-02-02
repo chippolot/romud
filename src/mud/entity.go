@@ -109,6 +109,7 @@ type Entity struct {
 	player              *Player
 	stats               *Stats
 	combat              *CombatData   // If in combat, data about current encounter
+	casting             *CastingData  // If casting a skill, data about skill being cast
 	skillCooldownExpiry utils.Seconds // Amount of time the entity must wait before using another skill
 	tookDamage          bool
 	position            Position
@@ -122,7 +123,7 @@ func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, 0, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
+	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, nil, 0, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {

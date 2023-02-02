@@ -10,7 +10,7 @@ Config.NewSkill({
     MaxLevel = 10,
     Desc = "Strike a single enemy with significantly more power.",
     Scripts = {
-        Activated = function(user, targets, skill, level)
+        Cast = function(user, targets, skill, level)
             local target = targets[1]
             local atkPct = 0.3 * level
             local hitPct = 0.05 * level
@@ -55,13 +55,13 @@ Config.NewSkill({
     MaxLevel = 10,
     Desc = "Strike all enemies in the room with a weapon attack.",
     Scripts = {
-        Activated = function(user, targets, skill, level)
+        Cast = function(user, targets, skill, level)
             local atkPct = 0.1 * level - 0.5
             local hitPct = 0.05 * level - 0.25
             Write.ToPlayer(user, "You around quickly, sweeping your weapon in a wide arc ...")
             Write.ToRoom(Entity.Room(user), { user, target },
                 string.format("%s spins around quickly, sweeping their weapon in a wide arc...", Entity.NameCap(user)))
-            
+
             Act.SkillAttack(user, targets, skill, {
                 AtkBonus = atkPct,
                 HitBonus = hitPct
@@ -91,6 +91,126 @@ Config.NewSkill({
     }
 })
 
+Config.NewSkill({
+    Key = "cold_bolt",
+    Name = "Cold Bolt",
+    Type = "offensive",
+    TargetType = "single_enemy",
+    Range = 9,
+    CastTimes = { 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7 },
+    CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
+    SPCosts = { 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 },
+    MaxLevel = 10,
+    Desc = "Hits the targeted enemy with 1 Water Element Bolt per SkillLV for 1*MATK each.",
+    Scripts = {
+        Activated = function(user, targets, skill, level)
+            skillUtils.WriteCastingMessages(user, "water")
+        end,
+        Interrupted = function(user)
+            skillUtils.WriteCastInterruptMessages(user)
+        end,
+        Cast = function(user, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(user, "Frost's wrath, rain down! Cold Bolt!")
+            for _ = 1, level do
+                Act.SkillAttack(user, targets, skill, {
+                    Element = "water"
+                })
+            end
+        end,
+        Hit = function(user, target, dam)
+            Write.ToPlayer(user,
+                string.format("Your <c bright yellow>COLD BOLT</c> smashes into %s! %s", Entity.Name(target),
+                    skillUtils.AttackerDamageMessage(dam)))
+            Write.ToPlayer(target,
+                string.format("%s's <c bright yellow>COLD BOLT</c> smashes into you! %s", Entity.NameCap(user),
+                    skillUtils.TargetDamageMessage(dam)))
+            Write.ToRoom(Entity.Room(user), { user, target },
+                string.format("%s's <c bright yellow>COLD BOLT</c> smashes into %s!", Entity.NameCap(user),
+                    Entity.Name(target)))
+        end
+    }
+})
+
+Config.NewSkill({
+    Key = "fire_bolt",
+    Name = "Fire Bolt",
+    Type = "offensive",
+    TargetType = "single_enemy",
+    Range = 9,
+    CastTimes = { 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7 },
+    CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
+    SPCosts = { 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 },
+    MaxLevel = 10,
+    Desc = "Hits the targeted enemy with 1 Fire Element Bolt per SkillLV for 1*MATK each.",
+    Scripts = {
+        Activated = function(user, targets, skill, level)
+            skillUtils.WriteCastingMessages(user, "fire")
+        end,
+        Interrupted = function(user)
+            skillUtils.WriteCastInterruptMessages(user)
+        end,
+        Cast = function(user, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(user, "Burn brightly! Fire Bolt!")
+            for _ = 1, level do
+                Act.SkillAttack(user, targets, skill, {
+                    Element = "fire"
+                })
+            end
+        end,
+        Hit = function(user, target, dam)
+            Write.ToPlayer(user,
+                string.format("Your <c bright yellow>FIRE BOLT</c> smashes into %s! %s", Entity.Name(target),
+                    skillUtils.AttackerDamageMessage(dam)))
+            Write.ToPlayer(target,
+                string.format("%s's <c bright yellow>FIRE BOLT</c> smashes into you! %s", Entity.NameCap(user),
+                    skillUtils.TargetDamageMessage(dam)))
+            Write.ToRoom(Entity.Room(user), { user, target },
+                string.format("%s's <c bright yellow>FIRE BOLT</c> smashes into %s!", Entity.NameCap(user),
+                    Entity.Name(target)))
+        end
+    }
+})
+
+Config.NewSkill({
+    Key = "lightning_bolt",
+    Name = "Lightning Bolt",
+    Type = "offensive",
+    TargetType = "single_enemy",
+    Range = 9,
+    CastTimes = { 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7 },
+    CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
+    SPCosts = { 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 },
+    MaxLevel = 10,
+    Desc = "Hits the targeted enemy with 1 Wind Element Bolt per SkillLV for 1*MATK each.",
+    Scripts = {
+        Activated = function(user, targets, skill, level)
+            skillUtils.WriteCastingMessages(user, "wind")
+        end,
+        Interrupted = function(user)
+            skillUtils.WriteCastInterruptMessages(user)
+        end,
+        Cast = function(user, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(user, "Shocking strike! Lightning Bolt!")
+            for _ = 1, level do
+                Act.SkillAttack(user, targets, skill, {
+                    Element = "wind"
+                })
+            end
+        end,
+        Hit = function(user, target, dam)
+            Write.ToPlayer(user,
+                string.format("Your <c bright yellow>LIGHTNING BOLT</c> smashes into %s! %s", Entity.Name(target),
+                    skillUtils.AttackerDamageMessage(dam)))
+            Write.ToPlayer(target,
+                string.format("%s's <c bright yellow>LIGHTNING BOLT</c> smashes into you! %s", Entity.NameCap(user),
+                    skillUtils.TargetDamageMessage(dam)))
+            Write.ToRoom(Entity.Room(user), { user, target },
+                string.format("%s's <c bright yellow>LIGHTNING BOLT</c> smashes into %s!", Entity.NameCap(user),
+                    Entity.Name(target)))
+        end
+    }
+})
+
 
 Config.NewSkill({
     Key = "first_aid",
@@ -101,7 +221,7 @@ Config.NewSkill({
     MaxLevel = 1,
     Desc = "Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.",
     Scripts = {
-        Activated = function(user, _, _, _)
+        Cast = function(user, _, _, _)
             local amt = 5
             Write.ToPlayer(user, string.format("You tend some of your wounds. %s", skillUtils.HealMessage(5)))
             Write.ToRoom(Entity.Room(user), { user }, string.format("%s tends to their wounds.", Entity.NameCap(user)))

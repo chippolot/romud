@@ -198,16 +198,22 @@
         [x] Whirlwind
             [x] Fix
 ----------------------------------------
+[] Thread Safety!
 [] RO
+    [] Magic
+        [] Use MATK for magic spells
+        [] Re-roll targets after cast duration
+    [] Ranged Combat
+        [] Bows
+        [] Distance
+        [] Backstep
     [] Skills
         [] Skill cast types
         [] Metamorphasis
         [] SPCost num or func
         [] Upgrade skills
         [] Cast skills at level
-    [] Ranged combat
     [] Quick slot
-    [] Magic
     [] Shops
         [] Indoors/ Outdoors
         [] No Monster Spawns / Movement

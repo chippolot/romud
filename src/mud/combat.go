@@ -192,8 +192,15 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 		return
 	}
 
+	// Already casting something
+	if e.casting != nil {
+		Write("You're kind of busy casting something else!").ToPlayer(e).Send()
+		return
+	}
+
 	// Can't afford
-	if skill.SPCost > 0 && e.stats.Get(Stat_SP) < skill.SPCost {
+	spCost := skill.SPCost(level)
+	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
 		Write("You don't have enough SP!").ToPlayer(e).Send()
 		return
 	}
@@ -211,13 +218,18 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 		}
 	}
 
-	// TODO: Skill: Cast Types
-
 	// Subtract SP
-	e.stats.Add(Stat_SP, -skill.SPCost)
+	e.stats.Add(Stat_SP, -spCost)
 
 	// Trigger skill script
-	triggerSkillActivatedScript(skill, e, targets, level)
+	triggerSkillActivatedScript(skill, e, targets)
+
+	// If skill is instant, cast it!
+	if skill.CastTime(level) <= 0 {
+		triggerSkillCastScript(skill, e, targets, level)
+	} else { // Otherwise, add to casting list
+		w.casting.StartCasting(e, w.time, targets, skill, level)
+	}
 }
 
 func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {

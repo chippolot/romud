@@ -31,19 +31,19 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("HealMov", luar.New(L, lua_EntityHealMov))
 	entityTbl.RawSetString("InCombat", luar.New(L, lua_EntityInCombat))
 	entityTbl.RawSetString("IsPlayer", luar.New(L, lua_EntityIsPlayer))
-	L.SetGlobal("Entity", entityTbl)
+	L.SetGlobal("GoAPI_Entity", entityTbl)
 
 	itemTbl := L.NewTable()
 	itemTbl.RawSetString("Name", luar.New(L, lua_ItemName))
 	itemTbl.RawSetString("NameCap", luar.New(L, lua_ItemNameCap))
 	itemTbl.RawSetString("Equippable", luar.New(L, lua_ItemEquippable))
 	itemTbl.RawSetString("EquipSlot", luar.New(L, lua_ItemEquipSlot))
-	L.SetGlobal("Item", itemTbl)
+	L.SetGlobal("GoAPI_Item", itemTbl)
 
 	roomTbl := L.NewTable()
 	roomTbl.RawSetString("Entities", luar.New(L, lua_RoomEntities))
 	roomTbl.RawSetString("Items", luar.New(L, lua_RoomItems))
-	L.SetGlobal("Room", roomTbl)
+	L.SetGlobal("GoAPI_Room", roomTbl)
 
 	dirTbl := L.NewTable()
 	dirTbl.RawSetString("North", lua.LNumber(DirNorth))
@@ -52,7 +52,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	dirTbl.RawSetString("West", lua.LNumber(DirWest))
 	dirTbl.RawSetString("Up", lua.LNumber(DirUp))
 	dirTbl.RawSetString("Down", lua.LNumber(DirDown))
-	L.SetGlobal("Dir", dirTbl)
+	L.SetGlobal("GoAPI_Dir", dirTbl)
 
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
@@ -64,12 +64,12 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	actTbl.RawSetString("Say", luar.New(L, lua_ActSay))
 	actTbl.RawSetString("Tell", luar.New(L, lua_ActTell))
 	actTbl.RawSetString("Yell", luar.New(L, lua_ActYell))
-	L.SetGlobal("Act", actTbl)
+	L.SetGlobal("GoAPI_Act", actTbl)
 
 	writeTbl := L.NewTable()
 	writeTbl.RawSetString("ToPlayer", luar.New(L, lua_WriteToPlayer))
 	writeTbl.RawSetString("ToRoom", luar.New(L, lua_WriteToRoom))
-	L.SetGlobal("Write", writeTbl)
+	L.SetGlobal("GoAPI_Write", writeTbl)
 
 	configTable := L.NewTable()
 	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
@@ -79,12 +79,12 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewItem", luar.New(L, lua_ConfigNewItem))
 	configTable.RawSetString("NewSkill", luar.New(L, lua_ConfigNewSkill))
 	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
-	L.SetGlobal("Config", configTable)
+	L.SetGlobal("GoAPI_Config", configTable)
 
 	utilTbl := L.NewTable()
 	utilTbl.RawSetString("RandomChance", luar.New(L, lua_UtilChance))
 	utilTbl.RawSetString("RandomRange", luar.New(L, lua_UtilRandomRange))
-	L.SetGlobal("Util", utilTbl)
+	L.SetGlobal("GoAPI_Util", utilTbl)
 }
 
 func lua_EntityName(e *Entity) string {

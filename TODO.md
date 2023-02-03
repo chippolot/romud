@@ -208,10 +208,10 @@
         [x] Rod
         [x] Check targets after cast time complete
         [x] Spell interruption
+    [x] Lua
+        [x] Go_API
 ----------------------------------------
 [] RO
-    [] Lua
-        [] Declare bindings?
     [] Ranged Combat
         [] Bows
         [] Distance

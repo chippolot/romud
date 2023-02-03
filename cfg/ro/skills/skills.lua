@@ -1,3 +1,4 @@
+require('cfg.ro.utils.go-api')
 local skillUtils = require('cfg.ro.skills.skill-utils')
 
 -- Forward Decls
@@ -64,7 +65,7 @@ Config.NewSkill({
             local atkPct = 0.1 * level - 0.5
             local hitPct = 0.05 * level - 0.25
             Write.ToPlayer(user, "You around quickly, sweeping your weapon in a wide arc ...")
-            Write.ToRoom(Entity.Room(user), { user, target },
+            Write.ToRoom(Entity.Room(user), { user },
                 string.format("%s spins around quickly, sweeping their weapon in a wide arc...", Entity.NameCap(user)))
 
             Act.SkillAttack(user, targets, skill, {

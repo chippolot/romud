@@ -367,13 +367,13 @@ func castSystem(w *World) {
 
 		// Pre attack cleanup
 		if !e.casting.Valid(e) {
-			w.casting.EndCasting(e)
+			interruptSkill(e, w)
 			continue
 		}
 
 		// Handle attack
 		if w.time.time >= e.casting.castTime {
-			triggerSkillCastScript(e.casting.skill, e, e.casting.targets, e.casting.level)
+			castSkill(e.casting.skill, e, w, e.casting.target, e.casting.level)
 			w.casting.EndCasting(e)
 		}
 	}

@@ -119,7 +119,7 @@ type CastingList struct {
 	utils.List[*Entity]
 }
 
-func (c *CastingList) StartCasting(e *Entity, t *GameTime, targets []*Entity, skill *SkillConfig, level int) bool {
+func (c *CastingList) StartCasting(e *Entity, t *GameTime, target *Entity, skill *SkillConfig, level int) bool {
 	// Already casting!
 	// TODO: SKILL: Support cancelation
 	if e.casting != nil {
@@ -133,7 +133,7 @@ func (c *CastingList) StartCasting(e *Entity, t *GameTime, targets []*Entity, sk
 
 	// Add to cast list
 	castTime := utils.Seconds(calculateCastTime(e.stats, skill.CastTime(level)))
-	e.casting = &CastingData{e.data.RoomId, targets, skill, level, t.time + castTime}
+	e.casting = &CastingData{e.data.RoomId, target, skill, level, t.time + castTime}
 	c.AddBack(e)
 
 	return true
@@ -149,7 +149,7 @@ func (c *CastingList) EndCasting(e *Entity) {
 
 type CastingData struct {
 	roomId   RoomId        // Id of room where entity began casting
-	targets  []*Entity     // Current skill targets
+	target   *Entity       // Current skill target (if any)
 	skill    *SkillConfig  // Current skill being cast
 	level    int           // Level skill is being cast at
 	castTime utils.Seconds // Timestamp when skill will be done casting
@@ -166,7 +166,7 @@ type SkillTriggerConfig struct {
 }
 
 type SkillScripts struct {
-	activated   func(*Entity, []*Entity)
+	activated   func(*Entity)
 	interrupted func(*Entity)
 	cast        func(*Entity, []*Entity, *SkillConfig, int)
 	missed      func(*Entity, *Entity)
@@ -176,8 +176,8 @@ type SkillScripts struct {
 func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 	scripts := &SkillScripts{}
 	if fn := utils.GetLuaFunctionFromTable(tbl, "Activated"); fn != nil {
-		scripts.activated = func(user *Entity, targets []*Entity) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserDataList(L, targets)); err != nil {
+		scripts.activated = func(user *Entity) {
+			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user)); err != nil {
 				log.Panicln("error calling activated script: ", err)
 			}
 		}
@@ -213,9 +213,9 @@ func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 	return scripts
 }
 
-func triggerSkillActivatedScript(skill *SkillConfig, e *Entity, targets []*Entity) {
+func triggerSkillActivatedScript(skill *SkillConfig, e *Entity) {
 	if skill.scripts != nil && skill.scripts.activated != nil {
-		skill.scripts.activated(e, targets)
+		skill.scripts.activated(e)
 	}
 }
 

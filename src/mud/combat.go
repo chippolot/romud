@@ -168,6 +168,21 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 		return
 	}
 
+	// Subtract SP
+	e.stats.Add(Stat_SP, -spCost)
+
+	// Trigger skill script
+	triggerSkillActivatedScript(skill, e)
+
+	// If skill is instant, cast it!
+	if skill.CastTime(level) <= 0 {
+		castSkill(skill, e, w, target, level)
+	} else { // Otherwise, add to casting list
+		w.casting.StartCasting(e, w.time, target, skill, level)
+	}
+}
+
+func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level int) {
 	// Collect targets for AOE skills
 	targets := []*Entity{target}
 	switch skill.TargetType {
@@ -181,18 +196,17 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 		}
 	}
 
-	// Subtract SP
-	e.stats.Add(Stat_SP, -spCost)
+	triggerSkillCastScript(skill, e, targets, level)
+}
 
-	// Trigger skill script
-	triggerSkillActivatedScript(skill, e, targets)
-
-	// If skill is instant, cast it!
-	if skill.CastTime(level) <= 0 {
-		triggerSkillCastScript(skill, e, targets, level)
-	} else { // Otherwise, add to casting list
-		w.casting.StartCasting(e, w.time, targets, skill, level)
+func interruptSkill(e *Entity, w *World) {
+	if e.casting == nil {
+		return
 	}
+	w.casting.EndCasting(e)
+
+	Write("You lose your concentration!").ToPlayer(e).Send()
+	Write("%s loses their concentration!", ObservableNameCap(e)).ToEntityRoom(w, e).Ignore(e).Send()
 }
 
 func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
@@ -354,8 +368,10 @@ func combatLogicAttackMagic(e *Entity, w *World, tgt *Entity, skillAttack *Skill
 	// Magic attacks always hit!
 	dam := calculateMagicAttackDamage(e, tgt, skillAttack.Element, skillAttack.AtkBonus)
 	applyDamage(tgt, w, e, dam, DamCtx_Skill, false, "", "")
-	if skillAttack.skill != nil {
+	if dam > 0 {
 		triggerSkillHitScript(skillAttack.skill, e, tgt, dam)
+	} else {
+		triggerSkillMissedScript(skillAttack.skill, e, tgt)
 	}
 
 }
@@ -372,6 +388,9 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	tgt.stats.Add(Stat_HP, -dam)
 	if dam > 0 {
 		tgt.tookDamage = true
+		if tgt.casting != nil {
+			interruptSkill(tgt, w)
+		}
 	}
 
 	cnd = tgt.stats.Condition()

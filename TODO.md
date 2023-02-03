@@ -206,11 +206,10 @@
         [x] Cast time status mod
         [x] Sot MDef + Hard MDef
         [x] Rod
+        [x] Check targets after cast time complete
+        [x] Spell interruption
 ----------------------------------------
 [] RO
-    [] Magic
-        [] Check targets after cast time complete
-        [] Spell interruption
     [] Ranged Combat
         [] Bows
         [] Distance
@@ -245,8 +244,6 @@
     [] Dex Weapons
     [] Auto-Con using colors
     [] Starting equip scriptable
-[] Lua
-    [] Enable requiring
 [] Items
     [] Use flags (ex: edible = eat)
     [] Equipment Slots + Cards
@@ -281,7 +278,6 @@
 [] Classes
 [] Followers
 [] Doors
-[] Figure out thread safety
 [] Groups
 [] Servers
     [] TLS

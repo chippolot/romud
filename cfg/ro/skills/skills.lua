@@ -1,5 +1,9 @@
 local skillUtils = require('cfg.ro.skills.skill-utils')
 
+-- Forward Decls
+local magicProjectileMissedFunc
+local magicProjectileHitFunc
+
 Config.NewSkill({
     Key = "bash",
     Name = "Bash",
@@ -105,7 +109,7 @@ Config.NewSkill({
     MaxLevel = 10,
     Desc = "Hits the targeted enemy with 1 Water Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
-        Activated = function(user, targets, skill, level)
+        Activated = function(user)
             skillUtils.WriteCastingMessages(user, "water")
         end,
         Interrupted = function(user)
@@ -120,17 +124,8 @@ Config.NewSkill({
                 })
             end
         end,
-        Hit = function(user, target, dam)
-            Write.ToPlayer(user,
-                string.format("Your <c bright yellow>COLD BOLT</c> smashes into %s! %s", Entity.Name(target),
-                    skillUtils.AttackerDamageMessage(dam)))
-            Write.ToPlayer(target,
-                string.format("%s's <c bright yellow>COLD BOLT</c> smashes into you! %s", Entity.NameCap(user),
-                    skillUtils.TargetDamageMessage(dam)))
-            Write.ToRoom(Entity.Room(user), { user, target },
-                string.format("%s's <c bright yellow>COLD BOLT</c> smashes into %s!", Entity.NameCap(user),
-                    Entity.Name(target)))
-        end
+        Missed = function(user, target) magicProjectileMissedFunc(user, target, "COLD BOLT") end,
+        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "COLD BOLT") end,
     }
 })
 
@@ -146,7 +141,7 @@ Config.NewSkill({
     MaxLevel = 10,
     Desc = "Hits the targeted enemy with 1 Fire Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
-        Activated = function(user, targets, skill, level)
+        Activated = function(user)
             skillUtils.WriteCastingMessages(user, "fire")
         end,
         Interrupted = function(user)
@@ -161,17 +156,8 @@ Config.NewSkill({
                 })
             end
         end,
-        Hit = function(user, target, dam)
-            Write.ToPlayer(user,
-                string.format("Your <c bright yellow>FIRE BOLT</c> smashes into %s! %s", Entity.Name(target),
-                    skillUtils.AttackerDamageMessage(dam)))
-            Write.ToPlayer(target,
-                string.format("%s's <c bright yellow>FIRE BOLT</c> smashes into you! %s", Entity.NameCap(user),
-                    skillUtils.TargetDamageMessage(dam)))
-            Write.ToRoom(Entity.Room(user), { user, target },
-                string.format("%s's <c bright yellow>FIRE BOLT</c> smashes into %s!", Entity.NameCap(user),
-                    Entity.Name(target)))
-        end
+        Missed = function(user, target) magicProjectileMissedFunc(user, target, "FIRE BOLT") end,
+        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "FIRE BOLT") end,
     }
 })
 
@@ -187,7 +173,7 @@ Config.NewSkill({
     MaxLevel = 10,
     Desc = "Hits the targeted enemy with 1 Wind Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
-        Activated = function(user, targets, skill, level)
+        Activated = function(user)
             skillUtils.WriteCastingMessages(user, "wind")
         end,
         Interrupted = function(user)
@@ -202,17 +188,8 @@ Config.NewSkill({
                 })
             end
         end,
-        Hit = function(user, target, dam)
-            Write.ToPlayer(user,
-                string.format("Your <c bright yellow>LIGHTNING BOLT</c> smashes into %s! %s", Entity.Name(target),
-                    skillUtils.AttackerDamageMessage(dam)))
-            Write.ToPlayer(target,
-                string.format("%s's <c bright yellow>LIGHTNING BOLT</c> smashes into you! %s", Entity.NameCap(user),
-                    skillUtils.TargetDamageMessage(dam)))
-            Write.ToRoom(Entity.Room(user), { user, target },
-                string.format("%s's <c bright yellow>LIGHTNING BOLT</c> smashes into %s!", Entity.NameCap(user),
-                    Entity.Name(target)))
-        end
+        Missed = function(user, target) magicProjectileMissedFunc(user, target, "LIGHTNING BOLT") end,
+        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "LIGHTNING BOLT") end,
     }
 })
 
@@ -254,3 +231,25 @@ Config.NewSkill(skillUtils.GenerateElementAttackSkillConfig("fire", {
     "%s scortches you with searing <c bright yellow>FLAMES</c>! %s",
     "%s scortches %s with searing <c bright yellow>FLAMES</c>!"
 }))
+
+-- Helper Funcs
+magicProjectileMissedFunc = function(user, target, magName)
+    Write.ToPlayer(user,
+        string.format("Your <c yellow>%s</c> zips by %s, barely missing them!", magName, Entity.Name(target)))
+    Write.ToPlayer(target,
+        string.format("%s's <c yellow>%s</c> zips by, barely missing you!", Entity.NameCap(user), magName))
+    Write.ToRoom(Entity.Room(user), { user, target },
+        string.format("%s's <c yellow>%s</c> zips by %, barely missing them!", Entity.NameCap(user), magName, Entity.Name(target)))
+end
+
+magicProjectileHitFunc = function(user, target, dam, magName)
+    Write.ToPlayer(user,
+        string.format("Your <c bright yellow>%s</c> smashes into %s! %s", magName, Entity.Name(target),
+            skillUtils.AttackerDamageMessage(dam)))
+    Write.ToPlayer(target,
+        string.format("%s's <c bright yellow>%s</c> smashes into you! %s", Entity.NameCap(user), magName,
+            skillUtils.TargetDamageMessage(dam)))
+    Write.ToRoom(Entity.Room(user), { user, target },
+        string.format("%s's <c bright yellow>%s</c> smashes into %s!", Entity.NameCap(user), magName,
+            Entity.Name(target)))
+end

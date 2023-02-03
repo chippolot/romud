@@ -205,17 +205,22 @@
             [x] MDef
         [x] Cast time status mod
         [x] Sot MDef + Hard MDef
+        [x] Rod
 ----------------------------------------
 [] RO
     [] Magic
         [] Check targets after cast time complete
         [] Spell interruption
-        [] Rod
-        [] Move randomness to combat-calc instead of status-calc
     [] Ranged Combat
         [] Bows
         [] Distance
         [] Backstep
+    [] Jobs
+        [] Job specific skills
+        [] Job specific eq
+        [] Job xp
+        [] Job leveling
+        [] Job stat bonuses
     [] Skills
         [] Skill cast types
         [] Metamorphasis

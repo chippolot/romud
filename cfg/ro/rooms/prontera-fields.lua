@@ -15,7 +15,8 @@ Config.NewZone({
 Config.NewShop({
 	RoomId = 1,
 	Stock = {
-		"knife"
+		"knife",
+		"rod"
 	}
 })
 Config.NewRoom({

@@ -22,3 +22,29 @@ Config.NewItem({
     SellPrice = 25,
 	Weight = 40
 })
+Config.NewItem({
+    Key = "rod",
+	Keywords = {
+		"rod",
+		"wooden"
+	},
+	Name = "a rod",
+	NamePlural = "rods",
+	RoomDesc = "A simple wooden rod has been left here.",
+	FullDesc = "A simple wooden rod.",
+	Equipment = {
+		Weapon = {
+			Type = "rod",
+			Atk = 15,
+			MAtkBoost = 0.15,
+            Noun = "bludgeon",
+            Level = 1
+		},
+		Slot = "held_1h",
+        RequiredLevel = 1,
+        Upgradable = true
+	},
+	BuyPrice = 50,
+    SellPrice = 25,
+	Weight = 40
+})

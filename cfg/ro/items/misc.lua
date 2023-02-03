@@ -5,6 +5,7 @@ Config.NewItem({
         "jellopy"
 	},
 	Name = "jellopy",
+	NamePlural = "jellopies",
 	RoomDesc = "A wiggly piece of jelly lies here.",
     FullDesc = "A small crystallization created by some monsters.",
 	BuyPrice = 6,

@@ -37,11 +37,11 @@ func calculateMagicAttackDamage(e *Entity, tgt *Entity, attackElement Element, m
 
 	mWeaponAtkBoost := 1.0 + calculateWeaponMagicAttackBoost(e)
 
-	mDefMod := (1.0 - float64(calculateHardMagicDef(tgt))/100.0) - float64(calculateSoftMagicDef(tgt.stats))
+	mDefMod := 1.0 - float64(calculateHardMagicDef(tgt)/100.0)
 	elemMod := DefenderElementModifierLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][attackElement]
 
-	dam := float64(mAtk) * mWeaponAtkBoost * mAtkBonusMultiplier * mDefMod * elemMod
-	return utils.MaxInt(int(dam), 1)
+	dam := (float64(mAtk)*mWeaponAtkBoost*mAtkBonusMultiplier*mDefMod - float64(calculateSoftMagicDef(tgt.stats))) * elemMod
+	return utils.MaxInt(int(dam), 0)
 }
 
 func calculateSoftDef(e *Entity) int {

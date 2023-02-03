@@ -266,11 +266,12 @@ type ArmorConfig struct {
 }
 
 type WeaponConfig struct {
-	Type    WeaponType
-	Atk     int
-	Element Element
-	Level   int
-	Noun    string
+	Type      WeaponType
+	Atk       int
+	MAtkBoost float64
+	Element   Element
+	Level     int
+	Noun      string
 }
 
 type EquipmentDataMap map[EquipSlot]*ItemData

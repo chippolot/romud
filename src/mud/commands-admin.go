@@ -14,7 +14,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 	case "pkill":
 		dam := 9999
 		Write("Admin: Damaging Player for %d", dam).ToPlayer(e).Send()
-		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, false, "hit", "hits")
+		applyDamage(e, w, nil, dam, DamCtx_Admin, false, "hit", "hits")
 	case "pstatus":
 		if len(tokens) <= 2 {
 			Write("Admin: Which effect?").ToPlayer(e).Send()
@@ -28,9 +28,10 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 			Write("Admin: Failed to parse status effect '%s'", statusStr).ToPlayer(e).Send()
 		}
 	case "pheal":
-		heal := 9999
-		Write("Admin: Healing Player for %d", heal).ToPlayer(e).Send()
-		e.stats.Add(Stat_HP, heal)
+		Write("Admin: Healed Player! ").ToPlayer(e).Send()
+		e.stats.Add(Stat_HP, 999999)
+		e.stats.Add(Stat_SP, 999999)
+		e.stats.Add(Stat_Mov, 999999)
 	case "pdam":
 		if len(tokens) <= 2 {
 			Write("Admin: How much damage?").ToPlayer(e).Send()
@@ -38,7 +39,7 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 		}
 		dam, _ := strconv.Atoi(tokens[2])
 		Write("Admin: Damaging Player for %d", dam).ToPlayer(e).Send()
-		applyDamage(e, w, nil, dam, DamCtx_Admin, Dam_Slashing, false, "hit", "hits")
+		applyDamage(e, w, nil, dam, DamCtx_Admin, false, "hit", "hits")
 	case "pxp":
 		if len(tokens) <= 2 {
 			Write("Admin: How much xp?").ToPlayer(e).Send()

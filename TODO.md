@@ -153,6 +153,7 @@
     [x] Password mode
 [x] Combat Speed
 [x] Config roots
+[x] Thread Safety!
 [x] RO
     [x] Calc full exp value
     [x] Base Stats
@@ -197,12 +198,20 @@
         [x] Water Attribute Attack
         [x] Whirlwind
             [x] Fix
+    [x] Magic
+        [x] Use MATK for magic spells
+        [x] Stats Screen
+            [x] MAtk
+            [x] MDef
+        [x] Cast time status mod
+        [x] Sot MDef + Hard MDef
 ----------------------------------------
-[] Thread Safety!
 [] RO
     [] Magic
-        [] Use MATK for magic spells
-        [] Re-roll targets after cast duration
+        [] Check targets after cast time complete
+        [] Spell interruption
+        [] Rod
+        [] Move randomness to combat-calc instead of status-calc
     [] Ranged Combat
         [] Bows
         [] Distance

@@ -426,6 +426,10 @@ func (e *Entity) Describe() string {
 
 func (e *Entity) DescribeStatus() string {
 	statuses := e.DescribeStatusEffects()
+	minMAtk, maxMAtk := calculateMAtkRange(e.stats)
+	mAtkBoost := 1.0 + calculateWeaponMagicAttackBoost(e)
+	minMAtk = int(float64(minMAtk) * mAtkBoost)
+	maxMAtk = int(float64(maxMAtk) * mAtkBoost)
 
 	var sb utils.StringBuilder
 	sb.WriteHorizontalDivider()
@@ -442,15 +446,17 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Mov    : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_Mov)), Colorize(Color_Stat, e.stats.Get(Stat_MaxMov)))
 	sb.WriteNewLine()
 	if e.player != nil {
-		sb.WriteLinef("Atk    : %s + %s", Colorize(Color_Stat, calculateBaseAttackPower(e)), Colorize(Color_Stat, calculateWeaponAttackPower(e, true)))
+		sb.WriteLinef("Atk    : %s+%s", Colorize(Color_Stat, calculateBaseAttackPower(e)), Colorize(Color_Stat, calculateWeaponAttackPower(e, true)))
 	} else {
 		sb.WriteLinef("Atk    : %s-%s", Colorize(Color_Stat, e.cfg.Attack.Power.Min), Colorize(Color_Stat, e.cfg.Attack.Power.Max))
 	}
-	sb.WriteLinef("Def    : %s + %s", Colorize(Color_Stat, calculateHardDef(e)), Colorize(Color_Stat, calculateSoftDef(e)))
+	sb.WriteLinef("MAtk   : %s~%s", Colorize(Color_Stat, minMAtk), Colorize(Color_Stat, maxMAtk))
+	sb.WriteLinef("Def    : %s+%s", Colorize(Color_Stat, calculateHardDef(e)), Colorize(Color_Stat, e.stats.Get(Stat_Vit)))
+	sb.WriteLinef("MDef   : %s+%s", Colorize(Color_Stat, calculateHardMagicDef(e)), Colorize(Color_Stat, calculateSoftMagicDef(e.stats)))
 	sb.WriteNewLine()
 	if e.player != nil {
 		sb.WriteLinef("Hit    : %s", Colorize(Color_Stat, calculateHit(e.stats)))
-		sb.WriteLinef("Flee   : %s + %s", Colorize(Color_Stat, calculateStatusFlee(e.stats)), Colorize(Color_Stat, calculatePerfectDodge(e.stats)))
+		sb.WriteLinef("Flee   : %s+%s", Colorize(Color_Stat, calculateStatusFlee(e.stats)), Colorize(Color_Stat, calculatePerfectDodge(e.stats)))
 	} else {
 		sb.WriteLinef("Hit100 : %s", Colorize(Color_Stat, e.stats.cfg.Hit100))
 		sb.WriteLinef("Flee95 : %s", Colorize(Color_Stat, e.stats.cfg.Flee95))

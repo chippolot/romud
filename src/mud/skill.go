@@ -132,7 +132,8 @@ func (c *CastingList) StartCasting(e *Entity, t *GameTime, targets []*Entity, sk
 	}
 
 	// Add to cast list
-	e.casting = &CastingData{e.data.RoomId, targets, skill, level, t.time + skill.CastTime(level)}
+	castTime := utils.Seconds(calculateCastTime(e.stats, skill.CastTime(level)))
+	e.casting = &CastingData{e.data.RoomId, targets, skill, level, t.time + castTime}
 	c.AddBack(e)
 
 	return true

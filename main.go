@@ -30,7 +30,7 @@ func main() {
 	db := mud.NewFileSystemDatabase(path.Join(projectRoot, "db"))
 
 	// Create events channel
-	events := make(chan server.SessionEvent, 32)
+	events := make(chan server.SessionEvent, 128)
 
 	// Create lua state
 	L := lua.NewState()
@@ -46,12 +46,9 @@ func main() {
 	mud.LoadAssets(world, projectRoot)
 	world.SetEntryRoomId(1)
 
-	// Create session handler
-	sessionHandler := mud.NewSessionHandler(world, events)
-	go sessionHandler.Run()
-
 	// Start game loop
-	go mud.GameLoop(world)
+	sessionHandler := mud.NewSessionHandler(world, events)
+	go mud.GameLoop(world, sessionHandler)
 
 	// Start servers
 	for _, s := range cfg.Servers {

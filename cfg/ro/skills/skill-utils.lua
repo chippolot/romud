@@ -52,6 +52,7 @@ lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMess
             Cast = function(user, targets, skill, level)
                 local atkBonus = (level - 1)
                 Act.SkillAttack(user, targets, skill, {
+                    AtkType = "physical",
                     AtkBonus = atkBonus,
                     Element = element
                 })

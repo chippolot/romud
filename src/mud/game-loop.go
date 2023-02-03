@@ -9,47 +9,62 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
+type SystemUpdater interface {
+	Update(w *World)
+}
+
+type System struct {
+	fn func(w *World)
+}
+
+func (s *System) Update(w *World) {
+	s.fn(w)
+}
+
 type UpdateSystem struct {
-	fn   func(w *World, t *GameTime)
+	sys  SystemUpdater
 	freq utils.Seconds
 	last utils.Seconds
 }
 
-func (s *UpdateSystem) Update(w *World, t *GameTime) {
+func (s *UpdateSystem) Update(w *World) {
 	nextUpdate := s.last + s.freq
-	if t.time < nextUpdate {
+	if w.time.time < nextUpdate {
 		return
 	}
-	t.dt = t.time - s.last
-	s.fn(w, t)
-	s.last = t.time
+	w.time.dt = w.time.time - s.last
+	s.sys.Update(w)
+	s.last = w.time.time
 }
 
-func GameLoop(w *World) {
+type SessionHandlerSystem struct {
+	handler *SessionHandler
+}
+
+func GameLoop(w *World, handler *SessionHandler) {
 	systems := []*UpdateSystem{
-		{zoneSpawnersSystem, 1, 0},
-		{statusEffectsSystem, 1, 0},
-		{statRestorationSystem, 1, 0},
-		{scavengersSystem, 3, 0},
-		{wanderersSystem, 3, 0},
-		{aggroSystem, 1, 0},
-		{assistersSystem, 1, 0},
-		{castSystem, 0.1, 0},
-		{combatSystem, 2, 0},
-		{statusMessagesSystem, 0, 0},
-		{cleanupDeadSystem, 0, 0},
-		{playerOutputSystem, 0, 0},
+		{&SessionHandlerSystem{handler}, 0, 0},
+		{&System{zoneSpawnersSystem}, 1, 0},
+		{&System{statusEffectsSystem}, 1, 0},
+		{&System{statRestorationSystem}, 1, 0},
+		{&System{scavengersSystem}, 3, 0},
+		{&System{wanderersSystem}, 3, 0},
+		{&System{aggroSystem}, 1, 0},
+		{&System{assistersSystem}, 1, 0},
+		{&System{castSystem}, 0.1, 0},
+		{&System{combatSystem}, 2, 0},
+		{&System{statusMessagesSystem}, 0, 0},
+		{&System{cleanupDeadSystem}, 0, 0},
+		{&System{playerOutputSystem}, 0, 0},
 	}
 
 	lastUpdate := time.Now()
 	for {
-		if len(w.sessions) > 0 {
-			for _, sys := range systems {
-				sys.Update(w, w.time)
-			}
+		for _, sys := range systems {
+			sys.Update(w)
 		}
 
-		time.Sleep(time.Second / 30.0)
+		time.Sleep(time.Second / 60.0)
 
 		w.time.dt = utils.Seconds(time.Since(lastUpdate).Seconds())
 		lastUpdate = time.Now()
@@ -57,7 +72,22 @@ func GameLoop(w *World) {
 	}
 }
 
-func zoneSpawnersSystem(w *World, t *GameTime) {
+func (s *SessionHandlerSystem) Update(w *World) {
+	for {
+		select {
+		case evt, ok := <-s.handler.events:
+			if !ok {
+				log.Println("channel closed!")
+				break
+			}
+			s.handler.HandleEvent(evt)
+		default:
+			return
+		}
+	}
+}
+
+func zoneSpawnersSystem(w *World) {
 	for _, z := range w.zones {
 		for _, s := range z.spawners {
 			s.UpdateActive(w.time)
@@ -68,16 +98,16 @@ func zoneSpawnersSystem(w *World, t *GameTime) {
 	}
 }
 
-func statusEffectsSystem(w *World, t *GameTime) {
+func statusEffectsSystem(w *World) {
 	for _, e := range w.entities {
 		if e.statusEffects.mask == 0 {
 			continue
 		}
 
 		// Apply status effects
-		if e.HasStatusEffect(StatusType_Poison) && int(t.time)%3 == 0 {
+		if e.HasStatusEffect(StatusType_Poison) && int(w.time.time)%3 == 0 {
 			poisonDam := utils.MaxInt(1, e.stats.Get(Stat_MaxHP)/10)
-			applyDamage(e, w, e, poisonDam, DamCtx_Poison, Dam_Poison, false, "", "")
+			applyDamage(e, w, e, poisonDam, DamCtx_Poison, false, "", "")
 		}
 
 		// Decrease status timers
@@ -85,7 +115,7 @@ func statusEffectsSystem(w *World, t *GameTime) {
 			if s.data == nil {
 				continue
 			}
-			s.data.Duration -= utils.Seconds(t.dt)
+			s.data.Duration -= utils.Seconds(w.time.dt)
 			if s.data.Duration <= 0 {
 				performRemoveStatusEffect(e, w, s.statusType, false)
 			}
@@ -93,7 +123,7 @@ func statusEffectsSystem(w *World, t *GameTime) {
 	}
 }
 
-func statusMessagesSystem(w *World, t *GameTime) {
+func statusMessagesSystem(w *World) {
 	for _, e := range w.entities {
 		if !e.tookDamage {
 			continue
@@ -103,7 +133,7 @@ func statusMessagesSystem(w *World, t *GameTime) {
 	}
 }
 
-func statRestorationSystem(w *World, t *GameTime) {
+func statRestorationSystem(w *World) {
 	for _, e := range w.entities {
 		// Fighting entities don't heal
 		if e.combat != nil {
@@ -136,7 +166,7 @@ func statRestorationSystem(w *World, t *GameTime) {
 		now := w.time.time
 		if nextHPMovRegen >= 0 && now >= nextHPMovRegen {
 			if cnd == Cnd_Incapacitated || cnd == Cnd_MortallyWounded {
-				applyDamage(e, w, nil, 1, DamCtx_Bleeding, Dam_Slashing, false, "", "")
+				applyDamage(e, w, nil, 1, DamCtx_Bleeding, false, "", "")
 				Write("You are bleeding!").ToPlayer(e).Colorized(Color_NegativeBld).Send()
 			} else {
 				e.stats.Add(Stat_HP, calculateHPRestoration(e.stats))
@@ -154,7 +184,7 @@ func statRestorationSystem(w *World, t *GameTime) {
 	}
 }
 
-func wanderersSystem(w *World, t *GameTime) {
+func wanderersSystem(w *World) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -211,7 +241,7 @@ func wanderersSystem(w *World, t *GameTime) {
 	}
 }
 
-func aggroSystem(w *World, t *GameTime) {
+func aggroSystem(w *World) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -243,7 +273,7 @@ func aggroSystem(w *World, t *GameTime) {
 	}
 }
 
-func assistersSystem(w *World, t *GameTime) {
+func assistersSystem(w *World) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -282,7 +312,7 @@ func assistersSystem(w *World, t *GameTime) {
 	}
 }
 
-func scavengersSystem(w *World, t *GameTime) {
+func scavengersSystem(w *World) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -330,7 +360,7 @@ func scavengersSystem(w *World, t *GameTime) {
 	}
 }
 
-func castSystem(w *World, t *GameTime) {
+func castSystem(w *World) {
 	for i := w.casting.Head; i != nil; {
 		e := i.Value
 		i = i.Next
@@ -342,14 +372,14 @@ func castSystem(w *World, t *GameTime) {
 		}
 
 		// Handle attack
-		if t.time >= e.casting.castTime {
+		if w.time.time >= e.casting.castTime {
 			triggerSkillCastScript(e.casting.skill, e, e.casting.targets, e.casting.level)
 			w.casting.EndCasting(e)
 		}
 	}
 }
 
-func combatSystem(w *World, t *GameTime) {
+func combatSystem(w *World) {
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
@@ -371,7 +401,7 @@ func combatSystem(w *World, t *GameTime) {
 	}
 }
 
-func cleanupDeadSystem(w *World, t *GameTime) {
+func cleanupDeadSystem(w *World) {
 	for _, e := range w.players {
 		if e.stats.Condition() == Cnd_Dead {
 			w.LogoutPlayer(e.player)
@@ -379,7 +409,7 @@ func cleanupDeadSystem(w *World, t *GameTime) {
 	}
 }
 
-func playerOutputSystem(w *World, t *GameTime) {
+func playerOutputSystem(w *World) {
 	for _, s := range w.sessions {
 		s.Flush()
 	}

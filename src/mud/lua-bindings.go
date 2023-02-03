@@ -341,10 +341,6 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRange(s) }); err != nil {
 			return nil, err
 		}
-	} else if to == reflect.TypeOf(DamageType(0)) {
-		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseDamageType(s) }); err != nil {
-			return nil, err
-		}
 	} else if to == reflect.TypeOf(StatType(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseStatType(s) }); err != nil {
 			return nil, err
@@ -399,6 +395,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(EntityState(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseEntityState(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(SkillAttackType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSkillAttackType(s) }); err != nil {
 			return nil, err
 		}
 	}

@@ -4,7 +4,7 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-func calculateAttackDamage(e *Entity, tgt *Entity, attackWeaponType WeaponType, attackElement Element, atkBonus float64, critical bool) int {
+func calculatePhysicalAttackDamage(e *Entity, tgt *Entity, attackWeaponType WeaponType, attackElement Element, atkBonus float64, critical bool) int {
 	// Mechanics: RO Classic
 	// https://irowiki.org/classic/Attacks
 
@@ -27,6 +27,23 @@ func calculateAttackDamage(e *Entity, tgt *Entity, attackWeaponType WeaponType, 
 	return utils.MaxInt(int(dam), 1)
 }
 
+func calculateMagicAttackDamage(e *Entity, tgt *Entity, attackElement Element, mAtkBonus float64) int {
+	// Mechanics: RO Classic
+	// https://irowiki.org/classic/Attacks
+	mAtkBonusMultiplier := 1.0 + mAtkBonus
+
+	minMAtk, maxMAtk := calculateMAtkRange(e.stats)
+	mAtk := utils.RandRange(minMAtk, maxMAtk)
+
+	mWeaponAtkBoost := 1.0 + calculateWeaponMagicAttackBoost(e)
+
+	mDefMod := (1.0 - float64(calculateHardMagicDef(tgt))/100.0) - float64(calculateSoftMagicDef(tgt.stats))
+	elemMod := DefenderElementModifierLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][attackElement]
+
+	dam := float64(mAtk) * mWeaponAtkBoost * mAtkBonusMultiplier * mDefMod * elemMod
+	return utils.MaxInt(int(dam), 1)
+}
+
 func calculateSoftDef(e *Entity) int {
 	// Mechanics: RO Classic
 	if e.player != nil {
@@ -43,6 +60,18 @@ func calculateHardDef(e *Entity) int {
 			continue
 		}
 		def += eq.cfg.Equipment.Armor.Def
+	}
+	return utils.ClampInt(def, 0, 100)
+}
+
+func calculateHardMagicDef(e *Entity) int {
+	// Mechanics: RO Classic
+	def := 0
+	for _, eq := range e.equipped {
+		if eq.cfg.Equipment == nil || eq.cfg.Equipment.Armor == nil {
+			continue
+		}
+		def += eq.cfg.Equipment.Armor.MDef
 	}
 	return utils.ClampInt(def, 0, 100)
 }
@@ -113,4 +142,16 @@ func calculateWeaponAttackPower(e *Entity, returnMax bool) int {
 		return max
 	}
 	return utils.RandRange(min, max)
+}
+
+func calculateWeaponMagicAttackBoost(e *Entity) float64 {
+	// Mechanics: RO Classic
+	if e.player != nil {
+		if w, _, ok := e.GetWeapon(); ok {
+			return w.MAtkBoost
+		}
+		return 0
+	} else {
+		return 0
+	}
 }

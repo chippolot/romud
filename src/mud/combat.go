@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"time"
@@ -10,21 +9,6 @@ import (
 )
 
 const (
-	Dam_Acid DamageType = iota
-	Dam_Bludgeoning
-	Dam_Cold
-	Dam_Fire
-	Dam_Force
-	Dam_Lightning
-	Dam_Necrotic
-	Dam_Piercing
-	Dam_Poison
-	Dam_Psychic
-	Dam_Radiant
-	Dam_Slashing
-	Dam_Thunder
-)
-const (
 	DamCtx_Melee DamageContext = iota
 	DamCtx_Bleeding
 	DamCtx_Poison
@@ -32,54 +16,32 @@ const (
 	DamCtx_Admin DamageContext = 999
 )
 
-type AdvantageType int
-type DamageType int
-type DamageContext int
+const (
+	SkillAttackType_Physical SkillAttackType = iota
+	SkillAttackType_Magic
+)
 
-var damageTypeStringMapping = utils.NewStringMapping(map[DamageType]string{
-	Dam_Acid:        "acid",
-	Dam_Bludgeoning: "bludgeoning",
-	Dam_Cold:        "cold",
-	Dam_Fire:        "fire",
-	Dam_Force:       "force",
-	Dam_Lightning:   "lightning",
-	Dam_Necrotic:    "necrotic",
-	Dam_Piercing:    "piercing",
-	Dam_Poison:      "poison",
-	Dam_Psychic:     "psychic",
-	Dam_Radiant:     "radiant",
-	Dam_Slashing:    "slashing",
-	Dam_Thunder:     "thunder",
+type AdvantageType int
+type DamageContext int
+type SkillAttackType int
+
+var skillAttackTypeStringMapping = utils.NewStringMapping(map[SkillAttackType]string{
+	SkillAttackType_Physical: "physical",
+	SkillAttackType_Magic:    "magic",
 })
 
-func ParseDamageType(str string) (DamageType, error) {
-	if val, ok := damageTypeStringMapping.ToValue[str]; ok {
+func ParseSkillAttackType(str string) (SkillAttackType, error) {
+	if val, ok := skillAttackTypeStringMapping.ToValue[str]; ok {
 		return val, nil
 	}
-	return 0, fmt.Errorf("unknown damage type: %s", str)
+	return 0, fmt.Errorf("unknown SkillAttackType: %s", str)
 }
 
-func (dt *DamageType) String() string {
-	if str, ok := damageTypeStringMapping.ToString[*dt]; ok {
+func (dt *SkillAttackType) String() string {
+	if str, ok := skillAttackTypeStringMapping.ToString[*dt]; ok {
 		return str
 	}
 	return "unknown"
-}
-
-func (dt *DamageType) MarshalJSON() ([]byte, error) {
-	return json.Marshal(dt.String())
-}
-
-func (dt *DamageType) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *dt, err = ParseDamageType(str); err != nil {
-		return nil
-	} else {
-		return err
-	}
 }
 
 type AttackConfig struct {
@@ -93,11 +55,12 @@ type SavingThrowConfig struct {
 }
 
 type SkillAttack struct {
-	skill    *SkillConfig  // Skill to be used
-	AtkBonus float64       // Attack multiplier
-	HitBonus float64       // Hit multiplier
-	Element  Element       // Element of attack
-	Delay    utils.Seconds // Delay until attack triggers
+	skill    *SkillConfig    // Skill to be used
+	AtkType  SkillAttackType // Type of attack (weapon, mag)
+	AtkBonus float64         // Attack multiplier
+	HitBonus float64         // Hit multiplier
+	Element  Element         // Element of attack
+	Delay    utils.Seconds   // Delay until attack triggers
 }
 
 type CombatData struct {
@@ -293,6 +256,14 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 }
 
 func combatLogicAttack(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttack) {
+	if skillAttack != nil && skillAttack.AtkType == SkillAttackType_Magic {
+		combatLogicAttackMagic(e, w, tgt, skillAttack)
+	} else {
+		combatLogicAttackPhysical(e, w, tgt, skillAttack)
+	}
+}
+
+func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttack) {
 	attack := e.cfg.Attack
 	noun := w.vocab.GetNoun(attack.Noun)
 	atkBonus := 0.0
@@ -359,8 +330,8 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttac
 		if skillAttack != nil && skillAttack.skill != nil {
 			ctx = DamCtx_Skill
 		}
-		dam := calculateAttackDamage(e, tgt, weaponType, atkElem, atkBonus, didCrit)
-		applyDamage(tgt, w, e, dam, ctx, Dam_Slashing, didCrit, noun.Singular, noun.Plural)
+		dam := calculatePhysicalAttackDamage(e, tgt, weaponType, atkElem, atkBonus, didCrit)
+		applyDamage(tgt, w, e, dam, ctx, didCrit, noun.Singular, noun.Plural)
 		if skillAttack != nil && skillAttack.skill != nil {
 			triggerSkillHitScript(skillAttack.skill, e, tgt, dam)
 		}
@@ -374,7 +345,22 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttac
 	}
 }
 
-func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damType DamageType, critical bool, nounSingular string, nounPlural string) int {
+func combatLogicAttackMagic(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttack) {
+	if skillAttack == nil {
+		log.Printf("cannot execute magic attack with nil skillAttack!")
+		return
+	}
+
+	// Magic attacks always hit!
+	dam := calculateMagicAttackDamage(e, tgt, skillAttack.Element, skillAttack.AtkBonus)
+	applyDamage(tgt, w, e, dam, DamCtx_Skill, false, "", "")
+	if skillAttack.skill != nil {
+		triggerSkillHitScript(skillAttack.skill, e, tgt, dam)
+	}
+
+}
+
+func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, critical bool, nounSingular string, nounPlural string) int {
 	cnd := tgt.stats.Condition()
 	if cnd == Cnd_Dead {
 		return 0

@@ -18,6 +18,7 @@ Config.NewSkill({
             Write.ToRoom(Entity.Room(user), { user, target },
                 string.format("%s dramatically winds up for a big attack...", Entity.NameCap(user)))
             Act.SkillAttack(user, target, skill, {
+                AtkType = "physical",
                 AtkBonus = atkPct,
                 HitBonus = hitPct
             })
@@ -63,6 +64,7 @@ Config.NewSkill({
                 string.format("%s spins around quickly, sweeping their weapon in a wide arc...", Entity.NameCap(user)))
 
             Act.SkillAttack(user, targets, skill, {
+                AtkType = "physical",
                 AtkBonus = atkPct,
                 HitBonus = hitPct
             })
@@ -113,6 +115,7 @@ Config.NewSkill({
             skillUtils.WriteCastSuccessMessages(user, "Frost's wrath, rain down! Cold Bolt!")
             for _ = 1, level do
                 Act.SkillAttack(user, targets, skill, {
+                    AtkType = "magic",
                     Element = "water"
                 })
             end
@@ -153,6 +156,7 @@ Config.NewSkill({
             skillUtils.WriteCastSuccessMessages(user, "Burn brightly! Fire Bolt!")
             for _ = 1, level do
                 Act.SkillAttack(user, targets, skill, {
+                    AtkType = "magic",
                     Element = "fire"
                 })
             end
@@ -193,6 +197,7 @@ Config.NewSkill({
             skillUtils.WriteCastSuccessMessages(user, "Shocking strike! Lightning Bolt!")
             for _ = 1, level do
                 Act.SkillAttack(user, targets, skill, {
+                    AtkType = "magic",
                     Element = "wind"
                 })
             end

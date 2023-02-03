@@ -67,15 +67,23 @@ func calculatePlayerSoftDef(s *Stats) int {
 	vit := s.GetFloat(Stat_Vit)
 	vit30 := int(vit * 0.3)
 	vit50 := int(vit * 0.5)
-	minA := vit30
-	maxA := utils.MaxInt(vit30, int(math.Pow(vit, 2)/150.0-1))
-	return vit50 + utils.RandRange(minA, maxA)
+	return vit30 + utils.RandRange(0, int(math.Pow(vit, 2)/150.0-1)) + vit50
 }
 
 func calculateMonsterSoftDef(s *Stats) int {
 	// Mechanics: RO Classic
 	vit := s.GetFloat(Stat_Vit)
 	return int(vit) + utils.RandRange(0, int(math.Pow(vit/20.0, 2)-1.0))
+}
+
+func calculateSoftMagicDef(s *Stats) int {
+	// Mechanics: RO Classic
+	return s.Get(Stat_Int) + s.Get(Stat_Vit)/2
+}
+
+func calculateCastTime(s *Stats, base utils.Seconds) float64 {
+	// Mechanics: RO Classic
+	return float64(base) * (1.0 - s.GetFloat(Stat_Dex)/150.0)
 }
 
 func calculateHit(s *Stats) int {
@@ -126,6 +134,12 @@ func calculateStatusAttackPower(s *Stats) int {
 	dex := s.GetFloat(Stat_Dex)
 	luk := s.GetFloat(Stat_Luk)
 	return int(str + math.Pow(str/10.0, 2) + dex/5.0 + luk/5.0)
+}
+
+func calculateMAtkRange(s *Stats) (int, int) {
+	// Mechanics: RO Classic
+	sint := s.Get(Stat_Int)
+	return sint + (sint/7)*(sint/7), sint + (sint/5)*(sint/5)
 }
 
 func calculateExpValue(s *Stats) int {

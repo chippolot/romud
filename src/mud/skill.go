@@ -166,11 +166,10 @@ type SkillTriggerConfig struct {
 }
 
 type SkillScripts struct {
-	activated   func(*Entity)
-	interrupted func(*Entity)
-	cast        func(*Entity, []*Entity, *SkillConfig, int)
-	missed      func(*Entity, *Entity)
-	hit         func(*Entity, *Entity, int)
+	activated func(*Entity)
+	cast      func(*Entity, []*Entity, *SkillConfig, int)
+	missed    func(*Entity, *Entity)
+	hit       func(*Entity, *Entity, int)
 }
 
 func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
@@ -179,13 +178,6 @@ func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 		scripts.activated = func(user *Entity) {
 			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user)); err != nil {
 				log.Panicln("error calling activated script: ", err)
-			}
-		}
-	}
-	if fn := utils.GetLuaFunctionFromTable(tbl, "Interrupted"); fn != nil {
-		scripts.interrupted = func(user *Entity) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user)); err != nil {
-				log.Panicln("error calling interrupted script: ", err)
 			}
 		}
 	}
@@ -216,13 +208,6 @@ func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
 func triggerSkillActivatedScript(skill *SkillConfig, e *Entity) {
 	if skill.scripts != nil && skill.scripts.activated != nil {
 		skill.scripts.activated(e)
-	}
-}
-
-// TODO: SKILL: CALL
-func triggerSkillInterruptedScript(skill *SkillConfig, e *Entity) {
-	if skill.scripts != nil && skill.scripts.interrupted != nil {
-		skill.scripts.interrupted(e)
 	}
 }
 

@@ -210,6 +210,8 @@
         [x] Spell interruption
 ----------------------------------------
 [] RO
+    [] Lua
+        [] Declare bindings?
     [] Ranged Combat
         [] Bows
         [] Distance

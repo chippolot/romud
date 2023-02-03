@@ -85,10 +85,6 @@ lib.WriteCastingMessages = function(e, element)
             elementColor))
 end
 
-lib.WriteCastInterruptMessages = function(e)
-    Write.ToPlayer(e, "!! Your concentration suddenly breaks as you snap out of your trance!")
-end
-
 lib.WriteCastSuccessMessages = function(e, chant)
     Write.ToPlayer(e, string.format("You shout '%s'", chant))
     Write.ToRoom(Entity.Room(e), { e }, string.format("%s shouts '%s'", Entity.NameCap(e), chant))

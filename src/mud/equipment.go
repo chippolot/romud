@@ -268,7 +268,7 @@ type ArmorConfig struct {
 type WeaponConfig struct {
 	Type      WeaponType
 	Atk       int
-	MAtkBoost float64
+	MAtkBonus float64
 	Element   Element
 	Level     int
 	Noun      string

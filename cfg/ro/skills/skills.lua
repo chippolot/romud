@@ -112,9 +112,6 @@ Config.NewSkill({
         Activated = function(user)
             skillUtils.WriteCastingMessages(user, "water")
         end,
-        Interrupted = function(user)
-            skillUtils.WriteCastInterruptMessages(user)
-        end,
         Cast = function(user, targets, skill, level)
             skillUtils.WriteCastSuccessMessages(user, "Frost's wrath, rain down! Cold Bolt!")
             for _ = 1, level do
@@ -143,9 +140,6 @@ Config.NewSkill({
     Scripts = {
         Activated = function(user)
             skillUtils.WriteCastingMessages(user, "fire")
-        end,
-        Interrupted = function(user)
-            skillUtils.WriteCastInterruptMessages(user)
         end,
         Cast = function(user, targets, skill, level)
             skillUtils.WriteCastSuccessMessages(user, "Burn brightly! Fire Bolt!")
@@ -176,9 +170,6 @@ Config.NewSkill({
         Activated = function(user)
             skillUtils.WriteCastingMessages(user, "wind")
         end,
-        Interrupted = function(user)
-            skillUtils.WriteCastInterruptMessages(user)
-        end,
         Cast = function(user, targets, skill, level)
             skillUtils.WriteCastSuccessMessages(user, "Shocking strike! Lightning Bolt!")
             for _ = 1, level do
@@ -193,6 +184,38 @@ Config.NewSkill({
     }
 })
 
+Config.NewSkill({
+    Key = "napalm_beat",
+    Name = "Napalm Beat",
+    Type = "offensive",
+    TargetType = "all_enemies",
+    Range = 9,
+    CastTimes = { 1 },
+    CastDelays = { 1, 1, 1, 0.9, 0.9, 0.8, 0.8, 0.7, 0.6, 0.5 },
+    SPCosts = { 9, 9, 9, 12, 12, 12, 15, 15, 15, 18 },
+    MaxLevel = 10,
+    Desc = "Hits every Enemy in a 3x3 area around the target for an MATK of (70+10*SkillLV)% using Ghost Element. This damage is spread equally between all targets. For example, if 3 monsters are hit, then each takes 1/3rd of the damage a single target would take.",
+    Scripts = {
+        Activated = function(user)
+            skillUtils.WriteCastingMessages(user, "ghost")
+        end,
+        Cast = function(user, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(user, "Ethereal energy! Napalm Beat!")
+            if #targets == 0 then
+                return
+            end
+
+            local matk = (0.7 + 0.1 * level) / #targets
+            Act.SkillAttack(user, targets, skill, {
+                AtkType = "magic",
+                MAtkBonus = matk - 1.0,
+                Element = "ghost"
+            })
+        end,
+        Missed = function(user, target) magicProjectileMissedFunc(user, target, "NAPALM BEAT") end,
+        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "NAPALM BEAT") end,
+    }
+})
 
 Config.NewSkill({
     Key = "first_aid",
@@ -239,7 +262,8 @@ magicProjectileMissedFunc = function(user, target, magName)
     Write.ToPlayer(target,
         string.format("%s's <c yellow>%s</c> zips by, barely missing you!", Entity.NameCap(user), magName))
     Write.ToRoom(Entity.Room(user), { user, target },
-        string.format("%s's <c yellow>%s</c> zips by %, barely missing them!", Entity.NameCap(user), magName, Entity.Name(target)))
+        string.format("%s's <c yellow>%s</c> zips by %, barely missing them!", Entity.NameCap(user), magName,
+            Entity.Name(target)))
 end
 
 magicProjectileHitFunc = function(user, target, dam, magName)

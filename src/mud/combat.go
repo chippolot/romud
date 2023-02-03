@@ -55,12 +55,13 @@ type SavingThrowConfig struct {
 }
 
 type SkillAttack struct {
-	skill    *SkillConfig    // Skill to be used
-	AtkType  SkillAttackType // Type of attack (weapon, mag)
-	AtkBonus float64         // Attack multiplier
-	HitBonus float64         // Hit multiplier
-	Element  Element         // Element of attack
-	Delay    utils.Seconds   // Delay until attack triggers
+	skill     *SkillConfig    // Skill to be used
+	AtkType   SkillAttackType // Type of attack (weapon, mag)
+	AtkBonus  float64         // Attack multiplier
+	MAtkBonus float64         // Magic Attack multiplier
+	HitBonus  float64         // Hit multiplier
+	Element   Element         // Element of attack
+	Delay     utils.Seconds   // Delay until attack triggers
 }
 
 type CombatData struct {
@@ -366,7 +367,7 @@ func combatLogicAttackMagic(e *Entity, w *World, tgt *Entity, skillAttack *Skill
 	}
 
 	// Magic attacks always hit!
-	dam := calculateMagicAttackDamage(e, tgt, skillAttack.Element, skillAttack.AtkBonus)
+	dam := calculateMagicAttackDamage(e, tgt, skillAttack.Element, skillAttack.MAtkBonus)
 	applyDamage(tgt, w, e, dam, DamCtx_Skill, false, "", "")
 	if dam > 0 {
 		triggerSkillHitScript(skillAttack.skill, e, tgt, dam)

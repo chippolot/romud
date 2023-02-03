@@ -36,7 +36,7 @@ Config.NewItem({
 		Weapon = {
 			Type = "rod",
 			Atk = 15,
-			MAtkBoost = 0.15,
+			MAtkBonus = 0.15,
             Noun = "bludgeon",
             Level = 1
 		},

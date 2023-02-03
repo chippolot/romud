@@ -148,7 +148,7 @@ func calculateWeaponMagicAttackBoost(e *Entity) float64 {
 	// Mechanics: RO Classic
 	if e.player != nil {
 		if w, _, ok := e.GetWeapon(); ok {
-			return w.MAtkBoost
+			return w.MAtkBonus
 		}
 		return 0
 	} else {

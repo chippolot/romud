@@ -1,3 +1,5 @@
+require('cfg.ro.utils.go-api')
+
 Config.NewItem({
     Key = "jellopy",
 	Keywords = {

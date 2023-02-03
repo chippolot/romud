@@ -1,3 +1,5 @@
+require('cfg.ro.utils.go-api')
+
 Config.RegisterNouns({
     "hit", "hits",
     "punch", "punches",

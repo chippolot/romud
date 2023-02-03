@@ -1,3 +1,5 @@
+require('cfg.ro.utils.go-api')
+
 local function UseEdibleHealingItem(user, item, min, max) 
     local amt = Util.RandomRange(min, max)
     Entity.HealHP(user, amt)

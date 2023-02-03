@@ -1,3 +1,5 @@
+require('cfg.ro.utils.go-api')
+
 Config.NewZone({
 	Id = 1,
 	Name = "Prontera Fields",

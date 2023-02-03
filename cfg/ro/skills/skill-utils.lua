@@ -1,3 +1,4 @@
+require('cfg.ro.utils.go-api')
 local stringUtils = require('cfg.ro.utils.string-utils')
 
 local function getElementColor(element)

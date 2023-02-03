@@ -1,3 +1,5 @@
+require('cfg.ro.utils.go-api')
+
 Config.NewEntity({
     Key = "poring",
     Name = "a poring",

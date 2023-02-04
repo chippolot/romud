@@ -25,25 +25,26 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("NameCap", luar.New(L, lua_EntityNameCap))
 	entityTbl.RawSetString("RoomId", luar.New(L, lua_EntityRoomId))
 	entityTbl.RawSetString("Room", luar.New(L, lua_EntityRoom))
+	entityTbl.RawSetString("Stat", luar.New(L, lua_EntityStat))
 	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
 	entityTbl.RawSetString("HealHP", luar.New(L, lua_EntityHealHP))
 	entityTbl.RawSetString("HealSP", luar.New(L, lua_EntityHealSP))
 	entityTbl.RawSetString("HealMov", luar.New(L, lua_EntityHealMov))
 	entityTbl.RawSetString("InCombat", luar.New(L, lua_EntityInCombat))
 	entityTbl.RawSetString("IsPlayer", luar.New(L, lua_EntityIsPlayer))
-	L.SetGlobal("GoAPI_Entity", entityTbl)
+	L.SetGlobal("Entity", entityTbl)
 
 	itemTbl := L.NewTable()
 	itemTbl.RawSetString("Name", luar.New(L, lua_ItemName))
 	itemTbl.RawSetString("NameCap", luar.New(L, lua_ItemNameCap))
 	itemTbl.RawSetString("Equippable", luar.New(L, lua_ItemEquippable))
 	itemTbl.RawSetString("EquipSlot", luar.New(L, lua_ItemEquipSlot))
-	L.SetGlobal("GoAPI_Item", itemTbl)
+	L.SetGlobal("Item", itemTbl)
 
 	roomTbl := L.NewTable()
 	roomTbl.RawSetString("Entities", luar.New(L, lua_RoomEntities))
 	roomTbl.RawSetString("Items", luar.New(L, lua_RoomItems))
-	L.SetGlobal("GoAPI_Room", roomTbl)
+	L.SetGlobal("Room", roomTbl)
 
 	dirTbl := L.NewTable()
 	dirTbl.RawSetString("North", lua.LNumber(DirNorth))
@@ -52,7 +53,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	dirTbl.RawSetString("West", lua.LNumber(DirWest))
 	dirTbl.RawSetString("Up", lua.LNumber(DirUp))
 	dirTbl.RawSetString("Down", lua.LNumber(DirDown))
-	L.SetGlobal("GoAPI_Dir", dirTbl)
+	L.SetGlobal("Dir", dirTbl)
 
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
@@ -64,12 +65,12 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	actTbl.RawSetString("Say", luar.New(L, lua_ActSay))
 	actTbl.RawSetString("Tell", luar.New(L, lua_ActTell))
 	actTbl.RawSetString("Yell", luar.New(L, lua_ActYell))
-	L.SetGlobal("GoAPI_Act", actTbl)
+	L.SetGlobal("Act", actTbl)
 
 	writeTbl := L.NewTable()
 	writeTbl.RawSetString("ToPlayer", luar.New(L, lua_WriteToPlayer))
 	writeTbl.RawSetString("ToRoom", luar.New(L, lua_WriteToRoom))
-	L.SetGlobal("GoAPI_Write", writeTbl)
+	L.SetGlobal("Write", writeTbl)
 
 	configTable := L.NewTable()
 	configTable.RawSetString("NewZone", luar.New(L, lua_ConfigNewZone))
@@ -79,12 +80,18 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewItem", luar.New(L, lua_ConfigNewItem))
 	configTable.RawSetString("NewSkill", luar.New(L, lua_ConfigNewSkill))
 	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
-	L.SetGlobal("GoAPI_Config", configTable)
+	L.SetGlobal("Config", configTable)
 
 	utilTbl := L.NewTable()
 	utilTbl.RawSetString("RandomChance", luar.New(L, lua_UtilChance))
 	utilTbl.RawSetString("RandomRange", luar.New(L, lua_UtilRandomRange))
-	L.SetGlobal("GoAPI_Util", utilTbl)
+	L.SetGlobal("Util", utilTbl)
+
+	// Fool Lua into thinking that the shim API file has already been loaded
+	if mudConfig.LuaAPIFile != "" {
+		loaded := L.GetField(L.Get(lua.RegistryIndex), "_LOADED")
+		L.SetField(loaded, mudConfig.LuaAPIFile, lua.LBool(true))
+	}
 }
 
 func lua_EntityName(e *Entity) string {
@@ -101,6 +108,10 @@ func lua_EntityRoomId(e *Entity) RoomId {
 
 func lua_EntityRoom(e *Entity) *Room {
 	return lua_W.rooms[e.data.RoomId]
+}
+
+func lua_EntityStat(e *Entity, stat StatType) int {
+	return e.stats.Get(stat)
 }
 
 func lua_EntityEquipSlotOpen(e *Entity, slot EquipSlot) bool {

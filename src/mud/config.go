@@ -90,6 +90,7 @@ type MudConfig struct {
 	ExpRateMultiplier            float64
 	GameSpeedMultiplier          float64
 	LootOwnershipDurationSeconds float64
+	LuaAPIFile                   string // (Optional) dot delimeted file path to Lua API script
 }
 
 func setGlobalConfig(cfg *MudConfig) {

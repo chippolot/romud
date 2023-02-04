@@ -1,3 +1,5 @@
+-- API
+
 Act = {
     Attack = function(e, tgt)
     end,
@@ -52,7 +54,7 @@ Entity = {
     end,
     Room = function(e)
     end,
-    Stat = function(e, stat) 
+    Stat = function(e, stat)
     end,
     EquipSlotOpen = function(e, slot)
     end,
@@ -92,4 +94,34 @@ Util = {
     end,
     RandomRange = function(min, max)
     end
+}
+
+-- Enums
+
+Dir = {
+    North = "North",
+    East = "East",
+    South = "South",
+    West = "West",
+    Up = "Up",
+    Down = "Down"
+}
+
+Stat = {
+    HP = "HP",
+    MaxHP = "MaxHP",
+    SP = "SP",
+    MaxSP = "MaxSP",
+    Mov = "Mov",
+    MaxMov = "MaxMov",
+    Str = "Str",
+    Agi = "Agi",
+    Vit = "Vit",
+    Int = "Int",
+    Dex = "Dex",
+    Luk = "Luk",
+    Level = "Level",
+    XP = "XP",
+    StatPoints = "StatPts",
+    Gold = "Gold"
 }

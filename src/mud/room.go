@@ -224,6 +224,15 @@ func describeItems(r *Room, sb *utils.StringBuilder) {
 
 type Direction int
 
+var directionStringMapping = utils.NewStringMapping(map[Direction]string{
+	DirNorth: "north",
+	DirEast:  "east",
+	DirSouth: "south",
+	DirWest:  "west",
+	DirUp:    "up",
+	DirDown:  "down",
+})
+
 func ParseDirection(s string) (Direction, error) {
 	s = strings.TrimSpace(strings.ToLower(s))
 	switch s {
@@ -245,19 +254,8 @@ func ParseDirection(s string) (Direction, error) {
 }
 
 func (d *Direction) String() string {
-	switch *d {
-	case DirEast:
-		return "east"
-	case DirWest:
-		return "west"
-	case DirNorth:
-		return "north"
-	case DirSouth:
-		return "south"
-	case DirUp:
-		return "up"
-	case DirDown:
-		return "down"
+	if str, ok := directionStringMapping.ToString[*d]; ok {
+		return str
 	}
 	return "unknown"
 }

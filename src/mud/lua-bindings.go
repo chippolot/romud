@@ -5,6 +5,7 @@ import (
 	"log"
 	"math/rand"
 	"reflect"
+	"strings"
 
 	"github.com/benkeatingsmith/gluamapper"
 	"github.com/chippolot/go-mud/src/utils"
@@ -46,15 +47,6 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	roomTbl.RawSetString("Items", luar.New(L, lua_RoomItems))
 	L.SetGlobal("Room", roomTbl)
 
-	dirTbl := L.NewTable()
-	dirTbl.RawSetString("North", lua.LNumber(DirNorth))
-	dirTbl.RawSetString("South", lua.LNumber(DirSouth))
-	dirTbl.RawSetString("East", lua.LNumber(DirEast))
-	dirTbl.RawSetString("West", lua.LNumber(DirWest))
-	dirTbl.RawSetString("Up", lua.LNumber(DirUp))
-	dirTbl.RawSetString("Down", lua.LNumber(DirDown))
-	L.SetGlobal("Dir", dirTbl)
-
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
 	actTbl.RawSetString("SkillAttack", luar.New(L, lua_ActSkillAttack))
@@ -86,6 +78,9 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	utilTbl.RawSetString("RandomChance", luar.New(L, lua_UtilChance))
 	utilTbl.RawSetString("RandomRange", luar.New(L, lua_UtilRandomRange))
 	L.SetGlobal("Util", utilTbl)
+
+	lua_BindEnum(L, "Dir", directionStringMapping)
+	lua_BindEnum(L, "Stat", statTypeStringMapping)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
 	if mudConfig.LuaAPIFile != "" {
@@ -451,4 +446,12 @@ func lua_parseFlagList[T ~uint64](data interface{}, conv func(string) (interface
 		}
 		return flags, nil
 	}
+}
+
+func lua_BindEnum[T ~int](L *lua.LState, name string, mapping *utils.StringMapping[T]) {
+	dirTbl := L.NewTable()
+	for val, str := range mapping.ToString {
+		dirTbl.RawSetString(strings.Title(str), lua.LNumber(val))
+	}
+	L.SetGlobal(name, dirTbl)
 }

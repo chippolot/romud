@@ -212,6 +212,8 @@
         [x] Go_API
 ----------------------------------------
 [] RO
+    [] Lua
+        [] More enum bindings (instead of strings)
     [] Ranged Combat
         [] Bows
         [] Distance

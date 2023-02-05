@@ -81,6 +81,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	// TODO: Lua: More Lua enum bindings
 	lua_BindEnum(L, "Dir", directionStringMapping.ToString)
 	lua_BindEnum(L, "Stat", statTypeStringMapping.ToString)
+	lua_BindEnum(L, "Element", elementStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
 	if mudConfig.LuaAPIFile != "" {

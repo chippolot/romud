@@ -125,3 +125,16 @@ Stat = {
     StatPoints = "StatPts",
     Gold = "Gold"
 }
+
+Element = {
+    Neutral = "neutral",
+	Water = "water",
+	Earth = "earth",
+	Fire = "fire",
+	Wind = "wind",
+	Poison = "poison",
+	Holy = "holy",
+	Shadow = "shadow",
+	Ghost = "ghost",
+	Undead = "undead"
+}

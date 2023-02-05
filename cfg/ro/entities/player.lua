@@ -21,7 +21,7 @@ Config.NewEntity({
         Int = 1,
         Dex = 1,
         Luk = 1,
-        Element = "neutral",
+        Element = Element.Neutral,
         ElementLevel = 1
     }
 })

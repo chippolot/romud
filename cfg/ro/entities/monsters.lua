@@ -41,7 +41,7 @@ Config.NewEntity({
         Luk = 30,
         Hit100 = 22,
         Flee95 = 82,
-        Element = "water",
+        Element = Element.Water,
         ElementLevel = 1
     }
 })
@@ -81,7 +81,7 @@ Config.NewEntity({
         Luk = 60,
         Hit100 = 26,
         Flee95 = 86,
-        Element = "neutral",
+        Element = Element.Neutral,
         ElementLevel = 3
     }
 })
@@ -117,7 +117,7 @@ Config.NewEntity({
         Luk = 20,
         Hit100 = 23,
         Flee95 = 78,
-        Element = "earth",
+        Element = Element.Earth,
         ElementLevel = 1
     }
 })
@@ -162,7 +162,7 @@ Config.NewEntity({
         Luk = 15,
         Hit100 = 26,
         Flee95 = 90,
-        Element = "fire",
+        Element = Element.Fire,
         ElementLevel = 1
     }
 })

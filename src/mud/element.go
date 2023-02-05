@@ -52,14 +52,3 @@ func (e *Element) String() string {
 func (e *Element) MarshalJSON() ([]byte, error) {
 	return json.Marshal(e.String())
 }
-
-func (e *Element) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *e, err = ParseElement(str); err != nil {
-		return err
-	}
-	return nil
-}

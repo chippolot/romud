@@ -487,7 +487,7 @@ func (e *Entity) DescribeStatusEffects() string {
 	for i := 0; i < 64; i++ {
 		status := StatusEffectMask(1 << i)
 		if e.HasStatusEffect(status) {
-			strs = append(strs, Colorize(Color_StatusEffects, strings.Title(status.String())))
+			strs = append(strs, Colorize(Color_StatusEffects, utils.SnakeFriendlyTitle(status.String())))
 		}
 	}
 	return strings.Join(strs, ",")

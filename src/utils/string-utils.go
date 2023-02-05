@@ -49,3 +49,19 @@ func NewStringMapping[T comparable](mapping map[T]string) *StringMapping[T] {
 	}
 	return ret
 }
+
+func SnakeFriendlyTitle(str string) string {
+	newWord := true
+	strMut := []rune(str)
+	for idx, c := range strMut {
+		if c == '_' || unicode.IsNumber(c) {
+			newWord = true
+			continue
+		}
+		if newWord {
+			strMut[idx] = unicode.ToUpper(c)
+			newWord = false
+		}
+	}
+	return string(strMut)
+}

@@ -5,7 +5,6 @@ import (
 	"log"
 	"math/rand"
 	"reflect"
-	"strings"
 
 	"github.com/benkeatingsmith/gluamapper"
 	"github.com/chippolot/go-mud/src/utils"
@@ -79,8 +78,9 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	utilTbl.RawSetString("RandomRange", luar.New(L, lua_UtilRandomRange))
 	L.SetGlobal("Util", utilTbl)
 
-	lua_BindEnum(L, "Dir", directionStringMapping)
-	lua_BindEnum(L, "Stat", statTypeStringMapping)
+	// TODO: Lua: More Lua enum bindings
+	lua_BindEnum(L, "Dir", directionStringMapping.ToString)
+	lua_BindEnum(L, "Stat", statTypeStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
 	if mudConfig.LuaAPIFile != "" {
@@ -105,7 +105,12 @@ func lua_EntityRoom(e *Entity) *Room {
 	return lua_W.rooms[e.data.RoomId]
 }
 
-func lua_EntityStat(e *Entity, stat StatType) int {
+func lua_EntityStat(e *Entity, lStat lua.LString) int {
+	stat, err := ParseStatType(lua.LVAsString(lStat))
+	if err != nil {
+		log.Panicln(err)
+		return 0
+	}
 	return e.stats.Get(stat)
 }
 
@@ -191,7 +196,12 @@ func lua_ActEquip(self *Entity, item *Item) {
 	performEquip(self, lua_W, item)
 }
 
-func lua_ActMoveDir(self *Entity, dir Direction) {
+func lua_ActMoveDir(self *Entity, lDir lua.LString) {
+	dir, err := ParseDirection(lua.LVAsString(lDir))
+	if err != nil {
+		log.Panicln(err)
+		return
+	}
 	performMoveDirection(self, lua_W, dir)
 }
 
@@ -448,10 +458,10 @@ func lua_parseFlagList[T ~uint64](data interface{}, conv func(string) (interface
 	}
 }
 
-func lua_BindEnum[T ~int](L *lua.LState, name string, mapping *utils.StringMapping[T]) {
+func lua_BindEnum[T ~int](L *lua.LState, name string, mapping map[T]string) {
 	dirTbl := L.NewTable()
-	for val, str := range mapping.ToString {
-		dirTbl.RawSetString(strings.Title(str), lua.LNumber(val))
+	for _, str := range mapping {
+		dirTbl.RawSetString(utils.SnakeFriendlyTitle(str), lua.LString(str))
 	}
 	L.SetGlobal(name, dirTbl)
 }

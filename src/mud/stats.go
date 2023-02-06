@@ -226,6 +226,10 @@ type StatsConfig struct {
 	Speed        Speed
 	Element      Element
 	ElementLevel int
+	Race         Race
+	AttackRange  int
+	SpellRange   int
+	SightRange   int
 	Mov          int
 	Str          int
 	Agi          int

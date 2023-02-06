@@ -91,6 +91,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_BindEnum(L, "WeaponType", weaponTypeStringMapping.ToString)
 	lua_BindEnum(L, "SpawnerType", spawnerTypeStringMapping.ToString)
 	lua_BindEnum(L, "EntityState", entityStateStringMapping.ToString)
+	lua_BindEnum(L, "Race", raceStringMapping.ToString)
 	lua_BindEnumFlags(L, "EquipSlot", equipSlotStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded

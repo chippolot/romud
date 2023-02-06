@@ -232,3 +232,16 @@ SpawnerType = {
     Entity = "entity",
     Item = "item"
 }
+
+Race = {
+    DemiHuman = "demihuman",
+	Brute = "brute",
+	Insect = "insect",
+	Fish = "fish",
+	Dragon = "dragon",
+	Plant = "plant",
+	Formless = "formless",
+	Angel = "angel",
+	Demon = "demon",
+	Undead = "undead"
+}

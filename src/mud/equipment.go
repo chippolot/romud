@@ -141,17 +141,6 @@ func (s *EquipSlot) MarshalJSON() ([]byte, error) {
 	return json.Marshal(s.String())
 }
 
-func (s *EquipSlot) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *s, err = ParseEquipSlot(str); err != nil {
-		return err
-	}
-	return nil
-}
-
 func GetEquipmentSlotDescription(slot EquipSlot) string {
 	switch slot {
 	case EqSlot_Head_High, EqSlot_Head_Mid, EqSlot_Head_Low:

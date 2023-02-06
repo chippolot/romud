@@ -84,6 +84,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_BindEnum(L, "Element", elementStringMapping.ToString)
 	lua_BindEnum(L, "Size", sizeStringMapping.ToString)
 	lua_BindEnum(L, "Speed", speedStringMapping.ToString)
+	lua_BindEnumFlags(L, "EquipSlot", equipSlotStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
 	if mudConfig.LuaAPIFile != "" {
@@ -462,6 +463,14 @@ func lua_parseFlagList[T ~uint64](data interface{}, conv func(string) (interface
 }
 
 func lua_BindEnum[T ~int](L *lua.LState, name string, mapping map[T]string) {
+	dirTbl := L.NewTable()
+	for _, str := range mapping {
+		dirTbl.RawSetString(utils.SnakeFriendlyTitle(str), lua.LString(str))
+	}
+	L.SetGlobal(name, dirTbl)
+}
+
+func lua_BindEnumFlags[T ~uint64](L *lua.LState, name string, mapping map[T]string) {
 	dirTbl := L.NewTable()
 	for _, str := range mapping {
 		dirTbl.RawSetString(utils.SnakeFriendlyTitle(str), lua.LString(str))

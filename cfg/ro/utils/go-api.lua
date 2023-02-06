@@ -152,3 +152,20 @@ Speed = {
     Fast = "fast",
     VeryFast = "veryfast"
 }
+
+EquipSlot = {
+    None = "none",
+	Head_High = "head_high",
+	Head_Mid = "head_mid",
+	Head_Low = "head_low",
+	Garment = "garment",
+	Armor = "armor",
+	Feet = "feet",
+	Accessory_1 = "accessory_1",
+	Accessory_2 = "accessory_2",
+	Accessory = "accessory",
+	Held_L = "held_l",
+	Held_R = "held_r",
+	Held_1H = "held_1h",
+	Held_2H = "held_2h",
+}

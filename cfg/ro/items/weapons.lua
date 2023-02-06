@@ -16,7 +16,7 @@ Config.NewItem({
             Noun = "stab",
             Level = 1
 		},
-		Slot = "held_1h",
+		Slot = EquipSlot.Held_1H,
         RequiredLevel = 1,
         Upgradable = true
 	},
@@ -42,7 +42,7 @@ Config.NewItem({
             Noun = "bludgeon",
             Level = 1
 		},
-		Slot = "held_1h",
+		Slot = EquipSlot.Held_1H,
         RequiredLevel = 1,
         Upgradable = true
 	},

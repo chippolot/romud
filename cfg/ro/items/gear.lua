@@ -15,7 +15,7 @@ Config.NewItem({
 			Def = 10,
             MDef = 0
 		},
-		Slot = "armor",
+		Slot = EquipSlot.Armor,
         RequiredLevel = 1,
         Upgradable = true
 	},
@@ -38,7 +38,7 @@ Config.NewItem({
 			Def = 0,
             MDef = 0
 		},
-		Slot = "head_low",
+		Slot = EquipSlot.Head_Low,
         RequiredLevel = 0,
         Upgradable = false
 	},

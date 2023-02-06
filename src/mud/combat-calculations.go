@@ -155,3 +155,15 @@ func calculateWeaponMagicAttackBoost(e *Entity) float64 {
 		return 0
 	}
 }
+
+func calculateAttackRange(e *Entity) int {
+	aRange := 1
+	if w, _, ok := e.GetWeapon(); ok {
+		if w.Range > 0 {
+			aRange = w.Range
+		}
+	} else if e.cfg.Attack.Range > 0 {
+		aRange = e.cfg.Attack.Range
+	}
+	return aRange
+}

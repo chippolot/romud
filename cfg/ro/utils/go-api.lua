@@ -147,10 +147,10 @@ Size = {
 
 Speed = {
     Immovable = "immovable",
-    VerySlow = "veryslow",
+    Very_Slow = "very_slow",
     Slow = "slow",
     Fast = "fast",
-    VeryFast = "veryfast"
+    Very_Fast = "very_fast"
 }
 
 EquipSlot = {
@@ -234,7 +234,7 @@ SpawnerType = {
 }
 
 Race = {
-    DemiHuman = "demihuman",
+    Demi_Human = "demi_human",
 	Brute = "brute",
 	Insect = "insect",
 	Fish = "fish",

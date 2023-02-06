@@ -14,7 +14,8 @@ Config.NewItem({
 			Type = WeaponType.Dagger,
 			Atk = 17,
             Noun = "stab",
-            Level = 1
+            Level = 1,
+			Range = 1
 		},
 		Slot = EquipSlot.Held_1H,
         RequiredLevel = 1,
@@ -40,7 +41,8 @@ Config.NewItem({
 			Atk = 15,
 			MAtkBonus = 0.15,
             Noun = "bludgeon",
-            Level = 1
+            Level = 1,
+			Range = 1
 		},
 		Slot = EquipSlot.Held_1H,
         RequiredLevel = 1,

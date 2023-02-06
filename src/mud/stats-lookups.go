@@ -167,3 +167,11 @@ var DefenderSizeModifierLookup = [][]float64{
 	{1, 0.75, 1, 0.75, 0.75, 1, 0.75, 1, 1, 1, 1, 1, 0.75, 1, 1},            // Medium
 	{1, 0.5, 0.75, 1, 1, 1, 1, 1, 1, 0.75, 0.75, 0.5, 0.5, 0.75, 0.5},       //Large
 }
+
+var CellsPerSecondSpeedLookup = []float64{
+	0,    //Immovable
+	2.5,  // Very Slow
+	3.33, // Slot
+	6.66, // Fast
+	10,   // Very Fast
+}

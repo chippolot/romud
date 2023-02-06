@@ -9,7 +9,10 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-const MaxLevel = 100
+const (
+	MaxLevel   = 100
+	SightRange = 12
+)
 
 const (
 	Roll_Hit RollType = iota
@@ -51,10 +54,10 @@ const (
 
 const (
 	Speed_Immovable Speed = iota
-	Speed_VerySlow
+	Speed_Very_Slow
 	Speed_Slow
 	Speed_Fast
-	Speed_VeryFast
+	Speed_Very_Fast
 )
 
 type Size int
@@ -72,22 +75,22 @@ func ParseSize(str string) (Size, error) {
 	if val, ok := sizeStringMapping.ToValue[str]; ok {
 		return val, nil
 	}
-	return 0, fmt.Errorf("unknown size: %s", str)
+	return 0, fmt.Errorf("unknown Size: %s", str)
 }
 
 var speedStringMapping = utils.NewStringMapping(map[Speed]string{
 	Speed_Immovable: "immovable",
-	Speed_VerySlow:  "veryslow",
+	Speed_Very_Slow: "very_slow",
 	Speed_Slow:      "slow",
 	Speed_Fast:      "fast",
-	Speed_VeryFast:  "veryfast",
+	Speed_Very_Fast: "very_fast",
 })
 
 func ParseSpeed(str string) (Speed, error) {
 	if val, ok := speedStringMapping.ToValue[str]; ok {
 		return val, nil
 	}
-	return 0, fmt.Errorf("unknown size: %s", str)
+	return 0, fmt.Errorf("unknown Speed: %s", str)
 }
 
 var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
@@ -119,7 +122,7 @@ func ParseStatType(str string) (StatType, error) {
 			return val, nil
 		}
 	}
-	return 0, fmt.Errorf("unknown stat type: %s", str)
+	return 0, fmt.Errorf("unknown StatType: %s", str)
 }
 
 func (s *StatType) String() string {
@@ -227,7 +230,6 @@ type StatsConfig struct {
 	Element      Element
 	ElementLevel int
 	Race         Race
-	Range        int
 	Mov          int
 	Str          int
 	Agi          int

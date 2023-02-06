@@ -3,6 +3,7 @@ package mud
 import (
 	"fmt"
 	"log"
+	"math"
 	"time"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -47,6 +48,7 @@ func (dt *SkillAttackType) String() string {
 type AttackConfig struct {
 	Power Range
 	Noun  string
+	Range int
 }
 
 type SavingThrowConfig struct {
@@ -67,6 +69,7 @@ type SkillAttack struct {
 type CombatData struct {
 	target              *Entity // Current attack target
 	numAttacksRemainder float64 // Fractional number of attacks left over from previous combat round
+	distance            float64 // Number of "cells" separating combatants. Attacks cannot occur until distance < attacker's range
 }
 
 func (c *CombatData) Valid(e *Entity) bool {
@@ -81,7 +84,7 @@ type CombatList struct {
 	utils.List[*Entity]
 }
 
-func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
+func (c *CombatList) StartCombat(e *Entity, tgt *Entity, distance float64) bool {
 	// Already fighting!
 	if e.combat != nil && e.combat.target == tgt {
 		return false
@@ -93,8 +96,9 @@ func (c *CombatList) StartCombat(e *Entity, tgt *Entity) bool {
 
 	if e.combat != nil {
 		e.combat.target = tgt
+		e.combat.distance = distance
 	} else if !c.Contains(e) {
-		e.combat = &CombatData{tgt, 0}
+		e.combat = &CombatData{tgt, 0, distance}
 		c.AddBack(e)
 	}
 	return true
@@ -151,7 +155,7 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 	// TODO: Skill: Confirm player knows skill
 
 	// Cooldown check
-	if w.time.time < e.skillCooldownExpiry {
+	if w.time < e.skillCooldownExpiry {
 		Write("You can't use another skill yet!").ToPlayer(e).Send()
 		return
 	}
@@ -230,16 +234,28 @@ func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
 			Write("").ToPlayer(e).Send()
 		}
 		return
-	} else if w.inCombat.StartCombat(e, tgt) {
-		// Enter combat
-		if preAttackFn != nil {
-			preAttackFn()
+	} else {
+		// Calculate starting distance:
+		//	1. If attacking existing attacker, use their current distance.
+		//	2. Players are assumed to begin attacking within attack range.
+		//	3. Otherwise, use default sight range.
+		dist := SightRange
+		if tgt.combat != nil && tgt.combat.target == e {
+			dist = int(tgt.combat.distance)
+		} else if e.player != nil {
+			dist = calculateAttackRange(e)
 		}
-		runCombatLogic(e, w, tgt)
+		if w.inCombat.StartCombat(e, tgt, float64(dist)) {
+			// Enter combat
+			if preAttackFn != nil {
+				preAttackFn()
+			}
+			runCombatLogic(e, w, tgt, 0)
+		}
 	}
 }
 
-func runCombatLogic(e *Entity, w *World, tgt *Entity) {
+func runCombatLogic(e *Entity, w *World, tgt *Entity, dt utils.Seconds) {
 	if e == tgt {
 		log.Panic("trying to run combat against self?")
 		return
@@ -254,6 +270,15 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity) {
 		e.position = Pos_Standing
 		Write("You scramble to your feet").ToPlayer(e).Colorized(Color_Positive).Send()
 		Write("%s scrambles to %s feet", ObservableNameCap(e), e.Gender().GetPossessivePronoun()).ToEntityRoom(w, e).Subject(e).Restricted(SendRst_CanSee).Colorized(Color_Neutral).Send()
+		return
+	}
+
+	// Distance Check
+	// If not in attack range, close distance
+	if e.combat.distance > float64(calculateAttackRange(e)) {
+		e.combat.distance = math.Max(0, e.combat.distance-CellsPerSecondSpeedLookup[e.stats.cfg.Speed]*float64(dt))
+		Write("You chase after %s.", ObservableName(tgt)).ToPlayer(e).Send()
+		Write("%s is chasing you.", ObservableNameCap(e)).ToPlayer(tgt).Send()
 		return
 	}
 
@@ -346,7 +371,7 @@ func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *Sk
 			ctx = DamCtx_Skill
 		}
 		dam := calculatePhysicalAttackDamage(e, tgt, weaponType, atkElem, atkBonus, didCrit)
-		applyDamage(tgt, w, e, dam, ctx, didCrit, noun.Singular, noun.Plural)
+		applyDamage(tgt, w, e, dam, ctx, e.combat.distance, didCrit, noun.Singular, noun.Plural)
 		if skillAttack != nil && skillAttack.skill != nil {
 			triggerSkillHitScript(skillAttack.skill, e, tgt, dam)
 		}
@@ -368,7 +393,7 @@ func combatLogicAttackMagic(e *Entity, w *World, tgt *Entity, skillAttack *Skill
 
 	// Magic attacks always hit!
 	dam := calculateMagicAttackDamage(e, tgt, skillAttack.Element, skillAttack.MAtkBonus)
-	applyDamage(tgt, w, e, dam, DamCtx_Skill, false, "", "")
+	applyDamage(tgt, w, e, dam, DamCtx_Skill, float64(skillAttack.skill.Range), false, "", "")
 	if dam > 0 {
 		triggerSkillHitScript(skillAttack.skill, e, tgt, dam)
 	} else {
@@ -377,14 +402,14 @@ func combatLogicAttackMagic(e *Entity, w *World, tgt *Entity, skillAttack *Skill
 
 }
 
-func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, critical bool, nounSingular string, nounPlural string) int {
+func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageContext, damDist float64, critical bool, nounSingular string, nounPlural string) int {
 	cnd := tgt.stats.Condition()
 	if cnd == Cnd_Dead {
 		return 0
 	}
 
 	// Start fighting damage source
-	startAttacking(tgt, w, from)
+	startAttacking(tgt, w, from, damDist)
 
 	tgt.stats.Add(Stat_HP, -dam)
 	if dam > 0 {
@@ -533,7 +558,7 @@ func tryTriggerCombatSkill(e *Entity, w *World, tgt *Entity) bool {
 	}
 
 	// On skill cooldown
-	if w.time.time < e.skillCooldownExpiry {
+	if w.time < e.skillCooldownExpiry {
 		return false
 	}
 
@@ -606,11 +631,22 @@ func numAttackers(e *Entity, w *World) int {
 	return num
 }
 
-func startAttacking(e *Entity, w *World, tgt *Entity) {
-	if e.entityFlags.Has(EFlag_Pacifist) {
+func startAttacking(e *Entity, w *World, tgt *Entity, tgtDist float64) {
+	if tgt == nil ||
+		tgt == e ||
+		e.combat != nil ||
+		e.entityFlags.Has(EFlag_Pacifist) ||
+		tgt.stats.Condition() <= Cnd_Stunned ||
+		e.stats.Condition() <= Cnd_Stunned {
 		return
 	}
-	if tgt != nil && tgt != e && e.combat == nil && tgt.stats.Condition() > Cnd_Stunned && e.stats.Condition() > Cnd_Stunned {
-		w.inCombat.StartCombat(e, tgt)
+
+	// Calculate initial combat distance
+	//	1. If the target is attacking us, use their distance
+	//	2. Otherwise, use the specified distance
+	dist := tgtDist
+	if tgt.combat != nil && tgt.combat.target == e {
+		dist = tgt.combat.distance
 	}
+	w.inCombat.StartCombat(e, tgt, dist)
 }

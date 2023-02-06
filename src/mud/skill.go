@@ -119,7 +119,7 @@ type CastingList struct {
 	utils.List[*Entity]
 }
 
-func (c *CastingList) StartCasting(e *Entity, t *GameTime, target *Entity, skill *SkillConfig, level int) bool {
+func (c *CastingList) StartCasting(e *Entity, time utils.Seconds, target *Entity, skill *SkillConfig, level int) bool {
 	// Already casting!
 	// TODO: SKILL: Support cancelation
 	if e.casting != nil {
@@ -133,7 +133,7 @@ func (c *CastingList) StartCasting(e *Entity, t *GameTime, target *Entity, skill
 
 	// Add to cast list
 	castTime := utils.Seconds(calculateCastTime(e.stats, skill.CastTime(level)))
-	e.casting = &CastingData{e.data.RoomId, target, skill, level, t.time + castTime}
+	e.casting = &CastingData{e.data.RoomId, target, skill, level, time + castTime}
 	c.AddBack(e)
 
 	return true

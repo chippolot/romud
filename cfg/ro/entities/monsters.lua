@@ -8,7 +8,8 @@ Config.NewEntity({
     FullDesc = "It's kind of cute!",
     Attack = {
         Power = "7-10",
-        Noun = "splash"
+        Noun = "splash",
+        Range = 1
     },
     SkillTriggers = {
         [EntityState.Combat] = {
@@ -29,7 +30,7 @@ Config.NewEntity({
     Stats = {
         HP = 50,
         Size = Size.Medium,
-        Speed = Speed.VerySlow,
+        Speed = Speed.Very_Slow,
         Level = 1,
         ExpValue = 2,
         Str = 1,
@@ -42,8 +43,7 @@ Config.NewEntity({
         Flee95 = 82,
         Element = Element.Water,
         ElementLevel = 1,
-        Race = Race.Plant,
-        Range = 1
+        Race = Race.Plant
     }
 })
 Config.NewEntity({
@@ -54,7 +54,8 @@ Config.NewEntity({
     FullDesc = "It's kind of cute!",
     Attack = {
         Power = "9-12",
-        Noun = "scratch"
+        Noun = "scratch",
+        Range = 1
     },
     DropTable = {
         { Value = "red_herb", Chance = 6 },
@@ -83,8 +84,7 @@ Config.NewEntity({
         Flee95 = 86,
         Element = Element.Neutral,
         ElementLevel = 3,
-        Race = Race.Brute,
-        Range = 1
+        Race = Race.Brute
     }
 })
 Config.NewEntity({
@@ -120,8 +120,7 @@ Config.NewEntity({
         Flee95 = 78,
         Element = Element.Earth,
         ElementLevel = 1,
-        Race = Race.Insect,
-        Range = 0
+        Race = Race.Insect
     }
 })
 Config.NewEntity({
@@ -132,7 +131,8 @@ Config.NewEntity({
     FullDesc = "It's kind of cute!",
     Attack = {
         Power = "10-13",
-        Noun = "splash"
+        Noun = "splash",
+        Range = 1
     },
     DropTable = {
         { Value = "jellopy", Chance = 75 },
@@ -153,7 +153,7 @@ Config.NewEntity({
     Stats = {
         HP = 55,
         Size = Size.Medium,
-        Speed = Speed.VerySlow,
+        Speed = Speed.Very_Slow,
         Level = 3,
         ExpValue = 4,
         Str = 1,
@@ -166,7 +166,6 @@ Config.NewEntity({
         Flee95 = 90,
         Element = Element.Fire,
         ElementLevel = 1,
-        Race = Race.Plant,
-        Range = 1
+        Race = Race.Plant
     }
 })

@@ -239,6 +239,7 @@ type WeaponConfig struct {
 	Element   Element
 	Level     int
 	Noun      string
+	Range     int
 }
 
 type EquipmentDataMap map[EquipSlot]*ItemData

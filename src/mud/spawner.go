@@ -46,21 +46,21 @@ func NewZoneSpawner(cfg *ZoneSpawnerConfig) *ZoneSpawner {
 	return &ZoneSpawner{cfg, utils.NewWeightedTable(*cfg.Spawns), make([]RoomPresence, 0), 0}
 }
 
-func (s *ZoneSpawner) UpdateActive(t *GameTime) {
+func (s *ZoneSpawner) UpdateActive(time utils.Seconds) {
 	writeIdx := 0
 	for readIdx, a := range s.active {
 		if a.RoomId() != InvalidId {
 			s.active[writeIdx] = s.active[readIdx]
 			writeIdx++
 		} else {
-			s.nextSpawnTime = t.time + s.cfg.Cooldown
+			s.nextSpawnTime = time + s.cfg.Cooldown
 		}
 	}
 	s.active = s.active[:writeIdx]
 }
 
-func (s *ZoneSpawner) CanSpawn(t *GameTime) bool {
-	if t.time < s.nextSpawnTime || s.cfg.MaxActive <= len(s.active) {
+func (s *ZoneSpawner) CanSpawn(time utils.Seconds) bool {
+	if time < s.nextSpawnTime || s.cfg.MaxActive <= len(s.active) {
 		return false
 	}
 	return true

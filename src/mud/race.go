@@ -1,6 +1,11 @@
 package mud
 
-import "github.com/chippolot/go-mud/src/utils"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/chippolot/go-mud/src/utils"
+)
 
 type Race int
 
@@ -29,3 +34,11 @@ var raceStringMapping = utils.NewStringMapping(map[Race]string{
 	Race_Demon:     "demon",
 	Race_Undead:    "undead",
 })
+
+func ParseRace(str string) (Race, error) {
+	str = strings.ToLower(str)
+	if val, ok := raceStringMapping.ToValue[str]; ok {
+		return val, nil
+	}
+	return 0, fmt.Errorf("unknown Race: %s", str)
+}

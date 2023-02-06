@@ -10,15 +10,15 @@ import (
 )
 
 type SystemUpdater interface {
-	Update(w *World)
+	Update(w *World, dt utils.Seconds)
 }
 
 type System struct {
-	fn func(w *World)
+	fn func(w *World, dt utils.Seconds)
 }
 
-func (s *System) Update(w *World) {
-	s.fn(w)
+func (s *System) Update(w *World, dt utils.Seconds) {
+	s.fn(w, dt)
 }
 
 type UpdateSystem struct {
@@ -27,14 +27,14 @@ type UpdateSystem struct {
 	last utils.Seconds
 }
 
-func (s *UpdateSystem) Update(w *World) {
+func (s *UpdateSystem) Update(w *World, dt utils.Seconds) {
 	nextUpdate := s.last + s.freq
-	if w.time.time < nextUpdate {
+	if w.time < nextUpdate {
 		return
 	}
-	w.time.dt = w.time.time - s.last
-	s.sys.Update(w)
-	s.last = w.time.time
+	dt = w.time - s.last
+	s.sys.Update(w, dt)
+	s.last = w.time
 }
 
 type SessionHandlerSystem struct {
@@ -60,19 +60,19 @@ func GameLoop(w *World, handler *SessionHandler) {
 
 	lastUpdate := time.Now()
 	for {
-		for _, sys := range systems {
-			sys.Update(w)
-		}
-
 		time.Sleep(time.Second / 60.0)
 
-		w.time.dt = utils.Seconds(time.Since(lastUpdate).Seconds())
+		dt := utils.Seconds(time.Since(lastUpdate).Seconds())
 		lastUpdate = time.Now()
-		w.time.time += utils.Seconds(float64(w.time.dt) * mudConfig.GameSpeedMultiplier)
+		w.time += dt * utils.Seconds(mudConfig.GameSpeedMultiplier)
+
+		for _, sys := range systems {
+			sys.Update(w, dt)
+		}
 	}
 }
 
-func (s *SessionHandlerSystem) Update(w *World) {
+func (s *SessionHandlerSystem) Update(w *World, dt utils.Seconds) {
 	for {
 		select {
 		case evt, ok := <-s.handler.events:
@@ -87,7 +87,7 @@ func (s *SessionHandlerSystem) Update(w *World) {
 	}
 }
 
-func zoneSpawnersSystem(w *World) {
+func zoneSpawnersSystem(w *World, dt utils.Seconds) {
 	for _, z := range w.zones {
 		for _, s := range z.spawners {
 			s.UpdateActive(w.time)
@@ -98,16 +98,16 @@ func zoneSpawnersSystem(w *World) {
 	}
 }
 
-func statusEffectsSystem(w *World) {
+func statusEffectsSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.entities {
 		if e.statusEffects.mask == 0 {
 			continue
 		}
 
 		// Apply status effects
-		if e.HasStatusEffect(StatusType_Poison) && int(w.time.time)%3 == 0 {
+		if e.HasStatusEffect(StatusType_Poison) && int(w.time)%3 == 0 {
 			poisonDam := utils.MaxInt(1, e.stats.Get(Stat_MaxHP)/10)
-			applyDamage(e, w, e, poisonDam, DamCtx_Poison, false, "", "")
+			applyDamage(e, w, e, poisonDam, DamCtx_Poison, 0, false, "", "")
 		}
 
 		// Decrease status timers
@@ -115,7 +115,7 @@ func statusEffectsSystem(w *World) {
 			if s.data == nil {
 				continue
 			}
-			s.data.Duration -= utils.Seconds(w.time.dt)
+			s.data.Duration -= dt
 			if s.data.Duration <= 0 {
 				performRemoveStatusEffect(e, w, s.statusType, false)
 			}
@@ -123,7 +123,7 @@ func statusEffectsSystem(w *World) {
 	}
 }
 
-func statusMessagesSystem(w *World) {
+func statusMessagesSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.entities {
 		if !e.tookDamage {
 			continue
@@ -133,7 +133,7 @@ func statusMessagesSystem(w *World) {
 	}
 }
 
-func statRestorationSystem(w *World) {
+func statRestorationSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.entities {
 		// Fighting entities don't heal
 		if e.combat != nil {
@@ -163,10 +163,10 @@ func statRestorationSystem(w *World) {
 			nextHPMovRegen = lastHPMovRegen + 6
 		}
 
-		now := w.time.time
+		now := w.time
 		if nextHPMovRegen >= 0 && now >= nextHPMovRegen {
 			if cnd == Cnd_Incapacitated || cnd == Cnd_MortallyWounded {
-				applyDamage(e, w, nil, 1, DamCtx_Bleeding, false, "", "")
+				applyDamage(e, w, nil, 1, DamCtx_Bleeding, 0, false, "", "")
 				Write("You are bleeding!").ToPlayer(e).Colorized(Color_NegativeBld).Send()
 			} else {
 				e.stats.Add(Stat_HP, calculateHPRestoration(e.stats))
@@ -184,7 +184,7 @@ func statRestorationSystem(w *World) {
 	}
 }
 
-func wanderersSystem(w *World) {
+func wanderersSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -241,7 +241,7 @@ func wanderersSystem(w *World) {
 	}
 }
 
-func aggroSystem(w *World) {
+func aggroSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -273,7 +273,7 @@ func aggroSystem(w *World) {
 	}
 }
 
-func assistersSystem(w *World) {
+func assistersSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -312,7 +312,7 @@ func assistersSystem(w *World) {
 	}
 }
 
-func scavengersSystem(w *World) {
+func scavengersSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.entities {
 		if e.player != nil {
 			continue
@@ -360,7 +360,7 @@ func scavengersSystem(w *World) {
 	}
 }
 
-func castSystem(w *World) {
+func castSystem(w *World, dt utils.Seconds) {
 	for i := w.casting.Head; i != nil; {
 		e := i.Value
 		i = i.Next
@@ -372,14 +372,14 @@ func castSystem(w *World) {
 		}
 
 		// Handle attack
-		if w.time.time >= e.casting.castTime {
+		if w.time >= e.casting.castTime {
 			castSkill(e.casting.skill, e, w, e.casting.target, e.casting.level)
 			w.casting.EndCasting(e)
 		}
 	}
 }
 
-func combatSystem(w *World) {
+func combatSystem(w *World, dt utils.Seconds) {
 	for i := w.inCombat.Head; i != nil; {
 		e := i.Value
 
@@ -391,7 +391,7 @@ func combatSystem(w *World) {
 		}
 
 		// Handle attack
-		runCombatLogic(e, w, e.combat.target)
+		runCombatLogic(e, w, e.combat.target, dt)
 		i = i.Next
 
 		// Post attack cleanup
@@ -401,7 +401,7 @@ func combatSystem(w *World) {
 	}
 }
 
-func cleanupDeadSystem(w *World) {
+func cleanupDeadSystem(w *World, dt utils.Seconds) {
 	for _, e := range w.players {
 		if e.stats.Condition() == Cnd_Dead {
 			w.LogoutPlayer(e.player)
@@ -409,7 +409,7 @@ func cleanupDeadSystem(w *World) {
 	}
 }
 
-func playerOutputSystem(w *World) {
+func playerOutputSystem(w *World, dt utils.Seconds) {
 	for _, s := range w.sessions {
 		s.Flush()
 	}

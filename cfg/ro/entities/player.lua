@@ -9,7 +9,8 @@ Config.NewEntity({
     } },
     Attack = {
         Power = "7-9",
-        Noun = "hit"
+        Noun = "hit",
+        Range = 1
     },
     Stats = {
         Level = 1,
@@ -23,6 +24,7 @@ Config.NewEntity({
         Luk = 1,
         Element = Element.Neutral,
         ElementLevel = 1,
-        Race = Race.DemiHuman
+        Race = Race.Demi_Human,
+        Speed = Speed.Fast
     }
 })

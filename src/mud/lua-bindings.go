@@ -289,7 +289,6 @@ func lua_ConfigNewEntity(tbl *lua.LTable) {
 	if err := lua_Mapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
-
 	cfg.Init()
 
 	lTriggers := tbl.RawGetString("Triggers")
@@ -423,6 +422,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(SkillAttackType(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseSkillAttackType(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(Race(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRace(s) }); err != nil {
 			return nil, err
 		}
 	}

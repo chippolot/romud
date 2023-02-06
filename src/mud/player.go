@@ -58,6 +58,8 @@ type PlayerPromptProvider struct {
 
 func (pp *PlayerPromptProvider) Prompt() string {
 	var sb utils.StringBuilder
+
+	// Status prompt
 	toNextLvlPct := 0
 	stats := pp.character.stats
 	lvl := stats.Get(Stat_Level)
@@ -67,9 +69,20 @@ func (pp *PlayerPromptProvider) Prompt() string {
 		toNextLvlPct = int(((stats.GetFloat(Stat_XP) - curLvlXp) / nxtLvlXp) * 100)
 	}
 	sb.WriteLinef("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv %dz %d%%xp", stats.Get(Stat_HP), stats.Get(Stat_SP), stats.Get(Stat_Mov), stats.Get(Stat_Gold), toNextLvlPct)))
+
+	// Combat prompt
 	if pp.character.combat != nil {
-		targetName := ObservableName(pp.character.combat.target).Desc(pp.character)
-		sb.WriteLinef("<%s (%s)>:<%s (%s)> ", pp.character.GetName(), stats.ConditionShortString(), targetName, pp.character.combat.target.stats.ConditionShortString())
+		target := pp.character.combat.target
+		dist := pp.character.combat.distance
+		if target.combat != nil && target.combat.target == pp.character {
+			dist = target.combat.distance
+		}
+		targetName := ObservableName(target).Desc(pp.character)
+		sb.WriteStringf("<%s (%s)>", pp.character.GetName(), stats.ConditionShortString())
+		for i := 0; i <= int(dist)/2; i++ {
+			sb.WriteString(":")
+		}
+		sb.WriteStringf("<%s (%s)>", targetName, target.stats.ConditionShortString())
 	} else {
 		sb.WriteLine("<>:<> ")
 	}

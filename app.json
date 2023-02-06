@@ -13,7 +13,8 @@
             }
         },
         "ItemDropRateMultiplier": 10.0,
-        "ExpRateMultiplier": 25.0,
+        "XPRateMultiplier": 25.0,
+        "JobXPRateMultiplier": 25.0,
         "GameSpeedMultiplier": 2.0,
         "LootOwnershipDurationSeconds": 30,
         "LuaAPIFile": "cfg.ro.utils.go-api"

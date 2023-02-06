@@ -218,16 +218,14 @@
         [x] Backstep
 ----------------------------------------
 [] RO
-    [] Vocab
-        [] Your SHOOT
-    [] Ranged Combat
-        [] Arrows
     [] Jobs
         [] Job specific skills
         [] Job specific eq
-        [] Job xp
+        [] Job XP
         [] Job leveling
         [] Job stat bonuses
+    [] Ranged Combat
+        [] Arrows
     [] Skills
         [] Skill cast types
         [] Metamorphasis

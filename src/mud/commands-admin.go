@@ -47,7 +47,15 @@ func DoAdmin(e *Entity, w *World, tokens []string) {
 		}
 		xp, _ := strconv.Atoi(tokens[2])
 		Write("Admin: Added XP %d", xp).ToPlayer(e).Send()
-		applyXp(e, w, xp)
+		applyXP(e, w, xp)
+	case "pjobxp":
+		if len(tokens) <= 2 {
+			Write("Admin: How much job xp?").ToPlayer(e).Send()
+			return
+		}
+		xp, _ := strconv.Atoi(tokens[2])
+		Write("Admin: Added Job XP %d", xp).ToPlayer(e).Send()
+		applyJobXP(e, w, xp)
 	case "pgold":
 		if len(tokens) <= 2 {
 			Write("Admin: How much gold?").ToPlayer(e).Send()

@@ -34,7 +34,10 @@ const (
 	Stat_Luk
 	Stat_Level
 	Stat_XP
+	Stat_JobLevel
+	Stat_JobXP
 	Stat_StatPoints
+	Stat_SkillPoints
 	Stat_Gold
 )
 
@@ -94,22 +97,25 @@ func ParseSpeed(str string) (Speed, error) {
 }
 
 var statTypeStringMapping = utils.NewStringMapping(map[StatType]string{
-	Stat_HP:         "HP",
-	Stat_MaxHP:      "MaxHP",
-	Stat_SP:         "SP",
-	Stat_MaxSP:      "MaxSP",
-	Stat_Mov:        "Mov",
-	Stat_MaxMov:     "MaxMov",
-	Stat_Str:        "Str",
-	Stat_Agi:        "Agi",
-	Stat_Vit:        "Vit",
-	Stat_Int:        "Int",
-	Stat_Dex:        "Dex",
-	Stat_Luk:        "Luk",
-	Stat_Level:      "Level",
-	Stat_XP:         "XP",
-	Stat_StatPoints: "StatPts",
-	Stat_Gold:       "Gold",
+	Stat_HP:          "HP",
+	Stat_MaxHP:       "MaxHP",
+	Stat_SP:          "SP",
+	Stat_MaxSP:       "MaxSP",
+	Stat_Mov:         "Mov",
+	Stat_MaxMov:      "MaxMov",
+	Stat_Str:         "Str",
+	Stat_Agi:         "Agi",
+	Stat_Vit:         "Vit",
+	Stat_Int:         "Int",
+	Stat_Dex:         "Dex",
+	Stat_Luk:         "Luk",
+	Stat_Level:       "Level",
+	Stat_XP:          "XP",
+	Stat_JobLevel:    "JobLevel",
+	Stat_JobXP:       "JP",
+	Stat_StatPoints:  "StatPts",
+	Stat_SkillPoints: "SkillPts",
+	Stat_Gold:        "Gold",
 })
 
 func ParseStatType(str string) (StatType, error) {
@@ -240,7 +246,7 @@ type StatsConfig struct {
 	Level        int
 	Hit100       int // Monster Only: HIT value required for making 100% chance hit on monster
 	Flee95       int // Monster Only: FLEE value required for making 95% chance dodge on monster
-	ExpValue     int
+	XPValue      int
 }
 
 type Stats struct {
@@ -493,22 +499,22 @@ func IsMaxLevel(e *Entity) bool {
 	return e.stats.Get(Stat_Level) >= len(XPLookup)
 }
 
-func GetXpForNextLevel(e *Entity) int {
+func GetXPForNextLevel(e *Entity) int {
 	if IsMaxLevel(e) {
 		return -1
 	}
 	nextLevel := e.stats.Get(Stat_Level) + 1
-	requiredXp := XPLookup[nextLevel] - e.stats.Get(Stat_XP)
-	return utils.MaxInt(0, requiredXp)
+	requiredXP := XPLookup[nextLevel] - e.stats.Get(Stat_XP)
+	return utils.MaxInt(0, requiredXP)
 }
 
 func IsReadyForLevelUp(e *Entity) bool {
-	return !IsMaxLevel(e) && GetXpForNextLevel(e) == 0
+	return !IsMaxLevel(e) && GetXPForNextLevel(e) == 0
 }
 
-func applyXp(e *Entity, w *World, xp int) int {
+func applyXP(e *Entity, w *World, xp int) int {
 	if !IsMaxLevel(e) {
-		xp = int(float64(xp) * mudConfig.ExpRateMultiplier)
+		xp = int(float64(xp) * mudConfig.XPRateMultiplier)
 		e.stats.Add(Stat_XP, xp)
 		if IsReadyForLevelUp(e) {
 			performLevelUp(e, w)
@@ -542,9 +548,70 @@ func performLevelUp(e *Entity, w *World) {
 	Write("  You gain %d sp", e.stats.Get(Stat_MaxSP)-oldSP).ToPlayer(e).Send()
 	Write("  You gain %d mov", e.stats.Get(Stat_MaxMov)-oldMov).ToPlayer(e).Send()
 	Write("  You gain %d stat points", e.stats.Get(Stat_StatPoints)-oldStatPts).ToPlayer(e).Send()
-	Write("Hooray! %s is now level %d", e.GetName(), e.stats.Get(Stat_Level)).ToWorld(w).Send()
+	Write("Hooray! %s is now level %d", e.GetName(), e.stats.Get(Stat_Level)).ToEntityRoom(w, e).Send()
 
 	if e.player != nil {
-		w.SavePlayerCharacter(e.player.id)
+		e.player.saveRequested = true
+	}
+}
+
+func IsMaxJobLevel(e *Entity) bool {
+	if e.job == nil {
+		return true
+	}
+	jobType := e.job.cfg.JobType
+	return e.stats.Get(Stat_JobLevel) >= len(JobXPLookup[jobType])
+}
+
+func GetJobXPForNextJobLevel(e *Entity) int {
+	if e.job == nil {
+		return -1
+	}
+	jobType := e.job.cfg.JobType
+	if IsMaxJobLevel(e) {
+		return -1
+	}
+	nextLevel := e.stats.Get(Stat_JobLevel) + 1
+	requiredJobXP := JobXPLookup[jobType][nextLevel] - e.stats.Get(Stat_JobXP)
+	return utils.MaxInt(0, requiredJobXP)
+}
+
+func IsReadyForJobLevelUp(e *Entity) bool {
+	return !IsMaxJobLevel(e) && GetJobXPForNextJobLevel(e) == 0
+}
+
+func applyJobXP(e *Entity, w *World, xp int) int {
+	if !IsMaxJobLevel(e) {
+		xp = int(float64(xp) * mudConfig.JobXPRateMultiplier)
+		e.stats.Add(Stat_JobXP, xp)
+		if IsReadyForJobLevelUp(e) {
+			performJobLevelUp(e, w)
+		}
+		return xp
+	}
+	return 0
+}
+
+func performJobLevelUp(e *Entity, w *World) {
+	if !IsReadyForJobLevelUp(e) {
+		Write("You need more job experience to advance to the next job level").ToPlayer(e).Send()
+		return
+	}
+
+	oldSkillPts := e.stats.Get(Stat_SkillPoints)
+
+	for IsReadyForJobLevelUp(e) {
+		nextJobLevel := e.stats.Get(Stat_JobLevel) + 1
+		e.stats.Set(Stat_JobLevel, nextJobLevel)
+
+		e.stats.Add(Stat_SkillPoints, 1)
+	}
+
+	Write("You advance to job level %d!", e.stats.Get(Stat_JobLevel)).ToPlayer(e).Send()
+	Write("  You gain %d skill points", e.stats.Get(Stat_SkillPoints)-oldSkillPts).ToPlayer(e).Send()
+	Write("Hooray! %s is now job level %d", e.GetName(), e.stats.Get(Stat_JobLevel)).ToEntityRoom(w, e).Send()
+
+	if e.player != nil {
+		e.player.saveRequested = true
 	}
 }

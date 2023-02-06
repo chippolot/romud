@@ -63,6 +63,7 @@ func (cfg *EntityConfig) Init() {
 type EntityData struct {
 	Key       string
 	RoomId    RoomId           `json:",omitempty"`
+	Job       *JobData         `json:",omitempty"`
 	Stats     StatMap          `json:",omitempty"`
 	Inventory []*ItemData      `json:",omitempty"`
 	Equipped  EquipmentDataMap `json:",omitempty"`
@@ -83,6 +84,7 @@ type Entity struct {
 	cfg                 *EntityConfig
 	data                *EntityData
 	player              *Player
+	job                 *Job
 	stats               *Stats
 	combat              *CombatData   // If in combat, data about current encounter
 	casting             *CastingData  // If casting a skill, data about skill being cast
@@ -99,11 +101,11 @@ func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, newStats(cfg.Stats, data.Stats), nil, nil, 0, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
+	return &Entity{eid, cfg, data, nil, nil, newStats(cfg.Stats, data.Stats), nil, nil, 0, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
+	return &EntityData{cfg.Key, InvalidId, nil, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
 }
 
 func (e *Entity) SetData(data *EntityData, w *World) {
@@ -431,9 +433,17 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteHorizontalDivider()
 	sb.WriteLinef("%s", e.GetName())
 	sb.WriteNewLine()
-	sb.WriteLinef("Level  : %s", Colorize(Color_Stat, e.stats.Get(Stat_Level)))
+	sb.WriteLinef("Lvl    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Level)))
 	if !IsMaxLevel(e) {
-		sb.WriteLinef("Next   : %s XP", Colorize(Color_Stat, GetXpForNextLevel(e)))
+		sb.WriteLinef("Next Lvl: %s XP", Colorize(Color_Stat, GetXPForNextLevel(e)))
+	}
+	if e.job != nil {
+		sb.WriteNewLine()
+		sb.WriteLinef("Job Lvl: %s", Colorize(Color_Stat, e.stats.Get(Stat_JobLevel)))
+		if !IsMaxLevel(e) {
+			sb.WriteLinef("Next Job Lvl: %s XP", Colorize(Color_Stat, GetJobXPForNextJobLevel(e)))
+		}
+		sb.WriteLinef("Skill Points : %s", Colorize(Color_Stat, e.stats.Get(Stat_SkillPoints)))
 	}
 	sb.WriteLinef("Zeny   : %s", Colorize(Color_Stat, e.stats.Get(Stat_Gold)))
 	sb.WriteNewLine()
@@ -473,7 +483,7 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Int    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Int)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Int))
 	sb.WriteLinef("Dex    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Dex)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Dex))
 	sb.WriteLinef("Luk    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Luk)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Luk))
-	sb.WriteLinef("Points : %s", Colorize(Color_Stat, e.stats.Get(Stat_StatPoints)))
+	sb.WriteLinef("Stat Points : %s", Colorize(Color_Stat, e.stats.Get(Stat_StatPoints)))
 	sb.WriteNewLine()
 	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, calculateCarryingCapacity(e.stats)))
 	if statuses != "" {

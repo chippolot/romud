@@ -20,6 +20,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	lua_Mapper = gluamapper.NewMapper(gluamapper.Option{DecodeHook: lua_DecodeHook})
 
+	// Bind API
 	entityTbl := L.NewTable()
 	entityTbl.RawSetString("Name", luar.New(L, lua_EntityName))
 	entityTbl.RawSetString("NameCap", luar.New(L, lua_EntityNameCap))
@@ -71,6 +72,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewEntity", luar.New(L, lua_ConfigNewEntity))
 	configTable.RawSetString("NewItem", luar.New(L, lua_ConfigNewItem))
 	configTable.RawSetString("NewSkill", luar.New(L, lua_ConfigNewSkill))
+	configTable.RawSetString("NewJob", luar.New(L, lua_ConfigNewJob))
 	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
 	L.SetGlobal("Config", configTable)
 
@@ -79,7 +81,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	utilTbl.RawSetString("RandomRange", luar.New(L, lua_UtilRandomRange))
 	L.SetGlobal("Util", utilTbl)
 
-	// TODO: Lua: More Lua enum bindings
+	// Bind enums
 	lua_BindEnum(L, "Dir", directionStringMapping.ToString)
 	lua_BindEnum(L, "Stat", statTypeStringMapping.ToString)
 	lua_BindEnum(L, "Element", elementStringMapping.ToString)
@@ -93,6 +95,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_BindEnum(L, "SpawnerType", spawnerTypeStringMapping.ToString)
 	lua_BindEnum(L, "EntityState", entityStateStringMapping.ToString)
 	lua_BindEnum(L, "Race", raceStringMapping.ToString)
+	lua_BindEnum(L, "JobType", jobTypeStringMapping.ToString)
 	lua_BindEnumFlags(L, "EquipSlot", equipSlotStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
@@ -338,6 +341,15 @@ func lua_ConfigNewSkill(tbl *lua.LTable) {
 	lua_W.AddSkillConfig(cfg)
 }
 
+func lua_ConfigNewJob(tbl *lua.LTable) {
+	cfg := &JobConfig{}
+	if err := lua_Mapper.Map(tbl, cfg); err != nil {
+		panic(err)
+	}
+
+	lua_W.AddJobConfig(cfg)
+}
+
 func lua_ConfigRegisterNouns(tbl *lua.LTable) {
 	nouns, ok := gluamapper.ToGoValue(tbl, gluamapper.Option{}).([]interface{})
 	if !ok {
@@ -436,6 +448,10 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(Race(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRace(s) }); err != nil {
+			return nil, err
+		}
+	} else if to == reflect.TypeOf(JobType(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseJobType(s) }); err != nil {
 			return nil, err
 		}
 	}

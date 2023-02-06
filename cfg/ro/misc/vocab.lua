@@ -7,5 +7,5 @@ Config.RegisterNouns({
     "stab", "stabs",
     "scratch", "scratches",
     "bludgeon", "bludgeons",
-    "shoot", "shoots"
+    "pierce", "pierces"
 })

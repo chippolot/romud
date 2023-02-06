@@ -26,9 +26,10 @@ type PlayerData struct {
 }
 
 type Player struct {
-	id      PlayerId
-	data    *PlayerData
-	session *server.Session
+	id            PlayerId
+	data          *PlayerData
+	session       *server.Session
+	saveRequested bool
 }
 
 func NewPlayer(session *server.Session) *Player {

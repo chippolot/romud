@@ -19,6 +19,7 @@ type World struct {
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
 	skillConfigs  map[string]*SkillConfig
+	jobConfigs    map[string]*JobConfig
 	vocab         *Vocab
 
 	players  map[PlayerId]*Entity
@@ -46,6 +47,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
 		make(map[string]*SkillConfig),
+		make(map[string]*JobConfig),
 		NewVocab(),
 		make(map[PlayerId]*Entity),
 		make(map[server.SessionId]*server.Session),
@@ -124,6 +126,7 @@ func (w *World) SavePlayerCharacter(pid PlayerId) {
 
 	// Record last save time
 	e.player.data.LastSavedAt = time.Now().UTC()
+	e.player.saveRequested = false
 
 	data := &PlayerCharacterData{e.player.data, e.data}
 	go func() {
@@ -224,6 +227,20 @@ func (w *World) AddSkillConfig(cfg *SkillConfig) {
 
 func (w *World) TryGetSkillConfig(key string) (*SkillConfig, bool) {
 	if cfg, ok := w.skillConfigs[key]; ok {
+		return cfg, true
+	}
+	return nil, false
+}
+
+func (w *World) AddJobConfig(cfg *JobConfig) {
+	if _, found := w.jobConfigs[cfg.Key]; found {
+		log.Fatalf("Registered multiple job configs with key: %v", cfg.Key)
+	}
+	w.jobConfigs[cfg.Key] = cfg
+}
+
+func (w *World) TryGetJobConfig(key string) (*JobConfig, bool) {
+	if cfg, ok := w.jobConfigs[key]; ok {
 		return cfg, true
 	}
 	return nil, false

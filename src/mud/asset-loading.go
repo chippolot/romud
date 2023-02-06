@@ -49,11 +49,19 @@ func LoadAssets(w *World, projectRoot string) {
 		}
 	}
 
+	// Load jobs
+	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "jobs"), ScriptFileExtension) {
+		if err := RunScript(w, path); err != nil {
+			log.Fatalf("failed to load jobs file %s -- %v", path, err)
+		}
+	}
+
 	log.Printf("loaded %d zones", len(w.zones))
 	log.Printf("loaded %d rooms", len(w.rooms))
 	log.Printf("loaded %d mobs", len(w.entityConfigs))
 	log.Printf("loaded %d items", len(w.itemConfigs))
 	log.Printf("loaded %d skills", len(w.skillConfigs))
+	log.Printf("loaded %d jobs", len(w.jobConfigs))
 
 	// Prepare shops
 	for _, shop := range w.shops {

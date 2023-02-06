@@ -122,7 +122,10 @@ Stat = {
     Luk = "Luk",
     Level = "Level",
     XP = "XP",
+    JobLevel = "JobLevel",
+    JobXP = "JobXP",
     StatPoints = "StatPts",
+    SkillPoints = "SkillPts",
     Gold = "Gold"
 }
 
@@ -155,32 +158,32 @@ Speed = {
 
 EquipSlot = {
     None = "none",
-	Head_High = "head_high",
-	Head_Mid = "head_mid",
-	Head_Low = "head_low",
-	Garment = "garment",
-	Armor = "armor",
-	Feet = "feet",
-	Accessory_1 = "accessory_1",
-	Accessory_2 = "accessory_2",
-	Accessory = "accessory",
-	Held_L = "held_l",
-	Held_R = "held_r",
-	Held_1H = "held_1h",
-	Held_2H = "held_2h",
+    Head_High = "head_high",
+    Head_Mid = "head_mid",
+    Head_Low = "head_low",
+    Garment = "garment",
+    Armor = "armor",
+    Feet = "feet",
+    Accessory_1 = "accessory_1",
+    Accessory_2 = "accessory_2",
+    Accessory = "accessory",
+    Held_L = "held_l",
+    Held_R = "held_r",
+    Held_1H = "held_1h",
+    Held_2H = "held_2h",
 }
 
 Element = {
     Neutral = "neutral",
-	Water = "water",
-	Earth = "earth",
-	Fire = "fire",
-	Wind = "wind",
-	Poison = "poison",
-	Holy = "holy",
-	Shadow = "shadow",
-	Ghost = "ghost",
-	Undead = "undead"
+    Water = "water",
+    Earth = "earth",
+    Fire = "fire",
+    Wind = "wind",
+    Poison = "poison",
+    Holy = "holy",
+    Shadow = "shadow",
+    Ghost = "ghost",
+    Undead = "undead"
 }
 
 SkillAttackType = {
@@ -205,22 +208,22 @@ SkillTargetType = {
 
 WeaponType = {
     Bare_Handed = "bare_handed",
-	Dagger = "dagger",
-	Sword_1H = "sword_1h",
-	Sword_2H = "sword_2h",
-	Spear = "spear",
-	Spear_Mounted = "spear_mounted",
-	Axe = "axe",
-	Mace = "mace",
-	Rod = "rod",
-	Bow = "bow",
-	Katar = "katar",
-	Book = "book",
-	Knuckle = "knuckle",
-	Instrument = "instrument",
-	Whip = "whip",
-	Gun = "gun",
-	Huuma_Shuriken = "huuma_shuriken"
+    Dagger = "dagger",
+    Sword_1H = "sword_1h",
+    Sword_2H = "sword_2h",
+    Spear = "spear",
+    Spear_Mounted = "spear_mounted",
+    Axe = "axe",
+    Mace = "mace",
+    Rod = "rod",
+    Bow = "bow",
+    Katar = "katar",
+    Book = "book",
+    Knuckle = "knuckle",
+    Instrument = "instrument",
+    Whip = "whip",
+    Gun = "gun",
+    Huuma_Shuriken = "huuma_shuriken"
 }
 
 EntityState = {
@@ -235,13 +238,22 @@ SpawnerType = {
 
 Race = {
     Demi_Human = "demi_human",
-	Brute = "brute",
-	Insect = "insect",
-	Fish = "fish",
-	Dragon = "dragon",
-	Plant = "plant",
-	Formless = "formless",
-	Angel = "angel",
-	Demon = "demon",
-	Undead = "undead"
+    Brute = "brute",
+    Insect = "insect",
+    Fish = "fish",
+    Dragon = "dragon",
+    Plant = "plant",
+    Formless = "formless",
+    Angel = "angel",
+    Demon = "demon",
+    Undead = "undead"
+}
+
+JobType = {
+    Novice = "novice",
+    Transcendent_Novice = "transcendent_novice",
+    First = "first",
+    Transcendent_First = "transcendent_first",
+    Second = "second",
+    Transcendent_Second = "transcendent_second",
 }

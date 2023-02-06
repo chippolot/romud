@@ -54,6 +54,7 @@ func GameLoop(w *World, handler *SessionHandler) {
 		{&System{castSystem}, 0.1, 0},
 		{&System{combatSystem}, 2, 0},
 		{&System{statusMessagesSystem}, 0, 0},
+		{&System{savePlayersSystem}, 0, 0},
 		{&System{cleanupDeadSystem}, 0, 0},
 		{&System{playerOutputSystem}, 0, 0},
 	}
@@ -397,6 +398,14 @@ func combatSystem(w *World, dt utils.Seconds) {
 		// Post attack cleanup
 		if !e.combat.Valid(e) {
 			w.inCombat.EndCombat(e)
+		}
+	}
+}
+
+func savePlayersSystem(w *World, dt utils.Seconds) {
+	for _, e := range w.players {
+		if e.player.saveRequested || time.Since(e.player.data.LastSavedAt) > time.Minute {
+			w.SavePlayerCharacter(e.player.id)
 		}
 	}
 }

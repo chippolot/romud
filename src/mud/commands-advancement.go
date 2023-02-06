@@ -27,6 +27,6 @@ func DoRaise(e *Entity, w *World, tokens []string) {
 	Write("Raised %s from %d -> %d!", stat.String(), oldValue, oldValue+1).ToPlayer(e).Send()
 
 	if e.player != nil {
-		w.SavePlayerCharacter(e.player.id)
+		e.player.saveRequested = true
 	}
 }

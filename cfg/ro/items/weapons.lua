@@ -65,7 +65,7 @@ Config.NewItem({
 		Weapon = {
 			Type = WeaponType.Bow,
 			Atk = 15,
-            Noun = "shoot",
+            Noun = "pierce",
             Level = 1,
 			Range = 5
 		},

@@ -448,8 +448,8 @@ func die(tgt *Entity, w *World, killer *Entity) {
 
 	// Distribute XP
 	if killer != nil {
-		xp := tgt.stats.cfg.ExpValue
-		xp = applyXp(killer, w, xp)
+		xp := tgt.stats.cfg.XPValue
+		xp = applyXP(killer, w, xp)
 		if xp > 0 {
 			Write("You gain %d XP from defeating %s", xp, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()
 		}

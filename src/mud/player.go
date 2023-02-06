@@ -61,15 +61,8 @@ func (pp *PlayerPromptProvider) Prompt() string {
 	var sb utils.StringBuilder
 
 	// Status prompt
-	toNextLvlPct := 0
 	stats := pp.character.stats
-	lvl := stats.Get(Stat_Level)
-	if !IsMaxLevel(pp.character) {
-		curLvlXp := float64(XPLookup[lvl])
-		nxtLvlXp := float64(XPLookup[lvl+1])
-		toNextLvlPct = int(((stats.GetFloat(Stat_XP) - curLvlXp) / nxtLvlXp) * 100)
-	}
-	sb.WriteLinef("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv %dz %d%%xp", stats.Get(Stat_HP), stats.Get(Stat_SP), stats.Get(Stat_Mov), stats.Get(Stat_Gold), toNextLvlPct)))
+	sb.WriteLinef("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv | %d%%xp %d%%jp %dz", stats.Get(Stat_HP), stats.Get(Stat_SP), stats.Get(Stat_Mov), GetPercentProgressToNextLevel(pp.character), GetPercentProgressToNextJobLevel(pp.character), stats.Get(Stat_Gold))))
 
 	// Combat prompt
 	if pp.character.combat != nil {

@@ -513,6 +513,14 @@ func IsReadyForLevelUp(e *Entity) bool {
 	return !IsMaxLevel(e) && GetXPForNextLevel(e) == 0
 }
 
+func GetPercentProgressToNextLevel(e *Entity) int {
+	if IsMaxLevel(e) {
+		return 0
+	}
+	lvl := e.stats.Get(Stat_Level)
+	return (e.stats.Get(Stat_XP) - XPLookup[lvl]) / (XPLookup[lvl+1] - XPLookup[lvl])
+}
+
 func applyXP(e *Entity, w *World, xp int) int {
 	if !IsMaxLevel(e) {
 		xp = int(float64(xp) * mudConfig.XPRateMultiplier)
@@ -544,12 +552,12 @@ func performLevelUp(e *Entity, w *World) {
 		e.stats.Add(Stat_StatPoints, calculateStatPointsGainedForLevelUp(nextLevel))
 	}
 
-	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Send()
+	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Colorized(Color_PositiveBld).Send()
 	Write("  You gain %d hp", e.stats.Get(Stat_MaxHP)-oldHP).ToPlayer(e).Send()
 	Write("  You gain %d sp", e.stats.Get(Stat_MaxSP)-oldSP).ToPlayer(e).Send()
 	Write("  You gain %d mov", e.stats.Get(Stat_MaxMov)-oldMov).ToPlayer(e).Send()
 	Write("  You gain %d stat points", e.stats.Get(Stat_StatPoints)-oldStatPts).ToPlayer(e).Send()
-	Write("Hooray! %s is now level %d", e.GetName(), e.stats.Get(Stat_Level)).ToEntityRoom(w, e).Send()
+	Write("Hooray! %s is now level %d", e.GetName(), e.stats.Get(Stat_Level)).ToEntityRoom(w, e).Ignore(e).Send()
 
 	if e.player != nil {
 		e.player.saveRequested = true
@@ -581,6 +589,18 @@ func IsReadyForJobLevelUp(e *Entity) bool {
 	return !IsMaxJobLevel(e) && GetJobXPForNextJobLevel(e) == 0
 }
 
+func GetPercentProgressToNextJobLevel(e *Entity) int {
+	if IsMaxJobLevel(e) {
+		return 0
+	}
+	if e.job == nil {
+		return 0
+	}
+	jobType := e.job.cfg.JobType
+	lvl := e.stats.Get(Stat_JobLevel)
+	return (e.stats.Get(Stat_JobXP) - JobXPLookup[jobType][lvl]) / (JobXPLookup[jobType][lvl+1] - JobXPLookup[jobType][lvl])
+}
+
 func applyJobXP(e *Entity, w *World, xp int) int {
 	if !IsMaxJobLevel(e) {
 		xp = int(float64(xp) * mudConfig.JobXPRateMultiplier)
@@ -608,9 +628,9 @@ func performJobLevelUp(e *Entity, w *World) {
 		e.stats.Add(Stat_SkillPoints, 1)
 	}
 
-	Write("You advance to job level %d!", e.stats.Get(Stat_JobLevel)).ToPlayer(e).Send()
+	Write("You advance to job level %d!", e.stats.Get(Stat_JobLevel)).ToPlayer(e).Colorized(Color_PositiveBld).Send()
 	Write("  You gain %d skill points", e.stats.Get(Stat_SkillPoints)-oldSkillPts).ToPlayer(e).Send()
-	Write("Hooray! %s is now job level %d", e.GetName(), e.stats.Get(Stat_JobLevel)).ToEntityRoom(w, e).Send()
+	Write("Hooray! %s is now job level %d", e.GetName(), e.stats.Get(Stat_JobLevel)).ToEntityRoom(w, e).Ignore(e).Send()
 
 	if e.player != nil {
 		e.player.saveRequested = true

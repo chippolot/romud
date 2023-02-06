@@ -449,17 +449,18 @@ func (e *Entity) DescribeStatus() string {
 	}
 	if e.job != nil {
 		sb.WriteNewLine()
+		sb.WriteLinef("Job    : %s", e.job.cfg.Name)
 		sb.WriteLinef("Job Lvl: %s", Colorize(Color_Stat, e.stats.Get(Stat_JobLevel)))
 		if !IsMaxLevel(e) {
 			sb.WriteLinef("Next Job Lvl: %s XP", Colorize(Color_Stat, GetJobXPForNextJobLevel(e)))
 		}
 		sb.WriteLinef("Skill Points : %s", Colorize(Color_Stat, e.stats.Get(Stat_SkillPoints)))
 	}
-	sb.WriteLinef("Zeny   : %s", Colorize(Color_Stat, e.stats.Get(Stat_Gold)))
 	sb.WriteNewLine()
 	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_HP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxHP)))
 	sb.WriteLinef("SP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_SP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxSP)))
 	sb.WriteLinef("Mov    : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_Mov)), Colorize(Color_Stat, e.stats.Get(Stat_MaxMov)))
+	sb.WriteLinef("Zeny   : %s", Colorize(Color_Stat, e.stats.Get(Stat_Gold)))
 	sb.WriteNewLine()
 	if e.player != nil {
 		baseAtkPower := calculateBaseMeleeAttackPower(e)

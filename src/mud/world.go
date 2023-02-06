@@ -79,6 +79,12 @@ func (w *World) CreatePlayerCharacter(name string, pass string, player *Player) 
 	e := NewEntity(playerEntityCfg)
 	e.player = player
 	e.player.data = &PlayerData{Name: name, Pass: pass}
+	if jobCfg, ok := w.TryGetJobConfig("novice"); !ok {
+		log.Panicln("failed to find config for 'novice' job")
+	} else {
+		e.job = newJob(jobCfg)
+		e.data.Job = e.job.data
+	}
 	calculateAndUpdatePlayerStats(e.stats)
 	e.stats.Set(Stat_HP, e.stats.Get(Stat_MaxHP))
 	e.stats.Set(Stat_SP, e.stats.Get(Stat_MaxSP))

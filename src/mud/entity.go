@@ -150,6 +150,16 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 		e.equipped[slot] = item
 		e.onEquipped(item)
 	}
+
+	// Prepare job
+	if e.data.Job != nil {
+		if jobCfg, ok := w.jobConfigs[e.data.Job.Key]; !ok {
+			log.Fatalf("cannot create job. expected job config with key %s", e.data.Job.Key)
+		} else {
+			e.job = newJob(jobCfg)
+			e.job.data = e.data.Job
+		}
+	}
 }
 
 func (e *Entity) RoomId() RoomId {

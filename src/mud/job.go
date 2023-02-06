@@ -49,3 +49,7 @@ type Job struct {
 	cfg  *JobConfig
 	data *JobData
 }
+
+func newJob(cfg *JobConfig) *Job {
+	return &Job{cfg, &JobData{cfg.Key}}
+}

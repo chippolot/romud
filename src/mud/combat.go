@@ -453,6 +453,11 @@ func die(tgt *Entity, w *World, killer *Entity) {
 		if xp > 0 {
 			Write("You gain %d XP from defeating %s", xp, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()
 		}
+		jobXP := tgt.stats.cfg.JobXPValue
+		jobXP = applyJobXP(killer, w, jobXP)
+		if jobXP > 0 {
+			Write("You gain %d Job XP from defeating %s", jobXP, ObservableName(tgt)).ToPlayer(killer).Subject(tgt).Colorized(Color_Header).Send()
+		}
 	}
 
 	// Create corpse

@@ -247,6 +247,7 @@ type StatsConfig struct {
 	Hit100       int // Monster Only: HIT value required for making 100% chance hit on monster
 	Flee95       int // Monster Only: FLEE value required for making 95% chance dodge on monster
 	XPValue      int
+	JobXPValue   int
 }
 
 type Stats struct {

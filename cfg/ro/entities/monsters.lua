@@ -28,8 +28,8 @@ Config.NewEntity({
     Flags = { "scavenger" },
     Stats = {
         HP = 50,
-        Size = "medium",
-        Speed = "veryslow",
+        Size = Size.Medium,
+        Speed = Speed.VerySlow,
         Level = 1,
         ExpBase = 2,
         ExpPerHP = 0.04,
@@ -68,8 +68,8 @@ Config.NewEntity({
     Flags = {},
     Stats = {
         HP = 60,
-        Size = "small",
-        Speed = "slow",
+        Size = Size.Small,
+        Speed = Speed.Slow,
         Level = 3,
         ExpBase = 6,
         ExpPerHP = 0.1,
@@ -104,8 +104,8 @@ Config.NewEntity({
     Flags = { "stationary", "pacifist" },
     Stats = {
         HP = 427,
-        Size = "small",
-        Speed = "immovable",
+        Size = Size.Small,
+        Speed = Speed.Immovable,
         Level = 2,
         ExpBase = 2,
         ExpPerHP = 0.005,
@@ -149,8 +149,8 @@ Config.NewEntity({
     },
     Stats = {
         HP = 55,
-        Size = "medium",
-        Speed = "veryslow",
+        Size = Size.Medium,
+        Speed = Speed.VerySlow,
         Level = 3,
         ExpBase = 4,
         ExpPerHP = 0.073,

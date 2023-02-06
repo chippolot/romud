@@ -82,6 +82,8 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_BindEnum(L, "Dir", directionStringMapping.ToString)
 	lua_BindEnum(L, "Stat", statTypeStringMapping.ToString)
 	lua_BindEnum(L, "Element", elementStringMapping.ToString)
+	lua_BindEnum(L, "Size", sizeStringMapping.ToString)
+	lua_BindEnum(L, "Speed", speedStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
 	if mudConfig.LuaAPIFile != "" {

@@ -88,6 +88,9 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_BindEnum(L, "SkillType", skillTypeStringMapping.ToString)
 	lua_BindEnum(L, "SkillAttackType", skillAttackTypeStringMapping.ToString)
 	lua_BindEnum(L, "SkillTargetType", skillTargetTypeStringMapping.ToString)
+	lua_BindEnum(L, "WeaponType", weaponTypeStringMapping.ToString)
+	lua_BindEnum(L, "SpawnerType", spawnerTypeStringMapping.ToString)
+	lua_BindEnum(L, "EntityState", entityStateStringMapping.ToString)
 	lua_BindEnumFlags(L, "EquipSlot", equipSlotStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
@@ -391,10 +394,6 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		}
 	} else if to == reflect.TypeOf(Element(0)) {
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseElement(s) }); err != nil {
-			return nil, err
-		}
-	} else if to == reflect.TypeOf(RollType(0)) {
-		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRollType(s) }); err != nil {
 			return nil, err
 		}
 	} else if to == reflect.TypeOf(Size(0)) {

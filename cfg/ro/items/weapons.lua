@@ -11,7 +11,7 @@ Config.NewItem({
 	FullDesc = "A simple knife.",
 	Equipment = {
 		Weapon = {
-			Type = "dagger",
+			Type = WeaponType.Dagger,
 			Atk = 17,
             Noun = "stab",
             Level = 1
@@ -36,7 +36,7 @@ Config.NewItem({
 	FullDesc = "A simple wooden rod.",
 	Equipment = {
 		Weapon = {
-			Type = "rod",
+			Type = WeaponType.Rod,
 			Atk = 15,
 			MAtkBonus = 0.15,
             Noun = "bludgeon",

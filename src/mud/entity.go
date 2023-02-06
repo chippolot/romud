@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"math"
@@ -19,8 +18,8 @@ const (
 	EState_Combat
 )
 
-type EntityId int32
-type EntityState int32
+type EntityId int
+type EntityState int
 
 var entityStateStringMapping = utils.NewStringMapping(map[EntityState]string{
 	EState_Idle:   "idle",
@@ -33,29 +32,6 @@ func ParseEntityState(str string) (EntityState, error) {
 		return val, nil
 	}
 	return 0, fmt.Errorf("unknown EntityState: %s", str)
-}
-
-func (es *EntityState) String() string {
-	if str, ok := entityStateStringMapping.ToString[*es]; ok {
-		return str
-	}
-	return "unknown"
-}
-
-func (es *EntityState) MarshalJSON() ([]byte, error) {
-	return json.Marshal(es.String())
-}
-
-func (es *EntityState) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *es, err = ParseEntityState(str); err != nil {
-		return nil
-	} else {
-		return err
-	}
 }
 
 type EntityConfigList []*EntityConfig

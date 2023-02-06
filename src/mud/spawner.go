@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"math/rand"
@@ -14,20 +13,12 @@ const (
 	Spawner_Item
 )
 
-type SpawnerType int32
+type SpawnerType int
 
 var spawnerTypeStringMapping = utils.NewStringMapping(map[SpawnerType]string{
 	Spawner_Entity: "entity",
 	Spawner_Item:   "item",
 })
-
-type ZoneSpawnerConfig struct {
-	Type      SpawnerType
-	Spawns    *utils.WeightedTableConfig[string]
-	MaxActive int
-	RoomIds   []RoomId
-	Cooldown  utils.Seconds
-}
 
 func ParseSpawnerType(str string) (SpawnerType, error) {
 	if val, ok := spawnerTypeStringMapping.ToValue[str]; ok {
@@ -36,16 +27,12 @@ func ParseSpawnerType(str string) (SpawnerType, error) {
 	return 0, fmt.Errorf("unknown zone spawner type: %s", str)
 }
 
-func (s *SpawnerType) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *s, err = ParseSpawnerType(str); err != nil {
-		return nil
-	} else {
-		return err
-	}
+type ZoneSpawnerConfig struct {
+	Type      SpawnerType
+	Spawns    *utils.WeightedTableConfig[string]
+	MaxActive int
+	RoomIds   []RoomId
+	Cooldown  utils.Seconds
 }
 
 type ZoneSpawner struct {

@@ -11,7 +11,7 @@ Config.NewEntity({
         Noun = "splash"
     },
     SkillTriggers = {
-        combat = {
+        [EntityState.Combat] = {
             { Key = "npc_water_attack", Level = 1, Chance = 20 }
         }
     },
@@ -143,7 +143,7 @@ Config.NewEntity({
     },
     Flags = { "scavenger" },
     SkillTriggers = {
-        combat = {
+        [EntityState.Combat] = {
             { Key = "npc_fire_attack", Level = 1, Chance = 20 }
         }
     },

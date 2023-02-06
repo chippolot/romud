@@ -80,28 +80,6 @@ func ParseWeaponType(str string) (WeaponType, error) {
 	return 0, fmt.Errorf("unknown equip slot: %s", str)
 }
 
-func (wt *WeaponType) String() string {
-	if str, ok := weaponTypeStringMapping.ToString[*wt]; ok {
-		return str
-	}
-	return "unknown"
-}
-
-func (wt *WeaponType) MarshalJSON() ([]byte, error) {
-	return json.Marshal(wt.String())
-}
-
-func (wt *WeaponType) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *wt, err = ParseWeaponType(str); err != nil {
-		return err
-	}
-	return nil
-}
-
 var equipSlotStringMapping = utils.NewStringMapping(map[EquipSlot]string{
 	EqSlot_None:        "none",
 	EqSlot_Head_High:   "head_high",

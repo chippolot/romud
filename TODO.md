@@ -210,10 +210,10 @@
         [x] Spell interruption
     [x] Lua
         [x] Go_API
+    [x] Lua
+        [x] More enum bindings (instead of strings)
 ----------------------------------------
 [] RO
-    [] Lua
-        [] More enum bindings (instead of strings)
     [] Ranged Combat
         [] Bows
         [] Distance

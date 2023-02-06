@@ -202,3 +202,33 @@ SkillTargetType = {
     Single_Enemy = "single_enemy",
     All_Enemies = "all_enemies"
 }
+
+WeaponType = {
+    Bare_Handed = "bare_handed",
+	Dagger = "dagger",
+	Sword_1H = "sword_1h",
+	Sword_2H = "sword_2h",
+	Spear = "spear",
+	Spear_Mounted = "spear_mounted",
+	Axe = "axe",
+	Mace = "mace",
+	Rod = "rod",
+	Bow = "bow",
+	Katar = "katar",
+	Book = "book",
+	Knuckle = "knuckle",
+	Instrument = "instrument",
+	Whip = "whip",
+	Gun = "gun",
+	Huuma_Shuriken = "huuma_shuriken"
+}
+
+EntityState = {
+    Idle = "idle",
+    Combat = "combat"
+}
+
+SpawnerType = {
+    Entity = "entity",
+    Item = "item"
+}

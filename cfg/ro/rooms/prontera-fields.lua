@@ -6,7 +6,7 @@ Config.NewZone({
 	MinRoomId = 1,
 	MaxRoomId = 10,
 	Spawners = {
-		{Type = "entity", MaxActive = 5, Spawns = {
+		{Type = SpawnerType.Entity, MaxActive = 5, Spawns = {
 			{Value="poring", Weight=70},
 			{Value="pupa", Weight=20},
 			{Value="lunatic", Weight=40},
@@ -27,8 +27,8 @@ Config.NewRoom({
 	Desc = [[
    You are standing in a lush green field that stretches as far as your eyes can see.]],
 	Exits = {
-		north = 2,
-        west = 3
+		[Dir.North] = 2,
+        [Dir.West] = 3
 	}
 })
 Config.NewRoom({
@@ -37,7 +37,7 @@ Config.NewRoom({
 	Desc = [[
    You are standing in a lush green field that stretches as far as your eyes can see.]],
 	Exits = {
-		south = 1
+		[Dir.South] = 1
 	}
 })
 Config.NewRoom({
@@ -46,6 +46,6 @@ Config.NewRoom({
 	Desc = [[
    You are standing in a lush green field that stretches as far as your eyes can see.]],
 	Exits = {
-		east = 1
+		[Dir.East] = 1
 	}
 })

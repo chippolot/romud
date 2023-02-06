@@ -215,11 +215,13 @@
     [x] Ranged Combat
         [x] Bows
         [x] Distance
+        [x] Backstep
 ----------------------------------------
 [] RO
+    [] Vocab
+        [] Your SHOOT
     [] Ranged Combat
         [] Arrows
-        [] Backstep
     [] Jobs
         [] Job specific skills
         [] Job specific eq

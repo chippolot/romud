@@ -171,7 +171,7 @@ var DefenderSizeModifierLookup = [][]float64{
 var CellsPerSecondSpeedLookup = []float64{
 	0,    //Immovable
 	2.5,  // Very Slow
-	3.33, // Slot
+	3.33, // Slow
 	6.66, // Fast
 	10,   // Very Fast
 }

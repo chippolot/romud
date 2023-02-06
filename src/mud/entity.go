@@ -443,18 +443,18 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteHorizontalDivider()
 	sb.WriteLinef("%s", e.GetName())
 	sb.WriteNewLine()
-	sb.WriteLinef("Lvl    : %s", Colorize(Color_Stat, e.stats.Get(Stat_Level)))
+	sb.WriteLinef("LV     : %s", Colorize(Color_Stat, e.stats.Get(Stat_Level)))
 	if !IsMaxLevel(e) {
-		sb.WriteLinef("Next Lvl: %s XP", Colorize(Color_Stat, GetXPForNextLevel(e)))
+		sb.WriteLinef("Next   : %s XP", Colorize(Color_Stat, GetXPForNextLevel(e)))
 	}
 	if e.job != nil {
 		sb.WriteNewLine()
 		sb.WriteLinef("Job    : %s", e.job.cfg.Name)
-		sb.WriteLinef("Job Lvl: %s", Colorize(Color_Stat, e.stats.Get(Stat_JobLevel)))
+		sb.WriteLinef("JobLV  : %s", Colorize(Color_Stat, e.stats.Get(Stat_JobLevel)))
 		if !IsMaxLevel(e) {
-			sb.WriteLinef("Next Job Lvl: %s XP", Colorize(Color_Stat, GetJobXPForNextJobLevel(e)))
+			sb.WriteLinef("Next   : %s XP", Colorize(Color_Stat, GetJobXPForNextJobLevel(e)))
 		}
-		sb.WriteLinef("Skill Points : %s", Colorize(Color_Stat, e.stats.Get(Stat_SkillPoints)))
+		sb.WriteLinef("Skl Pt : %s", Colorize(Color_Stat, e.stats.Get(Stat_SkillPoints)))
 	}
 	sb.WriteNewLine()
 	sb.WriteLinef("HP     : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_HP)), Colorize(Color_Stat, e.stats.Get(Stat_MaxHP)))
@@ -494,7 +494,7 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Int    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Int)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Int))
 	sb.WriteLinef("Dex    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Dex)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Dex))
 	sb.WriteLinef("Luk    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Luk)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Luk))
-	sb.WriteLinef("Stat Points : %s", Colorize(Color_Stat, e.stats.Get(Stat_StatPoints)))
+	sb.WriteLinef("Stat Pt: %s", Colorize(Color_Stat, e.stats.Get(Stat_StatPoints)))
 	sb.WriteNewLine()
 	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, calculateCarryingCapacity(e.stats)))
 	if statuses != "" {

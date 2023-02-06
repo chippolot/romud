@@ -216,12 +216,13 @@
         [x] Bows
         [x] Distance
         [x] Backstep
+    [x] Jobs
+        [x] Job XP
 ----------------------------------------
 [] RO
     [] Jobs
         [] Job specific skills
         [] Job specific eq
-        [] Job XP
         [] Job leveling
         [] Job stat bonuses
     [] Ranged Combat

@@ -1,6 +1,6 @@
 module github.com/chippolot/go-mud
 
-go 1.19
+go 1.20
 
 require (
 	github.com/benkeatingsmith/gluamapper v0.0.0-20230123042748-68066f3a7495

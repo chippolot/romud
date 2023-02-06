@@ -84,6 +84,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_BindEnum(L, "Element", elementStringMapping.ToString)
 	lua_BindEnum(L, "Size", sizeStringMapping.ToString)
 	lua_BindEnum(L, "Speed", speedStringMapping.ToString)
+	lua_BindEnum(L, "Element", elementStringMapping.ToString)
 	lua_BindEnumFlags(L, "EquipSlot", equipSlotStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded

@@ -1,7 +1,6 @@
 package mud
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"github.com/chippolot/go-mud/src/utils"
@@ -47,8 +46,4 @@ func (e *Element) String() string {
 		return str
 	}
 	return "unknown"
-}
-
-func (e *Element) MarshalJSON() ([]byte, error) {
-	return json.Marshal(e.String())
 }

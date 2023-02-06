@@ -2,25 +2,25 @@ require('cfg.ro.utils.go-api')
 local stringUtils = require('cfg.ro.utils.string-utils')
 
 local function getElementColor(element)
-    if element == "water" then
+    if element == Element.Water then
         return "blue"
-    elseif element == "neutral" then
+    elseif element == Element.Neutral then
         return "dimly"
-    elseif element == "earth" then
+    elseif element == Element.Earth then
         return "dark green"
-    elseif element == "fire" then
+    elseif element == Element.Fire then
         return "red"
-    elseif element == "wind" then
+    elseif element == Element.Wind then
         return "light blue"
-    elseif element == "poison" then
+    elseif element == Element.Poison then
         return "green"
-    elseif element == "holy" then
+    elseif element == Element.Holy then
         return "white"
-    elseif element == "shadow" then
+    elseif element == Element.Shadow then
         return "black"
-    elseif element == "ghost" then
+    elseif element == Element.Ghost then
         return "grey"
-    elseif element == "undead" then
+    elseif element == Element.Undead then
         return "purple"
     end
 end

@@ -169,3 +169,16 @@ EquipSlot = {
 	Held_1H = "held_1h",
 	Held_2H = "held_2h",
 }
+
+Element = {
+    Neutral = "neutral",
+	Water = "water",
+	Earth = "earth",
+	Fire = "fire",
+	Wind = "wind",
+	Poison = "poison",
+	Holy = "holy",
+	Shadow = "shadow",
+	Ghost = "ghost",
+	Undead = "undead"
+}

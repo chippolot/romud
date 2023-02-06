@@ -142,11 +142,6 @@ func calculateMAtkRange(s *Stats) (int, int) {
 	return sint + (sint/7)*(sint/7), sint + (sint/5)*(sint/5)
 }
 
-func calculateExpValue(s *Stats) int {
-	// Mechanics: RO Classic
-	return s.cfg.ExpBase + (s.Get(Stat_MaxHP) * s.cfg.ExpPerHP)
-}
-
 func calculateStatPointsGainedForLevelUp(nextLevel int) int {
 	// Mechanics: RO Classic
 	x := float64(nextLevel - 1)

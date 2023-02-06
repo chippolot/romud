@@ -22,6 +22,7 @@ Config.NewEntity({
         Dex = 1,
         Luk = 1,
         Element = Element.Neutral,
-        ElementLevel = 1
+        ElementLevel = 1,
+        Race = Race.DemiHuman
     }
 })

@@ -31,8 +31,7 @@ Config.NewEntity({
         Size = Size.Medium,
         Speed = Speed.VerySlow,
         Level = 1,
-        ExpBase = 2,
-        ExpPerHP = 0.04,
+        ExpValue = 2,
         Str = 1,
         Agi = 1,
         Vit = 1,
@@ -42,7 +41,9 @@ Config.NewEntity({
         Hit100 = 22,
         Flee95 = 82,
         Element = Element.Water,
-        ElementLevel = 1
+        ElementLevel = 1,
+        Race = Race.Plant,
+        Range = 1
     }
 })
 Config.NewEntity({
@@ -71,8 +72,7 @@ Config.NewEntity({
         Size = Size.Small,
         Speed = Speed.Slow,
         Level = 3,
-        ExpBase = 6,
-        ExpPerHP = 0.1,
+        ExpValue = 6,
         Str = 1,
         Agi = 3,
         Vit = 3,
@@ -82,7 +82,9 @@ Config.NewEntity({
         Hit100 = 26,
         Flee95 = 86,
         Element = Element.Neutral,
-        ElementLevel = 3
+        ElementLevel = 3,
+        Race = Race.Brute,
+        Range = 1
     }
 })
 Config.NewEntity({
@@ -107,8 +109,7 @@ Config.NewEntity({
         Size = Size.Small,
         Speed = Speed.Immovable,
         Level = 2,
-        ExpBase = 2,
-        ExpPerHP = 0.005,
+        ExpValue = 2,
         Str = 1,
         Agi = 1,
         Vit = 1,
@@ -118,7 +119,9 @@ Config.NewEntity({
         Hit100 = 23,
         Flee95 = 78,
         Element = Element.Earth,
-        ElementLevel = 1
+        ElementLevel = 1,
+        Race = Race.Insect,
+        Range = 0
     }
 })
 Config.NewEntity({
@@ -152,8 +155,7 @@ Config.NewEntity({
         Size = Size.Medium,
         Speed = Speed.VerySlow,
         Level = 3,
-        ExpBase = 4,
-        ExpPerHP = 0.073,
+        ExpValue = 4,
         Str = 1,
         Agi = 3,
         Vit = 3,
@@ -163,6 +165,8 @@ Config.NewEntity({
         Hit100 = 26,
         Flee95 = 90,
         Element = Element.Fire,
-        ElementLevel = 1
+        ElementLevel = 1,
+        Race = Race.Plant,
+        Range = 1
     }
 })

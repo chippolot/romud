@@ -227,9 +227,7 @@ type StatsConfig struct {
 	Element      Element
 	ElementLevel int
 	Race         Race
-	AttackRange  int
-	SpellRange   int
-	SightRange   int
+	Range        int
 	Mov          int
 	Str          int
 	Agi          int
@@ -240,8 +238,7 @@ type StatsConfig struct {
 	Level        int
 	Hit100       int // Monster Only: HIT value required for making 100% chance hit on monster
 	Flee95       int // Monster Only: FLEE value required for making 95% chance dodge on monster
-	ExpBase      int
-	ExpPerHP     int
+	ExpValue     int
 }
 
 type Stats struct {

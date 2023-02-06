@@ -218,13 +218,15 @@
         [x] Backstep
     [x] Jobs
         [x] Job XP
+        [x] Job leveling
 ----------------------------------------
 [] RO
     [] Jobs
         [] Job specific skills
         [] Job specific eq
-        [] Job leveling
         [] Job stat bonuses
+        [] Job tree
+        [] Job changing
     [] Ranged Combat
         [] Arrows
     [] Skills

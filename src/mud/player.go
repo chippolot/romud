@@ -79,8 +79,17 @@ func (pp *PlayerPromptProvider) Prompt() string {
 		}
 		targetName := ObservableName(target).Desc(pp.character)
 		sb.WriteStringf("<%s (%s)>", pp.character.GetName(), stats.ConditionShortString())
-		for i := 0; i <= int(dist)/2; i++ {
+		if dist < 1 {
 			sb.WriteString(":")
+		} else {
+			numdots := int(dist)/2 + 1
+			for i := 0; i < numdots; i++ {
+				sb.WriteString(".")
+			}
+			sb.WriteStringf("%d ft", int(dist)*5)
+			for i := 0; i < numdots; i++ {
+				sb.WriteString(".")
+			}
 		}
 		sb.WriteStringf("<%s (%s)>", targetName, target.stats.ConditionShortString())
 	} else {

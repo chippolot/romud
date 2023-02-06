@@ -56,6 +56,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	actTbl.RawSetString("Say", luar.New(L, lua_ActSay))
 	actTbl.RawSetString("Tell", luar.New(L, lua_ActTell))
 	actTbl.RawSetString("Yell", luar.New(L, lua_ActYell))
+	actTbl.RawSetString("IncreaseDistance", luar.New(L, lua_ActIncreaseDistance))
 	L.SetGlobal("Act", actTbl)
 
 	writeTbl := L.NewTable()
@@ -231,6 +232,15 @@ func lua_ActTell(self *Entity, target *Entity, msg string) {
 
 func lua_ActYell(self *Entity, msg string) {
 	performYell(self, lua_W, msg)
+}
+
+func lua_ActIncreaseDistance(self *Entity, amt int) {
+	r := lua_W.rooms[self.data.RoomId]
+	for _, e := range r.entities {
+		if e.combat != nil && (e == self || e.combat.target == self) {
+			e.combat.distance += float64(amt)
+		}
+	}
 }
 
 func lua_WriteToPlayer(e *Entity, msg string) {

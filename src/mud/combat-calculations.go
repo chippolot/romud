@@ -1,15 +1,49 @@
 package mud
 
 import (
+	"math"
+
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-func calculatePhysicalAttackDamage(e *Entity, tgt *Entity, attackWeaponType WeaponType, attackElement Element, atkBonus float64, critical bool) int {
+func calculatePhysicalAttackDamage(e *Entity, tgt *Entity, weaponType WeaponType, element Element, atkBonus float64, critical bool) int {
 	// Mechanics: RO Classic
 	// https://irowiki.org/classic/Attacks
 
 	atkBonusMultiplier := 1.0 + atkBonus
+	sizeModifier := DefenderSizeModifierLookup[tgt.stats.cfg.Size][weaponType]
 
+	combinedAtkPower := 0
+	if e.player != nil {
+		weaponLevel := 1
+		atk := 0
+		ammoAtk := 25 // TODO: Arrow: Check equipped arrows
+		// TODO: Arrow: Arrow elements + Status
+		// TODO: Arrow: Don't allow for ranged attacks when out of arrows!
+		if w, _, ok := e.GetWeapon(); ok {
+			weaponLevel = w.Level
+			atk = w.Atk
+		}
+		dex := e.stats.GetFloat(Stat_Dex)
+		dexAtk := math.Min(dex*(0.8+0.2*float64(weaponLevel)), float64(atk))
+		var minAtk, maxAtk int
+		baseAtk := 0
+		if !weaponType.Ranged() {
+			baseAtk = calculateBaseMeleeAttackPower(e)
+			minAtk = int(dexAtk)
+			maxAtk = atk
+		} else {
+			baseAtk = calculateBaseRangedAttackPower(e)
+			minAtk = int((float64(atk) / 100.0) * dexAtk)
+			maxAtk = utils.MaxInt(minAtk, atk) + ammoAtk
+		}
+		if critical {
+			minAtk = maxAtk
+		}
+		combinedAtkPower = baseAtk + int(float64(utils.RandRange(minAtk, maxAtk))*sizeModifier*atkBonusMultiplier)
+	} else {
+		combinedAtkPower = utils.RandRange(e.cfg.Attack.Power.Min, e.cfg.Attack.Power.Max)
+	}
 	// Calculate defensive reductions
 	hardDefMult := 1.0 - float64(calculateHardDef(tgt))/100.0
 	softDef := float64(calculateSoftDef(tgt))
@@ -19,15 +53,12 @@ func calculatePhysicalAttackDamage(e *Entity, tgt *Entity, attackWeaponType Weap
 		hardDefMult = 1
 		softDef = 0
 	}
-
-	sizeModifier := DefenderSizeModifierLookup[tgt.stats.cfg.Size][attackWeaponType]
-	combinedAtkPower := float64(calculateBaseAttackPower(e)) + float64(calculateWeaponAttackPower(e, critical))*sizeModifier*atkBonusMultiplier
-	dam := combinedAtkPower*hardDefMult - softDef
-	dam *= DefenderElementModifierLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][attackElement]
+	dam := float64(combinedAtkPower)*hardDefMult - softDef
+	dam *= DefenderElementModifierLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][element]
 	return utils.MaxInt(int(dam), 1)
 }
 
-func calculateMagicAttackDamage(e *Entity, tgt *Entity, attackElement Element, mAtkBonus float64) int {
+func calculateMagicAttackDamage(e *Entity, tgt *Entity, element Element, mAtkBonus float64) int {
 	// Mechanics: RO Classic
 	// https://irowiki.org/classic/Attacks
 	mAtkBonusMultiplier := 1.0 + mAtkBonus
@@ -38,7 +69,7 @@ func calculateMagicAttackDamage(e *Entity, tgt *Entity, attackElement Element, m
 	mWeaponAtkBoost := 1.0 + calculateWeaponMagicAttackBoost(e)
 
 	mDefMod := 1.0 - float64(calculateHardMagicDef(tgt)/100.0)
-	elemMod := DefenderElementModifierLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][attackElement]
+	elemMod := DefenderElementModifierLookup[tgt.stats.cfg.ElementLevel][tgt.stats.cfg.Element][element]
 
 	dam := (float64(mAtk)*mWeaponAtkBoost*mAtkBonusMultiplier*mDefMod - float64(calculateSoftMagicDef(tgt.stats))) * elemMod
 	return utils.MaxInt(int(dam), 0)
@@ -112,36 +143,32 @@ func calcuateHitChance(e *Entity, w *World, tgt *Entity, hitBonus float64) int {
 	return utils.MinInt(95, hitChance)
 }
 
-func calculateBaseAttackPower(e *Entity) int {
+func calculateBaseMeleeAttackPower(e *Entity) int {
 	// Mechanics: RO Classic
 	if e.player != nil {
-		return calculateStatusAttackPower(e.stats)
+		return calculateStatusMeleeAttackPower(e.stats)
 	} else {
 		return 0
 	}
 }
 
-func calculateWeaponAttackPower(e *Entity, returnMax bool) int {
+func calculateBaseRangedAttackPower(e *Entity) int {
 	// Mechanics: RO Classic
-	var min, max int
 	if e.player != nil {
-		atk := 0
-		wLvl := 0.0
-		if w, _, ok := e.GetWeapon(); ok {
-			atk = w.Atk
-			wLvl = float64(w.Level)
-		}
-		dex := e.stats.GetFloat(Stat_Dex)
-		min = utils.MinInt(int(dex*(0.8+0.2*wLvl)), atk)
-		max = atk
+		return calculateStatusRangedAttackPower(e.stats)
 	} else {
-		min = e.cfg.Attack.Power.Min
-		max = e.cfg.Attack.Power.Max
+		return 0
 	}
-	if returnMax {
-		return max
+}
+
+func calculateWeaponAttackPower(e *Entity) int {
+	// Mechanics: RO Classic
+	if e.player != nil {
+		if w, _, ok := e.GetWeapon(); ok {
+			return w.Atk
+		}
 	}
-	return utils.RandRange(min, max)
+	return 0
 }
 
 func calculateWeaponMagicAttackBoost(e *Entity) float64 {
@@ -157,6 +184,7 @@ func calculateWeaponMagicAttackBoost(e *Entity) float64 {
 }
 
 func calculateAttackRange(e *Entity) int {
+	// Mechanics: RO Classic
 	aRange := 1
 	if w, _, ok := e.GetWeapon(); ok {
 		if w.Range > 0 {

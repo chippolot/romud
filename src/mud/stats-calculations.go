@@ -128,7 +128,15 @@ func calculateAttacksPerRound(s *Stats) float64 {
 	return 50.0 / (200.0 - aspd)
 }
 
-func calculateStatusAttackPower(s *Stats) int {
+func calculateStatusRangedAttackPower(s *Stats) int {
+	// Mechanics: RO Classic
+	str := s.GetFloat(Stat_Str)
+	dex := s.GetFloat(Stat_Dex)
+	luk := s.GetFloat(Stat_Luk)
+	return int(dex + math.Pow(dex/10.0, 2) + str/5.0 + luk/5.0)
+}
+
+func calculateStatusMeleeAttackPower(s *Stats) int {
 	// Mechanics: RO Classic
 	str := s.GetFloat(Stat_Str)
 	dex := s.GetFloat(Stat_Dex)

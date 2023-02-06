@@ -80,6 +80,10 @@ func ParseWeaponType(str string) (WeaponType, error) {
 	return 0, fmt.Errorf("unknown equip slot: %s", str)
 }
 
+func (w WeaponType) Ranged() bool {
+	return w == WeaponType_Bow || w == WeaponType_Gun || w == WeaponType_Instrument || w == WeaponType_Whip
+}
+
 var equipSlotStringMapping = utils.NewStringMapping(map[EquipSlot]string{
 	EqSlot_None:        "none",
 	EqSlot_Head_High:   "head_high",

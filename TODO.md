@@ -212,11 +212,13 @@
         [x] Go_API
     [x] Lua
         [x] More enum bindings (instead of strings)
+    [x] Ranged Combat
+        [x] Bows
+        [x] Distance
 ----------------------------------------
 [] RO
     [] Ranged Combat
-        [] Bows
-        [] Distance
+        [] Arrows
         [] Backstep
     [] Jobs
         [] Job specific skills

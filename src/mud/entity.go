@@ -234,9 +234,19 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 		slot := eq.Slot
 
 		// Find best slot for slot categories
+		holding2H := false
 		switch slot {
 		case EqSlot_Held_1H:
-			slot = e.bestEquipSlot(EqSlot_Held_R, EqSlot_Held_L)
+			if other, ok := e.equipped[EqSlot_Held_R]; ok {
+				if other.cfg.Equipment.Slot == EqSlot_Held_2H {
+					slot = EqSlot_Held_R
+					holding2H = true
+				} else {
+					slot = EqSlot_Held_L
+				}
+			} else {
+				slot = EqSlot_Held_R
+			}
 		}
 		e.RemoveItem(item)
 		unequipped := make([]*Item, 0)
@@ -246,6 +256,16 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 			}
 			if u := e.unequipFromSlot(EqSlot_Held_L); u != nil {
 				unequipped = append(unequipped, u)
+			}
+		} else if slot == EqSlot_Held_1H {
+			if holding2H {
+				if u := e.unequipFromSlot(EqSlot_Held_L); u != nil {
+					unequipped = append(unequipped, u)
+				}
+				if u := e.unequipFromSlot(EqSlot_Held_R); u != nil {
+					unequipped = append(unequipped, u)
+				}
+				e.equipToSlot(item, slot)
 			}
 		} else {
 			if u := e.equipToSlot(item, slot); u != nil {
@@ -422,7 +442,13 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Mov    : %s/%s", Colorize(Color_Stat, e.stats.Get(Stat_Mov)), Colorize(Color_Stat, e.stats.Get(Stat_MaxMov)))
 	sb.WriteNewLine()
 	if e.player != nil {
-		sb.WriteLinef("Atk    : %s+%s", Colorize(Color_Stat, calculateBaseAttackPower(e)), Colorize(Color_Stat, calculateWeaponAttackPower(e, true)))
+		baseAtkPower := calculateBaseMeleeAttackPower(e)
+		if w, _, ok := e.GetWeapon(); ok {
+			if w.Type.Ranged() {
+				baseAtkPower = calculateBaseRangedAttackPower(e)
+			}
+		}
+		sb.WriteLinef("Atk    : %s+%s", Colorize(Color_Stat, baseAtkPower), Colorize(Color_Stat, calculateWeaponAttackPower(e)))
 	} else {
 		sb.WriteLinef("Atk    : %s-%s", Colorize(Color_Stat, e.cfg.Attack.Power.Min), Colorize(Color_Stat, e.cfg.Attack.Power.Max))
 	}
@@ -561,15 +587,6 @@ func (e *Entity) onUnequipped(item *Item) {
 	if item.cfg.Equipment.StatusEffect != 0 {
 		e.RemoveStatusEffect(item.cfg.Equipment.StatusEffect, true)
 	}
-}
-
-func (e *Entity) bestEquipSlot(slots ...EquipSlot) EquipSlot {
-	for _, slot := range slots {
-		if _, ok := e.equipped[slot]; !ok {
-			return slot
-		}
-	}
-	return slots[0]
 }
 
 func (e *Entity) updateStatusEffectsMask() {

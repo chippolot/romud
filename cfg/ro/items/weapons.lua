@@ -52,3 +52,28 @@ Config.NewItem({
     SellPrice = 25,
 	Weight = 40
 })
+Config.NewItem({
+    Key = "bow",
+	Keywords = {
+		"bow"
+	},
+	Name = "a common bow",
+	NamePlural = "common bows",
+	RoomDesc = "A common bow has been left here.",
+	FullDesc = "A common bow.",
+	Equipment = {
+		Weapon = {
+			Type = WeaponType.Bow,
+			Atk = 15,
+            Noun = "shoot",
+            Level = 1,
+			Range = 5
+		},
+		Slot = EquipSlot.Held_2H,
+        RequiredLevel = 4,
+        Upgradable = true
+	},
+	BuyPrice = 1000,
+    SellPrice = 500,
+	Weight = 50
+})

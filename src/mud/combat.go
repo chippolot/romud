@@ -187,7 +187,7 @@ func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level in
 	// Collect targets for AOE skills
 	targets := []*Entity{target}
 	switch skill.TargetType {
-	case SkillTargetType_AllEnemies:
+	case SkillTargetType_All_Enemies:
 		targets = make([]*Entity, 0)
 		r := w.rooms[e.data.RoomId]
 		for _, e2 := range r.entities {

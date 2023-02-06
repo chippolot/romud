@@ -43,8 +43,8 @@ lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMess
     return {
         Key = string.format("npc_%s_attack", element),
         Name = string.format("%s Attack", stringUtils.FirstToUpper(element)),
-        Type = "offensive",
-        TargetType = "single_enemy",
+        Type = SkillType.Offensive,
+        TargetType = SkillTargetType.Single_Enemy,
         CastDelays = { 5.0 },
         MaxLevel = 10,
         Desc = string.format("(NPC Only) Deals %s damage to the target. Damage is based on the monster's ATK.",
@@ -53,7 +53,7 @@ lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMess
             Cast = function(user, targets, skill, level)
                 local atkBonus = (level - 1)
                 Act.SkillAttack(user, targets, skill, {
-                    AtkType = "physical",
+                    AtkType = SkillAttackType.Physical,
                     AtkBonus = atkBonus,
                     Element = element
                 })

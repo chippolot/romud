@@ -4,8 +4,8 @@ local skillUtils = require('cfg.ro.skills.skill-utils')
 Config.NewSkill({
     Key = "first_aid",
     Name = "First Aid",
-    Type = "active",
-    TargetType = "self",
+    Type = SkillType.Active,
+    TargetType = SkillTargetType.Self,
     SPCost = 3,
     MaxLevel = 1,
     Desc = "Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.",

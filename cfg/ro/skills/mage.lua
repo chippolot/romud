@@ -8,8 +8,8 @@ local magicProjectileHitFunc
 Config.NewSkill({
     Key = "cold_bolt",
     Name = "Cold Bolt",
-    Type = "offensive",
-    TargetType = "single_enemy",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.Single_Enemy,
     Range = 9,
     CastTimes = { 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7 },
     CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
@@ -18,14 +18,14 @@ Config.NewSkill({
     Desc = "Hits the targeted enemy with 1 Water Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
         Activated = function(user)
-            skillUtils.WriteCastingMessages(user, "water")
+            skillUtils.WriteCastingMessages(user, Element.Water)
         end,
         Cast = function(user, targets, skill, level)
             skillUtils.WriteCastSuccessMessages(user, "Frost's wrath, rain down! Cold Bolt!")
             for _ = 1, level do
                 Act.SkillAttack(user, targets, skill, {
-                    AtkType = "magic",
-                    Element = "water"
+                    AtkType = SkillAttackType.Magic,
+                    Element = Element.Water
                 })
             end
         end,
@@ -37,8 +37,8 @@ Config.NewSkill({
 Config.NewSkill({
     Key = "fire_bolt",
     Name = "Fire Bolt",
-    Type = "offensive",
-    TargetType = "single_enemy",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.Single_Enemy,
     Range = 9,
     CastTimes = { 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7 },
     CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
@@ -47,14 +47,14 @@ Config.NewSkill({
     Desc = "Hits the targeted enemy with 1 Fire Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
         Activated = function(user)
-            skillUtils.WriteCastingMessages(user, "fire")
+            skillUtils.WriteCastingMessages(user, Element.Fire)
         end,
         Cast = function(user, targets, skill, level)
             skillUtils.WriteCastSuccessMessages(user, "Burn brightly! Fire Bolt!")
             for _ = 1, level do
                 Act.SkillAttack(user, targets, skill, {
-                    AtkType = "magic",
-                    Element = "fire"
+                    AtkType = SkillAttackType.Magic,
+                    Element = Element.Fire
                 })
             end
         end,
@@ -66,8 +66,8 @@ Config.NewSkill({
 Config.NewSkill({
     Key = "lightning_bolt",
     Name = "Lightning Bolt",
-    Type = "offensive",
-    TargetType = "single_enemy",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.Single_Enemy,
     Range = 9,
     CastTimes = { 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7 },
     CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
@@ -76,14 +76,14 @@ Config.NewSkill({
     Desc = "Hits the targeted enemy with 1 Wind Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
         Activated = function(user)
-            skillUtils.WriteCastingMessages(user, "wind")
+            skillUtils.WriteCastingMessages(user, Element.Wind)
         end,
         Cast = function(user, targets, skill, level)
             skillUtils.WriteCastSuccessMessages(user, "Shocking strike! Lightning Bolt!")
             for _ = 1, level do
                 Act.SkillAttack(user, targets, skill, {
-                    AtkType = "magic",
-                    Element = "wind"
+                    AtkType = SkillAttackType.Magic,
+                    Element = Element.Wind
                 })
             end
         end,
@@ -95,8 +95,8 @@ Config.NewSkill({
 Config.NewSkill({
     Key = "napalm_beat",
     Name = "Napalm Beat",
-    Type = "offensive",
-    TargetType = "all_enemies",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.All_Enemies,
     Range = 9,
     CastTimes = { 1 },
     CastDelays = { 1, 1, 1, 0.9, 0.9, 0.8, 0.8, 0.7, 0.6, 0.5 },
@@ -105,7 +105,7 @@ Config.NewSkill({
     Desc = "Hits every Enemy in a 3x3 area around the target for an MATK of (70+10*SkillLV)% using Ghost Element. This damage is spread equally between all targets. For example, if 3 monsters are hit, then each takes 1/3rd of the damage a single target would take.",
     Scripts = {
         Activated = function(user)
-            skillUtils.WriteCastingMessages(user, "ghost")
+            skillUtils.WriteCastingMessages(user, Element.Ghost)
         end,
         Cast = function(user, targets, skill, level)
             skillUtils.WriteCastSuccessMessages(user, "Ethereal energy! Napalm Beat!")
@@ -115,9 +115,9 @@ Config.NewSkill({
 
             local matk = (0.7 + 0.1 * level) / #targets
             Act.SkillAttack(user, targets, skill, {
-                AtkType = "magic",
+                AtkType = SkillAttackType.Magic,
                 MAtkBonus = matk - 1.0,
-                Element = "ghost"
+                Element = Element.Ghost
             })
         end,
         Missed = function(user, target) magicProjectileMissedFunc(user, target, "NAPALM BEAT") end,

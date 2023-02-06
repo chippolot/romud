@@ -182,3 +182,23 @@ Element = {
 	Ghost = "ghost",
 	Undead = "undead"
 }
+
+SkillAttackType = {
+    Physical = "physical",
+    Magic = "magic"
+}
+
+SkillType = {
+    Passive = "passive",
+    Active = "active",
+    Offensive = "offensive"
+}
+
+SkillTargetType = {
+    None = "none",
+    Self = "self",
+    Single_Ally = "single_ally",
+    Single_Entity = "single_entity",
+    Single_Enemy = "single_enemy",
+    All_Enemies = "all_enemies"
+}

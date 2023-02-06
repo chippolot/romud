@@ -4,8 +4,8 @@ local skillUtils = require('cfg.ro.skills.skill-utils')
 Config.NewSkill({
     Key = "bash",
     Name = "Bash",
-    Type = "offensive",
-    TargetType = "single_enemy",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.Single_Enemy,
     CastDelay = 1.0,
     SPCost = 8,
     MaxLevel = 10,
@@ -19,7 +19,7 @@ Config.NewSkill({
             Write.ToRoom(Entity.Room(user), { user, target },
                 string.format("%s dramatically winds up for a big attack...", Entity.NameCap(user)))
             Act.SkillAttack(user, target, skill, {
-                AtkType = "physical",
+                AtkType = SkillAttackType.Physical,
                 AtkBonus = atkPct,
                 HitBonus = hitPct
             })
@@ -50,8 +50,8 @@ Config.NewSkill({
 Config.NewSkill({
     Key = "whirlwind",
     Name = "Whirlwind",
-    Type = "offensive",
-    TargetType = "all_enemies",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.All_Enemies,
     CastDelay = 5.0,
     SPCost = 8,
     MaxLevel = 10,
@@ -65,7 +65,7 @@ Config.NewSkill({
                 string.format("%s spins around quickly, sweeping their weapon in a wide arc...", Entity.NameCap(user)))
 
             Act.SkillAttack(user, targets, skill, {
-                AtkType = "physical",
+                AtkType = SkillAttackType.Physical,
                 AtkBonus = atkPct,
                 HitBonus = hitPct
             })

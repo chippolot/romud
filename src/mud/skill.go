@@ -16,10 +16,10 @@ const (
 const (
 	SkillTargetType_None SkillTargetType = iota
 	SkillTargetType_Self
-	SkillTargetType_SingleAlly
-	SkillTargetType_SingleEnemy
-	SkillTargetType_SingleEntity
-	SkillTargetType_AllEnemies
+	SkillTargetType_Single_Ally
+	SkillTargetType_Single_Enemy
+	SkillTargetType_Single_Entity
+	SkillTargetType_All_Enemies
 )
 
 type SkillType int
@@ -46,12 +46,12 @@ func (s *SkillType) String() string {
 }
 
 var skillTargetTypeStringMapping = utils.NewStringMapping(map[SkillTargetType]string{
-	SkillTargetType_None:         "none",
-	SkillTargetType_Self:         "self",
-	SkillTargetType_SingleAlly:   "single_ally",
-	SkillTargetType_SingleEntity: "single_entity",
-	SkillTargetType_SingleEnemy:  "single_enemy",
-	SkillTargetType_AllEnemies:   "all_enemies",
+	SkillTargetType_None:          "none",
+	SkillTargetType_Self:          "self",
+	SkillTargetType_Single_Ally:   "single_ally",
+	SkillTargetType_Single_Entity: "single_entity",
+	SkillTargetType_Single_Enemy:  "single_enemy",
+	SkillTargetType_All_Enemies:   "all_enemies",
 })
 
 func ParseSkillTargetType(str string) (SkillTargetType, error) {

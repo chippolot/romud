@@ -46,7 +46,7 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 	case SkillTargetType_Self:
 		target = e
 	// TODO: Skill: Support single ally and single entity
-	case SkillTargetType_SingleEnemy, SkillTargetType_SingleAlly, SkillTargetType_SingleEntity:
+	case SkillTargetType_Single_Enemy, SkillTargetType_Single_Ally, SkillTargetType_Single_Entity:
 		if numtoks < 3 {
 			if e.combat == nil || e.combat.target == nil {
 				Write("What do you want to use this skill on?").ToPlayer(e).Send()

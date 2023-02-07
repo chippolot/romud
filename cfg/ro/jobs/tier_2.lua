@@ -548,3 +548,8 @@ Config.NewJob({
         { Level = 50, Stat = Stat.Str },
     }
 })
+SAGE
+ROGUE
+ALCHEMIST
+BARD
+DANCER

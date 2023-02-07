@@ -3,7 +3,6 @@ package mud
 import (
 	"encoding/json"
 	"fmt"
-	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
 	"github.com/chippolot/go-mud/src/utils"
@@ -51,7 +50,6 @@ var jobTierStringMapping = utils.NewStringMapping(map[JobTier]string{
 })
 
 func ParseJobTier(str string) (JobTier, error) {
-	str = strings.ToLower(str)
 	if val, ok := jobTierStringMapping.ToValue[str]; ok {
 		return val, nil
 	}
@@ -82,7 +80,6 @@ var jobTypeMaskStringMapping = utils.NewStringMapping(map[JobTypeMask]string{
 })
 
 func ParseJobTypeMask(str string) (JobTypeMask, error) {
-	str = strings.ToLower(str)
 	if val, ok := jobTypeMaskStringMapping.ToValue[str]; ok {
 		return val, nil
 	}

@@ -2,7 +2,6 @@ package mud
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/chippolot/go-mud/src/utils"
 )
@@ -36,7 +35,6 @@ var raceStringMapping = utils.NewStringMapping(map[Race]string{
 })
 
 func ParseRace(str string) (Race, error) {
-	str = strings.ToLower(str)
 	if val, ok := raceStringMapping.ToValue[str]; ok {
 		return val, nil
 	}

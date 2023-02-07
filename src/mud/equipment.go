@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
 	"github.com/chippolot/go-mud/src/utils"
@@ -81,7 +80,6 @@ var weaponTypeStringMapping = utils.NewStringMapping(map[WeaponType]string{
 })
 
 func ParseWeaponType(str string) (WeaponType, error) {
-	str = strings.ToLower(str)
 	if val, ok := weaponTypeStringMapping.ToValue[str]; ok {
 		return val, nil
 	}

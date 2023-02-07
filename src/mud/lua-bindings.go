@@ -18,7 +18,7 @@ var lua_Mapper *gluamapper.Mapper
 func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_W = w
 
-	lua_Mapper = gluamapper.NewMapper(gluamapper.Option{DecodeHook: lua_DecodeHook})
+	lua_Mapper = gluamapper.NewMapper(gluamapper.Option{NameFunc: func(s string) string { return s }, DecodeHook: lua_DecodeHook})
 
 	// Bind API
 	entityTbl := L.NewTable()

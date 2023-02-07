@@ -27,7 +27,6 @@ var entityStateStringMapping = utils.NewStringMapping(map[EntityState]string{
 })
 
 func ParseEntityState(str string) (EntityState, error) {
-	str = strings.ToLower(str)
 	if val, ok := entityStateStringMapping.ToValue[str]; ok {
 		return val, nil
 	}

@@ -234,7 +234,7 @@ func performTransferItem(w *World, src ItemContainer, dst ItemContainer, item *I
 	}
 
 	// Check destination's item capacity
-	if dstE != nil && dst.ItemWeight()+item.ItemWeight() > calculateCarryingCapacity(dstE.stats) {
+	if dstE != nil && dst.ItemWeight()+item.ItemWeight() > calculateCarryingCapacity(dstE) {
 		Write("You can't hold the weight of %s", ObservableName(item)).ToPlayer(dstE).Send()
 		return
 	}

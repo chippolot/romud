@@ -37,7 +37,7 @@ Config.NewItem({
 	FullDesc = "A simple wooden rod.",
 	Equipment = {
 		Weapon = {
-			Type = WeaponType.Rod,
+			Type = WeaponType.Staff_1H,
 			Atk = 15,
 			MAtkBonus = 0.15,
             Noun = "bludgeon",

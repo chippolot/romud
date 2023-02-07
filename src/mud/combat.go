@@ -283,7 +283,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity, dt utils.Seconds) {
 	}
 
 	// Determine number of attacks per round based on Aspd
-	numAttacks := calculateAttacksPerRound(e.stats) + e.combat.numAttacksRemainder
+	numAttacks := calculateAttacksPerRound(e) + e.combat.numAttacksRemainder
 	numAttacksFull := int(numAttacks)
 	e.combat.numAttacksRemainder = numAttacks - float64(numAttacksFull)
 
@@ -309,7 +309,7 @@ func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *Sk
 	atkBonus := 0.0
 	atkElem := Neutral
 	hitBonus := 0.0
-	weaponType := WeaponType_Bare_Handed
+	weaponType := WeaponType_Fist
 
 	// Pull attack data from weapon (where applicable)
 	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {

@@ -19,7 +19,7 @@ type World struct {
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
 	skillConfigs  map[string]*SkillConfig
-	jobConfigs    map[string]*JobConfig
+	jobConfigs    map[JobTypeMask]*JobConfig
 	vocab         *Vocab
 
 	players  map[PlayerId]*Entity
@@ -47,7 +47,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		make(map[string]*EntityConfig),
 		make(map[string]*ItemConfig),
 		make(map[string]*SkillConfig),
-		make(map[string]*JobConfig),
+		make(map[JobTypeMask]*JobConfig),
 		NewVocab(),
 		make(map[PlayerId]*Entity),
 		make(map[server.SessionId]*server.Session),
@@ -79,13 +79,13 @@ func (w *World) CreatePlayerCharacter(name string, pass string, player *Player) 
 	e := NewEntity(playerEntityCfg)
 	e.player = player
 	e.player.data = &PlayerData{Name: name, Pass: pass}
-	if jobCfg, ok := w.TryGetJobConfig("novice"); !ok {
+	if jobCfg, ok := w.TryGetJobConfig(JobType_Novice); !ok {
 		log.Panicln("failed to find config for 'novice' job")
 	} else {
 		e.job = newJob(jobCfg)
 		e.data.Job = e.job.data
 	}
-	calculateAndUpdatePlayerStats(e.stats)
+	calculateAndUpdatePlayerStats(e)
 	e.stats.Set(Stat_HP, e.stats.Get(Stat_MaxHP))
 	e.stats.Set(Stat_SP, e.stats.Get(Stat_MaxSP))
 	e.stats.Set(Stat_Mov, e.stats.Get(Stat_MaxMov))
@@ -239,14 +239,14 @@ func (w *World) TryGetSkillConfig(key string) (*SkillConfig, bool) {
 }
 
 func (w *World) AddJobConfig(cfg *JobConfig) {
-	if _, found := w.jobConfigs[cfg.Key]; found {
-		log.Fatalf("Registered multiple job configs with key: %v", cfg.Key)
+	if _, found := w.jobConfigs[cfg.JobType]; found {
+		log.Fatalf("Registered multiple job configs with type: %v", cfg.JobType)
 	}
-	w.jobConfigs[cfg.Key] = cfg
+	w.jobConfigs[cfg.JobType] = cfg
 }
 
-func (w *World) TryGetJobConfig(key string) (*JobConfig, bool) {
-	if cfg, ok := w.jobConfigs[key]; ok {
+func (w *World) TryGetJobConfig(jobType JobTypeMask) (*JobConfig, bool) {
+	if cfg, ok := w.jobConfigs[jobType]; ok {
 		return cfg, true
 	}
 	return nil, false

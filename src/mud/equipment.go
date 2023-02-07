@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/chippolot/go-mud/src/bits"
 	"github.com/chippolot/go-mud/src/utils"
@@ -34,54 +35,61 @@ const (
 )
 
 const (
-	WeaponType_Bare_Handed WeaponType = iota
+	WeaponType_Fist WeaponType = iota
 	WeaponType_Dagger
 	WeaponType_Sword_1H
 	WeaponType_Sword_2H
-	WeaponType_Spear
-	WeaponType_Spear_Mounted
-	WeaponType_Axe
-	WeaponType_Mace
-	WeaponType_Rod
+	WeaponType_Spear_1H
+	WeaponType_Spear_2H
+	WeaponType_Axe_1H
+	WeaponType_Axe_2H
+	WeaponType_Mace_1H
+	WeaponType_Mace_2H
+	WeaponType_Staff_1H
+	WeaponType_Staff_2H
 	WeaponType_Bow
-	WeaponType_Katar
-	WeaponType_Book
 	WeaponType_Knuckle
-	WeaponType_Instrument
+	WeaponType_Musical
 	WeaponType_Whip
+	WeaponType_Book
+	WeaponType_Katar
 	WeaponType_Gun
 	WeaponType_Huuma_Shuriken
 )
 
 var weaponTypeStringMapping = utils.NewStringMapping(map[WeaponType]string{
-	WeaponType_Bare_Handed:    "bare_handed",
+	WeaponType_Fist:           "fist",
 	WeaponType_Dagger:         "dagger",
 	WeaponType_Sword_1H:       "sword_1h",
 	WeaponType_Sword_2H:       "sword_2h",
-	WeaponType_Spear:          "spear",
-	WeaponType_Spear_Mounted:  "spear_mounted",
-	WeaponType_Axe:            "axe",
-	WeaponType_Mace:           "mace",
-	WeaponType_Rod:            "rod",
+	WeaponType_Spear_1H:       "spear_1h",
+	WeaponType_Spear_2H:       "spear_2h",
+	WeaponType_Axe_1H:         "axe_1h",
+	WeaponType_Axe_2H:         "axe_2h",
+	WeaponType_Mace_1H:        "mace_1h",
+	WeaponType_Mace_2H:        "mace_2h",
+	WeaponType_Staff_1H:       "staff_1h",
+	WeaponType_Staff_2H:       "staff_2h",
 	WeaponType_Bow:            "bow",
-	WeaponType_Katar:          "katar",
-	WeaponType_Book:           "book",
 	WeaponType_Knuckle:        "knuckle",
-	WeaponType_Instrument:     "instrument",
+	WeaponType_Musical:        "musical",
 	WeaponType_Whip:           "whip",
+	WeaponType_Book:           "book",
+	WeaponType_Katar:          "katar",
 	WeaponType_Gun:            "gun",
 	WeaponType_Huuma_Shuriken: "huuma_shuriken",
 })
 
 func ParseWeaponType(str string) (WeaponType, error) {
+	str = strings.ToLower(str)
 	if val, ok := weaponTypeStringMapping.ToValue[str]; ok {
 		return val, nil
 	}
-	return 0, fmt.Errorf("unknown equip slot: %s", str)
+	return 0, fmt.Errorf("unknown WeaponType: %s", str)
 }
 
 func (w WeaponType) Ranged() bool {
-	return w == WeaponType_Bow || w == WeaponType_Gun || w == WeaponType_Instrument || w == WeaponType_Whip
+	return w == WeaponType_Bow || w == WeaponType_Gun || w == WeaponType_Musical || w == WeaponType_Whip
 }
 
 var equipSlotStringMapping = utils.NewStringMapping(map[EquipSlot]string{
@@ -105,7 +113,7 @@ func ParseEquipSlot(str string) (EquipSlot, error) {
 	if val, ok := equipSlotStringMapping.ToValue[str]; ok {
 		return val, nil
 	}
-	return 0, fmt.Errorf("unknown equip slot: %s", str)
+	return 0, fmt.Errorf("unknown EquipSlot: %s", str)
 }
 
 func (s *EquipSlot) Has(flag EquipSlot) bool {

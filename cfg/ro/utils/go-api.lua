@@ -207,23 +207,26 @@ SkillTargetType = {
 }
 
 WeaponType = {
-    Bare_Handed = "bare_handed",
+    Fist = "fist",
     Dagger = "dagger",
     Sword_1H = "sword_1h",
     Sword_2H = "sword_2h",
-    Spear = "spear",
-    Spear_Mounted = "spear_mounted",
-    Axe = "axe",
-    Mace = "mace",
-    Rod = "rod",
+    Spear_1H = "spear_1h",
+    Spear_2H = "spear_2h",
+    Axe_1H = "axe_1h",
+    Axe_2H = "axe_2h",
+    Mace_1H = "mace_1h",
+    Mace_2H = "mace_2h",
+    Staff_1H = "staff_1h",
+    Staff_2H = "staff_2h",
     Bow = "bow",
-    Katar = "katar",
-    Book = "book",
     Knuckle = "knuckle",
-    Instrument = "instrument",
+    Musical = "musical",
     Whip = "whip",
+    Book = "book",
+    Katar = "katar",
     Gun = "gun",
-    Huuma_Shuriken = "huuma_shuriken"
+    Huuma_Shuriken = "huuma_shuriken",
 }
 
 EntityState = {
@@ -249,11 +252,31 @@ Race = {
     Undead = "undead"
 }
 
+JobTier = {
+    Novice = "novice",
+    First = "first",
+    Second = "second",
+}
+
 JobType = {
     Novice = "novice",
-    Transcendent_Novice = "transcendent_novice",
-    First = "first",
-    Transcendent_First = "transcendent_first",
-    Second = "second",
-    Transcendent_Second = "transcendent_second",
+    Swordman = "swordman",
+    Mage = "mage",
+    Archer = "archer",
+    Merchant = "merchant",
+    Thief = "thief",
+    Acolyte = "acolyte",
+    Knight = "knight",
+    Crusader = "crusader",
+    Wizard = "wizard",
+    Sage = "sage",
+    Hunter = "hunter",
+    Bard = "bard",
+    Dancer = "dancer",
+    Blacksmith = "blacksmith",
+    Alchemist = "alchemist",
+    Assassin = "assassin",
+    Rogue = "rogue",
+    Priest = "priest",
+    Monk = "monk"
 }

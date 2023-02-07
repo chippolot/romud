@@ -548,7 +548,7 @@ func performLevelUp(e *Entity, w *World) {
 		nextLevel := e.stats.Get(Stat_Level) + 1
 		e.stats.Set(Stat_Level, nextLevel)
 
-		calculateAndUpdatePlayerStats(e.stats)
+		calculateAndUpdatePlayerStats(e)
 		e.stats.Add(Stat_StatPoints, calculateStatPointsGainedForLevelUp(nextLevel))
 	}
 
@@ -568,20 +568,20 @@ func IsMaxJobLevel(e *Entity) bool {
 	if e.job == nil {
 		return true
 	}
-	jobType := e.job.cfg.JobType
-	return e.stats.Get(Stat_JobLevel) >= len(JobXPLookup[jobType])
+	jobTier := e.job.cfg.JobTier
+	return e.stats.Get(Stat_JobLevel) >= len(JobXPLookup[jobTier])
 }
 
 func GetJobXPForNextJobLevel(e *Entity) int {
 	if e.job == nil {
 		return -1
 	}
-	jobType := e.job.cfg.JobType
+	jobTier := e.job.cfg.JobTier
 	if IsMaxJobLevel(e) {
 		return -1
 	}
 	nextLevel := e.stats.Get(Stat_JobLevel) + 1
-	requiredJobXP := JobXPLookup[jobType][nextLevel] - e.stats.Get(Stat_JobXP)
+	requiredJobXP := JobXPLookup[jobTier][nextLevel] - e.stats.Get(Stat_JobXP)
 	return utils.MaxInt(0, requiredJobXP)
 }
 
@@ -596,9 +596,9 @@ func GetPercentProgressToNextJobLevel(e *Entity) int {
 	if e.job == nil {
 		return 0
 	}
-	jobType := e.job.cfg.JobType
+	jobTier := e.job.cfg.JobTier
 	lvl := e.stats.Get(Stat_JobLevel)
-	return (e.stats.Get(Stat_JobXP) - JobXPLookup[jobType][lvl]) / (JobXPLookup[jobType][lvl+1] - JobXPLookup[jobType][lvl])
+	return (e.stats.Get(Stat_JobXP) - JobXPLookup[jobTier][lvl]) / (JobXPLookup[jobTier][lvl+1] - JobXPLookup[jobTier][lvl])
 }
 
 func applyJobXP(e *Entity, w *World, xp int) int {

@@ -95,8 +95,9 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	lua_BindEnum(L, "SpawnerType", spawnerTypeStringMapping.ToString)
 	lua_BindEnum(L, "EntityState", entityStateStringMapping.ToString)
 	lua_BindEnum(L, "Race", raceStringMapping.ToString)
-	lua_BindEnum(L, "JobType", jobTypeStringMapping.ToString)
+	lua_BindEnum(L, "JobTier", jobTierStringMapping.ToString)
 	lua_BindEnumFlags(L, "EquipSlot", equipSlotStringMapping.ToString)
+	lua_BindEnumFlags(L, "JobType", jobTypeMaskStringMapping.ToString)
 
 	// Fool Lua into thinking that the shim API file has already been loaded
 	if mudConfig.LuaAPIFile != "" {
@@ -450,9 +451,19 @@ func lua_DecodeHook(from reflect.Type, to reflect.Type, data interface{}) (inter
 		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseRace(s) }); err != nil {
 			return nil, err
 		}
-	} else if to == reflect.TypeOf(JobType(0)) {
-		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseJobType(s) }); err != nil {
+	} else if to == reflect.TypeOf(JobTier(0)) {
+		if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseJobTier(s) }); err != nil {
 			return nil, err
+		}
+	} else if to == reflect.TypeOf(JobTypeMask(0)) {
+		if from.Kind() == reflect.String {
+			if data, err = lua_parseString(data, func(s string) (interface{}, error) { return ParseJobTypeMask(s) }); err != nil {
+				return nil, err
+			}
+		} else if from.Kind() == reflect.Slice {
+			if data, err = lua_parseFlagList[JobTypeMask](data, func(s string) (interface{}, error) { return ParseJobTypeMask(s) }); err != nil {
+				return nil, err
+			}
 		}
 	}
 

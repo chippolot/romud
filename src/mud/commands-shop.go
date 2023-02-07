@@ -57,7 +57,7 @@ func DoBuy(e *Entity, w *World, tokens []string) {
 		Write("You'd need %dz but you only have %dz", totalPrice, wealth).ToPlayer(e).Send()
 		return
 	}
-	if totalWeight+e.ItemWeight() > calculateCarryingCapacity(e.stats) {
+	if totalWeight+e.ItemWeight() > calculateCarryingCapacity(e) {
 		Write("You can't carry that much!").ToPlayer(e).Send()
 		return
 	}

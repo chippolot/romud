@@ -219,14 +219,20 @@
     [x] Jobs
         [x] Job XP
         [x] Job leveling
+        [x] Job MaxHP / MaxSP / MaxMov bonuses
 ----------------------------------------
 [] RO
     [] Jobs
         [] Job specific skills
         [] Job specific eq
+            [] Unequip on job change
+        [] Job Aspd
         [] Job stat bonuses
         [] Job tree
         [] Job changing
+        [] Cache Stats
+    [] Items
+        [] Stackable
     [] Ranged Combat
         [] Arrows
     [] Skills

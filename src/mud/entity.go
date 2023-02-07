@@ -153,8 +153,8 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 
 	// Prepare job
 	if e.data.Job != nil {
-		if jobCfg, ok := w.jobConfigs[e.data.Job.Key]; !ok {
-			log.Fatalf("cannot create job. expected job config with key %s", e.data.Job.Key)
+		if jobCfg, ok := w.jobConfigs[e.data.Job.JobType]; !ok {
+			log.Fatalf("cannot create job. expected job config with type %s", e.data.Job.JobType.String())
 		} else {
 			e.job = newJob(jobCfg)
 			e.job.data = e.data.Job
@@ -485,7 +485,7 @@ func (e *Entity) DescribeStatus() string {
 		sb.WriteLinef("Flee95 : %s", Colorize(Color_Stat, e.stats.cfg.Flee95))
 	}
 	sb.WriteNewLine()
-	sb.WriteLinef("Aspd   : %s", Colorize(Color_Stat, calculateAttackSpeed(e.stats)))
+	sb.WriteLinef("Aspd   : %s", Colorize(Color_Stat, calculateAttackSpeed(e)))
 	sb.WriteLinef("Crit   : %s", Colorize(Color_Stat, calculateStatusCritical(e.stats)))
 	sb.WriteNewLine()
 	sb.WriteLinef("Str    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Str)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Str))
@@ -496,7 +496,7 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Luk    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Luk)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Luk))
 	sb.WriteLinef("Stat Pt: %s", Colorize(Color_Stat, e.stats.Get(Stat_StatPoints)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, calculateCarryingCapacity(e.stats)))
+	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, calculateCarryingCapacity(e)))
 	if statuses != "" {
 		sb.WriteNewLine()
 		sb.WriteLinef("Status : %s", statuses)

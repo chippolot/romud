@@ -7,10 +7,10 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-func calculateAndUpdatePlayerStats(s *Stats) {
-	s.Set(Stat_MaxHP, calculateMaxHP(s))
-	s.Set(Stat_MaxSP, calculateMaxSP(s))
-	s.Set(Stat_MaxMov, calculateMaxMov(s))
+func calculateAndUpdatePlayerStats(e *Entity) {
+	e.stats.Set(Stat_MaxHP, calculateMaxHP(e))
+	e.stats.Set(Stat_MaxSP, calculateMaxSP(e))
+	e.stats.Set(Stat_MaxMov, calculateMaxMov(e.stats))
 }
 
 func calculateAndUpdateMonsterStats(s *Stats) {
@@ -36,24 +36,37 @@ func calculateChanceToWander(s *Stats) float64 {
 	return 0
 }
 
-func calculateCarryingCapacity(s *Stats) int {
+func calculateCarryingCapacity(e *Entity) int {
 	// Mechanics: RO Classic
-	str := s.Get(Stat_Str)
-	wgtJob := 0 // TODO: Implement
+	str := e.stats.Get(Stat_Str)
+	wgtJob := 0
 	wgtMod := 0 // TODO: Implement
+	if e.job != nil {
+		wgtJob = e.job.cfg.CarryingCapacityMod
+	}
 	return 2000 + 30*str + wgtJob + wgtMod
 }
 
-func calculateMaxHP(s *Stats) int {
+func calculateMaxHP(e *Entity) int {
 	// Mechanics: RO Classic
-	baseHP := 35 + 5*s.GetFloat(Stat_Level)
-	return int(baseHP * (1 + s.GetFloat(Stat_Vit)*0.1))
+	lvl := e.stats.Get(Stat_Level)
+	baseHP := 35 + 5*lvl
+	if e.job != nil {
+		for i := 2; i <= lvl; i++ {
+			baseHP += int(math.Round(float64(i) * e.job.cfg.MaxHPMod))
+		}
+	}
+	return int(float64(baseHP) * (1 + e.stats.GetFloat(Stat_Vit)*0.1))
 }
 
-func calculateMaxSP(s *Stats) int {
+func calculateMaxSP(e *Entity) int {
 	// Mechanics: RO Classic
-	baseSP := 10 + 2*s.GetFloat(Stat_Level)
-	return int(baseSP * (1.0 + s.GetFloat(Stat_Int)*0.1))
+	jobMod := 0.0
+	if e.job != nil {
+		jobMod = e.job.cfg.MaxSPMod
+	}
+	baseSP := 10 + jobMod*e.stats.GetFloat(Stat_Level)
+	return int(baseSP * (1.0 + e.stats.GetFloat(Stat_Int)*0.1))
 }
 
 func calculateMaxMov(s *Stats) int {
@@ -111,20 +124,27 @@ func calculateCrticialShield(s *Stats) int {
 	return int(s.GetFloat(Stat_Luk) / 5.0)
 }
 
-func calculateAttackSpeed(s *Stats) int {
+func calculateAttackSpeed(e *Entity) int {
 	// Mechanics: RO Classic
-	weaponDelay := 50.0 // TODO: Weapon types
-	speedMod := 0.0     // TODO: Speed mod
-	agi := s.GetFloat(Stat_Agi)
-	dex := s.GetFloat(Stat_Dex)
+	weaponDelay := 50.0
+	if e.job != nil {
+		weaponType := WeaponType_Fist
+		if w, _, ok := e.GetWeapon(); ok {
+			weaponType = w.Type
+		}
+		weaponDelay = float64(e.job.cfg.AspdBase[weaponType])
+	}
+	speedMod := 0.0 // TODO: Speed mod
+	agi := e.stats.GetFloat(Stat_Agi)
+	dex := e.stats.GetFloat(Stat_Dex)
 	aspd := int(200.0 - (weaponDelay-((weaponDelay*agi/25.0)+(weaponDelay*dex/100.0))/10.0)*(1.0-speedMod))
 	// 200 - (1 - ((1/25)+(1/100))/10)
 	return utils.ClampInt(aspd, 0, 190)
 }
 
-func calculateAttacksPerRound(s *Stats) float64 {
+func calculateAttacksPerRound(e *Entity) float64 {
 	// Mechanics: RO Classic
-	aspd := float64(calculateAttackSpeed(s))
+	aspd := float64(calculateAttackSpeed(e))
 	return 50.0 / (200.0 - aspd)
 }
 

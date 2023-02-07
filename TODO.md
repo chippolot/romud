@@ -220,13 +220,13 @@
         [x] Job XP
         [x] Job leveling
         [x] Job MaxHP / MaxSP / MaxMov bonuses
+        [x] Job Aspd
 ----------------------------------------
 [] RO
     [] Jobs
         [] Job specific skills
         [] Job specific eq
             [] Unequip on job change
-        [] Job Aspd
         [] Job stat bonuses
         [] Job tree
         [] Job changing

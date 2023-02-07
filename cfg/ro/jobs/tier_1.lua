@@ -8,7 +8,7 @@ Config.NewJob({
     Skills = {
         "bash",
         "endure",
-        "inc_hp_recovery",
+        "increase_hp_recovery",
         "magnum_break",
         "provoke",
         "sword_mastery",
@@ -64,7 +64,7 @@ Config.NewJob({
         "fire_bolt",
         "fire_wall",
         "frost_driver",
-        "inc_sp_recovery",
+        "increase_sp_recovery",
         "lightning_bolt",
         "napalm_beat",
         "safety_wall",

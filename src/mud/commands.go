@@ -43,6 +43,7 @@ func init() {
 		{DoMove, []string{"east", "west", "north", "south", "up", "down", "e", "w", "n", "s", "u", "d"}, "Moves player between rooms", "north", false, Cnd_Healthy, Pos_Standing},
 		{DoPut, []string{"put", "place"}, "Places an item in a container", "put sword in bag", true, Cnd_Healthy, Pos_Sitting},
 		{DoQuit, []string{"quit"}, "Quits the game", "quit", false, 0, 0},
+		{DoRaiseStat, []string{"raise"}, "Raises a stat point", "raise str", false, Cnd_Healthy, Pos_Sitting},
 		{DoSave, []string{"save"}, "Saves the game", "save", false, Cnd_Healthy, 0},
 		{DoSay, []string{"say"}, "Say something in the current room", "say hi", true, Cnd_Healthy, Pos_Prone},
 		{DoSell, []string{"sell"}, "(When in a shop) Sells a specified item", "sell potion", false, Cnd_Healthy, Pos_Sitting},

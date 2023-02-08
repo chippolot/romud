@@ -138,6 +138,26 @@ func newSkills(data *SkillsData) *Skills {
 	return &Skills{data, nil, 0}
 }
 
+// TODO: Skills: Optimize
+func (s *Skills) KnowsSkill(key string) bool {
+	for _, entry := range s.data.Learned {
+		if entry.Key == key {
+			return true
+		}
+	}
+	return false
+}
+
+// TODO: Skills: Optimize
+func (s *Skills) SkillLevel(key string) int {
+	for _, entry := range s.data.Learned {
+		if entry.Key == key {
+			return entry.Level
+		}
+	}
+	return 0
+}
+
 type CastingList struct {
 	utils.List[*Entity]
 }

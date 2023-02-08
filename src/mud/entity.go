@@ -164,6 +164,7 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 	if e.data.Skills == nil {
 		e.data.Skills = newSkillsData()
 	}
+	e.skills.data = e.data.Skills
 }
 
 func (e *Entity) RoomId() RoomId {

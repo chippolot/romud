@@ -225,6 +225,8 @@
         [x] Job changing
 ----------------------------------------
 [] RO
+    [] Prompt
+        [] Display combat prompt for single enemy attacking you
     [] Skills
         [] Skill cast types
         [] Metamorphasis

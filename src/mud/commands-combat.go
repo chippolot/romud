@@ -40,6 +40,12 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		Write("%s isn't any skill you've ever heard of!", key).ToPlayer(e).Send()
 		return
 	}
+
+	// TODO: Skills: Add mud config option to skip this check
+	if !e.skills.KnowsSkill(key) {
+		Write("You haven't learned that skill!").ToPlayer(e).Send()
+		return
+	}
 	// Get skill target
 	var target *Entity
 	switch skill.TargetType {
@@ -71,6 +77,5 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		}
 	}
 
-	// TODO: Skill: Level
-	performSkill(e, w, target, skill, 1)
+	performSkill(e, w, target, skill, e.skills.SkillLevel(key))
 }

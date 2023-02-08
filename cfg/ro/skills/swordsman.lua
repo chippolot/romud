@@ -9,6 +9,7 @@ Config.NewSkill({
     CastDelay = 1.0,
     SPCost = 8,
     MaxLevel = 10,
+    Job = JobType.Swordman,
     Desc = "Strike a single enemy with significantly more power.",
     Scripts = {
         Cast = function(user, targets, skill, level)
@@ -55,6 +56,7 @@ Config.NewSkill({
     CastDelay = 5.0,
     SPCost = 8,
     MaxLevel = 10,
+    Job = JobType.Swordman,
     Desc = "Strike all enemies in the room with a weapon attack.",
     Scripts = {
         Cast = function(user, targets, skill, level)

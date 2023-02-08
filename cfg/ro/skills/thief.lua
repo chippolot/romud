@@ -8,6 +8,7 @@ Config.NewSkill({
     TargetType = SkillTargetType.Self,
     SPCost = 7,
     MaxLevel = 1,
+    Job = JobType.Theif,
     CastDelays = { 1 },
     Desc = "Instantly slides 5 cells backwards.",
     Scripts = {

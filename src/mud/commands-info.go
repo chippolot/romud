@@ -314,7 +314,7 @@ func DoQuit(e *Entity, w *World, _ []string) {
 }
 
 func listJobSkills(e *Entity, jobCfg *JobConfig, w *World, sb *utils.StringBuilder, header string, includeKnownSkills bool) {
-	for _, skey := range jobCfg.Skills {
+	for skey, _ := range jobCfg.learnableSkills {
 		if includeKnownSkills && e.skills.KnowsSkill(skey) {
 			continue
 		}

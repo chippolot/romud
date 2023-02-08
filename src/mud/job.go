@@ -36,6 +36,7 @@ const (
 	JobType_Priest
 	JobType_Monk
 	JobType_Num
+	JobType_All
 )
 
 type JobTier int
@@ -75,6 +76,7 @@ var jobTypeMaskStringMapping = utils.NewStringMapping(map[JobTypeMask]string{
 	JobType_Rogue:      "rogue",
 	JobType_Priest:     "priest",
 	JobType_Monk:       "monk",
+	JobType_All:        "all",
 })
 
 func ParseJobTypeMask(str string) (JobTypeMask, error) {
@@ -116,12 +118,27 @@ type JobConfig struct {
 	JobType             JobTypeMask
 	JobTier             JobTier
 	Base                JobTypeMask
-	Skills              []string
 	AspdBase            map[WeaponType]int
 	MaxHPMod            float64
 	MaxSPMod            float64
 	CarryingCapacityMod int
 	BonusStats          []JobBonusStat
+
+	baseJob         *JobConfig
+	learnableSkills map[string]bool
+}
+
+func (cfg *JobConfig) Init() {
+	cfg.learnableSkills = make(map[string]bool)
+}
+
+func (cfg *JobConfig) IsJobTypeOrAncestor(jobType JobTypeMask) bool {
+	for iter := cfg; iter != nil; iter = iter.baseJob {
+		if iter.JobType == jobType {
+			return true
+		}
+	}
+	return false
 }
 
 type JobData struct {
@@ -135,4 +152,8 @@ type Job struct {
 
 func newJob(cfg *JobConfig) *Job {
 	return &Job{cfg, &JobData{cfg.JobType}}
+}
+
+func (j *Job) CanLearnSkill(skey string) bool {
+	return j.cfg.learnableSkills[skey]
 }

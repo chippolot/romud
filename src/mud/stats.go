@@ -624,7 +624,6 @@ func performJobLevelUp(e *Entity, w *World) {
 	for IsReadyForJobLevelUp(e) {
 		nextJobLevel := e.stats.Get(Stat_JobLevel) + 1
 		e.stats.Set(Stat_JobLevel, nextJobLevel)
-
 		e.stats.Add(Stat_SkillPoints, 1)
 	}
 

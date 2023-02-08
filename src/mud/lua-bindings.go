@@ -347,6 +347,7 @@ func lua_ConfigNewJob(tbl *lua.LTable) {
 	if err := lua_Mapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
+	cfg.Init()
 
 	lua_W.AddJobConfig(cfg)
 }

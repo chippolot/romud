@@ -87,10 +87,16 @@ type JobsMudConfig struct {
 	IgnoreJobRequirements bool
 }
 
+type SkillsMudConfig struct {
+	IgnoreSkillPreRequirements bool
+	IgnoreSkillJobRequirements bool
+}
+
 type MudConfig struct {
 	ConfigRoot                   string
 	Death                        *DeathMudConfig
 	Jobs                         *JobsMudConfig
+	Skills                       *SkillsMudConfig
 	ItemDropRateMultiplier       float64
 	XPRateMultiplier             float64
 	JobXPRateMultiplier          float64
@@ -105,6 +111,9 @@ func setGlobalConfig(cfg *MudConfig) {
 	}
 	if cfg.Jobs == nil {
 		cfg.Jobs = &JobsMudConfig{}
+	}
+	if cfg.Skills == nil {
+		cfg.Skills = &SkillsMudConfig{}
 	}
 	mudConfig = cfg
 }

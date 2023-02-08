@@ -83,6 +83,7 @@ type SkillConfig struct {
 	CastDelays []utils.Seconds
 	SPCosts    []int
 	MaxLevel   int
+	Job        JobTypeMask
 	PreReqs    *SkillPreReqs
 	Desc       string
 	scripts    *SkillScripts
@@ -163,6 +164,11 @@ func (s *Skills) KnowsSkill(key string) bool {
 func (s *Skills) SkillLevel(key string) int {
 	lvl := s.lookup[key]
 	return lvl
+}
+
+func (s *Skills) Learn(key string) {
+	s.data.Learned = append(s.data.Learned, &LearnedSkill{Key: key, Level: 1})
+	s.lookup[key] = 1
 }
 
 type CastingList struct {

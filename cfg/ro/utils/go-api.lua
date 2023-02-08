@@ -278,5 +278,6 @@ JobType = {
     Assassin = "assassin",
     Rogue = "rogue",
     Priest = "priest",
-    Monk = "monk"
+    Monk = "monk",
+    All = "all"
 }

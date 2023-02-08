@@ -15,6 +15,7 @@ Config.NewSkill({
     CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
     SPCosts = { 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 },
     MaxLevel = 10,
+    Job = JobType.Mage,
     Desc = "Hits the targeted enemy with 1 Water Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
         Activated = function(user)
@@ -44,6 +45,7 @@ Config.NewSkill({
     CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
     SPCosts = { 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 },
     MaxLevel = 10,
+    Job = JobType.Mage,
     Desc = "Hits the targeted enemy with 1 Fire Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
         Activated = function(user)
@@ -73,6 +75,7 @@ Config.NewSkill({
     CastDelays = { 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 },
     SPCosts = { 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 },
     MaxLevel = 10,
+    Job = JobType.Mage,
     Desc = "Hits the targeted enemy with 1 Wind Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
         Activated = function(user)
@@ -102,6 +105,7 @@ Config.NewSkill({
     CastDelays = { 1, 1, 1, 0.9, 0.9, 0.8, 0.8, 0.7, 0.6, 0.5 },
     SPCosts = { 9, 9, 9, 12, 12, 12, 15, 15, 15, 18 },
     MaxLevel = 10,
+    Job = JobType.Mage,
     Desc = "Hits every Enemy in a 3x3 area around the target for an MATK of (70+10*SkillLV)% using Ghost Element. This damage is spread equally between all targets. For example, if 3 monsters are hit, then each takes 1/3rd of the damage a single target would take.",
     Scripts = {
         Activated = function(user)

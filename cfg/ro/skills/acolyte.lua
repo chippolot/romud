@@ -10,6 +10,7 @@ Config.NewSkill({
     CastDelays = { 1 },
     SPCosts = { 13, 16, 19, 22, 25, 28, 31, 34, 37, 40 },
     MaxLevel = 10,
+    Job = JobType.Acolyte,
     Desc = "Heals a target's HP for [(BaseLV+INT)/8]*(4+8*SkillLV). When used against Undead property monsters, it is a holy attack that ignores MDEF and INT, but deals only half damage (that is, HealValue*ElementModifier/2).",
     Scripts = {
         Activated = function(user)

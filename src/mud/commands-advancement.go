@@ -1,6 +1,8 @@
 package mud
 
-import "strings"
+import (
+	"strings"
+)
 
 func DoRaiseStat(e *Entity, w *World, tokens []string) {
 	numtoks := len(tokens)
@@ -89,6 +91,58 @@ func DoChangeJob(e *Entity, w *World, tokens []string) {
 
 	Write("You have been promoted to a %s!", job.Name).ToPlayer(e).Colorized(Color_PositiveBld).Send()
 	Write("Hooray! %s has been promoted to a %s", e.GetName(), job.Name).ToEntityRoom(w, e).Ignore(e).Send()
+
+	if e.player != nil {
+		e.player.saveRequested = true
+	}
+}
+
+func DoLearnSkill(e *Entity, w *World, tokens []string) {
+	if e.job == nil {
+		Write("You need a job to learn skills!").ToPlayer(e).Send()
+		return
+	}
+
+	numtoks := len(tokens)
+	if numtoks == 0 || numtoks == 1 {
+		Write("Which skill do you want to learn?").ToPlayer(e).Send()
+		return
+	}
+
+	skey := strings.ToLower(tokens[1])
+	skill, ok := w.TryGetSkillConfig(skey)
+	if !ok {
+		Write("That's not a skill!").ToPlayer(e).Send()
+		return
+	}
+
+	if e.skills.KnowsSkill(skill.Key) {
+		Write("You've already learned %s!", skill.Name).ToPlayer(e).Send()
+		return
+	}
+
+	if e.stats.Get(Stat_SkillPoints) < 1 {
+		Write("You've need a skill point to learn %s!", skill.Name).ToPlayer(e).Send()
+		return
+	}
+
+	if !mudConfig.Skills.IgnoreSkillPreRequirements && skill.PreReqs != nil {
+		if e.skills.SkillLevel(skill.PreReqs.Key) < skill.PreReqs.Level {
+			preReqSkill, _ := w.TryGetSkillConfig(skill.PreReqs.Key)
+			Write("Learning %s requires that you know %s Lv.%d", skill.Name, preReqSkill.Name, skill.PreReqs.Level).ToPlayer(e).Send()
+			return
+		}
+	}
+
+	// TODO: Skills: Expose elsewhere
+	if !e.job.CanLearnSkill(skill.Key) {
+		Write("%ss cannot learn %s!", e.job.cfg.Name, skill.Name).ToPlayer(e).Send()
+		return
+	}
+
+	// Learn Skill
+	e.skills.Learn(skill.Key)
+	Write("You learn %s!", skill.Name).ToPlayer(e).Colorized(Color_PositiveBld).Send()
 
 	if e.player != nil {
 		e.player.saveRequested = true

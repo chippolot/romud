@@ -63,9 +63,50 @@ func LoadAssets(w *World, projectRoot string) {
 	log.Printf("loaded %d skills", len(w.skillConfigs))
 	log.Printf("loaded %d jobs", len(w.jobConfigs))
 
-	// Prepare shops
+	// Prepare shop configs
 	for _, shop := range w.shops {
 		shop.Init(w)
+	}
+
+	// Prepare job configs
+	for _, cfg := range w.jobConfigs {
+		// Link base job
+		if cfg.Base != 0 {
+			if baseJob, ok := w.TryGetJobConfig(cfg.Base); ok {
+				cfg.baseJob = baseJob
+			} else {
+				log.Panicf("unknown base job key '%v' configured on job '%s'", cfg.Base, cfg.Name)
+				return
+			}
+		}
+	}
+
+	// Prepare skill configs
+	for _, cfg := range w.skillConfigs {
+		// NPC jobs
+		if cfg.Job == 0 {
+			continue
+		}
+
+		// All jobs
+		if cfg.Job == JobType_All {
+			for _, jcfg := range w.jobConfigs {
+				jcfg.learnableSkills[cfg.Key] = true
+			}
+			continue
+		}
+
+		// Specific jobs
+		_, ok := w.TryGetJobConfig(cfg.Job)
+		if !ok {
+			log.Panicf("unknown job key '%s' configured on skill '%s'", cfg.Job.String(), cfg.Name)
+			return
+		}
+		for _, jcfg2 := range w.jobConfigs {
+			if jcfg2.IsJobTypeOrAncestor(cfg.Job) {
+				jcfg2.learnableSkills[cfg.Key] = true
+			}
+		}
 	}
 }
 

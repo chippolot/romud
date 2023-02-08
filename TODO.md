@@ -228,10 +228,13 @@
     [] Prompt
         [] Display combat prompt for single enemy attacking you
     [] Skills
+        [] List Skills
+            [] List skills for current and all previous jobs
+        [] Learn Skills
+        [] Upgrade skills
         [] Skill cast types
         [] Metamorphasis
         [] SPCost num or func
-        [] Upgrade skills
         [] Cast skills at level
     [] Jobs
         [] Job specific skills

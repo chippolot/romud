@@ -8,6 +8,7 @@ Config.NewSkill({
     TargetType = SkillTargetType.Self,
     SPCost = 3,
     MaxLevel = 1,
+    Job = JobType.All,
     Desc = "Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.",
     Scripts = {
         Cast = function(user, _, _, _)

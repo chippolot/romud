@@ -214,6 +214,62 @@ func DoListJobs(e *Entity, w *World, tokens []string) {
 	}
 }
 
+func DoListSkills(e *Entity, w *World, tokens []string) {
+	var sb utils.StringBuilder
+
+	// TODO: Skills: List skills for specific job
+	// TODO: Skills: List skill descriptions
+
+	// List skills that player has learned
+	var needsNewLine bool
+	for _, skill := range e.skills.data.Learned {
+		lvlStr := "* MAX *"
+		if skill.Level < skill.cfg.MaxLevel {
+			lvlStr = fmt.Sprintf("%d/%d", skill.Level, skill.cfg.MaxLevel)
+		}
+		sb.WriteLinef("%-20s%-20s", skill.cfg.Name, lvlStr)
+	}
+	if sb.Len() > 0 {
+		Write("Known Skills").ToPlayer(e).Send()
+		Write(utils.HorizontalDivider).ToPlayer(e).Send()
+		Write("%-20s%-20s", "Skill", "Level").ToPlayer(e).Send()
+		Write(utils.HorizontalDivider).ToPlayer(e).Send()
+		Write(sb.String()).ToPlayer(e).Send()
+		sb.Reset()
+		needsNewLine = true
+	}
+
+	// List skills that player can learn
+	if e.job != nil {
+		for _, skey := range e.job.cfg.Skills {
+			if e.skills.KnowsSkill(skey) {
+				continue
+			}
+			skill, _ := w.TryGetSkillConfig(skey)
+			if skill == nil {
+				continue
+			}
+			reqsStr := ""
+			if skill.PreReqs != nil {
+				prereqSkill, _ := w.TryGetSkillConfig(skill.PreReqs.Key)
+				reqsStr = fmt.Sprintf("%s Lv.%d", prereqSkill.Name, skill.PreReqs.Level)
+			}
+			sb.WriteLinef("%-20s%-20s", skill.Name, reqsStr)
+		}
+	}
+	if sb.Len() > 0 {
+		if needsNewLine {
+			Write("").ToPlayer(e).Send()
+		}
+		Write("Learnable Skills").ToPlayer(e).Send()
+		Write(utils.HorizontalDivider).ToPlayer(e).Send()
+		Write("%-20s%-20s", "Skill", "Reqs").ToPlayer(e).Send()
+		Write(utils.HorizontalDivider).ToPlayer(e).Send()
+		Write(sb.String()).ToPlayer(e).Send()
+		sb.Reset()
+	}
+}
+
 func DoAlias(e *Entity, _ *World, tokens []string) {
 	if e.player == nil {
 		return

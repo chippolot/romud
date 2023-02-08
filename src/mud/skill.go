@@ -68,6 +68,11 @@ func (s *SkillTargetType) String() string {
 	return "unknown"
 }
 
+type SkillPreReqs struct {
+	Key   string
+	Level int
+}
+
 type SkillConfig struct {
 	Key        string
 	Name       string
@@ -78,6 +83,7 @@ type SkillConfig struct {
 	CastDelays []utils.Seconds
 	SPCosts    []int
 	MaxLevel   int
+	PreReqs    *SkillPreReqs
 	Desc       string
 	scripts    *SkillScripts
 }
@@ -118,6 +124,7 @@ func (cfg *SkillConfig) CastDelay(level int) utils.Seconds {
 type LearnedSkill struct {
 	Key   string
 	Level int
+	cfg   *SkillConfig
 }
 
 type SkillsData struct {
@@ -129,33 +136,33 @@ func newSkillsData() *SkillsData {
 }
 
 type Skills struct {
-	data          *SkillsData   // Persisted skills data
-	casting       *CastingData  // If casting a skill, data about skill being cast
-	coldownExpiry utils.Seconds // Amount of time the entity must wait before using another skill
+	data          *SkillsData    // Persisted skills data
+	casting       *CastingData   // If casting a skill, data about skill being cast
+	coldownExpiry utils.Seconds  // Amount of time the entity must wait before using another skill
+	lookup        map[string]int // Lookup of learned skills key -> level
 }
 
 func newSkills(data *SkillsData) *Skills {
-	return &Skills{data, nil, 0}
+	s := &Skills{data, nil, 0, make(map[string]int)}
+	s.SetData(data)
+	return s
 }
 
-// TODO: Skills: Optimize
+func (s *Skills) SetData(data *SkillsData) {
+	s.data = data
+	for _, ls := range data.Learned {
+		s.lookup[ls.Key] = ls.Level
+	}
+}
+
 func (s *Skills) KnowsSkill(key string) bool {
-	for _, entry := range s.data.Learned {
-		if entry.Key == key {
-			return true
-		}
-	}
-	return false
+	_, ok := s.lookup[key]
+	return ok
 }
 
-// TODO: Skills: Optimize
 func (s *Skills) SkillLevel(key string) int {
-	for _, entry := range s.data.Learned {
-		if entry.Key == key {
-			return entry.Level
-		}
-	}
-	return 0
+	lvl := s.lookup[key]
+	return lvl
 }
 
 type CastingList struct {

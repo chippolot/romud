@@ -70,6 +70,10 @@ type EntityData struct {
 	Statuses  StatusDataMap    `json:",omitempty"`
 }
 
+func newEntityData(cfg *EntityConfig) *EntityData {
+	return &EntityData{cfg.Key, InvalidId, nil, newSkillsData(), newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
+}
+
 type EntityContainer interface {
 	AddEntity(entity *Entity)
 	SearchEntities(query SearchQuery) []*Entity
@@ -101,10 +105,6 @@ func NewEntity(cfg *EntityConfig) *Entity {
 	eid := entityIdCounter
 	data := newEntityData(cfg)
 	return &Entity{eid, cfg, data, nil, nil, newSkills(data.Skills), newStats(cfg.Stats, data.Stats), nil, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
-}
-
-func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, nil, nil, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
 }
 
 func (e *Entity) SetData(data *EntityData, w *World) {
@@ -160,11 +160,14 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 		}
 	}
 
-	// Prepare skils
+	// Prepare skills
 	if e.data.Skills == nil {
 		e.data.Skills = newSkillsData()
 	}
-	e.skills.data = e.data.Skills
+	e.skills.SetData(e.data.Skills)
+	for _, ls := range e.skills.data.Learned {
+		ls.cfg, _ = w.TryGetSkillConfig(ls.Key)
+	}
 }
 
 func (e *Entity) RoomId() RoomId {

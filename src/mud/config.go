@@ -28,7 +28,7 @@ type EntityTypeDeathConfig struct {
 	Items   ItemsOnDeath
 }
 
-type DeathConfig struct {
+type DeathMudConfig struct {
 	Mode     DeathMode
 	Players  *EntityTypeDeathConfig
 	Monsters *EntityTypeDeathConfig
@@ -83,9 +83,14 @@ func (d *ItemsOnDeath) UnmarshalJSON(data []byte) (err error) {
 	}
 }
 
+type JobsMudConfig struct {
+	IgnoreJobRequirements bool
+}
+
 type MudConfig struct {
 	ConfigRoot                   string
-	Death                        *DeathConfig
+	Death                        *DeathMudConfig
+	Jobs                         *JobsMudConfig
 	ItemDropRateMultiplier       float64
 	XPRateMultiplier             float64
 	JobXPRateMultiplier          float64
@@ -95,5 +100,11 @@ type MudConfig struct {
 }
 
 func setGlobalConfig(cfg *MudConfig) {
+	if cfg.Death == nil {
+		cfg.Death = &DeathMudConfig{}
+	}
+	if cfg.Jobs == nil {
+		cfg.Jobs = &JobsMudConfig{}
+	}
 	mudConfig = cfg
 }

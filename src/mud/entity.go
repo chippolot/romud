@@ -449,8 +449,10 @@ func (e *Entity) DescribeStatus() string {
 	if e.job != nil {
 		sb.WriteNewLine()
 		sb.WriteLinef("Job    : %s", e.job.cfg.Name)
-		sb.WriteLinef("JobLV  : %s", Colorize(Color_Stat, e.stats.Get(Stat_JobLevel)))
-		if !IsMaxLevel(e) {
+		if IsMaxJobLevel(e) {
+			sb.WriteLinef("JobLV  : %s", Colorize(Color_Stat, "* MAX *"))
+		} else {
+			sb.WriteLinef("JobLV  : %s", Colorize(Color_Stat, e.stats.Get(Stat_JobLevel)))
 			sb.WriteLinef("Next   : %s XP", Colorize(Color_Stat, GetJobXPForNextJobLevel(e)))
 		}
 		sb.WriteLinef("Skl Pt : %s", Colorize(Color_Stat, e.stats.Get(Stat_SkillPoints)))

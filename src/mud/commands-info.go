@@ -108,6 +108,7 @@ func DoStatus(e *Entity, w *World, tokens []string) {
 	numtoks := len(tokens)
 	if numtoks < 2 {
 		Write(e.DescribeStatus()).ToPlayer(e).Send()
+		return
 	}
 
 	// TODO: Make admin only
@@ -193,7 +194,7 @@ func DoListJobs(e *Entity, w *World, tokens []string) {
 				lvlReq = 40
 			}
 			if curJobLvl >= lvlReq {
-				requirement = "*Ready*"
+				requirement = "* Ready *"
 			} else {
 				requirement = fmt.Sprintf("%-9s Lv.%d", baseJob.Name, lvlReq)
 			}
@@ -259,7 +260,9 @@ func DoUnalias(e *Entity, _ *World, tokens []string) {
 }
 
 func DoSave(e *Entity, w *World, _ []string) {
-	w.SavePlayerCharacter(e.player.id)
+	if e.player != nil {
+		e.player.saveRequested = true
+	}
 	Write("Saved game.").ToPlayer(e).Send()
 }
 

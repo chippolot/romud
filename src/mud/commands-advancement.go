@@ -1,5 +1,7 @@
 package mud
 
+import "strings"
+
 func DoRaiseStat(e *Entity, w *World, tokens []string) {
 	numtoks := len(tokens)
 	if numtoks == 0 || numtoks == 1 {
@@ -7,7 +9,8 @@ func DoRaiseStat(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	stat, err := ParseStatType(tokens[1])
+	statStr := strings.ToLower(tokens[1])
+	stat, err := ParseStatType(statStr)
 	if err != nil {
 		Write("That's not a stat type!").ToPlayer(e).Send()
 		return
@@ -27,7 +30,7 @@ func DoRaiseStat(e *Entity, w *World, tokens []string) {
 	Write("Raised %s from %d -> %d!", stat.String(), oldValue, oldValue+1).ToPlayer(e).Send()
 
 	if e.player != nil {
-		w.SavePlayerCharacter(e.player.id)
+		e.player.saveRequested = true
 	}
 }
 
@@ -43,36 +46,39 @@ func DoChangeJob(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	jobType, err := ParseJobTypeMask(tokens[1])
+	jobTypeStr := strings.ToLower(tokens[1])
+	jobType, err := ParseJobTypeMask(jobTypeStr)
 	if err != nil {
 		Write("That's not a job type!").ToPlayer(e).Send()
 		return
 	}
-
 	job, _ := w.TryGetJobConfig(jobType)
-	if job.Base == 0 {
-		Write("You can't promote to a %s!", jobType.String()).ToPlayer(e).Send()
-		return
-	}
 
-	curJobLvl := e.stats.Get(Stat_JobLevel)
-	curTier := e.job.cfg.JobTier
-	curType := e.job.cfg.JobType
+	if !mudConfig.Jobs.IgnoreJobRequirements {
+		if job.Base == 0 {
+			Write("You can't promote to a %s!", jobType.String()).ToPlayer(e).Send()
+			return
+		}
 
-	baseJob, _ := w.TryGetJobConfig(job.Base)
-	if job.Base != curType {
-		Write("You need to be a %s to be promoted to a %s!", baseJob.Name, job.Name).ToPlayer(e).Send()
-		return
-	}
+		curJobLvl := e.stats.Get(Stat_JobLevel)
+		curTier := e.job.cfg.JobTier
+		curType := e.job.cfg.JobType
 
-	// TODO: Job: Make constant
-	requiredLvl := 10
-	if curTier == JobTier_First {
-		requiredLvl = 40
-	}
-	if curJobLvl < requiredLvl {
-		Write("You need to be job level %d to be promoted to a %s!", requiredLvl, job.Name).ToPlayer(e).Send()
-		return
+		baseJob, _ := w.TryGetJobConfig(job.Base)
+		if job.Base != curType {
+			Write("You need to be a %s to be promoted to a %s!", baseJob.Name, job.Name).ToPlayer(e).Send()
+			return
+		}
+
+		// TODO: Job: Make constant
+		requiredLvl := 10
+		if curTier == JobTier_First {
+			requiredLvl = 40
+		}
+		if curJobLvl < requiredLvl {
+			Write("You need to be job level %d to be promoted to a %s!", requiredLvl, job.Name).ToPlayer(e).Send()
+			return
+		}
 	}
 
 	// Change jobs
@@ -85,6 +91,6 @@ func DoChangeJob(e *Entity, w *World, tokens []string) {
 	Write("Hooray! %s has been promoted to a %s", e.GetName(), job.Name).ToEntityRoom(w, e).Ignore(e).Send()
 
 	if e.player != nil {
-		w.SavePlayerCharacter(e.player.id)
+		e.player.saveRequested = true
 	}
 }

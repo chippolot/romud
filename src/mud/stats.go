@@ -497,7 +497,7 @@ func (c Condition) InactionString() string {
 }
 
 func IsMaxLevel(e *Entity) bool {
-	return e.stats.Get(Stat_Level) >= len(XPLookup)
+	return e.stats.Get(Stat_Level) >= len(XPLookup)-1
 }
 
 func GetXPForNextLevel(e *Entity) int {
@@ -569,7 +569,7 @@ func IsMaxJobLevel(e *Entity) bool {
 		return true
 	}
 	jobTier := e.job.cfg.JobTier
-	return e.stats.Get(Stat_JobLevel) >= len(JobXPLookup[jobTier])
+	return e.stats.Get(Stat_JobLevel) >= len(JobXPLookup[jobTier])-1
 }
 
 func GetJobXPForNextJobLevel(e *Entity) int {

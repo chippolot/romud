@@ -198,6 +198,10 @@
         [x] Water Attribute Attack
         [x] Whirlwind
             [x] Fix
+        [x] List Skills
+            [x] List skills for current and all previous jobs
+        [x] Learn Skills
+        [x] Upgrade skills
     [x] Magic
         [x] Use MATK for magic spells
         [x] Stats Screen
@@ -223,30 +227,23 @@
         [x] Job Aspd
         [x] Job tree
         [x] Job changing
+    [x] Prompt
+        [x] Display combat prompt for single enemy attacking you
 ----------------------------------------
 [] RO
-    [] Prompt
-        [] Display combat prompt for single enemy attacking you
-    [] Skills
-        [] List Skills
-            [] List skills for current and all previous jobs
-        [] Learn Skills
-        [] Upgrade skills
-        [] Skill cast types
-        [] Metamorphasis
-        [] SPCost num or func
-        [] Cast skills at level
     [] Jobs
         [] Job specific skills
         [] Job specific eq
             [] Unequip on job change
         [] Job stat bonuses
-        [] Cache Stats
+    [] Skills
+        [] Skill cast types
+        [] Metamorphasis
+    [] Items
+        [] Stackable
     [] Content
         [] Create stub Prontera w/ shop
         [] Flesh out Prontera Fields
-    [] Items
-        [] Stackable
     [] Ranged Combat
         [] Arrows
     [] Quick slot

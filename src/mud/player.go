@@ -55,6 +55,7 @@ func (p *Player) SendRaw(bytes []byte) {
 
 type PlayerPromptProvider struct {
 	character *Entity
+	world     *World
 }
 
 func (pp *PlayerPromptProvider) Prompt() string {
@@ -65,9 +66,18 @@ func (pp *PlayerPromptProvider) Prompt() string {
 	sb.WriteLinef("<%s> ", Colorize(Color_Prompt, fmt.Sprintf("%dhp %dsp %dmv | %d%%xp %d%%jp %dz", stats.Get(Stat_HP), stats.Get(Stat_SP), stats.Get(Stat_Mov), GetPercentProgressToNextLevel(pp.character), GetPercentProgressToNextJobLevel(pp.character), stats.Get(Stat_Gold))))
 
 	// Combat prompt
-	if pp.character.combat != nil {
-		target := pp.character.combat.target
-		dist := pp.character.combat.distance
+	combat := pp.character.combat
+	if combat == nil {
+		targetingPlayer := pp.world.inCombat.FindFirst(func(e *Entity) bool {
+			return e.combat != nil && e.combat.target == pp.character
+		})
+		if targetingPlayer != nil {
+			combat = targetingPlayer.combat
+		}
+	}
+	if combat != nil {
+		target := combat.target
+		dist := combat.distance
 		if target.combat != nil && target.combat.target == pp.character {
 			dist = target.combat.distance
 		}

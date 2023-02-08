@@ -36,6 +36,16 @@ func (l *List[T]) Contains(value T) bool {
 	return false
 }
 
+func (l *List[T]) FindFirst(pred func(T) bool) T {
+	for i := l.Head; i != nil; i = i.Next {
+		if pred(i.Value) {
+			return i.Value
+		}
+	}
+	var none T
+	return none
+}
+
 func (l *List[T]) Remove(value T) {
 	var prev *Node[T]
 	for i := l.Head; i != nil; i = i.Next {

@@ -64,6 +64,10 @@ func (cfg *ItemConfig) GetNamePluralized(count int, includeCount bool) string {
 	return cfg.NamePlural
 }
 
+func (cfg *ItemConfig) Stackable() bool {
+	return !cfg.Flags.Has(IFlag_Container) && cfg.Equipment == nil
+}
+
 type Ownership struct {
 	OwnerId EntityId
 	Until   time.Time

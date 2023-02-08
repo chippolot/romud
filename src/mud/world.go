@@ -85,7 +85,7 @@ func (w *World) CreatePlayerCharacter(name string, pass string, player *Player) 
 		e.job = newJob(jobCfg)
 		e.data.Job = e.job.data
 	}
-	calculateAndUpdatePlayerStats(e)
+	calculateAndUpdateStats(e)
 	e.stats.Set(Stat_HP, e.stats.Get(Stat_MaxHP))
 	e.stats.Set(Stat_SP, e.stats.Get(Stat_MaxSP))
 	e.stats.Set(Stat_Mov, e.stats.Get(Stat_MaxMov))

@@ -92,11 +92,14 @@ func (s *ZoneSpawner) Spawn(z *Zone, w *World) {
 
 func spawnEntityByKey(key string, w *World, roomId RoomId) *Entity {
 	if cfg, ok := lua_W.TryGetEntityConfig(key); ok {
-		ent := NewEntity(cfg)
-		calculateAndUpdateMonsterStats(ent.stats)
-		w.AddEntity(ent, roomId)
-		Write("%s appears", ObservableNameCap(ent)).ToEntityRoom(w, ent).Subject(ent).Send()
-		return ent
+		e := NewEntity(cfg)
+
+		calculateAndUpdateStats(e)
+		e.stats.Set(Stat_Mov, e.stats.Get(Stat_MaxMov))
+
+		w.AddEntity(e, roomId)
+		Write("%s appears", ObservableNameCap(e)).ToEntityRoom(w, e).Subject(e).Send()
+		return e
 	}
 	log.Printf("Failed to spawn entity: %s", key)
 	return nil

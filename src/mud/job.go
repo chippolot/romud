@@ -10,11 +10,8 @@ import (
 
 const (
 	JobTier_Novice JobTier = iota
-	JobTier_Transcendent_Novice
 	JobTier_First
-	JobTier_Transcendent_First
 	JobTier_Second
-	JobTier_Transcendent_Second
 )
 
 const (
@@ -38,6 +35,7 @@ const (
 	JobType_Rogue
 	JobType_Priest
 	JobType_Monk
+	JobType_Num
 )
 
 type JobTier int
@@ -117,6 +115,7 @@ type JobConfig struct {
 	Name                string
 	JobType             JobTypeMask
 	JobTier             JobTier
+	Base                JobTypeMask
 	Skills              []string
 	AspdBase            map[WeaponType]int
 	MaxHPMod            float64

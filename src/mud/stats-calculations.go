@@ -7,15 +7,14 @@ import (
 	"github.com/chippolot/go-mud/src/utils"
 )
 
-func calculateAndUpdatePlayerStats(e *Entity) {
-	e.stats.Set(Stat_MaxHP, calculateMaxHP(e))
-	e.stats.Set(Stat_MaxSP, calculateMaxSP(e))
-	e.stats.Set(Stat_MaxMov, calculateMaxMov(e.stats))
-}
-
-func calculateAndUpdateMonsterStats(s *Stats) {
-	s.Set(Stat_MaxMov, calculateMaxMov(s))
-	s.Set(Stat_Mov, s.Get(Stat_MaxMov))
+func calculateAndUpdateStats(e *Entity) {
+	if e.player != nil {
+		e.stats.Set(Stat_MaxHP, calculateMaxHP(e))
+		e.stats.Set(Stat_MaxSP, calculateMaxSP(e))
+		e.stats.Set(Stat_MaxMov, calculateMaxMov(e.stats))
+	} else {
+		e.stats.Set(Stat_MaxMov, calculateMaxMov(e.stats))
+	}
 }
 
 func calculateChanceToWander(s *Stats) float64 {

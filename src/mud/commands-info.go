@@ -156,6 +156,63 @@ func DoListCommands(e *Entity, _ *World, _ []string) {
 	Write(sb.String()).ToPlayer(e).Send()
 }
 
+func DoListJobs(e *Entity, w *World, tokens []string) {
+	if e.job == nil {
+		Write("You are forever jobless!").ToPlayer(e).Send()
+		return
+	}
+
+	curJobLvl := e.stats.Get(Stat_JobLevel)
+	curTier := e.job.cfg.JobTier
+	curType := e.job.cfg.JobType
+
+	var sb utils.StringBuilder
+	for i := 0; ; i++ {
+		jobType := JobTypeMask(1 << i)
+		if jobType == JobType_Num {
+			break
+		}
+
+		// Skip job types which the player can't possibly be promoted to
+		cfg, _ := w.TryGetJobConfig(jobType)
+		if cfg.JobTier <= curTier {
+			continue
+		}
+
+		// Don't show future jobs on different job path
+		if curTier == JobTier_First && cfg.Base != curType {
+			continue
+		}
+
+		// Determine job requirements
+		requirement := "None"
+		if cfg.Base != 0 {
+			baseJob, _ := w.TryGetJobConfig(cfg.Base)
+			lvlReq := 10
+			if baseJob.JobTier == JobTier_First {
+				lvlReq = 40
+			}
+			if curJobLvl >= lvlReq {
+				requirement = "*Ready*"
+			} else {
+				requirement = fmt.Sprintf("%-9s Lv.%d", baseJob.Name, lvlReq)
+			}
+		}
+
+		// Create row
+		sb.WriteLinef("%-20s%-20s", cfg.Name, requirement)
+	}
+
+	if sb.Len() > 0 {
+		Write("%-20s%-20s", "Job", "Requirement").ToPlayer(e).Send()
+		Write(utils.HorizontalDivider).ToPlayer(e).Send()
+		Write(sb.String()).ToPlayer(e).Send()
+	} else {
+		Write("There are no further jobs you can be promoted to!").ToPlayer(e).Send()
+		return
+	}
+}
+
 func DoAlias(e *Entity, _ *World, tokens []string) {
 	if e.player == nil {
 		return

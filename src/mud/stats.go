@@ -548,7 +548,7 @@ func performLevelUp(e *Entity, w *World) {
 		nextLevel := e.stats.Get(Stat_Level) + 1
 		e.stats.Set(Stat_Level, nextLevel)
 
-		calculateAndUpdatePlayerStats(e)
+		calculateAndUpdateStats(e)
 		e.stats.Add(Stat_StatPoints, calculateStatPointsGainedForLevelUp(nextLevel))
 	}
 

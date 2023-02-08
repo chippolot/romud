@@ -155,13 +155,13 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 	// TODO: Skill: Confirm player knows skill
 
 	// Cooldown check
-	if w.time < e.skillCooldownExpiry {
+	if w.time < e.skills.coldownExpiry {
 		Write("You can't use another skill yet!").ToPlayer(e).Send()
 		return
 	}
 
 	// Already casting something
-	if e.casting != nil {
+	if e.skills.casting != nil {
 		Write("You're kind of busy casting something else!").ToPlayer(e).Send()
 		return
 	}
@@ -205,7 +205,7 @@ func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level in
 }
 
 func interruptSkill(e *Entity, w *World) {
-	if e.casting == nil {
+	if e.skills.casting == nil {
 		return
 	}
 	w.casting.EndCasting(e)
@@ -414,7 +414,7 @@ func applyDamage(tgt *Entity, w *World, from *Entity, dam int, damCtx DamageCont
 	tgt.stats.Add(Stat_HP, -dam)
 	if dam > 0 {
 		tgt.tookDamage = true
-		if tgt.casting != nil {
+		if tgt.skills.casting != nil {
 			interruptSkill(tgt, w)
 		}
 	}
@@ -563,7 +563,7 @@ func tryTriggerCombatSkill(e *Entity, w *World, tgt *Entity) bool {
 	}
 
 	// On skill cooldown
-	if w.time < e.skillCooldownExpiry {
+	if w.time < e.skills.coldownExpiry {
 		return false
 	}
 

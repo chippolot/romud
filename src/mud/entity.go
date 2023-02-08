@@ -63,6 +63,7 @@ type EntityData struct {
 	Key       string
 	RoomId    RoomId           `json:",omitempty"`
 	Job       *JobData         `json:",omitempty"`
+	Skills    *SkillsData      `json:",omitempty"`
 	Stats     StatMap          `json:",omitempty"`
 	Inventory []*ItemData      `json:",omitempty"`
 	Equipped  EquipmentDataMap `json:",omitempty"`
@@ -79,32 +80,31 @@ type EntityContainer interface {
 type EntityList []*Entity
 
 type Entity struct {
-	id                  EntityId
-	cfg                 *EntityConfig
-	data                *EntityData
-	player              *Player
-	job                 *Job
-	stats               *Stats
-	combat              *CombatData   // If in combat, data about current encounter
-	casting             *CastingData  // If casting a skill, data about skill being cast
-	skillCooldownExpiry utils.Seconds // Amount of time the entity must wait before using another skill
-	tookDamage          bool
-	position            Position
-	inventory           ItemList
-	equipped            map[EquipSlot]*Item
-	entityFlags         EntityFlagMask
-	statusEffects       *StatusEffects
+	id            EntityId
+	cfg           *EntityConfig
+	data          *EntityData
+	player        *Player
+	job           *Job    // Data about current job class
+	skills        *Skills // Data about learned skills and skill usage
+	stats         *Stats
+	combat        *CombatData // If in combat, data about current encounter
+	tookDamage    bool
+	position      Position
+	inventory     ItemList
+	equipped      map[EquipSlot]*Item
+	entityFlags   EntityFlagMask
+	statusEffects *StatusEffects
 }
 
 func NewEntity(cfg *EntityConfig) *Entity {
 	entityIdCounter++
 	eid := entityIdCounter
 	data := newEntityData(cfg)
-	return &Entity{eid, cfg, data, nil, nil, newStats(cfg.Stats, data.Stats), nil, nil, 0, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
+	return &Entity{eid, cfg, data, nil, nil, newSkills(data.Skills), newStats(cfg.Stats, data.Stats), nil, false, Pos_Standing, make(ItemList, 0), make(map[EquipSlot]*Item), cfg.Flags, newStatusEffects()}
 }
 
 func newEntityData(cfg *EntityConfig) *EntityData {
-	return &EntityData{cfg.Key, InvalidId, nil, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
+	return &EntityData{cfg.Key, InvalidId, nil, nil, newStatsData(cfg.Stats), make([]*ItemData, 0), make(EquipmentDataMap), make(StatusDataMap)}
 }
 
 func (e *Entity) SetData(data *EntityData, w *World) {
@@ -158,6 +158,11 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 			e.job = newJob(jobCfg)
 			e.job.data = e.data.Job
 		}
+	}
+
+	// Prepare skils
+	if e.data.Skills == nil {
+		e.data.Skills = newSkillsData()
 	}
 }
 

@@ -115,6 +115,29 @@ func (cfg *SkillConfig) CastDelay(level int) utils.Seconds {
 	return ret
 }
 
+type LearnedSkill struct {
+	Key   string
+	Level int
+}
+
+type SkillsData struct {
+	Learned []*LearnedSkill
+}
+
+func newSkillsData() *SkillsData {
+	return &SkillsData{make([]*LearnedSkill, 0)}
+}
+
+type Skills struct {
+	data          *SkillsData   // Persisted skills data
+	casting       *CastingData  // If casting a skill, data about skill being cast
+	coldownExpiry utils.Seconds // Amount of time the entity must wait before using another skill
+}
+
+func newSkills(data *SkillsData) *Skills {
+	return &Skills{data, nil, 0}
+}
+
 type CastingList struct {
 	utils.List[*Entity]
 }
@@ -122,7 +145,7 @@ type CastingList struct {
 func (c *CastingList) StartCasting(e *Entity, time utils.Seconds, target *Entity, skill *SkillConfig, level int) bool {
 	// Already casting!
 	// TODO: SKILL: Support cancelation
-	if e.casting != nil {
+	if e.skills.casting != nil {
 		return false
 	}
 
@@ -133,18 +156,18 @@ func (c *CastingList) StartCasting(e *Entity, time utils.Seconds, target *Entity
 
 	// Add to cast list
 	castTime := utils.Seconds(calculateCastTime(e.stats, skill.CastTime(level)))
-	e.casting = &CastingData{e.data.RoomId, target, skill, level, time + castTime}
+	e.skills.casting = &CastingData{e.data.RoomId, target, skill, level, time + castTime}
 	c.AddBack(e)
 
 	return true
 }
 
 func (c *CastingList) EndCasting(e *Entity) {
-	if e.casting == nil {
+	if e.skills.casting == nil {
 		return
 	}
 	c.Remove(e)
-	e.casting = nil
+	e.skills.casting = nil
 }
 
 type CastingData struct {

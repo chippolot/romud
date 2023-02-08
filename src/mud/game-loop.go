@@ -27,12 +27,12 @@ type UpdateSystem struct {
 	last utils.Seconds
 }
 
-func (s *UpdateSystem) Update(w *World, dt utils.Seconds) {
+func (s *UpdateSystem) Update(w *World, _ utils.Seconds) {
 	nextUpdate := s.last + s.freq
 	if w.time < nextUpdate {
 		return
 	}
-	dt = w.time - s.last
+	dt := w.time - s.last
 	s.sys.Update(w, dt)
 	s.last = w.time
 }
@@ -367,14 +367,15 @@ func castSystem(w *World, dt utils.Seconds) {
 		i = i.Next
 
 		// Pre attack cleanup
-		if !e.casting.Valid(e) {
+		skills := e.skills
+		if !skills.casting.Valid(e) {
 			interruptSkill(e, w)
 			continue
 		}
 
 		// Handle attack
-		if w.time >= e.casting.castTime {
-			castSkill(e.casting.skill, e, w, e.casting.target, e.casting.level)
+		if w.time >= skills.casting.castTime {
+			castSkill(skills.casting.skill, e, w, skills.casting.target, skills.casting.level)
 			w.casting.EndCasting(e)
 		}
 	}

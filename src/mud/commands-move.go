@@ -75,7 +75,7 @@ func performMoveDirection(e *Entity, w *World, dir Direction) bool {
 		Write("You can't do that while you're fighting!").ToPlayer(e).Send()
 		return false
 	}
-	if e.casting != nil {
+	if e.skills.casting != nil {
 		Write("You can't do that while you're casting!").ToPlayer(e).Send()
 		return false
 	}

@@ -225,22 +225,25 @@
         [x] Job changing
 ----------------------------------------
 [] RO
-    [] Jobs
-        [] Job specific skills
-        [] Job specific eq
-            [] Unequip on job change
-        [] Job stat bonuses
-        [] Cache Stats
-    [] Items
-        [] Stackable
-    [] Ranged Combat
-        [] Arrows
     [] Skills
         [] Skill cast types
         [] Metamorphasis
         [] SPCost num or func
         [] Upgrade skills
         [] Cast skills at level
+    [] Jobs
+        [] Job specific skills
+        [] Job specific eq
+            [] Unequip on job change
+        [] Job stat bonuses
+        [] Cache Stats
+    [] Content
+        [] Create stub Prontera w/ shop
+        [] Flesh out Prontera Fields
+    [] Items
+        [] Stackable
+    [] Ranged Combat
+        [] Arrows
     [] Quick slot
     [] Shops
         [] Indoors/ Outdoors

@@ -187,16 +187,15 @@ func DoListJobs(e *Entity, w *World, tokens []string) {
 
 		// Determine job requirements
 		requirement := "None"
-		if cfg.Base != 0 {
-			baseJob, _ := w.TryGetJobConfig(cfg.Base)
+		if cfg.baseJob != nil {
 			lvlReq := 10
-			if baseJob.JobTier == JobTier_First {
+			if cfg.baseJob.JobTier == JobTier_First {
 				lvlReq = 40
 			}
 			if curJobLvl >= lvlReq {
 				requirement = "* Ready *"
 			} else {
-				requirement = fmt.Sprintf("%-9s Lv.%d", baseJob.Name, lvlReq)
+				requirement = fmt.Sprintf("%-9s Lv.%d", cfg.baseJob.Name, lvlReq)
 			}
 		}
 

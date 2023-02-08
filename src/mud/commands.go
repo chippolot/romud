@@ -38,6 +38,8 @@ func init() {
 		{DoGet, []string{"get"}, "Picks up an item", "get sword / get all bag", false, Cnd_Healthy, Pos_Sitting},
 		{DoGive, []string{"give"}, "Gives an item to something else", "give sword soldier", false, Cnd_Healthy, Pos_Sitting},
 		{DoInventory, []string{"inventory", "i"}, "Describes which items you are currently carrying", "inventory cat", true, 0, 0},
+		{DoPracticeSkill, []string{"practice"}, "Practices (levels up) a learned skill.", "practice first_aid", false, Cnd_Healthy, Pos_Sitting},
+		{DoLearnSkill, []string{"learn"}, "Learns a new skill if the prerequisites are met.", "learn first_aid", false, Cnd_Healthy, Pos_Sitting},
 		{DoList, []string{"list"}, "(When in a shop) Lists items for sale", "list", false, Cnd_Healthy, Pos_Sitting},
 		{DoListJobs, []string{"jobs"}, "Lists all jobs that the player can advance into in the future.", "jobs", true, 0, 0},
 		{DoListCommands, []string{"commands"}, "Lists available commands", "commands", true, 0, 0},

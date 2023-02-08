@@ -4,10 +4,6 @@ Config.NewJob({
     JobType = JobType.Novice,
     JobTier = JobTier.Novice,
     Name = "Novice",
-    Skills = {
-        "first_aid",
-        "play_dead"
-    },
     AspdBase = {
         [WeaponType.Fist] = 40,
         [WeaponType.Dagger] = 55,

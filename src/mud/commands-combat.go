@@ -1,5 +1,7 @@
 package mud
 
+import "github.com/chippolot/go-mud/src/utils"
+
 func DoAttack(e *Entity, w *World, tokens []string) {
 	q, ok, _ := parseSearchQuery(tokens[1:], false)
 	if !ok {
@@ -41,8 +43,7 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	// TODO: Skills: Add mud config option to skip this check
-	if !e.skills.KnowsSkill(key) {
+	if !mudConfig.Skills.AllowCastUnlearnedSkills && !e.skills.KnowsSkill(key) {
 		Write("You haven't learned that skill!").ToPlayer(e).Send()
 		return
 	}
@@ -77,5 +78,6 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		}
 	}
 
-	performSkill(e, w, target, skill, e.skills.SkillLevel(key))
+	level := utils.MaxInt(1, e.skills.SkillLevel(key))
+	performSkill(e, w, target, skill, level)
 }

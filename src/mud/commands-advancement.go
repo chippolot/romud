@@ -57,18 +57,16 @@ func DoChangeJob(e *Entity, w *World, tokens []string) {
 	job, _ := w.TryGetJobConfig(jobType)
 
 	if !mudConfig.Jobs.IgnoreJobRequirements {
-		if job.Base == 0 {
+		if job.baseJob == nil {
 			Write("You can't promote to a %s!", jobType.String()).ToPlayer(e).Send()
 			return
 		}
 
 		curJobLvl := e.stats.Get(Stat_JobLevel)
 		curTier := e.job.cfg.JobTier
-		curType := e.job.cfg.JobType
 
-		baseJob, _ := w.TryGetJobConfig(job.Base)
-		if job.Base != curType {
-			Write("You need to be a %s to be promoted to a %s!", baseJob.Name, job.Name).ToPlayer(e).Send()
+		if job.Base != e.job.cfg.JobType {
+			Write("You need to be a %s to be promoted to a %s!", job.baseJob.Name, job.Name).ToPlayer(e).Send()
 			return
 		}
 
@@ -121,7 +119,7 @@ func DoLearnSkill(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	if e.stats.Get(Stat_SkillPoints) < 1 {
+	if !mudConfig.Skills.IgnoreSkillPoints && e.stats.Get(Stat_SkillPoints) < 1 {
 		Write("You've need a skill point to learn %s!", skill.Name).ToPlayer(e).Send()
 		return
 	}
@@ -134,15 +132,63 @@ func DoLearnSkill(e *Entity, w *World, tokens []string) {
 		}
 	}
 
-	// TODO: Skills: Expose elsewhere
 	if !e.job.CanLearnSkill(skill.Key) {
 		Write("%ss cannot learn %s!", e.job.cfg.Name, skill.Name).ToPlayer(e).Send()
 		return
 	}
 
 	// Learn Skill
+	if !mudConfig.Skills.IgnoreSkillPoints {
+		e.stats.Add(Stat_SkillPoints, -1)
+	}
 	e.skills.Learn(skill.Key)
 	Write("You learn %s!", skill.Name).ToPlayer(e).Colorized(Color_PositiveBld).Send()
+
+	if e.player != nil {
+		e.player.saveRequested = true
+	}
+}
+
+func DoPracticeSkill(e *Entity, w *World, tokens []string) {
+	if e.job == nil {
+		Write("You need a job to practice skills!").ToPlayer(e).Send()
+		return
+	}
+
+	numtoks := len(tokens)
+	if numtoks == 0 || numtoks == 1 {
+		Write("Which skill do you want to practice?").ToPlayer(e).Send()
+		return
+	}
+
+	skey := strings.ToLower(tokens[1])
+	skill, ok := w.TryGetSkillConfig(skey)
+	if !ok {
+		Write("That's not a skill!").ToPlayer(e).Send()
+		return
+	}
+
+	if !e.skills.KnowsSkill(skill.Key) {
+		Write("You haven't learned %s!", skill.Name).ToPlayer(e).Send()
+		return
+	}
+
+	if e.skills.SkillMastered(skill.Key) {
+		Write("You've already mastered %s!", skill.Name).ToPlayer(e).Send()
+		return
+	}
+
+	if !mudConfig.Skills.IgnoreSkillPoints && e.stats.Get(Stat_SkillPoints) < 1 {
+		Write("You've need a skill point to practice %s!", skill.Name).ToPlayer(e).Send()
+		return
+	}
+
+	// Learn Skill
+	if !mudConfig.Skills.IgnoreSkillPoints {
+		e.stats.Add(Stat_SkillPoints, -1)
+	}
+	e.skills.LevelUp(skill.Key)
+	Write("You practice %s, improving it to level %d", skill.Name, e.skills.SkillLevel(skill.Key)).ToPlayer(e).Colorized(Color_PositiveBld).Send()
 
 	if e.player != nil {
 		e.player.saveRequested = true

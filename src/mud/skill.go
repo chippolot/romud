@@ -137,14 +137,14 @@ func newSkillsData() *SkillsData {
 }
 
 type Skills struct {
-	data          *SkillsData    // Persisted skills data
-	casting       *CastingData   // If casting a skill, data about skill being cast
-	coldownExpiry utils.Seconds  // Amount of time the entity must wait before using another skill
-	lookup        map[string]int // Lookup of learned skills key -> level
+	data          *SkillsData              // Persisted skills data
+	casting       *CastingData             // If casting a skill, data about skill being cast
+	coldownExpiry utils.Seconds            // Amount of time the entity must wait before using another skill
+	lookup        map[string]*LearnedSkill // Lookup of learned skills key -> level
 }
 
 func newSkills(data *SkillsData) *Skills {
-	s := &Skills{data, nil, 0, make(map[string]int)}
+	s := &Skills{data, nil, 0, make(map[string]*LearnedSkill)}
 	s.SetData(data)
 	return s
 }
@@ -152,7 +152,7 @@ func newSkills(data *SkillsData) *Skills {
 func (s *Skills) SetData(data *SkillsData) {
 	s.data = data
 	for _, ls := range data.Learned {
-		s.lookup[ls.Key] = ls.Level
+		s.lookup[ls.Key] = ls
 	}
 }
 
@@ -162,13 +162,34 @@ func (s *Skills) KnowsSkill(key string) bool {
 }
 
 func (s *Skills) SkillLevel(key string) int {
-	lvl := s.lookup[key]
-	return lvl
+	ls, ok := s.lookup[key]
+	if !ok {
+		return 0
+	}
+	return ls.Level
+}
+
+func (s *Skills) SkillMastered(key string) bool {
+	ls, ok := s.lookup[key]
+	if !ok {
+		return false
+	}
+	return ls.Level >= ls.cfg.MaxLevel
 }
 
 func (s *Skills) Learn(key string) {
-	s.data.Learned = append(s.data.Learned, &LearnedSkill{Key: key, Level: 1})
-	s.lookup[key] = 1
+	ls := &LearnedSkill{Key: key, Level: 1}
+	s.data.Learned = append(s.data.Learned, ls)
+	s.lookup[key] = ls
+}
+
+func (s *Skills) LevelUp(key string) {
+	ls, ok := s.lookup[key]
+	if !ok {
+		log.Printf("cannot level up skill. player doesn't know skill with key %s", key)
+		return
+	}
+	ls.Level++
 }
 
 type CastingList struct {

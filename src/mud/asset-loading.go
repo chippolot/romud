@@ -24,7 +24,7 @@ func LoadAssets(w *World, projectRoot string) {
 
 	log.Printf("loaded %d zones", len(w.zones))
 	log.Printf("loaded %d rooms", len(w.rooms))
-	log.Printf("loaded %d mobs", len(w.cfg.entityConfigs))
+	log.Printf("loaded %d entities", len(w.cfg.entityConfigs))
 	log.Printf("loaded %d items", len(w.cfg.itemConfigs))
 	log.Printf("loaded %d skills", len(w.cfg.skillConfigs))
 	log.Printf("loaded %d jobs", len(w.cfg.jobConfigs))

@@ -23,6 +23,7 @@ const (
 	EFlag_CanLeaveZone                               // Will wander out of initial zone
 	EFlag_Pacifist                                   // Won't attack
 	EFlag_Uninterruptable                            // Skills can't be interrupted
+	EFlag_Detector                                   // Can detect hidden entities	// TODO: EFlags: Implement
 )
 
 var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
@@ -38,6 +39,7 @@ var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
 	EFlag_CanLeaveZone:    "leaveszone",
 	EFlag_Pacifist:        "pacifist",
 	EFlag_Uninterruptable: "uninterruptable",
+	EFlag_Detector:        "detector",
 })
 
 func ParseEntityFlag(str string) (EntityFlagMask, error) {

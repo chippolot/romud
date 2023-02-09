@@ -40,14 +40,15 @@ type RoomConfig struct {
 }
 
 type Room struct {
-	cfg      *RoomConfig
-	zone     ZoneId
-	entities map[EntityId]*Entity
-	items    map[ItemId]*Item
+	cfg         *RoomConfig
+	zone        ZoneId
+	entities    map[EntityId]*Entity
+	items       map[ItemId]*Item
+	playerCount int
 }
 
 func NewRoom(cfg *RoomConfig, zoneId ZoneId) (*Room, error) {
-	r := &Room{cfg, zoneId, make(map[EntityId]*Entity), make(map[ItemId]*Item)}
+	r := &Room{cfg, zoneId, make(map[EntityId]*Entity), make(map[ItemId]*Item), 0}
 	return r, nil
 }
 
@@ -66,6 +67,12 @@ func (r *Room) GetNamePluralized(count int, includeCount bool) string {
 }
 
 func (r *Room) AddEntity(e *Entity) {
+	if _, ok := r.entities[e.id]; ok {
+		return
+	}
+	if e.player != nil {
+		r.playerCount++
+	}
 	e.data.RoomId = r.cfg.Id
 	r.entities[e.id] = e
 }
@@ -85,6 +92,12 @@ func (r *Room) AllEntities() []*Entity {
 }
 
 func (r *Room) RemoveEntity(e *Entity) {
+	if _, ok := r.entities[e.id]; !ok {
+		return
+	}
+	if e.player != nil {
+		r.playerCount--
+	}
 	e.data.RoomId = InvalidId
 	delete(r.entities, e.id)
 }

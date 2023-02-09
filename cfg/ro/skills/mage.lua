@@ -18,20 +18,20 @@ Config.NewSkill({
     Job = JobType.Mage,
     Desc = "Hits the targeted enemy with 1 Water Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
-        Activated = function(user)
-            skillUtils.WriteCastingMessages(user, Element.Water)
+        Activated = function(self)
+            skillUtils.WriteCastingMessages(self, Element.Water)
         end,
-        Cast = function(user, targets, skill, level)
-            skillUtils.WriteCastSuccessMessages(user, "Frost's wrath, rain down! Cold Bolt!")
+        Cast = function(self, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(self, "Frost's wrath, rain down! Cold Bolt!")
             for _ = 1, level do
-                Act.SkillAttack(user, targets, skill, {
+                Act.SkillAttack(self, targets, skill, {
                     AtkType = SkillAttackType.Magic,
                     Element = Element.Water
                 })
             end
         end,
-        Missed = function(user, target) magicProjectileMissedFunc(user, target, "COLD BOLT") end,
-        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "COLD BOLT") end,
+        Missed = function(self, target) magicProjectileMissedFunc(self, target, "COLD BOLT") end,
+        Hit = function(self, target, dam) magicProjectileHitFunc(self, target, dam, "COLD BOLT") end,
     }
 })
 
@@ -48,20 +48,20 @@ Config.NewSkill({
     Job = JobType.Mage,
     Desc = "Hits the targeted enemy with 1 Fire Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
-        Activated = function(user)
-            skillUtils.WriteCastingMessages(user, Element.Fire)
+        Activated = function(self)
+            skillUtils.WriteCastingMessages(self, Element.Fire)
         end,
-        Cast = function(user, targets, skill, level)
-            skillUtils.WriteCastSuccessMessages(user, "Burn brightly! Fire Bolt!")
+        Cast = function(self, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(self, "Burn brightly! Fire Bolt!")
             for _ = 1, level do
-                Act.SkillAttack(user, targets, skill, {
+                Act.SkillAttack(self, targets, skill, {
                     AtkType = SkillAttackType.Magic,
                     Element = Element.Fire
                 })
             end
         end,
-        Missed = function(user, target) magicProjectileMissedFunc(user, target, "FIRE BOLT") end,
-        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "FIRE BOLT") end,
+        Missed = function(self, target) magicProjectileMissedFunc(self, target, "FIRE BOLT") end,
+        Hit = function(self, target, dam) magicProjectileHitFunc(self, target, dam, "FIRE BOLT") end,
     }
 })
 
@@ -78,20 +78,20 @@ Config.NewSkill({
     Job = JobType.Mage,
     Desc = "Hits the targeted enemy with 1 Wind Element Bolt per SkillLV for 1*MATK each.",
     Scripts = {
-        Activated = function(user)
-            skillUtils.WriteCastingMessages(user, Element.Wind)
+        Activated = function(self)
+            skillUtils.WriteCastingMessages(self, Element.Wind)
         end,
-        Cast = function(user, targets, skill, level)
-            skillUtils.WriteCastSuccessMessages(user, "Shocking strike! Lightning Bolt!")
+        Cast = function(self, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(self, "Shocking strike! Lightning Bolt!")
             for _ = 1, level do
-                Act.SkillAttack(user, targets, skill, {
+                Act.SkillAttack(self, targets, skill, {
                     AtkType = SkillAttackType.Magic,
                     Element = Element.Wind
                 })
             end
         end,
-        Missed = function(user, target) magicProjectileMissedFunc(user, target, "LIGHTNING BOLT") end,
-        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "LIGHTNING BOLT") end,
+        Missed = function(self, target) magicProjectileMissedFunc(self, target, "LIGHTNING BOLT") end,
+        Hit = function(self, target, dam) magicProjectileHitFunc(self, target, dam, "LIGHTNING BOLT") end,
     }
 })
 
@@ -108,24 +108,24 @@ Config.NewSkill({
     Job = JobType.Mage,
     Desc = "Hits every Enemy in a 3x3 area around the target for an MATK of (70+10*SkillLV)% using Ghost Element. This damage is spread equally between all targets. For example, if 3 monsters are hit, then each takes 1/3rd of the damage a single target would take.",
     Scripts = {
-        Activated = function(user)
-            skillUtils.WriteCastingMessages(user, Element.Ghost)
+        Activated = function(self)
+            skillUtils.WriteCastingMessages(self, Element.Ghost)
         end,
-        Cast = function(user, targets, skill, level)
-            skillUtils.WriteCastSuccessMessages(user, "Ethereal energy! Napalm Beat!")
+        Cast = function(self, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(self, "Ethereal energy! Napalm Beat!")
             if #targets == 0 then
                 return
             end
 
             local matk = (0.7 + 0.1 * level) / #targets
-            Act.SkillAttack(user, targets, skill, {
+            Act.SkillAttack(self, targets, skill, {
                 AtkType = SkillAttackType.Magic,
                 MAtkBonus = matk - 1.0,
                 Element = Element.Ghost
             })
         end,
-        Missed = function(user, target) magicProjectileMissedFunc(user, target, "NAPALM BEAT") end,
-        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "NAPALM BEAT") end,
+        Missed = function(self, target) magicProjectileMissedFunc(self, target, "NAPALM BEAT") end,
+        Hit = function(self, target, dam) magicProjectileHitFunc(self, target, dam, "NAPALM BEAT") end,
     }
 })
 
@@ -146,24 +146,24 @@ Config.NewSkill({
     Job = JobType.Mage,
     Desc = "Hits every enemy in a 5x5 area around the target with an MATK of (70+10*SkillLV)% and Fire Element. After SkillLV 6, it has a reduced cast / after-Cool Down.",
     Scripts = {
-        Activated = function(user)
-            skillUtils.WriteCastingMessages(user, Element.Fire)
+        Activated = function(self)
+            skillUtils.WriteCastingMessages(self, Element.Fire)
         end,
-        Cast = function(user, targets, skill, level)
-            skillUtils.WriteCastSuccessMessages(user, "Bring forth the flames! Fire Ball!")
+        Cast = function(self, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(self, "Bring forth the flames! Fire Ball!")
             if #targets == 0 then
                 return
             end
 
             local matk = (0.7 + 0.1 * level)
-            Act.SkillAttack(user, targets, skill, {
+            Act.SkillAttack(self, targets, skill, {
                 AtkType = SkillAttackType.Magic,
                 MAtkBonus = matk - 1.0,
                 Element = Element.Fire
             })
         end,
-        Missed = function(user, target) magicProjectileMissedFunc(user, target, "FIRE BALL") end,
-        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "FIRE BALL") end,
+        Missed = function(self, target) magicProjectileMissedFunc(self, target, "FIRE BALL") end,
+        Hit = function(self, target, dam) magicProjectileHitFunc(self, target, dam, "FIRE BALL") end,
     }
 })
 
@@ -184,15 +184,15 @@ Config.NewSkill({
     Job = JobType.Mage,
     Desc = "Hits the target with (1+SkillLV/2) bolts for 1*MATK using Ghost Element. Does extra 5% damage per SkillLV to Undead property Monsters.",
     Scripts = {
-        Activated = function(user)
-            skillUtils.WriteCastingMessages(user, Element.Ghost)
+        Activated = function(self)
+            skillUtils.WriteCastingMessages(self, Element.Ghost)
         end,
-        Cast = function(user, targets, skill, level)
-            skillUtils.WriteCastSuccessMessages(user, "Tear through the veil! Soul Strike!")
+        Cast = function(self, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(self, "Tear through the veil! Soul Strike!")
             local hits = (level / 2) + 1
             for _ = 1, hits do
                 for _, target in ipairs(targets) do
-                    Act.SkillAttack(user, { target }, skill, {
+                    Act.SkillAttack(self, { target }, skill, {
                         AtkType = SkillAttackType.Magic,
                         MAtkBonus = Entity.Element(target) == Element.Undead and 0.05 * level or 0,
                         Element = Element.Ghost
@@ -200,8 +200,8 @@ Config.NewSkill({
                 end
             end
         end,
-        Missed = function(user, target) magicProjectileMissedFunc(user, target, "SOUL STRIKE") end,
-        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "SOUL STRIKE") end,
+        Missed = function(self, target) magicProjectileMissedFunc(self, target, "SOUL STRIKE") end,
+        Hit = function(self, target, dam) magicProjectileHitFunc(self, target, dam, "SOUL STRIKE") end,
     }
 })
 
@@ -222,19 +222,19 @@ Config.NewSkill({
     Job = JobType.Mage,
     Desc = "Hits every Enemy in a 5x5 area around the targeted cell with 1 Wind Element Bolt per level at a rate of 1 bolt every 0.2 seconds. Each bolt does 0.8*MATK Wind element damage.",
     Scripts = {
-        Activated = function(user)
-            skillUtils.WriteCastingMessages(user, Element.Wind)
+        Activated = function(self)
+            skillUtils.WriteCastingMessages(self, Element.Wind)
         end,
-        Cast = function(user, targets, skill, level)
-            skillUtils.WriteCastSuccessMessages(user, "Let the thunder roar! Thunder Storm!")
+        Cast = function(self, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(self, "Let the thunder roar! Thunder Storm!")
             if #targets == 0 then
                 return
             end
             for i = 1, level do
                 Async.Delay(i * 0.2, function()
                     for _, target in ipairs(targets) do
-                        if Entity.CanAttack(user, target) then
-                            Act.SkillAttack(user, { target }, skill, {
+                        if Entity.CanAttack(self, target) then
+                            Act.SkillAttack(self, { target }, skill, {
                                 AtkType = SkillAttackType.Magic,
                                 MAtkBonus = 0.8 - 1.0,
                                 Element = Element.Wind
@@ -244,30 +244,30 @@ Config.NewSkill({
                 end)
             end
         end,
-        Missed = function(user, target) magicProjectileMissedFunc(user, target, "THUNDER STORM") end,
-        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "THUNDER STORM") end,
+        Missed = function(self, target) magicProjectileMissedFunc(self, target, "THUNDER STORM") end,
+        Hit = function(self, target, dam) magicProjectileHitFunc(self, target, dam, "THUNDER STORM") end,
     }
 })
 
 -- Helper Funcs
-magicProjectileMissedFunc = function(user, target, magName)
-    Write.ToPlayer(user,
+magicProjectileMissedFunc = function(self, target, magName)
+    Write.ToPlayer(self,
         string.format("Your <c yellow>%s</c> zips by %s, barely missing them!", magName, Entity.Name(target)))
     Write.ToPlayer(target,
-        string.format("%s's <c yellow>%s</c> zips by, barely missing you!", Entity.NameCap(user), magName))
-    Write.ToRoom(Entity.Room(user), { user, target },
-        string.format("%s's <c yellow>%s</c> zips by %, barely missing them!", Entity.NameCap(user), magName,
+        string.format("%s's <c yellow>%s</c> zips by, barely missing you!", Entity.NameCap(self), magName))
+    Write.ToRoom(Entity.Room(self), { self, target },
+        string.format("%s's <c yellow>%s</c> zips by %, barely missing them!", Entity.NameCap(self), magName,
             Entity.Name(target)))
 end
 
-magicProjectileHitFunc = function(user, target, dam, magName)
-    Write.ToPlayer(user,
+magicProjectileHitFunc = function(self, target, dam, magName)
+    Write.ToPlayer(self,
         string.format("Your <c bright yellow>%s</c> smashes into %s! %s", magName, Entity.Name(target),
             skillUtils.AttackerDamageMessage(dam)))
     Write.ToPlayer(target,
-        string.format("%s's <c bright yellow>%s</c> smashes into you! %s", Entity.NameCap(user), magName,
+        string.format("%s's <c bright yellow>%s</c> smashes into you! %s", Entity.NameCap(self), magName,
             skillUtils.TargetDamageMessage(dam)))
-    Write.ToRoom(Entity.Room(user), { user, target },
-        string.format("%s's <c bright yellow>%s</c> smashes into %s!", Entity.NameCap(user), magName,
+    Write.ToRoom(Entity.Room(self), { self, target },
+        string.format("%s's <c bright yellow>%s</c> smashes into %s!", Entity.NameCap(self), magName,
             Entity.Name(target)))
 end

@@ -5,7 +5,6 @@ import (
 	"log"
 
 	"github.com/chippolot/romud/src/utils"
-	lua "github.com/yuin/gopher-lua"
 )
 
 const (
@@ -90,10 +89,11 @@ type SkillConfig struct {
 }
 
 func (cfg *SkillConfig) SPCost(level int) int {
-	if cfg.SPCosts == nil {
+	if len(cfg.SPCosts) == 0 {
 		return 0
 	}
 	ret := cfg.SPCosts[0]
+	level = utils.MaxInt(1, level)
 	if level <= len(cfg.SPCosts) {
 		ret = cfg.SPCosts[level-1]
 	}
@@ -101,10 +101,11 @@ func (cfg *SkillConfig) SPCost(level int) int {
 }
 
 func (cfg *SkillConfig) CastTime(level int) utils.Seconds {
-	if cfg.CastTimes == nil {
+	if len(cfg.CastTimes) == 0 {
 		return 0
 	}
 	ret := cfg.CastTimes[0]
+	level = utils.MaxInt(1, level)
 	if level <= len(cfg.CastTimes) {
 		ret = cfg.CastTimes[level-1]
 	}
@@ -112,10 +113,11 @@ func (cfg *SkillConfig) CastTime(level int) utils.Seconds {
 }
 
 func (cfg *SkillConfig) CastDelay(level int) utils.Seconds {
-	if cfg.CastDelays == nil {
+	if len(cfg.CastDelays) == 0 {
 		return 0
 	}
 	ret := cfg.CastDelays[0]
+	level = utils.MaxInt(1, level)
 	if level <= len(cfg.CastDelays) {
 		ret = cfg.CastDelays[level-1]
 	}
@@ -246,66 +248,115 @@ type SkillTriggerConfig struct {
 	Chance float64
 }
 
-type SkillScripts struct {
-	activated func(*Entity)
-	cast      func(*Entity, []*Entity, *SkillConfig, int)
-	missed    func(*Entity, *Entity)
-	hit       func(*Entity, *Entity, int)
-}
+func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level int) {
+	// Cooldown check
+	if w.time < e.skills.coldownExpiry {
+		Write("You can't use another skill yet!").ToPlayer(e).Send()
+		return
+	}
 
-func NewSkillScripts(L *lua.LState, tbl *lua.LTable) *SkillScripts {
-	scripts := &SkillScripts{}
-	if fn := utils.GetLuaFunctionFromTable(tbl, "Activated"); fn != nil {
-		scripts.activated = func(user *Entity) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user)); err != nil {
-				log.Panicln("error calling activated script: ", err)
+	// Already casting something
+	if e.skills.casting != nil {
+		Write("You're kind of busy casting something else!").ToPlayer(e).Send()
+		return
+	}
+
+	// Can't afford
+	spCost := skill.SPCost(level)
+	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
+		Write("You don't have enough SP!").ToPlayer(e).Send()
+		return
+	}
+
+	// Trigger skill script
+	triggerSkillActivatedScript(skill, e)
+
+	// If skill is instant, cast it!
+	if skill.CastTime(level) <= 0 {
+		castSkill(skill, e, w, target, level)
+	} else { // Otherwise, add to casting list
+		w.casting.StartCasting(e, w.time, target, skill, level)
+
+		// Skill targets of offensive skills immediately target you
+		if skill.Type == SkillType_Offensive {
+			for _, tgt := range getSkillTargets(skill, e, w, target) {
+				startAttacking(tgt, w, e, float64(skill.Range))
 			}
 		}
 	}
-	if fn := utils.GetLuaFunctionFromTable(tbl, "Cast"); fn != nil {
-		scripts.cast = func(user *Entity, targets []*Entity, skill *SkillConfig, level int) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: false}, utils.ToUserData(L, user), utils.ToUserDataList(L, targets), utils.ToUserData(L, skill), lua.LNumber(level)); err != nil {
-				log.Panicln("error calling cast script: ", err)
+}
+
+func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level int) {
+	// Final SP cost check
+	spCost := skill.SPCost(level)
+	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
+		Write("You don't have enough SP!").ToPlayer(e).Send()
+		return
+	}
+
+	// Subtract SP
+	e.stats.Add(Stat_SP, -spCost)
+
+	// Collect targets for AOE skills
+	targets := getSkillTargets(skill, e, w, target)
+	triggerSkillCastScript(skill, e, targets, level)
+}
+
+func getSkillTargets(skill *SkillConfig, e *Entity, w *World, target *Entity) []*Entity {
+	targets := []*Entity{target}
+	switch skill.TargetType {
+	case SkillTargetType_Self:
+		return []*Entity{e}
+	case SkillTargetType_All_Enemies:
+		targets = make([]*Entity, 0)
+		r := w.rooms[e.data.RoomId]
+		for _, e2 := range r.entities {
+			if e.IsEnemyOf(e2) {
+				targets = append(targets, e2)
 			}
 		}
 	}
-	if fn := utils.GetLuaFunctionFromTable(tbl, "Missed"); fn != nil {
-		scripts.missed = func(user *Entity, target *Entity) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, user), utils.ToUserData(L, target)); err != nil {
-				log.Panicln("error calling missed script: ", err)
+	return targets
+}
+
+func interruptSkill(e *Entity, w *World) {
+	if e.skills.casting == nil {
+		return
+	}
+	if e.entityFlags.Has(EFlag_Uninterruptable) {
+		return
+	}
+	w.casting.EndCasting(e)
+
+	Write("You lose your concentration!").ToPlayer(e).Colorized(Color_Negative).Send()
+	Write("%s loses their concentration!", ObservableNameCap(e)).ToEntityRoom(w, e).Ignore(e).Send()
+}
+
+func tryTriggerSkill(e *Entity, w *World, state EntityState, tgt *Entity) bool {
+	// No skill triggers
+	triggers := e.SkillTriggers(state)
+	if len(triggers) == 0 {
+		return false
+	}
+
+	// On skill cooldown
+	if w.time < e.skills.coldownExpiry {
+		return false
+	}
+
+	// Check all skill triggers
+	chance := utils.RandChance100()
+	for _, trigger := range triggers {
+		chance -= trigger.Chance
+		if chance <= 0 {
+			if skill, ok := w.cfg.skillConfigs[trigger.Key]; ok {
+				performSkill(e, w, tgt, skill, trigger.Level)
+				return true
+			} else {
+				log.Printf("invalid skill key '%s' used in skill trigger by enitty '%s'", trigger.Key, e.cfg.Key)
+				break
 			}
 		}
 	}
-	if fn := utils.GetLuaFunctionFromTable(tbl, "Hit"); fn != nil {
-		scripts.hit = func(user *Entity, target *Entity, dam int) {
-			if err := L.CallByParam(lua.P{Fn: fn, NRet: 0, Protect: true}, utils.ToUserData(L, user), utils.ToUserData(L, target), lua.LNumber(dam)); err != nil {
-				log.Panicln("error calling hit script: ", err)
-			}
-		}
-	}
-	return scripts
-}
-
-func triggerSkillActivatedScript(skill *SkillConfig, e *Entity) {
-	if skill.scripts != nil && skill.scripts.activated != nil {
-		skill.scripts.activated(e)
-	}
-}
-
-func triggerSkillCastScript(skill *SkillConfig, e *Entity, targets []*Entity, level int) {
-	if skill.scripts != nil && skill.scripts.cast != nil {
-		skill.scripts.cast(e, targets, skill, level)
-	}
-}
-
-func triggerSkillMissedScript(skill *SkillConfig, e *Entity, tgt *Entity) {
-	if skill.scripts != nil && skill.scripts.missed != nil {
-		skill.scripts.missed(e, tgt)
-	}
-}
-
-func triggerSkillHitScript(skill *SkillConfig, e *Entity, tgt *Entity, dam int) {
-	if skill.scripts != nil && skill.scripts.hit != nil {
-		skill.scripts.hit(e, tgt, dam)
-	}
+	return false
 }

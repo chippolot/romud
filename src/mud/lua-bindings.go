@@ -64,7 +64,12 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 
 	spawnTbl := L.NewTable()
 	spawnTbl.RawSetString("Item", luar.New(L, lua_SpawnItem))
+	spawnTbl.RawSetString("Entity", luar.New(L, lua_SpawnEntity))
 	L.SetGlobal("Spawn", spawnTbl)
+
+	destroyTbl := L.NewTable()
+	destroyTbl.RawSetString("Entity", luar.New(L, lua_DestroyEntity))
+	L.SetGlobal("Destroy", destroyTbl)
 
 	writeTbl := L.NewTable()
 	writeTbl.RawSetString("ToPlayer", luar.New(L, lua_WriteToPlayer))
@@ -258,15 +263,16 @@ func lua_ActYell(self *Entity, msg string) {
 	performYell(self, lua_W, msg)
 }
 
-func lua_SpawnItem(key string, to ItemContainer) *Item {
-	if cfg, ok := lua_W.TryGetItemConfig(key); !ok {
-		log.Printf("trying to spawn item invalid item key '%s'", key)
-		return nil
-	} else {
-		item := NewItem(cfg)
-		to.AddItem(item)
-		return item
-	}
+func lua_SpawnItem(key string, into ItemContainer) *Item {
+	return spawnItemByKey(key, into)
+}
+
+func lua_SpawnEntity(key string, room *Room) *Entity {
+	return spawnEntityByKey(key, lua_W, room.cfg.Id)
+}
+
+func lua_DestroyEntity(entity *Entity) {
+	lua_W.RemoveEntity(entity.id)
 }
 
 func lua_ActIncreaseDistance(self *Entity, amt int) {

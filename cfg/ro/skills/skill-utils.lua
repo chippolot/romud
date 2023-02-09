@@ -50,29 +50,29 @@ lib.GenerateElementAttackSkillConfig = function(element, missedMessages, hitMess
         Desc = string.format("(NPC Only) Deals %s damage to the target. Damage is based on the monster's ATK.",
             element),
         Scripts = {
-            Cast = function(user, targets, skill, level)
+            Cast = function(self, targets, skill, level)
                 local atkBonus = (level - 1)
-                Act.SkillAttack(user, targets, skill, {
+                Act.SkillAttack(self, targets, skill, {
                     AtkType = SkillAttackType.Physical,
                     AtkBonus = atkBonus,
                     Element = element
                 })
             end,
-            Missed = function(user, target)
-                Write.ToPlayer(user,
+            Missed = function(self, target)
+                Write.ToPlayer(self,
                     string.format(missedMessages[1], Entity.Name(target), lib.AttackerDamageMessage(0)))
                 Write.ToPlayer(target,
-                    string.format(missedMessages[2], Entity.NameCap(user), lib.TargetDamageMessage(0)))
-                Write.ToRoom(Entity.Room(user), { user, target },
-                    string.format(missedMessages[3], Entity.NameCap(user), Entity.Name(target)))
+                    string.format(missedMessages[2], Entity.NameCap(self), lib.TargetDamageMessage(0)))
+                Write.ToRoom(Entity.Room(self), { self, target },
+                    string.format(missedMessages[3], Entity.NameCap(self), Entity.Name(target)))
             end,
-            Hit = function(user, target, dam)
-                Write.ToPlayer(user,
+            Hit = function(self, target, dam)
+                Write.ToPlayer(self,
                     string.format(hitMessages[1], Entity.Name(target), lib.AttackerDamageMessage(dam)))
                 Write.ToPlayer(target,
-                    string.format(hitMessages[2], Entity.NameCap(user), lib.TargetDamageMessage(dam)))
-                Write.ToRoom(Entity.Room(user), { user, target },
-                    string.format(hitMessages[3], Entity.NameCap(user), Entity.Name(target)))
+                    string.format(hitMessages[2], Entity.NameCap(self), lib.TargetDamageMessage(dam)))
+                Write.ToRoom(Entity.Room(self), { self, target },
+                    string.format(hitMessages[3], Entity.NameCap(self), Entity.Name(target)))
             end
         }
     }

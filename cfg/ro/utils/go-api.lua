@@ -1,23 +1,23 @@
 -- API
 
 Act = {
-    Attack = function(e, tgt)
+    Attack = function(entity, target)
     end,
-    SkillAttack = function(e, tgts, skill, skillAttack)
+    SkillAttack = function(entity, targets, skill, skillAttack)
     end,
-    Get = function(e, i)
+    Get = function(entity, item)
     end,
-    Equip = function(e, i, silent)
+    Equip = function(entity, item, silent)
     end,
-    MoveDir = function(e, dir)
+    MoveDir = function(entity, dir)
     end,
-    MoveTo = function(e, r)
+    MoveTo = function(entity, room)
     end,
-    Say = function(e, msg)
+    Say = function(entity, msg)
     end,
-    Tell = function(e, tgt, msg)
+    Tell = function(entity, target, msg)
     end,
-    Yell = function(e, yell)
+    Yell = function(entity, yell)
     end,
 }
 
@@ -41,59 +41,66 @@ Config = {
 }
 
 Write = {
-    ToPlayer = function(e, msg)
+    ToPlayer = function(entity, msg)
     end,
-    ToRoom = function(r, ignore, msg)
+    ToRoom = function(room, ignore, msg)
     end
 }
 
 Entity = {
-    Name = function(e)
+    Name = function(entity)
     end,
-    NameCap = function(e)
+    NameCap = function(entity)
     end,
-    RoomId = function(e)
+    RoomId = function(entity)
     end,
-    Room = function(e)
+    Room = function(entity)
     end,
-    Stat = function(e, stat)
+    Stat = function(entity, stat)
     end,
-    EquipSlotOpen = function(e, slot)
+    EquipSlotOpen = function(entity, slot)
     end,
-    HealHP = function(e, amt)
+    HealHP = function(entity, amt)
     end,
-    HealSP = function(e, amt)
+    HealSP = function(entity, amt)
     end,
-    HealMov = function(e, amt)
+    HealMov = function(entity, amt)
     end,
-    InCombat = function(e)
+    InCombat = function(entity)
     end,
-    CanAttack = function(e, tgt) 
+    CanAttack = function(entity, target) 
     end,
-    IsPlayer = function(e)
+    IsPlayer = function(entity)
     end,
 }
 
 Spawn = {
     Item = function(itemKey, target)
+    end,
+    Entity = function(entityKey, target)
+    end
+}
+
+Destroy = {
+    Entity = function(entity)
     end
 }
 
 Item = {
-    Name = function(i)
+    Name = function(item)
     end,
-    NameCap = function(i)
+    NameCap = function(item)
     end,
-    Equippable = function(i)
+    Equippable = function(item)
     end,
-    EquipSlot = function(i)
+    EquipSlot = function(item)
     end,
 }
 
 Room = {
-    Entities = function(r)
+    Entities = function(room)
     end,
-    Items = function(r)
+    Items = function(room)
     end,
 }
 

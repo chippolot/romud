@@ -153,88 +153,6 @@ func performSkillAttack(e *Entity, w *World, targets []*Entity, attack *SkillAtt
 	}
 }
 
-func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level int) {
-	// Cooldown check
-	if w.time < e.skills.coldownExpiry {
-		Write("You can't use another skill yet!").ToPlayer(e).Send()
-		return
-	}
-
-	// Already casting something
-	if e.skills.casting != nil {
-		Write("You're kind of busy casting something else!").ToPlayer(e).Send()
-		return
-	}
-
-	// Can't afford
-	spCost := skill.SPCost(level)
-	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
-		Write("You don't have enough SP!").ToPlayer(e).Send()
-		return
-	}
-
-	// Trigger skill script
-	triggerSkillActivatedScript(skill, e)
-
-	// If skill is instant, cast it!
-	if skill.CastTime(level) <= 0 {
-		castSkill(skill, e, w, target, level)
-	} else { // Otherwise, add to casting list
-		w.casting.StartCasting(e, w.time, target, skill, level)
-
-		// Skill targets of offensive skills immediately target you
-		if skill.Type == SkillType_Offensive {
-			for _, tgt := range getSkillTargets(skill, e, w, target) {
-				startAttacking(tgt, w, e, float64(skill.Range))
-			}
-		}
-	}
-}
-
-func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level int) {
-	// Final SP cost check
-	spCost := skill.SPCost(level)
-	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
-		Write("You don't have enough SP!").ToPlayer(e).Send()
-		return
-	}
-
-	// Subtract SP
-	e.stats.Add(Stat_SP, -spCost)
-
-	// Collect targets for AOE skills
-	targets := getSkillTargets(skill, e, w, target)
-	triggerSkillCastScript(skill, e, targets, level)
-}
-
-func getSkillTargets(skill *SkillConfig, e *Entity, w *World, target *Entity) []*Entity {
-	targets := []*Entity{target}
-	switch skill.TargetType {
-	case SkillTargetType_All_Enemies:
-		targets = make([]*Entity, 0)
-		r := w.rooms[e.data.RoomId]
-		for _, e2 := range r.entities {
-			if e.IsEnemyOf(e2) {
-				targets = append(targets, e2)
-			}
-		}
-	}
-	return targets
-}
-
-func interruptSkill(e *Entity, w *World) {
-	if e.skills.casting == nil {
-		return
-	}
-	if e.entityFlags.Has(EFlag_Uninterruptable) {
-		return
-	}
-	w.casting.EndCasting(e)
-
-	Write("You lose your concentration!").ToPlayer(e).Colorized(Color_Negative).Send()
-	Write("%s loses their concentration!", ObservableNameCap(e)).ToEntityRoom(w, e).Ignore(e).Send()
-}
-
 func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
 	if ok, outputErr := validateAttack(e, tgt); !ok {
 		if outputErr != "" {
@@ -318,7 +236,7 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity, dt utils.Seconds) {
 
 	// Perform attacks
 	for i := 0; i < numAttacksFull; i++ {
-		if !tryTriggerCombatSkill(e, w, tgt) {
+		if !tryTriggerSkill(e, w, EState_Combat, tgt) {
 			combatLogicAttack(e, w, tgt, nil)
 		}
 	}
@@ -578,39 +496,6 @@ func createCorpse(from *Entity, w *World) *Item {
 	w.AddItem(corpse, from.data.RoomId)
 
 	return corpse
-}
-
-func tryTriggerCombatSkill(e *Entity, w *World, tgt *Entity) bool {
-	if tgt == nil {
-		return false
-	}
-
-	// No skill triggers
-	triggers := e.SkillTriggers(EState_Combat)
-	if len(triggers) == 0 {
-		return false
-	}
-
-	// On skill cooldown
-	if w.time < e.skills.coldownExpiry {
-		return false
-	}
-
-	// Check all skill triggers
-	chance := utils.RandChance100()
-	for _, trigger := range triggers {
-		chance -= trigger.Chance
-		if chance <= 0 {
-			if skill, ok := w.cfg.skillConfigs[trigger.Key]; ok {
-				performSkill(e, w, tgt, skill, trigger.Level)
-				return true
-			} else {
-				log.Printf("invalid skill key '%s' used in skill trigger by enitty '%s'", trigger.Key, e.cfg.Key)
-				break
-			}
-		}
-	}
-	return false
 }
 
 func sendDamageMessages(dam int, src *Entity, dst *Entity, w *World, critical bool, nounSingular string, nounPlural string) {

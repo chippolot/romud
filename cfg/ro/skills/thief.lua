@@ -12,10 +12,10 @@ Config.NewSkill({
     CastDelays = { 1 },
     Desc = "Instantly slides 5 cells backwards.",
     Scripts = {
-        Cast = function(user, _, _, _)
-            Write.ToPlayer(user, "You dash backwards.")
-            Write.ToRoom(Entity.Room(user), { user }, string.format("%s dashes backwards.", Entity.NameCap(user)))
-            Act.IncreaseDistance(user, 5)
+        Cast = function(self, _, _, _)
+            Write.ToPlayer(self, "You dash backwards.")
+            Write.ToRoom(Entity.Room(self), { self }, string.format("%s dashes backwards.", Entity.NameCap(self)))
+            Act.IncreaseDistance(self, 5)
         end
     }
 })

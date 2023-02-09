@@ -51,6 +51,7 @@ func GameLoop(w *World, handler *SessionHandler) {
 		{&System{scavengersSystem}, 3, 0},
 		{&System{wanderersSystem}, 3, 0},
 		{&System{aggroSystem}, 1, 0},
+		{&System{idleTriggerSystem}, 1, 0},
 		{&System{assistersSystem}, 1, 0},
 		{&System{castSystem}, 0.1, 0},
 		{&System{combatSystem}, 2, 0},
@@ -252,6 +253,23 @@ func wanderersSystem(w *World, dt utils.Seconds) {
 		}
 
 		performMoveDirection(e, w, dir)
+	}
+}
+
+func idleTriggerSystem(w *World, dt utils.Seconds) {
+	for _, e := range w.entities {
+		r := w.rooms[e.data.RoomId]
+		if r == nil {
+			continue
+		}
+		if r.playerCount == 0 {
+			continue
+		}
+		if len(e.cfg.SkillTriggers) == 0 ||
+			len(e.cfg.SkillTriggers[EState_Idle]) == 0 {
+			continue
+		}
+		tryTriggerSkill(e, w, EState_Idle, nil)
 	}
 }
 

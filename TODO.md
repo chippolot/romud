@@ -204,6 +204,7 @@
         [x] Upgrade skills
         [x] Targeting a monster should aggro it
         [x] Async.Schedule -- Thunderstorm
+        [x] NPC: Metamorphasis
     [x] Magic
         [x] Use MATK for magic spells
         [x] Stats Screen
@@ -240,10 +241,12 @@
     [x] Move to Github
 ----------------------------------------
 [] Github
-    [] Add readme
+    [] Improve ReadMe
 [] RO
     [] Skills
-        [] NPC: Metamorphasis
+        [] NPC: Teleportation
+        [] NPC: Sleep Attack Lv 3
+        [] NPC: Wind Attribute Attack 1
         [] Mage: Different messages for different spells
     [] Parser Improvements
         [] Prioritize entity searches against combat targets

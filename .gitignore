@@ -21,6 +21,7 @@
 go.work
 
 _examples
+db
 .idea
 .vscode
 *.ply

@@ -1,6 +1,11 @@
 package mud
 
-import "github.com/chippolot/go-mud/src/utils"
+import (
+	"strconv"
+	"strings"
+
+	"github.com/chippolot/go-mud/src/utils"
+)
 
 func DoAttack(e *Entity, w *World, tokens []string) {
 	q, ok, _ := parseSearchQuery(tokens[1:], false)
@@ -37,6 +42,15 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 	}
 
 	key := tokens[1]
+	requestedLevel := 0
+	if dotIdx := strings.IndexRune(key, '.'); dotIdx != -1 {
+		preDot := key[:dotIdx]
+		if num, err := strconv.Atoi(preDot); err == nil {
+			requestedLevel = num
+			key = key[dotIdx+1:]
+		}
+	}
+
 	skill, ok := w.skillConfigs[key]
 	if !ok {
 		Write("%s isn't any skill you've ever heard of!", key).ToPlayer(e).Send()
@@ -47,12 +61,25 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		Write("You haven't learned that skill!").ToPlayer(e).Send()
 		return
 	}
+
+	level := utils.MaxInt(1, e.skills.SkillLevel(key))
+	if requestedLevel != 0 {
+		if !skill.SelectableLevel() {
+			Write("You can't select cast level for %s!", skill.Name).ToPlayer(e).Send()
+			return
+		} else if requestedLevel > level {
+			Write("You've only practiced %s to level %d!", skill.Name, level).ToPlayer(e).Send()
+			return
+		} else {
+			level = requestedLevel
+		}
+	}
+
 	// Get skill target
 	var target *Entity
 	switch skill.TargetType {
 	case SkillTargetType_Self:
 		target = e
-	// TODO: Skill: Support single ally and single entity
 	case SkillTargetType_Single_Enemy, SkillTargetType_Single_Ally, SkillTargetType_Single_Entity:
 		if numtoks < 3 {
 			if e.combat == nil || e.combat.target == nil {
@@ -78,6 +105,5 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		}
 	}
 
-	level := utils.MaxInt(1, e.skills.SkillLevel(key))
 	performSkill(e, w, target, skill, level)
 }

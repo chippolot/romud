@@ -122,6 +122,10 @@ func (cfg *SkillConfig) CastDelay(level int) utils.Seconds {
 	return ret
 }
 
+func (cfg *SkillConfig) SelectableLevel() bool {
+	return len(cfg.SPCosts) > 1
+}
+
 type LearnedSkill struct {
 	Key   string
 	Level int

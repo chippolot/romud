@@ -152,8 +152,6 @@ func performSkillAttack(e *Entity, w *World, targets []*Entity, attack *SkillAtt
 }
 
 func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level int) {
-	// TODO: Skill: Confirm player knows skill
-
 	// Cooldown check
 	if w.time < e.skills.coldownExpiry {
 		Write("You can't use another skill yet!").ToPlayer(e).Send()
@@ -173,9 +171,6 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 		return
 	}
 
-	// Subtract SP
-	e.stats.Add(Stat_SP, -spCost)
-
 	// Trigger skill script
 	triggerSkillActivatedScript(skill, e)
 
@@ -184,11 +179,33 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 		castSkill(skill, e, w, target, level)
 	} else { // Otherwise, add to casting list
 		w.casting.StartCasting(e, w.time, target, skill, level)
+
+		// Skill targets of offensive skills immediately target you
+		if skill.Type == SkillType_Offensive {
+			for _, tgt := range getSkillTargets(skill, e, w, target) {
+				startAttacking(tgt, w, e, float64(skill.Range))
+			}
+		}
 	}
 }
 
 func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level int) {
+	// Final SP cost check
+	spCost := skill.SPCost(level)
+	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
+		Write("You don't have enough SP!").ToPlayer(e).Send()
+		return
+	}
+
+	// Subtract SP
+	e.stats.Add(Stat_SP, -spCost)
+
 	// Collect targets for AOE skills
+	targets := getSkillTargets(skill, e, w, target)
+	triggerSkillCastScript(skill, e, targets, level)
+}
+
+func getSkillTargets(skill *SkillConfig, e *Entity, w *World, target *Entity) []*Entity {
 	targets := []*Entity{target}
 	switch skill.TargetType {
 	case SkillTargetType_All_Enemies:
@@ -200,8 +217,7 @@ func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level in
 			}
 		}
 	}
-
-	triggerSkillCastScript(skill, e, targets, level)
+	return targets
 }
 
 func interruptSkill(e *Entity, w *World) {
@@ -210,7 +226,7 @@ func interruptSkill(e *Entity, w *World) {
 	}
 	w.casting.EndCasting(e)
 
-	Write("You lose your concentration!").ToPlayer(e).Send()
+	Write("You lose your concentration!").ToPlayer(e).Colorized(Color_Negative).Send()
 	Write("%s loses their concentration!", ObservableNameCap(e)).ToEntityRoom(w, e).Ignore(e).Send()
 }
 
@@ -263,6 +279,11 @@ func runCombatLogic(e *Entity, w *World, tgt *Entity, dt utils.Seconds) {
 
 	// Not ready to attack
 	if e.combat == nil {
+		return
+	}
+
+	// No auto-attack while casting
+	if e.skills.casting != nil {
 		return
 	}
 

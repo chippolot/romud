@@ -325,7 +325,7 @@ func scavengersSystem(w *World, dt utils.Seconds) {
 			continue
 		}
 
-		if e.combat != nil {
+		if e.combat != nil || e.skills.casting != nil {
 			continue
 		}
 

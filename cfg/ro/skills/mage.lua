@@ -129,6 +129,82 @@ Config.NewSkill({
     }
 })
 
+Config.NewSkill({
+    Key = "fire_ball",
+    Name = "Fire Ball",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.All_Enemies,
+    Range = 9,
+    CastTimes = { 1.5, 1.5, 1.5, 1.5, 1.5, 1.0, 1.0, 1.0, 1.0, 1.0 },
+    CastDelays = { 1.5, 1.5, 1.5, 1.5, 1.5, 1.0, 1.0, 1.0, 1.0, 1.0 },
+    SPCosts = { 25 },
+    MaxLevel = 10,
+    PreReqs = {
+        Key = "fire_bolt",
+        Level = 4
+    },
+    Job = JobType.Mage,
+    Desc = "Hits every enemy in a 5x5 area around the target with an MATK of (70+10*SkillLV)% and Fire Element. After SkillLV 6, it has a reduced cast / after-Cool Down.",
+    Scripts = {
+        Activated = function(user)
+            skillUtils.WriteCastingMessages(user, Element.Fire)
+        end,
+        Cast = function(user, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(user, "Bring forth the flames! Fire Ball!")
+            if #targets == 0 then
+                return
+            end
+
+            local matk = (0.7 + 0.1 * level)
+            Act.SkillAttack(user, targets, skill, {
+                AtkType = SkillAttackType.Magic,
+                MAtkBonus = matk - 1.0,
+                Element = Element.Fire
+            })
+        end,
+        Missed = function(user, target) magicProjectileMissedFunc(user, target, "FIRE BALL") end,
+        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "FIRE BALL") end,
+    }
+})
+
+Config.NewSkill({
+    Key = "soul_strike",
+    Name = "Soul Strike",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.Single_Enemy,
+    Range = 9,
+    CastTimes = { 0.5 },
+    CastDelays = { 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 2.7 },
+    SPCosts = { 18, 14, 24, 20, 30, 26, 36, 32, 42, 38 },
+    MaxLevel = 10,
+    PreReqs = {
+        Key = "napalm_beat",
+        Level = 4
+    },
+    Job = JobType.Mage,
+    Desc = "Hits the target with (1+SkillLV/2) bolts for 1*MATK using Ghost Element. Does extra 5% damage per SkillLV to Undead property Monsters.",
+    Scripts = {
+        Activated = function(user)
+            skillUtils.WriteCastingMessages(user, Element.Ghost)
+        end,
+        Cast = function(user, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(user, "Tear through the veil! Soul Strike!")
+            local hits = (level / 2) + 1
+            for _ = 1, hits do
+                for _, target in ipairs(targets) do
+                    Act.SkillAttack(user, { target }, skill, {
+                        AtkType = SkillAttackType.Magic,
+                        MAtkBonus = Entity.Element(target) == Element.Undead and 0.05 * level or 0,
+                        Element = Element.Ghost
+                    })
+                end
+            end
+        end,
+        Missed = function(user, target) magicProjectileMissedFunc(user, target, "SOUL STRIKE") end,
+        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "SOUL STRIKE") end,
+    }
+})
+
 -- Helper Funcs
 magicProjectileMissedFunc = function(user, target, magName)
     Write.ToPlayer(user,

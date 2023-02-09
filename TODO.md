@@ -202,6 +202,7 @@
             [x] List skills for current and all previous jobs
         [x] Learn Skills
         [x] Upgrade skills
+        [x] Targeting a monster should aggro it
     [x] Magic
         [x] Use MATK for magic spells
         [x] Stats Screen
@@ -229,8 +230,12 @@
         [x] Job changing
     [x] Prompt
         [x] Display combat prompt for single enemy attacking you
+    [x] Parser Improvements
+        [x] Allow skill use at arbitrary levels
 ----------------------------------------
 [] RO
+    [] Parser Improvements
+        [] Prioritize entity searches against combat targets
     [] Jobs
         [] Job specific skills
         [] Job specific eq
@@ -318,6 +323,8 @@
 [x] napalm_beat
 [x] heal
 [x] back_slide
+[x] fire_ball
+[x] soul_strike
 [] play_dead
 [] endure
 [] increase_hp_recovery
@@ -328,13 +335,11 @@
 [] berserk
 [] fatal_blow
 [] hp_recovery_while_moving
-[] fire_ball
 [] fire_wall
 [] frost_driver
 [] increase_sp_recovery
 [] safety_wall
 [] sight
-[] soul_strike
 [] stone_curse
 [] thunderstorm
 [] energy_coat

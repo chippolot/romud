@@ -27,6 +27,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("RoomId", luar.New(L, lua_EntityRoomId))
 	entityTbl.RawSetString("Room", luar.New(L, lua_EntityRoom))
 	entityTbl.RawSetString("Stat", luar.New(L, lua_EntityStat))
+	entityTbl.RawSetString("Element", luar.New(L, lua_EntityElement))
 	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
 	entityTbl.RawSetString("HealHP", luar.New(L, lua_EntityHealHP))
 	entityTbl.RawSetString("HealSP", luar.New(L, lua_EntityHealSP))
@@ -129,6 +130,10 @@ func lua_EntityStat(e *Entity, lStat lua.LString) int {
 		return 0
 	}
 	return e.stats.Get(stat)
+}
+
+func lua_EntityElement(e *Entity) Element {
+	return e.stats.cfg.Element
 }
 
 func lua_EntityEquipSlotOpen(e *Entity, slot EquipSlot) bool {

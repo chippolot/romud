@@ -29,7 +29,7 @@ func (sb *StringBuilder) WriteLinef(format string, a ...any) *StringBuilder {
 
 func (sb *StringBuilder) WriteLine(s string) *StringBuilder {
 	if s == "" {
-		return sb
+		return sb.WriteNewLine()
 	}
 	sb.builder.WriteString(s)
 	return sb.WriteNewLine()

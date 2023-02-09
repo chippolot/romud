@@ -263,6 +263,9 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 
 	// Can't afford
 	spCost := skill.SPCost(level)
+	if e.player == nil {
+		spCost = 0
+	}
 	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
 		Write("You don't have enough SP!").ToPlayer(e).Send()
 		return
@@ -289,6 +292,9 @@ func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level
 func castSkill(skill *SkillConfig, e *Entity, w *World, target *Entity, level int) {
 	// Final SP cost check
 	spCost := skill.SPCost(level)
+	if e.player == nil {
+		spCost = 0
+	}
 	if spCost > 0 && e.stats.Get(Stat_SP) < spCost {
 		Write("You don't have enough SP!").ToPlayer(e).Send()
 		return

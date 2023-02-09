@@ -28,3 +28,25 @@ Config.NewSkill({
         end
     }
 })
+
+Config.NewSkill({
+    Key = "teleport",
+    Name = "Teleport",
+    Type = SkillType.Active,
+    TargetType = SkillTargetType.Self,
+    SPCosts = { 10 },
+    MaxLevel = 1,
+    Job = JobType.Acolyte,
+    Desc = "Teleports to a random room in the same zone",
+    Scripts = {
+        Cast = function(self, _, _, _)
+            skillUtils.WriteCastSuccessMessages(self, "Blink into the distance! Teleport!")
+            Write.ToPlayer(self, string.format("You blink out of existence and appear somewhere new!"))
+            Write.ToPlayer(self, "")
+            Write.ToRoom(Entity.Room(self), { self }, string.format("%s blinks out of existence!", Entity.NameCap(self)))
+            local room = Zone.RandomRoom(Entity.Zone(self))
+            Act.MoveTo(self, room)
+            Write.ToRoom(Entity.Room(self), { self }, string.format("%s blinks into existence!", Entity.NameCap(self)))
+        end
+    }
+})

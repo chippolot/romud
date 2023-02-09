@@ -56,6 +56,8 @@ Entity = {
     end,
     Room = function(entity)
     end,
+    Zone = function(entity)
+    end,
     Stat = function(entity, stat)
     end,
     EquipSlotOpen = function(entity, slot)
@@ -102,6 +104,11 @@ Room = {
     end,
     Items = function(room)
     end,
+}
+
+Zone = {
+    RandomRoom = function(zone)
+    end
 }
 
 Async = {

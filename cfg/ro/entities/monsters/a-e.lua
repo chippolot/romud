@@ -25,6 +25,9 @@ Config.NewEntity({
     SkillTriggers = {
         [EntityState.Combat] = {
             { Key = "npc_wind_attack", Level = 1, Chance = 20 }
+        },
+        [EntityState.Idle] = {
+            { Key = "teleport", Level = 1, Chance = 5 },
         }
     },
     Stats = {
@@ -71,7 +74,7 @@ Config.NewEntity({
     Flags = { "scavenger" },
     SkillTriggers = {
         [EntityState.Combat] = {
-            { Key = "npc_fire_attack", Level = 1, Chance = 20 }
+            { Key = "npc_fire_attack", Level = 1, Chance = 20 },
         }
     },
     Stats = {

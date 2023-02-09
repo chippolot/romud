@@ -26,6 +26,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("NameCap", luar.New(L, lua_EntityNameCap))
 	entityTbl.RawSetString("RoomId", luar.New(L, lua_EntityRoomId))
 	entityTbl.RawSetString("Room", luar.New(L, lua_EntityRoom))
+	entityTbl.RawSetString("Zone", luar.New(L, lua_EntityZone))
 	entityTbl.RawSetString("Stat", luar.New(L, lua_EntityStat))
 	entityTbl.RawSetString("Element", luar.New(L, lua_EntityElement))
 	entityTbl.RawSetString("EquipSlotOpen", luar.New(L, lua_EntityEquipSlotOpen))
@@ -49,13 +50,17 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	roomTbl.RawSetString("Items", luar.New(L, lua_RoomItems))
 	L.SetGlobal("Room", roomTbl)
 
+	zoneTbl := L.NewTable()
+	zoneTbl.RawSetString("RandomRoom", luar.New(L, lua_ZoneRandomRoom))
+	L.SetGlobal("Zone", zoneTbl)
+
 	actTbl := L.NewTable()
 	actTbl.RawSetString("Attack", luar.New(L, lua_ActAttack))
 	actTbl.RawSetString("SkillAttack", luar.New(L, lua_ActSkillAttack))
 	actTbl.RawSetString("Get", luar.New(L, lua_ActGet))
 	actTbl.RawSetString("Equip", luar.New(L, lua_ActEquip))
 	actTbl.RawSetString("MoveDir", luar.New(L, lua_ActMoveDir))
-	actTbl.RawSetString("MoveTo", luar.New(L, lua_ActMoveRoom))
+	actTbl.RawSetString("MoveTo", luar.New(L, lua_ActMoveTo))
 	actTbl.RawSetString("Say", luar.New(L, lua_ActSay))
 	actTbl.RawSetString("Tell", luar.New(L, lua_ActTell))
 	actTbl.RawSetString("Yell", luar.New(L, lua_ActYell))
@@ -138,6 +143,14 @@ func lua_EntityRoom(e *Entity) *Room {
 	return lua_W.rooms[e.data.RoomId]
 }
 
+func lua_EntityZone(e *Entity) *Zone {
+	r := lua_W.rooms[e.data.RoomId]
+	if r == nil {
+		return nil
+	}
+	return lua_W.zones[r.zone]
+}
+
 func lua_EntityStat(e *Entity, lStat lua.LString) int {
 	stat, err := ParseStatType(lua.LVAsString(lStat))
 	if err != nil {
@@ -208,13 +221,20 @@ func lua_RoomEntities(r *Room) *lua.LTable {
 	return ret
 }
 
-// TODO can this be simplified?
 func lua_RoomItems(r *Room) *lua.LTable {
 	ret := lua_W.L.NewTable()
 	for _, i := range r.items {
 		ret.Append(utils.ToUserData(lua_W.L, i))
 	}
 	return ret
+}
+
+func lua_ZoneRandomRoom(z *Zone) *Room {
+	numrooms := len(z.rooms)
+	if numrooms == 0 {
+		return nil
+	}
+	return z.rooms[rand.Intn(numrooms)]
 }
 
 func lua_ActAttack(self *Entity, target *Entity) {
@@ -247,7 +267,7 @@ func lua_ActMoveDir(self *Entity, lDir lua.LString) {
 	performMoveDirection(self, lua_W, dir)
 }
 
-func lua_ActMoveRoom(self *Entity, r *Room) {
+func lua_ActMoveTo(self *Entity, r *Room) {
 	performMoveRoom(self, lua_W, r)
 }
 

@@ -237,6 +237,7 @@
 [] RO
     [] Char Creation
         [] Starting Stats
+        [] Lua starting script
     [] Skills
         [] NPC: Metamorphasis
         [] Mage: Different messages for different spells

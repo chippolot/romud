@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/chippolot/go-mud/src/mud/server"
+	"github.com/chippolot/go-mud/src/utils"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -37,6 +38,8 @@ const (
 	LSS_NewUserEnterPass
 	LSS_NewUserConfPass
 	LSS_RetUserEnterPass
+	LSS_SelectInitialStats
+	LSS_ConfirmInitialStats
 )
 
 type LoginSubState int
@@ -90,21 +93,27 @@ func (s *LoginState) ProcessInput(input string) StateId {
 	case LSS_NewUserConfPass:
 		if s.passMatch(input, s.pass) {
 			log.Printf("creating new player: %s", s.name)
-			*s.playerCharacter = s.world.CreatePlayerCharacter(s.name, s.pass, s.player)
+			e := s.world.CreatePlayerCharacter(s.name, s.pass, s.player)
 
-			// Give starting equipment
+			// Give player starting equipment
 			// TODO: Make scripted
 			cfg, _ := lua_W.TryGetItemConfig("knife")
 			itm := NewItem(cfg)
-			(*s.playerCharacter).AddItem(itm)
-			(*s.playerCharacter).Equip(itm)
+			e.AddItem(itm)
+			e.Equip(itm)
 			cfg, _ = lua_W.TryGetItemConfig("cotton_shirt")
 			itm = NewItem(cfg)
-			(*s.playerCharacter).AddItem(itm)
-			(*s.playerCharacter).Equip(itm)
+			e.AddItem(itm)
+			e.Equip(itm)
+
+			// Give player starting stat points
+			e.stats.Add(Stat_StatPoints, 24)
+
+			*s.playerCharacter = e
 
 			s.player.SendRaw(server.TelNet_Command_EchoOn)
-			return GameState_Playing
+			s.changeSubState(LSS_SelectInitialStats)
+			return 0
 		} else {
 			s.player.Send("Passwords don't match!")
 			s.changeSubState(LSS_NewUserEnterPass)
@@ -134,8 +143,31 @@ func (s *LoginState) ProcessInput(input string) StateId {
 		s.player.Send("Welcome back, %s!", s.name)
 		s.player.SendRaw(server.TelNet_Command_EchoOn)
 		return GameState_Playing
+	case LSS_SelectInitialStats:
+		s.sendStatSelection()
 	}
 	return 0
+}
+
+func (s *LoginState) sendStatSelection() {
+	e := (*s.playerCharacter)
+	e.player.Send("Allocate Initial Stats")
+	e.player.Send(utils.HorizontalDivider)
+	e.player.Send("Remaining Pts: %d", e.stats.Get(Stat_StatPoints))
+	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>[s]</c> Str %d", e.stats.Get(Stat_Str)), fmt.Sprintf("<c yellow>[i]</c> Int %d", e.stats.Get(Stat_Int)))
+	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>[a]</c> Agi %d", e.stats.Get(Stat_Agi)), fmt.Sprintf("<c yellow>[d]</c> Dex %d", e.stats.Get(Stat_Dex)))
+	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>[v]</c> Vit %d", e.stats.Get(Stat_Vit)), fmt.Sprintf("<c yellow>[l]</c> Luk %d", e.stats.Get(Stat_Luk)))
+	e.player.Send("")
+	/*
+		Initial Stat Allocation
+		Points Remaining: 24
+		-----------------------
+		[s] STR	1	[i] INT 1
+		[a] AGI	1	[d] DEX	1
+		[v] VIT	1	[l] LUK	1
+
+		How do you want to allocate your points?
+	*/
 }
 
 func (s *LoginState) passMatch(pass string, hash string) bool {
@@ -160,6 +192,10 @@ func (s *LoginState) changeSubState(ss LoginSubState) {
 	case LSS_NewUserConfPass:
 		s.prompt.SetPrompt("Confirm password: ")
 		s.player.SendRaw(server.TelNet_Command_EchoOff)
+	case LSS_SelectInitialStats:
+		s.sendStatSelection()
+		s.prompt.SetPrompt("Allocate your stat points (ex: str +2 / str -2): ")
+		s.player.SendRaw(server.TelNet_Command_EchoOn)
 	}
 	s.player.Send("")
 }

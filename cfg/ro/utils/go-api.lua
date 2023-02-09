@@ -66,6 +66,8 @@ Entity = {
     end,
     InCombat = function(e)
     end,
+    CanAttack = function(e, tgt) 
+    end,
     IsPlayer = function(e)
     end,
 }
@@ -87,6 +89,11 @@ Room = {
     end,
     Items = function(r)
     end,
+}
+
+Async = {
+    Delay = function(secs, fn)
+    end
 }
 
 Util = {

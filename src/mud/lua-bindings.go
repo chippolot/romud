@@ -33,6 +33,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("HealSP", luar.New(L, lua_EntityHealSP))
 	entityTbl.RawSetString("HealMov", luar.New(L, lua_EntityHealMov))
 	entityTbl.RawSetString("InCombat", luar.New(L, lua_EntityInCombat))
+	entityTbl.RawSetString("CanAttack", luar.New(L, lua_EntityCanAttack))
 	entityTbl.RawSetString("IsPlayer", luar.New(L, lua_EntityIsPlayer))
 	L.SetGlobal("Entity", entityTbl)
 
@@ -76,6 +77,10 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewJob", luar.New(L, lua_ConfigNewJob))
 	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
 	L.SetGlobal("Config", configTable)
+
+	asyncTbl := L.NewTable()
+	asyncTbl.RawSetString("Delay", luar.New(L, lua_AsyncDelay))
+	L.SetGlobal("Async", asyncTbl)
 
 	utilTbl := L.NewTable()
 	utilTbl.RawSetString("RandomChance", luar.New(L, lua_UtilChance))
@@ -155,6 +160,11 @@ func lua_EntityHealMov(e *Entity, amount int) {
 
 func lua_EntityInCombat(e *Entity) bool {
 	return e.combat != nil
+}
+
+func lua_EntityCanAttack(e *Entity, tgt *Entity) bool {
+	ok, _ := validateAttack(e, tgt)
+	return ok
 }
 
 func lua_EntityIsPlayer(e *Entity) bool {
@@ -372,6 +382,11 @@ func lua_ConfigRegisterNouns(tbl *lua.LTable) {
 		lua_W.vocab.nouns[noun.Singular] = noun
 	}
 	log.Printf("registered %d nouns", len(nouns)/2)
+}
+
+func lua_AsyncDelay(secs utils.Seconds, luaFn *lua.LFunction) {
+	fn := utils.WrapLuaFunc(lua_W.L, luaFn)
+	lua_W.asyncCallbacks.AddBack(&AsyncCallback{lua_W.time + secs, fn})
 }
 
 func lua_UtilChance() int {

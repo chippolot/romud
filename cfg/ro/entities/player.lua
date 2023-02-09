@@ -7,6 +7,7 @@ Config.NewEntity({
         Damage = "1",
         Noun = "punch"
     } },
+    Flags = {"uninterruptable"},
     Attack = {
         Power = "7-9",
         Noun = "hit",

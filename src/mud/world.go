@@ -29,10 +29,11 @@ type World struct {
 	shops    map[RoomId]*Shop
 	entities map[EntityId]*Entity
 
-	entryRoomId RoomId
-	inCombat    *CombatList
-	casting     *CastingList
-	loggingOut  map[PlayerId]bool
+	entryRoomId    RoomId
+	inCombat       *CombatList
+	casting        *CastingList
+	asyncCallbacks *utils.List[*AsyncCallback]
+	loggingOut     map[PlayerId]bool
 
 	events chan<- server.SessionEvent
 }
@@ -58,6 +59,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 		0,
 		&CombatList{},
 		&CastingList{},
+		&utils.List[*AsyncCallback]{},
 		make(map[PlayerId]bool),
 		events,
 	}

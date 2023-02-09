@@ -88,10 +88,11 @@ type JobsMudConfig struct {
 }
 
 type SkillsMudConfig struct {
-	IgnoreSkillPreRequirements bool
-	IgnoreSkillJobRequirements bool
-	IgnoreSkillPoints          bool
-	AllowCastUnlearnedSkills   bool
+	IgnorePreRequirements bool
+	IgnoreJobRequirements bool
+	IgnorePoints          bool
+	AllowCastUnlearned    bool
+	AllowCastAnyLevel     bool
 }
 
 type MudConfig struct {

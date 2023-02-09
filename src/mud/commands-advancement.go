@@ -119,12 +119,12 @@ func DoLearnSkill(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	if !mudConfig.Skills.IgnoreSkillPoints && e.stats.Get(Stat_SkillPoints) < 1 {
+	if !mudConfig.Skills.IgnorePoints && e.stats.Get(Stat_SkillPoints) < 1 {
 		Write("You've need a skill point to learn %s!", skill.Name).ToPlayer(e).Send()
 		return
 	}
 
-	if !mudConfig.Skills.IgnoreSkillPreRequirements && skill.PreReqs != nil {
+	if !mudConfig.Skills.IgnorePreRequirements && skill.PreReqs != nil {
 		if e.skills.SkillLevel(skill.PreReqs.Key) < skill.PreReqs.Level {
 			preReqSkill, _ := w.TryGetSkillConfig(skill.PreReqs.Key)
 			Write("Learning %s requires that you know %s Lv.%d", skill.Name, preReqSkill.Name, skill.PreReqs.Level).ToPlayer(e).Send()
@@ -138,7 +138,7 @@ func DoLearnSkill(e *Entity, w *World, tokens []string) {
 	}
 
 	// Learn Skill
-	if !mudConfig.Skills.IgnoreSkillPoints {
+	if !mudConfig.Skills.IgnorePoints {
 		e.stats.Add(Stat_SkillPoints, -1)
 	}
 	e.skills.Learn(skill.Key)
@@ -178,13 +178,13 @@ func DoPracticeSkill(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	if !mudConfig.Skills.IgnoreSkillPoints && e.stats.Get(Stat_SkillPoints) < 1 {
+	if !mudConfig.Skills.IgnorePoints && e.stats.Get(Stat_SkillPoints) < 1 {
 		Write("You've need a skill point to practice %s!", skill.Name).ToPlayer(e).Send()
 		return
 	}
 
 	// Learn Skill
-	if !mudConfig.Skills.IgnoreSkillPoints {
+	if !mudConfig.Skills.IgnorePoints {
 		e.stats.Add(Stat_SkillPoints, -1)
 	}
 	e.skills.LevelUp(skill.Key)

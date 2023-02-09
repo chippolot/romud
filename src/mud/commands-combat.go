@@ -57,7 +57,7 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	if !mudConfig.Skills.AllowCastUnlearnedSkills && !e.skills.KnowsSkill(key) {
+	if !mudConfig.Skills.AllowCastUnlearned && !e.skills.KnowsSkill(key) {
 		Write("You haven't learned that skill!").ToPlayer(e).Send()
 		return
 	}
@@ -67,7 +67,7 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		if !skill.SelectableLevel() {
 			Write("You can't select cast level for %s!", skill.Name).ToPlayer(e).Send()
 			return
-		} else if requestedLevel > level {
+		} else if !mudConfig.Skills.AllowCastAnyLevel && requestedLevel > level {
 			Write("You've only practiced %s to level %d!", skill.Name, level).ToPlayer(e).Send()
 			return
 		} else {

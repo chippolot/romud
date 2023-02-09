@@ -11,31 +11,33 @@ import (
 type EntityFlagMask bits.Bits
 
 const (
-	EFlag_Stationary     EntityFlagMask = 1 << iota // Cannot move
-	EFlag_Scavenger                                 // Pick up valuable items on the ground
-	EFlag_TrashCollector                            // Pick up worthless items on the ground
-	EFlag_UsesEquipment                             // Can use equipment
-	EFlag_Blind                                     // Cannot see
-	EFlag_Invisible                                 // Cannot be seen
-	EFlag_Aggro                                     // Attacks enemies on sight
-	EFlag_AssistAll                                 // Assist all mobs who are being fought by players
-	EFlag_AssistSame                                // Assist mobs of the same type who are being fought by players
-	EFlag_CanLeaveZone                              // Will wander out of initial zone
-	EFlag_Pacifist                                  // Won't attack
+	EFlag_Stationary      EntityFlagMask = 1 << iota // Cannot move
+	EFlag_Scavenger                                  // Pick up valuable items on the ground
+	EFlag_TrashCollector                             // Pick up worthless items on the ground
+	EFlag_UsesEquipment                              // Can use equipment
+	EFlag_Blind                                      // Cannot see
+	EFlag_Invisible                                  // Cannot be seen
+	EFlag_Aggro                                      // Attacks enemies on sight
+	EFlag_AssistAll                                  // Assist all mobs who are being fought by players
+	EFlag_AssistSame                                 // Assist mobs of the same type who are being fought by players
+	EFlag_CanLeaveZone                               // Will wander out of initial zone
+	EFlag_Pacifist                                   // Won't attack
+	EFlag_Uninterruptable                            // Skills can't be interrupted
 )
 
 var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
-	EFlag_Stationary:     "stationary",
-	EFlag_Scavenger:      "scavenger",
-	EFlag_TrashCollector: "trashcollector",
-	EFlag_UsesEquipment:  "usesequipment",
-	EFlag_Blind:          "blind",
-	EFlag_Invisible:      "invisible",
-	EFlag_Aggro:          "aggro",
-	EFlag_AssistAll:      "assistall",
-	EFlag_AssistSame:     "assistsame",
-	EFlag_CanLeaveZone:   "leaveszone",
-	EFlag_Pacifist:       "pacifist",
+	EFlag_Stationary:      "stationary",
+	EFlag_Scavenger:       "scavenger",
+	EFlag_TrashCollector:  "trashcollector",
+	EFlag_UsesEquipment:   "usesequipment",
+	EFlag_Blind:           "blind",
+	EFlag_Invisible:       "invisible",
+	EFlag_Aggro:           "aggro",
+	EFlag_AssistAll:       "assistall",
+	EFlag_AssistSame:      "assistsame",
+	EFlag_CanLeaveZone:    "leaveszone",
+	EFlag_Pacifist:        "pacifist",
+	EFlag_Uninterruptable: "uninterruptable",
 })
 
 func ParseEntityFlag(str string) (EntityFlagMask, error) {

@@ -112,24 +112,26 @@ func (c *CombatList) EndCombat(e *Entity) {
 	e.combat = nil
 }
 
-func validateAttack(e *Entity, tgt *Entity) bool {
-	if tgt == nil {
-		log.Printf("trying to attack nil target!")
-		return false
+func validateAttack(e *Entity, tgt *Entity) (bool, string) {
+	if e == nil || tgt == nil {
+		return false, ""
+	}
+	if e.data.RoomId == InvalidId || tgt.data.RoomId == InvalidId {
+		return false, ""
 	}
 	if e.data.RoomId != tgt.data.RoomId {
-		log.Printf("trying to attack tgt %d in different room!", tgt.id)
-		return false
+		return false, ""
 	}
 	if e.position < Pos_Standing {
-		Write("You can't fight while you're knocked down!").ToPlayer(e).Send()
-		return false
+		return false, "You can't fight while you're knocked down!"
 	}
 	if e.stats.Condition() <= Cnd_Stunned {
-		Write("You're in no condition for that!").ToPlayer(e).Send()
-		return false
+		return false, "You're in no condition for that!"
 	}
-	return true
+	if tgt.stats.Condition() <= Cnd_Dead {
+		return false, "You've already defeated them!"
+	}
+	return true, ""
 }
 
 func performAssist(e *Entity, w *World, ally *Entity) {
@@ -224,6 +226,9 @@ func interruptSkill(e *Entity, w *World) {
 	if e.skills.casting == nil {
 		return
 	}
+	if e.entityFlags.Has(EFlag_Uninterruptable) {
+		return
+	}
 	w.casting.EndCasting(e)
 
 	Write("You lose your concentration!").ToPlayer(e).Colorized(Color_Negative).Send()
@@ -231,7 +236,10 @@ func interruptSkill(e *Entity, w *World) {
 }
 
 func prepareAttack(e *Entity, w *World, tgt *Entity, preAttackFn func()) {
-	if !validateAttack(e, tgt) {
+	if ok, outputErr := validateAttack(e, tgt); !ok {
+		if outputErr != "" {
+			Write(outputErr).ToPlayer(e).Send()
+		}
 		return
 	}
 

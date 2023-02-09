@@ -211,9 +211,9 @@ Config.NewSkill({
     Type = SkillType.Offensive,
     TargetType = SkillTargetType.All_Enemies,
     Range = 9,
-    CastTimes = { 1,2,3,4,5,6,7,8,9,10 },
+    CastTimes = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
     CastDelays = { 2 },
-    SPCosts = { 29,34,39,44,49,54,59,64,69,74 },
+    SPCosts = { 29, 34, 39, 44, 49, 54, 59, 64, 69, 74 },
     MaxLevel = 10,
     PreReqs = {
         Key = "lightning_bolt",
@@ -231,14 +231,18 @@ Config.NewSkill({
                 return
             end
             for i = 1, level do
-                Async.Schedule(i * 0.2, function()
-                    Act.SkillAttack(user, targets, skill, {
-                        AtkType = SkillAttackType.Magic,
-                        MAtkBonus = 0.8 - 1.0,
-                        Element = Element.Wind
-                    })
+                Async.Delay(i * 0.2, function()
+                    for _, target in ipairs(targets) do
+                        if Entity.CanAttack(user, target) then
+                            Act.SkillAttack(user, { target }, skill, {
+                                AtkType = SkillAttackType.Magic,
+                                MAtkBonus = 0.8 - 1.0,
+                                Element = Element.Wind
+                            })
+                        end
+                    end
                 end)
-            end 
+            end
         end,
         Missed = function(user, target) magicProjectileMissedFunc(user, target, "THUNDER STORM") end,
         Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "THUNDER STORM") end,

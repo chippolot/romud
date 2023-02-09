@@ -44,6 +44,7 @@ type SessionHandlerSystem struct {
 func GameLoop(w *World, handler *SessionHandler) {
 	systems := []*UpdateSystem{
 		{&SessionHandlerSystem{handler}, 0, 0},
+		{&System{asyncCallbacksSystem}, 0.1, 0},
 		{&System{zoneSpawnersSystem}, 1, 0},
 		{&System{statusEffectsSystem}, 1, 0},
 		{&System{statRestorationSystem}, 1, 0},
@@ -84,6 +85,18 @@ func (s *SessionHandlerSystem) Update(w *World, dt utils.Seconds) {
 			s.handler.HandleEvent(evt)
 		default:
 			return
+		}
+	}
+}
+
+func asyncCallbacksSystem(w *World, dt utils.Seconds) {
+	for i := w.asyncCallbacks.Head; i != nil; {
+		cb := i.Value
+		i = i.Next
+
+		if w.time >= cb.time {
+			cb.fn()
+			w.asyncCallbacks.Remove(cb)
 		}
 	}
 }

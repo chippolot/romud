@@ -16,7 +16,8 @@
             "IgnoreJobRequirements": true
         },
         "Skills": {
-            "AllowCastUnlearnedSkills": true
+            "AllowCastUnlearned": true,
+            "AllowCastAnyLevel": true
         },
         "ItemDropRateMultiplier": 10.0,
         "XPRateMultiplier": 25.0,

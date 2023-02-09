@@ -203,6 +203,7 @@
         [x] Learn Skills
         [x] Upgrade skills
         [x] Targeting a monster should aggro it
+        [x] Async.Schedule -- Thunderstorm
     [x] Magic
         [x] Use MATK for magic spells
         [x] Stats Screen
@@ -234,9 +235,12 @@
         [x] Allow skill use at arbitrary levels
 ----------------------------------------
 [] RO
+    [] Char Creation
+        [] Starting Stats
     [] Skills
-        [] Async.Schedule -- Thunderstorm
         [] NPC: Metamorphasis
+        [] Mage: Different messages for different spells
+    [] Github
     [] Parser Improvements
         [] Prioritize entity searches against combat targets
     [] Jobs
@@ -245,6 +249,7 @@
             [] Unequip on job change
         [] Job stat bonuses
     [] Items
+        [] Group pickup display
         [] Stackable
     [] Content
         [] Create stub Prontera w/ shop
@@ -273,7 +278,6 @@
     [] Use flags (ex: edible = eat)
     [] Equipment Slots + Cards
         [] Modifies item name
-[] Github
 [] MVP mobs
 [] Equippable Cards
 [] More commands

@@ -234,6 +234,9 @@
         [x] Allow skill use at arbitrary levels
 ----------------------------------------
 [] RO
+    [] Skills
+        [] Async.Schedule -- Thunderstorm
+        [] NPC: Metamorphasis
     [] Parser Improvements
         [] Prioritize entity searches against combat targets
     [] Jobs
@@ -241,9 +244,6 @@
         [] Job specific eq
             [] Unequip on job change
         [] Job stat bonuses
-    [] Skills
-        [] Skill cast types
-        [] Metamorphasis
     [] Items
         [] Stackable
     [] Content
@@ -325,6 +325,7 @@
 [x] back_slide
 [x] fire_ball
 [x] soul_strike
+[x] thunderstorm
 [] play_dead
 [] endure
 [] increase_hp_recovery
@@ -341,7 +342,6 @@
 [] safety_wall
 [] sight
 [] stone_curse
-[] thunderstorm
 [] energy_coat
 [] arrow_shower
 [] double_strafe

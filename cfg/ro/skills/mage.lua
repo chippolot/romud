@@ -205,6 +205,46 @@ Config.NewSkill({
     }
 })
 
+Config.NewSkill({
+    Key = "thunder_storm",
+    Name = "Thunder Storm",
+    Type = SkillType.Offensive,
+    TargetType = SkillTargetType.All_Enemies,
+    Range = 9,
+    CastTimes = { 1,2,3,4,5,6,7,8,9,10 },
+    CastDelays = { 2 },
+    SPCosts = { 29,34,39,44,49,54,59,64,69,74 },
+    MaxLevel = 10,
+    PreReqs = {
+        Key = "lightning_bolt",
+        Level = 4
+    },
+    Job = JobType.Mage,
+    Desc = "Hits every Enemy in a 5x5 area around the targeted cell with 1 Wind Element Bolt per level at a rate of 1 bolt every 0.2 seconds. Each bolt does 0.8*MATK Wind element damage.",
+    Scripts = {
+        Activated = function(user)
+            skillUtils.WriteCastingMessages(user, Element.Wind)
+        end,
+        Cast = function(user, targets, skill, level)
+            skillUtils.WriteCastSuccessMessages(user, "Let the thunder roar! Thunder Storm!")
+            if #targets == 0 then
+                return
+            end
+            for i = 1, level do
+                Async.Schedule(i * 0.2, function()
+                    Act.SkillAttack(user, targets, skill, {
+                        AtkType = SkillAttackType.Magic,
+                        MAtkBonus = 0.8 - 1.0,
+                        Element = Element.Wind
+                    })
+                end)
+            end 
+        end,
+        Missed = function(user, target) magicProjectileMissedFunc(user, target, "THUNDER STORM") end,
+        Hit = function(user, target, dam) magicProjectileHitFunc(user, target, dam, "THUNDER STORM") end,
+    }
+})
+
 -- Helper Funcs
 magicProjectileMissedFunc = function(user, target, magName)
     Write.ToPlayer(user,

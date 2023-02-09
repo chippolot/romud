@@ -1,6 +1,6 @@
 package mud
 
-import "github.com/chippolot/go-mud/src/utils"
+import "github.com/chippolot/ro-mud/src/utils"
 
 type AsyncCallback struct {
 	time utils.Seconds

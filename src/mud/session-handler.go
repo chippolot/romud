@@ -3,7 +3,7 @@ package mud
 import (
 	"log"
 
-	"github.com/chippolot/go-mud/src/mud/server"
+	"github.com/chippolot/ro-mud/src/mud/server"
 )
 
 type PlayerSessionData struct {

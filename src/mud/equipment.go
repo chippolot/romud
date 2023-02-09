@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/chippolot/go-mud/src/bits"
-	"github.com/chippolot/go-mud/src/utils"
+	"github.com/chippolot/ro-mud/src/bits"
+	"github.com/chippolot/ro-mud/src/utils"
 )
 
 type EquipSlot bits.Bits

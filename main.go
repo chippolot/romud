@@ -8,9 +8,9 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/chippolot/go-mud/src/mud"
-	"github.com/chippolot/go-mud/src/mud/server"
-	"github.com/chippolot/go-mud/src/utils"
+	"github.com/chippolot/ro-mud/src/mud"
+	"github.com/chippolot/ro-mud/src/mud/server"
+	"github.com/chippolot/ro-mud/src/utils"
 	lua "github.com/yuin/gopher-lua"
 )
 

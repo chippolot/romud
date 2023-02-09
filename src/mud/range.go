@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/utils"
+	"github.com/chippolot/ro-mud/src/utils"
 )
 
 type Range struct {

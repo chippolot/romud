@@ -5,7 +5,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/chippolot/go-mud/src/utils"
+	"github.com/chippolot/ro-mud/src/utils"
 )
 
 type PromptProvider interface {

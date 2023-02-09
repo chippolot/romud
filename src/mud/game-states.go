@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chippolot/go-mud/src/mud/server"
-	"github.com/chippolot/go-mud/src/utils"
+	"github.com/chippolot/ro-mud/src/mud/server"
+	"github.com/chippolot/ro-mud/src/utils"
 	"golang.org/x/crypto/bcrypt"
 )
 

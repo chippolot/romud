@@ -3,7 +3,7 @@ package mud
 import (
 	"math"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 func calculatePhysicalAttackDamage(e *Entity, tgt *Entity, weaponType WeaponType, element Element, atkBonus float64, critical bool) int {

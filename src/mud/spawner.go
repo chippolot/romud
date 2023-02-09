@@ -5,7 +5,7 @@ import (
 	"log"
 	"math/rand"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 const (

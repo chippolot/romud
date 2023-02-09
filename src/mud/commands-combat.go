@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 func DoAttack(e *Entity, w *World, tokens []string) {

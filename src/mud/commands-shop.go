@@ -1,7 +1,7 @@
 package mud
 
 import (
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 func DoList(e *Entity, w *World, tokens []string) {

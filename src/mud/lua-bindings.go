@@ -7,7 +7,7 @@ import (
 	"reflect"
 
 	"github.com/benkeatingsmith/gluamapper"
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 	lua "github.com/yuin/gopher-lua"
 	luar "layeh.com/gopher-luar"
 )

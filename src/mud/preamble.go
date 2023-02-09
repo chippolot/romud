@@ -3,7 +3,7 @@ package mud
 import (
 	"strings"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 var Preamble = strings.ReplaceAll(`

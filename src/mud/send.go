@@ -5,8 +5,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/chippolot/ro-mud/src/bits"
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/bits"
+	"github.com/chippolot/romud/src/utils"
 )
 
 //goland:noinspection GoSnakeCaseUsage

@@ -1,4 +1,4 @@
-module github.com/chippolot/ro-mud
+module github.com/chippolot/romud
 
 go 1.20
 

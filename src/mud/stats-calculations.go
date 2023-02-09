@@ -4,7 +4,7 @@ import (
 	"log"
 	"math"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 func calculateAndUpdateStats(e *Entity) {

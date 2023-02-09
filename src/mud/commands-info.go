@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 func DoConsider(e *Entity, w *World, tokens []string) {

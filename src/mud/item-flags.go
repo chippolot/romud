@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/chippolot/ro-mud/src/bits"
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/bits"
+	"github.com/chippolot/romud/src/utils"
 )
 
 type ItemFlagMask bits.Bits

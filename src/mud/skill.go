@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 	lua "github.com/yuin/gopher-lua"
 )
 

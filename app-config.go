@@ -1,6 +1,6 @@
 package main
 
-import "github.com/chippolot/ro-mud/src/mud"
+import "github.com/chippolot/romud/src/mud"
 
 type ServerConfig struct {
 	Type string

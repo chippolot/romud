@@ -6,7 +6,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/chippolot/ro-mud/src/utils"
+	"github.com/chippolot/romud/src/utils"
 )
 
 const (

@@ -205,6 +205,7 @@
         [x] Targeting a monster should aggro it
         [x] Async.Schedule -- Thunderstorm
         [x] NPC: Metamorphasis
+        [x] NPC: Teleportation
     [x] Magic
         [x] Use MATK for magic spells
         [x] Stats Screen
@@ -244,7 +245,8 @@
     [] Improve ReadMe
 [] RO
     [] Skills
-        [] NPC: Teleportation
+        [] Tag entities that are "silent" for shouting magic incantations
+        [] Teleport Level 2
         [] NPC: Sleep Attack Lv 3
         [] NPC: Wind Attribute Attack 1
         [] Mage: Different messages for different spells

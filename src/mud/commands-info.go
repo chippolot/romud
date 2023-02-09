@@ -236,12 +236,16 @@ func DoListSkills(e *Entity, w *World, tokens []string) {
 			if skill.Level < skill.cfg.MaxLevel {
 				lvlStr = fmt.Sprintf("%d/%d", skill.Level, skill.cfg.MaxLevel)
 			}
-			sb.WriteLinef("%-20s%-20s", skill.cfg.Name, lvlStr)
+			selStr := "No"
+			if skill.cfg.SelectableLevel() {
+				selStr = "Yes"
+			}
+			sb.WriteLinef("%-20s%-20s%-10s%-10s", skill.cfg.Name, skill.cfg.Key, lvlStr, selStr)
 		}
 		if sb.Len() > 0 {
 			Write("Known Skills").ToPlayer(e).Send()
 			Write(utils.HorizontalDivider).ToPlayer(e).Send()
-			Write("%-20s%-20s", "Skill", "Level").ToPlayer(e).Send()
+			Write("%-20s%-20s%-10s%-10s", "Skill", "Keyword", "Level", "Selectable").ToPlayer(e).Send()
 			Write(utils.HorizontalDivider).ToPlayer(e).Send()
 			Write(sb.String()).ToPlayer(e).Send()
 			sb.Reset()
@@ -326,11 +330,11 @@ func listJobSkills(e *Entity, jobCfg *JobConfig, w *World, sb *utils.StringBuild
 			prereqSkill, _ := w.TryGetSkillConfig(skill.PreReqs.Key)
 			reqsStr = fmt.Sprintf("%s Lv.%d", prereqSkill.Name, skill.PreReqs.Level)
 		}
-		sb.WriteLinef("%-20s%-20s", skill.Name, reqsStr)
+		sb.WriteLinef("%-20s%-20s%-20s", skill.Name, skill.Key, reqsStr)
 	}
 	Write(header).ToPlayer(e).Send()
 	Write(utils.HorizontalDivider).ToPlayer(e).Send()
-	Write("%-20s%-20s", "Skill", "Reqs").ToPlayer(e).Send()
+	Write("%-20s%-20s%-20s", "Skill", "Keyword", "Reqs").ToPlayer(e).Send()
 	Write(utils.HorizontalDivider).ToPlayer(e).Send()
 	if sb.Len() > 0 {
 		Write(sb.String()).ToPlayer(e).Send()

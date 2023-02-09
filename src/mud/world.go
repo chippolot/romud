@@ -11,12 +11,13 @@ import (
 )
 
 type WorldConfig struct {
-	entityConfigs map[string]*EntityConfig
-	itemConfigs   map[string]*ItemConfig
-	skillConfigs  map[string]*SkillConfig
-	jobConfigs    map[JobTypeMask]*JobConfig
-	vocab         *Vocab
-	entryRoomId   RoomId
+	entityConfigs map[string]*EntityConfig   // All entity configs
+	itemConfigs   map[string]*ItemConfig     // All item configs
+	skillConfigs  map[string]*SkillConfig    // All skill configs
+	jobConfigs    map[JobTypeMask]*JobConfig // All job configs
+	vocab         *Vocab                     // Vocab lookup (nouns, verbs, etc)
+	entryRoomId   RoomId                     // Default room id used when spawning new players
+	newPlayerFn   func(*Entity)              // Function to call on all new players
 }
 
 type World struct {
@@ -52,6 +53,7 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 			make(map[JobTypeMask]*JobConfig),
 			NewVocab(),
 			InvalidId,
+			nil,
 		},
 		0,
 		make(map[PlayerId]*Entity),

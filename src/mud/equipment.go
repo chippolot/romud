@@ -150,19 +150,22 @@ func GetEquipmentSlotDescription(slot EquipSlot) string {
 	return ""
 }
 
-func performEquip(e *Entity, w *World, item *Item) {
+func performEquip(e *Entity, w *World, item *Item, silent bool) {
 	r := w.rooms[e.data.RoomId]
 	oldStatusEffectFlags := e.statusEffects.mask
 	slot, unequipped, ok := e.Equip(item)
 	if !ok {
 		return
 	}
-	for _, u := range unequipped {
-		sendUnequipMessages(e, r, u)
+	if !silent {
+		for _, u := range unequipped {
+			sendUnequipMessages(e, r, u)
+		}
+		sendEquipMessages(e, r, slot, item)
+
+		newStatusEffectFlags := e.statusEffects.mask
+		describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
 	}
-	sendEquipMessages(e, r, slot, item)
-	newStatusEffectFlags := e.statusEffects.mask
-	describeStatusEffectChanges(e, w, oldStatusEffectFlags, newStatusEffectFlags)
 }
 
 func performUnequip(e *Entity, w *World, item *Item) {

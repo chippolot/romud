@@ -180,7 +180,7 @@ func DoEquip(e *Entity, w *World, tokens []string) {
 		}
 	} else {
 		for _, item := range items {
-			performEquip(e, w, item)
+			performEquip(e, w, item, false)
 		}
 	}
 }

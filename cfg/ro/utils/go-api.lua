@@ -7,7 +7,7 @@ Act = {
     end,
     Get = function(e, i)
     end,
-    Equip = function(e, i)
+    Equip = function(e, i, silent)
     end,
     MoveDir = function(e, dir)
     end,
@@ -36,6 +36,8 @@ Config = {
     end,
     RegisterNouns = function(cfg)
     end,
+    RegisterNewPlayerScript = function(fn)
+    end
 }
 
 Write = {
@@ -72,8 +74,12 @@ Entity = {
     end,
 }
 
-Item = {
+Spawn = {
+    Item = function(itemKey, target)
+    end
+}
 
+Item = {
     Name = function(i)
     end,
     NameCap = function(i)

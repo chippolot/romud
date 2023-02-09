@@ -62,6 +62,10 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	actTbl.RawSetString("IncreaseDistance", luar.New(L, lua_ActIncreaseDistance))
 	L.SetGlobal("Act", actTbl)
 
+	spawnTbl := L.NewTable()
+	spawnTbl.RawSetString("Item", luar.New(L, lua_SpawnItem))
+	L.SetGlobal("Spawn", spawnTbl)
+
 	writeTbl := L.NewTable()
 	writeTbl.RawSetString("ToPlayer", luar.New(L, lua_WriteToPlayer))
 	writeTbl.RawSetString("ToRoom", luar.New(L, lua_WriteToRoom))
@@ -76,6 +80,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	configTable.RawSetString("NewSkill", luar.New(L, lua_ConfigNewSkill))
 	configTable.RawSetString("NewJob", luar.New(L, lua_ConfigNewJob))
 	configTable.RawSetString("RegisterNouns", luar.New(L, lua_ConfigRegisterNouns))
+	configTable.RawSetString("RegisterNewPlayerScript", luar.New(L, lua_ConfigRegisterNewPlayerScript))
 	L.SetGlobal("Config", configTable)
 
 	asyncTbl := L.NewTable()
@@ -224,8 +229,8 @@ func lua_ActGet(self *Entity, item *Item) {
 	performGet(self, lua_W, lua_W.rooms[self.data.RoomId], item)
 }
 
-func lua_ActEquip(self *Entity, item *Item) {
-	performEquip(self, lua_W, item)
+func lua_ActEquip(self *Entity, item *Item, silent bool) {
+	performEquip(self, lua_W, item, silent)
 }
 
 func lua_ActMoveDir(self *Entity, lDir lua.LString) {
@@ -251,6 +256,17 @@ func lua_ActTell(self *Entity, target *Entity, msg string) {
 
 func lua_ActYell(self *Entity, msg string) {
 	performYell(self, lua_W, msg)
+}
+
+func lua_SpawnItem(key string, to ItemContainer) *Item {
+	if cfg, ok := lua_W.TryGetItemConfig(key); !ok {
+		log.Printf("trying to spawn item invalid item key '%s'", key)
+		return nil
+	} else {
+		item := NewItem(cfg)
+		to.AddItem(item)
+		return item
+	}
 }
 
 func lua_ActIncreaseDistance(self *Entity, amt int) {
@@ -382,6 +398,14 @@ func lua_ConfigRegisterNouns(tbl *lua.LTable) {
 		lua_W.cfg.vocab.nouns[noun.Singular] = noun
 	}
 	log.Printf("registered %d nouns", len(nouns)/2)
+}
+
+func lua_ConfigRegisterNewPlayerScript(luaFn *lua.LFunction) {
+	lua_W.cfg.newPlayerFn = func(player *Entity) {
+		if err := lua_W.L.CallByParam(lua.P{Fn: luaFn, NRet: 1, Protect: false}, utils.ToUserData(lua_W.L, player)); err != nil {
+			log.Panicln("error calling new player script: ", err)
+		}
+	}
 }
 
 func lua_AsyncDelay(secs utils.Seconds, luaFn *lua.LFunction) {

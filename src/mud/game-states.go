@@ -95,16 +95,10 @@ func (s *LoginState) ProcessInput(input string) StateId {
 			log.Printf("creating new player: %s", s.name)
 			e := s.world.CreatePlayerCharacter(s.name, s.pass, s.player)
 
-			// Give player starting equipment
-			// TODO: Make scripted
-			cfg, _ := lua_W.TryGetItemConfig("knife")
-			itm := NewItem(cfg)
-			e.AddItem(itm)
-			e.Equip(itm)
-			cfg, _ = lua_W.TryGetItemConfig("cotton_shirt")
-			itm = NewItem(cfg)
-			e.AddItem(itm)
-			e.Equip(itm)
+			// Call new player setup script
+			if s.world.cfg.newPlayerFn != nil {
+				s.world.cfg.newPlayerFn(e)
+			}
 
 			// Give player starting stat points
 			e.stats.Add(Stat_StatPoints, 24)

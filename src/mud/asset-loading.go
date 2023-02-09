@@ -14,47 +14,13 @@ const (
 func LoadAssets(w *World, projectRoot string) {
 	root := path.Join(projectRoot, mudConfig.ConfigRoot)
 
-	// Register misc config
-	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "misc"), ScriptFileExtension) {
-		if err := RunScript(w, path); err != nil {
-			log.Fatalf("failed to load scipt file %s -- %v", path, err)
-		}
-	}
-
-	// Load rooms
-	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "rooms"), ScriptFileExtension) {
-		if err := RunScript(w, path); err != nil {
-			log.Fatalf("failed to load room file %s -- %v", path, err)
-		}
-	}
-
-	// Load mobs
-	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "entities"), ScriptFileExtension) {
-		if err := RunScript(w, path); err != nil {
-			log.Fatalf("failed to load entities file %s -- %v", path, err)
-		}
-	}
-
-	// Load items
-	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "items"), ScriptFileExtension) {
-		if err := RunScript(w, path); err != nil {
-			log.Fatalf("failed to load items file %s -- %v", path, err)
-		}
-	}
-
-	// Load skills
-	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "skills"), ScriptFileExtension) {
-		if err := RunScript(w, path); err != nil {
-			log.Fatalf("failed to load skills file %s -- %v", path, err)
-		}
-	}
-
-	// Load jobs
-	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "jobs"), ScriptFileExtension) {
-		if err := RunScript(w, path); err != nil {
-			log.Fatalf("failed to load jobs file %s -- %v", path, err)
-		}
-	}
+	runScriptsInConfigFolder(w, root, "misc")
+	runScriptsInConfigFolder(w, root, "rooms")
+	runScriptsInConfigFolder(w, root, "entities")
+	runScriptsInConfigFolder(w, root, "items")
+	runScriptsInConfigFolder(w, root, "skills")
+	runScriptsInConfigFolder(w, root, "jobs")
+	runScriptsInConfigFolder(w, root, "scripts")
 
 	log.Printf("loaded %d zones", len(w.zones))
 	log.Printf("loaded %d rooms", len(w.rooms))
@@ -115,4 +81,12 @@ func RunScript(w *World, filePath string) error {
 		return err
 	}
 	return nil
+}
+
+func runScriptsInConfigFolder(w *World, configRoot string, folderName string) {
+	for _, path := range utils.FindFilePathsWithExtension(path.Join(configRoot, folderName), ScriptFileExtension) {
+		if err := RunScript(w, path); err != nil {
+			log.Fatalf("failed to load scipt file %s -- %v", path, err)
+		}
+	}
 }

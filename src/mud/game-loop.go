@@ -51,7 +51,7 @@ func GameLoop(w *World, handler *SessionHandler) {
 		{&System{scavengersSystem}, 3, 0},
 		{&System{wanderersSystem}, 3, 0},
 		{&System{aggroSystem}, 1, 0},
-		{&System{idleTriggerSystem}, 1, 0},
+		{&System{idleTriggerSystem}, 2, 0},
 		{&System{assistersSystem}, 1, 0},
 		{&System{castSystem}, 0.1, 0},
 		{&System{combatSystem}, 2, 0},

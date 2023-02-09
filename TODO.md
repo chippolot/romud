@@ -233,10 +233,11 @@
         [x] Display combat prompt for single enemy attacking you
     [x] Parser Improvements
         [x] Allow skill use at arbitrary levels
+    [x] Char Creation
+        [x] Starting Stats
 ----------------------------------------
 [] RO
     [] Char Creation
-        [] Starting Stats
         [] Lua starting script
     [] Skills
         [] NPC: Metamorphasis

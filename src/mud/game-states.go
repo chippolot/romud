@@ -3,6 +3,7 @@ package mud
 import (
 	"fmt"
 	"log"
+	"strconv"
 	"strings"
 	"time"
 
@@ -72,15 +73,14 @@ func (s *LoginState) ProcessInput(input string) StateId {
 			s.changeSubState(LSS_NewUserConfName)
 		}
 	case LSS_NewUserConfName:
-		switch strings.ToLower(input) {
-		case "y":
+		return s.yesNo(input, func() StateId {
 			s.player.Send("Ah, %s, a fine name indeed!", s.name)
 			s.changeSubState(LSS_NewUserEnterPass)
-		case "n":
+			return 0
+		}, func() StateId {
 			s.changeSubState(LSS_EnterName)
-		default:
-			s.player.Send("Huh? Please enter 'y' or 'n':")
-		}
+			return 0
+		})
 	case LSS_NewUserEnterPass:
 		hash, err := bcrypt.GenerateFromPassword([]byte(input), 14)
 		if err != nil {
@@ -144,7 +144,50 @@ func (s *LoginState) ProcessInput(input string) StateId {
 		s.player.SendRaw(server.TelNet_Command_EchoOn)
 		return GameState_Playing
 	case LSS_SelectInitialStats:
-		s.sendStatSelection()
+		toks := strings.Split(input, " ")
+		numtoks := len(toks)
+		if numtoks == 0 {
+			s.player.Send("Which stat do you want to allocate points to?")
+			return 0
+		}
+
+		statStr := strings.ToLower(toks[0])
+		stat, err := ParseStatType(statStr)
+		if err != nil ||
+			!(stat == Stat_Str || stat == Stat_Agi || stat == Stat_Vit || stat == Stat_Int || stat == Stat_Dex || stat == Stat_Luk) {
+			s.player.Send("That's not a valid stat type!")
+			return 0
+		}
+
+		amt := 1
+		if numtoks > 1 {
+			if amt, err = strconv.Atoi(toks[1]); err != nil {
+				s.player.Send("%s is not a valid amount to modify %s by", toks[1], stat.String())
+				return 0
+			}
+		}
+
+		// Apply amount and clamp stat between 1-9
+		e := (*s.playerCharacter)
+		curStat := e.stats.Get(stat)
+		newStat := utils.ClampInt(curStat+amt, 1, 9)
+		amt = utils.MinInt(newStat-curStat, e.stats.Get(Stat_StatPoints))
+		e.stats.Add(stat, amt)
+		e.stats.Add(Stat_StatPoints, -amt)
+
+		if e.stats.Get(Stat_StatPoints) == 0 {
+			s.changeSubState(LSS_ConfirmInitialStats)
+			return 0
+		} else {
+			s.sendStatSelection()
+		}
+	case LSS_ConfirmInitialStats:
+		return s.yesNo(input, func() StateId {
+			return GameState_Playing
+		}, func() StateId {
+			s.changeSubState(LSS_SelectInitialStats)
+			return 0
+		})
 	}
 	return 0
 }
@@ -154,20 +197,27 @@ func (s *LoginState) sendStatSelection() {
 	e.player.Send("Allocate Initial Stats")
 	e.player.Send(utils.HorizontalDivider)
 	e.player.Send("Remaining Pts: %d", e.stats.Get(Stat_StatPoints))
-	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>[s]</c> Str %d", e.stats.Get(Stat_Str)), fmt.Sprintf("<c yellow>[i]</c> Int %d", e.stats.Get(Stat_Int)))
-	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>[a]</c> Agi %d", e.stats.Get(Stat_Agi)), fmt.Sprintf("<c yellow>[d]</c> Dex %d", e.stats.Get(Stat_Dex)))
-	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>[v]</c> Vit %d", e.stats.Get(Stat_Vit)), fmt.Sprintf("<c yellow>[l]</c> Luk %d", e.stats.Get(Stat_Luk)))
-	e.player.Send("")
-	/*
-		Initial Stat Allocation
-		Points Remaining: 24
-		-----------------------
-		[s] STR	1	[i] INT 1
-		[a] AGI	1	[d] DEX	1
-		[v] VIT	1	[l] LUK	1
+	s.sendCurrentStats()
+}
 
-		How do you want to allocate your points?
-	*/
+func (s *LoginState) sendCurrentStats() {
+	e := (*s.playerCharacter)
+	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>Str</c> %d", e.stats.Get(Stat_Str)), fmt.Sprintf("<c yellow>Int</c> %d", e.stats.Get(Stat_Int)))
+	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>Agi</c> %d", e.stats.Get(Stat_Agi)), fmt.Sprintf("<c yellow>Dex</c> %d", e.stats.Get(Stat_Dex)))
+	e.player.Send("%-20s\t%-20s", fmt.Sprintf("<c yellow>Vit</c> %d", e.stats.Get(Stat_Vit)), fmt.Sprintf("<c yellow>Luk</c> %d", e.stats.Get(Stat_Luk)))
+	e.player.Send("")
+}
+
+func (s *LoginState) yesNo(input string, yesFn func() StateId, noFn func() StateId) StateId {
+	switch strings.ToLower(input) {
+	case "y":
+		return yesFn()
+	case "n":
+		return noFn()
+	default:
+		s.player.Send("Huh? Please enter 'y' or 'n':")
+		return 0
+	}
 }
 
 func (s *LoginState) passMatch(pass string, hash string) bool {
@@ -194,8 +244,11 @@ func (s *LoginState) changeSubState(ss LoginSubState) {
 		s.player.SendRaw(server.TelNet_Command_EchoOff)
 	case LSS_SelectInitialStats:
 		s.sendStatSelection()
-		s.prompt.SetPrompt("Allocate your stat points (ex: str +2 / str -2): ")
+		s.prompt.SetPrompt("Allocate your stat points (ex: str 2 / str -2): ")
 		s.player.SendRaw(server.TelNet_Command_EchoOn)
+	case LSS_ConfirmInitialStats:
+		s.sendCurrentStats()
+		s.prompt.SetPrompt("Are you satisfied with these initial stats (y/n)?: ")
 	}
 	s.player.Send("")
 }

@@ -236,9 +236,12 @@
     [x] Char Creation
         [x] Starting Stats  
         [x] Lua starting script
+[x] Github
+    [x] Move to Github
 ----------------------------------------
+[] Github
+    [] Add readme
 [] RO
-    [] Github
     [] Skills
         [] NPC: Metamorphasis
         [] Mage: Different messages for different spells

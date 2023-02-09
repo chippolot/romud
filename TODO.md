@@ -234,15 +234,14 @@
     [x] Parser Improvements
         [x] Allow skill use at arbitrary levels
     [x] Char Creation
-        [x] Starting Stats
+        [x] Starting Stats  
+        [x] Lua starting script
 ----------------------------------------
 [] RO
-    [] Char Creation
-        [] Lua starting script
+    [] Github
     [] Skills
         [] NPC: Metamorphasis
         [] Mage: Different messages for different spells
-    [] Github
     [] Parser Improvements
         [] Prioritize entity searches against combat targets
     [] Jobs

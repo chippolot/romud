@@ -334,7 +334,7 @@ func combatLogicAttack(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttac
 
 func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *SkillAttack) {
 	attack := e.cfg.Attack
-	noun := w.vocab.GetNoun(attack.Noun)
+	noun := w.cfg.vocab.GetNoun(attack.Noun)
 	atkBonus := 0.0
 	atkElem := Neutral
 	hitBonus := 0.0
@@ -343,7 +343,7 @@ func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *Sk
 	// Pull attack data from weapon (where applicable)
 	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {
 		if weap, _, ok := e.GetWeapon(); ok {
-			noun = w.vocab.GetNoun(weap.Noun)
+			noun = w.cfg.vocab.GetNoun(weap.Noun)
 			weaponType = weap.Type
 		}
 	}
@@ -601,7 +601,7 @@ func tryTriggerCombatSkill(e *Entity, w *World, tgt *Entity) bool {
 	for _, trigger := range triggers {
 		chance -= trigger.Chance
 		if chance <= 0 {
-			if skill, ok := w.skillConfigs[trigger.Key]; ok {
+			if skill, ok := w.cfg.skillConfigs[trigger.Key]; ok {
 				performSkill(e, w, tgt, skill, trigger.Level)
 				return true
 			} else {

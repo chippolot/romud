@@ -12,7 +12,7 @@ const (
 )
 
 func LoadAssets(w *World, projectRoot string) {
-	root := path.Join(projectRoot, w.cfg.ConfigRoot)
+	root := path.Join(projectRoot, mudConfig.ConfigRoot)
 
 	// Register misc config
 	for _, path := range utils.FindFilePathsWithExtension(path.Join(root, "misc"), ScriptFileExtension) {
@@ -58,10 +58,10 @@ func LoadAssets(w *World, projectRoot string) {
 
 	log.Printf("loaded %d zones", len(w.zones))
 	log.Printf("loaded %d rooms", len(w.rooms))
-	log.Printf("loaded %d mobs", len(w.entityConfigs))
-	log.Printf("loaded %d items", len(w.itemConfigs))
-	log.Printf("loaded %d skills", len(w.skillConfigs))
-	log.Printf("loaded %d jobs", len(w.jobConfigs))
+	log.Printf("loaded %d mobs", len(w.cfg.entityConfigs))
+	log.Printf("loaded %d items", len(w.cfg.itemConfigs))
+	log.Printf("loaded %d skills", len(w.cfg.skillConfigs))
+	log.Printf("loaded %d jobs", len(w.cfg.jobConfigs))
 
 	// Prepare shop configs
 	for _, shop := range w.shops {
@@ -69,7 +69,7 @@ func LoadAssets(w *World, projectRoot string) {
 	}
 
 	// Prepare job configs
-	for _, cfg := range w.jobConfigs {
+	for _, cfg := range w.cfg.jobConfigs {
 		// Link base job
 		if cfg.Base != 0 {
 			if baseJob, ok := w.TryGetJobConfig(cfg.Base); ok {
@@ -82,7 +82,7 @@ func LoadAssets(w *World, projectRoot string) {
 	}
 
 	// Prepare skill configs
-	for _, cfg := range w.skillConfigs {
+	for _, cfg := range w.cfg.skillConfigs {
 		// NPC jobs
 		if cfg.Job == 0 {
 			continue
@@ -90,7 +90,7 @@ func LoadAssets(w *World, projectRoot string) {
 
 		// All jobs
 		if cfg.Job == JobType_All {
-			for _, jcfg := range w.jobConfigs {
+			for _, jcfg := range w.cfg.jobConfigs {
 				jcfg.learnableSkills[cfg.Key] = true
 			}
 			continue
@@ -102,7 +102,7 @@ func LoadAssets(w *World, projectRoot string) {
 			log.Panicf("unknown job key '%s' configured on skill '%s'", cfg.Job.String(), cfg.Name)
 			return
 		}
-		for _, jcfg2 := range w.jobConfigs {
+		for _, jcfg2 := range w.cfg.jobConfigs {
 			if jcfg2.IsJobTypeOrAncestor(cfg.Job) {
 				jcfg2.learnableSkills[cfg.Key] = true
 			}

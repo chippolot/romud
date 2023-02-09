@@ -10,17 +10,20 @@ import (
 	lua "github.com/yuin/gopher-lua"
 )
 
-type World struct {
-	db   Database
-	L    *lua.LState
-	cfg  *MudConfig
-	time utils.Seconds
-
+type WorldConfig struct {
 	entityConfigs map[string]*EntityConfig
 	itemConfigs   map[string]*ItemConfig
 	skillConfigs  map[string]*SkillConfig
 	jobConfigs    map[JobTypeMask]*JobConfig
 	vocab         *Vocab
+	entryRoomId   RoomId
+}
+
+type World struct {
+	db   Database
+	L    *lua.LState
+	cfg  *WorldConfig
+	time utils.Seconds
 
 	players  map[PlayerId]*Entity
 	sessions map[server.SessionId]*server.Session
@@ -29,7 +32,6 @@ type World struct {
 	shops    map[RoomId]*Shop
 	entities map[EntityId]*Entity
 
-	entryRoomId    RoomId
 	inCombat       *CombatList
 	casting        *CastingList
 	asyncCallbacks *utils.List[*AsyncCallback]
@@ -43,20 +45,21 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 	return &World{
 		db,
 		l,
-		cfg,
+		&WorldConfig{
+			make(map[string]*EntityConfig),
+			make(map[string]*ItemConfig),
+			make(map[string]*SkillConfig),
+			make(map[JobTypeMask]*JobConfig),
+			NewVocab(),
+			InvalidId,
+		},
 		0,
-		make(map[string]*EntityConfig),
-		make(map[string]*ItemConfig),
-		make(map[string]*SkillConfig),
-		make(map[JobTypeMask]*JobConfig),
-		NewVocab(),
 		make(map[PlayerId]*Entity),
 		make(map[server.SessionId]*server.Session),
 		make(map[RoomId]*Room),
 		make(map[ZoneId]*Zone),
 		make(map[RoomId]*Shop),
 		make(map[EntityId]*Entity),
-		0,
 		&CombatList{},
 		&CastingList{},
 		&utils.List[*AsyncCallback]{},
@@ -66,15 +69,15 @@ func NewWorld(db Database, l *lua.LState, cfg *MudConfig, events chan<- server.S
 }
 
 func (w *World) EntryRoomId() RoomId {
-	return w.entryRoomId
+	return w.cfg.entryRoomId
 }
 
 func (w *World) SetEntryRoomId(id RoomId) {
-	w.entryRoomId = id
+	w.cfg.entryRoomId = id
 }
 
 func (w *World) CreatePlayerCharacter(name string, pass string, player *Player) *Entity {
-	playerEntityCfg, ok := w.entityConfigs[PlayerEntityKey]
+	playerEntityCfg, ok := w.cfg.entityConfigs[PlayerEntityKey]
 	if !ok {
 		log.Fatalf("cannot create player. expected entity config with key %s", PlayerEntityKey)
 	}
@@ -150,14 +153,14 @@ func (w *World) SavePlayerCharacter(pid PlayerId) {
 }
 
 func (w *World) AddEntityConfig(cfg *EntityConfig) {
-	if _, found := w.entityConfigs[cfg.Key]; found {
+	if _, found := w.cfg.entityConfigs[cfg.Key]; found {
 		log.Fatalf("Registered multiple entity configs with key: %v", cfg.Key)
 	}
-	w.entityConfigs[cfg.Key] = cfg
+	w.cfg.entityConfigs[cfg.Key] = cfg
 }
 
 func (w *World) TryGetEntityConfig(key string) (*EntityConfig, bool) {
-	if cfg, ok := w.entityConfigs[key]; ok {
+	if cfg, ok := w.cfg.entityConfigs[key]; ok {
 		return cfg, true
 	}
 	return nil, false
@@ -209,14 +212,14 @@ func (w *World) RemoveEntity(eid EntityId) {
 }
 
 func (w *World) AddItemConfig(cfg *ItemConfig) {
-	if _, found := w.itemConfigs[cfg.Key]; found {
+	if _, found := w.cfg.itemConfigs[cfg.Key]; found {
 		log.Fatalf("Registered multiple item configs with key: %v", cfg.Key)
 	}
-	w.itemConfigs[cfg.Key] = cfg
+	w.cfg.itemConfigs[cfg.Key] = cfg
 }
 
 func (w *World) TryGetItemConfig(key string) (*ItemConfig, bool) {
-	if cfg, ok := w.itemConfigs[key]; ok {
+	if cfg, ok := w.cfg.itemConfigs[key]; ok {
 		return cfg, true
 	}
 	return nil, false
@@ -228,28 +231,28 @@ func (w *World) AddItem(i *Item, roomId RoomId) {
 }
 
 func (w *World) AddSkillConfig(cfg *SkillConfig) {
-	if _, found := w.skillConfigs[cfg.Key]; found {
+	if _, found := w.cfg.skillConfigs[cfg.Key]; found {
 		log.Fatalf("Registered multiple skill configs with key: %v", cfg.Key)
 	}
-	w.skillConfigs[cfg.Key] = cfg
+	w.cfg.skillConfigs[cfg.Key] = cfg
 }
 
 func (w *World) TryGetSkillConfig(key string) (*SkillConfig, bool) {
-	if cfg, ok := w.skillConfigs[key]; ok {
+	if cfg, ok := w.cfg.skillConfigs[key]; ok {
 		return cfg, true
 	}
 	return nil, false
 }
 
 func (w *World) AddJobConfig(cfg *JobConfig) {
-	if _, found := w.jobConfigs[cfg.JobType]; found {
+	if _, found := w.cfg.jobConfigs[cfg.JobType]; found {
 		log.Fatalf("Registered multiple job configs with type: %v", cfg.JobType)
 	}
-	w.jobConfigs[cfg.JobType] = cfg
+	w.cfg.jobConfigs[cfg.JobType] = cfg
 }
 
 func (w *World) TryGetJobConfig(jobType JobTypeMask) (*JobConfig, bool) {
-	if cfg, ok := w.jobConfigs[jobType]; ok {
+	if cfg, ok := w.cfg.jobConfigs[jobType]; ok {
 		return cfg, true
 	}
 	return nil, false
@@ -274,8 +277,8 @@ func (w *World) RemoveSession(sid server.SessionId) {
 func (w *World) AddRoom(r *Room) *Room {
 	w.rooms[r.cfg.Id] = r
 	w.zones[r.zone].rooms = append(w.zones[r.zone].rooms, r)
-	if w.entryRoomId == 0 {
-		w.entryRoomId = r.cfg.Id
+	if w.cfg.entryRoomId == 0 {
+		w.cfg.entryRoomId = r.cfg.Id
 	}
 	return r
 }

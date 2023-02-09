@@ -274,7 +274,7 @@ func (s *PlayingState) OnEnter() {
 		s.playerCharacter.stats.Set(Stat_HP, 1)
 	}
 
-	roomId := s.world.entryRoomId
+	roomId := s.world.EntryRoomId()
 	if s.playerCharacter.data.RoomId != InvalidId {
 		roomId = s.playerCharacter.data.RoomId
 	}

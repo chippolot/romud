@@ -126,7 +126,7 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 		e.data.Inventory = make([]*ItemData, 0)
 	}
 	for _, idata := range e.data.Inventory {
-		cfg, ok := w.itemConfigs[idata.Key]
+		cfg, ok := w.cfg.itemConfigs[idata.Key]
 		if !ok {
 			log.Fatalf("cannot create item. expected item config with key %s", cfg.Key)
 		}
@@ -140,7 +140,7 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 		e.data.Equipped = make(map[EquipSlot]*ItemData)
 	}
 	for slot, idata := range e.data.Equipped {
-		cfg, ok := w.itemConfigs[idata.Key]
+		cfg, ok := w.cfg.itemConfigs[idata.Key]
 		if !ok {
 			log.Fatalf("cannot create equipment. expected item config with key %s", cfg.Key)
 		}
@@ -152,7 +152,7 @@ func (e *Entity) SetData(data *EntityData, w *World) {
 
 	// Prepare job
 	if e.data.Job != nil {
-		if jobCfg, ok := w.jobConfigs[e.data.Job.JobType]; !ok {
+		if jobCfg, ok := w.cfg.jobConfigs[e.data.Job.JobType]; !ok {
 			log.Fatalf("cannot create job. expected job config with type %s", e.data.Job.JobType.String())
 		} else {
 			e.job = newJob(jobCfg)

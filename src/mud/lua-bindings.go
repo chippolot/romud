@@ -379,7 +379,7 @@ func lua_ConfigRegisterNouns(tbl *lua.LTable) {
 		ns := nouns[i].(string)
 		np := nouns[i+1].(string)
 		noun := &NounConfig{ns, np}
-		lua_W.vocab.nouns[noun.Singular] = noun
+		lua_W.cfg.vocab.nouns[noun.Singular] = noun
 	}
 	log.Printf("registered %d nouns", len(nouns)/2)
 }

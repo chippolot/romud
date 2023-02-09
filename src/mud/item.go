@@ -121,7 +121,7 @@ func (i *Item) SetData(data *ItemData, w *World) {
 	}
 	if i.cfg.Flags.Has(IFlag_Container) {
 		for _, idata := range i.data.Contents {
-			cfg, ok := w.itemConfigs[idata.Key]
+			cfg, ok := w.cfg.itemConfigs[idata.Key]
 			if !ok {
 				log.Fatalf("cannot create item. expected item config with key %s", cfg.Key)
 			}

@@ -51,7 +51,7 @@ func DoSkill(e *Entity, w *World, tokens []string) {
 		}
 	}
 
-	skill, ok := w.skillConfigs[key]
+	skill, ok := w.cfg.skillConfigs[key]
 	if !ok {
 		Write("%s isn't any skill you've ever heard of!", key).ToPlayer(e).Send()
 		return

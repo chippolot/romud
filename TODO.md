@@ -299,7 +299,6 @@
     [] Weapon dependent messages
 [] Positions
     [] Look descriptions
-[] Classes
 [] Followers
 [] Doors
 [] Groups
@@ -307,9 +306,7 @@
     [] TLS
     [] SSH
     [] MUD Protocols
-[] Generify connections -- support ssh
-[] Look into MUD protocols
-[] Look into MUD compression
+        [] Compression
 
 
 ## Skills
@@ -325,12 +322,12 @@
 [x] fire_ball
 [x] soul_strike
 [x] thunderstorm
+[] sword_mastery
 [] play_dead
 [] endure
 [] increase_hp_recovery
 [] magnum_break
 [] provoke
-[] sword_mastery
 [] 2h_sword_mastery
 [] berserk
 [] fatal_blow

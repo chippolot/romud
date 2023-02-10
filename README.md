@@ -5,6 +5,8 @@ roMUD is an open-source cross-platform MUD heavily inspired by DikuMUD and Ragna
 - MUD framework inspired by DikuMUD and its derivatives
 - Gameplay mechanics and content inspired by Ragnarok Online Classic
   - Currently includes monster, item, and room content from the first Prontera field map
+  - Jobs and Skills (Currently supports novice, 1st, and 2nd tier jobs)
+- Combat distance mechanic for simulating ranged combat
 - Lua script support for config, entity/item/room scripts, and more
 
 ## Usage

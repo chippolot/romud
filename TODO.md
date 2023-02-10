@@ -242,10 +242,10 @@
         [x] Lua starting script
 [x] Github
     [x] Move to Github
+    [x] Add License
 ----------------------------------------
 [] Github
     [] Improve ReadMe
-    [] Add License
 [] RO
     [] Skills
         [] Teleport Level 2

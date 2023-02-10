@@ -334,14 +334,14 @@ func lua_ConfigNewRoom(tbl *lua.LTable) {
 	if err := lua_Mapper.Map(tbl, cfg); err != nil {
 		panic(err)
 	}
-	zoneId := ZoneId(-1)
+	zoneId := ZoneId(InvalidId)
 	for _, z := range lua_W.zones {
 		if cfg.Id >= z.cfg.MinRoomId && cfg.Id <= z.cfg.MaxRoomId {
 			zoneId = z.cfg.Id
 			break
 		}
 	}
-	if zoneId == -1 {
+	if zoneId == InvalidId {
 		log.Fatalf("cannot find zone for room id %d", cfg.Id)
 	}
 

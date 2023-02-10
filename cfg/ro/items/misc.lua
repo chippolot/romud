@@ -89,6 +89,7 @@ Config.NewItem({
 		"shell"
 	},
 	Name = "a shell",
+	NamePlural = "shells",
 	RoomDesc = "A shell that used to protect a monster lies here.",
     FullDesc = "A hard shell that used to protect a monster.",
 	BuyPrice = 14,
@@ -123,4 +124,33 @@ Config.NewItem({
 	BuyPrice = 200,
     SellPrice = 100,
 	Weight = 20
+})
+Config.NewItem({
+    Key = "flower",
+	Keywords = {
+		"flower",
+		"pretty"
+	},
+	Name = "a flower",
+	NamePlural = "flowers",
+	RoomDesc = "A pretty little flower is growing here.",
+    FullDesc = "An ordinary, thornless wildflower that doesn't have any particular scent.",
+	BuyPrice = 2,
+    SellPrice = 1,
+	Weight = 1
+})
+Config.NewItem({
+    Key = "powder_of_butterfly",
+	Keywords = {
+		"powder",
+		"butterfly",
+		"wing"
+	},
+	Name = "butterfly wing powder",
+	NamePlural = "butterfly wing powder",
+	RoomDesc = "A small pile of butterfly wing powder is here.",
+    FullDesc = "Butterfly wing powder that sparkles with the power of fantasy.",
+	BuyPrice = 90,
+    SellPrice = 45,
+	Weight = 1
 })

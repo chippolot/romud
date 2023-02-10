@@ -30,7 +30,7 @@ Config.NewItem({
 	Name = "an apple",
 	NamePlural = "apples",
 	RoomDesc = "A shiny red apple is here.",
-    FullDesc = "A round, edible fruit that, when eaten once a day, keeps the doctor away. Recovers a small amount of HP.",
+    FullDesc = "A round, edible fruit that, when eaten once a day, keeps the doctor away. <c blue>Recovers a small amount of HP.</c>",
 	BuyPrice = 15,
     SellPrice = 7,
 	Weight = 2,
@@ -51,7 +51,7 @@ Config.NewItem({
 	Name = "a red herb",
 	NamePlural = "red herbs",
 	RoomDesc = "Some sprigs of red herb are here.",
-    FullDesc = "A weak medicinal herb which heals wounds. Recovers a little HP.",
+    FullDesc = "A weak medicinal herb which heals wounds. <c blue>Recovers a little HP.</c>",
 	BuyPrice = 18,
     SellPrice = 9,
 	Weight = 3,
@@ -65,6 +65,27 @@ Config.NewItem({
     }
 })
 Config.NewItem({
+    Key = "carrot",
+	Keywords = {
+        "orange", "carrot"
+	},
+	Name = "a carrot",
+	NamePlural = "carrots",
+	RoomDesc = "A small orange carrot is here.",
+    FullDesc = "An orange root that is supposedly good for your vision. Despite the Beta Carotene, kids don't care much for it. <c blue>Recovers a small amount of HP.</c>",
+	BuyPrice = 15,
+    SellPrice = 7,
+	Weight = 2,
+    Flags = {
+        "usable", "consumable"
+    },
+    Scripts = {
+        Use = function(user, item) 
+            return UseEdibleHealingItem(user, item, 18, 20, 0, 0)
+        end
+    }
+})
+Config.NewItem({
     Key = "honey",
 	Keywords = {
         "honey", "pot"
@@ -72,7 +93,7 @@ Config.NewItem({
 	Name = "a small pot of honey",
 	NamePlural = "small pots of honey",
 	RoomDesc = "A small pot of honey is here.",
-    FullDesc = "A sweet product made by bees that is endowed with yummy flavor and medicinal uses.",
+    FullDesc = "A sweet product made by bees that is endowed with yummy flavor and medicinal uses. <c blue>Recovers a small amount of HP and SP.</c>",
 	BuyPrice = 500,
     SellPrice = 250,
 	Weight = 10,

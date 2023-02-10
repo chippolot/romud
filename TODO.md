@@ -266,6 +266,7 @@
     [] Items
         [] Group pickup display
         [] Stackable
+        [] Fancy Flower: Dam Reduction
     [] Ranged Combat
         [] Arrows
     [] Quick slot

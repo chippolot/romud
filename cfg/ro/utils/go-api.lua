@@ -72,6 +72,8 @@ Entity = {
     end,
     CanAttack = function(entity, target) 
     end,
+    CanTalk = function(entity) 
+    end,
     IsPlayer = function(entity)
     end,
 }

@@ -80,13 +80,21 @@ end
 
 lib.WriteCastingMessages = function(e, element)
     local elementColor = getElementColor(element)
-    Write.ToPlayer(e, string.format("Your eyes flash %s as you begin murmuring a spell incantation...", elementColor))
-    Write.ToRoom(Entity.Room(e), { e },
-        string.format("%s's eyes flash %s as they begin murmuring a spell incantation...", Entity.NameCap(e),
-            elementColor))
+    if not Entity.CanTalk(e) then
+        Write.ToRoom(Entity.Room(e), { e },
+            string.format("%s's eyes flash %s and they look to be concentrating...", Entity.NameCap(e), elementColor))
+    else
+        Write.ToPlayer(e, string.format("Your eyes flash %s as you begin murmuring a spell incantation...", elementColor))
+        Write.ToRoom(Entity.Room(e), { e },
+            string.format("%s's eyes flash %s as they begin murmuring a spell incantation...", Entity.NameCap(e),
+                elementColor))
+    end
 end
 
 lib.WriteCastSuccessMessages = function(e, chant)
+    if not Entity.CanTalk(e) then
+        return
+    end
     Write.ToPlayer(e, string.format("You shout '%s'", chant))
     Write.ToRoom(Entity.Room(e), { e }, string.format("%s shouts '%s'", Entity.NameCap(e), chant))
 end

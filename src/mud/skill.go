@@ -243,9 +243,10 @@ func (c *CastingData) Valid(e *Entity) bool {
 }
 
 type SkillTriggerConfig struct {
-	Key    string
-	Level  int
-	Chance float64
+	Key          string
+	Level        int
+	Chance       float64
+	MaxHpPercent float64
 }
 
 func performSkill(e *Entity, w *World, target *Entity, skill *SkillConfig, level int) {
@@ -353,6 +354,12 @@ func tryTriggerSkill(e *Entity, w *World, state EntityState, tgt *Entity) bool {
 	// Check all skill triggers
 	chance := utils.RandChance100()
 	for _, trigger := range triggers {
+		if trigger.MaxHpPercent > 0 {
+			hpPct := e.stats.GetFloat(Stat_HP) / e.stats.GetFloat(Stat_MaxHP)
+			if hpPct > trigger.MaxHpPercent {
+				continue
+			}
+		}
 		chance -= trigger.Chance
 		if chance <= 0 {
 			if skill, ok := w.cfg.skillConfigs[trigger.Key]; ok {

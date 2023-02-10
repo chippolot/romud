@@ -24,6 +24,7 @@ Config.NewEntity({
     Flags = { "detector" },
     SkillTriggers = {
         [EntityState.Combat] = {
+            { Key = "teleport", Level = 1, Chance = 5, MaxHpPercent = 0.3 },
             { Key = "npc_wind_attack", Level = 1, Chance = 20 }
         },
         [EntityState.Idle] = {

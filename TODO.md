@@ -206,6 +206,8 @@
         [x] Async.Schedule -- Thunderstorm
         [x] NPC: Metamorphasis
         [x] NPC: Teleportation
+        [x] Tag entities that are "silent" for shouting magic incantations
+        [x] NPC: Wind Attribute Attack 1
     [x] Magic
         [x] Use MATK for magic spells
         [x] Stats Screen
@@ -243,12 +245,11 @@
 ----------------------------------------
 [] Github
     [] Improve ReadMe
+    [] Add License
 [] RO
     [] Skills
-        [] Tag entities that are "silent" for shouting magic incantations
         [] Teleport Level 2
         [] NPC: Sleep Attack Lv 3
-        [] NPC: Wind Attribute Attack 1
         [] Mage: Different messages for different spells
     [] Parser Improvements
         [] Prioritize entity searches against combat targets
@@ -277,7 +278,6 @@
     [] Item types (?)
     [] Corpses crumble after time
     [] Skills
-        [] Active
         [] Passive
     [] Advantage / Disadvantage
     [] Dex Weapons

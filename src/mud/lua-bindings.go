@@ -35,6 +35,7 @@ func RegisterGlobalLuaBindings(L *lua.LState, w *World) {
 	entityTbl.RawSetString("HealMov", luar.New(L, lua_EntityHealMov))
 	entityTbl.RawSetString("InCombat", luar.New(L, lua_EntityInCombat))
 	entityTbl.RawSetString("CanAttack", luar.New(L, lua_EntityCanAttack))
+	entityTbl.RawSetString("CanTalk", luar.New(L, lua_EntityCanTalk))
 	entityTbl.RawSetString("IsPlayer", luar.New(L, lua_EntityIsPlayer))
 	L.SetGlobal("Entity", entityTbl)
 
@@ -188,6 +189,10 @@ func lua_EntityInCombat(e *Entity) bool {
 func lua_EntityCanAttack(e *Entity, tgt *Entity) bool {
 	ok, _ := validateAttack(e, tgt)
 	return ok
+}
+
+func lua_EntityCanTalk(e *Entity) bool {
+	return e.entityFlags.Has(EFlag_Talks)
 }
 
 func lua_EntityIsPlayer(e *Entity) bool {

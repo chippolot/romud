@@ -24,6 +24,7 @@ const (
 	EFlag_Pacifist                                   // Won't attack
 	EFlag_Uninterruptable                            // Skills can't be interrupted
 	EFlag_Detector                                   // Can detect hidden entities	// TODO: EFlags: Implement
+	EFlag_Talks                                      // Can talk
 )
 
 var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
@@ -40,6 +41,7 @@ var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
 	EFlag_Pacifist:        "pacifist",
 	EFlag_Uninterruptable: "uninterruptable",
 	EFlag_Detector:        "detector",
+	EFlag_Talks:           "talks",
 })
 
 func ParseEntityFlag(str string) (EntityFlagMask, error) {

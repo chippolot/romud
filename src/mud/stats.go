@@ -10,8 +10,9 @@ import (
 )
 
 const (
-	MaxLevel   = 100
-	SightRange = 12
+	MaxLevel     = 100
+	MaxStatValue = 99
+	SightRange   = 12
 )
 
 const (

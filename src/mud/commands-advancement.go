@@ -1,6 +1,7 @@
 package mud
 
 import (
+	"strconv"
 	"strings"
 )
 
@@ -18,20 +19,36 @@ func DoRaiseStat(e *Entity, w *World, tokens []string) {
 		return
 	}
 
-	statPoints := e.stats.Get(Stat_StatPoints)
+	amt := 1
+	if numtoks > 2 {
+		if amt, err = strconv.Atoi(tokens[2]); err != nil || amt <= 0 {
+			Write("%s is not a valid amount to raise %s by", amt, stat.String()).ToPlayer(e).Send()
+			return
+		}
+	}
+
 	oldValue := e.stats.Get(stat)
-	raiseCost := calculateStatPointsRequiredForStatIncrease(e.stats, stat)
-	if statPoints < raiseCost {
-		Write("You need %d stat points to raise your %s", raiseCost, stat.String()).ToPlayer(e).Send()
+	if oldValue >= MaxStatValue {
+		Write("You've already maxed out %s", stat.String()).ToPlayer(e).Send()
 		return
 	}
 
-	e.stats.Add(Stat_StatPoints, -raiseCost)
-	e.stats.Add(stat, 1)
-	calculateAndUpdateStats(e)
-	Write("Raised %s from %d -> %d!", stat.String(), oldValue, oldValue+1).ToPlayer(e).Send()
+	for i := 0; i < amt; i++ {
+		cost := calculateStatPointsRequiredForStatIncrease(e.stats, stat)
+		if e.stats.Get(Stat_StatPoints) < cost {
+			Write("You need %d stat points to raise your %s", cost, stat.String()).ToPlayer(e).Send()
+			break
+		}
 
-	if e.player != nil {
+		e.stats.Add(Stat_StatPoints, -cost)
+		e.stats.Add(stat, 1)
+	}
+
+	newValue := e.stats.Get(stat)
+	calculateAndUpdateStats(e)
+
+	if oldValue != newValue && e.player != nil {
+		Write("Raised %s from %d -> %d!", stat.String(), oldValue, newValue).ToPlayer(e).Send()
 		e.player.saveRequested = true
 	}
 }

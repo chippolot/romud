@@ -178,7 +178,7 @@ func calculateStatPointsGainedForLevelUp(nextLevel int) int {
 func calculateStatPointsRequiredForStatIncrease(s *Stats, stat StatType) int {
 	// Mechanics: RO Classic
 	statVal := s.Get(stat)
-	if statVal >= 99 {
+	if statVal >= MaxStatValue {
 		return -1
 	}
 	return int(float64(statVal-1)/10.0) + 2

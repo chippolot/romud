@@ -498,12 +498,12 @@ func (e *Entity) DescribeStatus() string {
 	sb.WriteLinef("Aspd   : %s", Colorize(Color_Stat, calculateAttackSpeed(e)))
 	sb.WriteLinef("Crit   : %s", Colorize(Color_Stat, calculateStatusCritical(e.stats)))
 	sb.WriteNewLine()
-	sb.WriteLinef("Str    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Str)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Str))
-	sb.WriteLinef("Agi    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Agi)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Agi))
-	sb.WriteLinef("Vit    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Vit)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Vit))
-	sb.WriteLinef("Int    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Int)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Int))
-	sb.WriteLinef("Dex    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Dex)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Dex))
-	sb.WriteLinef("Luk    : %s [%d]", Colorize(Color_Stat, e.stats.Get(Stat_Luk)), calculateStatPointsRequiredForStatIncrease(e.stats, Stat_Luk))
+	sb.WriteLinef("Str    : %-14s%s", Colorize(Color_Stat, e.stats.Get(Stat_Str)), getStatRaisePriceString(e, Stat_Str))
+	sb.WriteLinef("Agi    : %-14s%s", Colorize(Color_Stat, e.stats.Get(Stat_Agi)), getStatRaisePriceString(e, Stat_Agi))
+	sb.WriteLinef("Vit    : %-14s%s", Colorize(Color_Stat, e.stats.Get(Stat_Vit)), getStatRaisePriceString(e, Stat_Vit))
+	sb.WriteLinef("Int    : %-14s%s", Colorize(Color_Stat, e.stats.Get(Stat_Int)), getStatRaisePriceString(e, Stat_Int))
+	sb.WriteLinef("Dex    : %-14s%s", Colorize(Color_Stat, e.stats.Get(Stat_Dex)), getStatRaisePriceString(e, Stat_Dex))
+	sb.WriteLinef("Luk    : %-14s%s", Colorize(Color_Stat, e.stats.Get(Stat_Luk)), getStatRaisePriceString(e, Stat_Luk))
 	sb.WriteLinef("Stat Pt: %s", Colorize(Color_Stat, e.stats.Get(Stat_StatPoints)))
 	sb.WriteNewLine()
 	sb.WriteLinef("Carry  : %s/%s", Colorize(Color_Stat, e.ItemWeight()), Colorize(Color_Stat, calculateCarryingCapacity(e)))
@@ -674,4 +674,12 @@ func (p Position) InactionString() string {
 		return "You'll have to get up first!"
 	}
 	return ""
+}
+
+func getStatRaisePriceString(e *Entity, stat StatType) string {
+	cost := calculateStatPointsRequiredForStatIncrease(e.stats, stat)
+	if cost <= 0 {
+		return "* MAX *"
+	}
+	return fmt.Sprintf(" [%d]", cost)
 }

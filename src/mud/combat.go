@@ -257,12 +257,14 @@ func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *Sk
 	atkElem := Neutral
 	hitBonus := 0.0
 	weaponType := WeaponType_Fist
+	dist := 0.0
 
 	// Pull attack data from weapon (where applicable)
 	if e.player != nil || e.entityFlags.Has(EFlag_UsesEquipment) {
 		if weap, _, ok := e.GetWeapon(); ok {
 			noun = w.cfg.vocab.GetNoun(weap.Noun)
 			weaponType = weap.Type
+			dist = float64(weap.Range)
 		}
 	}
 
@@ -271,6 +273,13 @@ func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *Sk
 		atkElem = skillAttack.Element
 		atkBonus += skillAttack.AtkBonus
 		hitBonus += skillAttack.HitBonus
+		if skillAttack.skill != nil {
+			dist = float64(skillAttack.skill.Range)
+		}
+	}
+
+	if e.combat != nil {
+		dist = e.combat.distance
 	}
 
 	if e.CanBeSeenBy(tgt) {
@@ -318,11 +327,13 @@ func combatLogicAttackPhysical(e *Entity, w *World, tgt *Entity, skillAttack *Sk
 			ctx = DamCtx_Skill
 		}
 		dam := calculatePhysicalAttackDamage(e, tgt, weaponType, atkElem, atkBonus, didCrit)
-		applyDamage(tgt, w, e, dam, ctx, e.combat.distance, didCrit, noun.Singular, noun.Plural)
+
+		applyDamage(tgt, w, e, dam, ctx, dist, didCrit, noun.Singular, noun.Plural)
 		if skillAttack != nil && skillAttack.skill != nil {
 			triggerSkillHitScript(skillAttack.skill, e, tgt, dam)
 		}
 	} else {
+		startAttacking(tgt, w, e, dist)
 		if skillAttack != nil && skillAttack.skill != nil {
 			triggerSkillMissedScript(skillAttack.skill, e, tgt)
 		} else {

@@ -106,6 +106,7 @@
     [x] Roll Boosts
     [x] Use Armor in Combat
     [x] Mobs use equipment
+    [x] Prevent dual wield
 [x] Advantage / Disadvantage Sources
 [x] Lua Scripting
     [x] EnterRoom / EntityEnterRoom
@@ -174,6 +175,7 @@
     [x] Critical Message
     [x] Auto Level Up
     [x] Why aren't they moving?
+    [x] Dex Weapons
     [x] Stat points
         [x] Gain
         [x] Spend
@@ -220,7 +222,6 @@
         [x] Spell interruption
     [x] Lua
         [x] Go_API
-    [x] Lua
         [x] More enum bindings (instead of strings)
     [x] Ranged Combat
         [x] Bows
@@ -267,27 +268,15 @@
         [] Group pickup display
         [] Stackable
         [] Fancy Flower: Dam Reduction
-    [] Equipment
-        [] Prevent dual wield
     [] Ranged Combat
         [] Arrows
     [] Quick slot
-    [] Shops
-        [] Indoors/ Outdoors
-        [] No Monster Spawns / Movement
-    [] Create Poring Items
-        [] Cards
-            [] Poring Card
-        [] Taming Items
-            [] Unripe Apple
+    [] Cards
+    [] Pets / Taming
     [] Item types (?)
-    [] Corpses crumble after time
     [] Skills
         [] Passive
-    [] Advantage / Disadvantage
-    [] Dex Weapons
     [] Auto-Con using colors
-    [] Starting equip scriptable
 [] Items
     [] Use flags (ex: edible = eat)
     [] Equipment Slots + Cards

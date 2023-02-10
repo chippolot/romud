@@ -12,8 +12,7 @@ type EntityFlagMask bits.Bits
 
 const (
 	EFlag_Stationary      EntityFlagMask = 1 << iota // Cannot move
-	EFlag_Scavenger                                  // Pick up valuable items on the ground
-	EFlag_TrashCollector                             // Pick up worthless items on the ground
+	EFlag_Scavenger                                  // Pick up items on the ground
 	EFlag_UsesEquipment                              // Can use equipment
 	EFlag_Blind                                      // Cannot see
 	EFlag_Invisible                                  // Cannot be seen
@@ -30,7 +29,6 @@ const (
 var entityFlagStringMapping = utils.NewStringMapping(map[EntityFlagMask]string{
 	EFlag_Stationary:      "stationary",
 	EFlag_Scavenger:       "scavenger",
-	EFlag_TrashCollector:  "trashcollector",
 	EFlag_UsesEquipment:   "usesequipment",
 	EFlag_Blind:           "blind",
 	EFlag_Invisible:       "invisible",

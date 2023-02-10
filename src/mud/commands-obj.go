@@ -180,6 +180,9 @@ func DoEquip(e *Entity, w *World, tokens []string) {
 		}
 	} else {
 		for _, item := range items {
+			if item.cfg.Equipment == nil {
+				continue
+			}
 			performEquip(e, w, item, false)
 		}
 	}

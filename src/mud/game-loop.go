@@ -2,7 +2,6 @@ package mud
 
 import (
 	"log"
-	"math"
 	"math/rand"
 	"time"
 
@@ -350,9 +349,7 @@ func scavengersSystem(w *World, dt utils.Seconds) {
 			continue
 		}
 
-		isScavenger := e.entityFlags.Has(EFlag_Scavenger)
-		isTrashCollector := e.entityFlags.Has(EFlag_TrashCollector)
-		if !isScavenger && !isTrashCollector {
+		if !e.entityFlags.Has(EFlag_Scavenger) {
 			continue
 		}
 
@@ -360,34 +357,18 @@ func scavengersSystem(w *World, dt utils.Seconds) {
 			continue
 		}
 
-		r := w.rooms[e.data.RoomId]
-		if len(r.items) == 0 || rand.Intn(15) != 0 {
+		if rand.Intn(15) != 0 {
 			continue
 		}
 
 		// Pick up an item
-		var toPickup *Item
-		var toPickupVal = 0
-		if !isScavenger && isTrashCollector {
-			toPickupVal = math.MaxInt
-		}
+		r := w.rooms[e.data.RoomId]
 		for _, item := range r.items {
 			if item.cfg.Flags.Has(IFlag_Environmental) {
 				continue
 			}
-			itemValue := item.Value()
-
-			// Scavengers pick up the most valuable items whereas trash collectors
-			// pick up the least valuable item
-			if (isScavenger && itemValue >= toPickupVal) ||
-				(isTrashCollector && itemValue < toPickupVal && itemValue < 10) {
-				toPickup = item
-				toPickupVal = itemValue
-			}
-		}
-
-		if toPickup != nil {
-			performGet(e, w, toPickup)
+			performGet(e, w, r, item)
+			break
 		}
 	}
 }

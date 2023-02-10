@@ -94,7 +94,7 @@ Config.NewRoom({
 	Id = 34,
 	Name = "Prontera Fields",
 	Desc = [[
-   The grasses begin to give way to tougher scrub growth here and you notice that the once fertile soil is looking drier.  To the south, you see a sandy desert.  The meadows continues to the north.]],
+   The grasses begin to give way to tougher scrub growth here and you notice that the once fertile soil is looking drier.  To the south, you see a sandy desert.  The meadows continue to the north.]],
 	Exits = {
 		[Dir.North] = 33,
 		[Dir.South] = 101
@@ -104,7 +104,7 @@ Config.NewRoom({
 	Id = 35,
 	Name = "Prontera Fields",
 	Desc = [[
-   The grasses begin to give way to tougher scrub growth here and you notice that the once fertile soil is looking drier.  To the south, you see a sandy desert.  The meadows continues to the north.]],
+   The grasses begin to give way to tougher scrub growth here and you notice that the once fertile soil is looking drier.  To the south, you see a sandy desert.  The meadows continue to the north.]],
 	Exits = {
 		[Dir.North] = 32,
 		[Dir.South] = 102

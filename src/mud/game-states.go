@@ -261,7 +261,7 @@ func (s *PlayingState) StateId() StateId {
 }
 func (s *PlayingState) OnEnter() {
 	s.playerCharacter.player.session.SetPromptProvider(&PlayerPromptProvider{s.playerCharacter, s.world})
-	s.playerCharacter.player.Send("Welcome to GoMUD!")
+	s.playerCharacter.player.Send("Welcome to roMUD!")
 
 	// Heal up
 	if s.playerCharacter.stats.Get(Stat_HP) < 1 {

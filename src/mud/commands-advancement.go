@@ -102,6 +102,7 @@ func DoChangeJob(e *Entity, w *World, tokens []string) {
 	e.job = newJob(job)
 	e.data.Job.JobType = jobType
 	e.job.data = e.data.Job
+	e.stats.Set(Stat_JobLevel, 1)
 	calculateAndUpdateStats(e)
 
 	Write("You have been promoted to a %s!", job.Name).ToPlayer(e).Colorized(Color_PositiveBld).Send()

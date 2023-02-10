@@ -356,9 +356,6 @@ func (e *Entity) AddStatusEffect(statusType StatusEffectMask, duration utils.Sec
 		e.data.Statuses[statusType] = statusEffect.data
 	}
 	e.statusEffects.statusEffects = append(e.statusEffects.statusEffects, statusEffect)
-	for r, m := range statusEffect.cfg.Rolls {
-		e.stats.AddRollMod(r, m, statusEffect)
-	}
 	if statusEffect.cfg.EntityFlags != 0 {
 		e.updateEntityFlagsMask()
 	}
@@ -386,10 +383,6 @@ func (e *Entity) RemoveStatusEffect(statusType StatusEffectMask, permanent bool)
 			// remove the effect
 			if s.permanentCount == 0 && s.data == nil {
 				e.statusEffects.statusEffects = utils.SwapDelete(e.statusEffects.statusEffects, idx)
-
-				for r, m := range s.cfg.Rolls {
-					e.stats.RemoveRollMod(r, m, s)
-				}
 				if s.cfg.EntityFlags != 0 {
 					e.updateEntityFlagsMask()
 				}
@@ -600,9 +593,6 @@ func (e *Entity) onEquipped(item *Item) {
 	for s, m := range item.cfg.Equipment.Stats {
 		e.stats.AddMod(s, m)
 	}
-	for r, m := range item.cfg.Equipment.Rolls {
-		e.stats.AddRollMod(r, m, item)
-	}
 	if item.cfg.Equipment.StatusEffect != 0 {
 		e.AddStatusEffect(item.cfg.Equipment.StatusEffect, StatusEffectDuration_Permanent)
 	}
@@ -611,9 +601,6 @@ func (e *Entity) onEquipped(item *Item) {
 func (e *Entity) onUnequipped(item *Item) {
 	for s, m := range item.cfg.Equipment.Stats {
 		e.stats.RemoveMod(s, m)
-	}
-	for r, m := range item.cfg.Equipment.Rolls {
-		e.stats.RemoveRollMod(r, m, item)
 	}
 	if item.cfg.Equipment.StatusEffect != 0 {
 		e.RemoveStatusEffect(item.cfg.Equipment.StatusEffect, true)

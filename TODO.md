@@ -246,18 +246,24 @@
 ----------------------------------------
 [] Github
     [] Improve ReadMe
+    [] Binary releases
+    [] Try out CoPilot?
+[] Refactoring
+    [] Packages
+        [] Commands
+        [] More?
 [] RO
+    [] Jobs
+        [] Job stat bonuses 
+        [] Job specific skills
+        [] Job specific eq
+            [] Unequip on job change
     [] Skills
         [] Teleport Level 2
         [] NPC: Sleep Attack Lv 3
         [] Mage: Different messages for different spells
     [] Parser Improvements
         [] Prioritize entity searches against combat targets
-    [] Jobs
-        [] Job specific skills
-        [] Job specific eq
-            [] Unequip on job change
-        [] Job stat bonuses
     [] Items
         [] Group pickup display
         [] Stackable

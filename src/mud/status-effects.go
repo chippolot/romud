@@ -18,7 +18,6 @@ const (
 	StatusType_Poison StatusEffectMask = 1 << iota
 	StatusType_Blind
 	StatusType_Invisible
-	StatusType_Blessed
 )
 
 var StatusEffectConfigs = map[StatusEffectMask]*StatusEffectConfig{
@@ -29,9 +28,6 @@ var StatusEffectConfigs = map[StatusEffectMask]*StatusEffectConfig{
 		Build(),
 	StatusType_Invisible: NewStatusEffectConfigBuilder().
 		WithEntityFlag(EFlag_Invisible).
-		Build(),
-	StatusType_Blessed: NewStatusEffectConfigBuilder().
-		WithRollBonus(Roll_Hit, NewDice(1, 4, 0)).
 		Build(),
 }
 
@@ -47,8 +43,6 @@ func ParseStatusEffectType(str string) (StatusEffectMask, error) {
 		return StatusType_Blind, nil
 	case "invisible":
 		return StatusType_Invisible, nil
-	case "blessed":
-		return StatusType_Blessed, nil
 	default:
 		return 0, fmt.Errorf("unknown status effect type: %s", str)
 	}
@@ -67,8 +61,6 @@ func (m *StatusEffectMask) String() string {
 		return "blind"
 	case StatusType_Invisible:
 		return "invisible"
-	case StatusType_Blessed:
-		return "blessed"
 	}
 	return "unknown"
 }
@@ -96,19 +88,6 @@ type ApplyStatusEffectConfig struct {
 
 type StatusEffectConfig struct {
 	EntityFlags EntityFlagMask
-	Rolls       RollModConfigMap
-}
-
-func (cfg *StatusEffectConfig) getRollMod(roll RollType) *RollModConfig {
-	if cfg.Rolls == nil {
-		cfg.Rolls = make(RollModConfigMap)
-	}
-	mod := cfg.Rolls[roll]
-	if mod == nil {
-		mod = &RollModConfig{}
-		cfg.Rolls[roll] = mod
-	}
-	return mod
 }
 
 type StatusEffectConfigBuilder struct {
@@ -121,24 +100,6 @@ func NewStatusEffectConfigBuilder() *StatusEffectConfigBuilder {
 
 func (b *StatusEffectConfigBuilder) WithEntityFlag(f EntityFlagMask) *StatusEffectConfigBuilder {
 	b.cfg.EntityFlags |= f
-	return b
-}
-
-func (b *StatusEffectConfigBuilder) WithRollAdvantage(roll RollType) *StatusEffectConfigBuilder {
-	mod := b.cfg.getRollMod(roll)
-	mod.Advantage = true
-	return b
-}
-
-func (b *StatusEffectConfigBuilder) WithRollDisadvantage(roll RollType) *StatusEffectConfigBuilder {
-	mod := b.cfg.getRollMod(roll)
-	mod.Disadvantage = true
-	return b
-}
-
-func (b *StatusEffectConfigBuilder) WithRollBonus(roll RollType, bonus Dice) *StatusEffectConfigBuilder {
-	mod := b.cfg.getRollMod(roll)
-	mod.Bonus = &bonus
 	return b
 }
 
@@ -238,9 +199,6 @@ func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask,
 			case StatusType_Invisible:
 				Write("You vanish.").ToPlayer(e).Colorized(Color_Neutral).Send()
 				Write("%s seems to flicker out of existence.", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
-			case StatusType_Blessed:
-				Write("You feel a tingle as you're bathed in a white light.").ToPlayer(e).Colorized(Color_Neutral).Send()
-				Write("%s glows white for a moment.", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
 			}
 		} else if oldFlags.Has(f) && !newFlags.Has(f) {
 			switch f {
@@ -251,8 +209,6 @@ func describeStatusEffectChanges(e *Entity, w *World, oldFlags StatusEffectMask,
 			case StatusType_Invisible:
 				Write("You blink back into existence.").ToPlayer(e).Colorized(Color_Neutral).Send()
 				Write("%s blinks back into existence.", ObservableNameCap(e)).ToRoom(r).Subject(e).Send()
-			case StatusType_Blessed:
-				Write("You feel the warm cozy feeling fade.").ToPlayer(e).Colorized(Color_Neutral).Send()
 			}
 		}
 	}

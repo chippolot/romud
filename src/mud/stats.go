@@ -16,11 +16,6 @@ const (
 )
 
 const (
-	Roll_Hit RollType = iota
-	Roll_Dam
-)
-
-const (
 	Stat_HP StatType = iota
 	Stat_MaxHP
 	Stat_SP
@@ -40,6 +35,8 @@ const (
 	Stat_StatPoints
 	Stat_SkillPoints
 	Stat_Gold
+
+	Stat_Num
 )
 
 const (
@@ -178,58 +175,6 @@ func (m *StatMap) UnmarshalJSON(data []byte) (err error) {
 	return nil
 }
 
-type RollType int
-
-func ParseRollType(str string) (RollType, error) {
-	switch str {
-	case "Hit":
-		return Roll_Hit, nil
-	case "Damage":
-		return Roll_Dam, nil
-	default:
-		return 0, fmt.Errorf("unknown roll type: %s", str)
-	}
-}
-
-func (s *RollType) String() string {
-	switch *s {
-	case Roll_Hit:
-		return "Hit"
-	case Roll_Dam:
-		return "Damage"
-	}
-	return "unknown"
-}
-
-func (r *RollType) MarshalJSON() ([]byte, error) {
-	return json.Marshal(r.String())
-}
-
-func (s *RollType) UnmarshalJSON(data []byte) (err error) {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-	if *s, err = ParseRollType(str); err != nil {
-		return err
-	}
-	return nil
-}
-
-type RollModConfig struct {
-	Advantage    bool
-	Disadvantage bool
-	Bonus        *Dice
-}
-
-type RollModConfigMap map[RollType]*RollModConfig
-
-type RollMods struct {
-	AdvantageCount    int
-	DisadvantageCount int
-	ExtraDice         map[any]Dice
-}
-
 type StatsConfig struct {
 	HP           int
 	Size         Size
@@ -255,13 +200,12 @@ type Stats struct {
 	cfg            *StatsConfig
 	data           StatMap
 	statMods       StatMap
-	rollMods       map[RollType]*RollMods
 	lastHPMovRegen utils.Seconds
 	lastSPRegen    utils.Seconds
 }
 
 func newStats(cfg *StatsConfig, data StatMap) *Stats {
-	return &Stats{cfg, data, make(StatMap), make(map[RollType]*RollMods), 0, 0}
+	return &Stats{cfg, data, make(StatMap), 0, 0}
 }
 
 func newStatsData(cfg *StatsConfig) StatMap {
@@ -308,53 +252,6 @@ func (s *Stats) RemoveMod(stat StatType, mod int) {
 	s.statMods[stat] -= mod
 	s.clamp()
 }
-
-func (s *Stats) AddRollMod(roll RollType, cfg *RollModConfig, key any) {
-	mods := s.getRollMods(roll)
-	if cfg.Advantage {
-		mods.AdvantageCount++
-	}
-	if cfg.Disadvantage {
-		mods.DisadvantageCount--
-	}
-	if cfg.Bonus != nil {
-		mods.ExtraDice[key] = *cfg.Bonus
-	}
-}
-
-func (s *Stats) RemoveRollMod(roll RollType, cfg *RollModConfig, key any) {
-	mods := s.getRollMods(roll)
-	if cfg.Advantage {
-		mods.AdvantageCount--
-	}
-	if cfg.Disadvantage {
-		mods.DisadvantageCount++
-	}
-	if cfg.Bonus != nil {
-		delete(mods.ExtraDice, key)
-	}
-}
-
-func (s *Stats) RollAdvantageCount(roll RollType) int {
-	mods := s.rollMods[roll]
-	if mods == nil {
-		return 0
-	}
-	return mods.AdvantageCount - mods.DisadvantageCount
-}
-
-func (s *Stats) RollBonus(roll RollType) int {
-	mods := s.rollMods[roll]
-	if mods == nil {
-		return 0
-	}
-	sum := 0
-	for _, d := range mods.ExtraDice {
-		sum += d.Roll()
-	}
-	return sum
-}
-
 func (s *Stats) MaxStatType(stats ...StatType) StatType {
 	maxStat := stats[0]
 	maxVal := s.Get(stats[0])
@@ -469,20 +366,29 @@ func (s *Stats) ConditionLongString(e *Entity) string {
 	}
 }
 
+func (s *Stats) Snapshot() map[StatType]int {
+	snap := make(map[StatType]int)
+	for k, v := range s.data {
+		snap[k] = v
+	}
+	return snap
+}
+
+func (s *Stats) Diff(other map[StatType]int) map[StatType]int {
+	diff := make(map[StatType]int)
+	for k, v := range other {
+		ds := s.data[k] - v
+		if ds != 0 {
+			diff[k] = ds
+		}
+	}
+	return diff
+}
+
 func (s *Stats) clamp() {
 	s.data[Stat_HP] = utils.MinInt(s.Get(Stat_MaxHP), s.Get(Stat_HP))
 	s.data[Stat_SP] = utils.MinInt(s.Get(Stat_MaxSP), s.Get(Stat_SP))
 	s.data[Stat_Mov] = utils.MinInt(s.Get(Stat_MaxMov), s.Get(Stat_Mov))
-}
-
-func (s *Stats) getRollMods(roll RollType) *RollMods {
-	if mods, ok := s.rollMods[roll]; ok {
-		return mods
-	} else {
-		mods = &RollMods{0, 0, make(map[any]Dice)}
-		s.rollMods[roll] = mods
-		return mods
-	}
 }
 
 func (c Condition) InactionString() string {
@@ -540,10 +446,7 @@ func performLevelUp(e *Entity, w *World) {
 		return
 	}
 
-	oldHP := e.stats.Get(Stat_MaxHP)
-	oldSP := e.stats.Get(Stat_MaxSP)
-	oldMov := e.stats.Get(Stat_MaxMov)
-	oldStatPts := e.stats.Get(Stat_StatPoints)
+	oldStats := e.stats.Snapshot()
 
 	for IsReadyForLevelUp(e) {
 		nextLevel := e.stats.Get(Stat_Level) + 1
@@ -554,10 +457,14 @@ func performLevelUp(e *Entity, w *World) {
 	}
 
 	Write("You advance to level %d!", e.stats.Get(Stat_Level)).ToPlayer(e).Colorized(Color_PositiveBld).Send()
-	Write("  You gain %d hp", e.stats.Get(Stat_MaxHP)-oldHP).ToPlayer(e).Send()
-	Write("  You gain %d sp", e.stats.Get(Stat_MaxSP)-oldSP).ToPlayer(e).Send()
-	Write("  You gain %d mov", e.stats.Get(Stat_MaxMov)-oldMov).ToPlayer(e).Send()
-	Write("  You gain %d stat points", e.stats.Get(Stat_StatPoints)-oldStatPts).ToPlayer(e).Send()
+	diff := e.stats.Diff(oldStats)
+	for stat, ds := range diff {
+		if stat == Stat_Level || stat == Stat_StatPoints {
+			continue
+		}
+		Write("  You gain %d %s", ds, stat.String()).ToPlayer(e).Send()
+	}
+	Write("  You gain %d Stat Points", diff[Stat_StatPoints]).ToPlayer(e).Send()
 	Write("Hooray! %s is now level %d", e.GetName(), e.stats.Get(Stat_Level)).ToEntityRoom(w, e).Ignore(e).Send()
 
 	if e.player != nil {
@@ -620,16 +527,28 @@ func performJobLevelUp(e *Entity, w *World) {
 		return
 	}
 
-	oldSkillPts := e.stats.Get(Stat_SkillPoints)
+	oldStats := e.stats.Snapshot()
 
 	for IsReadyForJobLevelUp(e) {
 		nextJobLevel := e.stats.Get(Stat_JobLevel) + 1
+		for _, bonus := range e.job.cfg.BonusStats {
+			if bonus.Level == nextJobLevel {
+				e.stats.Add(bonus.Stat, 1)
+			}
+		}
 		e.stats.Set(Stat_JobLevel, nextJobLevel)
 		e.stats.Add(Stat_SkillPoints, 1)
 	}
 
 	Write("You advance to job level %d!", e.stats.Get(Stat_JobLevel)).ToPlayer(e).Colorized(Color_PositiveBld).Send()
-	Write("  You gain %d skill points", e.stats.Get(Stat_SkillPoints)-oldSkillPts).ToPlayer(e).Send()
+	diff := e.stats.Diff(oldStats)
+	for stat, ds := range diff {
+		if stat == Stat_JobLevel || stat == Stat_SkillPoints {
+			continue
+		}
+		Write("  You gain %d %s", ds, stat.String()).ToPlayer(e).Send()
+	}
+	Write("  You gain %d Skill Points", diff[Stat_SkillPoints]).ToPlayer(e).Send()
 	Write("Hooray! %s is now job level %d", e.GetName(), e.stats.Get(Stat_JobLevel)).ToEntityRoom(w, e).Ignore(e).Send()
 
 	if e.player != nil {

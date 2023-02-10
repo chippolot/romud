@@ -222,22 +222,10 @@ type EquipmentConfig struct {
 	Slot          EquipSlot
 	Stats         StatMap
 	StatusEffect  StatusEffectMask
-	Rolls         RollModConfigMap
 	Armor         *ArmorConfig
 	Weapon        *WeaponConfig
 	RequiredLevel int
 	Upgradable    bool
-}
-
-func (cfg *EquipmentConfig) GetRollBonus(roll RollType) Dice {
-	if cfg.Rolls == nil {
-		return Dice{}
-	}
-	mod := cfg.Rolls[roll]
-	if mod == nil || mod.Bonus == nil {
-		return Dice{}
-	}
-	return *mod.Bonus
 }
 
 type ArmorConfig struct {

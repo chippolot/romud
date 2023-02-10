@@ -1,5 +1,7 @@
 # romud
 roMUD is an open-source cross-platform MUD heavily inspired by DikuMUD and Ragnarok Online
+<img width="835" alt="Screenshot 2023-02-10 at 10 43 32 AM" src="https://user-images.githubusercontent.com/156689/218172452-601ab9bd-a153-406c-99b1-b8b8924058b4.png">
+
 
 ## Features
 - MUD framework inspired by DikuMUD and its derivatives

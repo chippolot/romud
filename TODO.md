@@ -233,6 +233,8 @@
         [x] Job Aspd
         [x] Job tree
         [x] Job changing
+        [x] Job stat bonuses 
+        [x] Job specific skills
     [x] Prompt
         [x] Display combat prompt for single enemy attacking you
     [x] Parser Improvements
@@ -243,19 +245,16 @@
 [x] Github
     [x] Move to Github
     [x] Add License
+    [x] Try out CoPilot?
 ----------------------------------------
 [] Github
     [] Improve ReadMe
     [] Binary releases
-    [] Try out CoPilot?
-[] Refactoring
-    [] Packages
-        [] Commands
-        [] More?
 [] RO
+    [] Content
+        [] Create stub Prontera w/ shop
+        [] Flesh out Prontera Fields
     [] Jobs
-        [] Job stat bonuses 
-        [] Job specific skills
         [] Job specific eq
             [] Unequip on job change
     [] Skills
@@ -267,9 +266,6 @@
     [] Items
         [] Group pickup display
         [] Stackable
-    [] Content
-        [] Create stub Prontera w/ shop
-        [] Flesh out Prontera Fields
     [] Ranged Combat
         [] Arrows
     [] Quick slot

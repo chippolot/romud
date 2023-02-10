@@ -42,7 +42,7 @@ Config.NewSkill({
         Cast = function(self, _, _, _)
             skillUtils.WriteCastSuccessMessages(self, "Blink into the distance! Teleport!")
             Write.ToPlayer(self, string.format("You blink out of existence and appear somewhere new!"))
-            Write.ToPlayer(self, "")
+            Write.ToPlayer(self, "\n\r")
             Write.ToRoom(Entity.Room(self), { self }, string.format("%s blinks out of existence!", Entity.NameCap(self)))
             local room = Zone.RandomRoom(Entity.Zone(self))
             Act.MoveTo(self, room)

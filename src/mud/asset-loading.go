@@ -74,6 +74,17 @@ func LoadAssets(w *World, projectRoot string) {
 			}
 		}
 	}
+
+	// Validate eneity configs
+	for _, cfg := range w.cfg.entityConfigs {
+		if cfg.DropTable != nil {
+			for _, drop := range *cfg.DropTable {
+				if _, ok := w.TryGetItemConfig(drop.Value); !ok {
+					log.Printf("unknown item key '%s' configured on entity '%s'", drop.Value, cfg.Key)
+				}
+			}
+		}
+	}
 }
 
 func RunScript(w *World, filePath string) error {

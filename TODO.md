@@ -242,6 +242,9 @@
     [x] Char Creation
         [x] Starting Stats  
         [x] Lua starting script
+    [x] Content
+        [x] Create stub Prontera w/ shop
+        [x] Flesh out Prontera Fields
 [x] Github
     [x] Move to Github
     [x] Add License
@@ -251,9 +254,6 @@
     [] Improve ReadMe
     [] Binary releases
 [] RO
-    [] Content
-        [] Create stub Prontera w/ shop
-        [] Flesh out Prontera Fields
     [] Jobs
         [] Job specific eq
             [] Unequip on job change
@@ -267,6 +267,8 @@
         [] Group pickup display
         [] Stackable
         [] Fancy Flower: Dam Reduction
+    [] Equipment
+        [] Prevent dual wield
     [] Ranged Combat
         [] Arrows
     [] Quick slot
@@ -304,16 +306,8 @@
     [] Also, handle sleepers!
 [] Items
     [] Gold
-    [] Equipment
-        [] Prevent dual wield
 [] Combat
-    [] More Skills!
-        [] Grapple?
-    [] Mobs can spawn w/ items from random table
-    [] Mob Weapons
     [] Weapon dependent messages
-    [] Attack type strengths / weaknesses
-    [] Multiple damage per attack
 [] Positions
     [] Look descriptions
 [] Classes

@@ -255,20 +255,27 @@ func (e *Entity) Equip(item *Item) (EquipSlot, []*Item, bool) {
 
 		// Find best slot for slot categories
 		holding2H := false
+		allowDualWield := false
 		switch slot {
 		case EqSlot_Held_1H:
 			if other, ok := e.equipped[EqSlot_Held_R]; ok {
 				if other.cfg.Equipment.Slot == EqSlot_Held_2H {
 					slot = EqSlot_Held_R
 					holding2H = true
-				} else {
+				} else if allowDualWield {
 					slot = EqSlot_Held_L
+				} else {
+					slot = EqSlot_Held_R
 				}
 			} else {
 				slot = EqSlot_Held_R
 			}
 		}
+
+		// Remove item from inventory
 		e.RemoveItem(item)
+
+		// Unequip existing item and equip new item
 		unequipped := make([]*Item, 0)
 		if slot == EqSlot_Held_2H {
 			if u := e.equipToSlot(item, EqSlot_Held_R); u != nil {

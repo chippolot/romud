@@ -31,7 +31,7 @@ func DoConsider(e *Entity, w *World, tokens []string) {
 				return
 			}
 
-			diff := tgt.stats.Get(Stat_Level) - e.stats.Get(Stat_Level)
+			diff := e.stats.Get(Stat_Level) - tgt.stats.Get(Stat_Level)
 
 			if diff <= 2 && diff >= -2 {
 				Write("You feel evenly matched. It's anyone's game.").ToPlayer(e).Send()

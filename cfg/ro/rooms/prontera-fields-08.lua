@@ -18,7 +18,7 @@ Config.NewRoom({
 	Id = 26,
 	Name = "Prontera Fields",
 	Desc = [[
-   A brilliant green meadow stretch out before you, a rolling expanse of lush grass and colorful wildflowers.  The sun shines down from a cloudless sky, casting dappled shadows across the landscape.  To the north you see the majestic city gates of Prontera.  The meadows continue to the east and west.]],
+   A brilliant green meadow stretches out before you, a rolling expanse of lush grass and colorful wildflowers.  The sun shines down from a cloudless sky, casting dappled shadows across the landscape.  To the north you see the majestic city gates of Prontera.  The meadows continue to the east and west.]],
 	Exits = {
 		[Dir.North] = 1,
         [Dir.East] = 28,
@@ -29,7 +29,7 @@ Config.NewRoom({
 	Id = 28,
 	Name = "Prontera Fields",
 	Desc = [[
-   A brilliant green meadow stretch out before you, a rolling expanse of lush grass and colorful wildflowers.  The sea lies to your east and you can hear waves gently lapping on the shore.  You can still hear the buzz of the city to the west.  The meadows continue to the west and south.]],
+   A brilliant green meadow stretches out before you, a rolling expanse of lush grass and colorful wildflowers.  The sea lies to your east and you can hear waves gently lapping on the shore.  You can still hear the buzz of the city to the west.  The meadows continue to the west and south.]],
 	Exits = {
 		[Dir.West] = 26,
 		[Dir.South] = 30,
@@ -39,7 +39,7 @@ Config.NewRoom({
 	Id = 29,
 	Name = "Prontera Fields",
 	Desc = [[
-   A brilliant green meadow stretch out before you, a rolling expanse of lush grass and colorful wildflowers.  The sun shines down from a cloudless sky, casting dappled shadows across the landscape.  You can still hear the buzz of the city to the east.  The meadows continue to the east and south.]],
+   A brilliant green meadow stretches out before you, a rolling expanse of lush grass and colorful wildflowers.  The sun shines down from a cloudless sky, casting dappled shadows across the landscape.  You can still hear the buzz of the city to the east.  The meadows continue to the east and south.]],
 	Exits = {
 		[Dir.East] = 26,
 		[Dir.South] = 31,
@@ -49,7 +49,7 @@ Config.NewRoom({
 	Id = 30,
 	Name = "Prontera Fields",
 	Desc = [[
-   A brilliant green meadow stretch out before you, a rolling expanse of lush grass and colorful wildflowers.  The sea lies to your east and you can hear waves gently lapping on the shore.  In the distance to the south-east you can see what looks like a port.  The meadows continue to the north and south.]],
+   A brilliant green meadow stretches out before you, a rolling expanse of lush grass and colorful wildflowers.  The sea lies to your east and you can hear waves gently lapping on the shore.  In the distance to the south-east you can see what looks like a port.  The meadows continue to the north and south.]],
 	Exits = {
 		[Dir.North] = 28,
 		[Dir.South] = 32,
@@ -70,7 +70,7 @@ Config.NewRoom({
 	Id = 32,
 	Name = "Prontera Fields",
 	Desc = [[
-   A brilliant green meadow stretch out before you, a rolling expanse of lush grass and colorful wildflowers.  The sun shines down from a cloudless sky, casting dappled shadows across the landscape.  To the easy, you see the bustling port town of Izlude.  The meadows continue to the north, south, and west.]],
+   A brilliant green meadow stretches out before you, a rolling expanse of lush grass and colorful wildflowers.  The sun shines down from a cloudless sky, casting dappled shadows across the landscape.  To the east, you see the bustling port town of Izlude.  The meadows continue to the north, south, and west.]],
 	Exits = {
 		[Dir.North] = 30,
 		[Dir.South] = 35,
